@@ -1,0 +1,66 @@
+<div class="uk-sticky-placeholder" style="height: 106px;">
+    <div class="tm-navbar-container uk-sticky-init uk-active uk-navbar-attached"
+         data-uk-sticky="{media: 768, clsactive:'uk-active uk-navbar-attached'}" style="position: fixed; top: 0px; width: 1436px;">
+        <div class="tm-toolbar uk-clearfix uk-visible-large">
+            <div class="uk-float-right">
+                <div *ngIf="!loggedIn()" class="uk-panel">
+                    <span><a routerLink="/login" routerLinkActive="uk-active">SIGN IN</a></span>
+                    |
+                    <span><a routerLink="/register" routerLinkActive="uk-active">REGISTER</a></span>
+                </div>
+                <div *ngIf="loggedIn()" class="uk-panel">
+                    <span><a routerLink="/home" routerLinkActive="uk-active" (click)="logout()">SIGN OUT</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="uk-position-relative uk-text-center">
+            <div class="tm-navbar-left uk-flex uk-flex-middle">
+                <a class="tm-logo-small uk-visible-large" href="http://www.openminted.eu">
+                    <img src="http://openminted.eu/wp-content/uploads/2016/02/OpenMINTED_Tag_Color.png"
+                         alt="OpenMinted" width="40%" style="margin-left: -350px;">
+                </a>
+            </div>
+
+            <nav class="tm-navbar uk-navbar main-menu">
+
+                <ul class="uk-navbar-nav uk-visible-large">
+                    <li [routerLinkActive]="['uk-active']"><a routerLink="/home" routerLinkActive="uk-active">Home</a></li>
+                    <li [routerLinkActive]="['uk-active']"><a routerLink="/search" routerLinkActive="uk-active">Browse</a></li>
+                    <li [routerLinkActive]="['uk-active']" class="dropdown uk-parent" data-uk-dropdown="{'preventflip':'y'}" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
+                        <ul class="dropdown-menu uk-nav uk-nav-navbar">
+                            <li><a routerLink="/resourceRegistration/component" routerLinkActive="uk-active">Component</a></li>
+                            <li><a routerLink="/registerCorpus" routerLinkActive="uk-active">Corpus</a></li>
+                            <li><a routerLink="/registerLanguageResource" routerLinkActive="uk-active">Language Resource</a></li>
+                            <li><a routerLink="/registerWorkflow" routerLinkActive="uk-active">Workflow</a></li>
+                        </ul>
+                    </li>
+                    <li [routerLinkActive]="['uk-active']"><a routerLink="/support" routerLinkActive="uk-active">Support</a></li>
+                    <li *ngIf="loggedIn()" [routerLinkActive]="['uk-active']" class="dropdown uk-parent" data-uk-dropdown="{'preventflip':'y'}" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
+                        <ul class="dropdown-menu uk-nav uk-nav-navbar">
+                            <li><a routerLink="/editProfile" routerLinkActive="uk-active">Edit Profile</a></li>
+                            <li><a routerLink="/myResources" routerLinkActive="uk-active">My Resources</a></li>
+                        </ul>
+                </ul>
+                <a class="tm-logo-small uk-hidden-large" href="http://yootheme.com/demo/themes/joomla/2016/chester">
+                    <img src="http://openminted.eu/wp-content/uploads/2016/02/OpenMINTED_Tag_Color.png" alt="OpenMinted" width="30%">
+                </a>
+                <!--<svg xml:space="preserve" enable-background="new 0 0 45 60" viewBox="0 0 45 60" height="60" width="45" y="0" x="0" id="tm-logo-small" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><path d="M44.54 4.78c-0.36-1.01-1.11-1.75-2.17-2.2 -0.68-0.3-1.5-0.46-2.44-0.51 -2.13-0.08-4.8 0.5-7.72 1.74 -0.01 0.01-0.01 0.01-0.02 0.01C24.66 7.01 15.45 14.55 9.31 26.26c-1.67-0.31-3.14-0.87-4.31-1.71 -3.84-2.73-4.34-6.71-4.08-9.57C1.43 9.27 5.54 2.88 10.06 0.77L9.69 0C4.93 2.23 0.6 8.93 0.06 14.91c-0.27 3.08 0.27 7.37 4.43 10.33C5.72 26.11 7.21 26.7 8.9 27.05c-0.33 0.67-0.66 1.34-0.98 2.04 -4.83 10.58-7.47 24.7 0.95 29.63C10.36 59.58 11.99 60 13.67 60c1.42 0 2.87-0.3 4.3-0.88 0.07-0.02 0.14-0.04 0.21-0.08 2.55-1.06 5.01-3.02 7.06-5.73 4.53-6 4.29-11.6 2.55-14.83 -1.36-2.52-3.74-4.01-6.25-3.89 -3.21 0.16-6.14 2.86-8.02 7.41l0.79 0.32c1.76-4.23 4.42-6.74 7.28-6.88 2.2-0.11 4.24 1.18 5.46 3.44 1.61 3.01 1.81 8.24-2.48 13.93 -1.97 2.62-4.34 4.49-6.78 5.49 -3.31 1.23-6.97 0.22-9.01-2.5 -3.69-4.91-3.64-16.09 2.93-28.39 7.95 0.41 18.6-3.34 25.73-8.66C43.6 14.12 46.12 9.16 44.54 4.78zM36.96 18.06c-6.74 5.04-17.06 8.71-24.76 8.49 0.67-1.22 1.42-2.44 2.22-3.67C22.31 10.87 29.14 5.95 34.05 4.05c0.13-0.05 0.25-0.1 0.37-0.13 1.16-0.42 2.21-0.68 3.13-0.82 0.12-0.02 0.24-0.04 0.37-0.05 0.75-0.11 1.42-0.15 2.03-0.13 0.51 0.02 1.06 0.09 1.6 0.25 0.03 0.01 0.06 0.02 0.09 0.03 0.93 0.28 1.78 0.84 2.16 1.87C45.73 10.47 40.35 15.53 36.96 18.06z"></path></svg></a>-->
+
+            </nav>
+
+            <div class="tm-navbar-right uk-flex uk-flex-middle">
+                <div class="uk-visible-large">
+                    <form data-uk-search="{'source': '/demo/themes/joomla/2016/chester/index.php/component/search/?tmpl=raw&amp;type=json&amp;ordering=&amp;searchphrase=all', 'param': 'searchword', 'msgResultsHeader': 'Search Results', 'msgMoreResults': 'More Results', 'msgNoResults': 'No results found', flipDropdown: 1}" method="post" action="/demo/themes/joomla/2016/chester/index.php/theme" class="uk-search" id="search-40-57c42754d716a">
+                        <input type="text" placeholder="search..." name="searchword" class="uk-search-field">
+                        <input type="hidden" value="search" name="task">
+                        <input type="hidden" value="com_search" name="option">
+                        <input type="hidden" value="107" name="Itemid">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

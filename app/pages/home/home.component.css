@@ -1,0 +1,41 @@
+.bigImageSearch {
+    /*background-image: url("http://www.openminted.eu/wp-content/uploads/2016/01/many_books.jpg");*/
+}
+
+.bigImageSearch > div > div {
+    width: 100%;
+}
+
+.bigImageSearch img {
+    width: 100%;
+}
+
+.searchForm {
+    background-color: #ffffff;
+}
+
+.searchForm.uk-form *::-moz-placeholder {
+    /*color: #666666;*/
+}
+
+.searchForm input {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.input_container {
+
+}
+
+.input_container input {
+    display: inline-block;
+    padding: 6px 20px;
+    height: 45px;
+    width: 95%;
+}
+
+.input_container i {
+    /*color: #666666;*/
+    display: inline-block;
+    margin-left: 15px;
+}
