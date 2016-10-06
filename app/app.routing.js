@@ -51,5 +51,6 @@ var appRoutes = [
         component: corpus_landing_page_component_1.CorpusLandingPageComponent,
     },
 ];
+exports.appRoutingProviders = [];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);
 //# sourceMappingURL=app.routing.js.map

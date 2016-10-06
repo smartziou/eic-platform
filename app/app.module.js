@@ -31,6 +31,7 @@ var component_landing_page_component_1 = require("./pages/landingpages/component
 var login_component_1 = require("./pages/user/signin/login.component");
 var register_component_1 = require("./pages/user/register/register.component");
 var edit_profile_component_1 = require("./pages/user/editprofile/edit-profile.component");
+var component_registration_module_1 = require("./pages/resourceregistration/component/component-registration.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -43,7 +44,8 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 http_1.JsonpModule,
                 // ResourceRegistrationModule,
-                app_routing_1.routing
+                app_routing_1.routing,
+                component_registration_module_1.ComponentRegistrationModule
             ],
             declarations: [
                 app_component_1.AppComponent,
@@ -61,7 +63,8 @@ var AppModule = (function () {
                 user_service_1.UserService,
                 authentication_service_1.AuthenticationService,
                 can_activate_auth_guard_service_1.CanActivateViaAuthGuard,
-                resource_service_1.ResourceService
+                resource_service_1.ResourceService,
+                app_routing_1.appRoutingProviders
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

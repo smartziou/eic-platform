@@ -1,0 +1,27 @@
+.form-control {
+    border-radius: 0px;
+}
+
+.uk-grid {
+    margin-left: -20px;
+}
+
+.registrationOptions {
+    margin-top: 30px;
+}
+
+.mavenCoordinatesForm {
+    margin-top: 25px;
+}
+
+.mavenCoordinatesForm .uk-grid {
+    margin-left: -40px;
+}
+
+.mavenCoordinatesForm .uk-grid-margin {
+    margin-top: 25px;
+}
+
+/*.mavenCoordinatesForm label {*/
+    /*font-weight: 300;*/
+/*}*/

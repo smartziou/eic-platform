@@ -6,7 +6,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpModule, JsonpModule } from '@angular/http';
-import { routing } from "./app.routing";
+import { routing, appRoutingProviders } from "./app.routing";
 
 import { UserService } from "./services/user.service";
 import { AuthenticationService } from "./services/authentication.service";
@@ -23,6 +23,7 @@ import { ComponentLandingPageComponent } from "./pages/landingpages/component/co
 import { LoginComponent } from "./pages/user/signin/login.component";
 import { RegisterComponent } from "./pages/user/register/register.component";
 import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.component";
+import { ComponentRegistrationModule } from "./pages/resourceregistration/component/component-registration.module";
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.comp
         HttpModule,
         JsonpModule,
         // ResourceRegistrationModule,
-        routing
+        routing,
+        ComponentRegistrationModule
     ],
     declarations: [
         AppComponent,
@@ -50,7 +52,8 @@ import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.comp
         UserService,
         AuthenticationService,
         CanActivateViaAuthGuard,
-        ResourceService
+        ResourceService,
+        appRoutingProviders
     ],
     bootstrap: [ AppComponent ]
 })
