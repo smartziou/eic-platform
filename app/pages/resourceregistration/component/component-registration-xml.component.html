@@ -1,0 +1,66 @@
+<div class="uk-block tm-block-main uk-block-default uk-block-large">
+    <div class="uk-container uk-container-center">
+        <div id="tm-middle" class="tm-middle uk-grid" data-uk-grid-match="" data-uk-grid-margin="">
+            <div class="tm-main uk-width-medium-1-1 uk-row-first">
+                <main id="tm-content" class="tm-content">
+                    <div id="system-message-container">
+                    </div>
+                    <div class="yoo-zoo page-uikit page-uikit-test">
+
+                        <h1 class="uk-h1"> Component XML registration </h1>
+
+                        <!--<p class="uk-text-muted">Written by Super User on 26 March 2010 </p>-->
+
+                        <div class="uk-margin">
+                            Paste the XML presentatation of your component below, or use one of our helper methods on the
+                            right to preview your XML before you submit it.
+                        </div>
+
+                        <div class="uk-margin uk-grid componentXMLRegistration">
+                            <div class="uk-width-medium-7-10">
+                                <form class="componentXMLForm">
+                                    <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="16" name="xml"></textarea>
+                                        </div>
+                                        <div class="uk-grid-margin uk-row-first"><button class="uk-button uk-button-large
+                                        uk-button-primary registerButton">Register!</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <aside class="tm-sidebar-a uk-width-medium-3-10">
+                                <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                                    <h3 class="uk-panel-title">Upload XML</h3>
+                                    <form class="componentXMLFileForm">
+                                        <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
+                                            <div class="form-group">
+                                                <input type="file" name="xmlFile">
+                                            </div>
+                                            <a (click)="previewFromFile" class="uk-margin-top">
+                                                Preview <i class="uk-icon-angle-right uk-margin-small-left"></i>
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="uk-panel uk-panel-box uk-panel-box-primary">
+                                    <h3 class="uk-panel-title">URL of component XML</h3>
+                                    <form class="componentXMLURLForm">
+                                        <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
+                                            <div class="form-group">
+                                                <input class="form-control" name="xmlURL">
+                                            </div>
+                                            <a (click)="previewFromURL" class="uk-margin-top">
+                                                Preview <i class="uk-icon-angle-right uk-margin-small-left"></i>
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </aside>
+                        </div>
+
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>

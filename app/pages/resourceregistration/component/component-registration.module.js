@@ -17,6 +17,7 @@ var forms_1 = require('@angular/forms');
 var resource_service_1 = require("../../../services/resource.service");
 var component_registration_routing_1 = require("./component-registration.routing");
 var component_registration_component_1 = require("./component-registration.component");
+var component_registration_xml_component_1 = require("./component-registration-xml.component");
 var ComponentRegistrationModule = (function () {
     function ComponentRegistrationModule() {
     }
@@ -28,7 +29,8 @@ var ComponentRegistrationModule = (function () {
                 component_registration_routing_1.componentRegistrationRouting
             ],
             declarations: [
-                component_registration_component_1.ComponentRegistrationComponent
+                component_registration_component_1.ComponentRegistrationComponent,
+                component_registration_xml_component_1.ComponentRegistrationXMLComponent
             ],
             providers: [
                 resource_service_1.ResourceService

@@ -8,6 +8,7 @@ import { FormsModule }    from '@angular/forms';
 import { ResourceService } from "../../../services/resource.service";
 import { componentRegistrationRouting } from "./component-registration.routing";
 import { ComponentRegistrationComponent } from "./component-registration.component";
+import { ComponentRegistrationXMLComponent } from "./component-registration-xml.component";
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { ComponentRegistrationComponent } from "./component-registration.compone
         componentRegistrationRouting
     ],
     declarations: [
-        ComponentRegistrationComponent
+        ComponentRegistrationComponent,
+        ComponentRegistrationXMLComponent
     ],
     providers: [
         ResourceService

@@ -12,23 +12,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by stefania on 10/6/16.
  */
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var ComponentRegistrationComponent = (function () {
-    function ComponentRegistrationComponent(router) {
-        this.router = router;
+var ComponentRegistrationXMLComponent = (function () {
+    function ComponentRegistrationXMLComponent() {
     }
-    ComponentRegistrationComponent.prototype.registerUsingXML = function () {
-        this.router.navigate(['/resourceRegistration/component/xml']);
-    };
-    ComponentRegistrationComponent = __decorate([
+    ComponentRegistrationXMLComponent = __decorate([
         core_1.Component({
             selector: 'component-registration-options',
-            templateUrl: 'app/pages/resourceregistration/component/component-registration.component.html',
-            styleUrls: ['app/pages/resourceregistration/component/component-registration.component.css'],
+            templateUrl: 'app/pages/resourceregistration/component/component-registration-xml.component.html',
+            styleUrls: ['app/pages/resourceregistration/component/component-registration-xml.component.css'],
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], ComponentRegistrationComponent);
-    return ComponentRegistrationComponent;
+        __metadata('design:paramtypes', [])
+    ], ComponentRegistrationXMLComponent);
+    return ComponentRegistrationXMLComponent;
 }());
-exports.ComponentRegistrationComponent = ComponentRegistrationComponent;
-//# sourceMappingURL=component-registration.component.js.map
+exports.ComponentRegistrationXMLComponent = ComponentRegistrationXMLComponent;
+//# sourceMappingURL=component-registration-xml.component.js.map
