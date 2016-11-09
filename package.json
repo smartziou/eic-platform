@@ -10,7 +10,7 @@
     "typings": "typings",
     "clean": "rm -rf dist/ && mkdir dist",
     "serve": "angularserver --port 5400 --dir . --file index.html",
-    "build": "tsc",
+    "build": "npm run clean && tsc",
     "build_prod": "npm run build && browserify -s main app/main.js > dist/bundle.js && npm run minify",
     "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js"
   },
@@ -36,6 +36,9 @@
   "devDependencies": {
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
+    "browserify" : "^13.1.1",
+    "uglify-js" : "^2.7.4",
+    "simple-angular-server" : "^0.3.12",
     "typescript": "^2.0.3",
     "typings":"^1.4.0"
   }
