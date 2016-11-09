@@ -2,8 +2,12 @@
 
 ## First time
 `npm intall` for all the dependencies.
+
 `npm install -g browserify` used for production deployment.
+
 `npm install -g simple-angular-server` used for production deployment.
+
+`npm install -g uglifyjs` used for producetion deployment.
 
 ## Build
 For development `npm run build` and it can be deployed with `npm run start` using lite-server and browsersync.
