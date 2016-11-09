@@ -32,6 +32,7 @@ var login_component_1 = require("./pages/user/signin/login.component");
 var register_component_1 = require("./pages/user/register/register.component");
 var edit_profile_component_1 = require("./pages/user/editprofile/edit-profile.component");
 var component_registration_module_1 = require("./pages/resourceregistration/component/component-registration.module");
+var common_1 = require('@angular/common');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -60,6 +61,7 @@ var AppModule = (function () {
                 corpus_landing_page_component_1.CorpusLandingPageComponent
             ],
             providers: [
+                { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
                 user_service_1.UserService,
                 authentication_service_1.AuthenticationService,
                 can_activate_auth_guard_service_1.CanActivateViaAuthGuard,

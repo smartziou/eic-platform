@@ -7,7 +7,12 @@
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings"
+    "typings": "typings",
+    "clean": "rm -rf dist/ && mkdir dist",
+    "serve": "angularserver --port 5400 --dir . --file index.html",
+    "build": "tsc",
+    "build_prod": "npm run build && browserify -s main app/main.js > dist/bundle.js && npm run minify",
+    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js"
   },
   "license": "ISC",
   "dependencies": {
