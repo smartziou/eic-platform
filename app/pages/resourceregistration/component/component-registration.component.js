@@ -20,6 +20,9 @@ var ComponentRegistrationComponent = (function () {
     ComponentRegistrationComponent.prototype.registerUsingXML = function () {
         this.router.navigate(['/resourceRegistration/component/xml']);
     };
+    ComponentRegistrationComponent.prototype.registerUsingForm = function () {
+        this.router.navigate(['/resourceRegistration/component/form']);
+    };
     ComponentRegistrationComponent = __decorate([
         core_1.Component({
             selector: 'component-registration-options',

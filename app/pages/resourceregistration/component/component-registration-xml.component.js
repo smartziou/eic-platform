@@ -17,7 +17,7 @@ var ComponentRegistrationXMLComponent = (function () {
     }
     ComponentRegistrationXMLComponent = __decorate([
         core_1.Component({
-            selector: 'component-registration-options',
+            selector: 'component-registration-xml',
             templateUrl: 'app/pages/resourceregistration/component/component-registration-xml.component.html',
             styleUrls: ['app/pages/resourceregistration/component/component-registration-xml.component.css'],
         }), 

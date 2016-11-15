@@ -3,7 +3,7 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:600,400,300';
 @import 'https://fonts.googleapis.com/css?family=Flamenco:400,300';
 /* ========================================================================
-   Component: Base
+   OMTDComponent: Base
  ========================================================================== */
 /*
  * 1. Normalize default `font-family` and set `font-size` to support `rem` units
@@ -414,7 +414,7 @@ a {
   transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
 /* ========================================================================
-   Component: Grid
+   OMTDComponent: Grid
  ========================================================================== */
 /*
  * 1. Makes grid more robust so that it can be used with other block elements like lists
@@ -1274,7 +1274,7 @@ a {
   }
 }
 /* ========================================================================
-   Component: Panel
+   OMTDComponent: Panel
  ========================================================================== */
 /*
  * 1. Needed for `a` elements
@@ -1460,7 +1460,7 @@ a {
   }
 }
 /* ========================================================================
-   Component: Block
+   OMTDComponent: Block
  ========================================================================== */
 .uk-block {
   position: relative;
@@ -1556,7 +1556,7 @@ a {
   border-color: #cccccc;
 }
 /* ========================================================================
-   Component: Article
+   OMTDComponent: Article
  ========================================================================== */
 /*
  * Micro clearfix to make articles more robust
@@ -1622,7 +1622,7 @@ a {
   margin-top: 30px;
 }
 /* ========================================================================
-   Component: Comment
+   OMTDComponent: Comment
  ========================================================================== */
 /* Sub-object `uk-comment-header`
  ========================================================================== */
@@ -1698,7 +1698,7 @@ a {
   background: #f5f5f5;
 }
 /* ========================================================================
-   Component: Cover
+   OMTDComponent: Cover
  ========================================================================== */
 /*
  * Background image always covers and centers its element
@@ -1745,7 +1745,7 @@ a {
   transform: translate(-50%, -50%);
 }
 /* ========================================================================
-   Component: Nav
+   OMTDComponent: Nav
  ========================================================================== */
 .uk-nav,
 .uk-nav ul {
@@ -2029,7 +2029,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   margin: 0;
 }
 /* ========================================================================
-   Component: Navbar
+   OMTDComponent: Navbar
  ========================================================================== */
 .uk-navbar {
   background: rgba(0, 0, 0, 0);
@@ -2262,7 +2262,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   font-family: "Chester";
 }
 /* ========================================================================
-   Component: Subnav
+   OMTDComponent: Subnav
  ========================================================================== */
 /*
  * 1. Gutter
@@ -2393,7 +2393,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   margin-right: 10px;
 }
 /* ========================================================================
-   Component: Breadcrumb
+   OMTDComponent: Breadcrumb
  ========================================================================== */
 /*
  * 1. Remove default list style
@@ -2435,7 +2435,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   color: #bbbbbb;
 }
 /* ========================================================================
-   Component: Pagination
+   OMTDComponent: Pagination
  ========================================================================== */
 /*
  * 1. Remove default list style
@@ -2571,7 +2571,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   width: 100%;
 }
 /* ========================================================================
-   Component: Tab
+   OMTDComponent: Tab
  ========================================================================== */
 .uk-tab {
   margin: 0;
@@ -2849,7 +2849,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   }
 }
 /* ========================================================================
-   Component: Thumbnav
+   OMTDComponent: Thumbnav
  ========================================================================== */
 /*
  * 1. Gutter
@@ -2922,7 +2922,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   opacity: 1;
 }
 /* ========================================================================
-   Component: List
+   OMTDComponent: List
  ========================================================================== */
 .uk-list {
   padding: 0;
@@ -2974,7 +2974,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   margin-top: 10px;
 }
 /* ========================================================================
-   Component: Description list
+   OMTDComponent: Description list
  ========================================================================== */
 /* Modifier: `uk-description-list-horizontal`
  ========================================================================== */
@@ -3019,7 +3019,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   margin-top: 15px;
 }
 /* ========================================================================
-   Component: Table
+   OMTDComponent: Table
  ========================================================================== */
 /*
  * 1. Remove most spacing between table cells.
@@ -3097,7 +3097,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   background: #f0f0f0;
 }
 /* ========================================================================
-   Component: Form
+   OMTDComponent: Form
  ========================================================================== */
 /*
  * 1. Define consistent box sizing.
@@ -3590,7 +3590,7 @@ select.uk-form-width-mini {
   padding-right: 30px !important;
 }
 /* ========================================================================
-   Component: Button
+   OMTDComponent: Button
  ========================================================================== */
 /*
  * Removes inner padding and border in Firefox 4+.
@@ -3982,7 +3982,7 @@ select.uk-form-width-mini {
   border-left-width: 1px;
 }
 /* ========================================================================
-   Component: Icon
+   OMTDComponent: Icon
  ========================================================================== */
 @font-face {
   font-family: 'FontAwesome';
@@ -6098,7 +6098,7 @@ select.uk-form-width-mini {
   color: #bbbbbb;
 }
 /* ========================================================================
-   Component: Close
+   OMTDComponent: Close
  ========================================================================== */
 /*
  * Removes inner padding and border in Firefox 4+.
@@ -6206,7 +6206,7 @@ select.uk-form-width-mini {
   opacity: 0.8;
 }
 /* ========================================================================
-   Component: Badge
+   OMTDComponent: Badge
  ========================================================================== */
 .uk-badge {
   display: inline-block;
@@ -6257,7 +6257,7 @@ a.uk-badge:hover {
   background-color: #f2565a;
 }
 /* ========================================================================
-   Component: Alert
+   OMTDComponent: Alert
  ========================================================================== */
 .uk-alert {
   margin-bottom: 15px;
@@ -6326,7 +6326,7 @@ a.uk-badge:hover {
   margin: -10px -10px 0 0;
 }
 /* ========================================================================
-   Component: Thumbnail
+   OMTDComponent: Thumbnail
  ========================================================================== */
 /*
  * 1. Container width fits its content
@@ -6391,7 +6391,7 @@ a.uk-thumbnail:focus {
   width: 100%;
 }
 /* ========================================================================
-   Component: Overlay
+   OMTDComponent: Overlay
  ========================================================================== */
 /*
  * 1. Container width fits its content
@@ -6821,7 +6821,7 @@ a.uk-thumbnail:focus {
   color: #666666;
 }
 /* ========================================================================
-   Component: Column
+   OMTDComponent: Column
  ========================================================================== */
 [class*='uk-column-'] {
   -webkit-column-gap: 30px;
@@ -6968,7 +6968,7 @@ a.uk-thumbnail:focus {
   }
 }
 /* ========================================================================
-   Component: Animation
+   OMTDComponent: Animation
  ========================================================================== */
 [class*='uk-animation-'] {
   -webkit-animation-duration: 0.5s;
@@ -7520,7 +7520,7 @@ a.uk-thumbnail:focus {
   }
 }
 /* ========================================================================
-   Component: Dropdown
+   OMTDComponent: Dropdown
  ========================================================================== */
 /*
  * 1. Hide by default
@@ -7706,7 +7706,7 @@ a.uk-thumbnail:focus {
 /* Sub-object: `uk-dropdown-overlay`
  ========================================================================== */
 /* ========================================================================
-   Component: Modal
+   OMTDComponent: Modal
  ========================================================================== */
 /*
  * This is the modal overlay and modal dialog container
@@ -7932,7 +7932,7 @@ a.uk-thumbnail:focus {
   font-size: 20px;
 }
 /* ========================================================================
-   Component: Off-canvas
+   OMTDComponent: Off-canvas
  ========================================================================== */
 /*
  * This is the offcanvas overlay and bar container
@@ -8033,7 +8033,7 @@ a.uk-thumbnail:focus {
   color: #ffffff;
 }
 /* ========================================================================
-   Component: Switcher
+   OMTDComponent: Switcher
  ========================================================================== */
 /*
  * 1. Deactivate browser history navigation in IE11
@@ -8052,7 +8052,7 @@ a.uk-thumbnail:focus {
   display: none;
 }
 /* ========================================================================
-   Component: Text
+   OMTDComponent: Text
  ========================================================================== */
 /* Size modifiers
  ========================================================================== */
@@ -8158,7 +8158,7 @@ a.uk-thumbnail:focus {
   hyphens: auto;
 }
 /* ========================================================================
-   Component: Utility
+   OMTDComponent: Utility
  ========================================================================== */
 /* Container
  ========================================================================== */
@@ -8674,7 +8674,7 @@ a.uk-thumbnail:focus {
   text-transform: none;
 }
 /* ========================================================================
-   Component: Flex
+   OMTDComponent: Flex
  ========================================================================== */
 .uk-flex {
   display: -ms-flexbox;
@@ -8905,7 +8905,7 @@ a.uk-thumbnail:focus {
   flex: 1;
 }
 /* ========================================================================
-   Component: Contrast
+   OMTDComponent: Contrast
  ========================================================================== */
 .uk-contrast,
 .uk-block-primary .uk-panel-box:not(.uk-panel-box-primary):not(.uk-panel-box-secondary) {
@@ -9251,7 +9251,7 @@ a.uk-thumbnail:focus {
   color: #9fd2d8 !important;
 }
 /* ========================================================================
-   Component: Print
+   OMTDComponent: Print
  ========================================================================== */
 @media print {
   *,
@@ -9296,7 +9296,7 @@ a.uk-thumbnail:focus {
   }
 }
 /* ========================================================================
-   Component: Dotnav
+   OMTDComponent: Dotnav
  ========================================================================== */
 /*
  * 1. Gutter
@@ -9424,7 +9424,7 @@ a.uk-thumbnail:focus {
   float: none;
 }
 /* ========================================================================
-   Component: Slidenav
+   OMTDComponent: Slidenav
  ========================================================================== */
 /*
  * 1. Required for `a` elements
@@ -9525,7 +9525,7 @@ a.uk-thumbnail:focus {
   color: #ffffff;
 }
 /* ========================================================================
-   Component: Accordion
+   OMTDComponent: Accordion
  ========================================================================== */
 /* Sub-object: `uk-accordion-title`
  ========================================================================== */
@@ -9564,7 +9564,7 @@ a.uk-thumbnail:focus {
   margin-bottom: 0;
 }
 /* ========================================================================
-   Component: Datepicker
+   OMTDComponent: Datepicker
  ========================================================================== */
 /*
  * 1. Highest z-index
@@ -9693,7 +9693,7 @@ a.uk-datepicker-table-muted {
   font-weight: normal;
 }
 /* ========================================================================
-   Component: Form advanced
+   OMTDComponent: Form advanced
    Note: Only works in Webkit at the moment
  ========================================================================== */
 /*
@@ -9770,7 +9770,7 @@ a.uk-datepicker-table-muted {
   color: #aaaaaa;
 }
 /* ========================================================================
-   Component: Form file
+   OMTDComponent: Form file
  ========================================================================== */
 /*
  * 1. Behave like form elements
@@ -9803,7 +9803,7 @@ a.uk-datepicker-table-muted {
   font-size: 500px;
 }
 /* ========================================================================
-   Component: Form password
+   OMTDComponent: Form password
  ========================================================================== */
 /*
  * 1. Container width fits its content
@@ -9836,7 +9836,7 @@ a.uk-datepicker-table-muted {
   padding-right: 50px !important;
 }
 /* ========================================================================
-   Component: Form select
+   OMTDComponent: Form select
  ========================================================================== */
 /*
  * 1. Behave like form elements
@@ -9870,7 +9870,7 @@ a.uk-datepicker-table-muted {
   -webkit-appearance: none;
 }
 /* ========================================================================
-   Component: HTML editor
+   OMTDComponent: HTML editor
  ========================================================================== */
 /* Sub-object `uk-htmleditor-navbar`
  ========================================================================== */
@@ -10034,7 +10034,7 @@ a.uk-datepicker-table-muted {
   box-sizing: border-box;
 }
 /* ========================================================================
-   Component: Nestable
+   OMTDComponent: Nestable
  ========================================================================== */
 .uk-nestable {
   padding: 0;
@@ -10165,7 +10165,7 @@ a.uk-datepicker-table-muted {
   background: #f5f5f5;
 }
 /* ========================================================================
-   Component: Notify
+   OMTDComponent: Notify
  ========================================================================== */
 /*
  * Message container for positioning
@@ -10256,7 +10256,7 @@ a.uk-datepicker-table-muted {
   color: #f2565a;
 }
 /* ========================================================================
-   Component: Placeholder
+   OMTDComponent: Placeholder
  ========================================================================== */
 .uk-placeholder {
   margin-bottom: 15px;
@@ -10284,7 +10284,7 @@ a.uk-datepicker-table-muted {
   padding-bottom: 80px;
 }
 /* ========================================================================
-   Component: Progress
+   OMTDComponent: Progress
  ========================================================================== */
 /*
  * 1. Clearing
@@ -10377,7 +10377,7 @@ a.uk-datepicker-table-muted {
   }
 }
 /* ========================================================================
-   Component: Search
+   OMTDComponent: Search
  ========================================================================== */
 /*
  * 1. Create position context for dropdowns
@@ -10594,7 +10594,7 @@ a.uk-datepicker-table-muted {
   padding: 0 0 0 30px !important;
 }
 /* ========================================================================
-   Component: Slider
+   OMTDComponent: Slider
  ========================================================================== */
 /*
  * 1. Create position context
@@ -10678,7 +10678,7 @@ a.uk-datepicker-table-muted {
   height: 100vh;
 }
 /* ========================================================================
-   Component: Slideshow
+   OMTDComponent: Slideshow
  ========================================================================== */
 /*
  * 1. Create position context
@@ -10821,7 +10821,7 @@ a.uk-datepicker-table-muted {
   animation: uk-fade 0.5s ease-in-out reverse;
 }
 /* ========================================================================
-   Component: Sortable
+   OMTDComponent: Sortable
  ========================================================================== */
 .uk-sortable {
   position: relative;
@@ -10882,7 +10882,7 @@ a.uk-datepicker-table-muted {
   cursor: move;
 }
 /* ========================================================================
-   Component: Sticky
+   OMTDComponent: Sticky
  ========================================================================== */
 /*
  * 1. More robust if padding and border are used
@@ -10904,7 +10904,7 @@ a.uk-datepicker-table-muted {
   animation-duration: 0.2s;
 }
 /* ========================================================================
-   Component: Tooltip
+   OMTDComponent: Tooltip
  ========================================================================== */
 /*
  * 1. Hide by default
@@ -11019,7 +11019,7 @@ a.uk-datepicker-table-muted {
   border-right-color: #444444;
 }
 /* ========================================================================
-   Component: Upload
+   OMTDComponent: Upload
  ========================================================================== */
 /*
  * Create a box-shadow when dragging a file over the upload area

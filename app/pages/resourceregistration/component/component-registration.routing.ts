@@ -5,6 +5,7 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ComponentRegistrationComponent } from "./component-registration.component";
 import { ComponentRegistrationXMLComponent } from "./component-registration-xml.component";
+import { ComponentRegistrationFormComponent } from "./component-registration-form.component";
 
 const componentRegistrationRoutes: Routes = [
     {
@@ -14,6 +15,10 @@ const componentRegistrationRoutes: Routes = [
     {
         path: 'resourceRegistration/component/xml',
         component: ComponentRegistrationXMLComponent
+    },
+    {
+        path: 'resourceRegistration/component/form',
+        component: ComponentRegistrationFormComponent
     }
 ];
 

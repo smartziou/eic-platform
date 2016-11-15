@@ -18,6 +18,7 @@ var resource_service_1 = require("../../../services/resource.service");
 var component_registration_routing_1 = require("./component-registration.routing");
 var component_registration_component_1 = require("./component-registration.component");
 var component_registration_xml_component_1 = require("./component-registration-xml.component");
+var component_registration_form_component_1 = require("./component-registration-form.component");
 var ComponentRegistrationModule = (function () {
     function ComponentRegistrationModule() {
     }
@@ -30,7 +31,8 @@ var ComponentRegistrationModule = (function () {
             ],
             declarations: [
                 component_registration_component_1.ComponentRegistrationComponent,
-                component_registration_xml_component_1.ComponentRegistrationXMLComponent
+                component_registration_xml_component_1.ComponentRegistrationXMLComponent,
+                component_registration_form_component_1.ComponentRegistrationFormComponent
             ],
             providers: [
                 resource_service_1.ResourceService

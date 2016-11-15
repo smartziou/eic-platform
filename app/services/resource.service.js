@@ -17,9 +17,11 @@ var Rx_1 = require('rxjs/Rx');
 var ResourceService = (function () {
     function ResourceService(http) {
         this.http = http;
-        this._searchUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
-        this._resourcesUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
+        this._searchUrl = 'http://194.177.192.227:8888/omtd-registry/request/';
+        this._resourcesUrl = 'http://194.177.192.227:8888/omtd-registry/request/';
     }
+    // private _searchUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
+    // private _resourcesUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     ResourceService.prototype.search = function (urlParameters) {
         var searchQuery = '';
         var counter = 0;

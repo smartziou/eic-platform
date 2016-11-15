@@ -9,6 +9,7 @@ import { ResourceService } from "../../../services/resource.service";
 import { componentRegistrationRouting } from "./component-registration.routing";
 import { ComponentRegistrationComponent } from "./component-registration.component";
 import { ComponentRegistrationXMLComponent } from "./component-registration-xml.component";
+import { ComponentRegistrationFormComponent } from "./component-registration-form.component";
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { ComponentRegistrationXMLComponent } from "./component-registration-xml.
     ],
     declarations: [
         ComponentRegistrationComponent,
-        ComponentRegistrationXMLComponent
+        ComponentRegistrationXMLComponent, 
+        ComponentRegistrationFormComponent
     ],
     providers: [
         ResourceService

@@ -67,9 +67,10 @@ var SearchComponent = (function () {
         for (var _i = 0, _a = this.searchResults.results.components; _i < _a.length; _i++) {
             var component = _a[_i];
             var shortResultInfo = {
-                id: component.resourceIdentificationInfo.resourceIdentifiers[0].id,
-                title: component.resourceIdentificationInfo.resourceNames[0],
-                description: component.resourceIdentificationInfo.descriptions[0],
+                // id: component.componentInfo.identificationInfo.identifiers[0].value,
+                id: component.metadataHeaderInfo.metadataRecordIdentifier.value,
+                title: component.componentInfo.identificationInfo.resourceNames[0].value,
+                description: component.componentInfo.identificationInfo.descriptions[0].value,
                 resourceType: 'component'
             };
             // console.log(component.resourceIdentificationInfo.resourceIdentifiers[0].id);
@@ -79,9 +80,10 @@ var SearchComponent = (function () {
         for (var _b = 0, _c = this.searchResults.results.corpora; _b < _c.length; _b++) {
             var corpus = _c[_b];
             var shortResultInfo = {
-                id: corpus.resourceIdentificationInfo.resourceIdentifiers[0].id,
-                title: corpus.resourceIdentificationInfo.resourceNames[0],
-                description: corpus.resourceIdentificationInfo.descriptions[0],
+                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
+                id: corpus.metadataHeaderInfo.metadataRecordIdentifier.value,
+                title: corpus.corpusInfo.identificationInfo.resourceNames[0].value,
+                description: corpus.corpusInfo.identificationInfo.descriptions[0].value,
                 resourceType: 'corpus'
             };
             this.shortResultsInfo.push(shortResultInfo);
@@ -204,7 +206,8 @@ var SearchComponent = (function () {
     };
     SearchComponent.prototype.gotoDetail = function (resourceType, id) {
         //TODO remove ms. I have put it there because the id gets parsed without the ms
-        this.router.navigate(['/landingPage/' + resourceType + '/', 'ms' + id]);
+        // this.router.navigate(['/landingPage/' + resourceType + '/', 'ms' + id]);
+        this.router.navigate(['/landingPage/' + resourceType + '/', id]);
     };
     SearchComponent.prototype.handleError = function (error) {
         this.errorMessage = 'System error searching for resources (Server responded: ' + error + ')';
