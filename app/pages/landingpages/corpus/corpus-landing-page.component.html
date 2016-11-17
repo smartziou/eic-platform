@@ -1,149 +1,130 @@
 <div class="uk-block tm-block-main uk-block-default uk-block-large">
     <div class="uk-container uk-container-center">
-
         <div data-uk-grid-margin="" data-uk-grid-match="" class="tm-middle uk-grid" id="tm-middle">
-
             <div class="tm-main uk-width-medium-1-1 uk-row-first">
-
                 <main class="tm-content" id="tm-content">
 
                     <div *ngIf="errorMessage" data-uk-alert="" class="uk-alert uk-alert-danger">
                         <p>{{errorMessage}}</p>
                     </div>
 
-                    <div *ngIf="!errorMessage">
-                        <div id="system-message-container">
-                        </div>
-
-                        <div class="yoo-zoo cookbook-uikit cookbook-uikit-spaghetti-alla-bolognese">
-
-
+                    <div *ngIf="corpus && !errorMessage">
+                        <!--<div id="system-message-container">-->
+                        <!--</div>-->
+                        <div class="yoo-zoo">
 
                             <div class="uk-align-medium-right">
-
-                                <div class="uk-margin element element-rating">
-                                    <div class="yoo-zoo rating" id="3194f2e2-b29e-4a6b-8555-17c58b42ed6c-57ce8c8c01558">
-
-                                        <div class="rating-container star5">
-                                            <div style="width: 80%;" class="previous-rating"></div>
-
-                                            <div class="current-rating">
-
-                                                <div title="5 out of 5" class="stars star5"></div>
-                                                <div title="4 out of 5" class="stars star4"></div>
-                                                <div title="3 out of 5" class="stars star3"></div>
-                                                <div title="2 out of 5" class="stars star2"></div>
-                                                <div title="1 out of 5" class="stars star1"></div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="vote-message">
-                                            4.0/<strong>5</strong> rating 1 vote	</div>
-
-
-                                    </div>
-                                    <script type="text/javascript">
-                                        jQuery(function($) {
-                                            $('#3194f2e2-b29e-4a6b-8555-17c58b42ed6c-57ce8c8c01558').ElementRating({ url: '/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo?task=callelement&amp;format=raw&amp;item_id=159&amp;element=3194f2e2-b29e-4a6b-8555-17c58b42ed6c' });
-                                        });
-                                    </script>
-                                </div>		</div>
-
-                            <h1 class="uk-h1"> Spaghetti alla Bolognese </h1>
-
-                            <ul class="uk-subnav uk-subnav-line">
-
-                                <li class="element element-text">
-                                    <strong>Ready in: </strong> 2 min.</li>
-
-                                <li class="element element-select">
-                                    <strong>Serves: </strong> 4</li>
-
-                                <li class="element element-select">
-                                    <strong>Complexity: </strong> easy</li>
-
-                                <li class="element element-text">
-                                    <strong>kcal: </strong> 450</li>
-
-                                <li class="element element-relatedcategories">
-                                    <strong>Origin: </strong> <a href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/category/italy">Italy</a></li>	</ul>
-
-                            <div class="uk-panel uk-panel-box">
-
-                                <div class="uk-thumbnail uk-align-medium-right">
-
-                                    <img width="400" height="270" alt="Spaghetti alla Bolognese" src="http://yootheme.com/demo/themes/joomla/2016/chester/media/zoo/images/recipe09_2d8f2486204e3d22d27b557e3b0a05e1.jpg"> 	</div>
-
-                                <div class="uk-nbfc">
-
-                                    <h2 class="uk-panel-title uk-margin-top-remove">Ingredients: </h2>
-                                    <ul class="uk-list"><li>500g beef mince</li><li>2 onions</li><li>500g Spaghetti</li><li>Salt</li></ul>		</div>
-
+                                <div class="uk-grid-margin uk-row-first">
+                                    <button class="uk-button uk-button-large uk-button-primary" (click)="goBack()">
+                                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button>
+                                </div>
                             </div>
 
-                            <div class="uk-margin">
+                            <h1 class="uk-h1" *ngIf="corpus.corpusInfo.identificationInfo.resourceNames
+                            && corpus.corpusInfo.identificationInfo.resourceNames.length>0">
+                                {{corpus.corpusInfo.identificationInfo.resourceNames[0].value}}
+                            </h1>
 
-                                <div data-uk-grid-margin="" class="uk-grid">
+                            <ul class="uk-subnav uk-subnav-line">
+                                <li *ngIf="corpus.corpusInfo.identificationInfo.resourceShortNames
+                                && corpus.corpusInfo.identificationInfo.resourceShortNames.length>0"
+                                    class="element element-text">
+                                    <strong>{{corpus.corpusInfo.identificationInfo.resourceShortNames[0].value}} </strong> </li>
+                            </ul>
 
-                                    <div class="uk-width-medium-3-4 uk-row-first">
+                            <div class="resourceIdentifiers" *ngIf="corpus.corpusInfo.identificationInfo.identifiers
+                            && corpus.corpusInfo.identificationInfo.identifiers.length>0">
+                                <div *ngFor="let identifier of corpus.corpusInfo.identificationInfo.identifiers">
+                                    <a href="{{identifier.value}}" target="_blank">{{identifier.value}}</a>
+                                </div>
+                            </div>
 
+                            <div class="uk-panel uk-panel-box resourceGeneralInfo">
+                                <!--<div class="uk-thumbnail uk-align-medium-right">
+                                    <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
+                                </div>-->
 
-                                        <h3>Directions</h3><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
-                                    </div>
-
-                                    <div class="uk-width-medium-1-4">
-
-                                        <div class="uk-panel uk-panel-box">
-                                            <h3>Share this recipe</h3><div class="yoo-zoo socialbuttons clearfix">
-                                            <div><iframe frameborder="0" id="twitter-widget-0" scrolling="no" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 61px; height: 20px;" title="Twitter Tweet Button" src="http://platform.twitter.com/widgets/tweet_button.a9a07b811338df26287681bd6727fd0a.en-gb.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en-gb&amp;original_referer=http%3A%2F%2Fyootheme.com%2Fdemo%2Fthemes%2Fjoomla%2F2016%2Fchester%2Findex.php%2Fzoo-zoo%2Fcookbook-zoo%2Fitem%2Fspaghetti-alla-bolognese&amp;size=m&amp;text=Spaghetti%20alla%20Bolognese&amp;time=1473154188674&amp;type=share&amp;url=http%3A%2F%2Fyootheme.com%2Fdemo%2Fthemes%2Fjoomla%2F2016%2Fchester%2Findex.php%2Fzoo-zoo%2Fcookbook-zoo%2Fitem%2Fspaghetti-alla-bolognese" data-url="http://yootheme.com/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/spaghetti-alla-bolognese"></iframe></div>
-                                            <div><div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;" id="___plusone_0"><iframe width="100%" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" id="I1_1473154189354" name="I1_1473154189354" src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&amp;lang=en_GB&amp;annotation=none&amp;size=medium&amp;origin=http%3A%2F%2Fyootheme.com&amp;url=http%3A%2F%2Fyootheme.com%2Fdemo%2Fthemes%2Fjoomla%2F2016%2Fchester%2Findex.php%2Fzoo-zoo%2Fcookbook-zoo%2Fitem%2Fspaghetti-alla-bolognese&amp;gsrc=3p&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.yk7SR0w6P8Y.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCNVla9FheExCjvuZaLIDJ6tAprwmQ#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I1_1473154189354&amp;parent=http%3A%2F%2Fyootheme.com&amp;pfname=&amp;rpctoken=35626605" data-gapiattached="true" title="+1"></iframe></div></div>
-                                            <div><div data-colorscheme="light" data-action="like" data-show-faces="false" data-width="100" data-layout="button_count" data-send="false" data-href="http://yootheme.com/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/spaghetti-alla-bolognese" class="fb-like fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;color_scheme=light&amp;container_width=0&amp;href=http%3A%2F%2Fyootheme.com%2Fdemo%2Fthemes%2Fjoomla%2F2016%2Fchester%2Findex.php%2Fzoo-zoo%2Fcookbook-zoo%2Fitem%2Fspaghetti-alla-bolognese&amp;layout=button_count&amp;locale=en_GB&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=100"><span style="vertical-align: bottom; width: 78px; height: 20px;"><iframe width="100px" height="1000px" frameborder="0" name="f66740588c225e" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" style="border: medium none; visibility: visible; width: 78px; height: 20px;" src="https://www.facebook.com/plugins/like.php?action=like&amp;app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FuN4_cXtJDGb.js%3Fversion%3D42%23cb%3Df194330ef23868a%26domain%3Dyootheme.com%26origin%3Dhttp%253A%252F%252Fyootheme.com%252Ff24a117a6a9ce2c%26relation%3Dparent.parent&amp;color_scheme=light&amp;container_width=0&amp;href=http%3A%2F%2Fyootheme.com%2Fdemo%2Fthemes%2Fjoomla%2F2016%2Fchester%2Findex.php%2Fzoo-zoo%2Fcookbook-zoo%2Fitem%2Fspaghetti-alla-bolognese&amp;layout=button_count&amp;locale=en_GB&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=100" class=""></iframe></span></div></div>
-                                        </div></div>
-
-                                        <div class="uk-panel uk-panel-box">
-                                            <h3>Suitable Drinks</h3><ul class="uk-list uk-list-line"><li>Red Wine</li><li>Soft Drinks</li></ul></div>
-
-                                        <div class="uk-panel uk-panel-box">
-                                            <h3>Suitable Meals</h3><div class="uk-clearfix">
-                                            <div class="uk-align-medium-left">
-
-                                                <a title="Chocolate Cake" href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/chocolate-cake"><img width="50" height="33" alt="Chocolate Cake" title="Chocolate Cake" src="http://yootheme.com/demo/themes/joomla/2016/chester/media/zoo/images/recipe10_58dd2bc002fb498f683ae3d4167322c2.jpg"></a>
-                                            </div>
-
-                                            <h4 class="uk-h5 uk-margin-remove">
-                                                <a href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/chocolate-cake" title="Chocolate Cake">Chocolate Cake</a>     </h4>
-                                        </div> <div class="uk-clearfix">
-                                            <div class="uk-align-medium-left">
-
-                                                <a title="Bruschetta" href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/bruschetta"><img width="50" height="33" alt="Bruschetta" title="Bruschetta" src="http://yootheme.com/demo/themes/joomla/2016/chester/media/zoo/images/recipe16_fd90e6e0d9b3a421cac4cadb7c2b6b52.jpg"></a>
-                                            </div>
-
-                                            <h4 class="uk-h5 uk-margin-remove">
-                                                <a href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/bruschetta" title="Bruschetta">Bruschetta</a>     </h4>
-                                        </div></div>
-
-                                        <div class="uk-panel uk-panel-box">
-                                            <h3>Similar recipes</h3><ul class="uk-list uk-list-line"><li><a title="Minestrone" href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/minestrone">Minestrone</a></li></ul></div>
-
-                                        <div class="uk-panel uk-panel-box">
-                                            <h3>Diet</h3><a href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/category/lactose-free">Lactose-Free</a></div>		</div>
-
+                                <div class="uk-nbfc">
+                                    <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
+                                    <ul class="uk-list" *ngIf="corpus.corpusInfo.identificationInfo.descriptions
+                                    && corpus.corpusInfo.identificationInfo.descriptions.length>0">
+                                        <li *ngFor="let description of corpus.corpusInfo.identificationInfo.descriptions; let isFirst = first;"
+                                            [class.uk-margin-top]="!isFirst">
+                                            {{description.value}}
+                                        </li>
+                                    </ul>
+                                    <resource-creation-info *ngIf="corpus.corpusInfo.resourceCreationInfo"
+                                                            [resourceCreationInfo]="corpus.corpusInfo.resourceCreationInfo">
+                                    </resource-creation-info>
+                                    <resource-documentation-info *ngIf="corpus.corpusInfo.resourceDocumentationInfo"
+                                                                 [resourceDocumentationInfo]="corpus.corpusInfo.resourceDocumentationInfo">
+                                    </resource-documentation-info>
                                 </div>
 
                             </div>
 
+                            <div class="uk-margin">
+                                <div data-uk-grid-margin="" class="uk-grid">
 
+                                    <div class="uk-width-medium-3-4 uk-row-first">
+
+                                        <tabset class="infoTabs">
+                                            <tab *ngIf="corpus.corpusInfo.distributionInfos && corpus.corpusInfo.distributionInfos.length>0"
+                                                 heading="Distribution Info" class="infoTab">
+                                                <dataset-distribution-info *ngFor="let distributionInfo of corpus.corpusInfo.distributionInfos"
+                                                                             [datasetDistributionInfo]="distributionInfo"></dataset-distribution-info>
+                                            </tab>
+                                            <tab *ngIf="corpus.corpusInfo.validationInfos && corpus.corpusInfo.validationInfos.length>0"
+                                                 heading="Validation Info" class="infoTab">
+                                                <validation-info *ngFor="let validationInfo of corpus.corpusInfo.validationInfos"
+                                                                 [validationInfo]="validationInfo"></validation-info>
+                                            </tab>
+                                            <tab *ngIf="corpus.corpusInfo.usageInfo"
+                                                 heading="Usage Info" class="infoTab">
+                                                <usage-info [usageInfo]="corpus.corpusInfo.usageInfo"></usage-info>
+                                            </tab>
+                                            <tab *ngIf="corpus.corpusInfo.corpusSubtypeSpecificInfo
+                                            && corpus.corpusInfo.corpusSubtypeSpecificInfo.annotatedCorpusInfo"
+                                                 heading="Annotated Corpus Info" class="infoTab">
+                                                <annotated-corpus-info [annotatedCorpusInfo]="corpus.corpusInfo.corpusSubtypeSpecificInfo.annotatedCorpusInfo"></annotated-corpus-info>
+                                            </tab>
+                                            <tab *ngIf="corpus.corpusInfo.corpusSubtypeSpecificInfo
+                                            && corpus.corpusInfo.corpusSubtypeSpecificInfo.rawCorpusInfo"
+                                                 heading="Raw Corpus Info" class="infoTab">
+                                                <raw-corpus-info [rawCorpusInfo]="corpus.corpusInfo.corpusSubtypeSpecificInfo.rawCorpusInfo"></raw-corpus-info>
+                                            </tab>
+                                            <tab *ngIf="corpus.corpusInfo.corpusSubtypeSpecificInfo
+                                            && corpus.corpusInfo.corpusSubtypeSpecificInfo.annotationsInfo"
+                                                 heading="Annotations Info" class="infoTab">
+                                                <annotations-info [annotationsInfo]="corpus.corpusInfo.corpusSubtypeSpecificInfo.annotationsInfo"></annotations-info>
+                                            </tab>
+                                        </tabset>
+
+                                        <!--<h3>Directions</h3><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>-->
+                                    </div>
+
+                                    <div class="uk-width-medium-1-4 resourceSideInfo">
+
+                                        <div *ngIf="corpus.metadataHeaderInfo" class="uk-panel uk-panel-box">
+                                            <metadata-header-info [metadataHeaderInfo]="corpus.metadataHeaderInfo"></metadata-header-info>
+                                        </div>
+
+                                        <div *ngIf="corpus.corpusInfo.versionInfo" class="uk-panel uk-panel-box">
+                                            <version-info [versionInfo]="corpus.corpusInfo.versionInfo"></version-info>
+                                        </div>
+
+                                        <div *ngIf="corpus.corpusInfo.contactInfo" class="uk-panel uk-panel-box">
+                                            <contact-info [contactInfo]="corpus.corpusInfo.contactInfo"></contact-info>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </main>
-
-
             </div>
-
-
         </div>
-
     </div>
 </div>

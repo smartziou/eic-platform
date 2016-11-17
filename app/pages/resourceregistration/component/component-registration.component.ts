@@ -18,4 +18,8 @@ export class ComponentRegistrationComponent {
     registerUsingXML() {
         this.router.navigate(['/resourceRegistration/component/xml']);
     }
+
+    registerUsingForm() {
+        this.router.navigate(['/resourceRegistration/component/form']);
+    }
 }

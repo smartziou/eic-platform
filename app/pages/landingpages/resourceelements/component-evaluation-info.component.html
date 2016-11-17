@@ -1,0 +1,77 @@
+<div class="uk-list">
+    <div *ngIf="componentEvaluationInfo.evaluated" class="uk-badge">
+        <strong>Evaluated</strong>
+    </div>
+    <div *ngIf="!componentEvaluationInfo.evaluated" class="uk-badge uk-badge-warning">
+        <strong>Not validated</strong>
+    </div>
+    <div *ngIf="componentEvaluationInfo.evaluationLevels && componentEvaluationInfo.evaluationLevels.length>0">
+        <strong>Evaluation levels: </strong>
+        <span *ngFor="let evaluationLevel of componentEvaluationInfo.evaluationLevels; let isLast = last;">
+            {{evaluationLevel}}{{isLast ? '' : ', '}}
+        </span>
+    </div>
+    <div *ngIf="componentEvaluationInfo.evaluationTypes && componentEvaluationInfo.evaluationTypes.length>0">
+        <strong>Evaluation types: </strong>
+        <span *ngFor="let evaluationType of componentEvaluationInfo.evaluationTypes; let isLast = last;">
+            {{evaluationType}}{{isLast ? '' : ', '}}
+        </span>
+    </div>
+    <div *ngIf="componentEvaluationInfo.evaluationCriteria && componentEvaluationInfo.evaluationCriteria.length>0">
+        <strong>Evaluation criteria: </strong>
+        <span *ngFor="let evaluationCriteria of componentEvaluationInfo.evaluationCriteria; let isLast = last;">
+            {{evaluationCriteria}}{{isLast ? '' : ', '}}
+        </span>
+    </div>
+    <div *ngIf="componentEvaluationInfo.evaluationMeasures && componentEvaluationInfo.evaluationMeasures.length>0">
+        <strong>Evaluation measures: </strong>
+        <span *ngFor="let evaluationMeasure of componentEvaluationInfo.evaluationMeasures; let isLast = last;">
+            {{evaluationMeasure}}{{isLast ? '' : ', '}}
+        </span>
+    </div>
+    <div *ngIf="componentEvaluationInfo.evaluationReports && componentEvaluationInfo.evaluationReports.length>0">
+        <strong>Evaluation reports: </strong>
+        <span *ngFor="let evaluationReport of componentEvaluationInfo.evaluationReports; let isLast = last;">
+            <span *ngIf="evaluationReport.documentUnstructured">
+                {{evaluationReport.documentUnstructured}}
+            </span>
+            <span *ngIf="evaluationReport.publicationIdentifiers && evaluationReport.publicationIdentifiers.length>0">
+                {{evaluationReport.publicationIdentifiers[0].value}}
+            </span>
+            {{isLast ? '' : ', '}}
+        </span>
+    </div>
+    <div *ngIf="componentEvaluationInfo.evaluationSwComponents && componentEvaluationInfo.evaluationSwComponents.length>0">
+        <strong>Evaluation software components: </strong>
+        <span *ngFor="let evaluationSwComponent of componentEvaluationInfo.evaluationSwComponents; let isLast = last;">
+            <span *ngIf="evaluationSwComponent.resourceNames && evaluationSwComponent.resourceNames.length>0">
+                {{evaluationSwComponent.resourceNames[0].value}}
+            </span>
+            <span *ngIf="evaluationSwComponent.resourceIdentifiers && evaluationSwComponent.resourceIdentifiers.length>0">
+                {{evaluationSwComponent.resourceIdentifiers[0].value}}
+            </span>
+            {{isLast ? '' : ', '}}
+        </span>
+    </div>
+    <div *ngIf="componentEvaluationInfo.evaluationDetails">
+        <strong>Evaluation details: </strong>{{componentEvaluationInfo.evaluationDetails}}
+    </div>
+    <div *ngIf="componentEvaluationInfo.evaluators && componentEvaluationInfo.evaluators.length>0">
+        <strong>Evaluators: </strong>
+        <span *ngFor="let evaluator of componentEvaluationInfo.evaluators; let isLast = last;">
+            <span *ngIf="evaluator.relatedPerson && evaluator.relatedPerson.personNames && evaluator.relatedPerson.personNames.length>0">
+                {{evaluator.relatedPerson.personNames[0].value}}
+            </span>
+            <span *ngIf="evaluator.relatedPerson && evaluator.relatedPerson.personIdentifiers && evaluator.relatedPerson.personIdentifiers.length>0">
+                {{evaluator.relatedPerson.personIdentifiers[0].value}}
+            </span>
+            <span *ngIf="evaluator.relatedOrganization && evaluator.relatedOrganization.organizationNames && evaluator.relatedOrganization.organizationNames.length>0">
+                {{evaluator.relatedOrganization.organizationNames[0].value}}
+            </span>
+            <span *ngIf="evaluator.relatedOrganization && evaluator.relatedOrganization.organizationIdentifiers && evaluator.relatedOrganization.organizationIdentifiers.length>0">
+                {{evaluator.relatedOrganization.organizationIdentifiers[0].value}}
+            </span>
+            {{isLast ? '' : ', '}}
+        </span>
+    </div>
+</div>
