@@ -39,7 +39,7 @@
                                 </div>
                             </div>
 
-                            <div class="uk-panel uk-panel-box">
+                            <div class="uk-panel uk-panel-box resourceGeneralInfo">
                                 <div class="uk-thumbnail uk-align-medium-right">
                                     <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
                                 </div>
@@ -48,16 +48,19 @@
                                     <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
                                     <ul class="uk-list" *ngIf="component.componentInfo.identificationInfo.descriptions
                                     && component.componentInfo.identificationInfo.descriptions.length>0">
-                                        <li>{{component.componentInfo.identificationInfo.descriptions[0].value}}</li>
+                                        <li *ngFor="let description of component.componentInfo.identificationInfo.descriptions; let isFirst = first;"
+                                            [class.uk-margin-top]="!isFirst">
+                                            {{description.value}}
+                                        </li>
                                     </ul>
                                     <ul *ngIf="component.componentInfo.componentTypes" class="uk-subnav uk-subnav-line componentTypes">
                                         <li *ngFor="let componentType of component.componentInfo.componentTypes" class="element element-text">
                                             <strong>{{componentType}} </strong> </li>
                                     </ul>
-                                    <resource-creation-info *ngIf="component.componentInfo.resourceCreationInfo" class="resourceGeneralInfo"
+                                    <resource-creation-info *ngIf="component.componentInfo.resourceCreationInfo"
                                                             [resourceCreationInfo]="component.componentInfo.resourceCreationInfo">
                                     </resource-creation-info>
-                                    <resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo" class="resourceGeneralInfo"
+                                    <resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo"
                                                                  [resourceDocumentationInfo]="component.componentInfo.resourceDocumentationInfo">
                                     </resource-documentation-info>
                                 </div>

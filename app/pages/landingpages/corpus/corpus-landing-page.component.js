@@ -40,6 +40,7 @@ var CorpusLandingPageComponent = (function () {
         core_1.Component({
             selector: 'corpus-landing-page',
             templateUrl: 'app/pages/landingpages/corpus/corpus-landing-page.component.html',
+            styleUrls: ['app/pages/landingpages/landing-page.component.css'],
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, resource_service_1.ResourceService])
     ], CorpusLandingPageComponent);

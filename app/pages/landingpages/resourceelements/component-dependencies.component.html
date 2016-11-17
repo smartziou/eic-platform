@@ -21,7 +21,7 @@
         </span>
     </div>
     <div *ngIf="componentDependencies.annotationResources && componentDependencies.annotationResources.length>0">
-        <strong>Tagsets: </strong>
+        <strong>Annotation resources: </strong>
         <span *ngFor="let annotationResource of componentDependencies.annotationResources; let isLast = last;">
             <span *ngIf="annotationResource.resourceNames && annotationResource.resourceNames.length>0">
                 {{annotationResource.resourceNames[0].value}}

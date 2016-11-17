@@ -33,6 +33,12 @@ var resource_documentation_info_component_1 = require("./resourceelements/resour
 var component_evaluation_info_component_1 = require("./resourceelements/component-evaluation-info.component");
 var component_documentation_info_component_1 = require("./resourceelements/component-documentation-info.component");
 var component_creation_info_component_1 = require("./resourceelements/component-creation-info.component");
+var dataset_distribution_info_component_1 = require("./resourceelements/dataset-distribution-info.component");
+var annotation_info_component_1 = require("./resourceelements/annotation-info.component");
+var corpus_text_part_info_component_1 = require("./resourceelements/corpus-text-part-info.component");
+var annotated_corpus_info_component_1 = require("./resourceelements/annotated-corpus-info.component");
+var raw_corpus_info_component_1 = require("./resourceelements/raw-corpus-info.component");
+var annotations_info_component_1 = require("./resourceelements/annotations-info.component");
 var LandingPageModule = (function () {
     function LandingPageModule() {
     }
@@ -60,7 +66,13 @@ var LandingPageModule = (function () {
                 component_dependencies_component_1.ComponentDependenciesComponent,
                 component_evaluation_info_component_1.ComponentEvaluationInfoComponent,
                 component_documentation_info_component_1.ComponentDocumentationInfoComponent,
-                component_creation_info_component_1.ComponentCreationInfoComponent
+                component_creation_info_component_1.ComponentCreationInfoComponent,
+                dataset_distribution_info_component_1.DatasetDistributionInfoComponent,
+                annotation_info_component_1.AnnotationInfoComponent,
+                corpus_text_part_info_component_1.CorpusTextPartInfoComponent,
+                annotated_corpus_info_component_1.AnnotatedCorpusInfoComponent,
+                raw_corpus_info_component_1.RawCorpusInfoComponent,
+                annotations_info_component_1.AnnotationsInfoComponent
             ],
             providers: [
                 resource_service_1.ResourceService

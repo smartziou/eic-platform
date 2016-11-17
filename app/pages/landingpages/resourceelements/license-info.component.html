@@ -15,7 +15,7 @@
         <strong>Non standard license URL: </strong>
         <a href="{{licenseInfo.nonStandardLicenceTermsURL}}" target="_blank">{{licenseInfo.nonStandardLicenceTermsURL}}</a>
     </div>
-    <div *ngIf="licenseInfo.nonStandaradLicenceTermsText">
+    <div *ngIf="licenseInfo.nonStandaradLicenceTermsText && licenseInfo.nonStandaradLicenceTermsText.length>0">
         <strong>Non standard licence terms</strong>
         <ul>
             <li *ngFor="let nonStandardLicenceTermsText of licenseInfo.nonStandaradLicenceTermsText">
@@ -24,7 +24,7 @@
         </ul>
     </div>
     <div *ngIf="licenseInfo.conditionsOfUse && licenseInfo.conditionsOfUse.length>0">
-        <strong>Consitions of use: </strong>
+        <strong>Conditions of use: </strong>
         <span *ngFor="let conditionsOfUse of licenseInfo.conditionsOfUse; let isLast = last;">
             {{conditionsOfUse}}{{isLast ? '' : ', '}}
         </span>

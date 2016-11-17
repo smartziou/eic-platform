@@ -24,6 +24,12 @@ import { ResourceDocumentationInfoComponent } from "./resourceelements/resource-
 import { ComponentEvaluationInfoComponent } from "./resourceelements/component-evaluation-info.component";
 import { ComponentDocumentationInfoComponent } from "./resourceelements/component-documentation-info.component";
 import { ComponentCreationInfoComponent } from "./resourceelements/component-creation-info.component";
+import { DatasetDistributionInfoComponent } from "./resourceelements/dataset-distribution-info.component";
+import { AnnotationInfoComponent } from "./resourceelements/annotation-info.component";
+import { CorpusTextPartInfoComponent } from "./resourceelements/corpus-text-part-info.component";
+import { AnnotatedCorpusInfoComponent } from "./resourceelements/annotated-corpus-info.component";
+import { RawCorpusInfoComponent } from "./resourceelements/raw-corpus-info.component";
+import { AnnotationsInfoComponent } from "./resourceelements/annotations-info.component";
 
 @NgModule({
     imports: [
@@ -48,7 +54,13 @@ import { ComponentCreationInfoComponent } from "./resourceelements/component-cre
         ComponentDependenciesComponent, 
         ComponentEvaluationInfoComponent, 
         ComponentDocumentationInfoComponent,
-        ComponentCreationInfoComponent
+        ComponentCreationInfoComponent, 
+        DatasetDistributionInfoComponent,
+        AnnotationInfoComponent,
+        CorpusTextPartInfoComponent, 
+        AnnotatedCorpusInfoComponent, 
+        RawCorpusInfoComponent,
+        AnnotationsInfoComponent
     ],
     providers: [
         ResourceService
