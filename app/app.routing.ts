@@ -47,14 +47,6 @@ const appRoutes: Routes = [
             CanActivateViaAuthGuard
         ]
     },
-    {
-        path: 'landingPage/component/:id',
-        component: ComponentLandingPageComponent,
-    },
-    {
-        path: 'landingPage/corpus/:id',
-        component: CorpusLandingPageComponent,
-    },
 ];
 
 export const appRoutingProviders: any[] = [

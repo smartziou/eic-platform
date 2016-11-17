@@ -1,0 +1,32 @@
+<div class="licenseInfo">
+    <div *ngIf="licenseInfo.licence">
+        <strong>License: </strong>{{licenseInfo.licence}}
+    </div>
+    <div *ngIf="licenseInfo.version">
+        <strong>Version: </strong>{{licenseInfo.version}}
+    </div>
+    <div *ngIf="licenseInfo.nonStandardLicenceName && licenseInfo.nonStandardLicenceName.length>0">
+        <strong>Non standard license name: </strong>
+        <span *ngFor="let nonStandardLicenceName of licenseInfo.nonStandardLicenceName; let isLast = last;">
+            {{nonStandardLicenceName}}{{isLast ? '' : ', '}}
+        </span>
+    </div>
+    <div *ngIf="licenseInfo.nonStandardLicenceTermsURL">
+        <strong>Non standard license URL: </strong>
+        <a href="{{licenseInfo.nonStandardLicenceTermsURL}}" target="_blank">{{licenseInfo.nonStandardLicenceTermsURL}}</a>
+    </div>
+    <div *ngIf="licenseInfo.nonStandaradLicenceTermsText">
+        <strong>Non standard licence terms</strong>
+        <ul>
+            <li *ngFor="let nonStandardLicenceTermsText of licenseInfo.nonStandaradLicenceTermsText">
+                {{nonStandardLicenceTermsText.value}}
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="licenseInfo.conditionsOfUse && licenseInfo.conditionsOfUse.length>0">
+        <strong>Consitions of use: </strong>
+        <span *ngFor="let conditionsOfUse of licenseInfo.conditionsOfUse; let isLast = last;">
+            {{conditionsOfUse}}{{isLast ? '' : ', '}}
+        </span>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div *ngIf="usageInfo.foreseenUseInfos && usageInfo.foreseenUseInfos.length>0">
+    <h4>Foreseen Usage</h4>
+    <ul *ngFor="let foreseenUsage of usageInfo.foreseenUseInfos" class="uk-list">
+        <li *ngIf="foreseenUsage.foreseenUse">
+            <strong>Foreseen use: </strong>{{foreseenUsage.foreseenUse}}
+        </li>
+        <li *ngIf="foreseenUsage.useNlpApplications && foreseenUsage.useNlpApplications">
+            <strong>Use NLP Applications: </strong>
+            <span *ngFor="let useNLPApplications of foreseenUsage.useNlpApplications; let isLast = last;">
+                {{useNLPApplications}}{{isLast ? '' : ', '}}
+            </span>
+        </li>
+    </ul>
+</div>
+<div *ngIf="usageInfo.actualUseInfos && usageInfo.actualUseInfos.length>0">
+    <h4>Actual Usage</h4>
+    <ul *ngFor="let actualUsage of usageInfo.actualUseInfos" class="uk-list">
+        <li *ngIf="actualUsage.actualUse">
+            <strong>Actual use: </strong>{{actualUsage.actualUse}}
+        </li>
+        <li *ngIf="actualUsage.useNlpApplications && actualUsage.useNlpApplications">
+            <strong>Use NLP Applications: </strong>
+            <span *ngFor="let useNLPApplications of actualUsage.useNlpApplications; let isLast = last;">
+                {{useNLPApplications}}{{isLast ? '' : ', '}}
+            </span>
+        </li>
+        <li *ngIf="actualUsage.usageReports && actualUsage.usageReports.length>0">
+            <strong>Usage reports: </strong>
+            <span *ngFor="let usageReport of actualUsage.usageReports; let isLast = last;">
+                <span *ngIf="usageReport.documentUnstructured">
+                    {{usageReport.documentUnstructured}}
+                </span>
+                <span *ngIf="usageReport.publicationIdentifiers && usageReport.publicationIdentifiers.length>0">
+                    {{usageReport.publicationIdentifiers[0].value}}
+                </span>
+                {{isLast ? '' : ', '}}
+            </span>
+        </li>
+        <li *ngIf="actualUsage.derivedResources && actualUsage.derivedResources.length>0">
+            <strong>Derived resources: </strong>
+            <span *ngFor="let derivedResource of actualUsage.derivedResources; let isLast = last;">
+                <span *ngIf="derivedResource.resourceNames && derivedResource.resourceNames.length>0">
+                    {{derivedResource.resourceNames[0].value}}
+                </span>
+                <span *ngIf="derivedResource.resourceIdentifiers && derivedResource.resourceIdentifiers.length>0">
+                    {{derivedResource.resourceIdentifiers[0].value}}
+                </span>
+                {{isLast ? '' : ', '}}
+            </span>
+        </li>
+        <li *ngIf="actualUsage.usageProjects && actualUsage.usageProjects.length>0">
+            <strong>Usage projects: </strong>
+            <span *ngFor="let usageProject of actualUsage.usageProjects; let isLast = last;">
+                <span *ngIf="usageProject.projectNames && usageProject.projectNames.length>0">
+                    {{usageProject.projectNames[0].value}}
+                </span>
+                <span *ngIf="usageProject.projectIdentifiers && usageProject.projectIdentifiers.length>0">
+                    {{usageProject.projectIdentifiers[0].value}}
+                </span>
+                {{isLast ? '' : ', '}}
+            </span>
+        </li>
+        <li *ngIf="actualUsage.actualUseDetails">
+            <strong>Actual use details: </strong>{{actualUsage.actualUseDetails}}
+        </li>
+    </ul>
+</div>

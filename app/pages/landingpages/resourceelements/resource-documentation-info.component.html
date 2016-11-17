@@ -1,0 +1,31 @@
+<h4 class="uk-margin-top-remove">Resource Documentation Info </h4>
+<div class="uk-list">
+    <div *ngIf="resourceDocumentationInfo.mustBeCitedWith">
+        <strong>Must be cited with: </strong>
+        <span *ngIf="resourceDocumentationInfo.mustBeCitedWith.documentUnstructured">
+            {{resourceDocumentationInfo.mustBeCitedWith.documentUnstructured}}
+        </span>
+        <span *ngIf="resourceDocumentationInfo.mustBeCitedWith.publicationIdentifiers
+        && resourceDocumentationInfo.mustBeCitedWith.publicationIdentifiers.length>0">
+            {{resourceDocumentationInfo.mustBeCitedWith.publicationIdentifiers[0].value}}
+        </span>
+    </div>
+    <div *ngIf="resourceDocumentationInfo.documentationPublications && resourceDocumentationInfo.documentationPublications.length>0">
+        <strong>Documentation publications: </strong>
+        <span *ngFor="let documentationPublication of resourceDocumentationInfo.documentationPublications; let isLast = last;">
+            <span *ngIf="documentationPublication.documentUnstructured">
+                {{documentationPublication.documentUnstructured}}
+            </span>
+            <span *ngIf="documentationPublication.publicationIdentifiers && documentationPublication.publicationIdentifiers.length>0">
+                {{documentationPublication.publicationIdentifiers[0].value}}
+            </span>
+            {{isLast ? '' : ', '}}
+        </span>
+    </div>
+    <div *ngIf="resourceDocumentationInfo.samplesLocations && resourceDocumentationInfo.samplesLocations.length>0">
+        <strong>Samples locations: </strong>
+        <span *ngFor="let samplesLocations of resourceDocumentationInfo.samplesLocations; let isLast = last;">
+            {{samplesLocations}}{{isLast ? '' : ', '}}
+        </span>
+    </div>
+</div>

@@ -18,12 +18,12 @@ import { TopMenuComponent } from "./shared/topmenu/topmenu.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { SearchComponent } from "./pages/search/search.component";
 import { SupportComponent } from "./pages/support/support.component";
-import { CorpusLandingPageComponent } from "./pages/landingpages/corpus/corpus-landing-page.component";
-import { ComponentLandingPageComponent } from "./pages/landingpages/component/component-landing-page.component";
 import { LoginComponent } from "./pages/user/signin/login.component";
 import { RegisterComponent } from "./pages/user/register/register.component";
 import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.component";
 import { ComponentRegistrationModule } from "./pages/resourceregistration/component/component-registration.module";
+import { TabsModule } from "ng2-bootstrap/ng2-bootstrap";
+import { LandingPageModule } from "./pages/landingpages/landing-page.module";
 
 @NgModule({
     imports: [
@@ -34,7 +34,9 @@ import { ComponentRegistrationModule } from "./pages/resourceregistration/compon
         JsonpModule,
         // ResourceRegistrationModule,
         routing,
-        ComponentRegistrationModule
+        ComponentRegistrationModule, 
+        LandingPageModule, 
+        TabsModule
     ],
     declarations: [
         AppComponent,
@@ -45,8 +47,6 @@ import { ComponentRegistrationModule } from "./pages/resourceregistration/compon
         EditProfileComponent,
         SearchComponent,
         TopMenuComponent,
-        ComponentLandingPageComponent,
-        CorpusLandingPageComponent
     ],
     providers: [
         UserService,

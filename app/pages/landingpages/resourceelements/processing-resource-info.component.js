@@ -9,20 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 /**
- * Created by stefania on 10/19/16.
+ * Created by stefania on 11/17/16.
  */
 var core_1 = require('@angular/core');
-var MetadataHeaderInfoComponent = (function () {
-    function MetadataHeaderInfoComponent() {
+var openminted_model_1 = require("../../../domain/openminted-model");
+var ProcessingResourceInfoComponent = (function () {
+    function ProcessingResourceInfoComponent() {
     }
-    MetadataHeaderInfoComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', openminted_model_1.ProcessingResourceInfo)
+    ], ProcessingResourceInfoComponent.prototype, "processingResourceInfo", void 0);
+    ProcessingResourceInfoComponent = __decorate([
         core_1.Component({
-            selector: 'metadata-header-info',
-            templateUrl: 'app/pages/resourceregistration/util/metadata-header-info.component.html',
+            selector: 'processing-resource-info',
+            templateUrl: 'app/pages/landingpages/resourceelements/processing-resource-info.component.html',
         }), 
         __metadata('design:paramtypes', [])
-    ], MetadataHeaderInfoComponent);
-    return MetadataHeaderInfoComponent;
+    ], ProcessingResourceInfoComponent);
+    return ProcessingResourceInfoComponent;
 }());
-exports.MetadataHeaderInfoComponent = MetadataHeaderInfoComponent;
-//# sourceMappingURL=metadata-header-info.component.js.map
+exports.ProcessingResourceInfoComponent = ProcessingResourceInfoComponent;
+//# sourceMappingURL=processing-resource-info.component.js.map

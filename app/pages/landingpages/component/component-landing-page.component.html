@@ -20,28 +20,46 @@
                                 </div>
                             </div>
 
-                            <h1 class="uk-h1" *ngIf="component.resourceIdentificationInfo.resourceNames">
-                                {{component.resourceIdentificationInfo.resourceNames[0]}}
+                            <h1 class="uk-h1" *ngIf="component.componentInfo.identificationInfo.resourceNames
+                            && component.componentInfo.identificationInfo.resourceNames.length>0">
+                                {{component.componentInfo.identificationInfo.resourceNames[0].value}}
                             </h1>
 
                             <ul class="uk-subnav uk-subnav-line">
-                                <li *ngIf="component.resourceIdentificationInfo.resourceShortNames" class="element element-text">
-                                    <strong>{{component.resourceIdentificationInfo.resourceShortNames[0]}} </strong> </li>
+                                <li *ngIf="component.componentInfo.identificationInfo.resourceShortNames
+                                && component.componentInfo.identificationInfo.resourceShortNames.length>0"
+                                    class="element element-text">
+                                    <strong>{{component.componentInfo.identificationInfo.resourceShortNames[0].value}} </strong> </li>
                             </ul>
 
+                            <div class="resourceIdentifiers" *ngIf="component.componentInfo.identificationInfo.identifiers
+                            && component.componentInfo.identificationInfo.identifiers.length>0">
+                                <div *ngFor="let identifier of component.componentInfo.identificationInfo.identifiers">
+                                    <a href="{{identifier.value}}" target="_blank">{{identifier.value}}</a>
+                                </div>
+                            </div>
+
                             <div class="uk-panel uk-panel-box">
-                                <!--<div class="uk-thumbnail uk-align-medium-right">-->
-                                    <!--<img width="400" height="270" alt="Spaghetti alla Bolognese" src="http://yootheme.com/demo/themes/joomla/2016/chester/media/zoo/images/recipe09_2d8f2486204e3d22d27b557e3b0a05e1.jpg"> 	-->
-                                <!--</div>-->
+                                <div class="uk-thumbnail uk-align-medium-right">
+                                    <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
+                                </div>
 
                                 <div class="uk-nbfc">
-                                    <h2 class="uk-panel-title uk-margin-top-remove">Description </h2>
-                                    <ul class="uk-list" *ngIf="component.resourceIdentificationInfo.descriptions">
-                                        <li>{{component.resourceIdentificationInfo.descriptions[0]}}</li>
-                                        <!--<li>2 onions</li>-->
-                                        <!--<li>500g Spaghetti</li>-->
-                                        <!--<li>Salt</li>-->
+                                    <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
+                                    <ul class="uk-list" *ngIf="component.componentInfo.identificationInfo.descriptions
+                                    && component.componentInfo.identificationInfo.descriptions.length>0">
+                                        <li>{{component.componentInfo.identificationInfo.descriptions[0].value}}</li>
                                     </ul>
+                                    <ul *ngIf="component.componentInfo.componentTypes" class="uk-subnav uk-subnav-line componentTypes">
+                                        <li *ngFor="let componentType of component.componentInfo.componentTypes" class="element element-text">
+                                            <strong>{{componentType}} </strong> </li>
+                                    </ul>
+                                    <resource-creation-info *ngIf="component.componentInfo.resourceCreationInfo" class="resourceGeneralInfo"
+                                                            [resourceCreationInfo]="component.componentInfo.resourceCreationInfo">
+                                    </resource-creation-info>
+                                    <resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo" class="resourceGeneralInfo"
+                                                                 [resourceDocumentationInfo]="component.componentInfo.resourceDocumentationInfo">
+                                    </resource-documentation-info>
                                 </div>
 
                             </div>
@@ -51,13 +69,49 @@
 
                                     <div class="uk-width-medium-3-4 uk-row-first">
 
-                                        <div *ngIf="component.distributionInfos">
-                                            <h3>Distribution Infos</h3>
-                                            <div class="uk-margin" *ngFor="let distributionInfo of component.distributionInfos">
-                                                <p *ngIf="distributionInfo.componentDistributionMedium">{{distributionInfo.componentDistributionMedium}}</p>
-                                                <p *ngIf="distributionInfo.componentDistributionMedium">{{distributionInfo.componentDistributionMedium}}</p>
-                                            </div>
-                                        </div>
+                                        <tabset class="infoTabs">
+                                            <tab *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0"
+                                                 heading="Distribution Info" class="infoTab">
+                                                <component-distribution-info *ngFor="let distributionInfo of component.componentInfo.distributionInfos"
+                                                                 [componentDistributionInfo]="distributionInfo"></component-distribution-info>
+                                            </tab>
+                                            <tab *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0"
+                                                 heading="Validation Info" class="infoTab">
+                                                <validation-info *ngFor="let validationInfo of component.componentInfo.validationInfos"
+                                                                 [validationInfo]="validationInfo"></validation-info>
+                                            </tab>
+                                            <tab *ngIf="component.componentInfo.usageInfo"
+                                                 heading="Usage Info" class="infoTab">
+                                                <usage-info [usageInfo]="component.componentInfo.usageInfo"></usage-info>
+                                            </tab>
+                                            <tab *ngIf="component.componentInfo.inputContentResourceInfo || component.componentInfo.outputResourceInfo"
+                                                 heading="Input / Output" class="infoTab">
+                                                <div *ngIf="component.componentInfo.inputContentResourceInfo">
+                                                    <h4>Input</h4>
+                                                    <processing-resource-info [processingResourceInfo]="component.componentInfo.inputContentResourceInfo"></processing-resource-info>
+                                                </div>
+                                                <div *ngIf="component.componentInfo.outputResourceInfo" class="uk-margin-top">
+                                                    <h4>Output</h4>
+                                                    <processing-resource-info [processingResourceInfo]="component.componentInfo.outputResourceInfo"></processing-resource-info>
+                                                </div>
+                                            </tab>
+                                            <tab *ngIf="component.componentInfo.componentDependencies"
+                                                 heading="Dependencies" class="infoTab">
+                                                <component-dependencies [componentDependencies]="component.componentInfo.componentDependencies"></component-dependencies>
+                                            </tab>
+                                            <tab *ngIf="component.componentInfo.componentEvaluationInfo"
+                                                 heading="Evaluation" class="infoTab">
+                                                <component-evaluation-info [componentEvaluationInfo]="component.componentInfo.componentEvaluationInfo"></component-evaluation-info>
+                                            </tab>
+                                            <tab *ngIf="component.componentInfo.componentDocumentationInfo"
+                                                 heading="Documentation" class="infoTab">
+                                                <component-documentation-info [componentDocumentationInfo]="component.componentInfo.componentDocumentationInfo"></component-documentation-info>
+                                            </tab>
+                                            <tab *ngIf="component.componentInfo.componentCreationInfo"
+                                                 heading="Creation Info" class="infoTab">
+                                                <component-creation-info [componentCreationInfo]="component.componentInfo.componentCreationInfo"></component-creation-info>
+                                            </tab>
+                                        </tabset>
 
                                         <!--<h3>Directions</h3><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>-->
                                     </div>
@@ -65,85 +119,17 @@
                                     <div class="uk-width-medium-1-4 resourceSideInfo">
 
                                         <div *ngIf="component.metadataHeaderInfo" class="uk-panel uk-panel-box">
-                                            <h3>Metadata</h3>
-                                            <ul class="uk-list">
-                                                <li *ngIf="component.metadataHeaderInfo.metadataCreationDate">
-                                                    <strong>Created: </strong>{{component.metadataHeaderInfo.metadataCreationDate | date:'shortDate'}}
-                                                </li>
-                                                <li *ngIf="component.metadataHeaderInfo.metadataLastUpdated">
-                                                    <strong>Last Updated: </strong>{{component.metadataHeaderInfo.metadataLastUpdated | date:'shortDate'}}
-                                                </li>
-                                            </ul>
+                                            <metadata-header-info [metadataHeaderInfo]="component.metadataHeaderInfo"></metadata-header-info>
                                         </div>
 
-                                        <div *ngIf="component.versionInfo" class="uk-panel uk-panel-box">
-                                            <h3>Version Info</h3>
-                                            <ul class="uk-list">
-                                                <li *ngIf="component.versionInfo.version">
-                                                    <strong>Version: </strong>{{component.versionInfo.version}}
-                                                </li>
-                                                <li *ngIf="component.versionInfo.revision">
-                                                    <strong>Revision: </strong>{{component.versionInfo.revision}}
-                                                </li>
-                                                <!--<li *ngIf="component.versionInfo.lastDateUpdated">-->
-                                                    <!--<strong>Last Updated: </strong>{{component.versionInfo.lastDateUpdated | date:'shortDate'}}-->
-                                                <!--</li>-->
-                                                <li *ngIf="component.versionInfo.updateFrequency">
-                                                    <strong>Update Frequency: </strong>{{component.versionInfo.updateFrequency}}
-                                                </li>
-                                            </ul>
+                                        <div *ngIf="component.componentInfo.versionInfo" class="uk-panel uk-panel-box">
+                                            <version-info [versionInfo]="component.componentInfo.versionInfo"></version-info>
                                         </div>
 
-                                        <div *ngIf="component.contactInfo" class="uk-panel uk-panel-box">
-                                            <h3>Contact Info</h3>
-                                            <ul class="uk-list">
-                                                <li *ngIf="component.contactInfo.contactEmail">
-                                                    <strong>Contact: </strong><a href="mailto:{{component.contactInfo.contactEmail}}">{{component.contactInfo.contactEmail}}</a>
-                                                </li>
-                                                <li *ngIf="component.contactInfo.landingPage">
-                                                    <strong>Landing Page: </strong>{{component.contactInfo.landingPage}}
-                                                </li>
-                                                <li *ngIf="component.contactInfo.contactPersons">
-                                                    <strong>Contact Person: </strong>
-                                                        {{component.contactInfo.contactPersons[0].personNames[0]}}
-                                                </li>
-                                            </ul>
+                                        <div *ngIf="component.componentInfo.contactInfo" class="uk-panel uk-panel-box">
+                                            <contact-info [contactInfo]="component.componentInfo.contactInfo"></contact-info>
                                         </div>
 
-                                        <!--<div class="uk-panel uk-panel-box">-->
-                                            <!--<h3>Suitable Drinks</h3>-->
-                                            <!--<ul class="uk-list uk-list-line">-->
-                                                <!--<li>Red Wine</li>-->
-                                                <!--<li>Soft Drinks</li>-->
-                                            <!--</ul>-->
-                                        <!--</div>-->
-
-                                        <!--<div class="uk-panel uk-panel-box">-->
-                                            <!--<h3>Suitable Meals</h3><div class="uk-clearfix">-->
-                                            <!--<div class="uk-align-medium-left">-->
-
-                                                <!--<a title="Chocolate Cake" href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/chocolate-cake"><img width="50" height="33" alt="Chocolate Cake" title="Chocolate Cake" src="http://yootheme.com/demo/themes/joomla/2016/chester/media/zoo/images/recipe10_58dd2bc002fb498f683ae3d4167322c2.jpg"></a>-->
-                                            <!--</div>-->
-
-                                            <!--<h4 class="uk-h5 uk-margin-remove">-->
-                                                <!--<a href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/chocolate-cake" title="Chocolate Cake">Chocolate Cake</a>     </h4>-->
-                                        <!--</div> <div class="uk-clearfix">-->
-                                            <!--<div class="uk-align-medium-left">-->
-
-                                                <!--<a title="Bruschetta" href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/bruschetta"><img width="50" height="33" alt="Bruschetta" title="Bruschetta" src="http://yootheme.com/demo/themes/joomla/2016/chester/media/zoo/images/recipe16_fd90e6e0d9b3a421cac4cadb7c2b6b52.jpg"></a>-->
-                                            <!--</div>-->
-
-                                            <!--<h4 class="uk-h5 uk-margin-remove">-->
-                                                <!--<a href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/bruschetta" title="Bruschetta">Bruschetta</a>     </h4>-->
-                                        <!--</div></div>-->
-
-                                        <!--<div class="uk-panel uk-panel-box">-->
-                                            <!--<h3>Similar recipes</h3><ul class="uk-list uk-list-line"><li><a title="Minestrone" href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/item/minestrone">Minestrone</a></li></ul>-->
-                                        <!--</div>-->
-
-                                        <!--<div class="uk-panel uk-panel-box">-->
-                                            <!--<h3>Diet</h3><a href="/demo/themes/joomla/2016/chester/index.php/zoo-zoo/cookbook-zoo/category/lactose-free">Lactose-Free</a>-->
-                                        <!--</div>		-->
                                     </div>
 
                                 </div>
