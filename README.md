@@ -14,8 +14,8 @@ To deploy to the simple server use `npm run serve`
 
 To make it easier to develop with watchdog support using `npm start` make the according changes in the `index.html` file.
 
-### Develop
-Using `npm start`.
+### Release
+Using `npm run build_prod` and `npm run serve`.
 
 Uncomment this.
 ```javascript
@@ -31,8 +31,8 @@ Comment this.
 -->
 ```
 
-### Release
-Using `npm run build_prod` and `npm run serve`.
+### Develop
+Using `npm start`.
 
 Comment this.
 ```javascript
