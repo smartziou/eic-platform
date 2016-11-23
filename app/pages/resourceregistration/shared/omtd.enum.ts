@@ -613,7 +613,6 @@ export var relationTypeEnum = {
     ISSIMILARTO : "isSimilarTo",
     ISCONTINUATIONOF : "isContinuationOf",
     ISVERSIONOF : "isVersionOf",
-    ISSIMILARTO : "isSimilarTo",
     REPLACES : "replaces",
     ISREPLACEDWITH : "isReplacedWith",
     ISCREATEDBY : "isCreatedBy",
