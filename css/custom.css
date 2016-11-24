@@ -6,7 +6,7 @@
 
 body {
     color: #666666;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto', sans-serif;
     /*font-family: "Open Sans";*/
     font-size: 15px;
     line-height: 24px;
@@ -79,7 +79,7 @@ li, dt, dd {
 
 .tm-toolbar a {
     color: #666666;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto', sans-serif;
     /*font-family: "Open Sans";*/
 }
 
