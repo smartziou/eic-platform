@@ -15,17 +15,16 @@
                             Paste the XML presentation of your component below, or use one of our helper methods on the
                             right to preview your XML before you submit it.
                         </div>
-
+                        <div class="margin-20">
+                            <div>myForm details:-</div>
+                            <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+                            <pre>form value: <br>{{myForm.value | json}}</pre>
+                        </div>
                         <div class="uk-margin uk-grid componentXMLRegistration">
                             <div class="uk-width-medium-1-1">
-                                <form class="form-horizontal componentForm">
+                                <form class="form-horizontal componentForm" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
                                     <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">{{MetadataHeaderInfo.prototype.label}}</label>
-                                            <div class="col-sm-10 col-md-8">
-                                                <input class="form-control" name="product[first_name]" type="text">
-                                            </div>
-                                        </div>
+                                        <metadata-header-info-form></metadata-header-info-form>
                                         <div class="uk-grid-margin uk-row-first"><button class="uk-button uk-button-large
                                         uk-button-primary registerButton">Register!</button></div>
                                     </div>
