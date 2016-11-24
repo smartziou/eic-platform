@@ -1,9 +1,16 @@
+import {PipeTransform, Pipe} from "@angular/core";
 /**
  * Created by stefanos on 23/11/2016.
  */
 
+@Pipe({ name: 'values',  pure: false })
+export class ValuesPipe implements PipeTransform {
+    transform(value: any, args: any[] = null): any {
+        return Object.keys(value);
+    }
+}
 
-class EnumValues {
+export class EnumValues {
     [key: string]: string;
 }
 
