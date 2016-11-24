@@ -28,10 +28,10 @@
 
                                 <div class="uk-panel uk-panel-box">
                                     <h3 class="uk-panel-title">Resource Type</h3>
-                                    <p>Corpus <img class="uk-float-right" width="15" height="108" alt="Corpus" title="Corpus" src="http://metashare.elda.org/site_media/css/sexybuttons/images/icons/silk/database_yellow.png"></p>
-                                    <p>Lexical/Conceptual <img class="uk-float-right" width="15" height="108" alt="Lexical/Conceptual" title="Lexical/Conceptual" src="http://metashare.elda.org/site_media/css/sexybuttons/images/icons/silk/text_ab.png"></p>
-                                    <p>Component <img class="uk-float-right" width="15" height="108" alt="Component" title="Component" src="http://metashare.elda.org/site_media/css/sexybuttons/images/icons/silk/page_white_gear.png"></p>
-                                    <p>Language Description <img class="uk-float-right" width="15" height="108" alt="Language Description" title="Language Description" src="http://metashare.elda.org/site_media/css/sexybuttons/images/icons/silk/script.png"></p>
+                                    <p>Corpus <i class="fa fa-database uk-float-right" aria-hidden="true"></i></p>
+                                    <p>Lexical/Conceptual <i class="fa fa-language uk-float-right" aria-hidden="true"></i></p>
+                                    <p>Component <i class="fa fa-cogs uk-float-right" aria-hidden="true"></i></p>
+                                    <p>Language Description <i class="fa fa-file-o uk-float-right" aria-hidden="true"></i></p>
                                 </div>
 
                                 <div *ngIf="searchResults" class="uk-panel uk-panel-box refines">
@@ -94,12 +94,14 @@
                                             <div data-uk-grid-match="" data-uk-grid-margin="" class="uk-grid uk-grid-divider resource">
                                                 <div class="uk-width-medium-1-1 uk-row-first">
                                                     <div data-uk-grid-margin="" class="uk-grid">
+                                                        <!--<div class="uk-row-first">-->
                                                         <div class="uk-width-medium-3-4 uk-row-first">
-                                                            <div class="uk-thumbnail uk-align-medium-left">
+                                                            <div class="uk-thumbnail uk-align-medium-left resourceTypeIcon">
                                                                 <a (click)="gotoDetail(resourceInfo.resourceType, resourceInfo.id)">
-                                                                    <img width="30" height="108" alt="{{resourceInfo.resourceType}}"
-                                                                         title="{{resourceInfo.resourceType}}"
-                                                                         src="/imgs/{{resourceInfo.resourceType}}.png">
+                                                                    <i *ngIf="resourceInfo.resourceType==='corpus'"
+                                                                       class="fa fa-database fa-3x" aria-hidden="true"></i>
+                                                                    <i *ngIf="resourceInfo.resourceType==='component'"
+                                                                       class="fa fa-cogs fa-3x" aria-hidden="true"></i>
                                                                 </a>
                                                             </div>
                                                             <div class="uk-nbfc">

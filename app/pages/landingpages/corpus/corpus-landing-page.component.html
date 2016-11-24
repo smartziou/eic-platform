@@ -39,63 +39,63 @@
                                 </div>
                             </div>
 
-                            <div class="uk-panel uk-panel-box resourceGeneralInfo">
-                                <div class="uk-thumbnail uk-align-medium-right">
-                                    <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
-                                </div>
-
-                                <div class="uk-nbfc">
-                                    <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
-                                    <ul class="uk-list" *ngIf="corpus.corpusInfo.identificationInfo.descriptions
-                                    && corpus.corpusInfo.identificationInfo.descriptions.length>0">
-                                        <li *ngFor="let description of corpus.corpusInfo.identificationInfo.descriptions; let isFirst = first;"
-                                            [class.uk-margin-top]="!isFirst">
-                                            {{description.value}}
-                                        </li>
-                                    </ul>
-                                    <version-info *ngIf="corpus.corpusInfo.versionInfo"
-                                                  [versionInfo]="corpus.corpusInfo.versionInfo">
-                                    </version-info>
-                                    <resource-documentation-info *ngIf="corpus.corpusInfo.resourceDocumentationInfo"
-                                                                 [resourceDocumentationInfo]="corpus.corpusInfo.resourceDocumentationInfo">
-                                    </resource-documentation-info>
-                                </div>
-
-                            </div>
-
                             <div class="uk-margin">
                                 <div data-uk-grid-margin="" class="uk-grid">
 
                                     <div class="uk-width-medium-3-4 uk-row-first">
 
+                                        <div class="uk-panel uk-panel-box resourceGeneralInfo">
+                                            <div class="uk-thumbnail uk-align-medium-right">
+                                                <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
+                                            </div>
+
+                                            <div class="uk-nbfc">
+                                                <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
+                                                <ul class="uk-list" *ngIf="corpus.corpusInfo.identificationInfo.descriptions
+                                                    && corpus.corpusInfo.identificationInfo.descriptions.length>0">
+                                                    <li *ngFor="let description of corpus.corpusInfo.identificationInfo.descriptions; let isFirst = first;"
+                                                        [class.uk-margin-top]="!isFirst">
+                                                        {{description.value}}
+                                                    </li>
+                                                </ul>
+                                                <version-info *ngIf="corpus.corpusInfo.versionInfo"
+                                                              [versionInfo]="corpus.corpusInfo.versionInfo">
+                                                </version-info>
+                                                <resource-documentation-info *ngIf="corpus.corpusInfo.resourceDocumentationInfo"
+                                                                             [resourceDocumentationInfo]="corpus.corpusInfo.resourceDocumentationInfo">
+                                                </resource-documentation-info>
+                                            </div>
+
+                                        </div>
+
                                         <tabset class="infoTabs">
                                             <tab *ngIf="corpus.corpusInfo.distributionInfos && corpus.corpusInfo.distributionInfos.length>0"
-                                                 heading="Distribution Info" class="infoTab">
+                                                 heading="Distribution" class="infoTab">
                                                 <dataset-distribution-info *ngFor="let distributionInfo of corpus.corpusInfo.distributionInfos"
                                                                              [datasetDistributionInfo]="distributionInfo"></dataset-distribution-info>
                                             </tab>
                                             <tab *ngIf="corpus.corpusInfo.validationInfos && corpus.corpusInfo.validationInfos.length>0"
-                                                 heading="Validation Info" class="infoTab">
+                                                 heading="Validation" class="infoTab">
                                                 <validation-info *ngFor="let validationInfo of corpus.corpusInfo.validationInfos"
                                                                  [validationInfo]="validationInfo"></validation-info>
                                             </tab>
                                             <tab *ngIf="corpus.corpusInfo.usageInfo"
-                                                 heading="Usage Info" class="infoTab">
+                                                 heading="Usage" class="infoTab">
                                                 <usage-info [usageInfo]="corpus.corpusInfo.usageInfo"></usage-info>
                                             </tab>
                                             <tab *ngIf="corpus.corpusInfo.corpusSubtypeSpecificInfo
                                             && corpus.corpusInfo.corpusSubtypeSpecificInfo.annotatedCorpusInfo"
-                                                 heading="Annotated Corpus Info" class="infoTab">
+                                                 heading="Annotated Corpus" class="infoTab">
                                                 <annotated-corpus-info [annotatedCorpusInfo]="corpus.corpusInfo.corpusSubtypeSpecificInfo.annotatedCorpusInfo"></annotated-corpus-info>
                                             </tab>
                                             <tab *ngIf="corpus.corpusInfo.corpusSubtypeSpecificInfo
                                             && corpus.corpusInfo.corpusSubtypeSpecificInfo.rawCorpusInfo"
-                                                 heading="Raw Corpus Info" class="infoTab">
+                                                 heading="Raw Corpus" class="infoTab">
                                                 <raw-corpus-info [rawCorpusInfo]="corpus.corpusInfo.corpusSubtypeSpecificInfo.rawCorpusInfo"></raw-corpus-info>
                                             </tab>
                                             <tab *ngIf="corpus.corpusInfo.corpusSubtypeSpecificInfo
                                             && corpus.corpusInfo.corpusSubtypeSpecificInfo.annotationsInfo"
-                                                 heading="Annotations Info" class="infoTab">
+                                                 heading="Annotations" class="infoTab">
                                                 <annotations-info [annotationsInfo]="corpus.corpusInfo.corpusSubtypeSpecificInfo.annotationsInfo"></annotations-info>
                                             </tab>
                                         </tabset>

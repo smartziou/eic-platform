@@ -39,52 +39,52 @@
                                 </div>
                             </div>
 
-                            <div class="uk-panel uk-panel-box resourceGeneralInfo">
-                                <div class="uk-thumbnail uk-align-medium-right">
-                                    <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
-                                </div>
-
-                                <div class="uk-nbfc">
-                                    <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
-                                    <ul class="uk-list" *ngIf="component.componentInfo.identificationInfo.descriptions
-                                    && component.componentInfo.identificationInfo.descriptions.length>0">
-                                        <li *ngFor="let description of component.componentInfo.identificationInfo.descriptions; let isFirst = first;"
-                                            [class.uk-margin-top]="!isFirst">
-                                            {{description.value}}
-                                        </li>
-                                    </ul>
-                                    <ul *ngIf="component.componentInfo.componentTypes" class="uk-subnav uk-subnav-line componentTypes">
-                                        <li *ngFor="let componentType of component.componentInfo.componentTypes" class="element element-text">
-                                            <strong>{{componentType}} </strong> </li>
-                                    </ul>
-                                    <version-info *ngIf="component.componentInfo.versionInfo"
-                                                  [versionInfo]="component.componentInfo.versionInfo">
-                                    </version-info>
-                                    <resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo"
-                                                                 [resourceDocumentationInfo]="component.componentInfo.resourceDocumentationInfo">
-                                    </resource-documentation-info>
-                                </div>
-
-                            </div>
-
                             <div class="uk-margin">
                                 <div data-uk-grid-margin="" class="uk-grid">
 
                                     <div class="uk-width-medium-3-4 uk-row-first">
 
+                                        <div class="uk-panel uk-panel-box resourceGeneralInfo">
+                                            <div class="uk-thumbnail uk-align-medium-right">
+                                                <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
+                                            </div>
+
+                                            <div class="uk-nbfc">
+                                                <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
+                                                <ul class="uk-list" *ngIf="component.componentInfo.identificationInfo.descriptions
+                                                    && component.componentInfo.identificationInfo.descriptions.length>0">
+                                                    <li *ngFor="let description of component.componentInfo.identificationInfo.descriptions; let isFirst = first;"
+                                                        [class.uk-margin-top]="!isFirst">
+                                                        {{description.value}}
+                                                    </li>
+                                                </ul>
+                                                <ul *ngIf="component.componentInfo.componentTypes" class="uk-subnav uk-subnav-line componentTypes">
+                                                    <li *ngFor="let componentType of component.componentInfo.componentTypes" class="element element-text">
+                                                        <strong>{{componentType}} </strong> </li>
+                                                </ul>
+                                                <version-info *ngIf="component.componentInfo.versionInfo"
+                                                              [versionInfo]="component.componentInfo.versionInfo">
+                                                </version-info>
+                                                <resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo"
+                                                                             [resourceDocumentationInfo]="component.componentInfo.resourceDocumentationInfo">
+                                                </resource-documentation-info>
+                                            </div>
+
+                                        </div>
+
                                         <tabset class="infoTabs">
                                             <tab *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0"
-                                                 heading="Distribution Info" class="infoTab">
+                                                 heading="Distribution" class="infoTab">
                                                 <component-distribution-info *ngFor="let distributionInfo of component.componentInfo.distributionInfos"
                                                                  [componentDistributionInfo]="distributionInfo"></component-distribution-info>
                                             </tab>
                                             <tab *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0"
-                                                 heading="Validation Info" class="infoTab">
+                                                 heading="Validation" class="infoTab">
                                                 <validation-info *ngFor="let validationInfo of component.componentInfo.validationInfos"
                                                                  [validationInfo]="validationInfo"></validation-info>
                                             </tab>
                                             <tab *ngIf="component.componentInfo.usageInfo"
-                                                 heading="Usage Info" class="infoTab">
+                                                 heading="Usage" class="infoTab">
                                                 <usage-info [usageInfo]="component.componentInfo.usageInfo"></usage-info>
                                             </tab>
                                             <tab *ngIf="component.componentInfo.inputContentResourceInfo || component.componentInfo.outputResourceInfo"
@@ -111,7 +111,7 @@
                                                 <component-documentation-info [componentDocumentationInfo]="component.componentInfo.componentDocumentationInfo"></component-documentation-info>
                                             </tab>
                                             <tab *ngIf="component.componentInfo.componentCreationInfo"
-                                                 heading="Creation Info" class="infoTab">
+                                                 heading="Creation" class="infoTab">
                                                 <component-creation-info [componentCreationInfo]="component.componentInfo.componentCreationInfo"></component-creation-info>
                                             </tab>
                                         </tabset>
