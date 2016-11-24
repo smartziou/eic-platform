@@ -165,6 +165,11 @@ export class SearchComponent {
                 foundQuery = true;
                 if(searchValue.query === '')
                     this.urlParameters.splice(queryParameterIndex, 1);
+                else {
+                    urlParameter.values.splice(0,urlParameter.values.length);
+                    urlParameter.values.push(searchValue.query);
+                }
+
             }
             queryParameterIndex ++;
         }
