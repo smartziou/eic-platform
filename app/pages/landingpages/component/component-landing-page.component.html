@@ -20,10 +20,10 @@
                                 </div>
                             </div>
 
-                            <h1 class="uk-h1" *ngIf="component.componentInfo.identificationInfo.resourceNames
+                            <h2 class="uk-h2" *ngIf="component.componentInfo.identificationInfo.resourceNames
                             && component.componentInfo.identificationInfo.resourceNames.length>0">
                                 {{component.componentInfo.identificationInfo.resourceNames[0].value}}
-                            </h1>
+                            </h2>
 
                             <ul class="uk-subnav uk-subnav-line">
                                 <li *ngIf="component.componentInfo.identificationInfo.resourceShortNames
@@ -57,9 +57,9 @@
                                         <li *ngFor="let componentType of component.componentInfo.componentTypes" class="element element-text">
                                             <strong>{{componentType}} </strong> </li>
                                     </ul>
-                                    <resource-creation-info *ngIf="component.componentInfo.resourceCreationInfo"
-                                                            [resourceCreationInfo]="component.componentInfo.resourceCreationInfo">
-                                    </resource-creation-info>
+                                    <version-info *ngIf="component.componentInfo.versionInfo"
+                                                  [versionInfo]="component.componentInfo.versionInfo">
+                                    </version-info>
                                     <resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo"
                                                                  [resourceDocumentationInfo]="component.componentInfo.resourceDocumentationInfo">
                                     </resource-documentation-info>
@@ -121,16 +121,16 @@
 
                                     <div class="uk-width-medium-1-4 resourceSideInfo">
 
-                                        <div *ngIf="component.metadataHeaderInfo" class="uk-panel uk-panel-box">
-                                            <metadata-header-info [metadataHeaderInfo]="component.metadataHeaderInfo"></metadata-header-info>
-                                        </div>
-
-                                        <div *ngIf="component.componentInfo.versionInfo" class="uk-panel uk-panel-box">
-                                            <version-info [versionInfo]="component.componentInfo.versionInfo"></version-info>
-                                        </div>
-
-                                        <div *ngIf="component.componentInfo.contactInfo" class="uk-panel uk-panel-box">
+                                        <div *ngIf="component.componentInfo.contactInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
                                             <contact-info [contactInfo]="component.componentInfo.contactInfo"></contact-info>
+                                        </div>
+
+                                        <div *ngIf="component.componentInfo.resourceCreationInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
+                                            <resource-creation-info [resourceCreationInfo]="component.componentInfo.resourceCreationInfo"></resource-creation-info>
+                                        </div>
+
+                                        <div *ngIf="component.metadataHeaderInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
+                                            <metadata-header-info [metadataHeaderInfo]="component.metadataHeaderInfo"></metadata-header-info>
                                         </div>
 
                                     </div>

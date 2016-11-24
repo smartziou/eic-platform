@@ -20,10 +20,10 @@
                                 </div>
                             </div>
 
-                            <h1 class="uk-h1" *ngIf="corpus.corpusInfo.identificationInfo.resourceNames
+                            <h2 class="uk-h2" *ngIf="corpus.corpusInfo.identificationInfo.resourceNames
                             && corpus.corpusInfo.identificationInfo.resourceNames.length>0">
                                 {{corpus.corpusInfo.identificationInfo.resourceNames[0].value}}
-                            </h1>
+                            </h2>
 
                             <ul class="uk-subnav uk-subnav-line">
                                 <li *ngIf="corpus.corpusInfo.identificationInfo.resourceShortNames
@@ -40,9 +40,9 @@
                             </div>
 
                             <div class="uk-panel uk-panel-box resourceGeneralInfo">
-                                <!--<div class="uk-thumbnail uk-align-medium-right">
+                                <div class="uk-thumbnail uk-align-medium-right">
                                     <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
-                                </div>-->
+                                </div>
 
                                 <div class="uk-nbfc">
                                     <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
@@ -53,9 +53,9 @@
                                             {{description.value}}
                                         </li>
                                     </ul>
-                                    <resource-creation-info *ngIf="corpus.corpusInfo.resourceCreationInfo"
-                                                            [resourceCreationInfo]="corpus.corpusInfo.resourceCreationInfo">
-                                    </resource-creation-info>
+                                    <version-info *ngIf="corpus.corpusInfo.versionInfo"
+                                                  [versionInfo]="corpus.corpusInfo.versionInfo">
+                                    </version-info>
                                     <resource-documentation-info *ngIf="corpus.corpusInfo.resourceDocumentationInfo"
                                                                  [resourceDocumentationInfo]="corpus.corpusInfo.resourceDocumentationInfo">
                                     </resource-documentation-info>
@@ -105,16 +105,16 @@
 
                                     <div class="uk-width-medium-1-4 resourceSideInfo">
 
-                                        <div *ngIf="corpus.metadataHeaderInfo" class="uk-panel uk-panel-box">
-                                            <metadata-header-info [metadataHeaderInfo]="corpus.metadataHeaderInfo"></metadata-header-info>
-                                        </div>
-
-                                        <div *ngIf="corpus.corpusInfo.versionInfo" class="uk-panel uk-panel-box">
-                                            <version-info [versionInfo]="corpus.corpusInfo.versionInfo"></version-info>
-                                        </div>
-
-                                        <div *ngIf="corpus.corpusInfo.contactInfo" class="uk-panel uk-panel-box">
+                                        <div *ngIf="corpus.corpusInfo.contactInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
                                             <contact-info [contactInfo]="corpus.corpusInfo.contactInfo"></contact-info>
+                                        </div>
+
+                                        <div *ngIf="corpus.corpusInfo.resourceCreationInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
+                                            <resource-creation-info [resourceCreationInfo]="corpus.corpusInfo.resourceCreationInfo"></resource-creation-info>
+                                        </div>
+
+                                        <div *ngIf="corpus.metadataHeaderInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
+                                            <metadata-header-info [metadataHeaderInfo]="corpus.metadataHeaderInfo"></metadata-header-info>
                                         </div>
 
                                     </div>
