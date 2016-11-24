@@ -39,6 +39,10 @@ li, dt, dd {
     font-weight: 300;
 }
 
+.uk-navbar-nav > li > a {
+    font-size: 17px;
+}
+
 .uk-navbar-nav > li > a[href="#"] {
     cursor: pointer;
 }
@@ -80,6 +84,7 @@ li, dt, dd {
 .tm-toolbar a {
     color: #666666;
     font-family: 'Roboto', sans-serif;
+    font-size: 13px;
     /*font-family: "Open Sans";*/
 }
 

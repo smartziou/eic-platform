@@ -27,12 +27,12 @@
                     <li [routerLinkActive]="['uk-active']"><a routerLink="/home" routerLinkActive="uk-active">Home</a></li>
                     <li [routerLinkActive]="['uk-active']"><a routerLink="/search" routerLinkActive="uk-active">Browse</a></li>
                     <li [routerLinkActive]="['uk-active']" class="dropdown uk-parent" data-uk-dropdown="{'preventflip':'y'}" aria-haspopup="true" aria-expanded="false">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share</a>
                         <ul class="dropdown-menu uk-nav uk-nav-navbar">
                             <li><a routerLink="/resourceRegistration/component" routerLinkActive="uk-active">Component</a></li>
-                            <li><a routerLink="/registerCorpus" routerLinkActive="uk-active">Corpus</a></li>
-                            <li><a routerLink="/registerLanguageResource" routerLinkActive="uk-active">Language Resource</a></li>
-                            <li><a routerLink="/registerWorkflow" routerLinkActive="uk-active">Workflow</a></li>
+                            <li><a routerLink="/resourceRegistration/corpus" routerLinkActive="uk-active">Corpus</a></li>
+                           <!-- <li><a routerLink="/registerLanguageResource" routerLinkActive="uk-active">Language Resource</a></li>
+                            <li><a routerLink="/registerWorkflow" routerLinkActive="uk-active">Workflow</a></li>-->
                         </ul>
                     </li>
                     <li [routerLinkActive]="['uk-active']"><a routerLink="/support" routerLinkActive="uk-active">Support</a></li>
@@ -50,16 +50,16 @@
 
             </nav>
 
-            <div class="tm-navbar-right uk-flex uk-flex-middle">
-                <div class="uk-visible-large">
-                    <form data-uk-search="{'source': '/demo/themes/joomla/2016/chester/index.php/component/search/?tmpl=raw&amp;type=json&amp;ordering=&amp;searchphrase=all', 'param': 'searchword', 'msgResultsHeader': 'Search Results', 'msgMoreResults': 'More Results', 'msgNoResults': 'No results found', flipDropdown: 1}" method="post" action="/demo/themes/joomla/2016/chester/index.php/theme" class="uk-search" id="search-40-57c42754d716a">
-                        <input type="text" placeholder="search..." name="searchword" class="uk-search-field">
-                        <input type="hidden" value="search" name="task">
-                        <input type="hidden" value="com_search" name="option">
-                        <input type="hidden" value="107" name="Itemid">
-                    </form>
-                </div>
-            </div>
+            <!--<div class="tm-navbar-right uk-flex uk-flex-middle">-->
+                <!--<div class="uk-visible-large">-->
+                    <!--<form data-uk-search="{'source': '/demo/themes/joomla/2016/chester/index.php/component/search/?tmpl=raw&amp;type=json&amp;ordering=&amp;searchphrase=all', 'param': 'searchword', 'msgResultsHeader': 'Search Results', 'msgMoreResults': 'More Results', 'msgNoResults': 'No results found', flipDropdown: 1}" method="post" action="/demo/themes/joomla/2016/chester/index.php/theme" class="uk-search" id="search-40-57c42754d716a">-->
+                        <!--<input type="text" placeholder="search..." name="searchword" class="uk-search-field">-->
+                        <!--<input type="hidden" value="search" name="task">-->
+                        <!--<input type="hidden" value="com_search" name="option">-->
+                        <!--<input type="hidden" value="107" name="Itemid">-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </div>

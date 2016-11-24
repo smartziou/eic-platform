@@ -1,0 +1,65 @@
+.uk-form.searchForm input[type="text"] {
+    height: 40px;
+}
+
+.searchForm .uk-grid .searchButton {
+    padding-left: 15px;
+}
+
+.uk-grid-divider:empty {
+    border-top: 1px solid #cccccc;
+    margin-bottom: 15px;
+    margin-top: 0px;
+}
+
+.resource * + .uk-margin {
+    margin-top: 5px;
+}
+
+.resource .uk-margin {
+    margin-bottom: 5px;
+}
+
+.resource {
+    font-size: 13px;
+}
+
+.resource .uk-button-link {
+    color: #aaaaaa;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.refines .uk-grid-margin {
+    margin-top: 20px;
+}
+
+.refineCategory {
+    font-size: 13px;
+}
+
+.refineCategory span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.refineOption span {
+    font-weight: 300;
+    color: #bbbbbb;
+}
+
+.uk-pagination > li > a {
+    color: #666666;
+}
+
+.sourcesList {
+    margin-top: 20px;
+}
+
+.totalPublications {
+    padding-left: 0px;
+}
+
+.totalPublications h3 {
+    color: #004DB0;
+}

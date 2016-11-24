@@ -24,6 +24,7 @@ import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.comp
 import { ComponentRegistrationModule } from "./pages/resourceregistration/component/component-registration.module";
 import { TabsModule } from "ng2-bootstrap/ng2-bootstrap";
 import { LandingPageModule } from "./pages/landingpages/landing-page.module";
+import { CorpusRegistrationModule } from "./pages/resourceregistration/corpus/corpus-registration.module";
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { LandingPageModule } from "./pages/landingpages/landing-page.module";
         // ResourceRegistrationModule,
         routing,
         ComponentRegistrationModule, 
+        CorpusRegistrationModule, 
         LandingPageModule, 
         TabsModule
     ],
