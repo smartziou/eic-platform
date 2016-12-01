@@ -1131,6 +1131,11 @@ export class PersonNames  {
     label:string;
 }
 
+export class Order<T> {
+    order: number;
+    resource : T;
+}
+
 export class PostalAddress  {
     address : string;
     zipCode : string;

@@ -4,7 +4,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { OMTDComponent, OMTDCorpus} from "../domain/openminted-model";
+import {OMTDComponent, OMTDCorpus, Order} from "../domain/openminted-model";
 import { URLParameter } from "../domain/url-parameter";
 import { SearchResults } from "../domain/search-results";
 
@@ -53,13 +53,13 @@ export class ResourceService {
 
     getCorpus(id: string) {
         return this.http.get(this._resourcesUrl + "corpus/" + id)
-            .map(res => <OMTDCorpus> res.json())
+            .map(res => <Order<OMTDCorpus>> res.json())
             .catch(this.handleError);
     }
 
     getComponent(id: string) {
         return this.http.get(this._resourcesUrl + "component/" + id)
-            .map(res => <OMTDComponent> res.json())
+            .map(res => <Order<OMTDComponent>> res.json())
             .catch(this.handleError);
     }
 

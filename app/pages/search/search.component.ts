@@ -91,11 +91,13 @@ export class SearchComponent {
         
 
         for (let component of this.searchResults.results.components) {
+            var componentBody = component.resource;
             var shortResultInfo: ShortResultInfo = {
                 // id: component.componentInfo.identificationInfo.identifiers[0].value,
-                id: component.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: component.componentInfo.identificationInfo.resourceNames[0].value,
-                description: component.componentInfo.identificationInfo.descriptions[0].value,
+                order: component.order,
+                id: componentBody.metadataHeaderInfo.metadataRecordIdentifier.value,
+                title: componentBody.componentInfo.identificationInfo.resourceNames[0].value,
+                description: componentBody.componentInfo.identificationInfo.descriptions[0].value,
                 resourceType: 'component'
             };
             // console.log(component.resourceIdentificationInfo.resourceIdentifiers[0].id);
@@ -104,11 +106,14 @@ export class SearchComponent {
         }
 
         for (let corpus of this.searchResults.results.corpora) {
+            var order = corpus.order;
+            var corpusBody = corpus.resource;
             var shortResultInfo: ShortResultInfo = {
                 // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
-                id: corpus.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: corpus.corpusInfo.identificationInfo.resourceNames[0].value,
-                description: corpus.corpusInfo.identificationInfo.descriptions[0].value,
+                order: corpus.order,
+                id: corpusBody.metadataHeaderInfo.metadataRecordIdentifier.value,
+                title: corpusBody.corpusInfo.identificationInfo.resourceNames[0].value,
+                description: corpusBody.corpusInfo.identificationInfo.descriptions[0].value,
                 resourceType: 'corpus'
             };
             this.shortResultsInfo.push(shortResultInfo);
@@ -116,6 +121,11 @@ export class SearchComponent {
 
         if(this.shortResultsInfo.length==0)
             this.foundResults = false;
+        else {
+            this.shortResultsInfo.sort((lhs : ShortResultInfo,rhs: ShortResultInfo) => {
+                return lhs.order - rhs.order;
+            })
+        }
 
         //update form values using URLParameters
         for (let urlParameter of this.urlParameters) {
