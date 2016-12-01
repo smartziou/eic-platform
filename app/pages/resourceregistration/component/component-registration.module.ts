@@ -13,6 +13,8 @@ import { ComponentRegistrationFormComponent } from "./component-registration-for
 import {MetadataIdentifierFormControl} from "../shared/metadata-identifier.component";
 import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form.component";
 import {ValuesPipe} from "../shared/omtd.enum";
+import {RelatedPersonsForm, RelatedPersonForm} from "../shared/related-persons";
+import {MetadataCreatorsForm} from "../shared/metadata-creators";
 
 @NgModule({
     imports: [
@@ -27,7 +29,10 @@ import {ValuesPipe} from "../shared/omtd.enum";
         ComponentRegistrationFormComponent,
         MetadataIdentifierFormControl,
         MetadataHeaderInfoFormControl,
-        ValuesPipe
+        ValuesPipe,
+        RelatedPersonsForm,
+        RelatedPersonForm,
+        MetadataCreatorsForm
     ],
     providers: [
         ResourceService

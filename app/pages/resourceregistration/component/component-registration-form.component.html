@@ -24,7 +24,7 @@
                             <div class="uk-width-medium-1-1">
                                 <form class="form-horizontal componentForm" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
                                     <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
-                                        <metadata-header-info-form></metadata-header-info-form>
+                                        <metadata-header-info-form [group]="myForm"></metadata-header-info-form>
                                         <div class="uk-grid-margin uk-row-first"><button class="uk-button uk-button-large
                                         uk-button-primary registerButton">Register!</button></div>
                                     </div>

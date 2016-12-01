@@ -1,7 +1,7 @@
 /**
  * Created by stefania on 10/19/16.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
 import {MetadataHeaderInfo, OMTDComponent} from "../../../domain/openminted-model";
 import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form.component";
@@ -15,17 +15,14 @@ export class ComponentRegistrationFormComponent implements OnInit {
 
     component: OMTDComponent;
 
-    metadataHeaderInfo: MetadataHeaderInfoFormControl;
+    @Input('group')
     myForm: FormGroup;
 
     constructor(private _fb: FormBuilder) {
-        this.metadataHeaderInfo = new MetadataHeaderInfoFormControl(_fb);
     }
 
     ngOnInit() {
         this.myForm = this._fb.group({
-            value: this.metadataHeaderInfo.formGroup
-
         });
     }
 
