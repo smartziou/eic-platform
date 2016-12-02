@@ -27,6 +27,7 @@ export class ComponentRegistrationFormComponent implements OnInit {
     }
 
     onSubmit(myForm: any) {
+        console.log("Submitted")
         console.log(myForm);
     }
 
