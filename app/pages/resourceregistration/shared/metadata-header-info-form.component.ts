@@ -7,7 +7,8 @@ import {Description, revisionDesc} from "./omtd.description";
 
 @Component({
     selector: 'metadata-header-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/metadata-header-info-form.component.html'
+    templateUrl : 'app/pages/resourceregistration/shared/templates/metadata-header-info-form.component.html',
+    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
 })
 
 

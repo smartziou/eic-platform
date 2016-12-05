@@ -14,6 +14,9 @@ import {IdentifierFormControl} from "./identifier-common.component";
     template : `
     
 <div [formGroup]="myForm" class="group">
+    <div class="col-md-offset-2 col-sm-offset-2">
+        <div class="group-label">Metadata Creators</div>
+    </div>
     <related-person [group]="myForm" [personLabel]="'Metadata Creator'"></related-person>
 </div>
 `,
