@@ -15,6 +15,7 @@ import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form
 import {ValuesPipe} from "../shared/omtd.enum";
 import {RelatedPersonsForm, RelatedPersonForm} from "../shared/related-persons";
 import {MetadataCreatorsForm} from "../shared/metadata-creators";
+import {IdentifierFormControl} from "../shared/identifier-common.component";
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import {MetadataCreatorsForm} from "../shared/metadata-creators";
         ValuesPipe,
         RelatedPersonsForm,
         RelatedPersonForm,
-        MetadataCreatorsForm
+        MetadataCreatorsForm,
+        IdentifierFormControl
     ],
     providers: [
         ResourceService

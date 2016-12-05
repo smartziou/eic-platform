@@ -1,4 +1,3 @@
-///<reference path="../../../../node_modules/@angular/forms/src/directives/control_value_accessor.d.ts"/>
 /**
  * Created by stefanos on 22/11/2016.
  */
@@ -37,9 +36,9 @@ export class MetadataIdentifierFormControl implements OnInit{
 
     constructor(private _fb: FormBuilder) {
         this.metadataIdentifierDesc = metadataIdentifierTypeDesc;
-        this.metadataIdentifierDesc.label = "Identifier"
+        this.metadataIdentifierDesc.label = "Identifier";
         this.schemeUriDesc = {desc : "Any URI", label : "URI"};
-        this.metadataIdentifierSchemeDesc = {desc : "Enum" , label : "One of the options"}
+        this.metadataIdentifierSchemeDesc = {desc : "Enum" , label : "One of the options"};
         this.metadaIdentifierValues = metadataIdentifierSchemeNameEnum;
     }
 

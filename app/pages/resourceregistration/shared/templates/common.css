@@ -1,0 +1,17 @@
+.group {
+    border: 1px dashed #ccc;
+    padding: 15px 0px;
+    margin-bottom: 15px;
+}
+
+.radio-label {
+    padding-left: 0px;
+}
+
+.radio-label input {
+    margin-top: 10px;
+}
+
+.groupLabel {
+    letter-spacing: 1.5px;
+}
