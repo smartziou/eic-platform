@@ -6,6 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Description, metadataIdentifierTypeDesc} from "./omtd.description";
 import {EnumValues, metadataIdentifierSchemeNameEnum} from "./omtd.enum"
+import {IdentifierFormControl} from "./identifier-common.component";
 
 @Component({
     selector: 'metadata-identifier-form',
@@ -24,8 +25,8 @@ export class MetadataIdentifierFormControl implements OnInit{
     @Input('group')
     public parentForm: FormGroup;
 
-    public myForm : FormGroup;
-
+    // public myForm : FormGroup;
+    private controlName = "metadataIdentifier";
 
     public get formGroup() {
         return this.parentForm;
@@ -36,6 +37,7 @@ export class MetadataIdentifierFormControl implements OnInit{
     }
 
     constructor(private _fb: FormBuilder) {
+        this.controlName = "metadataIdentifier";
         this.metadataIdentifierDesc = metadataIdentifierTypeDesc;
         this.metadataIdentifierDesc.label = "Identifier";
         this.schemeUriDesc = {desc : "Any URI", label : "URI"};
@@ -44,11 +46,8 @@ export class MetadataIdentifierFormControl implements OnInit{
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group({
-            value : ['', [Validators.required]],
-            schemeUri : '',
-            metadataIdentifierSchemeName : ['', Validators.required]
-        });
-        this.parentForm.addControl('metadataIdentifier',this.myForm);
+        // this.myForm = this._fb.group({}
+        // );
+        // this.parentForm.addControl('metadataIdentifier',this.myForm);
     }
 }

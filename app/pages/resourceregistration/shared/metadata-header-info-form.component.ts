@@ -36,6 +36,5 @@ export class MetadataHeaderInfoFormControl implements OnInit{
             revision : ['', [Validators.required]]
         });
         this.parentForm.addControl("metadataHeaderInfo", this.myForm);
-        console.log(this.myForm);
     }
 }

@@ -14,8 +14,8 @@ import {MetadataIdentifierFormControl} from "../shared/metadata-identifier.compo
 import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form.component";
 import {ValuesPipe} from "../shared/omtd.enum";
 import {RelatedPersonsForm, RelatedPersonForm} from "../shared/related-persons";
-import {MetadataCreatorsForm} from "../shared/metadata-creators";
 import {IdentifierFormControl} from "../shared/identifier-common.component";
+import {LanguageTypeForm, LanguagesTypeForm} from "../shared/language-type-form.component";
 
 @NgModule({
     imports: [
@@ -33,7 +33,8 @@ import {IdentifierFormControl} from "../shared/identifier-common.component";
         ValuesPipe,
         RelatedPersonsForm,
         RelatedPersonForm,
-        MetadataCreatorsForm,
+        LanguageTypeForm,
+        LanguagesTypeForm,
         IdentifierFormControl
     ],
     providers: [

@@ -19,17 +19,22 @@ export class IdentifierFormControl implements OnInit{
     @Input('group')
     public parentForm: FormGroup;
 
-    @Input('name')
+    @Input('control-name')
     name : string;
 
     private schemeName : string;
 
-    @Input('schemeUri')
+    @Input('scheme-desc')
     public schemeUriDesc : Description;
 
-    @Input('schemeValues')
+    @Input('scheme-values')
     public schemeUriValues : EnumValues;
 
+    @Input('label')
+    label : string;
+
+    @Input('index')
+    index: number;
 
     private identifierDesc : Description;
 
@@ -43,13 +48,14 @@ export class IdentifierFormControl implements OnInit{
             value : ['', [Validators.required]],
             schemeUri : ''
         }
-        // temporary[schemeName + "SchemeName"] = ['', Validators.required];
+        temporary[schemeName + "SchemeName"] = ['', Validators.required];
         return temporary;
     }
 
     constructor(private _fb: FormBuilder) {
+
         this.identifierDesc = metadataIdentifierTypeDesc;
-        this.schemeName = name + "SchemeName";
+        this.schemeName = this.name + "SchemeName";
         this.identifierDesc.label = "Identifier";
         this.schemeUriDesc = {desc: "Any URI", label: "URI"};
         // if(typeof this.schemeUriDesc == 'undefined') {
@@ -59,7 +65,7 @@ export class IdentifierFormControl implements OnInit{
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group(IdentifierFormControl.generate(this.schemeName));
+        this.myForm = this._fb.group(IdentifierFormControl.generate(this.name));
         this.parentForm.addControl(this.name,this.myForm);
     }
 }

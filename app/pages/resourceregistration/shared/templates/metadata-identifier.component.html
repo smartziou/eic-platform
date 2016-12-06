@@ -1,36 +1,6 @@
-<div [formGroup]="myForm">
+<div [formGroup]="parentForm">
     <div class="form-group">
-        <label class="col-sm-2 col-md-2 control-label">Identifier</label>
-        <identifier-common [group]="myForm" [name]="'metadataIdentifier'" [schemeValues]="metadaIdentifierValues"
-                           [schemeUri]="metadataIdentifierSchemeDesc"></identifier-common>
+        <identifier-common [group]="parentForm" [control-name]="controlName" [scheme-values]="metadaIdentifierValues"
+                           [scheme-desc]="metadataIdentifierSchemeDesc" [index]="0" [label]="'Identifier'"></identifier-common>
     </div>
-
 </div>
-
-<!--<div class="form-group">-->
-    <!--<label class="col-sm-2 col-md-2 control-label">{{metadataIdentifierDesc.label}}</label>-->
-    <!--<div class="col-sm-10 col-md-10" [ngClass]="{'has-error':!myForm.controls['value'].valid && !myForm.controls['value'].pristine}">-->
-        <!--<input type="text" class="form-control" formControlName="value">-->
-        <!--<small>{{metadataIdentifierDesc.desc}}</small>-->
-    <!--</div>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-    <!--<label class="col-sm-2 col-md-2 control-label">{{metadataIdentifierSchemeDesc.label}}</label>-->
-    <!--<div class="col-sm-10 col-md-10" [ngClass]="{'has-error':!myForm.controls['metadataIdentifierSchemeName'].valid-->
-            <!--&& !myForm.controls['metadataIdentifierSchemeName'].pristine}">-->
-        <!--<select name="role" class="form-control" formControlName="metadataIdentifierSchemeName">-->
-            <!--<option *ngFor="let value of metadaIdentifierValues | values" [value]="value">-->
-                <!--{{metadaIdentifierValues[value]}}-->
-            <!--</option>-->
-        <!--</select>-->
-        <!--<small>{{metadataIdentifierSchemeDesc.desc}}</small>-->
-    <!--</div>-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-    <!--<label class="col-sm-2 col-md-2 control-label">{{schemeUriDesc.label}}</label>-->
-    <!--<div class="col-sm-10 col-md-10">-->
-        <!--<input type="text" class="form-control" formControlName="schemeUri">-->
-        <!--<small>{{schemeUriDesc.desc}}</small>-->
-    <!--</div>-->
-<!--</div>-->
