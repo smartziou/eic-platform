@@ -5,7 +5,7 @@
     <div class="col-sm-10 col-md-10">
         <div *ngFor="let radio of radioButton">
             <label class="col-sm-2 col-md-2 radio-label">
-                <input type="radio" name="options{{index}}" [checked]="radio === radioButtonSelected"
+                <input type="radio" name="options{{schemeName}}{{index}}" [checked]="radio === radioButtonSelected"
                        (click)="changeType(radio)">
                 {{radio}}
             </label>
@@ -45,7 +45,7 @@
         <div formArrayName="personIdentifiers">
             <div *ngFor="let address of myFormIdentifier.controls.personIdentifiers.controls; let i=index" class="form-group">
                 <div formGroupName="{{i}}">
-                    <identifier-common [group]="myFormIdentifier.controls.personIdentifiers.controls[i]" [control-name]="schemeName"
+                    <identifier-common [group]="address" [control-name]="schemeName"
                                        [scheme-values]="personEnum" [scheme-desc]="personDesc" [label]="personLabel + ' Identifier'"
                                        [index]="i"></identifier-common>
                     <a class="remove-element col-sm-1 col-md-1" (click)="deletePerson('Identifier',i)"><i

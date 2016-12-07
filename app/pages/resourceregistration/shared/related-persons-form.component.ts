@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormArray, Validators} from '@angular/forms';
 import {Description, relatedPersonTypeDesc, personIdentifierDesc} from "./omtd.description";
 import {EnumValues, personIdentifierSchemeNameEnum} from "./omtd.enum";
-import {IdentifierFormControl} from "./identifier-common.component";
+import {IdentifierFormControl} from "./identifier-common-form.component";
 
 
 @Component({
@@ -60,7 +60,7 @@ export class RelatedPersonsForm implements OnInit{
 
 @Component({
     selector: 'related-person',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/related-person.component.html',
+    templateUrl : 'app/pages/resourceregistration/shared/templates/related-person-form.component.html',
     styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
 })
 export class RelatedPersonForm implements OnInit{
@@ -105,7 +105,7 @@ export class RelatedPersonForm implements OnInit{
                 lang: ['', [Validators.required]]
             });
         } else if (type === "Identifier"){
-            return this._fb.group({});
+            return this._fb.group(IdentifierFormControl.generate(this.schemeName));
         }
     }
 
@@ -141,6 +141,7 @@ export class RelatedPersonForm implements OnInit{
             control.push(
                 this.newPerson(this.radioButtonSelected)
             );
+            console.log(control);
         }
 
 

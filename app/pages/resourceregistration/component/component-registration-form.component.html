@@ -15,11 +15,7 @@
                             Paste the XML presentation of your component below, or use one of our helper methods on the
                             right to preview your XML before you submit it.
                         </div>
-                        <div class="margin-20">
-                            <div>myForm details:-</div>
-                            <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
-                            <pre>form value: <br>{{myForm.value | json}}</pre>
-                        </div>
+
                         <div class="uk-margin uk-grid componentXMLRegistration">
                             <div class="uk-width-medium-1-1">
                                 <form class="form-horizontal componentForm" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
@@ -31,7 +27,11 @@
                                 </form>
                             </div>
                         </div>
-
+                        <div class="margin-20">
+                            <div>myForm details:-</div>
+                            <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+                            <pre>form value: <br>{{myForm.value | json}}</pre>
+                        </div>
                     </div>
                 </main>
             </div>

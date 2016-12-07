@@ -6,11 +6,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Description, metadataIdentifierTypeDesc} from "./omtd.description";
 import {EnumValues, metadataIdentifierSchemeNameEnum} from "./omtd.enum"
-import {IdentifierFormControl} from "./identifier-common.component";
 
 @Component({
     selector: 'metadata-identifier-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/metadata-identifier.component.html',
+    templateUrl : 'app/pages/resourceregistration/shared/templates/metadata-identifier-form.component.html',
     styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
 })
 

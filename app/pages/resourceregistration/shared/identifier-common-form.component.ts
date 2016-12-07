@@ -3,7 +3,7 @@
  */
 
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormArray, AbstractControl} from '@angular/forms';
 import {Description, metadataIdentifierTypeDesc} from "./omtd.description";
 import {EnumValues} from "./omtd.enum";
 
@@ -34,7 +34,7 @@ export class IdentifierFormControl implements OnInit{
     label : string;
 
     @Input('index')
-    index: number;
+    index: number = -1;
 
     private identifierDesc : Description;
 
@@ -66,6 +66,11 @@ export class IdentifierFormControl implements OnInit{
 
     ngOnInit() {
         this.myForm = this._fb.group(IdentifierFormControl.generate(this.name));
-        this.parentForm.addControl(this.name,this.myForm);
+        console.log("index",this.index);
+        if(this.index == -1) {
+            this.parentForm.addControl(this.name, this.myForm);
+        } else {
+            this.myForm = this.parentForm;
+        }
     }
 }

@@ -1,7 +1,7 @@
 <div [formGroup]="myForm">
     <!--<div class="form-group">-->
-        <label *ngIf="index==0" class="col-sm-2 col-md-2 control-label">{{label}}</label>
-        <div *ngIf="index!=0" class="col-sm-2 col-md-2 control-label"></div>
+        <label *ngIf="index == -1 || index==0" class="col-sm-2 col-md-2 control-label">{{label}}</label>
+        <div *ngIf="index != -1 && index!=0" class="col-sm-2 col-md-2 control-label"></div>
 
         <div class="col-sm-4 col-md-4">
             <input type="text" class="form-control" formControlName="value" placeholder="value">

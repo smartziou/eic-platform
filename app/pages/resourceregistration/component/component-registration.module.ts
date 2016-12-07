@@ -10,11 +10,11 @@ import { componentRegistrationRouting } from "./component-registration.routing";
 import { ComponentRegistrationComponent } from "./component-registration.component";
 import { ComponentRegistrationXMLComponent } from "./component-registration-xml.component";
 import { ComponentRegistrationFormComponent } from "./component-registration-form.component";
-import {MetadataIdentifierFormControl} from "../shared/metadata-identifier.component";
+import {MetadataIdentifierFormControl} from "../shared/metadata-identifier-form.component";
 import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form.component";
 import {ValuesPipe} from "../shared/omtd.enum";
-import {RelatedPersonsForm, RelatedPersonForm} from "../shared/related-persons";
-import {IdentifierFormControl} from "../shared/identifier-common.component";
+import {RelatedPersonsForm, RelatedPersonForm} from "../shared/related-persons-form.component";
+import {IdentifierFormControl} from "../shared/identifier-common-form.component";
 import {LanguageTypeForm, LanguagesTypeForm} from "../shared/language-type-form.component";
 
 @NgModule({
