@@ -6,7 +6,7 @@ import {FormGroup, FormBuilder, FormArray, Validators, FormControl} from '@angul
 import {Description, languageIdDesc, scriptIdDesc, variantIdDesc,regiontIdDesc,languageTagDesc} from "./omtd.description";
 import {
     EnumValues, personIdentifierSchemeNameEnum, scriptIdTypeEnum, regionIdTypeEnum,
-    variantIdTypeEnum
+    variantIdTypeEnum, languageIdTypeEnum
 } from "./omtd.enum";
 
 
@@ -84,9 +84,10 @@ export class LanguageTypeForm implements OnInit {
     private regionIdDesc : Description;
     private variantIdDesc : Description;
 
-    private scriptIdEnum : EnumValues;
-    private regionIdEnum : EnumValues;
-    private variantIdEnum : EnumValues;
+    private languageIdEnum : EnumValues[];
+    private scriptIdEnum : EnumValues[];
+    private regionIdEnum : EnumValues[];
+    private variantIdEnum : EnumValues[];
 
     private withIdentifier;
 
@@ -114,6 +115,7 @@ export class LanguageTypeForm implements OnInit {
         this.regionIdDesc = regiontIdDesc;
         this.variantIdDesc = variantIdDesc;
 
+        this.languageIdEnum = languageIdTypeEnum;
         this.scriptIdEnum = scriptIdTypeEnum;
         this.regionIdEnum = regionIdTypeEnum;
         this.variantIdEnum = variantIdTypeEnum;

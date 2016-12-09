@@ -10,8 +10,8 @@
             <!--[ngClass]="{'has-error':!myForm.controls['metadataIdentifierSchemeName'].valid-->
             <!--&& !myForm.controls['metadataIdentifierSchemeName'].pristine}"-->
             <select name="role" class="form-control" formControlName="{{name}}SchemeName">
-                <option *ngFor="let value of schemeUriValues | values" [value]="value">
-                    {{schemeUriValues[value]}}
+                <option *ngFor="let value of schemeUriValues" [value]="value.key">
+                    {{value.value}}
                 </option>
             </select>
         </div>

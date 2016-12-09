@@ -86,7 +86,7 @@ export class RelatedPersonForm implements OnInit{
     private radioButton : string[] = ["Person","Identifier"];
     private radioButtonSelected : string;
 
-    private personEnum : EnumValues;
+    private personEnum : EnumValues[];
     private personDesc : Description;
 
     constructor(private _fb: FormBuilder) {

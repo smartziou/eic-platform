@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import {OMTDComponent, OMTDCorpus, Order} from "../domain/openminted-model";
 import { URLParameter } from "../domain/url-parameter";
 import { SearchResults } from "../domain/search-results";
+import {Resource} from "../domain/resource";
 
 @Injectable()
 export class ResourceService {
@@ -60,6 +61,24 @@ export class ResourceService {
     getComponent(id: string) {
         return this.http.get(this._resourcesUrl + "component/" + id)
             .map(res => <Order<OMTDComponent>> res.json())
+            .catch(this.handleError);
+    }
+
+    getXML(url : string) {
+        return this.http.get(url)
+            .map(res => <string> JSON.stringify(res.json()))
+            .catch(this.handleError);
+    }
+
+    registerComponent(component: Resource) {
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+
+        console.log(JSON.stringify(component));
+
+        return this.http.post(this._resourcesUrl, JSON.stringify(component), options)
+            .map(res => <Resource> res.json())
             .catch(this.handleError);
     }
 

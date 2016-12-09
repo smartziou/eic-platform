@@ -10,7 +10,9 @@
     <div class="form-group" *ngIf="withIdentifier==true">
         <label class="col-sm-2 control-label">{{languageIdDesc.label}}</label>
         <div class="col-sm-2 col-md-2">
-            <input type="text" class="form-control" formControlName="languageId" placeholder="Language id">
+            <input type="text" class="form-control" formControlName="languageId" placeholder="Language id"
+                   [typeahead]="languageIdEnum"
+                   [typeaheadOptionField]="'value'">
             <!--<select name="role" class="form-control" formControlName="{{name}}SchemeName">-->
                 <!--<option *ngFor="let value of schemeUriValues | values" [value]="value">-->
                     <!--{{schemeUriValues[value]}}-->
@@ -19,22 +21,22 @@
         </div>
         <div class="col-sm-2 col-md-2">
             <select name="role" class="form-control" formControlName="scriptId">
-                <option *ngFor="let value of scriptIdEnum | values" [value]="value">
-                    {{scriptIdEnum[value]}}
+                <option *ngFor="let value of scriptIdEnum" [value]="value.key">
+                    {{value.value}}
                 </option>
             </select>
         </div>
         <div class="col-sm-2 col-md-2">
             <select name="role" class="form-control" formControlName="regionId">
-                <option *ngFor="let value of regionIdEnum | values" [value]="value">
-                    {{regionIdEnum[value]}}
+                <option *ngFor="let value of regionIdEnum" [value]="value.key">
+                    {{value.value}}
                 </option>
             </select>
         </div>
         <div class="col-sm-3 col-md-3">
             <select name="role" class="form-control" formControlName="variantId">
-                <option *ngFor="let value of variantIdEnum | values" [value]="value">
-                    {{variantIdEnum[value]}}
+                <option *ngFor="let value of variantIdEnum" [value]="value.key">
+                    {{value.value}}
                 </option>
             </select>
         </div>

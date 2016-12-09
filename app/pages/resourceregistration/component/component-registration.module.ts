@@ -12,10 +12,11 @@ import { ComponentRegistrationXMLComponent } from "./component-registration-xml.
 import { ComponentRegistrationFormComponent } from "./component-registration-form.component";
 import {MetadataIdentifierFormControl} from "../shared/metadata-identifier-form.component";
 import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form.component";
-import {ValuesPipe} from "../shared/omtd.enum";
+import {ValuesPipe} from "../shared/values-pipe";
 import {RelatedPersonsForm, RelatedPersonForm} from "../shared/related-persons-form.component";
 import {IdentifierFormControl} from "../shared/identifier-common-form.component";
 import {LanguageTypeForm, LanguagesTypeForm} from "../shared/language-type-form.component";
+import {AccordionModule, TypeaheadModule} from "ng2-bootstrap/ng2-bootstrap";
 
 @NgModule({
     imports: [
@@ -23,6 +24,8 @@ import {LanguageTypeForm, LanguagesTypeForm} from "../shared/language-type-form.
         FormsModule,
         ReactiveFormsModule,
         componentRegistrationRouting,
+        AccordionModule,
+        TypeaheadModule
     ],
     declarations: [
         ComponentRegistrationComponent,

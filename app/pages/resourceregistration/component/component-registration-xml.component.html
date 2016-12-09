@@ -18,13 +18,13 @@
 
                         <div class="uk-margin uk-grid componentXMLRegistration">
                             <div class="uk-width-medium-7-10">
-                                <form class="componentXMLForm">
+                                <form [formGroup]="componentXMLForm" class="componentXMLForm" (ngSubmit)="onSubmit(componentXMLForm.value, $event)">
                                     <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
                                         <div class="form-group">
-                                            <textarea class="form-control" rows="16" name="xml"></textarea>
+                                            <textarea class="form-control" rows="16" name="xml" formControlName="xml"></textarea>
                                         </div>
                                         <div class="uk-grid-margin uk-row-first"><button class="uk-button uk-button-large
-                                        uk-button-primary registerButton">Register!</button></div>
+                                        uk-button-primary registerButton" type="submit">Register!</button></div>
                                     </div>
                                 </form>
                             </div>
@@ -34,9 +34,9 @@
                                     <form class="componentXMLFileForm">
                                         <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
                                             <div class="form-group">
-                                                <input type="file" name="xmlFile">
+                                                <input type="file" name="xmlFile" (change)="report($event)">
                                             </div>
-                                            <a (click)="previewFromFile" class="uk-margin-top">
+                                            <a (click)="previewFromFile()" class="uk-margin-top">
                                                 Preview <i class="uk-icon-angle-right uk-margin-small-left"></i>
                                             </a>
                                         </div>
@@ -47,9 +47,9 @@
                                     <form class="componentXMLURLForm">
                                         <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
                                             <div class="form-group">
-                                                <input class="form-control" name="xmlURL">
+                                                <input class="form-control" name="xmlURL" [(ngModel)]="xmlURL">
                                             </div>
-                                            <a (click)="previewFromURL" class="uk-margin-top">
+                                            <a (click)="previewFromURL()" class="uk-margin-top">
                                                 Preview <i class="uk-icon-angle-right uk-margin-small-left"></i>
                                             </a>
                                         </div>

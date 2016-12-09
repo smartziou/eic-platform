@@ -19,7 +19,7 @@ export class MetadataIdentifierFormControl implements OnInit{
     metadataIdentifierDesc : Description;
     schemeUriDesc : Description;
     metadataIdentifierSchemeDesc : Description;
-    metadaIdentifierValues : EnumValues;
+    metadaIdentifierValues : EnumValues[];
 
     @Input('group')
     public parentForm: FormGroup;
