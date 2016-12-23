@@ -5,7 +5,7 @@
     <div class="col-sm-10 col-md-10">
         <div *ngFor="let radio of radioButton">
             <label class="col-sm-2 col-md-2 radio-label">
-                <input type="radio" name="options{{schemeName}}{{index}}" [checked]="radio === radioButtonSelected"
+                <input type="radio" name="options{{schemeName + index}}" [checked]="radio === radioButtonSelected"
                        (click)="changeType(radio)">
                 {{radio}}
             </label>
@@ -14,10 +14,10 @@
 </div>
 
 <div *ngIf="radioButtonSelected==='Person'">
-    <div [formGroup]="myFormPerson">
+    <div [formGroup]="parentForm">
         <div class="form-group" formArrayName="personNames">
             <label class="col-sm-2 col-md-2 control-label">{{personLabel}} Name</label>
-            <div *ngFor="let address of myFormPerson.controls.personNames.controls; let i=index">
+            <div *ngFor="let address of parentForm.controls.personNames.controls; let i=index">
                 <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
                 <div class="form-group" formGroupName="{{i}}">
                     <div class="col-sm-6 col-md-6">
@@ -41,11 +41,12 @@
 </div>
 
 <div *ngIf="radioButtonSelected==='Identifier'">
-    <div [formGroup]="myFormIdentifier">
+    <div [formGroup]="parentForm">
         <div formArrayName="personIdentifiers">
-            <div *ngFor="let address of myFormIdentifier.controls.personIdentifiers.controls; let i=index" class="form-group">
+            <div *ngFor="let address of parentForm.controls.personIdentifiers.controls; let i=index" class="form-group">
                 <div formGroupName="{{i}}">
                     <identifier-common [group]="address" [control-name]="schemeName"
+                                       [scheme-name]="'personIdentifierSchemeName'"
                                        [scheme-values]="personEnum" [scheme-desc]="personDesc" [label]="personLabel + ' Identifier'"
                                        [index]="i"></identifier-common>
                     <a class="remove-element col-sm-1 col-md-1" (click)="deletePerson('Identifier',i)"><i
@@ -54,7 +55,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label *ngIf="myFormIdentifier.controls.personIdentifiers.controls==0" class="col-sm-2 col-md-2 control-label">{{personDesc.label}}</label>
+            <label *ngIf="parentForm.controls.personIdentifiers.controls==0" class="col-sm-2 col-md-2 control-label">{{personDesc.label}}</label>
             <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
                 <a class="add-new-element" (click)="addNew('Identifier')"><i class="fa fa-plus" aria-hidden="true"></i>
                     Add {{radioButtonSelected}}</a>

@@ -1,10 +1,14 @@
 
+/**
+ * Generated at 12/Dec/2016
+ */
+
 export class EnumValues {
     key : string;
     value : string;
 }
-
 export var mimeTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "TEXT_PLAIN", value : "text/plain"},
     {key : "APPLICATION_VND_XMI_XML", value : "application/vnd.xmi+xml"},
     {key : "TEXT_XML", value : "text/xml"},
@@ -54,12 +58,14 @@ export var mimeTypeEnum = [
 ]
 
 export var nameTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "SHORTNAME", value : "shortName"},
     {key : "ALTERNATIVENAME", value : "alternativeName"},
     {key : "TRANSLATEDNAME", value : "translatedName"}
 ]
 
 export var useNLPSpecificEnum = [
+    {key : "", value : "None Selected"},
     {key : "ALIGNMENT", value : "alignment"},
     {key : "ANNOTATION", value : "annotation"},
     {key : "AVATARSYNTHESIS", value : "avatarSynthesis"},
@@ -154,6 +160,7 @@ export var useNLPSpecificEnum = [
 ]
 
 export var scriptIdTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "AFAK", value : "Afaka"},
     {key : "AGHB", value : "Caucasian Albanian"},
     {key : "AHOM", value : "Ahom; Tai Ahom"},
@@ -325,6 +332,7 @@ export var scriptIdTypeEnum = [
 ]
 
 export var linguisticInformationEnum = [
+    {key : "", value : "None Selected"},
     {key : "ACCENTUATION", value : "accentuation"},
     {key : "LEMMA", value : "lemma"},
     {key : "LEMMA_MULTIWORDUNITS", value : "lemma-MultiWordUnits"},
@@ -377,6 +385,7 @@ export var linguisticInformationEnum = [
 ]
 
 export var modalityTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "BODYGESTURE", value : "bodyGesture"},
     {key : "FACIALEXPRESSION", value : "facialExpression"},
     {key : "VOICE", value : "voice"},
@@ -388,22 +397,26 @@ export var modalityTypeEnum = [
 ]
 
 export var evaluationTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "GLASSBOX", value : "glassBox"},
     {key : "BLACKBOX", value : "blackBox"}
 ]
 
 export var foreseenUseEnum = [
+    {key : "", value : "None Selected"},
     {key : "HUMANUSE", value : "humanUse"},
     {key : "NLPAPPLICATIONS", value : "nlpApplications"}
 ]
 
 export var sexEnum = [
+    {key : "", value : "None Selected"},
     {key : "MALE", value : "male"},
     {key : "FEMALE", value : "female"},
     {key : "UNKNOWN", value : "unknown"}
 ]
 
 export var publicationIdentifierSchemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "DOI", value : "doi"},
     {key : "HDL", value : "hdl"},
     {key : "ARK", value : "ark"},
@@ -428,12 +441,14 @@ export var publicationIdentifierSchemeNameEnum = [
 ]
 
 export var userTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "ACADEMIC", value : "academic"},
     {key : "COMMERCIAL", value : "commercial"},
     {key : "MEMBERSOFGROUP", value : "membersOfGroup"}
 ]
 
 export var compatibleLexiconTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "WORDNET", value : "wordnet"},
     {key : "WORDLIST", value : "wordlist"},
     {key : "MORPHOLOGICALLEXICON", value : "morphologicalLexicon"},
@@ -441,6 +456,7 @@ export var compatibleLexiconTypeEnum = [
 ]
 
 export var repositoryIdentifierSchemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "DOI", value : "doi"},
     {key : "HDL", value : "hdl"},
     {key : "URL", value : "url"},
@@ -452,12 +468,14 @@ export var repositoryIdentifierSchemeNameEnum = [
 ]
 
 export var documentTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "BIBLIOGRAPHICRECORDONLY", value : "bibliographicRecordOnly"},
     {key : "ABSTRACT", value : "abstract"},
     {key : "FULLTEXT", value : "fullText"}
 ]
 
 export var resourceIdentifierSchemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "DOI", value : "doi"},
     {key : "ISLRN", value : "islrn"},
     {key : "HDL", value : "hdl"},
@@ -483,17 +501,20 @@ export var resourceIdentifierSchemeNameEnum = [
 ]
 
 export var originalDataProviderTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "REPOSITORY", value : "repository"},
     {key : "JOURNAL", value : "journal"},
     {key : "PUBLISHER", value : "publisher"}
 ]
 
 export var languageDescriptionTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "GRAMMAR", value : "grammar"},
     {key : "OTHER", value : "other"}
 ]
 
 export var extratextualInformationEnum = [
+    {key : "", value : "None Selected"},
     {key : "IMAGES", value : "images"},
     {key : "VIDEOS", value : "videos"},
     {key : "SOUNDRECORDINGS", value : "soundRecordings"},
@@ -501,6 +522,7 @@ export var extratextualInformationEnum = [
 ]
 
 export var fundingTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "OTHER", value : "other"},
     {key : "OWNFUNDS", value : "ownFunds"},
     {key : "NATIONALFUNDS", value : "nationalFunds"},
@@ -508,6 +530,7 @@ export var fundingTypeEnum = [
 ]
 
 export var processingResourceTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "CORPUS", value : "corpus"},
     {key : "DOCUMENT", value : "document"},
     {key : "USERINPUTTEXT", value : "userInputText"},
@@ -516,17 +539,20 @@ export var processingResourceTypeEnum = [
 ]
 
 export var languageVarietyTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "DIALECT", value : "dialect"},
     {key : "JARGON", value : "jargon"},
     {key : "OTHER", value : "other"}
 ]
 
 export var validationExtentEnum = [
+    {key : "", value : "None Selected"},
     {key : "FULL", value : "full"},
     {key : "PARTIAL", value : "partial"}
 ]
 
 export var dataFormatSpecificEnum = [
+    {key : "", value : "None Selected"},
     {key : "ACLANTHOLOGY", value : "aclAnthology"},
     {key : "ALVISENRICHEDDOCUMENT", value : "alvisEnrichedDocument"},
     {key : "BNC", value : "bnc"},
@@ -566,6 +592,7 @@ export var dataFormatSpecificEnum = [
 ]
 
 export var mediaTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "TEXT", value : "text"},
     {key : "AUDIO", value : "audio"},
     {key : "VIDEO", value : "video"},
@@ -574,6 +601,7 @@ export var mediaTypeEnum = [
 ]
 
 export var metadataIdentifierSchemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "HDL", value : "hdl"},
     {key : "PURL", value : "purl"},
     {key : "URL", value : "url"},
@@ -582,6 +610,7 @@ export var metadataIdentifierSchemeNameEnum = [
 ]
 
 export var versionEnum = [
+    {key : "", value : "None Selected"},
     {key : "V1_0_0", value : "1.0.0"},
     {key : "V2_0", value : "2.0"},
     {key : "V3_0", value : "3.0"},
@@ -589,12 +618,14 @@ export var versionEnum = [
 ]
 
 export var contributorTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "EDITOR", value : "editor"},
     {key : "TRANSLATOR", value : "translator"},
     {key : "OTHER", value : "other"}
 ]
 
 export var processModeEnum = [
+    {key : "", value : "None Selected"},
     {key : "MANUAL", value : "manual"},
     {key : "AUTOMATIC", value : "automatic"},
     {key : "MIXED", value : "mixed"},
@@ -602,11 +633,13 @@ export var processModeEnum = [
 ]
 
 export var evaluationMeasureEnum = [
+    {key : "", value : "None Selected"},
     {key : "HUMAN", value : "human"},
     {key : "AUTOMATIC", value : "automatic"}
 ]
 
 export var relationTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "ISPARTOF", value : "isPartOf"},
     {key : "ISPARTWITH", value : "isPartWith"},
     {key : "HASPART", value : "hasPart"},
@@ -635,12 +668,14 @@ export var relationTypeEnum = [
 ]
 
 export var webServiceTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "SOAP", value : "SOAP"},
     {key : "REST", value : "REST"},
     {key : "OTHER", value : "other"}
 ]
 
 export var encodingLevelEnum = [
+    {key : "", value : "None Selected"},
     {key : "PHONETICS", value : "phonetics"},
     {key : "PHONOLOGY", value : "phonology"},
     {key : "SEMANTICS", value : "semantics"},
@@ -651,6 +686,7 @@ export var encodingLevelEnum = [
 ]
 
 export var languageIdTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "BG", value : "Bulgarian"},
     {key : "CS", value : "Czech"},
     {key : "HR", value : "Croatian"},
@@ -8650,6 +8686,7 @@ export var languageIdTypeEnum = [
 ]
 
 export var componentDistributionMediumEnum = [
+    {key : "", value : "None Selected"},
     {key : "WEBSERVICE", value : "webService"},
     {key : "SOURCECODE", value : "sourceCode"},
     {key : "EXECUTABLECODE", value : "executableCode"},
@@ -8657,6 +8694,7 @@ export var componentDistributionMediumEnum = [
 ]
 
 export var annotationLevelEnum = [
+    {key : "", value : "None Selected"},
     {key : "ALIGNMENT", value : "alignment"},
     {key : "DISCOURSEANNOTATION", value : "discourseAnnotation"},
     {key : "DISCOURSEANNOTATION_ARGUMENTATION", value : "discourseAnnotation-argumentation"},
@@ -8719,6 +8757,7 @@ export var annotationLevelEnum = [
 ]
 
 export var multilingualityTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "PARALLEL", value : "parallel"},
     {key : "COMPARABLE", value : "comparable"},
     {key : "MULTILINGUALSINGLETEXT", value : "multilingualSingleText"},
@@ -8727,6 +8766,7 @@ export var multilingualityTypeEnum = [
 ]
 
 export var characterEncodingEnum = [
+    {key : "", value : "None Selected"},
     {key : "US_ASCII", value : "US-ASCII"},
     {key : "WINDOWS_1250", value : "windows-1250"},
     {key : "WINDOWS_1251", value : "windows-1251"},
@@ -8870,12 +8910,14 @@ export var characterEncodingEnum = [
 ]
 
 export var lingualityTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "MONOLINGUAL", value : "monolingual"},
     {key : "BILINGUAL", value : "bilingual"},
     {key : "MULTILINGUAL", value : "multilingual"}
 ]
 
 export var conformanceToStandardsBestPracticesEnum = [
+    {key : "", value : "None Selected"},
     {key : "AGROVOC", value : "AgroVoc"},
     {key : "ALVIS", value : "ALVIS"},
     {key : "ARGO", value : "ARGO"},
@@ -8942,6 +8984,7 @@ export var conformanceToStandardsBestPracticesEnum = [
 ]
 
 export var regionIdTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "AA", value : "Private use"},
     {key : "AC", value : "Ascension Island"},
     {key : "AD", value : "Andorra"},
@@ -9235,6 +9278,7 @@ export var regionIdTypeEnum = [
 ]
 
 export var journalIdentifierSchemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "DOI", value : "doi"},
     {key : "HDL", value : "hdl"},
     {key : "ISSN", value : "issn"},
@@ -9242,6 +9286,7 @@ export var journalIdentifierSchemeNameEnum = [
 ]
 
 export var rightsStmtNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "OPENACCESS", value : "openAccess"},
     {key : "CLOSEDACCESS", value : "closedAccess"},
     {key : "EMBARGOEDACCESS", value : "embargoedAccess"},
@@ -9249,6 +9294,7 @@ export var rightsStmtNameEnum = [
 ]
 
 export var grammaticalPhenomenaCoverageEnum = [
+    {key : "", value : "None Selected"},
     {key : "CLAUSESTRUCTURE", value : "clauseStructure"},
     {key : "PPATTACHMENT", value : "ppAttachment"},
     {key : "NPSTRUCTURE", value : "npStructure"},
@@ -9258,6 +9304,7 @@ export var grammaticalPhenomenaCoverageEnum = [
 ]
 
 export var frameworkEnum = [
+    {key : "", value : "None Selected"},
     {key : "UIMA", value : "UIMA"},
     {key : "GATE", value : "GATE"},
     {key : "ALVISNLP", value : "AlvisNLP"},
@@ -9265,11 +9312,13 @@ export var frameworkEnum = [
 ]
 
 export var actualUseEnum = [
+    {key : "", value : "None Selected"},
     {key : "HUMANUSE", value : "humanUse"},
     {key : "NLPAPPLICATIONS", value : "nlpApplications"}
 ]
 
 export var lexicalConceptualResourceTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "WORDLIST", value : "wordList"},
     {key : "COMPUTATIONALLEXICON", value : "computationalLexicon"},
     {key : "ONTOLOGY", value : "ontology"},
@@ -9286,6 +9335,7 @@ export var lexicalConceptualResourceTypeEnum = [
 ]
 
 export var licenceEnum = [
+    {key : "", value : "None Selected"},
     {key : "CC_BY", value : "CC-BY"},
     {key : "CC_BY_NC", value : "CC-BY-NC"},
     {key : "CC_BY_NC_ND", value : "CC-BY-NC-ND"},
@@ -9328,6 +9378,7 @@ export var licenceEnum = [
 ]
 
 export var distributionMediumEnum = [
+    {key : "", value : "None Selected"},
     {key : "WEBEXECUTABLE", value : "webExecutable"},
     {key : "PAPERCOPY", value : "paperCopy"},
     {key : "HARDDISK", value : "hardDisk"},
@@ -9340,12 +9391,14 @@ export var distributionMediumEnum = [
 ]
 
 export var organizationIdentifierSchemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "ISNI", value : "isni"},
     {key : "FUNDREF", value : "fundref"},
     {key : "OTHER", value : "other"}
 ]
 
 export var conditionsOfUseEnum = [
+    {key : "", value : "None Selected"},
     {key : "ATTRIBUTION", value : "attribution"},
     {key : "NONCOMMERCIALUSE", value : "nonCommercialUse"},
     {key : "COMMERCIALUSE", value : "commercialUse"},
@@ -9371,6 +9424,7 @@ export var conditionsOfUseEnum = [
 ]
 
 export var titleTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "ALTERNATIVETITLE", value : "alternativeTitle"},
     {key : "SUBTITLE", value : "subtitle"},
     {key : "TRANSLATEDTITLE", value : "translatedTitle"},
@@ -9378,6 +9432,7 @@ export var titleTypeEnum = [
 ]
 
 export var classificationSchemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "DDC", value : "DDC"},
     {key : "UDC", value : "UDC"},
     {key : "EUROVOC", value : "EuroVoc"},
@@ -9393,6 +9448,7 @@ export var classificationSchemeNameEnum = [
 ]
 
 export var extraTextualInformationUnitEnum = [
+    {key : "", value : "None Selected"},
     {key : "WORD", value : "word"},
     {key : "LEMMA", value : "lemma"},
     {key : "SEMANTICS", value : "semantics"},
@@ -9403,6 +9459,7 @@ export var extraTextualInformationUnitEnum = [
 ]
 
 export var evaluationLevelEnum = [
+    {key : "", value : "None Selected"},
     {key : "TECHNOLOGICAL", value : "technological"},
     {key : "USAGE", value : "usage"},
     {key : "IMPACT", value : "impact"},
@@ -9410,11 +9467,13 @@ export var evaluationLevelEnum = [
 ]
 
 export var evaluationCriterionEnum = [
+    {key : "", value : "None Selected"},
     {key : "EXTRINSIC", value : "extrinsic"},
     {key : "INTRINSIC", value : "intrinsic"}
 ]
 
 export var publicationTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "ARTICLE", value : "article"},
     {key : "BACHELORTHESIS", value : "bachelorThesis"},
     {key : "MASTERTHESIS", value : "masterThesis"},
@@ -9440,6 +9499,7 @@ export var publicationTypeEnum = [
 ]
 
 export var taskEnum = [
+    {key : "", value : "None Selected"},
     {key : "ANAPHORARESOLUTION", value : "anaphoraResolution"},
     {key : "CHUNKING", value : "chunking"},
     {key : "PARSING", value : "parsing"},
@@ -9452,6 +9512,7 @@ export var taskEnum = [
 ]
 
 export var requiresHardwareEnum = [
+    {key : "", value : "None Selected"},
     {key : "GRAPHICCARD", value : "graphicCard"},
     {key : "MICROPHONE", value : "microphone"},
     {key : "OCRSYSTEM", value : "ocrSystem"},
@@ -9461,6 +9522,7 @@ export var requiresHardwareEnum = [
 ]
 
 export var sizeUnitEnum = [
+    {key : "", value : "None Selected"},
     {key : "TERMS", value : "terms"},
     {key : "ENTRIES", value : "entries"},
     {key : "TURNS", value : "turns"},
@@ -9514,10 +9576,12 @@ export var sizeUnitEnum = [
 ]
 
 export var resourceTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "COMPONENT", value : "component"}
 ]
 
 export var componentTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "ACCESSCOMPONENT", value : "accessComponent"},
     {key : "READER", value : "reader"},
     {key : "WRITER", value : "writer"},
@@ -9588,6 +9652,7 @@ export var componentTypeEnum = [
 ]
 
 export var personIdentifierSchemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "ORCID", value : "orcid"},
     {key : "ISNI", value : "isni"},
     {key : "RESEARCHERID", value : "researcherId"},
@@ -9596,12 +9661,14 @@ export var personIdentifierSchemeNameEnum = [
 ]
 
 export var schemeNameEnum = [
+    {key : "", value : "None Selected"},
     {key : "JATS", value : "jats"},
     {key : "TEIP5", value : "teiP5"},
     {key : "OTHER", value : "other"}
 ]
 
 export var variantIdTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "V1606NICT", value : "Late Middle French (to 1606)"},
     {key : "ALALC97", value : "ALA-LC Romanization, 1997 edition"},
     {key : "FONIPA", value : "International Phonetic Alphabet"},
@@ -9671,6 +9738,7 @@ export var variantIdTypeEnum = [
 ]
 
 export var relatedLexiconTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "INCLUDED", value : "included"},
     {key : "ATTACHED", value : "attached"},
     {key : "COMPATIBLE", value : "compatible"},
@@ -9678,11 +9746,13 @@ export var relatedLexiconTypeEnum = [
 ]
 
 export var validationTypeEnum = [
+    {key : "", value : "None Selected"},
     {key : "FORMAL", value : "formal"},
     {key : "CONTENT", value : "content"}
 ]
 
 export var operatingSystemEnum = [
+    {key : "", value : "None Selected"},
     {key : "OS_INDEPENDENT", value : "os-independent"},
     {key : "WINDOWS", value : "windows"},
     {key : "LINUX", value : "linux"},

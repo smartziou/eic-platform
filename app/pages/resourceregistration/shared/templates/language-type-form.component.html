@@ -13,29 +13,24 @@
             <input type="text" class="form-control" formControlName="languageId" placeholder="Language id"
                    [typeahead]="languageIdEnum"
                    [typeaheadOptionField]="'value'">
-            <!--<select name="role" class="form-control" formControlName="{{name}}SchemeName">-->
-                <!--<option *ngFor="let value of schemeUriValues | values" [value]="value">-->
-                    <!--{{schemeUriValues[value]}}-->
-                <!--</option>-->
-            <!--</select>-->
         </div>
         <div class="col-sm-2 col-md-2">
             <select name="role" class="form-control" formControlName="scriptId">
-                <option *ngFor="let value of scriptIdEnum" [value]="value.key">
+                <option *ngFor="let value of scriptIdEnum" [value]="value.key" [selected]="value.key == ''">
                     {{value.value}}
                 </option>
             </select>
         </div>
         <div class="col-sm-2 col-md-2">
             <select name="role" class="form-control" formControlName="regionId">
-                <option *ngFor="let value of regionIdEnum" [value]="value.key">
+                <option *ngFor="let value of regionIdEnum" [value]="value.key" [selected]="value.key == ''">
                     {{value.value}}
                 </option>
             </select>
         </div>
         <div class="col-sm-3 col-md-3">
             <select name="role" class="form-control" formControlName="variantId">
-                <option *ngFor="let value of variantIdEnum" [value]="value.key">
+                <option *ngFor="let value of variantIdEnum" [value]="value.key" [selected]="value.key == ''">
                     {{value.value}}
                 </option>
             </select>

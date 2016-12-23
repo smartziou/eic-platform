@@ -19,13 +19,10 @@ export class MetadataIdentifierFormControl implements OnInit{
     metadataIdentifierDesc : Description;
     schemeUriDesc : Description;
     metadataIdentifierSchemeDesc : Description;
-    metadaIdentifierValues : EnumValues[];
+    metadataIdentifierValues : EnumValues[];
 
     @Input('group')
     public parentForm: FormGroup;
-
-    // public myForm : FormGroup;
-    private controlName = "metadataIdentifier";
 
     public get formGroup() {
         return this.parentForm;
@@ -36,17 +33,13 @@ export class MetadataIdentifierFormControl implements OnInit{
     }
 
     constructor(private _fb: FormBuilder) {
-        this.controlName = "metadataIdentifier";
         this.metadataIdentifierDesc = metadataIdentifierTypeDesc;
         this.metadataIdentifierDesc.label = "Identifier";
         this.schemeUriDesc = {desc : "Any URI", label : "URI"};
         this.metadataIdentifierSchemeDesc = {desc : "Enum" , label : "One of the options"};
-        this.metadaIdentifierValues = metadataIdentifierSchemeNameEnum;
+        this.metadataIdentifierValues = metadataIdentifierSchemeNameEnum;
     }
 
     ngOnInit() {
-        // this.myForm = this._fb.group({}
-        // );
-        // this.parentForm.addControl('metadataIdentifier',this.myForm);
     }
 }

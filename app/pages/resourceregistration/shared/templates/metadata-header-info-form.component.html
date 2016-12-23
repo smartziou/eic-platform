@@ -1,7 +1,7 @@
     <accordion-group heading="Metadata Header Info"
                      [isOpen]="true" [panelClass]="myForm.valid ? 'panel-success' : 'panel-danger'">
         <metadata-identifier-form [group]="myForm"></metadata-identifier-form>
-        <related-persons [group]="myForm"></related-persons>
+        <related-persons [group]="myForm" [name]="'metadataCreators'"></related-persons>
         <languages-types [group]="myForm" [name]="'metadataLanguages'"></languages-types>
         <div [formGroup]="myForm">
             <div class="form-group">
