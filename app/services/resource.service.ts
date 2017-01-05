@@ -14,8 +14,8 @@ export class ResourceService {
 
     constructor (private http: Http) {}
 
-    private _searchUrl = 'http://83.212.101.141:8080/omtd-registry/request/';
-    private _resourcesUrl = 'http://83.212.101.141:8080/omtd-registry/request/';
+    private _searchUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
+    private _resourcesUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
     // private _searchUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     // private _resourcesUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     
