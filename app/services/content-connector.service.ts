@@ -12,7 +12,7 @@ export class ContentConnectorService {
 
     constructor (private http: Http) {}
 
-    private _contentConnectorSearchUrl = 'http://83.212.101.141:8888/content-connector-service/content/browse/';
+    private _contentConnectorSearchUrl = 'http://83.212.101.85:8888/content-connector-service/content/browse/';
 
     search(urlParameters: URLParameter[]) {
 

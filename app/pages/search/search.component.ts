@@ -39,6 +39,8 @@ export class SearchComponent {
 
     private foundResults = true;
 
+    private advanced: boolean = false;
+
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private resourceService: ResourceService) {
         this.searchForm = fb.group({
@@ -131,6 +133,9 @@ export class SearchComponent {
         for (let urlParameter of this.urlParameters) {
             if(urlParameter.key === 'query') {
                 this.searchForm.get('query').setValue(urlParameter.values[0]);
+            } else if(urlParameter.key === 'advanced') {
+                //TODO advanced
+                this.advanced = urlParameter.values[0];
             } else {
                 for(let facet of this.searchResults.facets) {
                     if(facet.field === urlParameter.key) {
@@ -159,6 +164,47 @@ export class SearchComponent {
             this.isLastPageDisabled = true;
             this.isNextPageDisabled = true;
         }
+    }
+
+    advancedView() {
+        
+        this.advanced = true;
+        
+        var foundAdvancedParameter = false;
+        for (let urlParameter of this.urlParameters) {
+            if(urlParameter.key === 'advanced') {
+                foundAdvancedParameter = true;
+                if(urlParameter.values[0] === 'false') {
+                    urlParameter.values.splice(0,urlParameter.values.length);
+                    urlParameter.values.push('true')
+                }
+            }
+        }
+        
+        if(!foundAdvancedParameter) {
+            var newParameter: URLParameter = {
+                key: 'advanced',
+                values: ['true']
+            };
+            this.urlParameters.push(newParameter);
+        }
+        
+        this.navigateUsingParameters();
+    }
+
+    simpleView() {
+
+        this.advanced = false;
+
+        var categoryIndex = 0;
+        for (let urlParameter of this.urlParameters) {
+            if(urlParameter.key === 'advanced') {
+                this.urlParameters.splice(categoryIndex, 1);
+            }
+            categoryIndex ++;
+        }
+
+        this.navigateUsingParameters();
     }
 
     ngOnDestroy() {

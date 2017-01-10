@@ -7,6 +7,13 @@
                     </div>
                     <article class="uk-article">
 
+                        <div class="" style="margin-bottom: 50px">
+                            <div class="uk-align-right">
+                                <button *ngIf='!advanced' class="uk-button-blue" style="width: 150px" (click)="advancedView()">Advanced view</button>
+                                <button *ngIf='advanced' class="uk-button-blue" style="width: 150px" (click)="simpleView()">Simple view</button>
+                            </div>
+                        </div>
+
                         <div class="uk-text-center">
                             <form [formGroup]="searchForm" class="searchForm uk-form" (ngSubmit)="onSubmit(searchForm.value)">
                                 <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
@@ -26,7 +33,8 @@
                         <div class="uk-grid uk-margin-large-top">
                             <aside class="tm-sidebar-a uk-width-medium-1-4" style="min-height: 1217px;">
 
-                                <div *ngIf="searchResults" class="uk-panel uk-panel-box">
+                                <!--Simple view-->
+                                <div *ngIf="searchResults && !advanced" class="uk-panel uk-panel-box">
 
                                     <template ngFor let-facet [ngForOf]="searchResults.facets">
                                         <template [ngIf]="facet.field=='resourceType'">
@@ -50,7 +58,7 @@
 
                                 </div>
 
-                                <div *ngIf="searchResults" class="uk-panel uk-panel-box refines">
+                                <div *ngIf="searchResults && !advanced" class="uk-panel uk-panel-box refines">
 
                                     <h3 class="uk-panel-title">Limit your search</h3>
 
@@ -61,6 +69,50 @@
                                                 <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
                                                 (change)="onSelection($event, facet.field, facetValue.value)"
                                                 [checked]="facetValue.isChecked">
+                                                {{facetValue.value}}
+                                                <span>({{facetValue.count}})</span>
+                                            </div>
+                                        </div>
+                                    </template>
+
+                                </div>
+
+                                <!--Advanced view-->
+                                <div *ngIf="searchResults && advanced" class="uk-panel uk-panel-box uk-panel-box-secondary">
+
+                                    <template ngFor let-facet [ngForOf]="searchResults.facets">
+                                        <template [ngIf]="facet.field=='resourceType'">
+                                            <h3 class="uk-panel-title">Resource Type</h3>
+                                            <p *ngFor="let facetValue of facet.values">
+                                                <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
+                                                       (change)="onSelection($event, facet.field, facetValue.value)"
+                                                       [checked]="facetValue.isChecked">
+                                                {{facetValue.value}}
+                                                <span>({{facetValue.count}})</span>
+                                                <span [ngSwitch]="facetValue.value">
+                                                    <span *ngSwitchCase="'component'"><i class="fa fa-cogs uk-float-right" aria-hidden="true"></i></span>
+                                                    <span *ngSwitchCase="'corpus'"><i class="fa fa-database uk-float-right" aria-hidden="true"></i></span>
+                                                    <span *ngSwitchCase="'languageDescription'"><i class="fa fa-file-o uk-float-right" aria-hidden="true"></i></span>
+                                                    <span *ngSwitchCase="'lexicalConceptualResource'"><i class="fa fa-language uk-float-right" aria-hidden="true"></i></span>
+                                                    <span *ngSwitchDefault><i class="fa fa-language uk-float-right" aria-hidden="true"></i></span>
+                                                </span>
+                                            </p>
+                                        </template>
+                                    </template>
+
+                                </div>
+
+                                <div *ngIf="searchResults && advanced" class="uk-panel uk-panel-box uk-panel-box-secondary refines">
+
+                                    <h3 class="uk-panel-title">Limit your search</h3>
+
+                                    <template ngFor let-facet [ngForOf]="searchResults.facets">
+                                        <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
+                                            <span>{{facet.label}}</span>
+                                            <div class="refineOption" *ngFor="let facetValue of facet.values">
+                                                <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
+                                                       (change)="onSelection($event, facet.field, facetValue.value)"
+                                                       [checked]="facetValue.isChecked">
                                                 {{facetValue.value}}
                                                 <span>({{facetValue.count}})</span>
                                             </div>
