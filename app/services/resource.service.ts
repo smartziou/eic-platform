@@ -16,6 +16,7 @@ export class ResourceService {
 
     private _searchUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
     private _resourcesUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
+    private _uploadUrl = 'http://83.212.101.85:8080/omtd-registry/resources/';
     // private _searchUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     // private _resourcesUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     
@@ -89,7 +90,7 @@ export class ResourceService {
 
         console.log(JSON.stringify(component));
 
-        return this.http.post(this._resourcesUrl, JSON.stringify(component), options)
+        return this.http.post(this._uploadUrl, JSON.stringify(component), options)
             .map(res => <Resource> res.json())
             .catch(this.handleError);
     }
