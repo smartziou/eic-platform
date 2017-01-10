@@ -33,7 +33,10 @@ export class ResourceService {
             if(urlParameter.key === 'query') {
                 searchQuery += 'keyword=' + urlParameter.values[0];
             } else if(urlParameter.key === 'advanced') {
-                advanced = urlParameter.values[0];
+                if(urlParameter.values[0]=='true')
+                    advanced = true;
+                else
+                    advanced = false;
             } else {
                 var valuesCounter = 0;
                 for(let value of urlParameter.values) {
