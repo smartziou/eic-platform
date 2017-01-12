@@ -101,3 +101,22 @@ li, dt, dd {
 .uk-panel-box-blue h6 {
     color: #ffffff;
 }
+
+.uk-button-blue {
+    background-color: #004DB0;
+    color: #ffffff;
+    border-color: transparent;
+    line-height: 30px;
+    min-height: 30px;
+    vertical-align: middle;
+}
+
+.uk-button-blue:hover,
+.uk-button-blue:focus {
+    background-color: #003D8C;
+    color: #ffffff;
+    border-color: transparent;
+    line-height: 30px;
+    min-height: 30px;
+    vertical-align: middle;
+}

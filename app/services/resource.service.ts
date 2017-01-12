@@ -4,22 +4,25 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import {OMTDComponent, OMTDCorpus, Order} from "../domain/openminted-model";
+import { OMTDComponent, OMTDCorpus, Order } from "../domain/openminted-model";
 import { URLParameter } from "../domain/url-parameter";
 import { SearchResults } from "../domain/search-results";
-import {Resource} from "../domain/resource";
+import { Resource } from "../domain/resource";
 
 @Injectable()
 export class ResourceService {
 
     constructor (private http: Http) {}
 
-    private _searchUrl = 'http://83.212.101.141:8080/omtd-registry/request/';
-    private _resourcesUrl = 'http://83.212.101.141:8080/omtd-registry/request/';
+    private _searchUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
+    private _resourcesUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
+    private _uploadUrl = 'http://83.212.101.85:8080/omtd-registry/resources/';
     // private _searchUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     // private _resourcesUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     
     search(urlParameters: URLParameter[]) {
+
+        var advanced:boolean = false;
 
         var searchQuery = '';
         var counter = 0;
@@ -30,7 +33,11 @@ export class ResourceService {
             
             if(urlParameter.key === 'query') {
                 searchQuery += 'keyword=' + urlParameter.values[0];
-                
+            } else if(urlParameter.key === 'advanced') {
+                if(urlParameter.values[0]=='true')
+                    advanced = true;
+                else
+                    advanced = false;
             } else {
                 var valuesCounter = 0;
                 for(let value of urlParameter.values) {
@@ -45,6 +52,12 @@ export class ResourceService {
                 searchQuery += '&';
             
             counter++;
+        }
+
+        if(urlParameters.length==0) {
+            searchQuery += '?advanced=' + advanced;
+        } else {
+            searchQuery += '&advanced=' + advanced;
         }
         
         return this.http.get(this._searchUrl + searchQuery)
@@ -77,7 +90,7 @@ export class ResourceService {
 
         console.log(JSON.stringify(component));
 
-        return this.http.post(this._resourcesUrl, JSON.stringify(component), options)
+        return this.http.post(this._uploadUrl, JSON.stringify(component), options)
             .map(res => <Resource> res.json())
             .catch(this.handleError);
     }
