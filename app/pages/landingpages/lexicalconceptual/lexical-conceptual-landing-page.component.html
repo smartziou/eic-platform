@@ -1,0 +1,118 @@
+<div class="uk-block tm-block-main uk-block-default uk-block-large">
+    <div class="uk-container uk-container-center">
+        <div data-uk-grid-margin="" data-uk-grid-match="" class="tm-middle uk-grid" id="tm-middle">
+            <div class="tm-main uk-width-medium-1-1 uk-row-first">
+                <main class="tm-content" id="tm-content">
+
+                    <div *ngIf="errorMessage" data-uk-alert="" class="uk-alert uk-alert-danger">
+                        <p>{{errorMessage}}</p>
+                    </div>
+
+                    <div *ngIf="lexicalConceptual && !errorMessage">
+                        <!--<div id="system-message-container">-->
+                        <!--</div>-->
+                        <div class="yoo-zoo">
+
+                            <div class="uk-align-medium-right">
+                                <div class="uk-grid-margin uk-row-first">
+                                    <button class="uk-button uk-button-large uk-button-primary" (click)="goBack()">
+                                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button>
+                                </div>
+                            </div>
+
+                            <h2 class="uk-h2" *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.resourceNames
+                            && lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.resourceNames.length>0">
+                                {{lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.resourceNames[0].value}}
+                            </h2>
+
+                            <ul class="uk-subnav uk-subnav-line">
+                                <li *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.resourceShortNames
+                                && lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.resourceShortNames.length>0"
+                                    class="element element-text">
+                                    <strong>{{lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.resourceShortNames[0].value}} </strong> </li>
+                            </ul>
+
+                            <div class="resourceIdentifiers" *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.identifiers
+                            && lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.identifiers.length>0">
+                                <div *ngFor="let identifier of lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.identifiers">
+                                    <a href="{{identifier.value}}" target="_blank">{{identifier.value}}</a>
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <div data-uk-grid-margin="" class="uk-grid">
+
+                                    <div class="uk-width-medium-3-4 uk-row-first">
+
+                                        <div class="uk-panel uk-panel-box resourceGeneralInfo">
+                                            <div class="uk-thumbnail uk-align-medium-right">
+                                                <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
+                                            </div>
+
+                                            <div class="uk-nbfc">
+                                                <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
+                                                <ul class="uk-list" *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.descriptions
+                                                    && lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.descriptions.length>0">
+                                                    <li *ngFor="let description of lexicalConceptual.lexicalConceptualResourceInfo.identificationInfo.descriptions; let isFirst = first;"
+                                                        [class.uk-margin-top]="!isFirst">
+                                                        {{description.value}}
+                                                    </li>
+                                                </ul>
+                                                <div *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.lexicalConceptualResourceType" class="uk-subnav uk-subnav-line lexicalConceptualResourceType">
+                                                    <strong>{{lexicalConceptual.lexicalConceptualResourceInfo.lexicalConceptualResourceType}} </strong>
+                                                </div>
+                                                <version-info *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.versionInfo"
+                                                              [versionInfo]="lexicalConceptual.lexicalConceptualResourceInfo.versionInfo">
+                                                </version-info>
+                                                <resource-documentation-info *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.resourceDocumentationInfo"
+                                                                             [resourceDocumentationInfo]="lexicalConceptual.lexicalConceptualResourceInfo.resourceDocumentationInfo">
+                                                </resource-documentation-info>
+                                            </div>
+
+                                        </div>
+
+                                        <tabset class="infoTabs">
+                                            <tab *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.distributionInfos && lexicalConceptual.lexicalConceptualResourceInfo.distributionInfos.length>0"
+                                                 heading="Distribution" class="infoTab">
+                                                <dataset-distribution-info *ngFor="let distributionInfo of lexicalConceptual.lexicalConceptualResourceInfo.distributionInfos"
+                                                                           [datasetDistributionInfo]="distributionInfo"></dataset-distribution-info>
+                                            </tab>
+                                            <tab *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.validationInfos && lexicalConceptual.lexicalConceptualResourceInfo.validationInfos.length>0"
+                                                 heading="Validation" class="infoTab">
+                                                <validation-info *ngFor="let validationInfo of lexicalConceptual.lexicalConceptualResourceInfo.validationInfos"
+                                                                 [validationInfo]="validationInfo"></validation-info>
+                                            </tab>
+                                            <tab *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.usageInfo"
+                                                 heading="Usage" class="infoTab">
+                                                <usage-info [usageInfo]="lexicalConceptual.lexicalConceptualResourceInfo.usageInfo"></usage-info>
+                                            </tab>
+                                        </tabset>
+
+                                        <!--<h3>Directions</h3><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>-->
+                                    </div>
+
+                                    <div class="uk-width-medium-1-4 resourceSideInfo">
+
+                                        <div *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.contactInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
+                                            <contact-info [contactInfo]="lexicalConceptual.lexicalConceptualResourceInfo.contactInfo"></contact-info>
+                                        </div>
+
+                                        <div *ngIf="lexicalConceptual.lexicalConceptualResourceInfo.resourceCreationInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
+                                            <resource-creation-info [resourceCreationInfo]="lexicalConceptual.lexicalConceptualResourceInfo.resourceCreationInfo"></resource-creation-info>
+                                        </div>
+
+                                        <div *ngIf="lexicalConceptual.metadataHeaderInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
+                                            <metadata-header-info [metadataHeaderInfo]="lexicalConceptual.metadataHeaderInfo"></metadata-header-info>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
