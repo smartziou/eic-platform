@@ -110,6 +110,25 @@ export class SearchForPublicationsComponent {
         this.sub.unsubscribe();
     }
 
+    deselectFacet(category: string, value: string) {
+
+        var categoryIndex = 0;
+        for (let urlParameter of this.urlParameters) {
+            if(urlParameter.key === category) {
+                var valueIndex = urlParameter.values.indexOf(value, 0);
+                if (valueIndex > -1) {
+                    urlParameter.values.splice(valueIndex, 1);
+                    if(urlParameter.values.length == 0) {
+                        this.urlParameters.splice(categoryIndex, 1);
+                    }
+                }
+            }
+            categoryIndex ++;
+        }
+
+        this.navigateUsingParameters();
+    }
+
     onSubmit(searchValue: SearchQuery) {
 
         var foundQuery = false;
