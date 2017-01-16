@@ -3,13 +3,12 @@
  */
 import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
-import {MetadataHeaderInfo, OMTDComponent, Order} from "../../../domain/openminted-model";
-import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form.component";
+import {MetadataHeaderInfo, OMTDComponent, Order, OMTDCorpus} from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
 
 @Component({
     selector: 'corpus-registration-form',
-    templateUrl: 'app/pages/resourceregistration/component/component-registration-form.component.html',
+    templateUrl: 'app/pages/resourceregistration/corpus/corpus-registration-form.component.html',
 })
 
 export class CorpusRegistrationFormComponent implements OnInit {
@@ -25,14 +24,14 @@ export class CorpusRegistrationFormComponent implements OnInit {
     ngOnInit() {
         this.myForm = this._fb.group({});
         var self = this;
-        this.resourceService.getComponent("component_test2").subscribe(res => {
+        this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
             console.log(res);
-            var x : OMTDComponent = res;
-            this.myForm.patchValue({metadataHeaderInfo : x.metadataHeaderInfo || {}});
+            var x : OMTDCorpus = res;
+            this.myForm.patchValue(x);
             //setTimeout(this.myForm.patchValue,1000,{metadataHeaderInfo : x.metadataHeaderInfo || {}})
-            this.resourceService.getComponent("component_test2").subscribe(res => {
-                var x: OMTDComponent = res;
-                this.myForm.patchValue({metadataHeaderInfo: x.metadataHeaderInfo || {}});
+            this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
+                var x: OMTDCorpus = res;
+                this.myForm.patchValue(x);
             });
         });
 

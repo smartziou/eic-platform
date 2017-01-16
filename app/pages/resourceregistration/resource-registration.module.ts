@@ -13,6 +13,7 @@ import {RelatedPersonsForm, RelatedPersonForm} from "./shared/related-persons-fo
 import {LanguageTypeForm, LanguagesTypeForm} from "./shared/language-type-form.component";
 import {IdentifierFormControl} from "./shared/identifier-common-form.component";
 import {ResourceService} from "../../services/resource.service";
+import {DatasetDistributionInfoFormControl} from "./shared/dataset-distribution-info-form.component";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {ResourceService} from "../../services/resource.service";
         RelatedPersonForm,
         LanguageTypeForm,
         LanguagesTypeForm,
-        IdentifierFormControl
+        IdentifierFormControl,
+        DatasetDistributionInfoFormControl
     ],
     providers: [
         ResourceService
@@ -44,7 +46,8 @@ import {ResourceService} from "../../services/resource.service";
         RelatedPersonForm,
         LanguageTypeForm,
         LanguagesTypeForm,
-        IdentifierFormControl
+        IdentifierFormControl,
+        DatasetDistributionInfoFormControl
     ]
 })
 
