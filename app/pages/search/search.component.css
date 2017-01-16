@@ -60,3 +60,16 @@
 .resourceTypeIcon a {
     color: #bbbbbb;
 }
+
+.resourceType {
+    font-size: 13px;
+}
+
+.resourceTypeCount {
+    font-weight: 300;
+    color: #bbbbbb;
+}
+
+.resourceTypeIcon {
+    margin-top: 6px;
+}
