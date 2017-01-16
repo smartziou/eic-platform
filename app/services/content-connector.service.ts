@@ -40,7 +40,11 @@ export class ContentConnectorService {
                 paramsString += ']';
             }
 
+            paramsString += ",";
+
         }
+
+        paramsString = paramsString.substr(0, paramsString.length-1);
 
         paramsString += '}';
 
