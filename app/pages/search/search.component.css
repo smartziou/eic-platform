@@ -73,3 +73,11 @@
 .resourceTypeIcon {
     margin-top: 6px;
 }
+
+.searchBoxContainer {
+    background-image: url("http://www.openminted.eu/wp-content/uploads/2016/01/lamps.jpg");
+}
+
+input.searchTextBox, input.searchTextBox:focus, input.searchTextBox:active  {
+    background: #fff none repeat scroll 0 0;
+}

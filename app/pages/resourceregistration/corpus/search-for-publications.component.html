@@ -1,3 +1,31 @@
+<div class="uk-block tm-block-main uk-block-default uk-block-large searchBoxContainer">
+    <div class="uk-container uk-container-center">
+        <div data-uk-grid-margin="" data-uk-grid-match="" class="tm-middle uk-grid">
+            <div class="tm-main uk-width-medium-1-1 uk-row-first">
+                <main class="tm-content">
+                    <article class="uk-article uk-width-medium-3-4 uk-align-center">
+
+                        <div class="uk-text-center">
+                            <form [formGroup]="publicationsSearchForm" class="searchForm uk-form" (ngSubmit)="onSubmit(publicationsSearchForm.value)">
+                                <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
+                                    <div class="uk-width-medium-9-10">
+                                        <input type="text" class="uk-width-1-1 form-control searchTextBox" placeholder="Search" formControlName="query"
+                                               style="padding: 6px 20px">
+                                    </div>
+                                    <div class="searchButton uk-width-medium-1-10">
+                                        <button class="uk-button uk-button-large uk-button-primary uk-align-right">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="uk-block tm-block-main uk-block-default uk-block-large">
     <div class="uk-container uk-container-center">
         <div data-uk-grid-margin="" data-uk-grid-match="" class="tm-middle uk-grid" id="tm-middle">
@@ -7,21 +35,21 @@
                     </div>
                     <article class="uk-article">
 
-                        <div class="uk-text-center">
-                            <form [formGroup]="publicationsSearchForm" class="searchForm uk-form" (ngSubmit)="onSubmit(publicationsSearchForm.value)">
-                                <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
-                                    <div class="" style="display: inline-block; width: 95%">
-                                        <input type="text" class="uk-width-1-1" placeholder="Search" formControlName="query"
-                                               style="padding: 6px 20px">
-                                    </div>
-                                    <div class="searchButton" style="display: inline-block; width: 5%">
-                                        <button class="uk-button uk-button-large uk-button-primary">
-                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <!--<div class="uk-text-center">-->
+                            <!--<form [formGroup]="publicationsSearchForm" class="searchForm uk-form" (ngSubmit)="onSubmit(publicationsSearchForm.value)">-->
+                                <!--<div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">-->
+                                    <!--<div class="" style="display: inline-block; width: 95%">-->
+                                        <!--<input type="text" class="uk-width-1-1" placeholder="Search" formControlName="query"-->
+                                               <!--style="padding: 6px 20px">-->
+                                    <!--</div>-->
+                                    <!--<div class="searchButton" style="display: inline-block; width: 5%">-->
+                                        <!--<button class="uk-button uk-button-large uk-button-primary">-->
+                                            <!--<i class="fa fa-search" aria-hidden="true"></i>-->
+                                        <!--</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</form>-->
+                        <!--</div>-->
 
                         <div class="uk-grid uk-margin-large-top">
                             <aside class="tm-sidebar-a uk-width-medium-1-4" style="min-height: 1217px;">
