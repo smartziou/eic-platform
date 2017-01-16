@@ -13,43 +13,43 @@
     </div>
 </div>
 
-<div *ngIf="radioButtonSelected==='Person'">
-    <div [formGroup]="parentForm">
+<div *ngIf="radioButtonSelected==='personNames'">
+    <div [formGroup]="parentForm" >
         <div class="form-group" formArrayName="personNames">
             <label class="col-sm-2 col-md-2 control-label">{{personLabel}} Name</label>
             <div *ngFor="let address of parentForm.controls.personNames.controls; let i=index">
                 <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
-                <div class="form-group" formGroupName="{{i}}">
+                <div class="form-group" formGroupName="{{i}}" [ngClass]="{'has-error':!address.valid}">
                     <div class="col-sm-6 col-md-6">
                         <input type="text" class="form-control" formControlName="value" placeholder="Name">
                     </div>
                     <div class="col-sm-2 col-md-2">
                         <input type="text" class="form-control" formControlName="lang" placeholder="Language">
                     </div>
-                    <a class="remove-element col-sm-1 col-md-1" (click)="deletePerson('Person',i)"><i
+                    <a class="remove-element col-sm-1 col-md-1" (click)="deletePerson('personNames',i)"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <a class="add-new-element" (click)="addNew('Person')"><i class="fa fa-plus" aria-hidden="true"></i> Add
+                <a class="add-new-element" (click)="addNew('personNames')"><i class="fa fa-plus" aria-hidden="true"></i> Add
                     Name</a>
             </div>
         </div>
     </div>
 </div>
 
-<div *ngIf="radioButtonSelected==='Identifier'">
+<div *ngIf="radioButtonSelected==='personIdentifiers'">
     <div [formGroup]="parentForm">
         <div formArrayName="personIdentifiers">
             <div *ngFor="let address of parentForm.controls.personIdentifiers.controls; let i=index" class="form-group">
-                <div formGroupName="{{i}}">
+                <div formGroupName="{{i}}" [ngClass]="{'has-error':!address.valid}">
                     <identifier-common [group]="address" [control-name]="schemeName"
                                        [scheme-name]="'personIdentifierSchemeName'"
                                        [scheme-values]="personEnum" [scheme-desc]="personDesc" [label]="personLabel + ' Identifier'"
                                        [index]="i"></identifier-common>
-                    <a class="remove-element col-sm-1 col-md-1" (click)="deletePerson('Identifier',i)"><i
+                    <a class="remove-element col-sm-1 col-md-1" (click)="deletePerson('personIdentifiers',i)"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
             </div>
@@ -57,7 +57,7 @@
         <div class="form-group">
             <label *ngIf="parentForm.controls.personIdentifiers.controls==0" class="col-sm-2 col-md-2 control-label">{{personDesc.label}}</label>
             <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <a class="add-new-element" (click)="addNew('Identifier')"><i class="fa fa-plus" aria-hidden="true"></i>
+                <a class="add-new-element" (click)="addNew('personIdentifiers')"><i class="fa fa-plus" aria-hidden="true"></i>
                     Add {{radioButtonSelected}}</a>
             </div>
         </div>

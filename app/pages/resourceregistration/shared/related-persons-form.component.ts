@@ -4,7 +4,7 @@
  */
 
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, FormArray, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, FormArray, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 import {Description, relatedPersonTypeDesc, personIdentifierDesc, myStringDesc} from "./omtd.description";
 import {EnumValues, personIdentifierSchemeNameEnum} from "./omtd.enum";
 import {IdentifierFormControl} from "./identifier-common-form.component";
@@ -65,8 +65,8 @@ export class RelatedPersonsForm implements OnInit{
 
         var self = this;
         this.formArray.patchValue = (value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
-            for(var i = 0; i < Object.keys(value).length; i++ ) {
-                self.add_new();
+            for(var i = self.formArray.length; i < Object.keys(value).length; i++ ) {
+                    self.add_new();
             }
             Object.keys(value).forEach(name => {
                 if (self.formArray.controls[name]) {
@@ -104,7 +104,7 @@ export class RelatedPersonForm implements OnInit{
     private relatedPerson : Description;
     private relatedPersonIdentifier : Description;
 
-    private radioButton : string[] = ["Person","Identifier"];
+    private radioButton : string[] = ["personNames","personIdentifiers"];
     private radioButtonSelected : string;
 
     private personEnum : EnumValues[];
@@ -119,16 +119,14 @@ export class RelatedPersonForm implements OnInit{
         this.personDesc = personIdentifierDesc;
     }
 
-    public static newPerson(type : string, schemeName? : string) : any {
-        if(type=="Person") {
-            console.log("Generated new Person");
-            return {
+    public static newPerson(_fb : FormBuilder, type : string, schemeName? : string) : any {
+        if(type=="personNames") {
+            return _fb.group({
                 value: ['', [Validators.required]],
                 lang: ['', [Validators.required]]
-            };
-        } else if (type === "Identifier"){
-            console.log("Generated new Identifier");
-            return IdentifierFormControl.generate(schemeName);
+            });
+        } else if (type === "personIdentifiers"){
+            return _fb.group(IdentifierFormControl.generate(schemeName));
         }
     }
 
@@ -144,25 +142,25 @@ export class RelatedPersonForm implements OnInit{
     }
 
     public deletePerson(type:string, i : number) : void {
-        if(type=="Person") {
+        if(type=="personNames") {
             const control = <FormArray>this.parentForm.controls['personNames'];
             control.removeAt(i);
-        } else if (type === "Identifier"){
+        } else if (type === "personIdentifiers"){
             const control = <FormArray>this.parentForm.controls['personIdentifiers'];
             control.removeAt(i);
         }
     }
 
     public addNew(type : string) : void {
-        if(type=="Person") {
+        if(type=="personNames") {
             const control = <FormArray>this.parentForm.controls['personNames'];
             control.push(
-                RelatedPersonForm.newPerson(this.radioButtonSelected,"personIdentifierSchemeName")
+                RelatedPersonForm.newPerson(this._fb,this.radioButtonSelected,"personIdentifierSchemeName")
             );
-        } else if (type === "Identifier"){
+        } else if (type === "personIdentifiers"){
             const control = <FormArray>this.parentForm.controls['personIdentifiers'];
             control.push(
-                RelatedPersonForm.newPerson(this.radioButtonSelected, "personIdentifierSchemeName")
+                RelatedPersonForm.newPerson(this._fb,this.radioButtonSelected, "personIdentifierSchemeName")
             );
         }
 
@@ -170,43 +168,39 @@ export class RelatedPersonForm implements OnInit{
     }
 
     public static generate(_fb: FormBuilder, schemeName : string) {
-        console.log("Generated new Related Person")
         return _fb.group({
-            personNames : _fb.array([RelatedPersonForm.newPerson("Person")]),
-            personIdentifiers : _fb.array([RelatedPersonForm.newPerson("Identifier",schemeName)])
+            personNames : _fb.array([RelatedPersonForm.newPerson(_fb,"personNames")]),
+            personIdentifiers : _fb.array([RelatedPersonForm.newPerson(_fb,"personIdentifiers",schemeName)])
         });
     }
 
+    public validate(): ValidatorFn {
+        return (c: AbstractControl): {[key: string]: any} => {
+            if(this.radioButtonSelected === "personIdentifiers") {
+                return !c.get("personIdentifiers").valid ? null : {error : "Identifier is invalid"};
+            } else {
+                return !c.get("personNames").valid ? null : {error : "Person is invalid"};
+            }
+        };
+    }
+
     ngOnInit() {
-        console.log(this.parentForm.controls.personNames.controls[0]);
-        // this.myFormPerson = this._fb.group({
-        //     'personNames' : this._fb.array([this.newPerson("Person")])
-        // });
-        //this.myFormPerson = this._fb.array([this.newPerson("Person")]);
-        // this.myFormIdentifier = this._fb.group({
-        //     'personIdentifiers' : this._fb.array([this.newPerson("Identifier")])
-        // });
-        //this.myFormIdentifier = this._fb.array([this.newPerson("Identifier")]);
-        // this.myFormPerson = this._fb.group({
-        //     personNames : this._fb.array([this.newPerson("Person")]),
-        //     personIdentifiers :  this._fb.array([this.newPerson("Identifier")])
-        // });
-        // this.parentForm = this._fb.group({
-        //     personNames : this._fb.array([this.newPerson("Person")]),
-        //     personIdentifiers :  this._fb.array([this.newPerson("Identifier")])
-        // });
-        //this.myFormPerson.setParent(this.parentForm);
-        // this.parentForm.setControl("personNames",this._fb.array([this.newPerson("Person")]));
-        // this.parentForm.setControl("personIdentifiers",this._fb.array([this.newPerson("Identifier")]));
-        //this.parentForm.push(this.myFormPerson);
-        // this.parentForm.setControl("personNames", this.myFormPerson);
-        // this.parentForm.setControl("personIdentifiers",this.myFormIdentifier);
-        // //
-        // if(this.radioButtonSelected == "Identifier") {
-        //     this.parentForm = this.myFormIdentifier;
-        // } else {
-        //     this.parentForm = this.myFormPerson;
-        // }
+        this.parentForm.setValidators(this.validate());
+        var self = this;
+        this.parentForm.patchValue =(value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
+            Object.keys(value).forEach(name => {
+                const control = <FormArray>this.parentForm.controls['personNames'];
+                for(var i = control.length;i < value[name].length; i++) {
+                    self.addNew(name);
+                }
+            });
+            Object.keys(value).forEach(name => {
+                if (self.parentForm.controls[name]) {
+                    self.parentForm.controls[name].patchValue(value[name], {onlySelf: true, emitEvent});
+                }
+            });
+            self.parentForm.updateValueAndValidity({onlySelf, emitEvent});
+        }
 
     }
 }

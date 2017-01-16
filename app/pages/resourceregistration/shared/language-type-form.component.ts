@@ -2,7 +2,7 @@
  * Created by stefanos on 6/12/2016.
  */
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, FormArray, Validators, FormControl} from '@angular/forms';
+import {FormGroup, FormBuilder, FormArray, Validators, FormControl, AbstractControl} from '@angular/forms';
 import {Description, languageIdDesc, scriptIdDesc, variantIdDesc,regiontIdDesc,languageTagDesc} from "./omtd.description";
 import {
     EnumValues, personIdentifierSchemeNameEnum, scriptIdTypeEnum, regionIdTypeEnum,
@@ -16,12 +16,12 @@ import {
     template : `
     
 <div [formGroup]="parentForm">
-    <div *ngFor="let c of parentForm.controls[name].controls; let i=index" class="group">
+    <div *ngFor="let c of myForm.controls; let i=index" class="group">
         <div class="col-md-offset-2 col-sm-offset-2">
             <div class="group-label">Language <a class="remove-element col-sm-1 col-md-1" (click)="delete_creator(i)">
             <i class="fa fa-times" aria-hidden="true"></i></a></div>
         </div>
-        <language-type [group]="c" [index]="i"></language-type>
+        <language-type [group]="c" [index]="i" [name]="name"></language-type>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
@@ -41,24 +41,37 @@ export class LanguagesTypeForm implements OnInit{
     @Input('name')
     private name : string;
 
-    private myForm : FormGroup;
+    private myForm : FormArray;
 
     public add_new() {
-        const control = <FormArray>this.parentForm.controls[this.name];
-        control.push(this._fb.group({}));
+        this.myForm.push(LanguageTypeForm.addNew(this._fb));
     }
 
     public delete_creator(i : number) {
-        const control = <FormArray>this.parentForm.controls[this.name];
-        control.removeAt(i);
+        this.myForm.removeAt(i);
     }
 
     constructor(private _fb: FormBuilder) {
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group({});
-        this.parentForm.addControl(this.name,this._fb.array([this.myForm]));
+        this.myForm = this._fb.array([LanguageTypeForm.addNew(this._fb)]);
+
+        var self = this;
+        this.myForm.patchValue = (value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
+            console.log(self.myForm.length, Object.keys(value).length);
+            for(var i = self.myForm.length; i < Object.keys(value).length; i++ ) {
+                self.add_new();
+            }
+            Object.keys(value).forEach(name => {
+                if (self.myForm.controls[name]) {
+                    self.myForm.controls[name].patchValue(value[name], {onlySelf: true, emitEvent});
+                }
+            });
+            self.myForm.updateValueAndValidity({onlySelf, emitEvent});
+        };
+
+        this.parentForm.addControl(this.name,this.myForm);
     }
 }
 
@@ -72,6 +85,9 @@ export class LanguageTypeForm implements OnInit {
 
     @Input('group')
     public parentForm: FormGroup;
+
+    @Input('name')
+    public name: string;
 
     @Input('index')
     private index: number;
@@ -91,6 +107,15 @@ export class LanguageTypeForm implements OnInit {
 
     private withIdentifier;
 
+    static validate( c :AbstractControl) {
+        if(!c.get('languageId').value &&
+            (c.get("scriptId").value || c.get("regionId").value || c.get("variantId").value)) {
+            return {error: "If language is set and required"};
+        }
+        else
+            return null;
+    }
+
     public addIdentifier() {
         this.withIdentifier = true;
         this.myForm.addControl('languageId',new FormControl('',[Validators.required]));
@@ -108,6 +133,16 @@ export class LanguageTypeForm implements OnInit {
 
     }
 
+    static addNew(_fb : FormBuilder) : FormGroup {
+        return _fb.group({
+            languageTag : ['', Validators.required],
+            languageId : '',
+            scriptId : '',
+            regionId : '',
+            variantId: ''
+        },{validator : LanguageTypeForm.validate});
+    }
+
     constructor(private _fb: FormBuilder) {
         this.languageTagDesc = languageTagDesc;
         this.languageIdDesc = languageIdDesc;
@@ -120,14 +155,10 @@ export class LanguageTypeForm implements OnInit {
         this.regionIdEnum = regionIdTypeEnum;
         this.variantIdEnum = variantIdTypeEnum;
 
-        this.withIdentifier = false;
+        this.withIdentifier = true;
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group({
-            languageTag : ['', Validators.required]
-        });
-        this.parentForm.addControl('language',this.myForm);
     }
 }
 

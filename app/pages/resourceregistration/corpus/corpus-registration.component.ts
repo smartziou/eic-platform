@@ -20,6 +20,6 @@ export class CorpusRegistrationComponent {
     }
 
     uploadCorpus() {
-        // this.router.navigate(['/resourceRegistration/corpus/form']);
+        this.router.navigate(['/resourceRegistration/corpus/form']);
     }
 }

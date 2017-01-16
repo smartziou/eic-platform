@@ -13,6 +13,9 @@ import { corpusRegistrationRouting } from "./corpus-registration.routing";
 import { CorpusRegistrationComponent } from "./corpus-registration.component";
 import { SearchForPublicationsComponent } from "./search-for-publications.component";
 import { ContentConnectorService } from "../../../services/content-connector.service";
+import {CorpusRegistrationFormComponent} from "./corpus-registration-form.component";
+import {ResourceRegistrationModule} from "../resource-registration.module";
+import {AccordionModule, TypeaheadModule} from "ng2-bootstrap/ng2-bootstrap";
 
 @NgModule({
     imports: [
@@ -22,12 +25,15 @@ import { ContentConnectorService } from "../../../services/content-connector.ser
         ReactiveFormsModule,
         HttpModule,
         JsonpModule,
-        corpusRegistrationRouting
+        corpusRegistrationRouting,
+        AccordionModule,
+        TypeaheadModule,
+        ResourceRegistrationModule
     ],
     declarations: [
         CorpusRegistrationComponent, 
-        SearchForPublicationsComponent, 
-
+        SearchForPublicationsComponent,
+        CorpusRegistrationFormComponent
     ],
     providers: [
         ResourceService, 

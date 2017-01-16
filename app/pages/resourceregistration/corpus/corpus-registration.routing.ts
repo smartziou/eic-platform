@@ -5,6 +5,7 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CorpusRegistrationComponent } from "./corpus-registration.component";
 import { SearchForPublicationsComponent } from "./search-for-publications.component";
+import {CorpusRegistrationFormComponent} from "./corpus-registration-form.component";
 
 const corpusRegistrationRoutes: Routes = [
     {
@@ -15,10 +16,10 @@ const corpusRegistrationRoutes: Routes = [
         path: 'resourceRegistration/corpus/searchForPublications',
         component: SearchForPublicationsComponent
     },
-    // {
-    //     path: 'resourceRegistration/corpus/form',
-    //     component: ComponentRegistrationFormComponent
-    // }
+    {
+        path: 'resourceRegistration/corpus/form',
+        component: CorpusRegistrationFormComponent
+    }
 ];
 
 export const corpusRegistrationRouting: ModuleWithProviders = RouterModule.forChild(corpusRegistrationRoutes);

@@ -8,11 +8,11 @@ import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form
 import {ResourceService} from "../../../services/resource.service";
 
 @Component({
-    selector: 'component-registration-form',
+    selector: 'corpus-registration-form',
     templateUrl: 'app/pages/resourceregistration/component/component-registration-form.component.html',
 })
 
-export class ComponentRegistrationFormComponent implements OnInit {
+export class CorpusRegistrationFormComponent implements OnInit {
 
     component: OMTDComponent;
 

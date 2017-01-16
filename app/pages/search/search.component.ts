@@ -161,7 +161,7 @@ export class SearchComponent {
             };
             this.shortResultsInfo.push(shortResultInfo);
         }
-        console.log("AAAA");
+
         if(this.shortResultsInfo.length==0)
             this.foundResults = false;
         else {

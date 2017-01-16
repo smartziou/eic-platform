@@ -1,4 +1,4 @@
-<div [formGroup]="myForm">
+<div [formGroup]="parentForm" [ngClass]="{'has-error':!parentForm.valid}">
     <div class="form-group">
         <label class="col-sm-2 control-label">{{languageTagDesc.label}}</label>
         <div class="col-sm-10 col-md-9">

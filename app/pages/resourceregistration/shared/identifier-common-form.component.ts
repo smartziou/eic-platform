@@ -48,7 +48,7 @@ export class IdentifierFormControl implements OnInit{
     public static generate(schemeName : string) {
         var temporary = {
             value : ['', [Validators.required]],
-            schemeUri : ''
+            schemeURI : ''
         }
         temporary[schemeName] = ['', Validators.required];
         return temporary;
@@ -67,7 +67,6 @@ export class IdentifierFormControl implements OnInit{
 
     ngOnInit() {
         this.myForm = this._fb.group(IdentifierFormControl.generate(this.schemeName));
-        console.log("index",this.index);
         if(this.index == -1) {
             this.parentForm.addControl(this.name, this.myForm);
         } else {
