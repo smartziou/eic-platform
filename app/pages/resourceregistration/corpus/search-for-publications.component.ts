@@ -31,6 +31,8 @@ export class SearchForPublicationsComponent {
 
     private publicationSources: Facet;
 
+    private searching:boolean = true;
+
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private contentConnectorService: ContentConnectorService) {
         this.publicationsSearchForm = fb.group({
@@ -43,6 +45,8 @@ export class SearchForPublicationsComponent {
         this.sub = this.activatedRoute
             .params
             .subscribe(params => {
+
+                this.searching = true;
 
                 this.urlParameters.splice(0,this.urlParameters.length);
                 this.foundResults = true;
@@ -72,6 +76,8 @@ export class SearchForPublicationsComponent {
 
         //INITIALISATIONS
         this.errorMessage = null;
+
+        this.searching = false;
 
         this.publicationSearchResults = publicationSearchResults;
 
