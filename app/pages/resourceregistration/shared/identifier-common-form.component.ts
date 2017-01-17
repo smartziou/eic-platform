@@ -49,8 +49,9 @@ export class IdentifierFormControl implements OnInit{
         var temporary = {
             value : ['', [Validators.required]],
             schemeURI : ''
-        }
+        };
         temporary[schemeName] = ['', Validators.required];
+        console.log(temporary);
         return temporary;
     }
 
@@ -59,9 +60,6 @@ export class IdentifierFormControl implements OnInit{
         this.identifierDesc = metadataIdentifierTypeDesc;
         this.identifierDesc.label = "Identifier";
         this.schemeUriDesc = {desc: "Any URI", label: "URI"};
-        // if(typeof this.schemeUriDesc == 'undefined') {
-        //     this.schemeUriDesc = {desc: "Any URI", label: "URI"};
-        // }
         this.identifierSchemeDesc = {desc : "Enum" , label : "One of the options"};
     }
 
