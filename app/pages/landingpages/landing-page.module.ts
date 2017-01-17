@@ -30,6 +30,9 @@ import { CorpusTextPartInfoComponent } from "./resourceelements/corpus-text-part
 import { AnnotatedCorpusInfoComponent } from "./resourceelements/annotated-corpus-info.component";
 import { RawCorpusInfoComponent } from "./resourceelements/raw-corpus-info.component";
 import { AnnotationsInfoComponent } from "./resourceelements/annotations-info.component";
+import { LanguageDescriptionLandingPageComponent } from "./languagedescription/language-description-landing-page.component";
+import { LexicalConceptualLandingPageComponent } from "./lexicalconceptual/lexical-conceptual-landing-page.component";
+import { ModelLandingPageComponent } from "./model/model-landing-page.component";
 
 @NgModule({
     imports: [
@@ -40,6 +43,9 @@ import { AnnotationsInfoComponent } from "./resourceelements/annotations-info.co
     declarations: [
         ComponentLandingPageComponent,
         CorpusLandingPageComponent,
+        LanguageDescriptionLandingPageComponent,
+        LexicalConceptualLandingPageComponent,
+        ModelLandingPageComponent,
         MetadataHeaderInfoComponent, 
         VersionInfoComponent, 
         ContactInfoComponent, 

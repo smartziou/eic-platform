@@ -81,3 +81,11 @@
 * + h1, * + h2, * + h3, * + h4, * + h5, * + h6 {
     margin-top: 0;
 }
+
+.languageDescriptionType {
+    margin-left: -2px;
+}
+
+.lexicalConceptualResourceType {
+    margin-left: -2px;
+}

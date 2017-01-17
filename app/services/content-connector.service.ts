@@ -40,7 +40,11 @@ export class ContentConnectorService {
                 paramsString += ']';
             }
 
+            paramsString += ",";
+
         }
+
+        paramsString = paramsString.substr(0, paramsString.length-1);
 
         paramsString += '}';
 
@@ -57,21 +61,12 @@ export class ContentConnectorService {
             postBody += '}';
         }
 
-        console.log(postBody);
-
-        // {"keyword":"blah","params":{"year":["2012"],"language":["english","somalian"]},"facets":["language","year"],"from":0,"to":0}
-
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         
         return this.http.post(this._contentConnectorSearchUrl, postBody, options)
             .map(res => <PublicationSearchResults> res.json())
             .catch(this.handleError);
-        
-        
-        // return this.http.get(this._contentConnectorSearchUrl + '?facets=licence,year,language')
-        //     .map(res => <PublicationSearchResults> res.json())
-        //     .catch(this.handleError);
     }
 
     private extractData(res: Response) {

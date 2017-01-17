@@ -90,8 +90,6 @@ export class SearchComponent {
 
         this.shortResultsInfo.splice(0,this.shortResultsInfo.length);
 
-        
-
         for (let component of this.searchResults.results.components) {
             var componentBody = component.resource;
             var shortResultInfo: ShortResultInfo = {
@@ -107,6 +105,7 @@ export class SearchComponent {
             this.shortResultsInfo.push(shortResultInfo);
         }
 
+
         for (let corpus of this.searchResults.results.corpora) {
             var order = corpus.order;
             var corpusBody = corpus.resource;
@@ -121,6 +120,48 @@ export class SearchComponent {
             this.shortResultsInfo.push(shortResultInfo);
         }
 
+        for (let model of this.searchResults.results.models) {
+            var order = model.order;
+            var modelBody = model.resource;
+            var shortResultInfo: ShortResultInfo = {
+                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
+                order: model.order,
+                id: modelBody.metadataHeaderInfo.metadataRecordIdentifier.value,
+                title: modelBody.modelInfo.identificationInfo.resourceNames[0].value,
+                description: modelBody.modelInfo.identificationInfo.descriptions[0].value,
+                resourceType: 'model'
+            };
+            this.shortResultsInfo.push(shortResultInfo);
+        }
+
+        for (let language of this.searchResults.results.languageDescriptions) {
+            var order = language.order;
+            var languageBody = language.resource;
+            var shortResultInfo: ShortResultInfo = {
+                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
+                order: language.order,
+                id: languageBody.metadataHeaderInfo.metadataRecordIdentifier.value,
+                title: languageBody.languageDescriptionInfo.identificationInfo.resourceNames[0].value,
+                description: languageBody.languageDescriptionInfo.identificationInfo.descriptions[0].value,
+                resourceType: 'language'
+            };
+            this.shortResultsInfo.push(shortResultInfo);
+        }
+
+        for (let lexical of this.searchResults.results.lexicalConceptualResources) {
+            var order = lexical.order;
+            var lexicalBody = lexical.resource;
+            var shortResultInfo: ShortResultInfo = {
+                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
+                order: lexical.order,
+                id: lexicalBody.metadataHeaderInfo.metadataRecordIdentifier.value,
+                title: lexicalBody.lexicalConceptualResourceInfo.identificationInfo.resourceNames[0].value,
+                description: lexicalBody.lexicalConceptualResourceInfo.identificationInfo.descriptions[0].value,
+                resourceType: 'lexical'
+            };
+            this.shortResultsInfo.push(shortResultInfo);
+        }
+        console.log("AAAA");
         if(this.shortResultsInfo.length==0)
             this.foundResults = false;
         else {
@@ -239,6 +280,25 @@ export class SearchComponent {
                 values: [searchValue.query]
             };
             this.urlParameters.push(searchQuery);
+        }
+
+        this.navigateUsingParameters();
+    }
+
+    deselectFacet(category: string, value: string) {
+
+        var categoryIndex = 0;
+        for (let urlParameter of this.urlParameters) {
+            if(urlParameter.key === category) {
+                var valueIndex = urlParameter.values.indexOf(value, 0);
+                if (valueIndex > -1) {
+                    urlParameter.values.splice(valueIndex, 1);
+                    if(urlParameter.values.length == 0) {
+                        this.urlParameters.splice(categoryIndex, 1);
+                    }
+                }
+            }
+            categoryIndex ++;
         }
 
         this.navigateUsingParameters();
