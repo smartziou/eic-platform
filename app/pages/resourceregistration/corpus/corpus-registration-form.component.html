@@ -22,7 +22,10 @@
                                     <accordion>
                                         <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
                                             <metadata-header-info-form [group]="myForm"></metadata-header-info-form>
-                                            <dataset-distribution-info-form-common [group]="myForm"></dataset-distribution-info-form-common>
+                                            <div formGroupName="corpusInfo">
+                                                <identification-info-form [group]="myForm.controls.corpusInfo"></identification-info-form>
+                                                <dataset-distribution-info-form-common [group]="myForm.controls.corpusInfo"></dataset-distribution-info-form-common>
+                                            </div>
                                             <div class="uk-grid-margin uk-row-first"><button class="uk-button uk-button-large
                                             uk-button-primary registerButton">Register!</button></div>
                                         </div>

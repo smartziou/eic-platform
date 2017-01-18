@@ -22,7 +22,7 @@ export class CorpusRegistrationFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group({});
+        this.myForm = this._fb.group({corpusInfo:this._fb.group({})});
         var self = this;
         this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
             console.log(res);

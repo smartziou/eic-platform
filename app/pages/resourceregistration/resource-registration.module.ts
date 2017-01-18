@@ -14,6 +14,8 @@ import {LanguageTypeForm, LanguagesTypeForm} from "./shared/language-type-form.c
 import {IdentifierFormControl} from "./shared/identifier-common-form.component";
 import {ResourceService} from "../../services/resource.service";
 import {DatasetDistributionInfoFormControl} from "./shared/dataset-distribution-info-form.component";
+import {MyStringFormControl} from "./shared/my-string-form.component";
+import {IdentificationInfoFormControl} from "./shared/identification-info-form.component";
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import {DatasetDistributionInfoFormControl} from "./shared/dataset-distribution-
         LanguageTypeForm,
         LanguagesTypeForm,
         IdentifierFormControl,
-        DatasetDistributionInfoFormControl
+        DatasetDistributionInfoFormControl,
+        MyStringFormControl,
+        IdentificationInfoFormControl
     ],
     providers: [
         ResourceService
@@ -47,7 +51,9 @@ import {DatasetDistributionInfoFormControl} from "./shared/dataset-distribution-
         LanguageTypeForm,
         LanguagesTypeForm,
         IdentifierFormControl,
-        DatasetDistributionInfoFormControl
+        DatasetDistributionInfoFormControl,
+        MyStringFormControl,
+        IdentificationInfoFormControl
     ]
 })
 

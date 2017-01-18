@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from "@angular/core";
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 /**
  * Created by stefanos on 16/1/2017.
  */

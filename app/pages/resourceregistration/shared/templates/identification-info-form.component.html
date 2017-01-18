@@ -1,0 +1,76 @@
+<accordion-group heading="Identification Info"
+                 [isOpen]="true" [panelClass]="myForm.valid ? 'panel-success' : 'panel-danger'">
+    <div [formGroup]="myForm" >
+        <div class="form-group" formArrayName="resourceNames">
+            <label class="col-sm-2 col-md-2 control-label">Resource Name</label>
+            <div *ngFor="let resourceName of myForm.controls.resourceNames.controls; let i=index" formGroupName="{{i}}">
+                <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
+                <div class="form-group">
+                    <my-string [group]="resourceName"></my-string>
+                    <a class="remove-element col-sm-1 col-md-1" (click)="$delete('resourceNames',i)"><i
+                            class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
+                <a class="add-new-element" (click)="addNew('resourceNames')"><i class="fa fa-plus" aria-hidden="true"></i> Add
+                    Resource Name</a>
+            </div>
+        </div>
+
+        <div class="form-group" formArrayName="descriptions">
+            <label class="col-sm-2 col-md-2 control-label">Description</label>
+            <div *ngFor="let description of myForm.controls.descriptions.controls; let i=index" formGroupName="{{i}}">
+                <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
+                <div class="form-group">
+                    <my-string [group]="description"></my-string>
+                    <a class="remove-element col-sm-1 col-md-1" (click)="$delete('descriptions',i)"><i
+                            class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
+                <a class="add-new-element" (click)="addNew('descriptions')"><i class="fa fa-plus" aria-hidden="true"></i> Add
+                    Description</a>
+            </div>
+        </div>
+
+        <div class="form-group" formArrayName="resourceShortNames">
+            <label class="col-sm-2 col-md-2 control-label">Resource Short Name</label>
+            <div *ngFor="let resourceShortName of myForm.controls.resourceShortNames.controls; let i=index" formGroupName="{{i}}">
+                <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
+                <div class="form-group">
+                    <my-string [group]="resourceShortName"></my-string>
+                    <a class="remove-element col-sm-1 col-md-1" (click)="$delete('resourceShortNames',i)"><i
+                            class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
+                <a class="add-new-element" (click)="addNew('resourceShortNames')"><i class="fa fa-plus" aria-hidden="true"></i> Add
+                    Resource ShortName</a>
+            </div>
+        </div>
+
+        <div class="form-group" formArrayName="identifiers">
+            <div *ngFor="let identifier of myForm.controls.identifiers.controls; let i=index" formGroupName="{{i}}">
+                <div class="form-group">
+                    <identifier-common [group]="identifier" [scheme-name]="'resourceIdentifierSchemeName'"
+                                       [scheme-values]="resourceIdentifierEnum" [index]="i"
+                                       [label]="'Identifier'"></identifier-common>
+                    <a class="remove-element col-sm-1 col-md-1" (click)="$delete('identifiers',i)"><i
+                            class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
+                <a class="add-new-element" (click)="addNew('identifiers')"><i class="fa fa-plus" aria-hidden="true"></i> Add
+                    Identifier</a>
+            </div>
+        </div>
+    </div>
+</accordion-group>
