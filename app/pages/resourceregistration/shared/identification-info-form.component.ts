@@ -6,6 +6,7 @@ import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl } from '
 import {MyStringFormControl} from "./my-string-form.component";
 import {EnumValues, resourceIdentifierSchemeNameEnum} from "./omtd.enum";
 import {IdentifierFormControl} from "./identifier-common-form.component";
+import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} from "./omtd.description";
 
 @Component({
     selector: 'identification-info-form',
@@ -24,6 +25,9 @@ export class IdentificationInfoFormControl implements OnInit {
     public myForm: FormGroup;
     
     private resourceIdentifierEnum: EnumValues[];
+    private resourceNameDescription: Description = resourceNameDesc;
+    private descriptionDescription: Description = descriptionDesc;
+    private resourceShortNameDescription: Description = resourceShortNameDesc;
 
     ngOnInit() {
         this.myForm = IdentificationInfoFormControl.generate(this._fb);
