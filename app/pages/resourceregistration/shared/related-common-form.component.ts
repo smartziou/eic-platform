@@ -17,11 +17,11 @@ import {IdentifierFormControl} from "./identifier-common-form.component";
 <div [formGroup]="formArray">
     <div *ngFor="let c of formArray.controls; let i=index" class="group">
         <div class="col-md-offset-2 col-sm-offset-2">
-            <div class="group-label">Metadata Creator <a class="remove-element col-sm-1 col-md-1" (click)="delete_creator(i)">
+            <div class="group-label">{{topLabel}} <a class="remove-element col-sm-1 col-md-1" (click)="delete_creator(i)">
             <i class="fa fa-times" aria-hidden="true"></i></a></div>
         </div>
         <div formGroupName="{{i}}">
-            <related-common [group]="c" [personLabel]="'Creator'" [index]="i" [type]="type"></related-common>
+            <related-common [group]="c" [personLabel]="label" [index]="i" [type]="type"></related-common>
         </div>
         
     </div>
@@ -48,6 +48,12 @@ export class RelatedCommonsForm implements OnInit{
 
     @Input('schemeEnum')
     private schemeEnum : EnumValues[];
+
+    @Input('topLabel')
+    private topLabel : string;
+
+    @Input('label')
+    private label : string;
 
     // private myForm : FormGroup;
     private formArray : FormArray;
@@ -151,24 +157,24 @@ export class RelatedCommonForm implements OnInit{
 
     public deletePerson(type:string, i : number) : void {
         if(type=="Names") {
-            const control = <FormArray>this.parentForm.controls['personNames'];
+            const control = <FormArray>this.parentForm.controls[this.type + 'Names'];
             control.removeAt(i);
         } else if (type === "Identifiers"){
-            const control = <FormArray>this.parentForm.controls['personIdentifiers'];
+            const control = <FormArray>this.parentForm.controls[this.type + 'Identifiers'];
             control.removeAt(i);
         }
     }
 
     public addNew(type : string) : void {
-        if(type=="personNames") {
-            const control = <FormArray>this.parentForm.controls['personNames'];
+        if(type=="Names") {
+            const control = <FormArray>this.parentForm.controls[this.type + 'Names'];
             control.push(
-                RelatedCommonForm.newPerson(this._fb,this.radioButtonSelected,"personIdentifierSchemeName")
+                RelatedCommonForm.newPerson(this._fb,this.radioButtonSelected,this.type + "IdentifierSchemeName")
             );
-        } else if (type === "personIdentifiers"){
-            const control = <FormArray>this.parentForm.controls['personIdentifiers'];
+        } else if (type === "Identifiers"){
+            const control = <FormArray>this.parentForm.controls[this.type + 'Identifiers'];
             control.push(
-                RelatedCommonForm.newPerson(this._fb,this.radioButtonSelected, "personIdentifierSchemeName")
+                RelatedCommonForm.newPerson(this._fb,this.radioButtonSelected, this.type + "IdentifierSchemeName")
             );
         }
 
@@ -184,7 +190,7 @@ export class RelatedCommonForm implements OnInit{
 
     public validate(): ValidatorFn {
         return (c: AbstractControl): {[key: string]: any} => {
-            if(this.radioButtonSelected === "personIdentifiers") {
+            if(this.radioButtonSelected === "Identifiers") {
                 return !c.get(this.type + "Identifiers").valid ? null : {error : "Identifier is invalid"};
             } else {
                 return !c.get(this.type + "Names").valid ? null : {error : "Person is invalid"};

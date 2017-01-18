@@ -17,7 +17,7 @@
     <div [formGroup]="parentForm" >
         <div class="form-group" formArrayName="{{type}}Names">
             <label class="col-sm-2 col-md-2 control-label">{{personLabel}} Name</label>
-            <div *ngFor="let address of parentForm.controls.personNames.controls; let i=index">
+            <div *ngFor="let address of parentForm.controls[type +'Names'].controls; let i=index">
                 <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
                 <div class="form-group" formGroupName="{{i}}" [ngClass]="{'has-error':!address.valid}">
                     <div class="col-sm-6 col-md-6">
@@ -43,7 +43,7 @@
 <div *ngIf="radioButtonSelected==='Identifiers'">
     <div [formGroup]="parentForm">
         <div formArrayName="{{type}}Identifiers">
-            <div *ngFor="let address of parentForm.controls.personIdentifiers.controls; let i=index" class="form-group">
+            <div *ngFor="let address of parentForm.controls[type +'Identifiers'].controls; let i=index" class="form-group">
                 <div formGroupName="{{i}}" [ngClass]="{'has-error':!address.valid}">
                     <identifier-common [group]="address" [control-name]="schemeName"
                                        [scheme-name]="type + 'IdentifierSchemeName'"
@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label *ngIf="parentForm.controls.personIdentifiers.controls==0" class="col-sm-2 col-md-2 control-label">{{personDesc.label}}</label>
+            <label *ngIf="parentForm.controls[type +'Identifiers'].controls==0" class="col-sm-2 col-md-2 control-label">{{personDesc.label}}</label>
             <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
                 <a class="add-new-element" (click)="addNew('Identifiers')"><i class="fa fa-plus" aria-hidden="true"></i>
                     Add {{radioButtonSelected}}</a>

@@ -51,7 +51,6 @@ export class IdentifierFormControl implements OnInit{
             schemeURI : ''
         };
         temporary[schemeName] = ['', Validators.required];
-        console.log(temporary);
         return temporary;
     }
 
