@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {FormGroup, FormBuilder, FormControl} from "@angular/forms";
+import {FormGroup, FormBuilder, FormControl, FormArray} from "@angular/forms";
 import {EnumValues, distributionMediumEnum} from "./omtd.enum";
 /**
  * Created by stefanos on 16/1/2017.
@@ -22,16 +22,20 @@ export class DatasetDistributionInfoFormControl implements OnInit{
         this.distributionEnum = distributionMediumEnum;
     }
 
-    ngOnInit(): void {
-        //var controls : Array<FormControl> = [];
+    $add() {
+        const control = <FormArray>this.myForm.controls["distributionMediums"];
+        control.push(new FormControl(""));
+    }
 
-        // for(let v of this.distributionEnum) {
-        //     controls.push(new FormControl());
-        // }
+    $delete(i : number) {
+        const control = <FormArray>this.myForm.controls["distributionMediums"];
+        control.removeAt(i);
+    }
+
+    ngOnInit(): void {
         this.myForm = this._fb.group({
-            distributionMediums : this._fb.array([new FormControl()])
+            distributionMediums : this._fb.array([new FormControl("")])
         });
-        console.log("thisisnew",this.myForm);
         this.parentForm.addControl("distributionInfo",this.myForm);
     }
 
