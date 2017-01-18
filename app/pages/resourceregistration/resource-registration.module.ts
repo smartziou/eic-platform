@@ -17,6 +17,7 @@ import {DatasetDistributionInfoFormControl} from "./shared/dataset-distribution-
 import {MyStringFormControl} from "./shared/my-string-form.component";
 import {IdentificationInfoFormControl} from "./shared/identification-info-form.component";
 import {EnumCommonForm} from "./shared/enum-common-form";
+import {ContactInfoFormControl} from "./shared/contact-info-form.component";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {EnumCommonForm} from "./shared/enum-common-form";
         DatasetDistributionInfoFormControl,
         MyStringFormControl,
         IdentificationInfoFormControl,
-        EnumCommonForm
+        EnumCommonForm,
+        ContactInfoFormControl
     ],
     providers: [
         ResourceService
@@ -56,7 +58,8 @@ import {EnumCommonForm} from "./shared/enum-common-form";
         DatasetDistributionInfoFormControl,
         MyStringFormControl,
         IdentificationInfoFormControl,
-        EnumCommonForm
+        EnumCommonForm,
+        ContactInfoFormControl
     ]
 })
 
