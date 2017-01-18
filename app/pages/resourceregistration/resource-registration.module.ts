@@ -9,13 +9,14 @@ import {AccordionModule, TypeaheadModule} from "ng2-bootstrap/ng2-bootstrap";
 import {MetadataIdentifierFormControl} from "./shared/metadata-identifier-form.component";
 import {MetadataHeaderInfoFormControl} from "./shared/metadata-header-info-form.component";
 import {ValuesPipe} from "./shared/values-pipe";
-import {RelatedPersonsForm, RelatedPersonForm} from "./shared/related-persons-form.component";
+import {RelatedCommonsForm, RelatedCommonForm} from "./shared/related-common-form.component";
 import {LanguageTypeForm, LanguagesTypeForm} from "./shared/language-type-form.component";
 import {IdentifierFormControl} from "./shared/identifier-common-form.component";
 import {ResourceService} from "../../services/resource.service";
 import {DatasetDistributionInfoFormControl} from "./shared/dataset-distribution-info-form.component";
 import {MyStringFormControl} from "./shared/my-string-form.component";
 import {IdentificationInfoFormControl} from "./shared/identification-info-form.component";
+import {EnumCommonForm} from "./shared/enum-common-form";
 
 
 @NgModule({
@@ -30,14 +31,15 @@ import {IdentificationInfoFormControl} from "./shared/identification-info-form.c
         MetadataIdentifierFormControl,
         MetadataHeaderInfoFormControl,
         ValuesPipe,
-        RelatedPersonsForm,
-        RelatedPersonForm,
+        RelatedCommonsForm,
+        RelatedCommonForm,
         LanguageTypeForm,
         LanguagesTypeForm,
         IdentifierFormControl,
         DatasetDistributionInfoFormControl,
         MyStringFormControl,
-        IdentificationInfoFormControl
+        IdentificationInfoFormControl,
+        EnumCommonForm
     ],
     providers: [
         ResourceService
@@ -46,14 +48,15 @@ import {IdentificationInfoFormControl} from "./shared/identification-info-form.c
         MetadataIdentifierFormControl,
         MetadataHeaderInfoFormControl,
         ValuesPipe,
-        RelatedPersonsForm,
-        RelatedPersonForm,
+        RelatedCommonsForm,
+        RelatedCommonForm,
         LanguageTypeForm,
         LanguagesTypeForm,
         IdentifierFormControl,
         DatasetDistributionInfoFormControl,
         MyStringFormControl,
-        IdentificationInfoFormControl
+        IdentificationInfoFormControl,
+        EnumCommonForm
     ]
 })
 

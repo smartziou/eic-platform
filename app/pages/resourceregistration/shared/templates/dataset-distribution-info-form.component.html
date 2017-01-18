@@ -1,4 +1,22 @@
-<accordion-group heading="Metadata Header Info"
-                 [isOpen]="true" [panelClass]="myForm.valid ? 'panel-success' : 'panel-danger'">
+<accordion-group heading="Distribution Info"
+                 [isOpen]="true" [panelClass]="parentForm.valid ? 'panel-success' : 'panel-danger'">
+
+    <div [formGroup]="myForm" [ngClass]="{'has-error':!myForm.valid}">
+
+        <div class="col-sm-8 col-md-8">
+            <div formArrayName="distributionMediums">
+                <div *ngFor="let address of myForm.controls.distributionMediums.controls; let i=index">
+                    <!--<enum-common-form [formControlName]="i" [enum]="distributionEnum"></enum-common-form>-->
+                    <select name="role" class="form-control" formControlName="{{i}}">
+                        <option *ngFor="let value of distributionEnum" [value]="value.key" [selected]="value.key == ''">
+                            {{value.value}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
 </accordion-group>
