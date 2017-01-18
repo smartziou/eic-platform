@@ -11,7 +11,7 @@ import {IdentifierFormControl} from "./identifier-common-form.component";
 
 
 @Component({
-    selector: 'related-persons',
+    selector: 'related-commons',
     template : `
     
 <div [formGroup]="formArray">
@@ -21,7 +21,7 @@ import {IdentifierFormControl} from "./identifier-common-form.component";
             <i class="fa fa-times" aria-hidden="true"></i></a></div>
         </div>
         <div formGroupName="{{i}}">
-            <related-person [group]="c" [personLabel]="'Creator'" [index]="i"></related-person>
+            <related-common [group]="c" [personLabel]="'Creator'" [index]="i" [type]="type"></related-common>
         </div>
         
     </div>
@@ -35,7 +35,7 @@ import {IdentifierFormControl} from "./identifier-common-form.component";
 `,
     styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
 })
-export class RelatedPersonsForm implements OnInit{
+export class RelatedCommonsForm implements OnInit{
 
     @Input('group')
     public parentForm: FormGroup;
@@ -43,11 +43,17 @@ export class RelatedPersonsForm implements OnInit{
     @Input('name')
     private name : string;
 
+    @Input('type')
+    private type : string;
+
+    @Input('schemeEnum')
+    private schemeEnum : EnumValues[];
+
     // private myForm : FormGroup;
     private formArray : FormArray;
 
     public add_new() {
-        this.formArray.push(RelatedPersonForm.generate(this._fb,"personIdentifierSchemeName"));
+        this.formArray.push(RelatedCommonForm.generate(this._fb,this.type));
     }
 
     public delete_creator(i : number) {
@@ -60,7 +66,7 @@ export class RelatedPersonsForm implements OnInit{
 
     ngOnInit() {
         // this.myForm = this._fb.group(this._fb.array([]));
-        this.formArray = this._fb.array([RelatedPersonForm.generate(this._fb,"personIdentifierSchemeName")]);
+        this.formArray = this._fb.array([RelatedCommonForm.generate(this._fb,this.type)]);
         this.parentForm.addControl(this.name,this.formArray);
 
         var self = this;
@@ -80,11 +86,11 @@ export class RelatedPersonsForm implements OnInit{
 
 
 @Component({
-    selector: 'related-person',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/related-person-form.component.html',
+    selector: 'related-common',
+    templateUrl : 'app/pages/resourceregistration/shared/templates/related-common-form.component.html',
     styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
 })
-export class RelatedPersonForm implements OnInit{
+export class RelatedCommonForm implements OnInit{
 
     @Input('group')
     public parentForm: FormGroup;
@@ -95,37 +101,39 @@ export class RelatedPersonForm implements OnInit{
     @Input('index')
     private index : number;
 
+    @Input('personEnum')
+    private personEnum : EnumValues[];
+
+    @Input('type')
+    private type : string;
+
+
     private myFormPerson : FormGroup;
 
     private myFormIdentifier : FormArray;
 
-    private schemeName : string;
-
     private relatedPerson : Description;
     private relatedPersonIdentifier : Description;
 
-    private radioButton : string[] = ["personNames","personIdentifiers"];
+    private radioButton : string[] = ["Names","Identifiers"];
     private radioButtonSelected : string;
 
-    private personEnum : EnumValues[];
     private personDesc : Description;
 
     constructor(private _fb: FormBuilder) {
-        this.schemeName = "personIdentifierSchemeName";
         this.relatedPersonIdentifier = personIdentifierDesc;
         this.relatedPerson = relatedPersonTypeDesc;
         this.radioButtonSelected = this.radioButton[0];
-        this.personEnum = personIdentifierSchemeNameEnum;
         this.personDesc = personIdentifierDesc;
     }
 
     public static newPerson(_fb : FormBuilder, type : string, schemeName? : string) : any {
-        if(type=="personNames") {
+        if(type=="Names") {
             return _fb.group({
                 value: ['', [Validators.required]],
                 lang: ['', [Validators.required]]
             });
-        } else if (type === "personIdentifiers"){
+        } else if (type === "Identifiers"){
             return _fb.group(IdentifierFormControl.generate(schemeName));
         }
     }
@@ -142,10 +150,10 @@ export class RelatedPersonForm implements OnInit{
     }
 
     public deletePerson(type:string, i : number) : void {
-        if(type=="personNames") {
+        if(type=="Names") {
             const control = <FormArray>this.parentForm.controls['personNames'];
             control.removeAt(i);
-        } else if (type === "personIdentifiers"){
+        } else if (type === "Identifiers"){
             const control = <FormArray>this.parentForm.controls['personIdentifiers'];
             control.removeAt(i);
         }
@@ -155,41 +163,42 @@ export class RelatedPersonForm implements OnInit{
         if(type=="personNames") {
             const control = <FormArray>this.parentForm.controls['personNames'];
             control.push(
-                RelatedPersonForm.newPerson(this._fb,this.radioButtonSelected,"personIdentifierSchemeName")
+                RelatedCommonForm.newPerson(this._fb,this.radioButtonSelected,"personIdentifierSchemeName")
             );
         } else if (type === "personIdentifiers"){
             const control = <FormArray>this.parentForm.controls['personIdentifiers'];
             control.push(
-                RelatedPersonForm.newPerson(this._fb,this.radioButtonSelected, "personIdentifierSchemeName")
+                RelatedCommonForm.newPerson(this._fb,this.radioButtonSelected, "personIdentifierSchemeName")
             );
         }
 
 
     }
 
-    public static generate(_fb: FormBuilder, schemeName : string) {
-        return _fb.group({
-            personNames : _fb.array([RelatedPersonForm.newPerson(_fb,"personNames")]),
-            personIdentifiers : _fb.array([RelatedPersonForm.newPerson(_fb,"personIdentifiers",schemeName)])
-        });
+    public static generate(_fb: FormBuilder, type : string) {
+        const group = {};
+        group[type + 'Names'] = _fb.array([RelatedCommonForm.newPerson(_fb,'Names')]);
+        group[type + "Identifiers"] = _fb.array([RelatedCommonForm.newPerson(_fb,"Identifiers",type + "IdentifierSchemeName")]);
+        return _fb.group(group);
     }
 
     public validate(): ValidatorFn {
         return (c: AbstractControl): {[key: string]: any} => {
             if(this.radioButtonSelected === "personIdentifiers") {
-                return !c.get("personIdentifiers").valid ? null : {error : "Identifier is invalid"};
+                return !c.get(this.type + "Identifiers").valid ? null : {error : "Identifier is invalid"};
             } else {
-                return !c.get("personNames").valid ? null : {error : "Person is invalid"};
+                return !c.get(this.type + "Names").valid ? null : {error : "Person is invalid"};
             }
         };
     }
 
     ngOnInit() {
+        this.parentForm.clearValidators();
         this.parentForm.setValidators(this.validate());
         var self = this;
         this.parentForm.patchValue =(value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
             Object.keys(value).forEach(name => {
-                const control = <FormArray>this.parentForm.controls['personNames'];
+                const control = <FormArray>this.parentForm.controls[this.type + 'Names'];
                 for(var i = control.length;i < value[name].length; i++) {
                     self.addNew(name);
                 }
