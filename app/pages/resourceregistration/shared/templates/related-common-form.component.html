@@ -14,7 +14,7 @@
 </div>
 
 <div *ngIf="radioButtonSelected==='Names'">
-    <div [formGroup]="parentForm" >
+    <div [formGroup]="parentForm" [ngClass]="{'has-error':!parentForm.controls[type + 'Names'].valid}">
         <div class="form-group" formArrayName="{{type}}Names">
             <label class="col-sm-2 col-md-2 control-label">{{personLabel}} Name</label>
             <div *ngFor="let address of parentForm.controls[type +'Names'].controls; let i=index">
