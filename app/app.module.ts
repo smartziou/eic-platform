@@ -25,6 +25,7 @@ import { ComponentRegistrationModule } from "./pages/resourceregistration/compon
 import { TabsModule } from "ng2-bootstrap/ng2-bootstrap";
 import { LandingPageModule } from "./pages/landingpages/landing-page.module";
 import { CorpusRegistrationModule } from "./pages/resourceregistration/corpus/corpus-registration.module";
+import { FooterComponent } from "./shared/footer/footer.component";
 
 @NgModule({
     imports: [
@@ -49,6 +50,7 @@ import { CorpusRegistrationModule } from "./pages/resourceregistration/corpus/co
         EditProfileComponent,
         SearchComponent,
         TopMenuComponent,
+        FooterComponent
     ],
     providers: [
         UserService,
