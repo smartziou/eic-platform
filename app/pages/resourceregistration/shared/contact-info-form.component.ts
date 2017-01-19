@@ -34,22 +34,6 @@ export class ContactInfoFormControl implements OnInit {
         this.myForm = ContactInfoFormControl.generate(this._fb);
         this.myForm.setValidators(this.validate);
 
-        // var self = this;
-        // this.myForm.patchValue = (value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
-        //     Object.keys(value).forEach(name => {
-        //         const control = <FormArray>this.myForm.controls[name];
-        //         for(var i = control.length;i < value[name].length; i++) {
-        //             self.addNew(name);
-        //         }
-        //     });
-        //     Object.keys(value).forEach(name => {
-        //         if (self.myForm.controls[name]) {
-        //             self.myForm.controls[name].patchValue(value[name], {onlySelf: true, emitEvent});
-        //         }
-        //     });
-        //     self.myForm.updateValueAndValidity({onlySelf, emitEvent});
-        // };
-
         this.parentForm.addControl("contactInfo", this.myForm);
     }
 
@@ -80,10 +64,6 @@ export class ContactInfoFormControl implements OnInit {
         return _fb.group({
             contactEmail: '',
             landingPage: ''
-            // resourceNames : _fb.array([MyStringFormControl.generate(_fb)]),
-            // descriptions : _fb.array([MyStringFormControl.generate(_fb)]),
-            // resourceShortNames : _fb.array([MyStringFormControl.generate(_fb)]),
-            // identifiers: _fb.array([_fb.group(IdentifierFormControl.generate('resourceIdentifierSchemeName'))])
         });
     }
 
@@ -94,37 +74,5 @@ export class ContactInfoFormControl implements OnInit {
         if (this.radioButtonSelected !== choice) {
             this.radioButtonSelected = choice;
         }
-    }
-
-    addNew(type: string) {
-        // if(type=='resourceNames') {
-        //     const control = <FormArray>this.myForm.controls['resourceNames'];
-        //     control.push(MyStringFormControl.generate(this._fb));
-        // } else if(type=='descriptions') {
-        //     const control = <FormArray>this.myForm.controls['descriptions'];
-        //     control.push(MyStringFormControl.generate(this._fb));
-        // } else if(type=='resourceShortNames') {
-        //     const control = <FormArray>this.myForm.controls['resourceShortNames'];
-        //     control.push(MyStringFormControl.generate(this._fb));
-        // } else if(type=='identifiers') {
-        //     const control = <FormArray>this.myForm.controls['identifiers'];
-        //     control.push(this._fb.group(IdentifierFormControl.generate('resourceIdentifierSchemeName')));
-        // }
-    }
-
-    $delete(type: string, index: number) {
-        // if(type=='resourceNames') {
-        //     const control = <FormArray>this.myForm.controls['resourceNames'];
-        //     control.removeAt(index);
-        // } else if(type=='descriptions') {
-        //     const control = <FormArray>this.myForm.controls['descriptions'];
-        //     control.removeAt(index);
-        // } else if(type=='resourceShortNames') {
-        //     const control = <FormArray>this.myForm.controls['resourceShortNames'];
-        //     control.removeAt(index);
-        // } else if(type=='identifiers') {
-        //     const control = <FormArray>this.myForm.controls['identifiers'];
-        //     control.removeAt(index);
-        // }
     }
 }
