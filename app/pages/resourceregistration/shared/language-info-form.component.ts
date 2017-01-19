@@ -3,16 +3,16 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { LanguageTypeForm } from "./language-type-form.component";
 import { SizeInfoFormControl } from "./size-info-form.component";
-import {LanguageInfoFormControl} from "./language-info-form.component";
 
 @Component({
-    selector: 'corpus-text-part-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/corpus-text-part-info-form.component.html',
+    selector: 'language-info-form',
+    templateUrl : 'app/pages/resourceregistration/shared/templates/language-info-form.component.html',
     styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
 })
 
-export class CorpusTextPartInfoFormControl implements OnInit {
+export class LanguageInfoFormControl implements OnInit {
 
     @Input('group')
     public parentForm: FormGroup;
@@ -51,28 +51,23 @@ export class CorpusTextPartInfoFormControl implements OnInit {
 
     public static generate(_fb: FormBuilder) {
         return _fb.group({
-            sizes : _fb.array([SizeInfoFormControl.generate(_fb)]),
-            languages: _fb.array([LanguageInfoFormControl.generate(_fb)])
+            language: LanguageTypeForm.addNew(_fb),
+            sizePerLanguage: SizeInfoFormControl.generate(_fb)
+            // sizes : _fb.array([SizeInfoFormControl.generate(_fb)]),
         });
     }
 
     addNew(type: string) {
-        if(type=='sizes') {
-            const control = <FormArray>this.myForm.controls['sizes'];
-            control.push(SizeInfoFormControl.generate(this._fb));
-        } else if(type=='languages') {
-            const control = <FormArray>this.myForm.controls['languages'];
-            control.push(LanguageInfoFormControl.generate(this._fb));
-        }
+        // if(type=='languageVarieties') {
+        //     const control = <FormArray>this.myForm.controls['sizes'];
+        //     control.push(SizeInfoFormControl.generate(this._fb));
+        // }
     }
 
     $delete(type: string, index: number) {
-        if(type=='sizes') {
-            const control = <FormArray>this.myForm.controls['sizes'];
-            control.removeAt(index);
-        } else if(type=='languages') {
-            const control = <FormArray>this.myForm.controls['languages'];
-            control.removeAt(index);
-        }
+        // if(type=='languageVarieties') {
+        //     const control = <FormArray>this.myForm.controls['sizes'];
+        //     control.removeAt(index);
+        // }
     }
 }

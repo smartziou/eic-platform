@@ -58,7 +58,7 @@ export class SizeInfoFormControl implements OnInit {
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group(SizeInfoFormControl.generate(this._fb));
+        this.myForm = SizeInfoFormControl.generate(this._fb);
         if(this.index == -1) {
             this.parentForm.addControl("sizeInfo", this.myForm);
         } else {

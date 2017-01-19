@@ -1,0 +1,23 @@
+<div [formGroup]="myForm">
+    <div class="form-group">
+        <language-type [group]="myForm.controls.language" [name]="Language"></language-type>
+    </div>
+    <div class="form-group">
+        <size-info [group]="myForm.controls.sizePerLanguage"></size-info>
+    </div>
+    <!--<div formArrayName="sizes">-->
+        <!--<div *ngFor="let size of myForm.controls.sizes.controls; let i=index" formGroupName="{{i}}">-->
+            <!--<div class="form-group">-->
+                <!--<size-info [group]="size" [index]="i"></size-info>-->
+                <!--<a class="remove-element col-sm-1 col-md-1" (click)="$delete('sizes',i)"><i-->
+                        <!--class="fa fa-times" aria-hidden="true"></i></a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">-->
+            <!--<a class="add-new-element" (click)="addNew('sizes')"><i class="fa fa-plus" aria-hidden="true"></i> Add-->
+                <!--Size</a>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

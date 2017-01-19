@@ -90,7 +90,7 @@ export class LanguageTypeForm implements OnInit {
     public name: string;
 
     @Input('index')
-    private index: number;
+    private index: number = -1;
 
     private myForm : FormGroup;
 
