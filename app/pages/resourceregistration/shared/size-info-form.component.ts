@@ -9,18 +9,21 @@ import { EnumValues, sizeUnitEnum } from "./omtd.enum";
     selector: 'size-info',
     template : `
     <div [formGroup]="parentForm" [ngClass]="{'has-error':!parentForm.valid}">
+        
         <label *ngIf="index == -1 || index==0" class="col-sm-2 col-md-2 control-label">Size Info</label>
-        <div *ngIf="index != -1 && index!=0" class="col-sm-2 col-md-2 control-label"></div> 
-        <div class="col-sm-6 col-md-6">
-            <input type="text" class="form-control" formControlName="size" placeholder="Size">
-        </div>
-        <div class="col-sm-4 col-md-4">
-            <select name="role" class="form-control" formControlName="sizeUnit">
-                <option *ngFor="let value of sizeUnits" [value]="value.key" [selected]="value.key == ''">
-                    {{value.value}}
-                </option>
-            </select>
-        </div>
+        <!--<div class="form-group">-->
+            <div *ngIf="index != -1 && index!=0" class="col-sm-2 col-md-2 control-label"></div> 
+            <div class="col-sm-4 col-md-4">
+                <input type="text" class="form-control" formControlName="size" placeholder="Size">
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <select name="role" class="form-control" formControlName="sizeUnit">
+                    <option *ngFor="let value of sizeUnits" [value]="value.key" [selected]="value.key == ''">
+                        {{value.value}}
+                    </option>
+                </select>
+            </div>
+        <!--</div>-->
     </div>
     `,
     styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
