@@ -22,7 +22,8 @@ import { SizeInfoFormControl } from "./shared/size-info-form.component";
 import { LingualityInfoFormControl } from "./shared/linguality-info-form.component";
 import { RightsInfoForm, RightsStatementInfoForm, LicenseInfosForm } from "./shared/rights-info-form.component";
 import { LanguageVarietyInfoFormControl } from "./shared/language-variety-info-form.component";
-import {LanguageInfoFormControl} from "./shared/language-info-form.component";
+import { LanguageInfoFormControl } from "./shared/language-info-form.component";
+import { DatasetDistributionsInfoFormControl } from "./shared/dataset-distribution-info-form.component";
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {LanguageInfoFormControl} from "./shared/language-info-form.component";
         LanguagesTypeForm,
         IdentifierFormControl,
         DatasetDistributionInfoFormControl,
+        DatasetDistributionsInfoFormControl,
         MyStringFormControl,
         IdentificationInfoFormControl,
         EnumCommonForm,
@@ -69,6 +71,7 @@ import {LanguageInfoFormControl} from "./shared/language-info-form.component";
         LanguagesTypeForm,
         IdentifierFormControl,
         DatasetDistributionInfoFormControl,
+        DatasetDistributionsInfoFormControl,
         MyStringFormControl,
         IdentificationInfoFormControl,
         EnumCommonForm,

@@ -18,6 +18,7 @@ import { ResourceRegistrationModule } from "../resource-registration.module";
 import { AccordionModule, TypeaheadModule } from "ng2-bootstrap/ng2-bootstrap";
 import { CorpusTextPartInfoFormControl } from "../shared/corpus-text-part-info-form.component";
 import { RawCorpusInfoFormControl } from "../shared/raw-corpus-info-form.component";
+import {CorpusSubtypeSpecificInfoForm} from "../shared/corpus-subtype-specific-info-form.component";
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import { RawCorpusInfoFormControl } from "../shared/raw-corpus-info-form.compone
         SearchForPublicationsComponent,
         CorpusRegistrationFormComponent,
         CorpusTextPartInfoFormControl,
-        RawCorpusInfoFormControl
+        RawCorpusInfoFormControl,
+        CorpusSubtypeSpecificInfoForm
     ],
     providers: [
         ResourceService, 
