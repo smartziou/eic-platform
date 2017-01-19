@@ -55,7 +55,6 @@ export class CorpusTextPartInfoFormControl implements OnInit {
 
     public static generate(_fb: FormBuilder) {
         return _fb.group({
-            lingualityInfo : _fb.group(LingualityInfoFormControl.generate(_fb)),
             sizes : _fb.array([SizeInfoFormControl.generate(_fb)]),
         });
     }
