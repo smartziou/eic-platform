@@ -13,8 +13,6 @@ import {ResourceService} from "../../../services/resource.service";
 
 export class CorpusRegistrationFormComponent implements OnInit {
 
-    component: OMTDComponent;
-
     @Input('group')
     myForm: FormGroup;
 
