@@ -13,9 +13,11 @@ import { corpusRegistrationRouting } from "./corpus-registration.routing";
 import { CorpusRegistrationComponent } from "./corpus-registration.component";
 import { SearchForPublicationsComponent } from "./search-for-publications.component";
 import { ContentConnectorService } from "../../../services/content-connector.service";
-import {CorpusRegistrationFormComponent} from "./corpus-registration-form.component";
-import {ResourceRegistrationModule} from "../resource-registration.module";
-import {AccordionModule, TypeaheadModule} from "ng2-bootstrap/ng2-bootstrap";
+import { CorpusRegistrationFormComponent } from "./corpus-registration-form.component";
+import { ResourceRegistrationModule } from "../resource-registration.module";
+import { AccordionModule, TypeaheadModule } from "ng2-bootstrap/ng2-bootstrap";
+import { CorpusTextPartInfoFormControl } from "../shared/corpus-text-part-info-form.component";
+import { RawCorpusInfoFormControl } from "../shared/raw-corpus-info-form.component";
 
 @NgModule({
     imports: [
@@ -33,7 +35,9 @@ import {AccordionModule, TypeaheadModule} from "ng2-bootstrap/ng2-bootstrap";
     declarations: [
         CorpusRegistrationComponent, 
         SearchForPublicationsComponent,
-        CorpusRegistrationFormComponent
+        CorpusRegistrationFormComponent,
+        CorpusTextPartInfoFormControl,
+        RawCorpusInfoFormControl
     ],
     providers: [
         ResourceService, 
