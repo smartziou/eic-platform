@@ -64,7 +64,7 @@ export class LingualityInfoFormControl implements OnInit {
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group(LingualityInfoFormControl.generate(this._fb));
+        this.myForm = LingualityInfoFormControl.generate(this._fb);
         if(this.index == -1) {
             this.parentForm.addControl("lingualityInfo", this.myForm);
         } else {

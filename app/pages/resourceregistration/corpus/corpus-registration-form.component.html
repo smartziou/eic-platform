@@ -22,14 +22,13 @@
                                     <accordion>
                                         <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
                                             <metadata-header-info-form [group]="myForm"></metadata-header-info-form>
-                                            <corpus-text-part-info-form [group]="myForm"></corpus-text-part-info-form>
                                             <div formGroupName="corpusInfo">
                                                 <identification-info-form [group]="myForm.controls.corpusInfo"></identification-info-form>
                                                 <contact-info-form [group]="myForm.controls.corpusInfo"></contact-info-form>
                                                 <dataset-distribution-info-form-common [group]="myForm.controls.corpusInfo"></dataset-distribution-info-form-common>
-                                                <!--<div formGroupName="corpusSubtypeSpecificInfo">-->
-                                                    <!--<raw-corpus-info-form [group]="myForm.controls.corpusInfo"></raw-corpus-info-form>-->
-                                                <!--</div>-->
+                                                <div formGroupName="corpusSubtypeSpecificInfo">
+                                                    <raw-corpus-info-form [group]="myForm.controls.corpusInfo"></raw-corpus-info-form>
+                                                </div>
                                             </div>
                                             <div class="uk-grid-margin uk-row-first"><button class="uk-button uk-button-large
                                             uk-button-primary registerButton">Register!</button></div>

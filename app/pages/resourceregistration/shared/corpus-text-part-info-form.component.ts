@@ -41,8 +41,9 @@ export class CorpusTextPartInfoFormControl implements OnInit {
         //     });
         //     self.myForm.updateValueAndValidity({onlySelf, emitEvent});
         // };
-        this.myForm = CorpusTextPartInfoFormControl.generate(this._fb);
-        this.parentForm.addControl("corpusTextPartInfo", this.myForm);
+        this.myForm = this.parentForm;
+        // this.myForm = CorpusTextPartInfoFormControl.generate(this._fb);
+        // this.parentForm.addControl("corpusTextPartInfo", this.myForm);
     }
 
     validate(c : AbstractControl) {

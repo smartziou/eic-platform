@@ -20,6 +20,7 @@ import {EnumCommonForm} from "./shared/enum-common-form";
 import {ContactInfoFormControl} from "./shared/contact-info-form.component";
 import {SizeInfoFormControl} from "./shared/size-info-form.component";
 import {LingualityInfoFormControl} from "./shared/linguality-info-form.component";
+import {RightsInfoForm, RightsStatementInfoForm, LicenseInfosForm} from "./shared/rights-info-form.component";
 
 
 @NgModule({
@@ -45,7 +46,11 @@ import {LingualityInfoFormControl} from "./shared/linguality-info-form.component
         EnumCommonForm,
         ContactInfoFormControl,
         SizeInfoFormControl,
-        LingualityInfoFormControl
+        LingualityInfoFormControl,
+        ContactInfoFormControl,
+        RightsInfoForm,
+        RightsStatementInfoForm,
+        LicenseInfosForm
     ],
     providers: [
         ResourceService
@@ -65,7 +70,11 @@ import {LingualityInfoFormControl} from "./shared/linguality-info-form.component
         EnumCommonForm,
         ContactInfoFormControl,
         SizeInfoFormControl,
-        LingualityInfoFormControl
+        LingualityInfoFormControl,
+        ContactInfoFormControl,
+        RightsInfoForm,
+        RightsStatementInfoForm,
+        LicenseInfosForm
     ]
 })
 

@@ -1,10 +1,10 @@
 <accordion-group heading="Distribution Info"
                  [isOpen]="true" [panelClass]="parentForm.valid ? 'panel-success' : 'panel-danger'">
 
-    <div [formGroup]="myForm" [ngClass]="{'has-error':!myForm.valid}">
+    <div [formGroup]="myForm" [ngClass]="{'has-error':!myForm.valid}" >
 
-        <div class="col-sm-12 col-md-12">
-            <div formArrayName="distributionMediums">
+        <div>
+            <div formArrayName="distributionMediums" class="form-group">
                 <label class="col-sm-2 col-md-2 control-label">Distribution Mediums</label>
                 <div *ngFor="let address of myForm.controls.distributionMediums.controls; let i=index">
                     <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
@@ -30,6 +30,7 @@
                 </div>
             </div>
         </div>
+        <rights-info [group]="myForm"></rights-info>
 
     </div>
 
