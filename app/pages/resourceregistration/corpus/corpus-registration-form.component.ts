@@ -5,6 +5,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
 import {MetadataHeaderInfo, OMTDComponent, Order, OMTDCorpus} from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'corpus-registration-form',
@@ -16,16 +17,21 @@ export class CorpusRegistrationFormComponent implements OnInit {
     @Input('group')
     myForm: FormGroup;
 
+    @Input('corpus')
+    corpus : Observable<OMTDCorpus> = null;
+
     constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
+    }
+
+    loadCorpus() {
     }
 
     ngOnInit() {
         this.myForm = this._fb.group({
             corpusInfo:this._fb.group({
-                corpusSubtypeSpecificInfo: this._fb.group({
-                
-                })
+                resourceType : 'corpus'
             })
+
         });
         var self = this;
         this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {

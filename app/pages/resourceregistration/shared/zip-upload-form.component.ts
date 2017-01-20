@@ -80,21 +80,22 @@ export class ZipUploadComponent implements OnInit{
 
     previewFromFile() {
         if (this.uploadedZip) {
-            var myReader:FileReader = new FileReader();
+            var myReader: FileReader = new FileReader();
             //var tempForm = this.componentXMLForm;
             console.log(this.uploadedZip);
             const self = this;
-            myReader.onloadstart = function(e) {
-                if(!self.uploadedZip.name.endsWith(".zip")) {
+            myReader.onloadstart = function (e) {
+                if (!self.uploadedZip.name.endsWith(".zip")) {
                     throw "Not a zip file";
                 }
             };
-            myReader.onloadend = function(e){
+            myReader.onloadend = function (e) {
                 console.log(myReader.result)
                 // tempForm.setValue({'xml' : myReader.result});
             };
             myReader.readAsText(this.uploadedZip);
-
+        }
+    }
     report($event : any) {
         this.uploadedZip = $event.target.files[0];
         this.fileChange.emit(this.uploadedZip);

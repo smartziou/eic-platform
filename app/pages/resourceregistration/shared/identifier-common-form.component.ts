@@ -45,12 +45,13 @@ export class IdentifierFormControl implements OnInit{
     public myForm : FormGroup;
 
 
-    public static generate(schemeName : string) {
+    public static generate(schemeName : string,validate : boolean = true) {
+        let required = (!validate) ? ['', Validators.required] : '' ;
         var temporary = {
-            value : ['', [Validators.required]],
+            value : required,
             schemeURI : ''
         };
-        temporary[schemeName] = ['', Validators.required];
+        temporary[schemeName] = required;
         return temporary;
     }
 

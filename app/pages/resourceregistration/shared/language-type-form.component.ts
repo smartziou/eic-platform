@@ -72,7 +72,6 @@ export class LanguagesTypeForm implements OnInit{
 
         var self = this;
         this.myForm.patchValue = (value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
-            console.log(self.myForm.length, Object.keys(value).length);
             for(var i = self.myForm.length; i < Object.keys(value).length; i++ ) {
                 self.add_new();
             }

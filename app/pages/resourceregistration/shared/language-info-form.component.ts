@@ -51,8 +51,8 @@ export class LanguageInfoFormControl implements OnInit {
 
     public static generate(_fb: FormBuilder) {
         return _fb.group({
-            language: LanguageTypeForm.addNew(_fb),
-            sizePerLanguage: SizeInfoFormControl.generate(_fb)
+            language: LanguageTypeForm.addNew(_fb)
+            // sizePerLanguage: SizeInfoFormControl.generate(_fb)
             // sizes : _fb.array([SizeInfoFormControl.generate(_fb)]),
         });
     }

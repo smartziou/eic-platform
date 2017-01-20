@@ -40,7 +40,7 @@ export class ContactInfoFormControl implements OnInit {
     }
 
     public validate(): ValidatorFn {
-        console.log('Bla bla bla bla cha cha cha');
+        //console.log('Bla bla bla bla cha cha cha');
         return (c: AbstractControl): {[key: string]: any} => {
             console.log('this is called the bla bla cha cha cha');
             console.log(this.radioButtonSelected, c);

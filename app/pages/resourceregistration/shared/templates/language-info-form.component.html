@@ -1,7 +1,7 @@
 <div [formGroup]="myForm">
     <language-type [group]="myForm.controls.language" [name]="Language"></language-type>
     <div class="form-group">
-        <size-info [group]="myForm.controls.sizePerLanguage"></size-info>
+        <size-info [group]="myForm" [index]="-1"></size-info>
     </div>
     <!--<div formArrayName="sizes">-->
         <!--<div *ngFor="let size of myForm.controls.sizes.controls; let i=index" formGroupName="{{i}}">-->

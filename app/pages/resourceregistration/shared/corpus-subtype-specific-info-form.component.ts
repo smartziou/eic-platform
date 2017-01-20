@@ -8,7 +8,12 @@ import {RawCorpusInfoFormControl} from "./raw-corpus-info-form.component";
 @Component({
     selector: 'corpus-subtype-specific-info-form',
     template: `
-<raw-corpus-info-form [group]="myForm"></raw-corpus-info-form>
+
+<div [formGroup]="parentForm">
+    <div formGroupName="corpusSubtypeSpecificInfo">
+    <raw-corpus-info-form [group]="myForm"></raw-corpus-info-form>
+    </div>
+</div>
 `,
     styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
 })
@@ -19,12 +24,12 @@ export class CorpusSubtypeSpecificInfoForm implements OnInit {
     myForm : FormGroup;
 
     constructor(private _fb: FormBuilder) {
-
     }
 
     ngOnInit() {
-        this.myForm =RawCorpusInfoFormControl.generate(this._fb);
+        this.myForm = this._fb.group({});
         this.parentForm.addControl("corpusSubtypeSpecificInfo",this.myForm);
+        console.log("parent",this.parentForm,"this",this.myForm);
     }
 
 }

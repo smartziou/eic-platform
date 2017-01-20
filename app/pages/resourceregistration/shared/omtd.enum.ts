@@ -1,12 +1,12 @@
 
 /**
- * Generated at 12/Dec/2016
+ * Generated at 20/Jan/2017
  */
 
 export class EnumValues {
     key : string;
     value : string;
-}
+};
 export var mimeTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "TEXT_PLAIN", value : "text/plain"},
@@ -55,109 +55,109 @@ export var mimeTypeEnum = [
     {key : "AUDIO_SPEEX", value : "audio/speex"},
     {key : "AUDIO_VORBIS", value : "audio/vorbis"},
     {key : "VIDEO_MP2T", value : "video/mp2t"}
-]
+];
 
 export var nameTypeEnum = [
     {key : "", value : "None Selected"},
-    {key : "SHORTNAME", value : "shortName"},
-    {key : "ALTERNATIVENAME", value : "alternativeName"},
-    {key : "TRANSLATEDNAME", value : "translatedName"}
-]
+    {key : "SHORT_NAME", value : "shortName"},
+    {key : "ALTERNATIVE_NAME", value : "alternativeName"},
+    {key : "TRANSLATED_NAME", value : "translatedName"}
+];
 
 export var useNLPSpecificEnum = [
     {key : "", value : "None Selected"},
     {key : "ALIGNMENT", value : "alignment"},
     {key : "ANNOTATION", value : "annotation"},
-    {key : "AVATARSYNTHESIS", value : "avatarSynthesis"},
-    {key : "BILINGUALLEXICONINDUCTION", value : "bilingualLexiconInduction"},
-    {key : "CONTRADICTIONDETECTION", value : "contradictionDetection"},
-    {key : "COREFERENCERESOLUTION", value : "coreferenceResolution"},
-    {key : "DEPENDENCYPARSING", value : "dependencyParsing"},
-    {key : "DERIVATIONALMORPHOLOGICALANALYSIS", value : "derivationalMorphologicalAnalysis"},
-    {key : "DISCOURSEANALYSIS", value : "discourseAnalysis"},
-    {key : "DOCUMENTCLASSIFICATION", value : "documentClassification"},
-    {key : "EMOTIONGENERATION", value : "emotionGeneration"},
-    {key : "EMOTIONRECOGNITION", value : "emotionRecognition"},
-    {key : "ENTITYMENTIONRECOGNITION", value : "entityMentionRecognition"},
-    {key : "EVENTEXTRACTION", value : "eventExtraction"},
-    {key : "EXPRESSIONRECOGNITION", value : "expressionRecognition"},
-    {key : "FACERECOGNITION", value : "faceRecognition"},
-    {key : "FACEVERIFICATION", value : "faceVerification"},
-    {key : "HUMANOIDAGENTSYNTHESIS", value : "humanoidAgentSynthesis"},
-    {key : "INFORMATIONEXTRACTION", value : "informationExtraction"},
-    {key : "INFORMATIONRETRIEVAL", value : "informationRetrieval"},
+    {key : "AVATAR_SYNTHESIS", value : "avatarSynthesis"},
+    {key : "BILINGUAL_LEXICON_INDUCTION", value : "bilingualLexiconInduction"},
+    {key : "CONTRADICTION_DETECTION", value : "contradictionDetection"},
+    {key : "COREFERENCE_RESOLUTION", value : "coreferenceResolution"},
+    {key : "DEPENDENCY_PARSING", value : "dependencyParsing"},
+    {key : "DERIVATIONAL_MORPHOLOGICAL_ANALYSIS", value : "derivationalMorphologicalAnalysis"},
+    {key : "DISCOURSE_ANALYSIS", value : "discourseAnalysis"},
+    {key : "DOCUMENT_CLASSIFICATION", value : "documentClassification"},
+    {key : "EMOTION_GENERATION", value : "emotionGeneration"},
+    {key : "EMOTION_RECOGNITION", value : "emotionRecognition"},
+    {key : "ENTITY_MENTION_RECOGNITION", value : "entityMentionRecognition"},
+    {key : "EVENT_EXTRACTION", value : "eventExtraction"},
+    {key : "EXPRESSION_RECOGNITION", value : "expressionRecognition"},
+    {key : "FACE_RECOGNITION", value : "faceRecognition"},
+    {key : "FACE_VERIFICATION", value : "faceVerification"},
+    {key : "HUMANOID_AGENT_SYNTHESIS", value : "humanoidAgentSynthesis"},
+    {key : "INFORMATION_EXTRACTION", value : "informationExtraction"},
+    {key : "INFORMATION_RETRIEVAL", value : "informationRetrieval"},
     {key : "INTRA_DOCUMENTCOREFERENCERESOLUTION", value : "intra-documentCoreferenceResolution"},
-    {key : "KNOWLEDGEDISCOVERY", value : "knowledgeDiscovery"},
-    {key : "KNOWLEDGEREPRESENTATION", value : "knowledgeRepresentation"},
-    {key : "LANGUAGEIDENTIFICATION", value : "languageIdentification"},
-    {key : "LANGUAGEMODELLING", value : "languageModelling"},
-    {key : "LANGUAGEMODELSTRAINING", value : "languageModelsTraining"},
+    {key : "KNOWLEDGE_DISCOVERY", value : "knowledgeDiscovery"},
+    {key : "KNOWLEDGE_REPRESENTATION", value : "knowledgeRepresentation"},
+    {key : "LANGUAGE_IDENTIFICATION", value : "languageIdentification"},
+    {key : "LANGUAGE_MODELLING", value : "languageModelling"},
+    {key : "LANGUAGE_MODELS_TRAINING", value : "languageModelsTraining"},
     {key : "LEMMATIZATION", value : "lemmatization"},
-    {key : "LEXICONACCESS", value : "lexiconAccess"},
-    {key : "LEXICONACQUISITIONFROMCORPORA", value : "lexiconAcquisitionFromCorpora"},
-    {key : "LEXICONENHANCEMENT", value : "lexiconEnhancement"},
-    {key : "LEXICONEXTRACTIONFROMLEXICA", value : "lexiconExtractionFromLexica"},
-    {key : "LEXICONFORMATCONVERSION", value : "lexiconFormatConversion"},
-    {key : "LEXICONMERGING", value : "lexiconMerging"},
-    {key : "LEXICONVISUALIZATION", value : "lexiconVisualization"},
-    {key : "LINGUISTICRESEARCH", value : "linguisticResearch"},
-    {key : "LIPTRACKINGANALYSIS", value : "lipTrackingAnalysis"},
-    {key : "MACHINETRANSLATION", value : "machineTranslation"},
-    {key : "MORPHOLOGICALANALYSIS", value : "morphologicalAnalysis"},
+    {key : "LEXICON_ACCESS", value : "lexiconAccess"},
+    {key : "LEXICON_ACQUISITION_FROM_CORPORA", value : "lexiconAcquisitionFromCorpora"},
+    {key : "LEXICON_ENHANCEMENT", value : "lexiconEnhancement"},
+    {key : "LEXICON_EXTRACTION_FROM_LEXICA", value : "lexiconExtractionFromLexica"},
+    {key : "LEXICON_FORMAT_CONVERSION", value : "lexiconFormatConversion"},
+    {key : "LEXICON_MERGING", value : "lexiconMerging"},
+    {key : "LEXICON_VISUALIZATION", value : "lexiconVisualization"},
+    {key : "LINGUISTIC_RESEARCH", value : "linguisticResearch"},
+    {key : "LIP_TRACKING_ANALYSIS", value : "lipTrackingAnalysis"},
+    {key : "MACHINE_TRANSLATION", value : "machineTranslation"},
+    {key : "MORPHOLOGICAL_ANALYSIS", value : "morphologicalAnalysis"},
     {key : "MORPHOSYNTACTICANNOTATION_BPOSTAGGING", value : "morphosyntacticAnnotation-bPosTagging"},
     {key : "MORPHOSYNTACTICANNOTATION_POSTAGGING", value : "morphosyntacticAnnotation-posTagging"},
-    {key : "MULTIMEDIADEVELOPMENT", value : "multimediaDevelopment"},
-    {key : "MULTIMEDIADOCUMENTPROCESSING", value : "multimediaDocumentProcessing"},
-    {key : "NAMEDENTITYRECOGNITION", value : "namedEntityRecognition"},
-    {key : "NATURALLANGUAGEGENERATION", value : "naturalLanguageGeneration"},
-    {key : "NATURALLANGUAGEUNDERSTANDING", value : "naturalLanguageUnderstanding"},
-    {key : "OPINIONMINING", value : "opinionMining"},
+    {key : "MULTIMEDIA_DEVELOPMENT", value : "multimediaDevelopment"},
+    {key : "MULTIMEDIA_DOCUMENT_PROCESSING", value : "multimediaDocumentProcessing"},
+    {key : "NAMED_ENTITY_RECOGNITION", value : "namedEntityRecognition"},
+    {key : "NATURAL_LANGUAGE_GENERATION", value : "naturalLanguageGeneration"},
+    {key : "NATURAL_LANGUAGE_UNDERSTANDING", value : "naturalLanguageUnderstanding"},
+    {key : "OPINION_MINING", value : "opinionMining"},
     {key : "OTHER", value : "other"},
-    {key : "PERSONIDENTIFICATION", value : "personIdentification"},
-    {key : "PERSONRECOGNITION", value : "personRecognition"},
-    {key : "PERSUASIVEEXPRESSIONMINING", value : "persuasiveExpressionMining"},
-    {key : "PHRASEALIGNMENT", value : "phraseAlignment"},
-    {key : "QUALITATIVEANALYSIS", value : "qualitativeAnalysis"},
-    {key : "QUESTIONANSWERING", value : "questionAnswering"},
-    {key : "READINGANDWRITINGAIDAPPLICATIONS", value : "readingAndWritingAidApplications"},
-    {key : "SEMANTICROLELABELLING", value : "semanticRoleLabelling"},
-    {key : "SEMANTICWEB", value : "semanticWeb"},
-    {key : "SENTENCEALIGNMENT", value : "sentenceAlignment"},
-    {key : "SENTENCESPLITTING", value : "sentenceSplitting"},
-    {key : "SENTIMENTANALYSIS", value : "sentimentAnalysis"},
-    {key : "SHALLOWPARSING", value : "shallowParsing"},
-    {key : "SIGNLANGUAGEGENERATION", value : "signLanguageGeneration"},
-    {key : "SIGNLANGUAGERECOGNITION", value : "signLanguageRecognition"},
-    {key : "SPEAKERIDENTIFICATION", value : "speakerIdentification"},
-    {key : "SPEAKERVERIFICATION", value : "speakerVerification"},
-    {key : "SPEECHANALYSIS", value : "speechAnalysis"},
-    {key : "SPEECHASSISTEDVIDEOCONTROL", value : "speechAssistedVideoControl"},
-    {key : "SPEECHLIPSCORRELATIONANALYSIS", value : "speechLipsCorrelationAnalysis"},
-    {key : "SPEECHRECOGNITION", value : "speechRecognition"},
-    {key : "SPEECHSYNTHESIS", value : "speechSynthesis"},
-    {key : "SPEECHTOSPEECHTRANSLATION", value : "speechToSpeechTranslation"},
-    {key : "SPEECHUNDERSTANDING", value : "speechUnderstanding"},
-    {key : "SPEECHVERIFICATION", value : "speechVerification"},
-    {key : "SPELLCHECKING", value : "spellChecking"},
-    {key : "SPOKENDIALOGUESYSTEMS", value : "spokenDialogueSystems"},
+    {key : "PERSON_IDENTIFICATION", value : "personIdentification"},
+    {key : "PERSON_RECOGNITION", value : "personRecognition"},
+    {key : "PERSUASIVE_EXPRESSION_MINING", value : "persuasiveExpressionMining"},
+    {key : "PHRASE_ALIGNMENT", value : "phraseAlignment"},
+    {key : "QUALITATIVE_ANALYSIS", value : "qualitativeAnalysis"},
+    {key : "QUESTION_ANSWERING", value : "questionAnswering"},
+    {key : "READING_AND_WRITING_AID_APPLICATIONS", value : "readingAndWritingAidApplications"},
+    {key : "SEMANTIC_ROLE_LABELLING", value : "semanticRoleLabelling"},
+    {key : "SEMANTIC_WEB", value : "semanticWeb"},
+    {key : "SENTENCE_ALIGNMENT", value : "sentenceAlignment"},
+    {key : "SENTENCE_SPLITTING", value : "sentenceSplitting"},
+    {key : "SENTIMENT_ANALYSIS", value : "sentimentAnalysis"},
+    {key : "SHALLOW_PARSING", value : "shallowParsing"},
+    {key : "SIGN_LANGUAGE_GENERATION", value : "signLanguageGeneration"},
+    {key : "SIGN_LANGUAGE_RECOGNITION", value : "signLanguageRecognition"},
+    {key : "SPEAKER_IDENTIFICATION", value : "speakerIdentification"},
+    {key : "SPEAKER_VERIFICATION", value : "speakerVerification"},
+    {key : "SPEECH_ANALYSIS", value : "speechAnalysis"},
+    {key : "SPEECH_ASSISTED_VIDEO_CONTROL", value : "speechAssistedVideoControl"},
+    {key : "SPEECH_LIPS_CORRELATION_ANALYSIS", value : "speechLipsCorrelationAnalysis"},
+    {key : "SPEECH_RECOGNITION", value : "speechRecognition"},
+    {key : "SPEECH_SYNTHESIS", value : "speechSynthesis"},
+    {key : "SPEECH_TO_SPEECH_TRANSLATION", value : "speechToSpeechTranslation"},
+    {key : "SPEECH_UNDERSTANDING", value : "speechUnderstanding"},
+    {key : "SPEECH_VERIFICATION", value : "speechVerification"},
+    {key : "SPELL_CHECKING", value : "spellChecking"},
+    {key : "SPOKEN_DIALOGUE_SYSTEMS", value : "spokenDialogueSystems"},
     {key : "SUMMARIZATION", value : "summarization"},
-    {key : "TALKINGHEADSYNTHESIS", value : "talkingHeadSynthesis"},
-    {key : "TEMPORALEXPRESSIONRECOGNITION", value : "temporalExpressionRecognition"},
-    {key : "TERMINOLOGYEXTRACTION", value : "terminologyExtraction"},
-    {key : "TEXTCATEGORISATION", value : "textCategorisation"},
-    {key : "TEXTGENERATION", value : "textGeneration"},
-    {key : "TEXTMINING", value : "textMining"},
-    {key : "TEXTTOSPEECHSYNTHESIS", value : "textToSpeechSynthesis"},
-    {key : "TEXTUALENTAILMENT", value : "textualEntailment"},
+    {key : "TALKING_HEAD_SYNTHESIS", value : "talkingHeadSynthesis"},
+    {key : "TEMPORAL_EXPRESSION_RECOGNITION", value : "temporalExpressionRecognition"},
+    {key : "TERMINOLOGY_EXTRACTION", value : "terminologyExtraction"},
+    {key : "TEXT_CATEGORISATION", value : "textCategorisation"},
+    {key : "TEXT_GENERATION", value : "textGeneration"},
+    {key : "TEXT_MINING", value : "textMining"},
+    {key : "TEXT_TO_SPEECH_SYNTHESIS", value : "textToSpeechSynthesis"},
+    {key : "TEXTUAL_ENTAILMENT", value : "textualEntailment"},
     {key : "TOKENIZATION", value : "tokenization"},
-    {key : "TOKENIZATIONANDSENTENCESPLITTING", value : "tokenizationAndSentenceSplitting"},
-    {key : "TOPICDETECTION_TRACKING", value : "topicDetection_Tracking"},
-    {key : "USERAUTHENTICATION", value : "userAuthentication"},
-    {key : "VISUALSCENEUNDERSTANDING", value : "visualSceneUnderstanding"},
-    {key : "VOICECONTROL", value : "voiceControl"},
-    {key : "WORDALIGNMENT", value : "wordAlignment"},
-    {key : "WORDSENSEDISAMBIGUATION", value : "wordSenseDisambiguation"}
-]
+    {key : "TOKENIZATION_AND_SENTENCE_SPLITTING", value : "tokenizationAndSentenceSplitting"},
+    {key : "TOPIC_DETECTION_TRACKING", value : "topicDetection_Tracking"},
+    {key : "USER_AUTHENTICATION", value : "userAuthentication"},
+    {key : "VISUAL_SCENE_UNDERSTANDING", value : "visualSceneUnderstanding"},
+    {key : "VOICE_CONTROL", value : "voiceControl"},
+    {key : "WORD_ALIGNMENT", value : "wordAlignment"},
+    {key : "WORD_SENSE_DISAMBIGUATION", value : "wordSenseDisambiguation"}
+];
 
 export var scriptIdTypeEnum = [
     {key : "", value : "None Selected"},
@@ -329,7 +329,7 @@ export var scriptIdTypeEnum = [
     {key : "ZXXX", value : "Code for unwritten documents"},
     {key : "ZYYY", value : "Code for undetermined script"},
     {key : "ZZZZ", value : "Code for uncoded script"}
-]
+];
 
 export var linguisticInformationEnum = [
     {key : "", value : "None Selected"},
@@ -340,7 +340,7 @@ export var linguisticInformationEnum = [
     {key : "LEMMA_ABBREVIATIONS", value : "lemma-Abbreviations"},
     {key : "LEMMA_COMPOUNDS", value : "lemma-Compounds"},
     {key : "LEMMA_CLITICFORMS", value : "lemma-CliticForms"},
-    {key : "PARTOFSPEECH", value : "partOfSpeech"},
+    {key : "PART_OF_SPEECH", value : "partOfSpeech"},
     {key : "MORPHO_FEATURES", value : "morpho-Features"},
     {key : "MORPHO_CASE", value : "morpho-Case"},
     {key : "MORPHO_GENDER", value : "morpho-Gender"},
@@ -372,55 +372,55 @@ export var linguisticInformationEnum = [
     {key : "USAGE_EXAMPLES", value : "usage-Examples"},
     {key : "USAGE_NOTES", value : "usage-Notes"},
     {key : "DEFINITION_GLOSS", value : "definition/gloss"},
-    {key : "TRANSLATIONEQUIVALENT", value : "translationEquivalent"},
+    {key : "TRANSLATION_EQUIVALENT", value : "translationEquivalent"},
     {key : "PHONETICS_TRANSCRIPTION", value : "phonetics-Transcription"},
     {key : "SEMANTICS_DOMAIN", value : "semantics-Domain"},
     {key : "SEMANTICS_EVENTTYPE", value : "semantics-EventType"},
     {key : "SEMANTICS_SEMANTICROLES", value : "semantics-SemanticRoles"},
-    {key : "STATISTICALPROPERTIES", value : "statisticalProperties"},
+    {key : "STATISTICAL_PROPERTIES", value : "statisticalProperties"},
     {key : "MORPHO_DERIVATION", value : "morpho-Derivation"},
     {key : "SEMANTICS_QUALIASTRUCTURE", value : "semantics-QualiaStructure"},
-    {key : "SYNTACTICOSEMANTICLINKS", value : "syntacticoSemanticLinks"},
+    {key : "SYNTACTICO_SEMANTIC_LINKS", value : "syntacticoSemanticLinks"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var modalityTypeEnum = [
     {key : "", value : "None Selected"},
-    {key : "BODYGESTURE", value : "bodyGesture"},
-    {key : "FACIALEXPRESSION", value : "facialExpression"},
+    {key : "BODY_GESTURE", value : "bodyGesture"},
+    {key : "FACIAL_EXPRESSION", value : "facialExpression"},
     {key : "VOICE", value : "voice"},
-    {key : "COMBINATIONOFMODALITIES", value : "combinationOfModalities"},
-    {key : "SIGNLANGUAGE", value : "signLanguage"},
-    {key : "SPOKENLANGUAGE", value : "spokenLanguage"},
-    {key : "WRITTENLANGUAGE", value : "writtenLanguage"},
+    {key : "COMBINATION_OF_MODALITIES", value : "combinationOfModalities"},
+    {key : "SIGN_LANGUAGE", value : "signLanguage"},
+    {key : "SPOKEN_LANGUAGE", value : "spokenLanguage"},
+    {key : "WRITTEN_LANGUAGE", value : "writtenLanguage"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var evaluationTypeEnum = [
     {key : "", value : "None Selected"},
-    {key : "GLASSBOX", value : "glassBox"},
-    {key : "BLACKBOX", value : "blackBox"}
-]
+    {key : "GLASS_BOX", value : "glassBox"},
+    {key : "BLACK_BOX", value : "blackBox"}
+];
 
 export var foreseenUseEnum = [
     {key : "", value : "None Selected"},
-    {key : "HUMANUSE", value : "humanUse"},
-    {key : "NLPAPPLICATIONS", value : "nlpApplications"}
-]
+    {key : "HUMAN_USE", value : "humanUse"},
+    {key : "NLP_APPLICATIONS", value : "nlpApplications"}
+];
 
 export var sexEnum = [
     {key : "", value : "None Selected"},
     {key : "MALE", value : "male"},
     {key : "FEMALE", value : "female"},
     {key : "UNKNOWN", value : "unknown"}
-]
+];
 
 export var publicationIdentifierSchemeNameEnum = [
     {key : "", value : "None Selected"},
     {key : "DOI", value : "doi"},
     {key : "HDL", value : "hdl"},
     {key : "ARK", value : "ark"},
-    {key : "ARXIV", value : "arXiv"},
+    {key : "AR_XIV", value : "arXiv"},
     {key : "BIBCODE", value : "bibcode"},
     {key : "EAN13", value : "ean13"},
     {key : "EISSN", value : "eissn"},
@@ -438,22 +438,22 @@ export var publicationIdentifierSchemeNameEnum = [
     {key : "PMC", value : "pmc"},
     {key : "PMID", value : "pmid"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var userTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "ACADEMIC", value : "academic"},
     {key : "COMMERCIAL", value : "commercial"},
-    {key : "MEMBERSOFGROUP", value : "membersOfGroup"}
-]
+    {key : "MEMBERS_OF_GROUP", value : "membersOfGroup"}
+];
 
 export var compatibleLexiconTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "WORDNET", value : "wordnet"},
     {key : "WORDLIST", value : "wordlist"},
-    {key : "MORPHOLOGICALLEXICON", value : "morphologicalLexicon"},
+    {key : "MORPHOLOGICAL_LEXICON", value : "morphologicalLexicon"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var repositoryIdentifierSchemeNameEnum = [
     {key : "", value : "None Selected"},
@@ -465,14 +465,14 @@ export var repositoryIdentifierSchemeNameEnum = [
     {key : "RE3D", value : "re3d"},
     {key : "ROAR", value : "roar"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var documentTypeEnum = [
     {key : "", value : "None Selected"},
-    {key : "BIBLIOGRAPHICRECORDONLY", value : "bibliographicRecordOnly"},
+    {key : "BIBLIOGRAPHIC_RECORD_ONLY", value : "bibliographicRecordOnly"},
     {key : "ABSTRACT", value : "abstract"},
-    {key : "FULLTEXT", value : "fullText"}
-]
+    {key : "FULL_TEXT", value : "fullText"}
+];
 
 export var resourceIdentifierSchemeNameEnum = [
     {key : "", value : "None Selected"},
@@ -480,7 +480,7 @@ export var resourceIdentifierSchemeNameEnum = [
     {key : "ISLRN", value : "islrn"},
     {key : "HDL", value : "hdl"},
     {key : "ARK", value : "ark"},
-    {key : "ARXIV", value : "arXiv"},
+    {key : "AR_XIV", value : "arXiv"},
     {key : "BIBCODE", value : "bibcode"},
     {key : "EAN13", value : "ean13"},
     {key : "EISSN", value : "eissn"},
@@ -498,98 +498,98 @@ export var resourceIdentifierSchemeNameEnum = [
     {key : "PMC", value : "pmc"},
     {key : "PMID", value : "pmid"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var originalDataProviderTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "REPOSITORY", value : "repository"},
     {key : "JOURNAL", value : "journal"},
     {key : "PUBLISHER", value : "publisher"}
-]
+];
 
 export var languageDescriptionTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "GRAMMAR", value : "grammar"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var extratextualInformationEnum = [
     {key : "", value : "None Selected"},
     {key : "IMAGES", value : "images"},
     {key : "VIDEOS", value : "videos"},
-    {key : "SOUNDRECORDINGS", value : "soundRecordings"},
+    {key : "SOUND_RECORDINGS", value : "soundRecordings"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var fundingTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "OTHER", value : "other"},
-    {key : "OWNFUNDS", value : "ownFunds"},
-    {key : "NATIONALFUNDS", value : "nationalFunds"},
-    {key : "EUFUNDS", value : "euFunds"}
-]
+    {key : "OWN_FUNDS", value : "ownFunds"},
+    {key : "NATIONAL_FUNDS", value : "nationalFunds"},
+    {key : "EU_FUNDS", value : "euFunds"}
+];
 
 export var processingResourceTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "CORPUS", value : "corpus"},
     {key : "DOCUMENT", value : "document"},
-    {key : "USERINPUTTEXT", value : "userInputText"},
-    {key : "LEXICALCONCEPTUALRESOURCE", value : "lexicalConceptualResource"},
-    {key : "LANGUAGEDESCRIPTION", value : "languageDescription"}
-]
+    {key : "USER_INPUT_TEXT", value : "userInputText"},
+    {key : "LEXICAL_CONCEPTUAL_RESOURCE", value : "lexicalConceptualResource"},
+    {key : "LANGUAGE_DESCRIPTION", value : "languageDescription"}
+];
 
 export var languageVarietyTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "DIALECT", value : "dialect"},
     {key : "JARGON", value : "jargon"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var validationExtentEnum = [
     {key : "", value : "None Selected"},
     {key : "FULL", value : "full"},
     {key : "PARTIAL", value : "partial"}
-]
+];
 
 export var dataFormatSpecificEnum = [
     {key : "", value : "None Selected"},
-    {key : "ACLANTHOLOGY", value : "aclAnthology"},
-    {key : "ALVISENRICHEDDOCUMENT", value : "alvisEnrichedDocument"},
+    {key : "ACL_ANTHOLOGY", value : "aclAnthology"},
+    {key : "ALVIS_ENRICHED_DOCUMENT", value : "alvisEnrichedDocument"},
     {key : "BNC", value : "bnc"},
-    {key : "BIONLP", value : "bioNLP"},
+    {key : "BIO_NLP", value : "bioNLP"},
     {key : "BIONLP__FORMAT_VARIANT_ST2013A1_A2", value : "bioNLP; format-variant=ST2013a1_a2"},
-    {key : "CADIXEJSON", value : "cadixeJSON"},
+    {key : "CADIXE_JSON", value : "cadixeJSON"},
     {key : "CONLL2000", value : "conll2000"},
     {key : "CONLL2002", value : "conll2002"},
     {key : "CONLL2006", value : "conll2006"},
     {key : "CONLL2007", value : "conll2007"},
     {key : "CONLL2009", value : "conll2009"},
     {key : "CONLL2012", value : "conll2012"},
-    {key : "DATASIFT", value : "dataSift"},
-    {key : "FACTOREDTAGLEM", value : "factoredTagLem"},
+    {key : "DATA_SIFT", value : "dataSift"},
+    {key : "FACTORED_TAG_LEM", value : "factoredTagLem"},
     {key : "GATE", value : "gate"},
     {key : "GENIA", value : "genia"},
     {key : "GRAF", value : "graf"},
     {key : "HTML5MICRODATA", value : "html5Microdata"},
     {key : "I2B2", value : "i2b2"},
-    {key : "IMSCWB", value : "imsCwb"},
+    {key : "IMS_CWB", value : "imsCwb"},
     {key : "JDBC", value : "jdbc"},
-    {key : "KEACORPUS", value : "keaCorpus"},
+    {key : "KEA_CORPUS", value : "keaCorpus"},
     {key : "LLL", value : "lll"},
-    {key : "NEGRAEXPORT", value : "negraExport"},
+    {key : "NEGRA_EXPORT", value : "negraExport"},
     {key : "PTB__FORMAT_VARIANT_CHUNKED", value : "ptb; format-variant=chunked"},
     {key : "PTB__FORMAT_VARIANT_COMBINED", value : "ptb; format-variant=combined"},
     {key : "PML", value : "pml"},
     {key : "RELP", value : "relp"},
-    {key : "AIMEDCORPUS", value : "aimedCorpus"},
+    {key : "AIMED_CORPUS", value : "aimedCorpus"},
     {key : "TIGER", value : "tiger"},
     {key : "TUPP_DZ", value : "tupp-dz"},
     {key : "TWITTER", value : "twitter"},
     {key : "XCES__FORMAT_VARIANT_ILSP", value : "xces; format-variant=ilsp"},
     {key : "WEB1T", value : "web1t"},
-    {key : "UIMACASDUMP", value : "uimaCASDump"},
-    {key : "UIMABINARYCAS", value : "uimaBinaryCas"}
-]
+    {key : "UIMA_CASDUMP", value : "uimaCASDump"},
+    {key : "UIMA_BINARY_CAS", value : "uimaBinaryCas"}
+];
 
 export var mediaTypeEnum = [
     {key : "", value : "None Selected"},
@@ -597,8 +597,8 @@ export var mediaTypeEnum = [
     {key : "AUDIO", value : "audio"},
     {key : "VIDEO", value : "video"},
     {key : "IMAGE", value : "image"},
-    {key : "TEXTNUMERICAL", value : "textNumerical"}
-]
+    {key : "TEXT_NUMERICAL", value : "textNumerical"}
+];
 
 export var metadataIdentifierSchemeNameEnum = [
     {key : "", value : "None Selected"},
@@ -607,7 +607,7 @@ export var metadataIdentifierSchemeNameEnum = [
     {key : "URL", value : "url"},
     {key : "URN", value : "urn"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var versionEnum = [
     {key : "", value : "None Selected"},
@@ -615,14 +615,14 @@ export var versionEnum = [
     {key : "V2_0", value : "2.0"},
     {key : "V3_0", value : "3.0"},
     {key : "V4_0", value : "4.0"}
-]
+];
 
 export var contributorTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "EDITOR", value : "editor"},
     {key : "TRANSLATOR", value : "translator"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var processModeEnum = [
     {key : "", value : "None Selected"},
@@ -630,49 +630,49 @@ export var processModeEnum = [
     {key : "AUTOMATIC", value : "automatic"},
     {key : "MIXED", value : "mixed"},
     {key : "INTERACTIVE", value : "interactive"}
-]
+];
 
 export var evaluationMeasureEnum = [
     {key : "", value : "None Selected"},
     {key : "HUMAN", value : "human"},
     {key : "AUTOMATIC", value : "automatic"}
-]
+];
 
 export var relationTypeEnum = [
     {key : "", value : "None Selected"},
-    {key : "ISPARTOF", value : "isPartOf"},
-    {key : "ISPARTWITH", value : "isPartWith"},
-    {key : "HASPART", value : "hasPart"},
-    {key : "HASOUTCOME", value : "hasOutcome"},
-    {key : "ISCOMBINEDWITH", value : "isCombinedWith"},
-    {key : "REQUIRESLR", value : "requiresLR"},
-    {key : "REQUIRESSOFTWARE", value : "requiresSoftware"},
-    {key : "ISEXACTMATCH", value : "isexactMatch"},
-    {key : "ISSIMILARTO", value : "isSimilarTo"},
-    {key : "ISCONTINUATIONOF", value : "isContinuationOf"},
-    {key : "ISVERSIONOF", value : "isVersionOf"},
-    {key : "ISSIMILARTO", value : "isSimilarTo"},
+    {key : "IS_PART_OF", value : "isPartOf"},
+    {key : "IS_PART_WITH", value : "isPartWith"},
+    {key : "HAS_PART", value : "hasPart"},
+    {key : "HAS_OUTCOME", value : "hasOutcome"},
+    {key : "IS_COMBINED_WITH", value : "isCombinedWith"},
+    {key : "REQUIRES_LR", value : "requiresLR"},
+    {key : "REQUIRES_SOFTWARE", value : "requiresSoftware"},
+    {key : "ISEXACT_MATCH", value : "isexactMatch"},
+    {key : "IS_SIMILAR_TO", value : "isSimilarTo"},
+    {key : "IS_CONTINUATION_OF", value : "isContinuationOf"},
+    {key : "IS_VERSION_OF", value : "isVersionOf"},
+    {key : "IS_SIMILAR_TO", value : "isSimilarTo"},
     {key : "REPLACES", value : "replaces"},
-    {key : "ISREPLACEDWITH", value : "isReplacedWith"},
-    {key : "ISCREATEDBY", value : "isCreatedBy"},
-    {key : "ISELICITEDBY", value : "isElicitedBy"},
-    {key : "ISRECORDEDBY", value : "isRecordedBy"},
-    {key : "ISEDITEDBY", value : "isEditedBy"},
-    {key : "ISANALYSEDBY", value : "isAnalysedBy"},
-    {key : "ISEVALUATEDBY", value : "isEvaluatedBy"},
-    {key : "ISQUERIEDBY", value : "isQueriedBy"},
-    {key : "ISACCESSEDBY", value : "isAccessedBy"},
-    {key : "ISARCHIVEDBY", value : "isArchivedBy"},
-    {key : "ISDISPLAYEDBY", value : "isDisplayedBy"},
-    {key : "ISCOMPATIBLEWITH", value : "isCompatibleWith"}
-]
+    {key : "IS_REPLACED_WITH", value : "isReplacedWith"},
+    {key : "IS_CREATED_BY", value : "isCreatedBy"},
+    {key : "IS_ELICITED_BY", value : "isElicitedBy"},
+    {key : "IS_RECORDED_BY", value : "isRecordedBy"},
+    {key : "IS_EDITED_BY", value : "isEditedBy"},
+    {key : "IS_ANALYSED_BY", value : "isAnalysedBy"},
+    {key : "IS_EVALUATED_BY", value : "isEvaluatedBy"},
+    {key : "IS_QUERIED_BY", value : "isQueriedBy"},
+    {key : "IS_ACCESSED_BY", value : "isAccessedBy"},
+    {key : "IS_ARCHIVED_BY", value : "isArchivedBy"},
+    {key : "IS_DISPLAYED_BY", value : "isDisplayedBy"},
+    {key : "IS_COMPATIBLE_WITH", value : "isCompatibleWith"}
+];
 
 export var webServiceTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "SOAP", value : "SOAP"},
     {key : "REST", value : "REST"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var encodingLevelEnum = [
     {key : "", value : "None Selected"},
@@ -683,7 +683,7 @@ export var encodingLevelEnum = [
     {key : "SYNTAX", value : "syntax"},
     {key : "PRAGMATICS", value : "pragmatics"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var languageIdTypeEnum = [
     {key : "", value : "None Selected"},
@@ -8683,20 +8683,20 @@ export var languageIdTypeEnum = [
     {key : "ZYP", value : "Zyphe Chin"},
     {key : "ZZA", value : "Zaza; Dimili; Dimli (macrolanguage); Kirdki; Kirmanjki (macrolanguage); Zazaki"},
     {key : "ZZJ", value : "Zuojiang Zhuang"}
-]
+];
 
 export var componentDistributionMediumEnum = [
     {key : "", value : "None Selected"},
-    {key : "WEBSERVICE", value : "webService"},
-    {key : "SOURCECODE", value : "sourceCode"},
-    {key : "EXECUTABLECODE", value : "executableCode"},
-    {key : "SOURCEANDEXECUTABLECODE", value : "sourceAndExecutableCode"}
-]
+    {key : "WEB_SERVICE", value : "webService"},
+    {key : "SOURCE_CODE", value : "sourceCode"},
+    {key : "EXECUTABLE_CODE", value : "executableCode"},
+    {key : "SOURCE_AND_EXECUTABLE_CODE", value : "sourceAndExecutableCode"}
+];
 
 export var annotationLevelEnum = [
     {key : "", value : "None Selected"},
     {key : "ALIGNMENT", value : "alignment"},
-    {key : "DISCOURSEANNOTATION", value : "discourseAnnotation"},
+    {key : "DISCOURSE_ANNOTATION", value : "discourseAnnotation"},
     {key : "DISCOURSEANNOTATION_ARGUMENTATION", value : "discourseAnnotation-argumentation"},
     {key : "DISCOURSEANNOTATION_AUDIENCEREACTIONS", value : "discourseAnnotation-audienceReactions"},
     {key : "DISCOURSEANNOTATION_COREFERENCE", value : "discourseAnnotation-coreference"},
@@ -8706,7 +8706,7 @@ export var annotationLevelEnum = [
     {key : "MORPHOSYNTACTICANNOTATION_BPOSTAGGING", value : "morphosyntacticAnnotation-bPosTagging"},
     {key : "MORPHOSYNTACTICANNOTATION_POSTAGGING", value : "morphosyntacticAnnotation-posTagging"},
     {key : "SEGMENTATION", value : "segmentation"},
-    {key : "SEMANTICANNOTATION", value : "semanticAnnotation"},
+    {key : "SEMANTIC_ANNOTATION", value : "semanticAnnotation"},
     {key : "SEMANTICANNOTATION_CERTAINTYLEVEL", value : "semanticAnnotation-certaintyLevel"},
     {key : "SEMANTICANNOTATION_EMOTIONS", value : "semanticAnnotation-emotions"},
     {key : "SEMANTICANNOTATION_EVENTS", value : "semanticAnnotation-events"},
@@ -8723,7 +8723,7 @@ export var annotationLevelEnum = [
     {key : "SEMANTICANNOTATION_TEXTUALENTAILMENT", value : "semanticAnnotation-textualEntailment"},
     {key : "SEMANTICANNOTATION_WORDSENSES", value : "semanticAnnotation-wordSenses"},
     {key : "SYNTACTICANNOTATION_SEMANTICFRAMES", value : "syntacticAnnotation-semanticFrames"},
-    {key : "SPEECHANNOTATION", value : "speechAnnotation"},
+    {key : "SPEECH_ANNOTATION", value : "speechAnnotation"},
     {key : "SPEECHANNOTATION_ORTHOGRAPHICTRANSCRIPTION", value : "speechAnnotation-orthographicTranscription"},
     {key : "SPEECHANNOTATION_PARALANGUAGEANNOTATION", value : "speechAnnotation-paralanguageAnnotation"},
     {key : "SPEECHANNOTATION_PHONETICTRANSCRIPTION", value : "speechAnnotation-phoneticTranscription"},
@@ -8733,7 +8733,7 @@ export var annotationLevelEnum = [
     {key : "SPEECHANNOTATION_SPEAKERIDENTIFICATION", value : "speechAnnotation-speakerIdentification"},
     {key : "SPEECHANNOTATION_SPEAKERTURNS", value : "speechAnnotation-speakerTurns"},
     {key : "STEMMING", value : "stemming"},
-    {key : "STRUCTURALANNOTATION", value : "structuralAnnotation"},
+    {key : "STRUCTURAL_ANNOTATION", value : "structuralAnnotation"},
     {key : "STRUCTURALANNOTATION_DOCUMENTDIVISIONS", value : "structuralAnnotation-documentDivisions"},
     {key : "STRUCTURALANNOTATION_SENTENCES", value : "structuralAnnotation-sentences"},
     {key : "STRUCTURALANNOTATION_CLAUSES", value : "structuralAnnotation-clauses"},
@@ -8754,16 +8754,16 @@ export var annotationLevelEnum = [
     {key : "MODALITYANNOTATION_HEADMOVEMENTS", value : "modalityAnnotation-headMovements"},
     {key : "MODALITYANNOTATION_LIPMOVEMENTS", value : "modalityAnnotation-lipMovements"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var multilingualityTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "PARALLEL", value : "parallel"},
     {key : "COMPARABLE", value : "comparable"},
-    {key : "MULTILINGUALSINGLETEXT", value : "multilingualSingleText"},
-    {key : "ORIGINALTRANSLATIONSINSAMETEXT", value : "originalTranslationsInSameText"},
+    {key : "MULTILINGUAL_SINGLE_TEXT", value : "multilingualSingleText"},
+    {key : "ORIGINAL_TRANSLATIONS_IN_SAME_TEXT", value : "originalTranslationsInSameText"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var characterEncodingEnum = [
     {key : "", value : "None Selected"},
@@ -8891,34 +8891,34 @@ export var characterEncodingEnum = [
     {key : "CP33722", value : "Cp33722"},
     {key : "ISO2022_CN_CNS", value : "ISO2022_CN_CNS"},
     {key : "ISO2022_CN_GB", value : "ISO2022_CN_GB"},
-    {key : "JISAUTODETECT", value : "JISAutoDetect"},
+    {key : "JISAUTO_DETECT", value : "JISAutoDetect"},
     {key : "MS874", value : "MS874"},
-    {key : "MACARABIC", value : "MacArabic"},
-    {key : "MACCENTRALEUROPE", value : "MacCentralEurope"},
-    {key : "MACCROATIAN", value : "MacCroatian"},
-    {key : "MACCYRILLIC", value : "MacCyrillic"},
-    {key : "MACDINGBAT", value : "MacDingbat"},
-    {key : "MACGREEK", value : "MacGreek"},
-    {key : "MACHEBREW", value : "MacHebrew"},
-    {key : "MACICELAND", value : "MacIceland"},
-    {key : "MACROMAN", value : "MacRoman"},
-    {key : "MACROMANIA", value : "MacRomania"},
-    {key : "MACSYMBOL", value : "MacSymbol"},
-    {key : "MACTHAI", value : "MacThai"},
-    {key : "MACTURKISH", value : "MacTurkish"},
-    {key : "MACUKRAINE", value : "MacUkraine"}
-]
+    {key : "MAC_ARABIC", value : "MacArabic"},
+    {key : "MAC_CENTRAL_EUROPE", value : "MacCentralEurope"},
+    {key : "MAC_CROATIAN", value : "MacCroatian"},
+    {key : "MAC_CYRILLIC", value : "MacCyrillic"},
+    {key : "MAC_DINGBAT", value : "MacDingbat"},
+    {key : "MAC_GREEK", value : "MacGreek"},
+    {key : "MAC_HEBREW", value : "MacHebrew"},
+    {key : "MAC_ICELAND", value : "MacIceland"},
+    {key : "MAC_ROMAN", value : "MacRoman"},
+    {key : "MAC_ROMANIA", value : "MacRomania"},
+    {key : "MAC_SYMBOL", value : "MacSymbol"},
+    {key : "MAC_THAI", value : "MacThai"},
+    {key : "MAC_TURKISH", value : "MacTurkish"},
+    {key : "MAC_UKRAINE", value : "MacUkraine"}
+];
 
 export var lingualityTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "MONOLINGUAL", value : "monolingual"},
     {key : "BILINGUAL", value : "bilingual"},
     {key : "MULTILINGUAL", value : "multilingual"}
-]
+];
 
 export var conformanceToStandardsBestPracticesEnum = [
     {key : "", value : "None Selected"},
-    {key : "AGROVOC", value : "AgroVoc"},
+    {key : "AGRO_VOC", value : "AgroVoc"},
     {key : "ALVIS", value : "ALVIS"},
     {key : "ARGO", value : "ARGO"},
     {key : "BML", value : "BML"},
@@ -8932,10 +8932,10 @@ export var conformanceToStandardsBestPracticesEnum = [
     {key : "GATE", value : "GATE"},
     {key : "GESIS", value : "GESIS"},
     {key : "GMX", value : "GMX"},
-    {key : "GRAF", value : "GrAF"},
-    {key : "HAMNOSYS", value : "HamNoSys"},
+    {key : "GR_AF", value : "GrAF"},
+    {key : "HAM_NO_SYS", value : "HamNoSys"},
     {key : "HASSET", value : "HASSET"},
-    {key : "INKML", value : "InkML"},
+    {key : "INK_ML", value : "InkML"},
     {key : "ILSP_NLP", value : "ILSP_NLP"},
     {key : "ISO12620", value : "ISO12620"},
     {key : "ISO16642", value : "ISO16642"},
@@ -8953,35 +8953,35 @@ export var conformanceToStandardsBestPracticesEnum = [
     {key : "MOSES", value : "MOSES"},
     {key : "MULTEXT", value : "MULTEXT"},
     {key : "MUMIN", value : "MUMIN"},
-    {key : "MULTIMODALINTERACTIONFRAMEWORK", value : "multimodalInteractionFramework"},
+    {key : "MULTIMODAL_INTERACTION_FRAMEWORK", value : "multimodalInteractionFramework"},
     {key : "OAXAL", value : "OAXAL"},
     {key : "OLIA", value : "OLIA"},
     {key : "OWL", value : "OWL"},
     {key : "PANACEA", value : "PANACEA"},
-    {key : "PENNTREEBANK", value : "pennTreeBank"},
-    {key : "PRAGUETREEBANK", value : "pragueTreebank"},
+    {key : "PENN_TREE_BANK", value : "pennTreeBank"},
+    {key : "PRAGUE_TREEBANK", value : "pragueTreebank"},
     {key : "RDF", value : "RDF"},
-    {key : "SEMAF", value : "SemAF"},
-    {key : "SEMAF_DA", value : "SemAF_DA"},
-    {key : "SEMAF_NE", value : "SemAF_NE"},
-    {key : "SEMAF_SRL", value : "SemAF_SRL"},
-    {key : "SEMAF_DS", value : "SemAF_DS"},
+    {key : "SEM_AF", value : "SemAF"},
+    {key : "SEM_AF_DA", value : "SemAF_DA"},
+    {key : "SEM_AF_NE", value : "SemAF_NE"},
+    {key : "SEM_AF_SRL", value : "SemAF_SRL"},
+    {key : "SEM_AF_DS", value : "SemAF_DS"},
     {key : "SKOS", value : "SKOS"},
     {key : "SRX", value : "SRX"},
-    {key : "SYNAF", value : "SynAF"},
+    {key : "SYN_AF", value : "SynAF"},
     {key : "TBX", value : "TBX"},
     {key : "TMX", value : "TMX"},
     {key : "TEI", value : "TEI"},
     {key : "TEI_P3", value : "TEI_P3"},
     {key : "TEI_P4", value : "TEI_P4"},
     {key : "TEI_P5", value : "TEI_P5"},
-    {key : "TIMEML", value : "TimeML"},
+    {key : "TIME_ML", value : "TimeML"},
     {key : "XCES", value : "XCES"},
     {key : "XLIFF", value : "XLIFF"},
     {key : "UD", value : "UD"},
-    {key : "WORDNET", value : "WordNet"},
+    {key : "WORD_NET", value : "WordNet"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var regionIdTypeEnum = [
     {key : "", value : "None Selected"},
@@ -9275,7 +9275,7 @@ export var regionIdTypeEnum = [
     {key : "V154", value : "Northern Europe"},
     {key : "V155", value : "Western Europe"},
     {key : "V419", value : "Latin America and the Caribbean"}
-]
+];
 
 export var journalIdentifierSchemeNameEnum = [
     {key : "", value : "None Selected"},
@@ -9283,56 +9283,56 @@ export var journalIdentifierSchemeNameEnum = [
     {key : "HDL", value : "hdl"},
     {key : "ISSN", value : "issn"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var rightsStmtNameEnum = [
     {key : "", value : "None Selected"},
-    {key : "OPENACCESS", value : "openAccess"},
-    {key : "CLOSEDACCESS", value : "closedAccess"},
-    {key : "EMBARGOEDACCESS", value : "embargoedAccess"},
-    {key : "RESTRICTEDACCESS", value : "restrictedAccess"}
-]
+    {key : "OPEN_ACCESS", value : "openAccess"},
+    {key : "CLOSED_ACCESS", value : "closedAccess"},
+    {key : "EMBARGOED_ACCESS", value : "embargoedAccess"},
+    {key : "RESTRICTED_ACCESS", value : "restrictedAccess"}
+];
 
 export var grammaticalPhenomenaCoverageEnum = [
     {key : "", value : "None Selected"},
-    {key : "CLAUSESTRUCTURE", value : "clauseStructure"},
-    {key : "PPATTACHMENT", value : "ppAttachment"},
-    {key : "NPSTRUCTURE", value : "npStructure"},
+    {key : "CLAUSE_STRUCTURE", value : "clauseStructure"},
+    {key : "PP_ATTACHMENT", value : "ppAttachment"},
+    {key : "NP_STRUCTURE", value : "npStructure"},
     {key : "COORDINATION", value : "coordination"},
     {key : "ANAPHORA", value : "anaphora"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var frameworkEnum = [
     {key : "", value : "None Selected"},
     {key : "UIMA", value : "UIMA"},
     {key : "GATE", value : "GATE"},
-    {key : "ALVISNLP", value : "AlvisNLP"},
+    {key : "ALVIS_NLP", value : "AlvisNLP"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var actualUseEnum = [
     {key : "", value : "None Selected"},
-    {key : "HUMANUSE", value : "humanUse"},
-    {key : "NLPAPPLICATIONS", value : "nlpApplications"}
-]
+    {key : "HUMAN_USE", value : "humanUse"},
+    {key : "NLP_APPLICATIONS", value : "nlpApplications"}
+];
 
 export var lexicalConceptualResourceTypeEnum = [
     {key : "", value : "None Selected"},
-    {key : "WORDLIST", value : "wordList"},
-    {key : "COMPUTATIONALLEXICON", value : "computationalLexicon"},
+    {key : "WORD_LIST", value : "wordList"},
+    {key : "COMPUTATIONAL_LEXICON", value : "computationalLexicon"},
     {key : "ONTOLOGY", value : "ontology"},
     {key : "WORDNET", value : "wordnet"},
     {key : "THESAURUS", value : "thesaurus"},
     {key : "FRAMENET", value : "framenet"},
-    {key : "TERMINOLOGICALRESOURCE", value : "terminologicalResource"},
-    {key : "MACHINEREADABLEDICTIONARY", value : "machineReadableDictionary"},
+    {key : "TERMINOLOGICAL_RESOURCE", value : "terminologicalResource"},
+    {key : "MACHINE_READABLE_DICTIONARY", value : "machineReadableDictionary"},
     {key : "LEXICON", value : "lexicon"},
     {key : "TYPESYSTEM", value : "typesystem"},
     {key : "TAGSET", value : "tagset"},
-    {key : "MAPPINGOFRESOURCES", value : "mappingOfResources"},
+    {key : "MAPPING_OF_RESOURCES", value : "mappingOfResources"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var licenceEnum = [
     {key : "", value : "None Selected"},
@@ -9345,7 +9345,7 @@ export var licenceEnum = [
     {key : "CC_ZERO", value : "CC-ZERO"},
     {key : "PDDL", value : "PDDL"},
     {key : "ODC_BY", value : "ODC-BY"},
-    {key : "ODBL", value : "ODbL"},
+    {key : "ODB_L", value : "ODbL"},
     {key : "MS_NORED", value : "MS-NoReD"},
     {key : "MS_NORED_FF", value : "MS-NoReD-FF"},
     {key : "MS_NORED_ND", value : "MS-NoReD-ND"},
@@ -9365,7 +9365,7 @@ export var licenceEnum = [
     {key : "APACHELICENCE_2_0", value : "ApacheLicence_2.0"},
     {key : "BSD_4_CLAUSE", value : "BSD_4-clause"},
     {key : "BSD_3_CLAUSE", value : "BSD_3-clause"},
-    {key : "FREEBSD", value : "FreeBSD"},
+    {key : "FREE_BSD", value : "FreeBSD"},
     {key : "GFDL", value : "GFDL"},
     {key : "GPL", value : "GPL"},
     {key : "LGPL", value : "LGPL"},
@@ -9373,79 +9373,79 @@ export var licenceEnum = [
     {key : "PRINCETON_WORDNET", value : "Princeton_Wordnet"},
     {key : "EPL", value : "EPL"},
     {key : "PROPRIETARY", value : "proprietary"},
-    {key : "UNDERNEGOTIATION", value : "underNegotiation"},
-    {key : "NONSTANDARDLICENCETERMS", value : "nonStandardLicenceTerms"}
-]
+    {key : "UNDER_NEGOTIATION", value : "underNegotiation"},
+    {key : "NON_STANDARD_LICENCE_TERMS", value : "nonStandardLicenceTerms"}
+];
 
 export var distributionMediumEnum = [
     {key : "", value : "None Selected"},
-    {key : "WEBEXECUTABLE", value : "webExecutable"},
-    {key : "PAPERCOPY", value : "paperCopy"},
-    {key : "HARDDISK", value : "hardDisk"},
-    {key : "BLURAY", value : "bluRay"},
+    {key : "WEB_EXECUTABLE", value : "webExecutable"},
+    {key : "PAPER_COPY", value : "paperCopy"},
+    {key : "HARD_DISK", value : "hardDisk"},
+    {key : "BLU_RAY", value : "bluRay"},
     {key : "DVD_R", value : "DVD-R"},
     {key : "CD_ROM", value : "CD-ROM"},
     {key : "DOWNLOADABLE", value : "downloadable"},
-    {key : "ACCESSIBLETHROUGHINTERFACE", value : "accessibleThroughInterface"},
+    {key : "ACCESSIBLE_THROUGH_INTERFACE", value : "accessibleThroughInterface"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var organizationIdentifierSchemeNameEnum = [
     {key : "", value : "None Selected"},
     {key : "ISNI", value : "isni"},
     {key : "FUNDREF", value : "fundref"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var conditionsOfUseEnum = [
     {key : "", value : "None Selected"},
     {key : "ATTRIBUTION", value : "attribution"},
-    {key : "NONCOMMERCIALUSE", value : "nonCommercialUse"},
-    {key : "COMMERCIALUSE", value : "commercialUse"},
-    {key : "SHAREALIKE", value : "shareAlike"},
-    {key : "NODERIVATIVES", value : "noDerivatives"},
-    {key : "NOREDISTRIBUTION", value : "noRedistribution"},
-    {key : "EVALUATIONUSE", value : "evaluationUse"},
+    {key : "NON_COMMERCIAL_USE", value : "nonCommercialUse"},
+    {key : "COMMERCIAL_USE", value : "commercialUse"},
+    {key : "SHARE_ALIKE", value : "shareAlike"},
+    {key : "NO_DERIVATIVES", value : "noDerivatives"},
+    {key : "NO_REDISTRIBUTION", value : "noRedistribution"},
+    {key : "EVALUATION_USE", value : "evaluationUse"},
     {key : "RESEARCH", value : "research"},
-    {key : "LANGUAGEENGINEERINGRESEARCH", value : "languageEngineeringResearch"},
+    {key : "LANGUAGE_ENGINEERING_RESEARCH", value : "languageEngineeringResearch"},
     {key : "EDUCATION", value : "education"},
-    {key : "INFORMLICENSOR", value : "informLicensor"},
+    {key : "INFORM_LICENSOR", value : "informLicensor"},
     {key : "REDEPOSIT", value : "redeposit"},
     {key : "COMPENSATE", value : "compensate"},
-    {key : "PERSONALDATAINCLUDED", value : "personalDataIncluded"},
-    {key : "SENSITIVEDATAINCLUDED", value : "sensitiveDataIncluded"},
-    {key : "REQUESTPLAN", value : "requestPlan"},
-    {key : "SPATIALCONSTRAINT", value : "spatialConstraint"},
-    {key : "USERIDENTIFIED", value : "userIdentified"},
-    {key : "ACADEMICUSERS", value : "academicUsers"},
-    {key : "COMMERCIALUSERS", value : "commercialUsers"},
-    {key : "MEMBERSOFGROUP", value : "membersOfGroup"},
+    {key : "PERSONAL_DATA_INCLUDED", value : "personalDataIncluded"},
+    {key : "SENSITIVE_DATA_INCLUDED", value : "sensitiveDataIncluded"},
+    {key : "REQUEST_PLAN", value : "requestPlan"},
+    {key : "SPATIAL_CONSTRAINT", value : "spatialConstraint"},
+    {key : "USER_IDENTIFIED", value : "userIdentified"},
+    {key : "ACADEMIC_USERS", value : "academicUsers"},
+    {key : "COMMERCIAL_USERS", value : "commercialUsers"},
+    {key : "MEMBERS_OF_GROUP", value : "membersOfGroup"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var titleTypeEnum = [
     {key : "", value : "None Selected"},
-    {key : "ALTERNATIVETITLE", value : "alternativeTitle"},
+    {key : "ALTERNATIVE_TITLE", value : "alternativeTitle"},
     {key : "SUBTITLE", value : "subtitle"},
-    {key : "TRANSLATEDTITLE", value : "translatedTitle"},
+    {key : "TRANSLATED_TITLE", value : "translatedTitle"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var classificationSchemeNameEnum = [
     {key : "", value : "None Selected"},
     {key : "DDC", value : "DDC"},
     {key : "UDC", value : "UDC"},
-    {key : "EUROVOC", value : "EuroVoc"},
+    {key : "EURO_VOC", value : "EuroVoc"},
     {key : "LCSH", value : "LCSH"},
     {key : "DK_5", value : "DK-5"},
-    {key : "MESH", value : "MeSH"},
+    {key : "ME_SH", value : "MeSH"},
     {key : "ANC_CLASSIFICATION", value : "ANC_classification"},
     {key : "BNC_CLASSIFICATION", value : "BNC_classification"},
     {key : "NLK_CLASSIFICATION", value : "NLK_classification"},
-    {key : "PAROLE_TOPICCLASSIFICATION", value : "PAROLE_topicClassification"},
-    {key : "PAROLE_GENRECLASSIFICATION", value : "PAROLE_genreClassification"},
+    {key : "PAROLE_TOPIC_CLASSIFICATION", value : "PAROLE_topicClassification"},
+    {key : "PAROLE_GENRE_CLASSIFICATION", value : "PAROLE_genreClassification"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var extraTextualInformationUnitEnum = [
     {key : "", value : "None Selected"},
@@ -9454,9 +9454,9 @@ export var extraTextualInformationUnitEnum = [
     {key : "SEMANTICS", value : "semantics"},
     {key : "EXAMPLE", value : "example"},
     {key : "SYNTAX", value : "syntax"},
-    {key : "LEXICALUNIT", value : "lexicalUnit"},
+    {key : "LEXICAL_UNIT", value : "lexicalUnit"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var evaluationLevelEnum = [
     {key : "", value : "None Selected"},
@@ -9464,62 +9464,62 @@ export var evaluationLevelEnum = [
     {key : "USAGE", value : "usage"},
     {key : "IMPACT", value : "impact"},
     {key : "DIAGNOSTIC", value : "diagnostic"}
-]
+];
 
 export var evaluationCriterionEnum = [
     {key : "", value : "None Selected"},
     {key : "EXTRINSIC", value : "extrinsic"},
     {key : "INTRINSIC", value : "intrinsic"}
-]
+];
 
 export var publicationTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "ARTICLE", value : "article"},
-    {key : "BACHELORTHESIS", value : "bachelorThesis"},
-    {key : "MASTERTHESIS", value : "masterThesis"},
-    {key : "DOCTORALTHESIS", value : "doctoralThesis"},
+    {key : "BACHELOR_THESIS", value : "bachelorThesis"},
+    {key : "MASTER_THESIS", value : "masterThesis"},
+    {key : "DOCTORAL_THESIS", value : "doctoralThesis"},
     {key : "BOOK", value : "book"},
-    {key : "BOOKPART", value : "bookPart"},
+    {key : "BOOK_PART", value : "bookPart"},
     {key : "REVIEW", value : "review"},
-    {key : "CONFERENCEOBJECT", value : "conferenceObject"},
+    {key : "CONFERENCE_OBJECT", value : "conferenceObject"},
     {key : "LECTURE", value : "lecture"},
-    {key : "WORKINGPAPER", value : "workingPaper"},
-    {key : "PREPRINT", value : "prePrint"},
+    {key : "WORKING_PAPER", value : "workingPaper"},
+    {key : "PRE_PRINT", value : "prePrint"},
     {key : "REPORT", value : "report"},
     {key : "ANNOTATION", value : "annotation"},
-    {key : "CONTRIBUTIONTOPERIODICAL", value : "contributionToPeriodical"},
+    {key : "CONTRIBUTION_TO_PERIODICAL", value : "contributionToPeriodical"},
     {key : "PATENT", value : "patent"},
-    {key : "INPROCEEDINGS", value : "inProceedings"},
+    {key : "IN_PROCEEDINGS", value : "inProceedings"},
     {key : "BOOKLET", value : "booklet"},
     {key : "MANUAL", value : "manual"},
-    {key : "TECHREPORT", value : "techReport"},
-    {key : "INCOLLECTION", value : "inCollection"},
+    {key : "TECH_REPORT", value : "techReport"},
+    {key : "IN_COLLECTION", value : "inCollection"},
     {key : "UNPUBLISHED", value : "unpublished"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var taskEnum = [
     {key : "", value : "None Selected"},
-    {key : "ANAPHORARESOLUTION", value : "anaphoraResolution"},
+    {key : "ANAPHORA_RESOLUTION", value : "anaphoraResolution"},
     {key : "CHUNKING", value : "chunking"},
     {key : "PARSING", value : "parsing"},
-    {key : "NPRECOGNITION", value : "npRecognition"},
-    {key : "TITLESPARSING", value : "titlesParsing"},
-    {key : "DEFINITIONSPARSING", value : "definitionsParsing"},
+    {key : "NP_RECOGNITION", value : "npRecognition"},
+    {key : "TITLES_PARSING", value : "titlesParsing"},
+    {key : "DEFINITIONS_PARSING", value : "definitionsParsing"},
     {key : "ANALYSIS", value : "analysis"},
     {key : "GENERATION", value : "generation"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var requiresHardwareEnum = [
     {key : "", value : "None Selected"},
-    {key : "GRAPHICCARD", value : "graphicCard"},
+    {key : "GRAPHIC_CARD", value : "graphicCard"},
     {key : "MICROPHONE", value : "microphone"},
-    {key : "OCRSYSTEM", value : "ocrSystem"},
-    {key : "SPECIALHARDWAREEQUIPMENT", value : "specialHardwareEquipment"},
+    {key : "OCR_SYSTEM", value : "ocrSystem"},
+    {key : "SPECIAL_HARDWARE_EQUIPMENT", value : "specialHardwareEquipment"},
     {key : "NONE", value : "none"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var sizeUnitEnum = [
     {key : "", value : "None Selected"},
@@ -9541,18 +9541,18 @@ export var sizeUnitEnum = [
     {key : "TOKENS", value : "tokens"},
     {key : "WORDS", value : "words"},
     {key : "KEYWORDS", value : "keywords"},
-    {key : "IDIOMATICEXPRESSIONS", value : "idiomaticExpressions"},
+    {key : "IDIOMATIC_EXPRESSIONS", value : "idiomaticExpressions"},
     {key : "TRIPLES", value : "triples"},
     {key : "NEOLOGISMS", value : "neologisms"},
-    {key : "MULTIWORDUNITS", value : "multiWordUnits"},
+    {key : "MULTI_WORD_UNITS", value : "multiWordUnits"},
     {key : "EXPRESSIONS", value : "expressions"},
     {key : "SYNSETS", value : "synsets"},
     {key : "CLASSES", value : "classes"},
     {key : "CONCEPTS", value : "concepts"},
-    {key : "LEXICALTYPES", value : "lexicalTypes"},
-    {key : "PHONETICUNITS", value : "phoneticUnits"},
-    {key : "SYNTACTICUNITS", value : "syntacticUnits"},
-    {key : "SEMANTICUNITS", value : "semanticUnits"},
+    {key : "LEXICAL_TYPES", value : "lexicalTypes"},
+    {key : "PHONETIC_UNITS", value : "phoneticUnits"},
+    {key : "SYNTACTIC_UNITS", value : "syntacticUnits"},
+    {key : "SEMANTIC_UNITS", value : "semanticUnits"},
     {key : "PREDICATES", value : "predicates"},
     {key : "PHONEMES", value : "phonemes"},
     {key : "DIPHONES", value : "diphones"},
@@ -9573,99 +9573,99 @@ export var sizeUnitEnum = [
     {key : "RULES", value : "rules"},
     {key : "QUESTIONS", value : "questions"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var resourceTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "COMPONENT", value : "component"}
-]
+];
 
 export var componentTypeEnum = [
     {key : "", value : "None Selected"},
-    {key : "ACCESSCOMPONENT", value : "accessComponent"},
+    {key : "ACCESS_COMPONENT", value : "accessComponent"},
     {key : "READER", value : "reader"},
     {key : "WRITER", value : "writer"},
-    {key : "SUPPORTCOMPONENT", value : "supportComponent"},
+    {key : "SUPPORT_COMPONENT", value : "supportComponent"},
     {key : "VISUALISER", value : "visualiser"},
     {key : "DEBUGGER", value : "debugger"},
     {key : "VALIDATOR", value : "validator"},
     {key : "VIEWER", value : "viewer"},
-    {key : "CORPUSVIEWER", value : "corpusViewer"},
-    {key : "LEXICONVIEWER", value : "lexiconViewer"},
+    {key : "CORPUS_VIEWER", value : "corpusViewer"},
+    {key : "LEXICON_VIEWER", value : "lexiconViewer"},
     {key : "EDITOR", value : "editor"},
-    {key : "MLTRAINER", value : "mlTrainer"},
-    {key : "MLPREDICTOR", value : "mlPredictor"},
-    {key : "FEATUREEXTRACTOR", value : "featureExtractor"},
-    {key : "DATASPLITTER", value : "dataSplitter"},
-    {key : "DATAMERGER", value : "dataMerger"},
+    {key : "ML_TRAINER", value : "mlTrainer"},
+    {key : "ML_PREDICTOR", value : "mlPredictor"},
+    {key : "FEATURE_EXTRACTOR", value : "featureExtractor"},
+    {key : "DATA_SPLITTER", value : "dataSplitter"},
+    {key : "DATA_MERGER", value : "dataMerger"},
     {key : "CONVERTER", value : "converter"},
     {key : "EVALUATOR", value : "evaluator"},
-    {key : "FLOWCONTROLLER", value : "flowController"},
-    {key : "SCRIPTBASEDANALYSER", value : "scriptBasedAnalyser"},
+    {key : "FLOW_CONTROLLER", value : "flowController"},
+    {key : "SCRIPT_BASED_ANALYSER", value : "scriptBasedAnalyser"},
     {key : "MATCHER", value : "matcher"},
-    {key : "GAZETEERBASEDMATCHER", value : "gazeteerBasedMatcher"},
-    {key : "CROWDSOURCINGCOMPONENT", value : "crowdSourcingComponent"},
-    {key : "DATACOLLECTOR", value : "dataCollector"},
+    {key : "GAZETEER_BASED_MATCHER", value : "gazeteerBasedMatcher"},
+    {key : "CROWD_SOURCING_COMPONENT", value : "crowdSourcingComponent"},
+    {key : "DATA_COLLECTOR", value : "dataCollector"},
     {key : "CRAWLER", value : "crawler"},
     {key : "PROCESSOR", value : "processor"},
     {key : "ANNOTATOR", value : "annotator"},
     {key : "SEGMENTER", value : "segmenter"},
     {key : "STEMMER", value : "stemmer"},
     {key : "LEMMATIZER", value : "lemmatizer"},
-    {key : "MORPHOLOGICALTAGGER", value : "morphologicalTagger"},
+    {key : "MORPHOLOGICAL_TAGGER", value : "morphologicalTagger"},
     {key : "CHUNKER", value : "chunker"},
     {key : "PARSER", value : "parser"},
-    {key : "COREFERENCEANNOTATOR", value : "coreferenceAnnotator"},
-    {key : "NAMEDENTITYRECOGNIZER", value : "namedEntityRecognizer"},
-    {key : "SEMANTICSANNOTATOR", value : "semanticsAnnotator"},
-    {key : "SRLANNOTATOR", value : "srlAnnotator"},
-    {key : "READABILITYANNOTATOR", value : "readabilityAnnotator"},
+    {key : "COREFERENCE_ANNOTATOR", value : "coreferenceAnnotator"},
+    {key : "NAMED_ENTITY_RECOGNIZER", value : "namedEntityRecognizer"},
+    {key : "SEMANTICS_ANNOTATOR", value : "semanticsAnnotator"},
+    {key : "SRL_ANNOTATOR", value : "srlAnnotator"},
+    {key : "READABILITY_ANNOTATOR", value : "readabilityAnnotator"},
     {key : "ALIGNER", value : "aligner"},
     {key : "GENERATOR", value : "generator"},
     {key : "SUMMARIZER", value : "summarizer"},
     {key : "SIMPLIFIER", value : "simplifier"},
-    {key : "PREORPOSTPROCESSINGCOMPONENT", value : "preOrPostProcessingComponent"},
-    {key : "SPELLINGCHECKER", value : "spellingChecker"},
-    {key : "GRAMMARCHECKER", value : "grammarChecker"},
+    {key : "PRE_OR_POST_PROCESSING_COMPONENT", value : "preOrPostProcessingComponent"},
+    {key : "SPELLING_CHECKER", value : "spellingChecker"},
+    {key : "GRAMMAR_CHECKER", value : "grammarChecker"},
     {key : "NORMALIZER", value : "normalizer"},
     {key : "FILTERS", value : "filters"},
     {key : "ANALYZER", value : "analyzer"},
-    {key : "TOPICEXTRACTOR", value : "topicExtractor"},
-    {key : "DOCUMENTCLASSIFIER", value : "documentClassifier"},
-    {key : "LANGUAGEIDENTIFIER", value : "languageIdentifier"},
-    {key : "SENTIMENTANALYZER", value : "sentimentAnalyzer"},
-    {key : "KEYWORDSEXTRACTOR", value : "keywordsExtractor"},
-    {key : "TERMEXTRACTOR", value : "termExtractor"},
-    {key : "CONTRADICTIONDETECTOR", value : "contradictionDetector"},
-    {key : "EVENTEXTRACTOR", value : "eventExtractor"},
-    {key : "PERSUASIVEEXPRESSIONMINER", value : "persuasiveExpressionMiner"},
-    {key : "INFORMATIONEXTRACTOR", value : "informationExtractor"},
-    {key : "LEXICONEXTRACTORFROMCORPORA", value : "lexiconExtractorFromCorpora"},
-    {key : "LEXICONEXTRACTORFROMLEXICA", value : "lexiconExtractorFromLexica"},
-    {key : "WORDSENSEDISAMBIGUATOR", value : "wordSenseDisambiguator"},
-    {key : "QUALITATIVEANALYZER", value : "qualitativeAnalyzer"},
+    {key : "TOPIC_EXTRACTOR", value : "topicExtractor"},
+    {key : "DOCUMENT_CLASSIFIER", value : "documentClassifier"},
+    {key : "LANGUAGE_IDENTIFIER", value : "languageIdentifier"},
+    {key : "SENTIMENT_ANALYZER", value : "sentimentAnalyzer"},
+    {key : "KEYWORDS_EXTRACTOR", value : "keywordsExtractor"},
+    {key : "TERM_EXTRACTOR", value : "termExtractor"},
+    {key : "CONTRADICTION_DETECTOR", value : "contradictionDetector"},
+    {key : "EVENT_EXTRACTOR", value : "eventExtractor"},
+    {key : "PERSUASIVE_EXPRESSION_MINER", value : "persuasiveExpressionMiner"},
+    {key : "INFORMATION_EXTRACTOR", value : "informationExtractor"},
+    {key : "LEXICON_EXTRACTOR_FROM_CORPORA", value : "lexiconExtractorFromCorpora"},
+    {key : "LEXICON_EXTRACTOR_FROM_LEXICA", value : "lexiconExtractorFromLexica"},
+    {key : "WORD_SENSE_DISAMBIGUATOR", value : "wordSenseDisambiguator"},
+    {key : "QUALITATIVE_ANALYZER", value : "qualitativeAnalyzer"},
     {key : "PLATFORM", value : "platform"},
     {key : "INFRASTRUCTURE", value : "infrastructure"},
     {key : "ARCHITECTURE", value : "architecture"},
-    {key : "NLPDEVELOPMENTENVIRONMENT", value : "nlpDevelopmentEnvironment"},
+    {key : "NLP_DEVELOPMENT_ENVIRONMENT", value : "nlpDevelopmentEnvironment"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var personIdentifierSchemeNameEnum = [
     {key : "", value : "None Selected"},
     {key : "ORCID", value : "orcid"},
     {key : "ISNI", value : "isni"},
-    {key : "RESEARCHERID", value : "researcherId"},
-    {key : "SCOPUSID", value : "scopusId"},
+    {key : "RESEARCHER_ID", value : "researcherId"},
+    {key : "SCOPUS_ID", value : "scopusId"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var schemeNameEnum = [
     {key : "", value : "None Selected"},
     {key : "JATS", value : "jats"},
-    {key : "TEIP5", value : "teiP5"},
+    {key : "TEI_P5", value : "teiP5"},
     {key : "OTHER", value : "other"}
-]
+];
 
 export var variantIdTypeEnum = [
     {key : "", value : "None Selected"},
@@ -9735,7 +9735,7 @@ export var variantIdTypeEnum = [
     {key : "VALENCIA", value : "Valencian"},
     {key : "VALLADER", value : "Vallader idiom of Romansh"},
     {key : "WADEGILE", value : "Wade-Giles romanization"}
-]
+];
 
 export var relatedLexiconTypeEnum = [
     {key : "", value : "None Selected"},
@@ -9743,13 +9743,13 @@ export var relatedLexiconTypeEnum = [
     {key : "ATTACHED", value : "attached"},
     {key : "COMPATIBLE", value : "compatible"},
     {key : "NONE", value : "none"}
-]
+];
 
 export var validationTypeEnum = [
     {key : "", value : "None Selected"},
     {key : "FORMAL", value : "formal"},
     {key : "CONTENT", value : "content"}
-]
+];
 
 export var operatingSystemEnum = [
     {key : "", value : "None Selected"},
@@ -9758,10 +9758,10 @@ export var operatingSystemEnum = [
     {key : "LINUX", value : "linux"},
     {key : "UNIX", value : "unix"},
     {key : "MAC_OS", value : "mac-OS"},
-    {key : "GOOGLECHROMEOS", value : "googleChromeOS"},
-    {key : "IOS", value : "iOS"},
+    {key : "GOOGLE_CHROME_OS", value : "googleChromeOS"},
+    {key : "I_OS", value : "iOS"},
     {key : "ANDROID", value : "android"},
     {key : "OTHER", value : "other"},
     {key : "BLANK", value : ""}
-]
+];
 

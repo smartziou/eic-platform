@@ -26,7 +26,7 @@ export class RawCorpusInfoFormControl implements OnInit {
 
     ngOnInit() {
         this.myForm = RawCorpusInfoFormControl.generate(this._fb);
-
+        //this.myForm.addControl("corpusSubtype","rawCorpus");
         // var self = this;
         // this.myForm.patchValue = (value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
         //     Object.keys(value).forEach(name => {
@@ -58,21 +58,22 @@ export class RawCorpusInfoFormControl implements OnInit {
         return _fb.group({
             corpusMediaPartsType: _fb.group({
                 corpusTextParts : _fb.array([CorpusTextPartInfoFormControl.generate(_fb)]),
-            })
+            }),
+            corpusSubtype : "rawCorpus"
         });
     }
 
-    // addNew(type: string) {
-    //     if(type=='resourceNames') {
-    //         const control = <FormArray>this.myForm.controls['resourceNames'];
-    //         control.push(MyStringFormControl.generate(this._fb));
-    //     } 
-    // }
-    //
-    // $delete(type: string, index: number) {
-    //     if(type=='resourceNames') {
-    //         const control = <FormArray>this.myForm.controls['resourceNames'];
-    //         control.removeAt(index);
-    //     }
-    // }
+    addNew(type: string) {
+        if(type=='resourceNames') {
+            const control = <FormArray>this.myForm.controls['resourceNames'];
+            control.push(MyStringFormControl.generate(this._fb));
+        }
+    }
+
+    $delete(type: string, index: number) {
+        if(type=='resourceNames') {
+            const control = <FormArray>this.myForm.controls['resourceNames'];
+            control.removeAt(index);
+        }
+    }
 }

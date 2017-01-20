@@ -119,7 +119,7 @@ export class RelatedCommonForm implements OnInit{
     private type : string;
 
 
-    private myFormPerson : FormGroup;
+    private myFormPerson : FormArray;
 
     private myFormIdentifier : FormArray;
 
@@ -138,25 +138,35 @@ export class RelatedCommonForm implements OnInit{
         this.personDesc = personIdentifierDesc;
     }
 
-    public static newPerson(_fb : FormBuilder, type : string, schemeName? : string) : any {
+    public static newPerson(_fb : FormBuilder, type : string, schemeName? : string, validate : boolean = true) : any {
+        let required = (!validate) ? ['', Validators.required] : '' ;
         if(type=="Names") {
             return _fb.group({
-                value: ['', [Validators.required]],
-                lang: ['', [Validators.required]]
+                value: required,
+                lang: required
             });
         } else if (type === "Identifiers"){
             return _fb.group(IdentifierFormControl.generate(schemeName));
         }
     }
 
+
+    public applyChanges() {
+        console.log(this.type,this.radioButtonSelected,this.parentForm.controls);
+        if(this.radioButtonSelected == "Names") {
+            this.parentForm.removeControl(this.type + 'Identifiers');
+            this.parentForm.addControl(this.type + 'Names',this.myFormPerson);
+        } else if(this.radioButtonSelected == "Identifiers") {
+            console.log(this.radioButtonSelected,'delete');
+            this.parentForm.removeControl(this.type + 'Names');
+            this.parentForm.addControl(this.type + 'Identifiers',this.myFormIdentifier);
+        }
+
+    }
     public changeType(choice: string) :void {
         if (this.radioButtonSelected !== choice) {
             this.radioButtonSelected = choice;
-            // if(choice == "Identifier") {
-            //     this.parentForm = this.myFormIdentifier;
-            // } else {
-            //     this.parentForm = this.myFormPerson;
-            // }
+            this.applyChanges();
         }
     }
 
@@ -186,26 +196,17 @@ export class RelatedCommonForm implements OnInit{
 
     }
 
-    public static generate(_fb: FormBuilder, type : string) {
+    public static generate(_fb: FormBuilder, type : string,validate : boolean = true) {
         const group = {};
-        group[type + 'Names'] = _fb.array([RelatedCommonForm.newPerson(_fb,'Names')]);
-        group[type + "Identifiers"] = _fb.array([RelatedCommonForm.newPerson(_fb,"Identifiers",type + "IdentifierSchemeName")]);
+        group[type + 'Names'] = _fb.array([RelatedCommonForm.newPerson(_fb,'Names',validate)]);
+        group[type + "Identifiers"] = _fb.array([RelatedCommonForm.newPerson(_fb,"Identifiers",type + "IdentifierSchemeName",validate)]);
         return _fb.group(group);
     }
 
-    public validate(): ValidatorFn {
-        return (c: AbstractControl): {[key: string]: any} => {
-            if(this.radioButtonSelected === "Identifiers") {
-                return !c.get(this.type + "Identifiers").valid ? null : {error : "Identifier is invalid"};
-            } else {
-                return !c.get(this.type + "Names").valid ? null : {error : "Person is invalid"};
-            }
-        };
-    }
-
     ngOnInit() {
-        this.parentForm.clearValidators();
-        this.parentForm.setValidators(this.validate());
+        this.myFormPerson = <FormArray>this.parentForm.get(this.type + 'Names');
+        this.myFormIdentifier = <FormArray>this.parentForm.get(this.type + 'Identifiers');
+        this.applyChanges();
         var self = this;
         this.parentForm.patchValue =(value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
             Object.keys(value).forEach(name => {

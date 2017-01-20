@@ -51,7 +51,7 @@ export class CorpusTextPartInfoFormControl implements OnInit {
 
     public static generate(_fb: FormBuilder) {
         return _fb.group({
-            sizes : _fb.array([SizeInfoFormControl.generate(_fb)]),
+            sizes : _fb.array([SizeInfoFormControl.generate(_fb,false)]),
             languages: _fb.array([LanguageInfoFormControl.generate(_fb)])
         });
     }
@@ -59,7 +59,7 @@ export class CorpusTextPartInfoFormControl implements OnInit {
     addNew(type: string) {
         if(type=='sizes') {
             const control = <FormArray>this.myForm.controls['sizes'];
-            control.push(SizeInfoFormControl.generate(this._fb));
+            control.push(SizeInfoFormControl.generate(this._fb,false));
         } else if(type=='languages') {
             const control = <FormArray>this.myForm.controls['languages'];
             control.push(LanguageInfoFormControl.generate(this._fb));

@@ -103,7 +103,6 @@ export class DatasetDistributionInfoFormControl implements OnInit{
     }
 
     ngOnInit(): void {
-        console.log("tralalilalilalo",this.parentForm);
     }
 
 }
