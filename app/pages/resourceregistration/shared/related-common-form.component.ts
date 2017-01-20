@@ -32,7 +32,7 @@ import {IdentifierFormControl} from "./identifier-common-form.component";
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-            <a class="add-new-element" (click)="add_new()"><i class="fa fa-plus" aria-hidden="true"></i>
+            <a class="add-new-element add-new-group" (click)="add_new()"><i class="fa fa-plus" aria-hidden="true"></i>
                 Add New {{label}}</a>
         </div>
     </div>

@@ -1,11 +1,21 @@
+.corpusForm {
+    font-size: 13px;
+    font-family: "Open Sans";
+}
+
 .group {
     border: 1px dashed #ccc;
     padding: 15px 0px;
     margin-bottom: 15px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 95%
 }
 
 .radio-label {
     padding-left: 0px;
+    font-size: 13px;
+    font-weight: 300;
 }
 
 .radio-label input {
@@ -16,6 +26,7 @@
     letter-spacing: 1.5px;
     padding-bottom: 10px;
     color: #ff6600;
+    font-size: 14px;
 }
 
 .group-label a {
@@ -33,4 +44,52 @@
 
 .container {
     width: 100%;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-group-divider {
+    margin-top: 30px;
+}
+
+a {
+    font-size: 14px;
+}
+
+a.add-new-element {
+    color: #003D8C;
+}
+
+a.add-new-element:hover, a.add-new-element:focus {
+    color: #003167;
+}
+
+a.add-new-group {
+    color: #ff6600;
+    letter-spacing: 1.5px;
+}
+
+a.add-new-group:hover, a.add-new-group:focus {
+    color: #C55000;
+}
+
+a.remove-element {
+    color: #003D8C;
+    height: 34px;
+}
+
+a.remove-element:hover, a.remove-element:focus {
+    color: #003167;
+}
+
+a.remove-element i {
+    margin-top: 9px;
+}
+
+.control-label {
+    font-family: "Open Sans";
+    font-size: 13px;
+    /*font-weight: 400;*/
 }
