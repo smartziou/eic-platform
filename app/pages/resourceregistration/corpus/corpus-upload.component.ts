@@ -16,6 +16,8 @@ export class CorpusUploadComponent implements OnInit {
 
     corpusForm: FormGroup;
     zipForm: FormGroup;
+    zipFile : File;
+    corpusValue : OMTDCorpus;
 
     constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
     }
@@ -43,12 +45,17 @@ export class CorpusUploadComponent implements OnInit {
     }
 
     updateFile($event : any) {
-        console.log($event);
+        this.zipFile = $event;
+        //console.log($event);
     }
 
-    onSubmit(myForm: FormGroup) {
+    handleCorpus(corpus : any) {
+        this.corpusForm = corpus;
+    }
+
+    onSubmit() {
         console.log("Submitted")
-        console.log(myForm.value,myForm);
+        console.log(this.zipFile,this.corpusForm);
     }
 
 }

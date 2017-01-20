@@ -1,5 +1,5 @@
 <div>
-    <form class="form-horizontal corpusForm" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <form class="form-horizontal corpusForm" [formGroup]="myForm">
         <accordion>
             <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
                 <metadata-header-info-form [group]="myForm"></metadata-header-info-form>
@@ -9,8 +9,6 @@
                     <dataset-distributions-info-form-common [group]="myForm.controls.corpusInfo"></dataset-distributions-info-form-common>
                     <corpus-subtype-specific-info-form [group]="myForm.controls.corpusInfo"></corpus-subtype-specific-info-form>
                 <!--</div>-->
-                <div class="uk-grid-margin uk-row-first"><button class="uk-button uk-button-large
-                                            uk-button-primary registerButton">Register!</button></div>
             </div>
         </accordion>
     </form>

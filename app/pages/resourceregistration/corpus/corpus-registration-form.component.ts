@@ -1,7 +1,7 @@
 /**
  * Created by stefania on 10/19/16.
  */
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
 import {MetadataHeaderInfo, OMTDComponent, Order, OMTDCorpus} from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
@@ -18,7 +18,10 @@ export class CorpusRegistrationFormComponent implements OnInit {
     myForm: FormGroup;
 
     @Input('corpus')
-    corpus : Observable<OMTDCorpus>;
+    corpus : Observable<OMTDCorpus> = null;
+
+    @Output('corpusForm')
+    corpusForm : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
     constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
     }
@@ -38,12 +41,13 @@ export class CorpusRegistrationFormComponent implements OnInit {
             })
 
         });
-        var self = this;
+        this.myForm.valueChanges.subscribe(corpus => this.corpusForm.emit(this.myForm));
 
-        this.corpus.subscribe(
-            corpus => this.loadCorpus(corpus),
-            error => console.log(error));
-
+        if (this.corpus) {
+            this.corpus.subscribe(
+                corpus => this.loadCorpus(corpus),
+                error => console.log(error));
+        }
         // this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
         //     console.log(res);
         //     var x : OMTDCorpus = res;
@@ -55,11 +59,6 @@ export class CorpusRegistrationFormComponent implements OnInit {
         //     });
         // });
 
-    }
-
-    onSubmit(myForm: FormGroup) {
-        console.log("Submitted")
-        console.log(myForm.value,myForm);
     }
 
 }

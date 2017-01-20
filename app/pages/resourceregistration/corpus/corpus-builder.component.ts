@@ -71,7 +71,7 @@ export class CorpusBuilderComponent {
                 this.corpusPromise = this.contentConnectorService.prepareCorpus(this.urlParameters);
                 this.corpusPromise.subscribe(
                     corpus => this.loadCorpusMetadata(corpus),
-                    error => this.handleError(<any>error));
+                    error => console.log(error));
             });
     }
 
