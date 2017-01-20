@@ -130,18 +130,18 @@ export class LanguageTypeForm implements OnInit {
 
     public addIdentifier() {
         this.withIdentifier = true;
-        this.myForm.addControl('languageId',new FormControl('',[Validators.required]));
-        this.myForm.addControl('scriptId',new FormControl(''));
-        this.myForm.addControl('regionId',new FormControl(''));
-        this.myForm.addControl('variantId',new FormControl(''));
+        this.parentForm.addControl('languageId',new FormControl('',[Validators.required]));
+        this.parentForm.addControl('scriptId',new FormControl(''));
+        this.parentForm.addControl('regionId',new FormControl(''));
+        this.parentForm.addControl('variantId',new FormControl(''));
     }
 
     public deleteIdentifier() {
         this.withIdentifier = false;
-        this.myForm.removeControl('languageId');
-        this.myForm.removeControl('scriptId');
-        this.myForm.removeControl('regionId');
-        this.myForm.removeControl('variantId');
+        this.parentForm.removeControl('languageId');
+        this.parentForm.removeControl('scriptId');
+        this.parentForm.removeControl('regionId');
+        this.parentForm.removeControl('variantId');
 
     }
 

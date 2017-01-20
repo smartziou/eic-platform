@@ -12,6 +12,7 @@ import { Facet } from "../../../domain/facet";
 import { SearchQuery } from "../../../domain/search-query";
 import {OMTDCorpus} from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
+import {ResourceService} from "../../../services/resource.service";
 
 @Component({
     selector: 'corpus-builder',
