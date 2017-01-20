@@ -1,9 +1,24 @@
-<accordion-group heading="Metadata Header Info"
+<accordion-group #group [panelClass]="customClass"
                  [isOpen]="true" [panelClass]="myForm.valid ? 'panel-success' : 'panel-danger'">
+    <div accordion-heading>
+        <span>Metadata Header Info
+            <i class="fa" [ngClass]="{'fa-angle-down': !group?._isOpen, 'fa-angle-up': group?._isOpen}" aria-hidden="true"></i>
+        </span>
+    </div>
+
     <metadata-identifier-form [group]="myForm"></metadata-identifier-form>
+
+    <div class="form-group-divider"></div>
+
     <related-commons [group]="myForm" [name]="'metadataCreators'" [type]="'person'"
                      [schemeEnum]="personEnum" [label]="'Creator'" [topLabel]="'Metadata Creator'"></related-commons>
+
+    <div class="form-group-divider"></div>
+
     <languages-types [group]="myForm" [name]="'metadataLanguages'"></languages-types>
+
+    <div class="form-group-divider"></div>
+
     <div [formGroup]="myForm">
         <div class="form-group">
             <label class="col-sm-2 control-label">{{revisionDesc.label}}</label>
@@ -13,4 +28,7 @@
             </div>
         </div>
     </div>
+
+    <div class="form-group-divider"></div>
+
 </accordion-group>

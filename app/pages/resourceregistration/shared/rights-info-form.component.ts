@@ -108,11 +108,9 @@ export class RightsStatementInfoForm implements OnInit {
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-            <a class="add-new-element" (click)="add()"><i class="fa fa-plus" aria-hidden="true"></i>
-                Add New {{label}}</a>
-        </div>
+    <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
+        <a class="add-new-element" (click)="add()"><i class="fa fa-plus" aria-hidden="true"></i>
+            Add New {{label}}</a>
     </div>
 </div>
 `,

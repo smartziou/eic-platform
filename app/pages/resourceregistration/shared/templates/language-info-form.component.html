@@ -1,7 +1,5 @@
 <div [formGroup]="myForm">
-    <div class="form-group">
-        <language-type [group]="myForm.controls.language" [name]="Language"></language-type>
-    </div>
+    <language-type [group]="myForm.controls.language" [name]="Language"></language-type>
     <div class="form-group">
         <size-info [group]="myForm.controls.sizePerLanguage"></size-info>
     </div>

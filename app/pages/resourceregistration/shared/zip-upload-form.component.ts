@@ -95,9 +95,6 @@ export class ZipUploadComponent implements OnInit{
             };
             myReader.readAsText(this.uploadedZip);
 
-        }
-    }
-
     report($event : any) {
         this.uploadedZip = $event.target.files[0];
         this.fileChange.emit(this.uploadedZip);

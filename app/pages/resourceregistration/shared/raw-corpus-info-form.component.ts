@@ -21,6 +21,8 @@ export class RawCorpusInfoFormControl implements OnInit {
     public parentForm: FormGroup;
 
     public myForm: FormGroup;
+    
+    public customClass: string = 'customAccordionPanel';
 
     ngOnInit() {
         this.myForm = RawCorpusInfoFormControl.generate(this._fb);

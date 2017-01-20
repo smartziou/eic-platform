@@ -16,18 +16,23 @@ import {IdentifierFormControl} from "./identifier-common-form.component";
     
 <div [formGroup]="formArray">
     <div *ngFor="let c of formArray.controls; let i=index" class="group">
-        <div class="col-md-offset-2 col-sm-offset-2">
-            <div class="group-label">{{topLabel}} <a class="remove-element col-sm-1 col-md-1" (click)="delete_creator(i)">
-            <i class="fa fa-times" aria-hidden="true"></i></a></div>
-        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-offset-2 col-sm-10 col-md-10">
+                <div class="group-label">
+                    <span>{{topLabel}}</span>
+                    <a class="remove-element" (click)="delete_creator(i)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div> 
         <div formGroupName="{{i}}">
             <related-common [personEnum]="schemeEnum" [group]="c" [personLabel]="label" [index]="i" [type]="type"></related-common>
         </div>
-        
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-            <a class="add-new-element" (click)="add_new()"><i class="fa fa-plus" aria-hidden="true"></i>
+            <a class="add-new-element add-new-group" (click)="add_new()"><i class="fa fa-plus" aria-hidden="true"></i>
                 Add New {{label}}</a>
         </div>
     </div>

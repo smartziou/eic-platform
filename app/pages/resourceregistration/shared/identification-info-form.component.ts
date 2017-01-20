@@ -29,6 +29,8 @@ export class IdentificationInfoFormControl implements OnInit {
     private descriptionDescription: Description = descriptionDesc;
     private resourceShortNameDescription: Description = resourceShortNameDesc;
 
+    public customClass: string = 'customAccordionPanel';
+
     ngOnInit() {
         this.myForm = IdentificationInfoFormControl.generate(this._fb);
 

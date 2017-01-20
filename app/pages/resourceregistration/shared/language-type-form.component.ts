@@ -17,15 +17,28 @@ import {
     
 <div [formGroup]="parentForm">
     <div *ngFor="let c of myForm.controls; let i=index" class="group">
-        <div class="col-md-offset-2 col-sm-offset-2">
-            <div class="group-label">Language <a class="remove-element col-sm-1 col-md-1" (click)="delete_creator(i)">
-            <i class="fa fa-times" aria-hidden="true"></i></a></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-offset-2 col-sm-10 col-md-10">
+                <div class="group-label">
+                    <span>Language</span>
+                    <a class="remove-element" (click)="delete_creator(i)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <!--<div formGroupName="{{i}}">-->
+                <!--<related-common [group]="c" [personLabel]="label" [index]="i" [type]="type"></related-common>-->
+            <!--</div>-->
         </div>
+        <!--<div class="col-md-offset-2 col-sm-offset-2">-->
+            <!--<div class="group-label">Language <a class="remove-element col-sm-1 col-md-1" (click)="delete_creator(i)">-->
+            <!--<i class="fa fa-times" aria-hidden="true"></i></a></div>-->
+        <!--</div>-->
         <language-type [group]="c" [index]="i" [name]="name"></language-type>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-            <a class="add-new-element" (click)="add_new()"><i class="fa fa-plus" aria-hidden="true"></i>
+            <a class="add-new-element add-new-group" (click)="add_new()"><i class="fa fa-plus" aria-hidden="true"></i>
                 Add New Language</a>
         </div>
     </div>
