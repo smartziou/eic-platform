@@ -24,6 +24,8 @@ export class MetadataHeaderInfoFormControl implements OnInit{
 
     private personEnum : EnumValues[];
 
+    public customClass: string = 'customAccordionPanel';
+
     public get formGroup() {
         return this.myForm;
     }

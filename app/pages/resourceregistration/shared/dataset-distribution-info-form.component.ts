@@ -8,16 +8,29 @@ import {EnumValues, distributionMediumEnum} from "./omtd.enum";
 @Component({
     selector: 'dataset-distributions-info-form-common',
     template : `
-<accordion-group heading="Distribution Info"
+<accordion-group #group [panelClass]="customClass"
                  [isOpen]="true" [panelClass]="parentForm.valid ? 'panel-success' : 'panel-danger'">
+    <div accordion-heading>
+        <span>Distribution Info
+            <i class="fa" [ngClass]="{'fa-angle-down': !group?._isOpen, 'fa-angle-up': group?._isOpen}" aria-hidden="true"></i>
+        </span>
+    </div>
                  
     <div [formGroup]="myForm">
         <div *ngFor="let c of myForm.controls; let i=index" class="group" formGroupName="{{i}}">
-            <div class="col-md-offset-2 col-sm-offset-2">
-                <div class="group-label">Distribution Infos <a class="remove-element col-sm-1 col-md-1" (click)="$delete(i)">
-                <i class="fa fa-times" aria-hidden="true"></i></a></div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-sm-offset-2 col-sm-10 col-md-10">
+                    <div class="group-label">
+                        <span>Distribution Info</span>
+                        <a class="remove-element" (click)="$delete(i)">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <dataset-distribution-info-form-common [group]="c"></dataset-distribution-info-form-common>
+            <div class="form-group">
+                <dataset-distribution-info-form-common [group]="c"></dataset-distribution-info-form-common>
+            </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
@@ -36,6 +49,8 @@ export class DatasetDistributionsInfoFormControl implements OnInit{
     parentForm : FormGroup;
 
     myForm : FormArray;
+
+    public customClass: string = 'customAccordionPanel';
 
     constructor(private _fb : FormBuilder) {
     }

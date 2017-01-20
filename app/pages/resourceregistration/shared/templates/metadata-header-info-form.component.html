@@ -1,5 +1,10 @@
-<accordion-group heading="Metadata Header Info"
+<accordion-group #group [panelClass]="customClass"
                  [isOpen]="true" [panelClass]="myForm.valid ? 'panel-success' : 'panel-danger'">
+    <div accordion-heading>
+        <span>Metadata Header Info
+            <i class="fa" [ngClass]="{'fa-angle-down': !group?._isOpen, 'fa-angle-up': group?._isOpen}" aria-hidden="true"></i>
+        </span>
+    </div>
     <metadata-identifier-form [group]="myForm"></metadata-identifier-form>
     <related-commons [group]="myForm" [name]="'metadataCreators'" [type]="'person'"
                      [schemeEnum]="personEnum" [label]="'Creator'" [topLabel]="'Metadata Creator'"></related-commons>

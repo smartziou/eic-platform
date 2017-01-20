@@ -63,21 +63,21 @@ export class ZipUploadComponent {
         //     error => this.handleError(<any>error));
     }
 
-    previewFromFile() {
-        if (this.uploadedFile) {
-            var myReader:FileReader = new FileReader();
-            var tempForm = this.componentXMLForm;
-            console.log(this.uploadedFile);
-            myReader.onloadstart = function(e) {
-                //TODO validation here
-            }
-            myReader.onloadend = function(e){
-                tempForm.setValue({'xml' : myReader.result});
-            }
-            myReader.readAsText(this.uploadedFile);
-
-        }
-    }
+    // previewFromFile() {
+    //     if (this.uploadedFile) {
+    //         var myReader:FileReader = new FileReader();
+    //         var tempForm = this.componentXMLForm;
+    //         console.log(this.uploadedFile);
+    //         myReader.onloadstart = function(e) {
+    //             //TODO validation here
+    //         }
+    //         myReader.onloadend = function(e){
+    //             tempForm.setValue({'xml' : myReader.result});
+    //         }
+    //         myReader.readAsText(this.uploadedFile);
+    //
+    //     }
+    // }
 
     report($event : any) {
         this.uploadedFile = $event.target.files[0];

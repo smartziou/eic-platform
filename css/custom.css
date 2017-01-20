@@ -161,3 +161,49 @@ li, dt, dd {
 /*}*/
 
 /******************************************************/
+
+.customAccordionPanel {
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+    box-shadow: none;
+    border: none;
+}
+
+.customAccordionPanel .panel-heading h4 {
+    position: relative;
+    text-align: center;
+    color: #003D8C;
+}
+
+.customAccordionPanel .panel-heading .panel-title {
+    font-size: 20px;
+}
+
+.customAccordionPanel .panel-heading h4 a:hover, .customAccordionPanel .panel-heading h4 a:focus {
+    color: #003167;
+}
+
+.customAccordionPanel .panel-heading h4 span {
+    background: #fff;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.customAccordionPanel .panel-heading h4:before {
+    background: #003D8C;
+    content: "";
+    display: block;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+.customAccordionPanel .panel-heading h4:before {
+    left: 0;
+}
+
+.customAccordionPanel .panel-body {
+    border-top: none !important;
+}

@@ -30,6 +30,8 @@ export class ContactInfoFormControl implements OnInit {
     private descriptionDescription: Description = descriptionDesc;
     private resourceShortNameDescription: Description = resourceShortNameDesc;
 
+    public customClass: string = 'customAccordionPanel';
+
     ngOnInit() {
         this.myForm = ContactInfoFormControl.generate(this._fb);
         this.myForm.setValidators(this.validate);
