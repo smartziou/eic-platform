@@ -42,6 +42,10 @@ export class CorpusUploadComponent implements OnInit {
 
     }
 
+    updateFile($event : any) {
+        console.log($event);
+    }
+
     onSubmit(myForm: FormGroup) {
         console.log("Submitted")
         console.log(myForm.value,myForm);

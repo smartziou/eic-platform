@@ -1,7 +1,7 @@
 /**
  * Created by stefania on 1/20/17.
  */
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {FormGroup, FormBuilder} from "@angular/forms";
 import {Router, ActivatedRoute} from "@angular/router";
 import {ResourceService} from "../../../services/resource.service";
@@ -10,14 +10,15 @@ import {Resource} from "../../../domain/resource";
 @Component({
     selector: 'zip-upload',
     template: `
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" class="zipUpload">
+    <form [formGroup]="myForm" class="zipUpload">
         <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
             <div class="form-group">
-                <!--<input type="file" name="xmlFile" (change)="report($event)" formGroupName="fileUpload">-->
-                <input type="file" name="xmlFile" (change)="report($event)">
+                <input type="file" name="xmlFile" (change)="report($event)" formControlName="fileUpload">
             </div>
         </div>
     </form>
+    <a *ngIf="clicks < clickMe.length" (click)="onSubmit(myForm)">{{clickMe[clicks % clickMe.length]}}</a>
+    <a *ngIf="clicks == clickMe.length" href="https://cdn.meme.am/cache/instances/folder598/52560598.jpg">{{clickMe[clicks % clickMe.length]}}</a>
     `,
     styles: [`
         .zipUpload input {
@@ -26,30 +27,44 @@ import {Resource} from "../../../domain/resource";
     `],
 })
 
-export class ZipUploadComponent {
+export class ZipUploadComponent implements OnInit{
+
+    private clickMe : string[] = [
+        "click me baby one more time","yeah, click me again", "don't stop I like it", "please baby, please click me"
+    ]
+    private clicks = 0;
 
     @Input('group')
     myForm: FormGroup;
 
+    @Output('file')
+    fileChange : EventEmitter<File> = new EventEmitter<File>();
+
     private errorMessage: string;
     private successMessage: string;
 
-    private uploadedFile : File;
+    private uploadedZip : File;
 
     //private resource: Resource;
 
     constructor(private _fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private resourceService: ResourceService) {
-        // this.myForm = this._fb.group({
-        //     fileUpload: ''
-        // });
-        this.uploadedFile = null;
+
+        this.uploadedZip = null;
     }
 
-    onSubmit(componentXML: any, event: Event) {
+    ngOnInit() {
+        this.myForm = this._fb.group({
+            fileUpload: ''
+        });
+    }
+
+    onSubmit(myForm: FormGroup, event: Event) {
+        this.clicks++;
+        console.log("zipValue",myForm.value);
 
         // event.preventDefault();
-
+        this.previewFromFile()
         // this.successMessage = null;
         // console.log(componentXML.xml);
         //
@@ -64,23 +79,28 @@ export class ZipUploadComponent {
     }
 
     previewFromFile() {
-        if (this.uploadedFile) {
+        if (this.uploadedZip) {
             var myReader:FileReader = new FileReader();
-            var tempForm = this.componentXMLForm;
-            console.log(this.uploadedFile);
+            //var tempForm = this.componentXMLForm;
+            console.log(this.uploadedZip);
+            const self = this;
             myReader.onloadstart = function(e) {
-                //TODO validation here
-            }
+                if(!self.uploadedZip.name.endsWith(".zip")) {
+                    throw "Not a zip file";
+                }
+            };
             myReader.onloadend = function(e){
-                tempForm.setValue({'xml' : myReader.result});
-            }
-            myReader.readAsText(this.uploadedFile);
+                console.log(myReader.result)
+                // tempForm.setValue({'xml' : myReader.result});
+            };
+            myReader.readAsText(this.uploadedZip);
 
         }
     }
 
     report($event : any) {
-        this.uploadedFile = $event.target.files[0];
+        this.uploadedZip = $event.target.files[0];
+        this.fileChange.emit(this.uploadedZip);
     }
 
     successfullySubscribed(resource : Resource) {

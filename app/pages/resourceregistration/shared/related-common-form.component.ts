@@ -21,7 +21,7 @@ import {IdentifierFormControl} from "./identifier-common-form.component";
             <i class="fa fa-times" aria-hidden="true"></i></a></div>
         </div>
         <div formGroupName="{{i}}">
-            <related-common [group]="c" [personLabel]="label" [index]="i" [type]="type"></related-common>
+            <related-common [personEnum]="schemeEnum" [group]="c" [personLabel]="label" [index]="i" [type]="type"></related-common>
         </div>
         
     </div>

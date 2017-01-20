@@ -9,19 +9,24 @@ import {Description, rightsStatementInfoDesc, licenceInfoDesc} from "./omtd.desc
 @Component({
     selector: 'rights-info',
     template: `
-    <rights-statement-info [group]="myForm"></rights-statement-info>
     <license-infos [group]="myForm"></license-infos>
+    <rights-statement-info [group]="myForm"></rights-statement-info>
 `,
     styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
 })
 export class RightsInfoForm implements OnInit {
     @Input('group')
+    parentForm: FormGroup;
+
     myForm: FormGroup;
 
     constructor(private _fb: FormBuilder){
+
     }
 
     ngOnInit(): void {
+        this.myForm = this._fb.group({});
+        this.parentForm.addControl("rightsInfo",this.myForm);
     }
 
 }

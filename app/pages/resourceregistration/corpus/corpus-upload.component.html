@@ -20,7 +20,7 @@
 
                                 <article class="uk-article">
                                     <h3 class="subtitle">Upload your zip file</h3>
-                                    <zip-upload [group]="zipForm"></zip-upload>
+                                    <zip-upload [group]="zipForm" (file)="updateFile($event)"></zip-upload>
                                     <!--<p class="uk-article-lead">Browse through your files and select the file you wish to upload </p>-->
                                 </article>
                                     <!--<h1 class="uk-article-title">Upload your zip file</h1>-->

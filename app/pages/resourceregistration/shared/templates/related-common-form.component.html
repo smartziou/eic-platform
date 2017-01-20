@@ -5,7 +5,7 @@
     <div class="col-sm-10 col-md-10">
         <div *ngFor="let radio of radioButton">
             <label class="col-sm-2 col-md-2 radio-label">
-                <input type="radio" name="options{{type + name + index}}" [checked]="radio === radioButtonSelected"
+                <input type="radio" name="options{{type + personLabel + index}}" [checked]="radio === radioButtonSelected"
                        (click)="changeType(radio)">
                 {{radio}}
             </label>
