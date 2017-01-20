@@ -198,7 +198,7 @@ export class RelatedCommonForm implements OnInit{
 
     public static generate(_fb: FormBuilder, type : string,validate : boolean = true) {
         const group = {};
-        group[type + 'Names'] = _fb.array([RelatedCommonForm.newPerson(_fb,'Names',validate)]);
+        group[type + 'Names'] = _fb.array([RelatedCommonForm.newPerson(_fb,'Names','',validate)]);
         group[type + "Identifiers"] = _fb.array([RelatedCommonForm.newPerson(_fb,"Identifiers",type + "IdentifierSchemeName",validate)]);
         return _fb.group(group);
     }

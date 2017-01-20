@@ -20,6 +20,7 @@ import { CorpusTextPartInfoFormControl } from "../shared/corpus-text-part-info-f
 import { RawCorpusInfoFormControl } from "../shared/raw-corpus-info-form.component";
 import { CorpusSubtypeSpecificInfoForm } from "../shared/corpus-subtype-specific-info-form.component";
 import { CorpusUploadComponent } from "./corpus-upload.component";
+import { CorpusBuilderComponent } from "./corpus-builder.component";
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { CorpusUploadComponent } from "./corpus-upload.component";
         CorpusRegistrationFormComponent,
         CorpusTextPartInfoFormControl,
         RawCorpusInfoFormControl,
-        CorpusSubtypeSpecificInfoForm
+        CorpusSubtypeSpecificInfoForm,
+        CorpusBuilderComponent
     ],
     providers: [
         ResourceService, 

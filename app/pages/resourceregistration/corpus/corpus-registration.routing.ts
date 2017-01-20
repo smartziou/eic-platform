@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CorpusRegistrationComponent } from "./corpus-registration.component";
 import { SearchForPublicationsComponent } from "./search-for-publications.component";
 import { CorpusUploadComponent } from "./corpus-upload.component";
+import { CorpusBuilderComponent } from "./corpus-builder.component";
 
 const corpusRegistrationRoutes: Routes = [
     {
@@ -19,6 +20,10 @@ const corpusRegistrationRoutes: Routes = [
     {
         path: 'resourceRegistration/corpus/upload',
         component: CorpusUploadComponent
+    },
+    {
+        path: 'resourceRegistration/corpus/build',
+        component: CorpusBuilderComponent
     }
 ];
 

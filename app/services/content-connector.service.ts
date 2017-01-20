@@ -6,6 +6,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { URLParameter } from "../domain/url-parameter";
 import { PublicationSearchResults } from "../domain/publications-search-results";
+import {OMTDCorpus} from "../domain/openminted-model";
 
 @Injectable()
 export class ContentConnectorService {
@@ -13,6 +14,8 @@ export class ContentConnectorService {
     constructor (private http: Http) {}
 
     private _contentConnectorSearchUrl = 'http://83.212.101.85:8888/content-connector-service/content/browse/';
+    private _contentConnectorPrepareCorpusUrl = 'http://83.212.101.85:8888/content-connector-service/corpus/prepare/';
+    private _contentConnectorBuildCorpusUrl = 'http://83.212.101.85:8888/content-connector-service/corpus/build/';
 
     search(urlParameters: URLParameter[]) {
 
@@ -67,6 +70,65 @@ export class ContentConnectorService {
         return this.http.post(this._contentConnectorSearchUrl, postBody, options)
             .map(res => <PublicationSearchResults> res.json())
             .catch(this.handleError);
+    }
+
+    prepareCorpus(urlParameters: URLParameter[]) {
+
+        var postBody = '{}';
+
+        var keywordString = '';
+        var paramsString = '\"params\":{';
+
+        var foundParams = false;
+
+        for(let urlParameter of urlParameters) {
+
+            if(urlParameter.key === 'query') {
+                keywordString = '\"keyword\":\"' + urlParameter.values[0] + '\"';
+            } else {
+                foundParams = true;
+                var valuesCounter = 0;
+                paramsString += '\"' + urlParameter.key + '\":[';
+                for(let value of urlParameter.values) {
+                    if(valuesCounter!=0)
+                        paramsString += ',';
+                    paramsString += '\"' + value + '\"';
+                    valuesCounter++;
+                }
+                paramsString += ']';
+            }
+
+            paramsString += ",";
+
+        }
+
+        paramsString = paramsString.substr(0, paramsString.length-1);
+
+        paramsString += '}';
+
+        if(keywordString != '' || foundParams) {
+            postBody = '{';
+            if(keywordString!='')
+                postBody += keywordString;
+            if(foundParams) {
+                if(keywordString!='')
+                    postBody += ',' + paramsString;
+                else
+                    postBody += paramsString;
+            }
+            postBody += '}';
+        }
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this._contentConnectorPrepareCorpusUrl, postBody, options)
+            .map(res => <OMTDCorpus> res.json())
+            .catch(this.handleError);
+    }
+
+    buildCorpus(corpus: OMTDCorpus) {
+        //TODO
     }
 
     private extractData(res: Response) {

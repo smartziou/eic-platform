@@ -226,8 +226,26 @@ export class SearchForPublicationsComponent {
         this.router.navigate(['/resourceRegistration/corpus/searchForPublications', map]);
     }
 
-    createCorpus() {
+    buildCorpus() {
+        this.router.navigate(['/resourceRegistration/corpus/build', this.createMapFromURLParams()]);
+    }
 
+    createMapFromURLParams() {
+
+        var map: { [name: string]: string; } = { };
+        for (let urlParameter of this.urlParameters) {
+            var concatValue = '';
+            var counter = 0;
+            for(let value of urlParameter.values) {
+                if(counter!=0)
+                    concatValue += ',';
+                concatValue += value;
+                counter++;
+            }
+            map[urlParameter.key] = concatValue;
+        }
+
+        return map;
     }
 
     handleError(error) {

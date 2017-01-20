@@ -1,0 +1,18 @@
+<div>
+    <div *ngIf="gettingCorpusMetadata" class="whiteFilm"><i class="fa fa-spinner fa-spin fa-5x loader" aria-hidden="true"></i></div>
+    <div class="uk-block tm-block-main uk-block-default uk-block-large searchBoxContainer">
+        <div class="uk-container uk-container-center">
+            <div data-uk-grid-margin="" data-uk-grid-match="" class="tm-middle uk-grid">
+                <div class="tm-main uk-width-medium-1-1 uk-row-first">
+                    <main class="tm-content">
+                        <article class="uk-article uk-width-medium-1-1 uk-align-center">
+
+                            <corpus-registration-form [corpus]="corpusPromise"></corpus-registration-form>
+
+                        </article>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
 import {MetadataHeaderInfo, OMTDComponent, Order, OMTDCorpus} from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
-import {Observable} from "rxjs";
+import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'corpus-registration-form',
@@ -18,12 +18,14 @@ export class CorpusRegistrationFormComponent implements OnInit {
     myForm: FormGroup;
 
     @Input('corpus')
-    corpus : Observable<OMTDCorpus> = null;
+    corpus : Observable<OMTDCorpus>;
 
     constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
     }
 
-    loadCorpus() {
+    loadCorpus(corpus : OMTDCorpus) {
+        this.myForm.patchValue(corpus);
+        this.myForm.patchValue(corpus);
     }
 
     ngOnInit() {
@@ -34,16 +36,21 @@ export class CorpusRegistrationFormComponent implements OnInit {
 
         });
         var self = this;
-        this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
-            console.log(res);
-            var x : OMTDCorpus = res;
-            this.myForm.patchValue(x);
-            //setTimeout(this.myForm.patchValue,1000,{metadataHeaderInfo : x.metadataHeaderInfo || {}})
-            this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
-                var x: OMTDCorpus = res;
-                this.myForm.patchValue(x);
-            });
-        });
+
+        this.corpus.subscribe(
+            corpus => this.loadCorpus(corpus),
+            error => console.log(error));
+
+        // this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
+        //     console.log(res);
+        //     var x : OMTDCorpus = res;
+        //     this.myForm.patchValue(x);
+        //     //setTimeout(this.myForm.patchValue,1000,{metadataHeaderInfo : x.metadataHeaderInfo || {}})
+        //     this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
+        //         var x: OMTDCorpus = res;
+        //         this.myForm.patchValue(x);
+        //     });
+        // });
 
     }
 
