@@ -17,8 +17,8 @@ import {Resource} from "../../../domain/resource";
             </div>
         </div>
     </form>
-    <a *ngIf="clicks < clickMe.length" (click)="onSubmit(myForm)">{{clickMe[clicks % clickMe.length]}}</a>
-    <a *ngIf="clicks == clickMe.length" href="https://cdn.meme.am/cache/instances/folder598/52560598.jpg">{{clickMe[clicks % clickMe.length]}}</a>
+    <!--<a *ngIf="clicks < clickMe.length" (click)="onSubmit(myForm)">{{clickMe[clicks % clickMe.length]}}</a>-->
+    <!--<a *ngIf="clicks == clickMe.length" href="https://cdn.meme.am/cache/instances/folder598/52560598.jpg">{{clickMe[clicks % clickMe.length]}}</a>-->
     `,
     styles: [`
         .zipUpload input {
@@ -29,10 +29,10 @@ import {Resource} from "../../../domain/resource";
 
 export class ZipUploadComponent implements OnInit{
 
-    private clickMe : string[] = [
-        "click me baby one more time","yeah, click me again", "don't stop I like it", "please baby, please click me"
-    ]
-    private clicks = 0;
+    // private clickMe : string[] = [
+    //     "click me baby one more time","yeah, click me again", "don't stop I like it", "please baby, please click me"
+    // ]
+    // private clicks = 0;
 
     @Input('group')
     myForm: FormGroup;
@@ -60,11 +60,11 @@ export class ZipUploadComponent implements OnInit{
     }
 
     onSubmit(myForm: FormGroup, event: Event) {
-        this.clicks++;
+        // this.clicks++;
         console.log("zipValue",myForm.value);
 
         // event.preventDefault();
-        this.previewFromFile()
+        this.previewFromFile();
         // this.successMessage = null;
         // console.log(componentXML.xml);
         //

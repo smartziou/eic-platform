@@ -19,6 +19,9 @@ export class CorpusUploadComponent implements OnInit {
     zipFile : File;
     corpusValue : OMTDCorpus;
 
+    zipFormErrorMessage: string = null;
+    corpusFormErrorMessage: string = null;
+
     constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
     }
 
@@ -54,8 +57,25 @@ export class CorpusUploadComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log("Submitted")
+        console.log("Submitted");
         console.log(this.zipFile,this.corpusForm);
+
+        if(this.zipFile && this.zipFile.name.endsWith(".zip"))
+            this.zipFormErrorMessage = null;
+        else
+            this.zipFormErrorMessage = 'You need to provide a zip file with the corpus.';
+
+        if(this.corpusForm.valid)
+            this.corpusFormErrorMessage = null;
+        else
+            this.corpusFormErrorMessage = 'There are invalid or missing fields in the metadata you have submitted. You ' +
+                'can see the ones invalid or missing marked as red.';
+
+        if(this.zipFile && this.zipFile.name.endsWith(".zip") && this.corpusForm.valid) {
+            //TODO upload
+        } else {
+            window.scrollTo(0,0);
+        }
     }
 
 }
