@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import { URLParameter } from "../domain/url-parameter";
 import { PublicationSearchResults } from "../domain/publications-search-results";
 import {OMTDCorpus} from "../domain/openminted-model";
+import {ResourceService} from "./resource.service";
 
 @Injectable()
 export class ContentConnectorService {
@@ -131,7 +132,7 @@ export class ContentConnectorService {
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-
+        ResourceService.removeNulls(corpus);
         return this.http.post(this._contentConnectorBuildCorpusUrl, JSON.stringify(corpus), options)
             .map(res => res.status)
             .catch(this.handleError);

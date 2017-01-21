@@ -111,7 +111,7 @@ export class CorpusBuilderComponent {
         if(this.corpusForm.valid) {
             
             this.contentConnectorService.buildCorpus(this.corpusForm.value).subscribe(
-                res => this.buildingCorpus(),
+                res => this.buildingCorpusFn(),
                 error => this.handleError(error)
             );
 
@@ -120,7 +120,7 @@ export class CorpusBuilderComponent {
         }
     }
     
-    buildingCorpus() {
+    buildingCorpusFn() {
         this.buildingCorpus = true;
         this.successfulMessage = 'Corpus built successfully';
         window.scrollTo(0,0);
