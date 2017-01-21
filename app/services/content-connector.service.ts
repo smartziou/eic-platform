@@ -128,7 +128,13 @@ export class ContentConnectorService {
     }
 
     buildCorpus(corpus: OMTDCorpus) {
-        //TODO
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this._contentConnectorBuildCorpusUrl, JSON.stringify(corpus), options)
+            .map(res => res.status)
+            .catch(this.handleError);
     }
 
     private extractData(res: Response) {

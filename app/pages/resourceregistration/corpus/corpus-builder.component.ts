@@ -22,17 +22,25 @@ import {ResourceService} from "../../../services/resource.service";
 
 export class CorpusBuilderComponent {
 
-    private errorMessage: string;
     private sub: Subscription;
 
     private urlParameters: URLParameter[] = [];
 
     private gettingCorpusMetadata:boolean = true;
-    private buildingCorpus:boolean = true;
+    private buildingCorpus:boolean = false;
 
     private corpus: OMTDCorpus;
     
     private corpusPromise : Observable<OMTDCorpus>;
+
+    corpusForm: FormGroup;
+
+    corpusFormErrorMessage: string = null;
+
+    errorMessage: string = null;
+    successfulMessage: string = null;
+
+    status: string = null;
 
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private contentConnectorService: ContentConnectorService) {
@@ -78,5 +86,52 @@ export class CorpusBuilderComponent {
     loadCorpusMetadata(corpus: OMTDCorpus) {
         this.gettingCorpusMetadata = false;
         console.log('Corpus returned from connector: ', corpus);
+    }
+
+    handleCorpus(corpus : any) {
+        this.corpusForm = corpus;
+    }
+
+    onSubmit() {
+
+        this.successfulMessage = null;
+        this.errorMessage = null;
+        this.corpusFormErrorMessage = null;
+
+        console.log("Submitted");
+        console.log(JSON.stringify(this.corpusForm.value));
+        console.log(this.corpusForm);
+
+        if(this.corpusForm.valid)
+            this.corpusFormErrorMessage = null;
+        else
+            this.corpusFormErrorMessage = 'There are invalid or missing fields in the metadata you have submitted. You ' +
+                'can see the ones invalid or missing marked as red.';
+
+        if(this.corpusForm.valid) {
+            
+            this.contentConnectorService.buildCorpus(this.corpusForm.value).subscribe(
+                res => this.buildingCorpus(),
+                error => this.handleError(error)
+            );
+
+        } else {
+            window.scrollTo(0,0);
+        }
+    }
+    
+    buildingCorpus() {
+        this.buildingCorpus = true;
+        this.successfulMessage = 'Corpus built successfully';
+        window.scrollTo(0,0);
+
+        // TODO
+        // use corpusID to ask for status
+    }
+
+    handleError(error) {
+        this.buildingCorpus = false;
+        this.errorMessage = 'Corpus building failed (Server responded: ' + error + ')';
+        window.scrollTo(0,0);
     }
 }
