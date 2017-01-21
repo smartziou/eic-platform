@@ -113,13 +113,29 @@ export class ResourceService {
             .catch(this.handleError);
     }
 
+    uploadCorpus(corpus: OMTDCorpus) {
+
+        console.log(JSON.stringify(corpus));
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.post(this._searchUrl + '/corpus', JSON.stringify(corpus), options)
+            .map(res => res.status)
+            .catch(this.handleError);
+    }
+
     uploadZip(name : string,file : File) {
         let formBody : FormData = new FormData();
         formBody.append('filename',name);
         formBody.append('file',file);
         return this.http.post(this._uploadZip,formBody)
-            .map(res => res.text())
+            .map(res => this.corpusDownloadURL(res.text()))
             .catch(this.handleError);
+    }
+
+    public corpusDownloadURL(id : string) : string {
+        return this._uploadUrl + '/corpus/download?archiveId=' + id;
     }
 
 

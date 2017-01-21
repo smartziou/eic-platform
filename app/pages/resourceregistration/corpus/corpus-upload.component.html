@@ -18,6 +18,9 @@
                         <div class="uk-margin uk-grid componentXMLRegistration">
                             <div class="uk-width-medium-1-1">
 
+                                <div *ngIf="successfulMessage" class="alert alert-success">{{successfulMessage}}</div>
+                                <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+
                                 <article class="uk-article">
                                     <h3 class="subtitle">Upload your zip file</h3>
                                     <div *ngIf="zipFormErrorMessage" class="alert alert-danger">{{zipFormErrorMessage}}</div>

@@ -27,6 +27,9 @@ export class CorpusUploadComponent implements OnInit {
     zipFormErrorMessage: string = null;
     corpusFormErrorMessage: string = null;
 
+    errorMessage: string = null;
+    successfulMessage: string = null;
+
     constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
     }
 
@@ -62,6 +65,10 @@ export class CorpusUploadComponent implements OnInit {
     }
 
     onSubmit() {
+
+        this.successfulMessage = null;
+        this.errorMessage = null;
+
         console.log("Submitted");
         console.log(this.zipFile,this.corpusForm);
 
@@ -81,18 +88,29 @@ export class CorpusUploadComponent implements OnInit {
                 let corpusBody : OMTDCorpus = this.corpusForm.value;
                 let distributionInfo : DatasetDistributionInfo = new DatasetDistributionInfo();
                 distributionInfo.distributionMediums = [DistributionMediumEnum.DOWNLOADABLE];
+                distributionInfo.downloadURLs = [id];
                 distributionInfo.rightsInfo = new RightsInfo();
                 distributionInfo.rightsInfo.rightsStatementInfo = new RightsStatementInfo();
                 distributionInfo.rightsInfo.rightsStatementInfo.rightsStmtName = RightsStmtNameEnum.OPEN_ACCESS;
                 corpusBody.corpusInfo.distributionInfos  = [];
                 corpusBody.corpusInfo.distributionInfos.push(distributionInfo);
+                
+                this.resourceService.uploadCorpus(this.corpusForm.value).subscribe(
+                    res => {
+                        this.successfulMessage = 'Corpus uploaded successfully';
+                        window.scrollTo(0,0);
+                    }, error => this.handleError(error)
+                );
             });
-
-
 
         } else {
             window.scrollTo(0,0);
         }
+    }
+
+    handleError(error) {
+        this.errorMessage = 'Corpus not uploaded successfully (Server responded: ' + error + ')';
+        window.scrollTo(0,0);
     }
 
 }

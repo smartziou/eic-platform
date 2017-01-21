@@ -43,6 +43,9 @@ export class CorpusRegistrationFormComponent implements OnInit {
         });
         this.myForm.valueChanges.subscribe(corpus => this.corpusForm.emit(this.myForm));
 
+        //TODO remove
+        this.corpus = this.resourceService.getCorpus("rawCorpus_almostall");
+
         if (this.corpus) {
             this.corpus.subscribe(
                 corpus => this.loadCorpus(corpus),
