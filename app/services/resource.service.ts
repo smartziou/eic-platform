@@ -113,14 +113,21 @@ export class ResourceService {
             .catch(this.handleError);
     }
 
+    static removeNulls(obj){
+        var isArray = obj instanceof Array;
+        for (var k in obj){
+            if (obj[k]===null || obj[k]==='') isArray ? obj.splice(k,1) : delete obj[k];
+            else if (typeof obj[k]=="object") ResourceService.removeNulls(obj[k]);
+        }
+    }
     uploadCorpus(corpus: OMTDCorpus) {
 
         console.log(JSON.stringify(corpus));
 
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
-
-        return this.http.post(this._searchUrl + '/corpus', JSON.stringify(corpus), options)
+        ResourceService.removeNulls(corpus);
+        return this.http.post(this._searchUrl + 'corpus', JSON.stringify(corpus), options)
             .map(res => res.status)
             .catch(this.handleError);
     }
