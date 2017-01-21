@@ -17,6 +17,7 @@ export class ResourceService {
     private _searchUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
     private _resourcesUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
     private _uploadUrl = 'http://83.212.101.85:8080/omtd-registry/resources/';
+    private _uploadZip = "http://83.212.101.85:8080/omtd-registry/request/corpus/upload";
     // private _searchUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     // private _resourcesUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
     
@@ -107,11 +108,20 @@ export class ResourceService {
         let options = new RequestOptions({headers: headers});
 
         console.log(JSON.stringify(component));
-
         return this.http.post(this._uploadUrl, JSON.stringify(component), options)
             .map(res => <Resource> res.json())
             .catch(this.handleError);
     }
+
+    uploadZip(name : string,file : File) {
+        let formBody : FormData = new FormData();
+        formBody.append('filename',name);
+        formBody.append('file',file);
+        return this.http.post(this._uploadZip,formBody)
+            .map(res => res.text())
+            .catch(this.handleError);
+    }
+
 
     private extractData(res: Response) {
         let body = res.json();

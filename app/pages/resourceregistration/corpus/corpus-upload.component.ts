@@ -3,8 +3,13 @@
  */
 import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
-import {MetadataHeaderInfo, OMTDComponent, Order, OMTDCorpus} from "../../../domain/openminted-model";
+import {
+    MetadataHeaderInfo, OMTDComponent, Order, OMTDCorpus,
+    DatasetDistributionInfo, DistributionMediumEnum, RightsInfo, RightsStatementInfo, RightsStmtNameEnum
+} from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
+import {DistributionMediums} from "../shared/distribution-mediums.component";
+import {distributionMediumEnum} from "../shared/omtd.enum";
 
 @Component({
     selector: 'corpus-upload',
@@ -72,7 +77,19 @@ export class CorpusUploadComponent implements OnInit {
                 'can see the ones invalid or missing marked as red.';
 
         if(this.zipFile && this.zipFile.name.endsWith(".zip") && this.corpusForm.valid) {
-            //TODO upload
+            this.resourceService.uploadZip(this.zipFile.name,this.zipFile).subscribe(id => {
+                let corpusBody : OMTDCorpus = this.corpusForm.value;
+                let distributionInfo : DatasetDistributionInfo = new DatasetDistributionInfo();
+                distributionInfo.distributionMediums = [DistributionMediumEnum.DOWNLOADABLE];
+                distributionInfo.rightsInfo = new RightsInfo();
+                distributionInfo.rightsInfo.rightsStatementInfo = new RightsStatementInfo();
+                distributionInfo.rightsInfo.rightsStatementInfo.rightsStmtName = RightsStmtNameEnum.OPEN_ACCESS;
+                corpusBody.corpusInfo.distributionInfos  = [];
+                corpusBody.corpusInfo.distributionInfos.push(distributionInfo);
+            });
+
+
+
         } else {
             window.scrollTo(0,0);
         }
