@@ -249,6 +249,7 @@ export class SearchForPublicationsComponent {
     }
 
     handleError(error) {
+        this.searching = false;
         this.errorMessage = 'System error searching for publications (Server responded: ' + error + ')';
     }
 }

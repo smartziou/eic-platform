@@ -28,6 +28,7 @@ export class CorpusBuilderComponent {
 
     private gettingCorpusMetadata:boolean = true;
     private buildingCorpus:boolean = false;
+    private callingBuildCorpus:boolean = false;
 
     private corpus: OMTDCorpus;
     
@@ -39,8 +40,11 @@ export class CorpusBuilderComponent {
 
     errorMessage: string = null;
     successfulMessage: string = null;
+    createCorpusErrorMessage: string = null;
 
     status: string = null;
+
+    intervalId: number = null;
 
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private contentConnectorService: ContentConnectorService) {
@@ -54,6 +58,7 @@ export class CorpusBuilderComponent {
             .subscribe(params => {
 
                 this.gettingCorpusMetadata = true;
+                this.callingBuildCorpus = false;
 
                 this.urlParameters.splice(0,this.urlParameters.length);
 
@@ -97,6 +102,8 @@ export class CorpusBuilderComponent {
         this.successfulMessage = null;
         this.errorMessage = null;
         this.corpusFormErrorMessage = null;
+        this.status = null;
+        this.createCorpusErrorMessage = null;
 
         console.log("Submitted");
         console.log(JSON.stringify(this.corpusForm.value));
@@ -109,7 +116,8 @@ export class CorpusBuilderComponent {
                 'can see the ones invalid or missing marked as red.';
 
         if(this.corpusForm.valid) {
-            
+
+            this.callingBuildCorpus = true;
             this.contentConnectorService.buildCorpus(this.corpusForm.value).subscribe(
                 res => this.buildingCorpusFn(),
                 error => this.handleError(error)
@@ -121,17 +129,33 @@ export class CorpusBuilderComponent {
     }
     
     buildingCorpusFn() {
-        this.buildingCorpus = true;
-        this.successfulMessage = 'Corpus built successfully';
         window.scrollTo(0,0);
+        this.callingBuildCorpus = false;
+        this.buildingCorpus = true;
 
-        // TODO
-        // use corpusID to ask for status
+        this.intervalId = setInterval(() => {
+            console.log("perasan 3 second");
+            this.contentConnectorService.getStatus(this.corpusForm.value.metadataHeaderInfo.metadataRecordIdentifier.value).subscribe(
+                res => this.status = res
+            );
+        },10000)
+    }
+
+    checkStatus(res: string) {
+        this.status = res;
+        if(this.status == '"CREATED"') {
+            this.successfulMessage = 'Corpus built finished successfully';
+            clearInterval(this.intervalId);
+        } else if(this.status == '"CANCELED"' || this.status == '"DELETED"') {
+            this.createCorpusErrorMessage = 'There was a problem building this corpus. Try again in a while.';
+            clearInterval(this.intervalId);
+        }
     }
 
     handleError(error) {
+        window.scrollTo(0,0);
+        this.callingBuildCorpus = false;
         this.buildingCorpus = false;
         this.errorMessage = 'Corpus building failed (Server responded: ' + error + ')';
-        window.scrollTo(0,0);
     }
 }

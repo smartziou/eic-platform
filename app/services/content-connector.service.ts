@@ -17,6 +17,7 @@ export class ContentConnectorService {
     private _contentConnectorSearchUrl = 'http://83.212.101.85:8888/content-connector-service/content/browse/';
     private _contentConnectorPrepareCorpusUrl = 'http://83.212.101.85:8888/content-connector-service/corpus/prepare/';
     private _contentConnectorBuildCorpusUrl = 'http://83.212.101.85:8888/content-connector-service/corpus/build/';
+    private _contentConnectorBuildCorpusStatusUrl = 'http://83.212.101.85:8888/content-connector-service/corpus/status/?id=';
 
     search(urlParameters: URLParameter[]) {
 
@@ -135,6 +136,12 @@ export class ContentConnectorService {
         ResourceService.removeNulls(corpus);
         return this.http.post(this._contentConnectorBuildCorpusUrl, JSON.stringify(corpus), options)
             .map(res => res.status)
+            .catch(this.handleError);
+    }
+
+    getStatus(corpusId: string) {
+        return this.http.get(this._contentConnectorBuildCorpusStatusUrl + corpusId)
+            .map(res => res.text())
             .catch(this.handleError);
     }
 
