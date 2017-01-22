@@ -133,10 +133,9 @@ export class CorpusBuilderComponent {
         this.callingBuildCorpus = false;
         this.buildingCorpus = true;
 
-        this.intervalId = setInterval(() => {
-            console.log("perasan 3 second");
+        this.intervalId = window.setInterval(() => {
             this.contentConnectorService.getStatus(this.corpusForm.value.metadataHeaderInfo.metadataRecordIdentifier.value).subscribe(
-                res => this.status = res
+                res => this.checkStatus(res)
             );
         },10000)
     }
@@ -144,7 +143,7 @@ export class CorpusBuilderComponent {
     checkStatus(res: string) {
         this.status = res;
         if(this.status == '"CREATED"') {
-            this.successfulMessage = 'Corpus built finished successfully';
+            this.successfulMessage = 'Corpus building finished successfully';
             clearInterval(this.intervalId);
         } else if(this.status == '"CANCELED"' || this.status == '"DELETED"') {
             this.createCorpusErrorMessage = 'There was a problem building this corpus. Try again in a while.';
