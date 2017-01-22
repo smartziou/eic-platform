@@ -109,7 +109,7 @@ export class CorpusUploadComponent implements OnInit {
     }
 
     handleError(error) {
-        this.errorMessage = 'Corpus not uploaded successfully (Server responded: ' + error + ')';
+        this.errorMessage = 'Corpus uploading failed (Server responded: ' + error + ')';
         window.scrollTo(0,0);
     }
 
