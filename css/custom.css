@@ -111,6 +111,10 @@ li, dt, dd {
     vertical-align: middle;
 }
 
+.uk-button-blue:before {
+    background: none !important;
+}
+
 .uk-button-blue:hover,
 .uk-button-blue:focus {
     background-color: #003D8C;
@@ -119,6 +123,13 @@ li, dt, dd {
     line-height: 30px;
     min-height: 30px;
     vertical-align: middle;
+}
+
+.uk-button-blue:active,
+.uk-button-blue.uk-active {
+    background-color: #004DB0;
+    color: #ffffff;
+    border-color: transparent;
 }
 
 /******************************************************/
@@ -206,4 +217,11 @@ li, dt, dd {
 
 .customAccordionPanel .panel-body {
     border-top: none !important;
+}
+
+/******************************************************/
+
+.registerButton {
+    padding: 5px 20px;
+    width: 150px;
 }
