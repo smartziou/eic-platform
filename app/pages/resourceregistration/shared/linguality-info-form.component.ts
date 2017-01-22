@@ -8,9 +8,9 @@ import { EnumValues, multilingualityTypeEnum, lingualityTypeEnum } from "./omtd.
 @Component({
     selector: 'linguality-info',
     template : `
-    <div [formGroup]="myForm" [ngClass]="{'has-error':!myForm.valid}">
+    <div [formGroup]="myForm" >
         <label class="col-sm-2 col-md-2 control-label">Linguality Info</label>
-        <div class="col-sm-3 col-md-3">
+        <div class="col-sm-3 col-md-3" [ngClass]="{'has-error':!myForm.controls.lingualityType.valid}">
             <select name="role" class="form-control" formControlName="lingualityType">
                 <option *ngFor="let value of lingualityTypes" [value]="value.key" [selected]="value.key == ''">
                     {{value.value}}
@@ -19,7 +19,7 @@ import { EnumValues, multilingualityTypeEnum, lingualityTypeEnum } from "./omtd.
         </div>
         <div class="col-sm-3 col-md-3">
             <select name="role" class="form-control" formControlName="multilingualityType">
-                <option *ngFor="let value of multilingualityTypes" [value]="value.key" [selected]="value.key == ''">
+                <option *ngFor="let value of multiLingualityTypes" [value]="value.key" [selected]="value.key == ''">
                     {{value.value}}
                 </option>
             </select>
@@ -58,7 +58,7 @@ export class LingualityInfoFormControl implements OnInit {
     public static generate(_fb: FormBuilder) {
         return _fb.group({
             multilingualityTypeDetails : '',
-            lingualityType: '',
+            lingualityType: ['',Validators.required],
             multilingualityType: ''
         });
     }

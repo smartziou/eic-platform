@@ -1,7 +1,7 @@
-<div [formGroup]="parentForm" [ngClass]="{'has-error':!parentForm.valid}">
+<div [formGroup]="parentForm">
     <div class="form-group">
         <label class="col-sm-2 control-label">{{languageTagDesc.label}}</label>
-        <div class="col-sm-10 col-md-9">
+        <div class="col-sm-10 col-md-9"  [ngClass]="{'has-error':!parentForm.controls.languageTag.valid}">
             <input type="text" class="form-control" formControlName="languageTag" placeholder="Language Tag">
         </div>
         <!--<a *ngIf="withIdentifier==false" class="add-element col-sm-1 col-md-1" (click)="addIdentifier()"><i-->

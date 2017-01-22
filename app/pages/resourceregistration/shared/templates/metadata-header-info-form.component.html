@@ -11,7 +11,7 @@
     <div class="form-group-divider"></div>
 
     <related-commons [group]="myForm" [name]="'metadataCreators'" [type]="'person'"
-                     [schemeEnum]="personEnum" [label]="'Creator'" [topLabel]="'Metadata Creator'"></related-commons>
+                     [schemeEnum]="personEnum" [label]="'Creator'" [topLabel]="'Metadata Creator'" [required]="true"></related-commons>
 
     <div class="form-group-divider"></div>
 
@@ -22,7 +22,7 @@
     <div [formGroup]="myForm">
         <div class="form-group">
             <label class="col-sm-2 control-label">{{revisionDesc.label}}</label>
-            <div class="col-sm-10 col-md-8">
+            <div class="col-sm-10 col-md-8" [ngClass]="{'has-error':!myForm.controls.revision.valid}">
                 <input type="text" class="form-control" formControlName="revision">
                 <small>{{revisionDesc.desc}}</small>
             </div>

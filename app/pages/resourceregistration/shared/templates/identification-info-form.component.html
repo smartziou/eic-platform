@@ -11,7 +11,7 @@
             <div *ngFor="let resourceName of myForm.controls.resourceNames.controls; let i=index" formGroupName="{{i}}">
                 <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
                 <div class="form-group">
-                    <my-string [group]="resourceName"></my-string>
+                    <my-string [group]="resourceName" [required]="true"></my-string>
                     <a class="remove-element col-sm-1 col-md-1" (click)="$delete('resourceNames',i)"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
@@ -36,7 +36,7 @@
             <div *ngFor="let description of myForm.controls.descriptions.controls; let i=index" formGroupName="{{i}}">
                 <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
                 <div class="form-group">
-                    <my-string [group]="description"></my-string>
+                    <my-string [group]="description" [required]="true"></my-string>
                     <a class="remove-element col-sm-1 col-md-1" (click)="$delete('descriptions',i)"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
@@ -61,7 +61,7 @@
             <div *ngFor="let resourceShortName of myForm.controls.resourceShortNames.controls; let i=index" formGroupName="{{i}}">
                 <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
                 <div class="form-group">
-                    <my-string [group]="resourceShortName"></my-string>
+                    <my-string [group]="resourceShortName" [required]="false"></my-string>
                     <a class="remove-element col-sm-1 col-md-1" (click)="$delete('resourceShortNames',i)"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
@@ -86,7 +86,7 @@
                 <!--<div class="form-group">-->
                     <identifier-common [group]="identifier" [scheme-name]="'resourceIdentifierSchemeName'"
                                        [scheme-values]="resourceIdentifierEnum" [index]="i"
-                                       [label]="'Identifier'"></identifier-common>
+                                       [label]="'Identifier'" [required]="true"></identifier-common>
                     <a class="remove-element col-sm-1 col-md-1" (click)="$delete('identifiers',i)"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
                 <!--</div>-->

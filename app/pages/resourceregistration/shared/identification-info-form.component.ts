@@ -64,26 +64,26 @@ export class IdentificationInfoFormControl implements OnInit {
 
     public static generate(_fb: FormBuilder) {
         return _fb.group({
-            resourceNames : _fb.array([MyStringFormControl.generate(_fb)]),
-            descriptions : _fb.array([MyStringFormControl.generate(_fb)]),
-            resourceShortNames : _fb.array([MyStringFormControl.generate(_fb)]),
-            identifiers: _fb.array([_fb.group(IdentifierFormControl.generate('resourceIdentifierSchemeName'))])
+            resourceNames : _fb.array([MyStringFormControl.generate(_fb,true)]),
+            descriptions : _fb.array([MyStringFormControl.generate(_fb,true)]),
+            resourceShortNames : _fb.array([MyStringFormControl.generate(_fb,false)]),
+            identifiers: _fb.array([_fb.group(IdentifierFormControl.generate('resourceIdentifierSchemeName',true))])
         });
     }
 
     addNew(type: string) {
         if(type=='resourceNames') {
             const control = <FormArray>this.myForm.controls['resourceNames'];
-            control.push(MyStringFormControl.generate(this._fb));
+            control.push(MyStringFormControl.generate(this._fb,true));
         } else if(type=='descriptions') {
             const control = <FormArray>this.myForm.controls['descriptions'];
-            control.push(MyStringFormControl.generate(this._fb));
+            control.push(MyStringFormControl.generate(this._fb,true));
         } else if(type=='resourceShortNames') {
             const control = <FormArray>this.myForm.controls['resourceShortNames'];
-            control.push(MyStringFormControl.generate(this._fb));
+            control.push(MyStringFormControl.generate(this._fb,false));
         } else if(type=='identifiers') {
             const control = <FormArray>this.myForm.controls['identifiers'];
-            control.push(this._fb.group(IdentifierFormControl.generate('resourceIdentifierSchemeName')));
+            control.push(this._fb.group(IdentifierFormControl.generate('resourceIdentifierSchemeName',true)));
         }
     }
 

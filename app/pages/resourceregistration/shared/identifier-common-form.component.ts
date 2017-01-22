@@ -38,6 +38,9 @@ export class IdentifierFormControl implements OnInit{
     @Input('index')
     index: number = -1;
 
+    @Input('required')
+    required: boolean = false;
+
     private identifierDesc : Description;
 
     private identifierSchemeDesc : Description;
@@ -46,7 +49,7 @@ export class IdentifierFormControl implements OnInit{
 
 
     public static generate(schemeName : string,validate : boolean = true) {
-        let required = (!validate) ? ['', Validators.required] : '' ;
+        let required = (validate) ? ['', Validators.required] : '' ;
         var temporary = {
             value : required,
             schemeURI : ''
@@ -64,7 +67,7 @@ export class IdentifierFormControl implements OnInit{
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group(IdentifierFormControl.generate(this.schemeName));
+        this.myForm = this._fb.group(IdentifierFormControl.generate(this.schemeName,this.required));
         if(this.index == -1) {
             this.parentForm.addControl(this.name, this.myForm);
         } else {

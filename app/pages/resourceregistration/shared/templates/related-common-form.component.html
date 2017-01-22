@@ -14,12 +14,12 @@
 </div>
 
 <div *ngIf="radioButtonSelected==='Names'">
-    <div [formGroup]="myFormPerson" [ngClass]="{'has-error':!parentForm.controls[type + 'Names'].valid}">
+    <div [formGroup]="myFormPerson">
         <!--<div class="form-group" formArrayName="{{type}}Names">-->
             <label class="col-sm-2 col-md-2 control-label">{{personLabel}} Name</label>
-            <div *ngFor="let address of myFormPerson.controls; let i=index">
+            <div *ngFor="let address of myFormPerson.controls; let i=index" [ngClass]="{'has-error':!address.valid}">
                 <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
-                <div class="form-group" formGroupName="{{i}}" [ngClass]="{'has-error':!address.valid}">
+                <div class="form-group" formGroupName="{{i}}">
                     <div class="col-sm-6 col-md-6">
                         <input type="text" class="form-control" formControlName="value" placeholder="Name">
                     </div>
@@ -44,7 +44,7 @@
     <div [formGroup]="myFormIdentifier">
         <!--<div formArrayName="{{type}}Identifiers">-->
             <div *ngFor="let address of myFormIdentifier.controls; let i=index" class="form-group">
-                <div formGroupName="{{i}}" [ngClass]="{'has-error':!address.valid}">
+                <div formGroupName="{{i}}">
                     <identifier-common [group]="address" [control-name]="schemeName"
                                        [scheme-name]="type + 'IdentifierSchemeName'"
                                        [scheme-values]="personEnum" [scheme-desc]="personDesc" [label]="personLabel + ' Identifier'"

@@ -8,15 +8,15 @@ import { EnumValues, sizeUnitEnum } from "./omtd.enum";
 @Component({
     selector: 'size-info',
     template : `
-    <div [formGroup]="myForm" [ngClass]="{'has-error':!myForm.valid}">
+    <div [formGroup]="myForm" >
         
         <label *ngIf="index == -1 || index==0" class="col-sm-2 col-md-2 control-label">Size Info</label>
         <!--<div class="form-group">-->
             <div *ngIf="index != -1 && index!=0" class="col-sm-2 col-md-2 control-label"></div> 
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-4 col-md-4" [ngClass]="{'has-error':!myForm.controls.size.valid}">
                 <input type="text" class="form-control" formControlName="size" placeholder="Size">
             </div>
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-4 col-md-4" [ngClass]="{'has-error':!myForm.controls.sizeUnit.valid}">
                 <select name="role" class="form-control" formControlName="sizeUnit">
                     <option *ngFor="let value of sizeUnits" [value]="value.key" [selected]="value.key == ''">
                         {{value.value}}
@@ -54,7 +54,7 @@ export class SizeInfoFormControl implements OnInit {
         let required = (!validate) ? ['', Validators.required] : '' ;
         return _fb.group({
             size : required,
-            sizeUnit: ''
+            sizeUnit: required
         });
     }
 

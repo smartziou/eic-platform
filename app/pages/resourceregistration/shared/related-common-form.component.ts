@@ -57,6 +57,9 @@ export class RelatedCommonsForm implements OnInit{
     @Input('topLabel')
     private topLabel : string;
 
+    @Input('required')
+    private required : boolean = false;
+
     @Input('label')
     private label : string;
 
@@ -64,7 +67,7 @@ export class RelatedCommonsForm implements OnInit{
     private formArray : FormArray;
 
     public add_new() {
-        this.formArray.push(RelatedCommonForm.generate(this._fb,this.type));
+        this.formArray.push(RelatedCommonForm.generate(this._fb,this.type,this.required));
     }
 
     public delete_creator(i : number) {
@@ -77,7 +80,7 @@ export class RelatedCommonsForm implements OnInit{
 
     ngOnInit() {
         // this.myForm = this._fb.group(this._fb.array([]));
-        this.formArray = this._fb.array([RelatedCommonForm.generate(this._fb,this.type)]);
+        this.formArray = this._fb.array([RelatedCommonForm.generate(this._fb,this.type,this.required)]);
         this.parentForm.addControl(this.name,this.formArray);
 
         var self = this;
@@ -139,14 +142,14 @@ export class RelatedCommonForm implements OnInit{
     }
 
     public static newPerson(_fb : FormBuilder, type : string, schemeName? : string, validate : boolean = true) : any {
-        let required = (!validate) ? ['', Validators.required] : '' ;
+        let required = (validate) ? ['', Validators.required] : '' ;
         if(type=="Names") {
             return _fb.group({
                 value: required,
                 lang: required
             });
         } else if (type === "Identifiers"){
-            return _fb.group(IdentifierFormControl.generate(schemeName));
+            return _fb.group(IdentifierFormControl.generate(schemeName,validate));
         }
     }
 

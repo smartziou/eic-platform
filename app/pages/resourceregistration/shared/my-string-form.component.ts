@@ -24,6 +24,10 @@ export class MyStringFormControl implements OnInit {
     @Input('group')
     public parentForm: FormGroup;
 
+
+    @Input('required')
+    private required : boolean = false;
+
     ngOnInit() {}
 
     validate(c : AbstractControl) {
@@ -33,9 +37,10 @@ export class MyStringFormControl implements OnInit {
 
     constructor(private _fb: FormBuilder) {}
 
-    public static generate(_fb: FormBuilder) {
+    public static generate(_fb: FormBuilder, validate : boolean = false) {
+        let required = (validate) ? ['', Validators.required] : '' ;
         return _fb.group({
-            value : ['', Validators.required],
+            value : required,
             lang : ''
         });
     }
