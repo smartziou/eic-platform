@@ -21,110 +21,135 @@ export class ContentConnectorService {
 
     search(urlParameters: URLParameter[]) {
 
-        var postBody = '{}';
-
-        var keywordString = '';
-        var paramsString = '\"params\":{';
-
-        var foundParams = false;
+        var body = {};
+        body['params'] = {};
 
         for(let urlParameter of urlParameters) {
 
             if(urlParameter.key === 'query') {
-                keywordString = '\"keyword\":\"' + urlParameter.values[0] + '\"';
+                body['keyword'] = urlParameter.values[0];
             } else {
-                foundParams = true;
-                var valuesCounter = 0;
-                paramsString += '\"' + urlParameter.key + '\":[';
-                for(let value of urlParameter.values) {
-                    if(valuesCounter!=0)
-                        paramsString += ',';
-                    paramsString += '\"' + value + '\"';
-                    valuesCounter++;
-                }
-                paramsString += ']';
+                body['params'][urlParameter.key] = urlParameter.values;
             }
-
-            paramsString += ",";
-
         }
 
-        paramsString = paramsString.substr(0, paramsString.length-1);
 
-        paramsString += '}';
-
-        if(keywordString != '' || foundParams) {
-            postBody = '{';
-            if(keywordString!='')
-                postBody += keywordString;
-            if(foundParams) {
-                if(keywordString!='')
-                    postBody += ',' + paramsString;
-                else
-                    postBody += paramsString;
-            }
-            postBody += '}';
-        }
+        // var postBody = '{}';
+        //
+        // var keywordString = '';
+        // var paramsString = '\"params\":{';
+        //
+        // var foundParams = false;
+        //
+        // for(let urlParameter of urlParameters) {
+        //
+        //     if(urlParameter.key === 'query') {
+        //         keywordString = '\"keyword\":\"' + urlParameter.values[0] + '\"';
+        //     } else {
+        //         foundParams = true;
+        //         var valuesCounter = 0;
+        //         paramsString += '\"' + urlParameter.key + '\":[';
+        //         for(let value of urlParameter.values) {
+        //             if(valuesCounter!=0)
+        //                 paramsString += ',';
+        //             paramsString += '\"' + value + '\"';
+        //             valuesCounter++;
+        //         }
+        //         paramsString += ']';
+        //     }
+        //
+        //     paramsString += ",";
+        //
+        // }
+        //
+        // paramsString = paramsString.substr(0, paramsString.length-1);
+        //
+        // paramsString += '}';
+        //
+        // if(keywordString != '' || foundParams) {
+        //     postBody = '{';
+        //     if(keywordString!='')
+        //         postBody += keywordString;
+        //     if(foundParams) {
+        //         if(keywordString!='')
+        //             postBody += ',' + paramsString;
+        //         else
+        //             postBody += paramsString;
+        //     }
+        //     postBody += '}';
+        // }
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         
-        return this.http.post(this._contentConnectorSearchUrl, postBody, options)
+        return this.http.post(this._contentConnectorSearchUrl, JSON.stringify(body), options)
             .map(res => <PublicationSearchResults> res.json())
             .catch(this.handleError);
     }
 
     prepareCorpus(urlParameters: URLParameter[]) {
 
-        var postBody = '{}';
-
-        var keywordString = '';
-        var paramsString = '\"params\":{';
-
-        var foundParams = false;
+        var body = {};
+        body['params'] = {};
 
         for(let urlParameter of urlParameters) {
 
             if(urlParameter.key === 'query') {
-                keywordString = '\"keyword\":\"' + urlParameter.values[0] + '\"';
+                body['keyword'] = urlParameter.values[0];
             } else {
-                foundParams = true;
-                var valuesCounter = 0;
-                paramsString += '\"' + urlParameter.key + '\":[';
-                for(let value of urlParameter.values) {
-                    if(valuesCounter!=0)
-                        paramsString += ',';
-                    paramsString += '\"' + value + '\"';
-                    valuesCounter++;
-                }
-                paramsString += ']';
+                body['params'][urlParameter.key] = urlParameter.values;
             }
-
-            paramsString += ",";
-
         }
 
-        paramsString = paramsString.substr(0, paramsString.length-1);
-
-        paramsString += '}';
-
-        if(keywordString != '' || foundParams) {
-            postBody = '{';
-            if(keywordString!='')
-                postBody += keywordString;
-            if(foundParams) {
-                if(keywordString!='')
-                    postBody += ',' + paramsString;
-                else
-                    postBody += paramsString;
-            }
-            postBody += '}';
-        }
+        // var postBody = '{}';
+        //
+        // var keywordString = '';
+        // var paramsString = '\"params\":{';
+        //
+        // var foundParams = false;
+        //
+        // for(let urlParameter of urlParameters) {
+        //
+        //     if(urlParameter.key === 'query') {
+        //         keywordString = '\"keyword\":\"' + urlParameter.values[0] + '\"';
+        //     } else {
+        //         foundParams = true;
+        //         var valuesCounter = 0;
+        //         paramsString += '\"' + urlParameter.key + '\":[';
+        //         for(let value of urlParameter.values) {
+        //             if(valuesCounter!=0)
+        //                 paramsString += ',';
+        //             paramsString += '\"' + value + '\"';
+        //             valuesCounter++;
+        //         }
+        //         paramsString += ']';
+        //     }
+        //
+        //     paramsString += ",";
+        //
+        // }
+        //
+        // paramsString = paramsString.substr(0, paramsString.length-1);
+        //
+        // paramsString += '}';
+        //
+        // if(keywordString != '' || foundParams) {
+        //     postBody = '{';
+        //     if(keywordString!='')
+        //         postBody += keywordString;
+        //     if(foundParams) {
+        //         if(keywordString!='')
+        //             postBody += ',' + paramsString;
+        //         else
+        //             postBody += paramsString;
+        //     }
+        //     postBody += '}';
+        // }
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this._contentConnectorPrepareCorpusUrl, postBody, options)
+        return this.http.post(this._contentConnectorPrepareCorpusUrl, JSON.stringify(body), options)
             .map(res => <OMTDCorpus> res.json())
             .catch(this.handleError);
     }
