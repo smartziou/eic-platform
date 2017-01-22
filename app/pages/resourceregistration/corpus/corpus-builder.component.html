@@ -16,8 +16,11 @@
                             <corpus-registration-form [group]="corpusForm" (corpusForm)="handleCorpus($event)"
                                                       [corpus]="corpusPromise"></corpus-registration-form>
 
-                            <div class="uk-grid-margin uk-row-first"><button (click)="onSubmit()" class="uk-button uk-button-large
-                                            uk-button-primary registerButton">Register!</button></div>
+                            <!--<div class="uk-grid-margin uk-row-first">-->
+                            <div>
+                                <button (click)="onSubmit()" class="uk-button uk-button-large
+                                            uk-button-blue registerButton">Register!</button>
+                            </div>
 
                         </article>
 
