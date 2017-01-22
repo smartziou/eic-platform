@@ -15,8 +15,18 @@
 
                             <div class="uk-align-medium-right">
                                 <div class="uk-grid-margin uk-row-first">
-                                    <button class="uk-button uk-button-large uk-button-primary" (click)="goBack()">
+                                    <button class="uk-button uk-button-large uk-button-secondary" (click)="goBack()">
                                         <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button>
+                                    <template [ngIf]="corpus.corpusInfo && corpus.corpusInfo.distributionInfos &&
+                                    corpus.corpusInfo.distributionInfos.length>0">
+                                        <template ngFor let-distributionInfo [ngForOf]="corpus.corpusInfo.distributionInfos">
+                                            <template ngFor let-downloadURL [ngForOf]="distributionInfo.downloadURLs">
+                                                <button *ngIf="downloadURL.startsWith('http://')"
+                                                        class="uk-button uk-button-large uk-button-primary" (click)="downloadCorpus(downloadURL)">
+                                                    Download</button>
+                                            </template>
+                                        </template>
+                                    </template>
                                 </div>
                             </div>
 

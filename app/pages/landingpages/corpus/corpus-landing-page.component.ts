@@ -44,6 +44,10 @@ export class CorpusLandingPageComponent implements OnInit {
         window.history.back();
     }
 
+    downloadCorpus(url: string) {
+        window.open(url, "_blank", "enabledstatus=0,toolbar=0,menubar=0,location=0");
+    }
+
     handleError(error) {
         this.errorMessage = 'System error loading corpus (Server responded: ' + error + ')';
     }

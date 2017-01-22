@@ -33,52 +33,6 @@ export class ContentConnectorService {
             }
         }
 
-
-        // var postBody = '{}';
-        //
-        // var keywordString = '';
-        // var paramsString = '\"params\":{';
-        //
-        // var foundParams = false;
-        //
-        // for(let urlParameter of urlParameters) {
-        //
-        //     if(urlParameter.key === 'query') {
-        //         keywordString = '\"keyword\":\"' + urlParameter.values[0] + '\"';
-        //     } else {
-        //         foundParams = true;
-        //         var valuesCounter = 0;
-        //         paramsString += '\"' + urlParameter.key + '\":[';
-        //         for(let value of urlParameter.values) {
-        //             if(valuesCounter!=0)
-        //                 paramsString += ',';
-        //             paramsString += '\"' + value + '\"';
-        //             valuesCounter++;
-        //         }
-        //         paramsString += ']';
-        //     }
-        //
-        //     paramsString += ",";
-        //
-        // }
-        //
-        // paramsString = paramsString.substr(0, paramsString.length-1);
-        //
-        // paramsString += '}';
-        //
-        // if(keywordString != '' || foundParams) {
-        //     postBody = '{';
-        //     if(keywordString!='')
-        //         postBody += keywordString;
-        //     if(foundParams) {
-        //         if(keywordString!='')
-        //             postBody += ',' + paramsString;
-        //         else
-        //             postBody += paramsString;
-        //     }
-        //     postBody += '}';
-        // }
-
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         
@@ -100,51 +54,6 @@ export class ContentConnectorService {
                 body['params'][urlParameter.key] = urlParameter.values;
             }
         }
-
-        // var postBody = '{}';
-        //
-        // var keywordString = '';
-        // var paramsString = '\"params\":{';
-        //
-        // var foundParams = false;
-        //
-        // for(let urlParameter of urlParameters) {
-        //
-        //     if(urlParameter.key === 'query') {
-        //         keywordString = '\"keyword\":\"' + urlParameter.values[0] + '\"';
-        //     } else {
-        //         foundParams = true;
-        //         var valuesCounter = 0;
-        //         paramsString += '\"' + urlParameter.key + '\":[';
-        //         for(let value of urlParameter.values) {
-        //             if(valuesCounter!=0)
-        //                 paramsString += ',';
-        //             paramsString += '\"' + value + '\"';
-        //             valuesCounter++;
-        //         }
-        //         paramsString += ']';
-        //     }
-        //
-        //     paramsString += ",";
-        //
-        // }
-        //
-        // paramsString = paramsString.substr(0, paramsString.length-1);
-        //
-        // paramsString += '}';
-        //
-        // if(keywordString != '' || foundParams) {
-        //     postBody = '{';
-        //     if(keywordString!='')
-        //         postBody += keywordString;
-        //     if(foundParams) {
-        //         if(keywordString!='')
-        //             postBody += ',' + paramsString;
-        //         else
-        //             postBody += paramsString;
-        //     }
-        //     postBody += '}';
-        // }
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
