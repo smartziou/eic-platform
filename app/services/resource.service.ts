@@ -120,6 +120,7 @@ export class ResourceService {
             else if (typeof obj[k]=="object") ResourceService.removeNulls(obj[k]);
         }
     }
+
     uploadCorpus(corpus: OMTDCorpus) {
 
         console.log(JSON.stringify(corpus));
@@ -138,6 +139,18 @@ export class ResourceService {
         formBody.append('file',file);
         return this.http.post(this._uploadZip,formBody)
             .map(res => this.corpusDownloadURL(res.text()))
+            .catch(this.handleError);
+    }
+
+    uploadComponent(component: OMTDComponent) {
+
+        console.log(JSON.stringify(component));
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+        ResourceService.removeNulls(component);
+        return this.http.post(this._searchUrl + 'component', JSON.stringify(component), options)
+            .map(res => res.status)
             .catch(this.handleError);
     }
 

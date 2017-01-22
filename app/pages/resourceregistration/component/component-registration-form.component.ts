@@ -1,11 +1,10 @@
 /**
  * Created by stefania on 10/19/16.
  */
-import {Component, OnInit, Input} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms'
-import {MetadataHeaderInfo, OMTDComponent, Order} from "../../../domain/openminted-model";
-import {MetadataHeaderInfoFormControl} from "../shared/metadata-header-info-form.component";
-import {ResourceService} from "../../../services/resource.service";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms'
+import { OMTDComponent } from "../../../domain/openminted-model";
+import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'component-registration-form',
@@ -14,33 +13,41 @@ import {ResourceService} from "../../../services/resource.service";
 
 export class ComponentRegistrationFormComponent implements OnInit {
 
-    component: OMTDComponent;
-
     @Input('group')
     myForm: FormGroup;
 
-    constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
+    @Input('corpus')
+    component : Observable<OMTDComponent> = null;
+
+    @Output('corpusForm')
+    componentForm : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+
+    constructor(private _fb: FormBuilder) {
+    }
+
+    loadComponent(component : OMTDComponent) {
+        let temp = JSON.stringify(component,(key,value)=>{return (value == null) ? "" : value});
+        component = JSON.parse(temp);
+
+        this.myForm.patchValue(component);
+        this.myForm.patchValue(component);
     }
 
     ngOnInit() {
-        this.myForm = this._fb.group({});
-        var self = this;
-        this.resourceService.getComponent("component_test2").subscribe(res => {
-            console.log(res);
-            var x : OMTDComponent = res;
-            this.myForm.patchValue({metadataHeaderInfo : x.metadataHeaderInfo || {}});
-            //setTimeout(this.myForm.patchValue,1000,{metadataHeaderInfo : x.metadataHeaderInfo || {}})
-            this.resourceService.getComponent("component_test2").subscribe(res => {
-                var x: OMTDComponent = res;
-                this.myForm.patchValue({metadataHeaderInfo: x.metadataHeaderInfo || {}});
-            });
+
+        this.myForm = this._fb.group({
+            componentInfo:this._fb.group({
+                resourceType : 'component'
+            })
+
         });
+        this.myForm.valueChanges.subscribe(component => this.componentForm.emit(this.myForm));
 
-    }
-
-    onSubmit(myForm: FormGroup) {
-        console.log("Submitted")
-        console.log(myForm.value,myForm);
+        if (this.component) {
+            this.component.subscribe(
+                component => this.loadComponent(component),
+                error => console.log(error));
+        }
     }
 
 }

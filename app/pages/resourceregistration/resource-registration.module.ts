@@ -25,6 +25,7 @@ import { LanguageVarietyInfoFormControl } from "./shared/language-variety-info-f
 import { LanguageInfoFormControl } from "./shared/language-info-form.component";
 import { DatasetDistributionsInfoFormControl } from "./shared/dataset-distribution-info-form.component";
 import { ZipUploadComponent } from "./shared/zip-upload-form.component";
+import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormControl } from "./shared/component-distribution-info-form.component";
 
 
 @NgModule({
@@ -58,7 +59,9 @@ import { ZipUploadComponent } from "./shared/zip-upload-form.component";
         LicenseInfosForm,
         LanguageVarietyInfoFormControl,
         LanguageInfoFormControl, 
-        ZipUploadComponent
+        ZipUploadComponent,
+        ComponentDistributionInfoFormControl,
+        ComponentDistributionsInfoFormControl
     ],
     providers: [
         ResourceService
@@ -86,7 +89,9 @@ import { ZipUploadComponent } from "./shared/zip-upload-form.component";
         LicenseInfosForm,
         LanguageVarietyInfoFormControl,
         LanguageInfoFormControl, 
-        ZipUploadComponent
+        ZipUploadComponent,
+        ComponentDistributionInfoFormControl,
+        ComponentDistributionsInfoFormControl
     ]
 })
 

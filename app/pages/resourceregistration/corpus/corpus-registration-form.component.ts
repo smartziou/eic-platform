@@ -1,10 +1,9 @@
 /**
  * Created by stefania on 10/19/16.
  */
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms'
-import {MetadataHeaderInfo, OMTDComponent, Order, OMTDCorpus} from "../../../domain/openminted-model";
-import {ResourceService} from "../../../services/resource.service";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms'
+import { OMTDCorpus } from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -23,7 +22,7 @@ export class CorpusRegistrationFormComponent implements OnInit {
     @Output('corpusForm')
     corpusForm : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
-    constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
+    constructor(private _fb: FormBuilder) {
     }
 
     loadCorpus(corpus : OMTDCorpus) {
@@ -51,17 +50,6 @@ export class CorpusRegistrationFormComponent implements OnInit {
                 corpus => this.loadCorpus(corpus),
                 error => console.log(error));
         }
-        // this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
-        //     console.log(res);
-        //     var x : OMTDCorpus = res;
-        //     this.myForm.patchValue(x);
-        //     //setTimeout(this.myForm.patchValue,1000,{metadataHeaderInfo : x.metadataHeaderInfo || {}})
-        //     this.resourceService.getCorpus("rawCorpus_almostall").subscribe(res => {
-        //         var x: OMTDCorpus = res;
-        //         this.myForm.patchValue(x);
-        //     });
-        // });
-
     }
 
 }

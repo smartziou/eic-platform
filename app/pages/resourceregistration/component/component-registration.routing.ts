@@ -5,7 +5,7 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ComponentRegistrationComponent } from "./component-registration.component";
 import { ComponentRegistrationXMLComponent } from "./component-registration-xml.component";
-import { ComponentRegistrationFormComponent } from "./component-registration-form.component";
+import { ComponentRegistrationUsingFormComponent } from "./component-registration-using-form.component";
 
 const componentRegistrationRoutes: Routes = [
     {
@@ -18,7 +18,7 @@ const componentRegistrationRoutes: Routes = [
     },
     {
         path: 'resourceRegistration/component/form',
-        component: ComponentRegistrationFormComponent
+        component: ComponentRegistrationUsingFormComponent
     }
 ];
 

@@ -1,42 +1,17 @@
-<div class="uk-block tm-block-main uk-block-default uk-block-large">
-    <div class="uk-container uk-container-center">
-        <div id="tm-middle" class="tm-middle uk-grid" data-uk-grid-match="" data-uk-grid-margin="">
-            <div class="tm-main uk-width-medium-1-1 uk-row-first">
-                <main id="tm-content" class="tm-content">
-                    <div id="system-message-container">
-                    </div>
-                    <div class="yoo-zoo page-uikit page-uikit-test">
-
-                        <h1 class="uk-h1"> Component Form registration </h1>
-
-                        <!--<p class="uk-text-muted">Written by Super User on 26 March 2010 </p>-->
-
-                        <div class="uk-margin">
-                            Paste the XML presentation of your component below, or use one of our helper methods on the
-                            right to preview your XML before you submit it.
-                        </div>
-
-                        <div class="uk-margin uk-grid componentXMLRegistration">
-                            <div class="uk-width-medium-1-1">
-                                <form class="form-horizontal componentForm" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
-                                    <accordion>
-                                        <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
-                                            <metadata-header-info-form [group]="myForm"></metadata-header-info-form>
-                                            <div class="uk-grid-margin uk-row-first"><button class="uk-button uk-button-large
-                                            uk-button-primary registerButton">Register!</button></div>
-                                        </div>
-                                    </accordion>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="margin-20">
-                            <div>myForm details:-</div>
-                            <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
-                            <pre>form value: <br>{{myForm.value | json}}</pre>
-                        </div>
-                    </div>
-                </main>
+<div>
+    <form class="form-horizontal componentForm" [formGroup]="myForm">
+        <accordion>
+            <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
+                <metadata-header-info-form [group]="myForm"></metadata-header-info-form>
+                <identification-info-form [group]="myForm.controls.componentInfo"></identification-info-form>
+                <contact-info-form [group]="myForm.controls.componentInfo"></contact-info-form>
+                <component-distributions-info-form-common [group]="myForm.controls.componentInfo"></component-distributions-info-form-common>
             </div>
-        </div>
-    </div>
+        </accordion>
+    </form>
 </div>
+<!--<div class="margin-20">-->
+    <!--<div>myForm details:-</div>-->
+    <!--<pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>-->
+    <!--<pre>form value: <br>{{myForm.value | json}}</pre>-->
+<!--</div>-->
