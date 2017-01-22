@@ -10,21 +10,28 @@
                         <div class="uk-margin uk-grid componentXMLRegistration">
                             <div class="uk-width-medium-1-1">
 
-                                <article class="uk-article">
+                                <div *ngIf="!successfulMessage">
+                                    <article class="uk-article">
 
-                                    <h3 class="subtitle">Fill in the metadata for your component</h3>
+                                        <h3 class="subtitle">Fill in the metadata for your component</h3>
 
-                                    <div *ngIf="successfulMessage" class="alert alert-success">{{successfulMessage}}</div>
-                                    <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+                                        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
 
-                                    <div *ngIf="componentFormErrorMessage" class="alert alert-danger">{{componentFormErrorMessage}}</div>
-                                    <component-registration-form [group]="componentForm" (componentForm)="handleComponent($event)"></component-registration-form>
+                                        <div *ngIf="componentFormErrorMessage" class="alert alert-danger">{{componentFormErrorMessage}}</div>
+                                        <component-registration-form [group]="componentForm" (componentForm)="handleComponent($event)"></component-registration-form>
 
-                                </article>
+                                    </article>
 
-                                <div>
-                                    <button (click)="onSubmit()" class="uk-button uk-button-large
+                                    <div>
+                                        <button (click)="onSubmit()" class="uk-button uk-button-large
                                             uk-button-blue registerButton">Register!</button>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="successfulMessage">
+                                    <article class="uk-article">
+                                        <div class="alert alert-success">{{successfulMessage}}</div>
+                                    </article>
                                 </div>
 
                             </div>

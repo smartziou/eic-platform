@@ -16,10 +16,10 @@ export class ComponentRegistrationFormComponent implements OnInit {
     @Input('group')
     myForm: FormGroup;
 
-    @Input('corpus')
+    @Input('component')
     component : Observable<OMTDComponent> = null;
 
-    @Output('corpusForm')
+    @Output('componentForm')
     componentForm : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
     constructor(private _fb: FormBuilder) {
@@ -37,7 +37,7 @@ export class ComponentRegistrationFormComponent implements OnInit {
 
         this.myForm = this._fb.group({
             componentInfo:this._fb.group({
-                resourceType : 'component'
+                // resourceType : 'component'
             })
 
         });
