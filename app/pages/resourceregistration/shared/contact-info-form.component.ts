@@ -24,7 +24,7 @@ export class ContactInfoFormControl implements OnInit {
     public myForm: FormGroup;
 
     private radioButton : string[] = ["Contact Email","Landing Page"];
-    private radioButtonSelected : string;
+    private radioButtonSelected : string = this.radioButton[0];
 
     private resourceNameDescription: Description = resourceNameDesc;
     private descriptionDescription: Description = descriptionDesc;
@@ -37,6 +37,7 @@ export class ContactInfoFormControl implements OnInit {
         this.myForm.setValidators(this.validate);
 
         this.parentForm.addControl("contactInfo", this.myForm);
+        this.deactivate();
     }
 
     public validate(): ValidatorFn {
@@ -64,17 +65,30 @@ export class ContactInfoFormControl implements OnInit {
 
     public static generate(_fb: FormBuilder) {
         return _fb.group({
-            contactEmail: '',
-            landingPage: ''
+            contactEmail: ['',Validators.required],
+            landingPage: ['',Validators.required]
         });
+    }
+
+    public deactivate() {
+        if (this.radioButtonSelected == "Contact Email") {
+            this.myForm.get('contactEmail').enable();
+            this.myForm.get('landingPage').disable();
+        }
+        else {
+            this.myForm.get('contactEmail').disable();
+            this.myForm.get('landingPage').enable();
+        }
     }
 
     public changeType(choice: string) :void {
 
-        console.log("Changed type");
-
         if (this.radioButtonSelected !== choice) {
             this.radioButtonSelected = choice;
         }
+
+        this.deactivate();
+
+
     }
 }

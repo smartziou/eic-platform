@@ -28,7 +28,7 @@ export class CorpusRegistrationFormComponent implements OnInit {
     loadCorpus(corpus : OMTDCorpus) {
         let temp = JSON.stringify(corpus,(key,value)=>{return (value == null) ? "" : value});
         corpus = JSON.parse(temp);
-
+        corpus.corpusInfo.resourceType = "corpus";
         this.myForm.patchValue(corpus);
         this.myForm.patchValue(corpus);
     }

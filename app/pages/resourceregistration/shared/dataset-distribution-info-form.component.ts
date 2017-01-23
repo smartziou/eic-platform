@@ -82,27 +82,60 @@ export class DatasetDistributionInfoFormControl implements OnInit{
 
     distributionEnum : EnumValues[];
 
+    readOnlyUrl : number = 0;
+
     constructor(private _fb : FormBuilder) {
         this.distributionEnum = distributionMediumEnum;
     }
 
     static generate(_fb : FormBuilder) {
         return _fb.group({
-            distributionMediums : _fb.array([new FormControl("")])
+            distributionMediums : _fb.array([new FormControl("")]),
+            downloadURLs : _fb.array([new FormControl("")])
         });
     }
 
-    $add() {
-        const control = <FormArray>this.parentForm.controls["distributionMediums"];
-        control.push(new FormControl(""));
+    $add(type : string) {
+        if(type === "distributionMediums") {
+            const control = <FormArray>this.parentForm.controls["distributionMediums"];
+            control.push(new FormControl(""));
+        } else if(type === "downloadURLs") {
+            const control = <FormArray>this.parentForm.controls["downloadURLs"];
+            control.push(new FormControl(""));
+        }
     }
 
-    $delete(i : number) {
-        const control = <FormArray>this.parentForm.controls["distributionMediums"];
-        control.removeAt(i);
+    $delete(i : number, type : string) {
+        if (type === "distributionMediums") {
+            const control = <FormArray>this.parentForm.controls["distributionMediums"];
+            control.removeAt(i);
+        } else if (type === "downloadURLs") {
+            const control = <FormArray>this.parentForm.controls["downloadURLs"];
+            control.removeAt(i);
+        }
     }
 
     ngOnInit(): void {
+        var self = this;
+        this.parentForm.patchValue =(value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) =>{
+            Object.keys(value).forEach(name => {
+                const control = <FormArray>this.parentForm.controls[name];
+                if(control) {
+                    for (var i = control.length; i < value[name].length; i++) {
+                        self.$add(name);
+                    }
+                    if(name == 'downloadURLs') {
+                        this.readOnlyUrl = value[name].length;
+                    }
+                }
+            });
+            Object.keys(value).forEach(name => {
+                if (self.parentForm.controls[name]) {
+                    self.parentForm.controls[name].patchValue(value[name], {onlySelf: true, emitEvent});
+                }
+            });
+            self.parentForm.updateValueAndValidity({onlySelf, emitEvent});
+        }
     }
 
 }
