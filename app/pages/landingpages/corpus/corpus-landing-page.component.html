@@ -21,7 +21,7 @@
                                     corpus.corpusInfo.distributionInfos.length>0">
                                         <template ngFor let-distributionInfo [ngForOf]="corpus.corpusInfo.distributionInfos">
                                             <template ngFor let-downloadURL [ngForOf]="distributionInfo.downloadURLs">
-                                                <button *ngIf="downloadURL.startsWith('http://')"
+                                                <button *ngIf="downloadURL.startsWith('http://') || downloadURL.startsWith('https://')"
                                                         class="uk-button uk-button-large uk-button-primary" (click)="downloadCorpus(downloadURL)">
                                                     Download</button>
                                             </template>

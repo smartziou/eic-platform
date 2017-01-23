@@ -30,6 +30,8 @@ export class CorpusUploadComponent implements OnInit {
     errorMessage: string = null;
     successfulMessage: string = null;
 
+    private uploadingCorpus:boolean = false;
+
     constructor(private _fb: FormBuilder, private resourceService: ResourceService) {
     }
 
@@ -84,6 +86,9 @@ export class CorpusUploadComponent implements OnInit {
                 'can see the ones invalid or missing marked as red.';
 
         if(this.zipFile && this.zipFile.name.endsWith(".zip") && this.corpusForm.valid) {
+
+            this.uploadingCorpus = true;
+
             this.resourceService.uploadZip(this.zipFile.name,this.zipFile).subscribe(id => {
                 let corpusBody : OMTDCorpus = this.corpusForm.value;
                 let distributionInfo : DatasetDistributionInfo = new DatasetDistributionInfo();
@@ -97,6 +102,7 @@ export class CorpusUploadComponent implements OnInit {
                 
                 this.resourceService.uploadCorpus(this.corpusForm.value).subscribe(
                     res => {
+                        this.uploadingCorpus = false;
                         this.successfulMessage = 'Corpus uploaded successfully';
                         window.scrollTo(0,0);
                     }, error => this.handleError(error)
@@ -104,11 +110,13 @@ export class CorpusUploadComponent implements OnInit {
             });
 
         } else {
+            this.uploadingCorpus = false;
             window.scrollTo(0,0);
         }
     }
 
     handleError(error) {
+        this.uploadingCorpus = false;
         this.errorMessage = 'Corpus uploading failed (Server responded: ' + error + ')';
         window.scrollTo(0,0);
     }
