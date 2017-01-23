@@ -155,7 +155,7 @@ export class ResourceService {
     }
 
     public corpusDownloadURL(id : string) : string {
-        return this._uploadUrl + '/corpus/download?archiveId=' + id;
+        return this._resourcesUrl + '/corpus/download?archiveId=' + id;
     }
 
 
