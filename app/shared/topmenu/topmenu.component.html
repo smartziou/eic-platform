@@ -3,14 +3,14 @@
          data-uk-sticky="{media: 768, clsactive:'uk-active uk-navbar-attached'}" style="position: fixed; top: 0px; width: 100%;">
         <div class="tm-toolbar uk-clearfix uk-visible-large">
             <div class="uk-float-right">
-                <div *ngIf="!loggedIn()" class="uk-panel">
-                    <span><a routerLink="/login" routerLinkActive="uk-active">SIGN IN</a></span>
-                    |
-                    <span><a routerLink="/register" routerLinkActive="uk-active">REGISTER</a></span>
-                </div>
-                <div *ngIf="loggedIn()" class="uk-panel">
-                    <span><a routerLink="/home" routerLinkActive="uk-active" (click)="logout()">SIGN OUT</a></span>
-                </div>
+                <!--<div *ngIf="!loggedIn()" class="uk-panel">-->
+                    <!--<span><a routerLink="/login" routerLinkActive="uk-active">SIGN IN</a></span>-->
+                    <!--|-->
+                    <!--<span><a routerLink="/register" routerLinkActive="uk-active">REGISTER</a></span>-->
+                <!--</div>-->
+                <!--<div *ngIf="loggedIn()" class="uk-panel">-->
+                    <!--<span><a routerLink="/home" routerLinkActive="uk-active" (click)="logout()">SIGN OUT</a></span>-->
+                <!--</div>-->
             </div>
         </div>
         <div class="uk-position-relative uk-text-center">
@@ -35,7 +35,8 @@
                             <li><a routerLink="/registerWorkflow" routerLinkActive="uk-active">Workflow</a></li>-->
                         </ul>
                     </li>
-                    <li [routerLinkActive]="['uk-active']"><a routerLink="/support" routerLinkActive="uk-active">Support</a></li>
+                    <!--<li [routerLinkActive]="['uk-active']"><a routerLink="/support" routerLinkActive="uk-active">Support</a></li>-->
+                    <li [routerLinkActive]="['uk-active']"><a href="http://openminted.eu/support-training/" target="_blank">Support</a></li>
                     <li *ngIf="loggedIn()" [routerLinkActive]="['uk-active']" class="dropdown uk-parent" data-uk-dropdown="{'preventflip':'y'}" aria-haspopup="true" aria-expanded="false">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
                         <ul class="dropdown-menu uk-nav uk-nav-navbar">
