@@ -60,7 +60,7 @@ export class ContentConnectorService {
 
         return this.http.post(this._contentConnectorPrepareCorpusUrl, JSON.stringify(body), options)
             .map(res => <OMTDCorpus> res.json())
-            .catch(this.handleError);
+            .catch(this.handleError).share();
     }
 
     buildCorpus(corpus: OMTDCorpus) {

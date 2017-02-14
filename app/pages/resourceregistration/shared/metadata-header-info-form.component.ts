@@ -4,7 +4,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {Description, revisionDesc} from "./omtd.description";
-import {metadataIdentifierSchemeNameEnum, EnumValues} from "./omtd.enum";
+import {EnumValues, personIdentifierSchemeNameEnum} from "./omtd.enum";
 
 @Component({
     selector: 'metadata-header-info-form',
@@ -32,12 +32,12 @@ export class MetadataHeaderInfoFormControl implements OnInit{
 
     constructor(private _fb: FormBuilder) {
         this.revisionDesc =  revisionDesc;
-        this.personEnum = metadataIdentifierSchemeNameEnum;
+        this.personEnum = personIdentifierSchemeNameEnum;
     }
 
     ngOnInit() {
         this.myForm = this._fb.group({
-            revision : ['', [Validators.required]]
+            revision : ''
         });
         this.parentForm.addControl("metadataHeaderInfo", this.myForm);
     }
