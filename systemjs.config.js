@@ -25,7 +25,17 @@
             'rxjs':                      'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
             'moment': 'node_modules/moment/moment.js',
-            'ng2-bootstrap/ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js'
+            'ng2-bootstrap/ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
+            'angular-oauth2-oidc' : 'npm:angular-oauth2-oidc',
+            'js-base64' : 'npm:js-base64/base64.js',
+            'base64-js' : 'npm:base64-js/index.js',
+            'sha256' : 'npm:sha256/lib/sha256.js',
+            'buffer' : 'npm:buffer/index.js',
+            'convert-hex' : 'npm:convert-hex/convert-hex.js',
+            'convert-string' : 'npm:convert-string/convert-string.js',
+            'ieee754' : 'npm:ieee754/index.js',
+            'isarray' : 'npm:isarray/index.js'
+
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -34,11 +44,16 @@
                 defaultExtension: 'js'
             },
             rxjs: {
+                main : './bundles/Rx.min.js',
                 defaultExtension: 'js'
             },
             'angular-in-memory-web-api': {
                 main: './index.js',
                 defaultExtension: 'js'
+            },
+            'angular-oauth2-oidc' : {
+                main : './dist/index.js',
+                defaultExtension : 'js'
             }
         }
     });
