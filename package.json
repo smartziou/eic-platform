@@ -15,7 +15,7 @@
     "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js",
     "build": "webpack --progress",
     "watch": "npm run build -- --watch",
-    "server": "webpack-dev-server --inline --progress --port 3000 --content-base src",
+    "server": "webpack-dev-server --inline --progress --port 3000 --content-base .",
     "start": "npm run server"
   },
   "license": "ISC",
