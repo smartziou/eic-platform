@@ -6,7 +6,7 @@ import { LicenceInfo } from "../../../domain/openminted-model";
 
 @Component({
     selector: 'license-info',
-    templateUrl: 'app/pages/landingpages/resourceelements/license-info.component.html',
+    templateUrl: './license-info.component.html',
 })
 
 export class LicenseInfoComponent {

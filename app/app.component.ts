@@ -7,7 +7,7 @@ import {OAuthService} from "angular-oauth2-oidc";
 
 @Component({
     selector: 'openminted-platform',
-    templateUrl: 'app/app.component.html',
+    templateUrl: './app.component.html',
 })
 
 export class AppComponent implements OnInit {

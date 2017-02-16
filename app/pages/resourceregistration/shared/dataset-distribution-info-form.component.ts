@@ -42,7 +42,7 @@ import {EnumValues, distributionMediumEnum} from "./omtd.enum";
 
 </accordion-group>
 `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 export class DatasetDistributionsInfoFormControl implements OnInit{
     @Input('group')
@@ -73,8 +73,8 @@ export class DatasetDistributionsInfoFormControl implements OnInit{
 
 @Component({
     selector: 'dataset-distribution-info-form-common',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/dataset-distribution-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/dataset-distribution-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 export class DatasetDistributionInfoFormControl implements OnInit{
     @Input('group')

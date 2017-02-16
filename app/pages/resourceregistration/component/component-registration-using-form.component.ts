@@ -8,7 +8,7 @@ import { ResourceService } from "../../../services/resource.service";
 
 @Component({
     selector: 'component-registration-using-form',
-    templateUrl: 'app/pages/resourceregistration/component/component-registration-using-form.component.html'
+    templateUrl: './component-registration-using-form.component.html'
 })
 
 export class ComponentRegistrationUsingFormComponent implements OnInit {

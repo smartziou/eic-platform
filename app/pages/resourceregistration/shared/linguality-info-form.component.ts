@@ -29,7 +29,7 @@ import { EnumValues, multilingualityTypeEnum, lingualityTypeEnum } from "./omtd.
         </div>
     </div>
     `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 
 export class LingualityInfoFormControl implements OnInit {

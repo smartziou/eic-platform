@@ -22,7 +22,7 @@ import { LoginComponent } from "./pages/user/signin/login.component";
 import { RegisterComponent } from "./pages/user/register/register.component";
 import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.component";
 import { ComponentRegistrationModule } from "./pages/resourceregistration/component/component-registration.module";
-import { TabsModule } from "ng2-bootstrap/ng2-bootstrap";
+import { TabsModule } from "ng2-bootstrap";
 import { LandingPageModule } from "./pages/landingpages/landing-page.module";
 import { CorpusRegistrationModule } from "./pages/resourceregistration/corpus/corpus-registration.module";
 import { FooterComponent } from "./shared/footer/footer.component";

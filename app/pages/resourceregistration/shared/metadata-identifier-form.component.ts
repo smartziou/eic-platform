@@ -9,8 +9,8 @@ import {EnumValues, metadataIdentifierSchemeNameEnum} from "./omtd.enum"
 
 @Component({
     selector: 'metadata-identifier-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/metadata-identifier-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/metadata-identifier-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 
 

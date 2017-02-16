@@ -26,7 +26,7 @@ import { EnumValues, sizeUnitEnum } from "./omtd.enum";
         <!--</div>-->
     </div>
     `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 
 export class SizeInfoFormControl implements OnInit {

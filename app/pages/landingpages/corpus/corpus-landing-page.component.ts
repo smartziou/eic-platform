@@ -9,8 +9,8 @@ import { Subscription } from "rxjs/Subscription";
 
 @Component({
     selector: 'corpus-landing-page',
-    templateUrl: 'app/pages/landingpages/corpus/corpus-landing-page.component.html',
-    styleUrls:  ['app/pages/landingpages/landing-page.component.css'],
+    templateUrl: './corpus-landing-page.component.html',
+    styleUrls:  ['../landing-page.component.css'],
 })
 
 export class CorpusLandingPageComponent implements OnInit {

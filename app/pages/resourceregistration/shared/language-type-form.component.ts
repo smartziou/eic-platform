@@ -44,7 +44,7 @@ import {
     </div>
 </div>
 `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 export class LanguagesTypeForm implements OnInit{
 
@@ -90,8 +90,8 @@ export class LanguagesTypeForm implements OnInit{
 
 @Component({
     selector: 'language-type',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/language-type-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/language-type-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 export class LanguageTypeForm implements OnInit {
 

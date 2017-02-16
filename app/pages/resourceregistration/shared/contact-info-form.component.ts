@@ -9,8 +9,8 @@ import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} f
 
 @Component({
     selector: 'contact-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/contact-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/contact-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 
 export class ContactInfoFormControl implements OnInit {

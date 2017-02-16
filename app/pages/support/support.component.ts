@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'support',
-    templateUrl: 'app/pages/support/support.component.html',
+    templateUrl: './support.component.html',
 })
 
 export class SupportComponent {

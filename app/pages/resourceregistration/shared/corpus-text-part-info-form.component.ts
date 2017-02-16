@@ -8,8 +8,8 @@ import {LanguageInfoFormControl} from "./language-info-form.component";
 
 @Component({
     selector: 'corpus-text-part-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/corpus-text-part-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/corpus-text-part-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 
 export class CorpusTextPartInfoFormControl implements OnInit {

@@ -16,7 +16,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
         </div>
     </div>
     `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 
 export class MyStringFormControl implements OnInit {

@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'corpus-registration-options',
-    templateUrl: 'app/pages/resourceregistration/corpus/corpus-registration.component.html',
-    styleUrls:  ['app/pages/resourceregistration/corpus/corpus-registration.component.css'],
+    templateUrl: './corpus-registration.component.html',
+    styleUrls:  ['./corpus-registration.component.css'],
 })
 
 export class CorpusRegistrationComponent {

@@ -14,7 +14,7 @@ import {EnumValues} from "./omtd.enum";
     </option>
 </select>
 `,
-    styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls: ['./templates/common.css']
 })
 export class EnumCommonForm implements OnInit {
     @Input('formControlName')

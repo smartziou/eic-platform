@@ -13,8 +13,8 @@ import { SearchQuery } from "../../../domain/search-query";
 
 @Component({
     selector: 'search',
-    templateUrl: 'app/pages/resourceregistration/corpus/search-for-publications.component.html',
-    styleUrls:  ['app/pages/resourceregistration/corpus/search-for-publications.component.css'],
+    templateUrl: './search-for-publications.component.html',
+    styleUrls:  ['./search-for-publications.component.css'],
 })
 
 export class SearchForPublicationsComponent {

@@ -8,8 +8,8 @@ import { SearchQuery } from "../../domain/search-query";
 
 @Component({
     selector: 'home',
-    templateUrl: 'app/pages/home/home.component.html',
-    styleUrls: ['app/pages/home/home.component.css'],
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
 })
 
 export class HomeComponent {

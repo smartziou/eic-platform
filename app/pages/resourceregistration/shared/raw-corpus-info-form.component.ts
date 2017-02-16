@@ -11,8 +11,8 @@ import {CorpusTextPartInfoFormControl} from "./corpus-text-part-info-form.compon
 
 @Component({
     selector: 'raw-corpus-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/raw-corpus-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/raw-corpus-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 
 export class RawCorpusInfoFormControl implements OnInit {

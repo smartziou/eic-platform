@@ -6,7 +6,7 @@ import { RightsInfo } from "../../../domain/openminted-model";
 
 @Component({
     selector: 'rights-info',
-    templateUrl: 'app/pages/landingpages/resourceelements/rights-info.component.html',
+    templateUrl: './rights-info.component.html',
 })
 
 export class RightsInfoComponent {

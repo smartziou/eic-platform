@@ -9,8 +9,8 @@ import {EnumValues} from "./omtd.enum";
 
 @Component({
     selector: 'identifier-common',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/identifier-common-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/identifier-common-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 export class IdentifierFormControl implements OnInit{
 

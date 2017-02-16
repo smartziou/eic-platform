@@ -8,7 +8,7 @@ import {OAuthService} from "angular-oauth2-oidc";
 
 @Component({
     selector: 'top-menu',
-    templateUrl: 'app/shared/topmenu/topmenu.component.html',
+    templateUrl: './topmenu.component.html',
     encapsulation: ViewEncapsulation.None
 })
 

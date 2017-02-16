@@ -10,8 +10,8 @@ import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} f
 
 @Component({
     selector: 'identification-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/identification-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/identification-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 
 export class IdentificationInfoFormControl implements OnInit {

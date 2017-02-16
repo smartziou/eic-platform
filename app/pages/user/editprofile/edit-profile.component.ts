@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'edit-profile',
-    templateUrl: 'app/pages/user/editprofile/edit-profile.component.html',
-    styleUrls:  ['app/pages/user/editprofile/edit-profile.component.css']
+    templateUrl: './edit-profile.component.html',
+    styleUrls:  ['./edit-profile.component.css']
 })
 
 export class EditProfileComponent {

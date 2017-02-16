@@ -38,7 +38,7 @@ import {IdentifierFormControl} from "./identifier-common-form.component";
     </div>
 </div>
 `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 export class RelatedCommonsForm implements OnInit{
 
@@ -101,8 +101,8 @@ export class RelatedCommonsForm implements OnInit{
 
 @Component({
     selector: 'related-common',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/related-common-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/related-common-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 export class RelatedCommonForm implements OnInit{
 

@@ -9,8 +9,8 @@ import { Subscription } from "rxjs/Subscription";
 
 @Component({
     selector: 'component-landing-page',
-    templateUrl: 'app/pages/landingpages/component/component-landing-page.component.html',
-    styleUrls:  ['app/pages/landingpages/landing-page.component.css'],
+    templateUrl: './component-landing-page.component.html',
+    styleUrls:  ['../landing-page.component.css'],
 })
 
 export class ComponentLandingPageComponent {

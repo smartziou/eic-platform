@@ -6,7 +6,7 @@ import { ProcessingResourceInfo } from "../../../domain/openminted-model";
 
 @Component({
     selector: 'processing-resource-info',
-    templateUrl: 'app/pages/landingpages/resourceelements/processing-resource-info.component.html',
+    templateUrl: './processing-resource-info.component.html',
 })
 
 export class ProcessingResourceInfoComponent {

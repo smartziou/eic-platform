@@ -42,7 +42,7 @@ import {EnumValues, distributionMediumEnum, componentDistributionMediumEnum} fro
 
 </accordion-group>
 `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 export class ComponentDistributionsInfoFormControl implements OnInit{
     @Input('group')
@@ -73,8 +73,8 @@ export class ComponentDistributionsInfoFormControl implements OnInit{
 
 @Component({
     selector: 'component-distribution-info-form-common',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/component-distribution-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/component-distribution-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 export class ComponentDistributionInfoFormControl implements OnInit{
     @Input('group')
