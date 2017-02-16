@@ -26,6 +26,7 @@ import { TabsModule } from "ng2-bootstrap/ng2-bootstrap";
 import { LandingPageModule } from "./pages/landingpages/landing-page.module";
 import { CorpusRegistrationModule } from "./pages/resourceregistration/corpus/corpus-registration.module";
 import { FooterComponent } from "./shared/footer/footer.component";
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import { FooterComponent } from "./shared/footer/footer.component";
         ComponentRegistrationModule, 
         CorpusRegistrationModule, 
         LandingPageModule, 
-        TabsModule
+        TabsModule,
+        OAuthModule.forRoot()
     ],
     declarations: [
         AppComponent,

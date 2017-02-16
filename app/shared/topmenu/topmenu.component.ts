@@ -4,6 +4,7 @@
 
 import { Component, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from "../../services/authentication.service";
+import {OAuthService} from "angular-oauth2-oidc";
 
 @Component({
     selector: 'top-menu',
@@ -13,14 +14,20 @@ import { AuthenticationService } from "../../services/authentication.service";
 
 export class TopMenuComponent {
 
-    constructor(private authenticationService: AuthenticationService) {
+    constructor(private oAuthService: OAuthService) {
     }
 
-    loggedIn() {
-        return this.authenticationService.isUserLoggedIn();
+    name() {
+        let claims = this.oAuthService.getIdentityClaims();
+        if (!claims) return null;
+        return claims.given_name + ' ' + claims.family_name;
+    }
+
+    logIn() {
+        this.oAuthService.initImplicitFlow();
     }
 
     logout() {
-        this.authenticationService.logout();
+        this.oAuthService.logOut();
     }
 }
