@@ -9,7 +9,7 @@ var webpackConfig = {
     },
 
     output: {
-        publicPath: '',
+        publicPath: '/dist/',
         path: path.resolve(__dirname, './dist'),
     },
 
@@ -22,6 +22,11 @@ var webpackConfig = {
                 // your Angular Async Route paths relative to this root directory
             }
         ),
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery'
+        })
     ],
 
     module: {
@@ -36,7 +41,10 @@ var webpackConfig = {
                 ]
             },
             { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
-            { test: /\.html$/, loader: 'raw-loader' }
+            { test: /\.html$/, loader: 'raw-loader' },
+            { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
+            { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
+            { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' }
         ]
     }
 

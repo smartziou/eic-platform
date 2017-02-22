@@ -33,8 +33,8 @@ import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormCon
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        AccordionModule,
-        TypeaheadModule
+        AccordionModule.forRoot(),
+        TypeaheadModule.forRoot()
     ],
     declarations: [
         MetadataIdentifierFormControl,
