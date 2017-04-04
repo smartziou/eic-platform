@@ -28,7 +28,7 @@ export class TopMenuComponent {
     }
 
     refresh() {
-        this.oAuthService.;
+        // this.oAuthService.;
     }
 
     logout() {
