@@ -4,8 +4,8 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormArray, AbstractControl} from '@angular/forms';
-import {Description, metadataIdentifierTypeDesc} from "./omtd.description";
-import {EnumValues} from "./omtd.enum";
+import {Description, metadataIdentifierTypeDesc} from "../../../domain/omtd.description";
+import {EnumValues} from "../../../domain/omtd.enum";
 
 @Component({
     selector: 'identifier-common',

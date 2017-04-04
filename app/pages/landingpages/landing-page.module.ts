@@ -38,7 +38,7 @@ import { ModelLandingPageComponent } from "./model/model-landing-page.component"
     imports: [
         CommonModule,
         landingPageRouting,
-        TabsModule
+        TabsModule.forRoot()
     ],
     declarations: [
         ComponentLandingPageComponent,

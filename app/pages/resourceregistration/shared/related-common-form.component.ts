@@ -5,8 +5,8 @@
 
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormArray, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
-import {Description, relatedPersonTypeDesc, personIdentifierDesc, myStringDesc} from "./omtd.description";
-import {EnumValues, personIdentifierSchemeNameEnum} from "./omtd.enum";
+import {Description, relatedPersonTypeDesc, personIdentifierDesc, myStringDesc} from "../../../domain/omtd.description";
+import {EnumValues, personIdentifierSchemeNameEnum} from "../../../domain/omtd.enum";
 import {IdentifierFormControl} from "./identifier-common-form.component";
 
 

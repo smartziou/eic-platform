@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {FormGroup, FormBuilder, FormControl, FormArray} from "@angular/forms";
-import {EnumValues, distributionMediumEnum} from "./omtd.enum";
+import {EnumValues, distributionMediumEnum} from "../../../domain/omtd.enum";
 /**
  * Created by stefanos on 16/1/2017.
  */

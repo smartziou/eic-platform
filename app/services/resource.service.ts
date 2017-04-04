@@ -12,14 +12,16 @@ import { Resource } from "../domain/resource";
 @Injectable()
 export class ResourceService {
 
-    constructor (private http: Http) {}
+    private endpoint = process.env.API_ENDPOINT + ':' + process.env.API_PORT + process.env.API_PATH ;
 
-    private _searchUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
-    private _resourcesUrl = 'http://83.212.101.85:8080/omtd-registry/request/';
-    private _uploadUrl = 'http://83.212.101.85:8080/omtd-registry/resources/';
-    private _uploadZip = "http://83.212.101.85:8080/omtd-registry/request/corpus/upload";
-    // private _searchUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
-    // private _resourcesUrl = 'http://83.212.98.33:8080/omtd-registry/request/';
+    constructor (private http: Http) {
+        console.log(this.endpoint);
+    }
+
+    private _searchUrl = this.endpoint + '/request/';
+    private _resourcesUrl = this.endpoint + '/request/';
+    private _uploadUrl = this.endpoint + '/resources/';
+    private _uploadZip = this.endpoint + "/request/corpus/upload";
     
     search(urlParameters: URLParameter[]) {
 

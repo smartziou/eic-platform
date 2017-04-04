@@ -3,8 +3,8 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {Description, revisionDesc} from "./omtd.description";
-import {EnumValues, personIdentifierSchemeNameEnum} from "./omtd.enum";
+import {Description, revisionDesc} from "../../../domain/omtd.description";
+import {EnumValues, personIdentifierSchemeNameEnum} from "../../../domain/omtd.enum";
 
 @Component({
     selector: 'metadata-header-info-form',

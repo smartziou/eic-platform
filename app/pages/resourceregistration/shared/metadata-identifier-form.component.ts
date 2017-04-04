@@ -4,8 +4,8 @@
 
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {Description, metadataIdentifierTypeDesc} from "./omtd.description";
-import {EnumValues, metadataIdentifierSchemeNameEnum} from "./omtd.enum"
+import {Description, metadataIdentifierTypeDesc} from "../../../domain/omtd.description";
+import {EnumValues, metadataIdentifierSchemeNameEnum} from "../../../domain/omtd.enum"
 
 @Component({
     selector: 'metadata-identifier-form',

@@ -4,9 +4,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { MyStringFormControl } from "./my-string-form.component";
-import { EnumValues, resourceIdentifierSchemeNameEnum } from "./omtd.enum";
-import { IdentifierFormControl } from "./identifier-common-form.component";
-import { Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc } from "./omtd.description";
 import {CorpusTextPartInfoFormControl} from "./corpus-text-part-info-form.component";
 
 @Component({

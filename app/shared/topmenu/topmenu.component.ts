@@ -27,6 +27,10 @@ export class TopMenuComponent {
         this.oAuthService.initImplicitFlow();
     }
 
+    refresh() {
+        this.oAuthService.;
+    }
+
     logout() {
         this.oAuthService.logOut();
     }

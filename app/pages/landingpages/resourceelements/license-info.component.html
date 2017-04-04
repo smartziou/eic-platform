@@ -1,9 +1,9 @@
 <div class="licenseInfo">
     <div *ngIf="licenseInfo.licence">
-        <strong>License: </strong>{{licenseInfo.licence}}
+        <strong>License: </strong>{{licence(licenseInfo.licence)}}
     </div>
     <div *ngIf="licenseInfo.version">
-        <strong>Version: </strong>{{licenseInfo.version}}
+        <strong>Version: </strong>{{version(licenseInfo.version)}}
     </div>
     <div *ngIf="licenseInfo.nonStandardLicenceName && licenseInfo.nonStandardLicenceName.length>0">
         <strong>Non standard license name: </strong>

@@ -31,8 +31,8 @@ import { CorpusBuilderComponent } from "./corpus-builder.component";
         HttpModule,
         JsonpModule,
         corpusRegistrationRouting,
-        AccordionModule,
-        TypeaheadModule,
+        AccordionModule.forRoot(),
+        TypeaheadModule.forRoot(),
         ResourceRegistrationModule
     ],
     declarations: [

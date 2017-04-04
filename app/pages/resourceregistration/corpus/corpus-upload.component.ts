@@ -8,8 +8,6 @@ import {
     DatasetDistributionInfo, DistributionMediumEnum, RightsInfo, RightsStatementInfo, RightsStmtNameEnum
 } from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
-import {DistributionMediums} from "../shared/distribution-mediums.component";
-import {distributionMediumEnum} from "../shared/omtd.enum";
 
 @Component({
     selector: 'corpus-upload',

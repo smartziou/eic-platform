@@ -3,9 +3,8 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
-import {EnumValues, resourceIdentifierSchemeNameEnum, personIdentifierSchemeNameEnum} from "./omtd.enum";
-import {IdentifierFormControl} from "./identifier-common-form.component";
-import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} from "./omtd.description";
+import {EnumValues, resourceIdentifierSchemeNameEnum, personIdentifierSchemeNameEnum} from "../../../domain/omtd.enum";
+import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} from "../../../domain/omtd.description";
 
 @Component({
     selector: 'contact-info-form',

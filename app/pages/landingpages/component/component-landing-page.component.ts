@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { OMTDComponent } from "../../../domain/openminted-model";
 import { ResourceService } from "../../../services/resource.service";
 import { Subscription } from "rxjs/Subscription";
+import { transform } from "../../../domain/utils";
 
 @Component({
     selector: 'component-landing-page',
@@ -30,7 +31,7 @@ export class ComponentLandingPageComponent {
         this.sub = this.route.params.subscribe(params => {
             let id = params['id'];
             this.resourceService.getComponent(id).subscribe(
-                component => this.component = component,
+                component => {this.component = component; transform(this.component)},
                 error => this.handleError(<any>error));
         });
     }

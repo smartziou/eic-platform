@@ -3,11 +3,11 @@
  */
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormArray, Validators, FormControl, AbstractControl} from '@angular/forms';
-import {Description, languageIdDesc, scriptIdDesc, variantIdDesc,regiontIdDesc,languageTagDesc} from "./omtd.description";
+import {Description, languageIdDesc, scriptIdDesc, variantIdDesc,regiontIdDesc,languageTagDesc} from "../../../domain/omtd.description";
 import {
     EnumValues, personIdentifierSchemeNameEnum, scriptIdTypeEnum, regionIdTypeEnum,
     variantIdTypeEnum, languageIdTypeEnum
-} from "./omtd.enum";
+} from "../../../domain/omtd.enum";
 
 
 

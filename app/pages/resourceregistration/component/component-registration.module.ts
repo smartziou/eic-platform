@@ -20,8 +20,8 @@ import { ComponentRegistrationUsingFormComponent } from "./component-registratio
         FormsModule,
         ReactiveFormsModule,
         componentRegistrationRouting,
-        AccordionModule,
-        TypeaheadModule,
+        AccordionModule.forRoot(),
+        TypeaheadModule.forRoot(),
         ResourceRegistrationModule
     ],
     declarations: [

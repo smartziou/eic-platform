@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {FormGroup, FormBuilder, FormArray} from "@angular/forms";
-import {EnumValues, rightsStmtNameEnum, licenceEnum, versionEnum} from "./omtd.enum";
-import {Description, rightsStatementInfoDesc, licenceInfoDesc} from "./omtd.description";
+import {EnumValues, rightsStmtNameEnum, licenceEnum, versionEnum} from "../../../domain/omtd.enum";
+import {Description, rightsStatementInfoDesc, licenceInfoDesc} from "../../../domain/omtd.description";
 /**
  * Created by stefanos on 19/1/2017.
  */

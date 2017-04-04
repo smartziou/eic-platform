@@ -3,7 +3,7 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { EnumValues, multilingualityTypeEnum, lingualityTypeEnum } from "./omtd.enum";
+import { EnumValues, multilingualityTypeEnum, lingualityTypeEnum } from "../../../domain/omtd.enum";
 
 @Component({
     selector: 'linguality-info',
