@@ -164,12 +164,20 @@ export class ResourceService {
         return body.data || { };
     }
 
-    private handleError (error: any) {
+    private handleError (error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        console.error(errMsg); // log to console instead
+        let errMsg = "";
+        console.log(error);
+        if (error instanceof Response) {
+            const body = error.text() || '';
+            //const err = body.error || JSON.stringify(body);
+            errMsg = `${error.status} - ${error.statusText || ''} ${body}`;
+        } else {
+            errMsg = (error.message) ? error.message :
+                error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+            console.error(errMsg); // log to console instead
+        }
         return Observable.throw(errMsg);
     }
 }

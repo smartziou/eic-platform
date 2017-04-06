@@ -16,6 +16,8 @@
                             right to preview your XML before you submit it.
                         </div>
 
+                        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+
                         <div class="uk-margin uk-grid componentXMLRegistration">
                             <div class="uk-width-medium-7-10">
                                 <form [formGroup]="componentXMLForm" class="componentXMLForm" (ngSubmit)="onSubmit(componentXMLForm.value, $event)">

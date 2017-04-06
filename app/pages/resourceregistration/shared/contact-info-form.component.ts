@@ -3,7 +3,7 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
-import {EnumValues, resourceIdentifierSchemeNameEnum} from "./omtd.enum";
+import {EnumValues, resourceIdentifierSchemeNameEnum, personIdentifierSchemeNameEnum} from "./omtd.enum";
 import {IdentifierFormControl} from "./identifier-common-form.component";
 import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} from "./omtd.description";
 
@@ -25,6 +25,7 @@ export class ContactInfoFormControl implements OnInit {
 
     private radioButton : string[] = ["Contact Email","Landing Page"];
     private radioButtonSelected : string = this.radioButton[0];
+    private personEnum : EnumValues[] = personIdentifierSchemeNameEnum;
 
     private resourceNameDescription: Description = resourceNameDesc;
     private descriptionDescription: Description = descriptionDesc;

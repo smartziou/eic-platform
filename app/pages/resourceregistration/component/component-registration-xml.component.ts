@@ -40,10 +40,18 @@ export class ComponentRegistrationXMLComponent {
         this.successMessage = null;
         console.log(componentXML.xml);
 
+        if(this.xmlURL != '') {
+            this.previewFromURL();
+        } else if (this.uploadedFile != null ) {
+            this.previewFromFile();
+        }
+
         var resource: Resource = new Resource();
         resource.payload = componentXML.xml;
         resource.resourceType = 'component';
         resource.payloadFormat = 'xml';
+        console.log("submit",this.xmlURL,this.uploadedFile);
+
 
         this.resourceService.registerComponent(resource).subscribe(
             resource => this.successfullySubscribed(resource),
