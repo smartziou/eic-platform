@@ -21,6 +21,7 @@ import { RawCorpusInfoFormControl } from "../shared/raw-corpus-info-form.compone
 import { CorpusSubtypeSpecificInfoForm } from "../shared/corpus-subtype-specific-info-form.component";
 import { CorpusUploadComponent } from "./corpus-upload.component";
 import { CorpusBuilderComponent } from "./corpus-builder.component";
+import { ReusableComponentsModule } from "../../../shared/reusablecomponents/reusable-components.module";
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { CorpusBuilderComponent } from "./corpus-builder.component";
         corpusRegistrationRouting,
         AccordionModule,
         TypeaheadModule,
-        ResourceRegistrationModule
+        ResourceRegistrationModule,
+        ReusableComponentsModule
     ],
     declarations: [
         CorpusUploadComponent,

@@ -57,14 +57,16 @@
                                         <h3 class="uk-panel-title">Limit your search</h3>
 
                                         <div class="refineCategory uk-grid-margin" *ngFor="let facet of publicationSearchResults.facets">
-                                            <span>{{facet.label}}</span>
-                                            <div class="refineOption" *ngFor="let facetValue of facet.values">
-                                                <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                                       (change)="onSelection($event, facet.field, facetValue.value)"
-                                                       [checked]="facetValue.isChecked">
-                                                {{facetValue.value}}
-                                                <span>({{facetValue.count}})</span>
-                                            </div>
+                                            <read-more [maxHeight]="245">
+                                                <span>{{facet.label}}</span>
+                                                <div class="refineOption" *ngFor="let facetValue of facet.values">
+                                                    <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
+                                                           (change)="onSelection($event, facet.field, facetValue.value)"
+                                                           [checked]="facetValue.isChecked">
+                                                    {{facetValue.value}}
+                                                    <span>({{facetValue.count}})</span>
+                                                </div>
+                                            </read-more>
                                         </div>
                                     </div>
 

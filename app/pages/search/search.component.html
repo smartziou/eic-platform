@@ -112,14 +112,16 @@
 
                                     <template ngFor let-facet [ngForOf]="searchResults.facets">
                                         <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
-                                            <span>{{facet.label}}</span>
-                                            <div class="refineOption" *ngFor="let facetValue of facet.values">
-                                                <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                                (change)="onSelection($event, facet.field, facetValue.value)"
-                                                [checked]="facetValue.isChecked">
-                                                {{facetValue.value}}
-                                                <span>({{facetValue.count}})</span>
-                                            </div>
+                                            <read-more [maxHeight]="245">
+                                                <span>{{facet.label}}</span>
+                                                <div class="refineOption" *ngFor="let facetValue of facet.values">
+                                                    <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
+                                                           (change)="onSelection($event, facet.field, facetValue.value)"
+                                                           [checked]="facetValue.isChecked">
+                                                    {{facetValue.value}}
+                                                    <span>({{facetValue.count}})</span>
+                                                </div>
+                                            </read-more>
                                         </div>
                                     </template>
 
@@ -163,14 +165,16 @@
 
                                     <template ngFor let-facet [ngForOf]="searchResults.facets">
                                         <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
-                                            <span>{{facet.label}}</span>
-                                            <div class="refineOption" *ngFor="let facetValue of facet.values">
-                                                <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                                       (change)="onSelection($event, facet.field, facetValue.value)"
-                                                       [checked]="facetValue.isChecked">
-                                                {{facetValue.value}}
-                                                <span>({{facetValue.count}})</span>
-                                            </div>
+                                            <read-more [maxHeight]="245">
+                                                <span>{{facet.label}}</span>
+                                                <div class="refineOption" *ngFor="let facetValue of facet.values">
+                                                    <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
+                                                           (change)="onSelection($event, facet.field, facetValue.value)"
+                                                           [checked]="facetValue.isChecked">
+                                                    {{facetValue.value}}
+                                                    <span>({{facetValue.count}})</span>
+                                                </div>
+                                            </read-more>
                                         </div>
                                     </template>
 
