@@ -17,12 +17,11 @@ export class AppComponent implements OnInit {
         this.oauthService.redirectUri = window.location.origin + "/home";
 
         // The SPA's id. The SPA is registerd with this id at the auth-server
-        this.oauthService.clientId = "178182196328-e805b2t9rte23t7ikigqsuunjclh86ps.apps.googleusercontent.com";
+        this.oauthService.clientId = "dfd9f71e-2d7e-41a7-a9c5-bc27cc815868";
 
         // set the scope for the permissions the client should request
         // The first three are defined by OIDC. The 4th is a usecase-specific one
         this.oauthService.scope = "openid profile email";
-
         // set to true, to receive also an id_token via OpenId Connect (OIDC) in addition to the
         // OAuth2-based access_token
         this.oauthService.oidc = true;
@@ -32,7 +31,7 @@ export class AppComponent implements OnInit {
         this.oauthService.setStorage(sessionStorage);
 
         // The name of the auth-server that has to be mentioned within the token
-        this.oauthService.issuer = "https://accounts.google.com";
+        this.oauthService.issuer = "https://aai.openminted.eu/oidc";
 
         // Load Discovery Document and then try to login the user
         this.oauthService.loadDiscoveryDocument().then(() => {
