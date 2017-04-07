@@ -42,7 +42,7 @@ import { ReusableComponentsModule } from "./shared/reusablecomponents/reusable-c
         CorpusRegistrationModule, 
         LandingPageModule, 
         TabsModule,
-        OAuthModule.forRoot()
+        OAuthModule.forRoot(),
         ReusableComponentsModule
     ],
     declarations: [
