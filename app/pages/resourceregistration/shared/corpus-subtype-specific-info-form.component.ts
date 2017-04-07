@@ -15,7 +15,7 @@ import {RawCorpusInfoFormControl} from "./raw-corpus-info-form.component";
     </div>
 </div>
 `,
-    styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls: ['./templates/common.css']
 })
 export class CorpusSubtypeSpecificInfoForm implements OnInit {
     @Input('group')

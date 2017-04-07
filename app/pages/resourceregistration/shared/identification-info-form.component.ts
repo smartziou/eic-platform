@@ -4,14 +4,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import {MyStringFormControl} from "./my-string-form.component";
-import {EnumValues, resourceIdentifierSchemeNameEnum} from "./omtd.enum";
+import {EnumValues, resourceIdentifierSchemeNameEnum} from "../../../domain/omtd.enum";
 import {IdentifierFormControl} from "./identifier-common-form.component";
-import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} from "./omtd.description";
+import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} from "../../../domain/omtd.description";
 
 @Component({
     selector: 'identification-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/identification-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/identification-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 
 export class IdentificationInfoFormControl implements OnInit {

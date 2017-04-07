@@ -9,8 +9,8 @@ import {Resource} from "../../../domain/resource";
 
 @Component({
     selector: 'component-registration-xml',
-    templateUrl: 'app/pages/resourceregistration/component/component-registration-xml.component.html',
-    styleUrls:  ['app/pages/resourceregistration/component/component-registration-xml.component.css'],
+    templateUrl: './component-registration-xml.component.html',
+    styleUrls:  ['./component-registration-xml.component.css'],
 })
 
 export class ComponentRegistrationXMLComponent {

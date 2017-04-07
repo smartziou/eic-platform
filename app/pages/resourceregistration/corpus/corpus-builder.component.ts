@@ -16,8 +16,8 @@ import {ResourceService} from "../../../services/resource.service";
 
 @Component({
     selector: 'corpus-builder',
-    templateUrl: 'app/pages/resourceregistration/corpus/corpus-builder.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl: './corpus-builder.component.html',
+    styleUrls : ['../shared/templates/common.css']
 })
 
 export class CorpusBuilderComponent {

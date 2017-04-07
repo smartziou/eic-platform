@@ -4,13 +4,13 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormArray, AbstractControl} from '@angular/forms';
-import {Description, metadataIdentifierTypeDesc} from "./omtd.description";
-import {EnumValues} from "./omtd.enum";
+import {Description, metadataIdentifierTypeDesc} from "../../../domain/omtd.description";
+import {EnumValues} from "../../../domain/omtd.enum";
 
 @Component({
     selector: 'identifier-common',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/identifier-common-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/identifier-common-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 export class IdentifierFormControl implements OnInit{
 

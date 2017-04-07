@@ -6,7 +6,7 @@ import { ComponentDistributionInfo } from "../../../domain/openminted-model";
 
 @Component({
     selector: 'component-distribution-info',
-    templateUrl: 'app/pages/landingpages/resourceelements/component-distribution-info.component.html',
+    templateUrl: './component-distribution-info.component.html',
 })
 
 export class ComponentDistributionInfoComponent {

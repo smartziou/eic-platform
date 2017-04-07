@@ -10,7 +10,7 @@ import { componentRegistrationRouting } from "./component-registration.routing";
 import { ComponentRegistrationComponent } from "./component-registration.component";
 import { ComponentRegistrationXMLComponent } from "./component-registration-xml.component";
 import { ComponentRegistrationFormComponent } from "./component-registration-form.component";
-import { AccordionModule, TypeaheadModule } from "ng2-bootstrap/ng2-bootstrap";
+import { AccordionModule, TypeaheadModule } from "ng2-bootstrap";
 import { ResourceRegistrationModule } from "../resource-registration.module";
 import { ComponentRegistrationUsingFormComponent } from "./component-registration-using-form.component";
 
@@ -20,8 +20,8 @@ import { ComponentRegistrationUsingFormComponent } from "./component-registratio
         FormsModule,
         ReactiveFormsModule,
         componentRegistrationRouting,
-        AccordionModule,
-        TypeaheadModule,
+        AccordionModule.forRoot(),
+        TypeaheadModule.forRoot(),
         ResourceRegistrationModule
     ],
     declarations: [

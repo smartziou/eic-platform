@@ -6,7 +6,7 @@ import { ComponentCreationInfo } from "../../../domain/openminted-model";
 
 @Component({
     selector: 'component-creation-info',
-    templateUrl: 'app/pages/landingpages/resourceelements/component-creation-info.component.html',
+    templateUrl: './component-creation-info.component.html',
 })
 
 export class ComponentCreationInfoComponent {

@@ -9,8 +9,8 @@ import { Subscription } from "rxjs/Subscription";
 
 @Component({
     selector: 'language-description-landing-page',
-    templateUrl: 'app/pages/landingpages/languagedescription/language-description-landing-page.component.html',
-    styleUrls:  ['app/pages/landingpages/landing-page.component.css'],
+    templateUrl: './language-description-landing-page.component.html',
+    styleUrls:  ['../landing-page.component.css'],
 })
 
 export class LanguageDescriptionLandingPageComponent implements OnInit {

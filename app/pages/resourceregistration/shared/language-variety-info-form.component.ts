@@ -3,12 +3,12 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { EnumValues, languageVarietyTypeEnum } from "./omtd.enum";
+import { EnumValues, languageVarietyTypeEnum } from "../../../domain/omtd.enum";
 
 @Component({
     selector: 'language-variety-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/language-variety-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/language-variety-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 
 export class LanguageVarietyInfoFormControl implements OnInit {

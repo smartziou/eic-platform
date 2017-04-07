@@ -11,28 +11,11 @@
 
     <!-- stylesheets -->
     <link href="font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" >
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="css/theme.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Roboto+Condensed" rel="stylesheet">
-
-    <!-- 1. Load libraries -->
-    <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="dist/bundle.min.js"></script>
-    <!-- 2. Configure SystemJS -->
-    <!--<script src="systemjs.config.js"></script>-->
-    <!--<script>-->
-        <!--System.import('app').catch(console.error.bind(console));-->
-    <!--</script>-->
-
-    <!-- javascript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" ></script>
 
     <!--<script src="js/theme.js" ></script>-->
     <!--<script src="js/uikit.js" ></script>-->
@@ -42,5 +25,8 @@
 
 <body>
 <openminted-platform>Loading...</openminted-platform>
+
+<script async src="dist/main.bundle.js"></script>
+
 </body>
 </html>

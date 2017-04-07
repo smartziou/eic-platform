@@ -5,7 +5,7 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
-import { AccordionModule, TypeaheadModule } from "ng2-bootstrap/ng2-bootstrap";
+import { AccordionModule, TypeaheadModule } from "ng2-bootstrap";
 import { MetadataIdentifierFormControl } from "./shared/metadata-identifier-form.component";
 import { MetadataHeaderInfoFormControl } from "./shared/metadata-header-info-form.component";
 import { ValuesPipe } from "./shared/values-pipe";
@@ -33,8 +33,8 @@ import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormCon
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        AccordionModule,
-        TypeaheadModule
+        AccordionModule.forRoot(),
+        TypeaheadModule.forRoot()
     ],
     declarations: [
         MetadataIdentifierFormControl,

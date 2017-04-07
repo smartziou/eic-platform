@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'corpus-registration-form',
-    templateUrl: 'app/pages/resourceregistration/corpus/corpus-registration-form.component.html',
+    templateUrl: './corpus-registration-form.component.html',
 })
 
 export class CorpusRegistrationFormComponent implements OnInit {

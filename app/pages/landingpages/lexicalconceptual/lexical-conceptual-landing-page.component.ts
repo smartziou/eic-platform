@@ -9,8 +9,8 @@ import { Subscription } from "rxjs/Subscription";
 
 @Component({
     selector: 'lexical-conceptual-landing-page',
-    templateUrl: 'app/pages/landingpages/lexicalconceptual/lexical-conceptual-landing-page.component.html',
-    styleUrls:  ['app/pages/landingpages/landing-page.component.css'],
+    templateUrl: './lexical-conceptual-landing-page.component.html',
+    styleUrls:  ['../landing-page.component.css'],
 })
 
 export class LexicalConceptualLandingPageComponent implements OnInit {

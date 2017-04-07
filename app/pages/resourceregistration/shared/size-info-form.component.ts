@@ -3,7 +3,7 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { EnumValues, sizeUnitEnum } from "./omtd.enum";
+import { EnumValues, sizeUnitEnum } from "../../../domain/omtd.enum";
 
 @Component({
     selector: 'size-info',
@@ -26,7 +26,7 @@ import { EnumValues, sizeUnitEnum } from "./omtd.enum";
         <!--</div>-->
     </div>
     `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 
 export class SizeInfoFormControl implements OnInit {

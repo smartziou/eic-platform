@@ -3,11 +3,11 @@
  */
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormArray, Validators, FormControl, AbstractControl} from '@angular/forms';
-import {Description, languageIdDesc, scriptIdDesc, variantIdDesc,regiontIdDesc,languageTagDesc} from "./omtd.description";
+import {Description, languageIdDesc, scriptIdDesc, variantIdDesc,regiontIdDesc,languageTagDesc} from "../../../domain/omtd.description";
 import {
     EnumValues, personIdentifierSchemeNameEnum, scriptIdTypeEnum, regionIdTypeEnum,
     variantIdTypeEnum, languageIdTypeEnum
-} from "./omtd.enum";
+} from "../../../domain/omtd.enum";
 
 
 
@@ -44,7 +44,7 @@ import {
     </div>
 </div>
 `,
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls : ['./templates/common.css']
 })
 export class LanguagesTypeForm implements OnInit{
 
@@ -90,8 +90,8 @@ export class LanguagesTypeForm implements OnInit{
 
 @Component({
     selector: 'language-type',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/language-type-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/language-type-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 export class LanguageTypeForm implements OnInit {
 

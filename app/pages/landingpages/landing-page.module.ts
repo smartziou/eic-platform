@@ -9,7 +9,7 @@ import { landingPageRouting } from "./landing-page.routing";
 import { ComponentLandingPageComponent } from "./component/component-landing-page.component";
 import { CorpusLandingPageComponent } from "./corpus/corpus-landing-page.component";
 import { MetadataHeaderInfoComponent } from "./resourceelements/metadata-header-info.component";
-import { TabsModule } from "ng2-bootstrap/ng2-bootstrap";
+import { TabsModule } from "ng2-bootstrap";
 import { VersionInfoComponent } from "./resourceelements/version-info.component";
 import { ContactInfoComponent } from "./resourceelements/contact-info.component";
 import { ValidationInfoComponent } from "./resourceelements/validation-info.component";
@@ -38,7 +38,7 @@ import { ModelLandingPageComponent } from "./model/model-landing-page.component"
     imports: [
         CommonModule,
         landingPageRouting,
-        TabsModule
+        TabsModule.forRoot()
     ],
     declarations: [
         ComponentLandingPageComponent,

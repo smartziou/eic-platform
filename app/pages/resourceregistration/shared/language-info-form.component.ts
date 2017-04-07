@@ -8,8 +8,8 @@ import { SizeInfoFormControl } from "./size-info-form.component";
 
 @Component({
     selector: 'language-info-form',
-    templateUrl : 'app/pages/resourceregistration/shared/templates/language-info-form.component.html',
-    styleUrls : ['app/pages/resourceregistration/shared/templates/common.css']
+    templateUrl : './templates/language-info-form.component.html',
+    styleUrls : ['./templates/common.css']
 })
 
 export class LanguageInfoFormControl implements OnInit {

@@ -7,7 +7,7 @@ import { AnnotationsInfo } from "../../../domain/openminted-model";
 
 @Component({
     selector: 'annotations-info',
-    templateUrl: 'app/pages/landingpages/resourceelements/annotations-info.component.html',
+    templateUrl: './annotations-info.component.html',
 })
 
 export class AnnotationsInfoComponent {

@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'component-registration-options',
-    templateUrl: 'app/pages/resourceregistration/component/component-registration.component.html',
-    styleUrls:  ['app/pages/resourceregistration/component/component-registration.component.css'],
+    templateUrl: './component-registration.component.html',
+    styleUrls:  ['./component-registration.component.css'],
 })
 
 export class ComponentRegistrationComponent {

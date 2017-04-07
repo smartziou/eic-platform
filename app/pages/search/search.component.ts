@@ -13,8 +13,8 @@ import {ShortResultInfo} from "../../domain/short-resource-info";
 
 @Component({
     selector: 'search',
-    templateUrl: 'app/pages/search/search.component.html',
-    styleUrls:  ['app/pages/search/search.component.css'],
+    templateUrl: './search.component.html',
+    styleUrls:  ['./search.component.css'],
 })
 
 export class SearchComponent {
@@ -368,7 +368,7 @@ export class SearchComponent {
     gotoDetail(resourceType: string, id: string) {
         //TODO remove ms. I have put it there because the id gets parsed without the ms
         // this.router.navigate(['/landingPage/' + resourceType + '/', 'ms' + id]);
-        this.router.navigate(['/landingPage/' + resourceType + '/', id]);
+        this.router.navigate(['/landingPage/' + resourceType + '/', btoa(id)]);
     }
 
     handleError(error) {

@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {FormGroup} from "@angular/forms";
-import {EnumValues} from "./omtd.enum";
+import {EnumValues} from "../../../domain/omtd.enum";
 /**
  * Created by stefanos on 18/1/2017.
  */
@@ -14,7 +14,7 @@ import {EnumValues} from "./omtd.enum";
     </option>
 </select>
 `,
-    styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls: ['./templates/common.css']
 })
 export class EnumCommonForm implements OnInit {
     @Input('formControlName')

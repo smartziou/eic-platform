@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'component-registration-form',
-    templateUrl: 'app/pages/resourceregistration/component/component-registration-form.component.html',
+    templateUrl: './component-registration-form.component.html',
 })
 
 export class ComponentRegistrationFormComponent implements OnInit {

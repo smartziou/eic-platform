@@ -8,13 +8,11 @@ import {
     DatasetDistributionInfo, DistributionMediumEnum, RightsInfo, RightsStatementInfo, RightsStmtNameEnum
 } from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
-import {DistributionMediums} from "../shared/distribution-mediums.component";
-import {distributionMediumEnum} from "../shared/omtd.enum";
 
 @Component({
     selector: 'corpus-upload',
-    templateUrl: 'app/pages/resourceregistration/corpus/corpus-upload.component.html',
-    styleUrls:  ['app/pages/resourceregistration/corpus/corpus-upload.component.css'],
+    templateUrl: './corpus-upload.component.html',
+    styleUrls:  ['./corpus-upload.component.css'],
 })
 
 export class CorpusUploadComponent implements OnInit {

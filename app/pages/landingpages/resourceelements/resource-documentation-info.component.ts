@@ -6,7 +6,7 @@ import { ResourceDocumentationInfo } from "../../../domain/openminted-model";
 
 @Component({
     selector: 'resource-documentation-info',
-    templateUrl: 'app/pages/landingpages/resourceelements/resource-documentation-info.component.html',
+    templateUrl: './resource-documentation-info.component.html',
 })
 
 export class ResourceDocumentationInfoComponent {

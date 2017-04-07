@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {FormGroup, FormBuilder, FormArray} from "@angular/forms";
-import {EnumValues, rightsStmtNameEnum, licenceEnum, versionEnum} from "./omtd.enum";
-import {Description, rightsStatementInfoDesc, licenceInfoDesc} from "./omtd.description";
+import {EnumValues, rightsStmtNameEnum, licenceEnum, versionEnum} from "../../../domain/omtd.enum";
+import {Description, rightsStatementInfoDesc, licenceInfoDesc} from "../../../domain/omtd.description";
 /**
  * Created by stefanos on 19/1/2017.
  */
@@ -12,7 +12,7 @@ import {Description, rightsStatementInfoDesc, licenceInfoDesc} from "./omtd.desc
     <license-infos [group]="myForm"></license-infos>
     <rights-statement-info [group]="myForm"></rights-statement-info>
 `,
-    styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls: ['./templates/common.css']
 })
 export class RightsInfoForm implements OnInit {
     @Input('group')
@@ -50,7 +50,7 @@ export class RightsInfoForm implements OnInit {
 </div>
 
 `,
-    styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls: ['./templates/common.css']
 })
 export class RightsStatementInfoForm implements OnInit {
     @Input('group')
@@ -114,7 +114,7 @@ export class RightsStatementInfoForm implements OnInit {
     </div>
 </div>
 `,
-    styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
+    styleUrls: ['./templates/common.css']
 })
 export class LicenseInfosForm implements OnInit {
     @Input('group')
