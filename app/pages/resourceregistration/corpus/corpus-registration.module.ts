@@ -34,7 +34,7 @@ import { ReusableComponentsModule } from "../../../shared/reusablecomponents/reu
         corpusRegistrationRouting,
         AccordionModule.forRoot(),
         TypeaheadModule.forRoot(),
-        ResourceRegistrationModule
+        ResourceRegistrationModule,
         ReusableComponentsModule
     ],
     declarations: [
