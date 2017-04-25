@@ -40,6 +40,10 @@ export class AppComponent implements OnInit {
             // the auth-server redirects the user back to the web-app
             // It dosn't send the user the the login page
             this.oauthService.tryLogin({});
+            this.oauthService.loadUserProfile().then(()=> {
+                console.log("User profile loaded");
+
+            });
 
         });
     }
