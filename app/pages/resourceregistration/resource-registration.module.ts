@@ -26,6 +26,9 @@ import { LanguageInfoFormControl } from "./shared/language-info-form.component";
 import { DatasetDistributionsInfoFormControl } from "./shared/dataset-distribution-info-form.component";
 import { ZipUploadComponent } from "./shared/zip-upload-form.component";
 import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormControl } from "./shared/component-distribution-info-form.component";
+import {ExampleFormControl} from "./shared/example.component";
+import {MyArray, MyArrayWrapper} from "./myform/my-array.interface";
+import {MyFormDirective} from "./myform/my-form.directive";
 
 
 @NgModule({
@@ -36,7 +39,12 @@ import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormCon
         AccordionModule.forRoot(),
         TypeaheadModule.forRoot()
     ],
+    entryComponents: [ ExampleFormControl,MyArrayWrapper ],
     declarations: [
+        MyArrayWrapper,
+        MyArray,
+        MyFormDirective,
+        ExampleFormControl,
         MetadataIdentifierFormControl,
         MetadataHeaderInfoFormControl,
         ValuesPipe,
@@ -67,6 +75,10 @@ import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormCon
         ResourceService
     ],
     exports: [
+        MyArrayWrapper,
+        MyArray,
+        MyFormDirective,
+        ExampleFormControl,
         MetadataIdentifierFormControl,
         MetadataHeaderInfoFormControl,
         ValuesPipe,

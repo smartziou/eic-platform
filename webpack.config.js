@@ -30,10 +30,11 @@ var webpackConfig = {
 
         new webpack.DefinePlugin({"process.env" : {
             PRODUCTION: JSON.stringify(true),
-            API_ENDPOINT : JSON.stringify("http://83.212.101.85"),
-            API_PORT : JSON.stringify("8080"),
+            API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://83.212.101.85"),
+            API_PORT : JSON.stringify(process.env.API_PORT || "8080"),
             API_PATH : JSON.stringify("/omtd-registry"),
             CONNECTOR_PORT : JSON.stringify("8888"),
+            OIDC_ENDPOINT : JSON.stringify(process.env.OIDC_ENDPOINT || "http://localhost:8080/omtd-registry/openid_connect_login")
         }})
     ],
 

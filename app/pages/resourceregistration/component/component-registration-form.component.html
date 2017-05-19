@@ -2,16 +2,19 @@
     <form class="form-horizontal componentForm" [formGroup]="myForm">
         <accordion>
             <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
-                <metadata-header-info-form [group]="myForm"></metadata-header-info-form>
-                <identification-info-form [group]="myForm.controls.componentInfo"></identification-info-form>
-                <contact-info-form [group]="myForm.controls.componentInfo"></contact-info-form>
-                <component-distributions-info-form-common [group]="myForm.controls.componentInfo"></component-distributions-info-form-common>
+                <!--<metadata-header-info-form [group]="myForm"></metadata-header-info-form>-->
+                <!--<identification-info-form [group]="myForm.controls.componentInfo"></identification-info-form>-->
+                <!--<contact-info-form [group]="myForm.controls.componentInfo"></contact-info-form>-->
+                <!--<component-distributions-info-form-common [group]="myForm.controls.componentInfo"></component-distributions-info-form-common>-->
+                <example-form [name]="'example1'" [group]="myForm"></example-form>
+
+                <form-repeat [component]="type" [group]="myForm" [name]="'example'" [required]="true"></form-repeat>
             </div>
         </accordion>
     </form>
 </div>
-<!--<div class="margin-20">-->
-    <!--<div>myForm details:-</div>-->
-    <!--<pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>-->
-    <!--<pre>form value: <br>{{myForm.value | json}}</pre>-->
-<!--</div>-->
+<div class="margin-20">
+    <div>myForm details:-</div>
+    <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+    <pre>form value: <br>{{myForm.value | json}}</pre>
+</div>

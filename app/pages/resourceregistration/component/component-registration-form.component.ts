@@ -1,10 +1,11 @@
 /**
  * Created by stefania on 10/19/16.
  */
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, Type} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { OMTDComponent } from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
+import {ExampleFormControl} from "../shared/example.component";
 
 @Component({
     selector: 'component-registration-form',
@@ -21,6 +22,9 @@ export class ComponentRegistrationFormComponent implements OnInit {
 
     @Output('componentForm')
     componentForm : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+
+
+    type : Type<any> = ExampleFormControl;
 
     constructor(private _fb: FormBuilder) {
     }

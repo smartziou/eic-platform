@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import {OAuthService} from "angular-oauth2-oidc";
+import {AuthenticationService} from "./services/authentication.service";
 
 @Component({
     selector: 'openminted-platform',
@@ -12,7 +13,7 @@ import {OAuthService} from "angular-oauth2-oidc";
 
 export class AppComponent implements OnInit {
 
-    constructor(private router: Router,private oauthService: OAuthService) {
+    constructor(private router: Router,private oauthService: AuthenticationService) {
         // URL of the SPA to redirect the user to after login
         this.oauthService.redirectUri = window.location.origin + "/home";
 
@@ -21,31 +22,13 @@ export class AppComponent implements OnInit {
 
         // set the scope for the permissions the client should request
         // The first three are defined by OIDC. The 4th is a usecase-specific one
-        this.oauthService.scope = "openid profile email";
-        // set to true, to receive also an id_token via OpenId Connect (OIDC) in addition to the
-        // OAuth2-based access_token
-        this.oauthService.oidc = true;
-
-        // Use setStorage to use sessionStorage or another implementation of the TS-type Storage
-        // instead of localStorage
-        this.oauthService.setStorage(sessionStorage);
+        this.oauthService.scope = "openid";
 
         // The name of the auth-server that has to be mentioned within the token
-        this.oauthService.issuer = "https://aai.openminted.eu/oidc";
+        this.oauthService.loginUrl = "https://aai.openminted.eu/oidc/authorize";
 
-        // Load Discovery Document and then try to login the user
-        this.oauthService.loadDiscoveryDocument().then(() => {
+        this.oauthService.tryLogin();
 
-            // This method just tries to parse the token(s) within the url when
-            // the auth-server redirects the user back to the web-app
-            // It dosn't send the user the the login page
-            this.oauthService.tryLogin({});
-            this.oauthService.loadUserProfile().then(()=> {
-                console.log("User profile loaded");
-
-            });
-
-        });
     }
 
     ngOnInit() {

@@ -4,7 +4,7 @@
 
 import { Component, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from "../../services/authentication.service";
-import {OAuthService} from "angular-oauth2-oidc";
+import {getCookie, deleteCookie} from "../../domain/utils";
 
 @Component({
     selector: 'top-menu',
@@ -14,17 +14,21 @@ import {OAuthService} from "angular-oauth2-oidc";
 
 export class TopMenuComponent {
 
-    constructor(private oAuthService: OAuthService) {
+    private oidcUrl = process.env.OIDC_ENDPOINT;
+
+    constructor(private oAuthService: AuthenticationService) {
     }
 
     name() {
-        let claims = this.oAuthService.getIdentityClaims();
-        if (!claims) return null;
-        return claims.given_name + ' ' + claims.family_name;
+        // let claims = this.oAuthService.getIdentityClaims();
+        // if (!claims) return null;
+        // return claims.given_name + ' ' + claims.family_name;
+        let name = getCookie('name');
+        return name ? name.replace('|',' ') : null;
     }
 
     logIn() {
-        this.oAuthService.initImplicitFlow();
+        window.location.href = process.env.OIDC_ENDPOINT;
     }
 
     refresh() {
@@ -32,6 +36,6 @@ export class TopMenuComponent {
     }
 
     logout() {
-        this.oAuthService.logOut();
+        deleteCookie('name');
     }
 }

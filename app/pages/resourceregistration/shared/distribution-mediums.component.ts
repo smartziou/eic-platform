@@ -6,7 +6,7 @@ import {FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'distribution-mediums',
-    templateUrl: './distribution-mediums.component.html',
+    templateUrl: './templates/distribution-mediums.component.html',
     styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
 })
 
@@ -22,7 +22,7 @@ export class DistributionMediums implements OnInit {
 
 @Component({
     selector: 'distribution-mediums',
-    templateUrl: './distribution-medium.component.html',
+    templateUrl: './templates/distribution-medium.component.html',
     styleUrls: ['app/pages/resourceregistration/shared/templates/common.css']
 })
 
