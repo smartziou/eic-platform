@@ -52,6 +52,25 @@ export class ComponentRegistrationFormComponent implements OnInit {
                 component => this.loadComponent(component),
                 error => console.log(error));
         }
+
     }
+
+    private askdjhflkjsadfh() {
+        this.myForm.patchValue({
+            example1 : {
+                info : 'Hello',
+                uri : 'World'
+            },
+            example : [
+                {
+                    info : 'This is 1'
+                },
+                {
+                    uri : 'This is 2'
+                }
+            ]
+        });
+    }
+
 
 }

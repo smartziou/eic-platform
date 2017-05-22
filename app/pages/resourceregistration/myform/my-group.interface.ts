@@ -1,5 +1,5 @@
 import {FormGroup, FormBuilder, Validators, FormArray} from "@angular/forms";
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnInit, Injector, ViewRef} from "@angular/core";
 /**
  * Created by stefanos on 15/5/2017.
  */
@@ -20,9 +20,12 @@ export class MyGroup implements OnInit {
 
     @Input() public index : number = -1;
 
+    protected _fb : FormBuilder;
+
     protected groupDefinition : { [key:string]:any };
 
-    constructor(private _fb: FormBuilder) {
+    constructor(injector : Injector) {
+        this._fb = injector.get(FormBuilder);
     }
 
     public generate() : FormGroup {

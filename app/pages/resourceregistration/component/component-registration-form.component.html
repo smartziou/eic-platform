@@ -8,7 +8,7 @@
                 <!--<component-distributions-info-form-common [group]="myForm.controls.componentInfo"></component-distributions-info-form-common>-->
                 <example-form [name]="'example1'" [group]="myForm"></example-form>
 
-                <form-repeat [component]="type" [group]="myForm" [name]="'example'" [required]="true"></form-repeat>
+                <form-repeat [component]="type" [group]="myForm" [name]="'example'" [required]="true" [label]="'Info'"></form-repeat>
             </div>
         </accordion>
     </form>
@@ -17,4 +17,5 @@
     <div>myForm details:-</div>
     <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
     <pre>form value: <br>{{myForm.value | json}}</pre>
+    <button (click)="askdjhflkjsadfh()">Update</button>
 </div>
