@@ -3,7 +3,7 @@
  */
 import {Component, OnInit, Input} from "@angular/core";
 import {FormGroup, FormBuilder, FormControl, FormArray} from "@angular/forms";
-import {EnumValues, distributionMediumEnum, componentDistributionMediumEnum} from "../../../domain/omtd.enum";
+import {EnumValues, distributionMediumEnum, componentDistributionFormEnum} from "../../../domain/omtd.enum";
 
 @Component({
     selector: 'component-distributions-info-form-common',
@@ -83,7 +83,7 @@ export class ComponentDistributionInfoFormControl implements OnInit{
     componentDistributionEnum : EnumValues[];
 
     constructor(private _fb : FormBuilder) {
-        this.componentDistributionEnum = componentDistributionMediumEnum;
+        this.componentDistributionEnum = componentDistributionFormEnum;
     }
 
     static generate(_fb : FormBuilder) {

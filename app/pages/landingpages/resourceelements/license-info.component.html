@@ -2,9 +2,6 @@
     <div *ngIf="licenseInfo.licence">
         <strong>License: </strong>{{licence(licenseInfo.licence)}}
     </div>
-    <div *ngIf="licenseInfo.version">
-        <strong>Version: </strong>{{version(licenseInfo.version)}}
-    </div>
     <div *ngIf="licenseInfo.nonStandardLicenceName && licenseInfo.nonStandardLicenceName.length>0">
         <strong>Non standard license name: </strong>
         <span *ngFor="let nonStandardLicenceName of licenseInfo.nonStandardLicenceName; let isLast = last;">

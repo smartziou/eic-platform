@@ -7,12 +7,16 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 @Component({
     selector: 'my-string',
     template : `
-    <div [formGroup]="parentForm" [ngClass]="{'has-error':!parentForm.valid}">
-        <div class="col-sm-6 col-md-6">
+    <div [formGroup]="parentForm">
+        <div class="col-sm-8 col-md-8" [ngClass]="{'has-error':!parentForm.valid}">
             <input type="text" class="form-control" formControlName="value" placeholder="Name">
         </div>
-        <div class="col-sm-2 col-md-2">
-            <input type="text" class="form-control" formControlName="lang" placeholder="Language">
+        <div class="col-sm-1 col-md-1" [hidden]="!hiddenLang">
+            <input type="{{ !hiddenLang ? 'hidden' : 'text'}}" class="form-control" formControlName="lang" placeholder="Language">
+            <div *ngIf="hiddenLang">
+                <a class="remove-element" (click)="toggle()">{{parentForm.controls['lang'].value}} <i
+                                    class="fa fa-pencil" aria-hidden="true"></i></a>
+            </div>
         </div>
     </div>
     `,
@@ -28,11 +32,16 @@ export class MyStringFormControl implements OnInit {
     @Input('required')
     private required : boolean = false;
 
-    ngOnInit() {}
+    private hiddenLang = false;
+
+    ngOnInit() {
+    }
 
     validate(c : AbstractControl) {
-        //null otan einai swsto
-        // {my_error : "vale kati"} : otan einai lathos
+    }
+
+    private toggle() {
+        this.hiddenLang =!this.hiddenLang;
     }
 
     constructor(private _fb: FormBuilder) {}
@@ -41,7 +50,7 @@ export class MyStringFormControl implements OnInit {
         let required = (validate) ? ['', Validators.required] : '' ;
         return _fb.group({
             value : required,
-            lang : ''
+            lang : 'en'
         });
     }
 }

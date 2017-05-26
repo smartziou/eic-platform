@@ -5,51 +5,39 @@
             <i class="fa" [ngClass]="{'fa-angle-down': !group?._isOpen, 'fa-angle-up': group?._isOpen}" aria-hidden="true"></i>
         </span>
     </div>
-    <div class="form-group form-inline">
-        <label class="col-sm-2 col-md-2 control-label">
-            Choose
-        </label>
-        <div class="col-sm-10 col-md-10">
-            <div *ngFor="let radio of radioButton">
-                <label class="col-sm-2 col-md-2 radio-label">
-                    <input type="radio" name="options{{name + index}}" [checked]="radio === radioButtonSelected"
-                           (click)="changeType(radio)">
-                    {{radio}}
-                </label>
-            </div>
+
+    <form-inline [description]="{label : 'Choose'}" [params]="null">
+        <div *ngFor="let radio of radioButton">
+            <label class="col-sm-3 col-md-3 radio-label">
+                <input type="radio" name="options{{name + index}}" [checked]="radio === radioButtonSelected"
+                       (click)="changeType(radio)">
+                {{radio}}
+            </label>
+        </div>
+    </form-inline>
+
+    <div [formGroup]="myForm">
+
+        <div [hidden]="radioButtonSelected!=='Contact Email'">
+            <form-inline [description]="emailDesc" [valid]="myForm.valid">
+                <input type="text" class="form-control" formControlName="contactEmail" placeholder="Email">
+            </form-inline>
+        </div>
+
+        <div [hidden]="radioButtonSelected!=='Landing Page'">
+            <form-inline [description]="landingPageDesc" [valid]="myForm.valid">
+                <input type="text" class="form-control" formControlName="landingPage" placeholder="Page">
+            </form-inline>
+        </div>
+
+        <div [hidden]="radioButtonSelected!=='Contact Person'">
+            <form-repeat [component]="type" [group]="myForm" [name]="'contactPersons'" [required]="true" [description]="contactInfoDesc">
+            </form-repeat>
         </div>
     </div>
 
-    <div *ngIf="radioButtonSelected==='Contact Email'">
-        <div [formGroup]="myForm" [ngClass]="{'has-error':!myForm.valid}">
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                    <div class="form-group">
-                        <div class="col-sm-12 col-md-12">
-                            <input type="text" class="form-control" formControlName="contactEmail" placeholder="Email">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--<div class="form-group-divider"></div>-->
 
-    <div *ngIf="radioButtonSelected==='Landing Page'">
-        <div [formGroup]="myForm" [ngClass]="{'has-error':!myForm.valid}">
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                    <div class="form-group">
-                        <div class="col-sm-12 col-md-12">
-                            <input type="text" class="form-control" formControlName="landingPage" placeholder="Page">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group-divider"></div>
-
-    <related-commons [group]="myForm" [name]="'contactPersons'" [type]="'person'"
-                     [schemeEnum]="personEnum" [label]="'Contact'" [topLabel]="'Contact Person'"></related-commons>
+    <!--<related-commons [group]="myForm" [name]="'contactPersons'" [type]="'person'"-->
+                     <!--[schemeEnum]="personEnum" [label]="'Contact'" [topLabel]="'Contact Person'"></related-commons>-->
 </accordion-group>

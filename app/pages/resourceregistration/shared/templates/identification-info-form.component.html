@@ -81,15 +81,13 @@
 
         <div class="form-group-divider"></div>
 
-        <div class="form-group" formArrayName="identifiers">
+        <!-- <div class="form-group" formArrayName="identifiers">
             <div *ngFor="let identifier of myForm.controls.identifiers.controls; let i=index" formGroupName="{{i}}">
-                <!--<div class="form-group">-->
                     <identifier-common [group]="identifier" [scheme-name]="'resourceIdentifierSchemeName'"
                                        [scheme-values]="resourceIdentifierEnum" [index]="i"
                                        [label]="'Identifier'" [required]="true"></identifier-common>
                     <a class="remove-element col-sm-1 col-md-1" (click)="$delete('identifiers',i)"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
-                <!--</div>-->
             </div>
         </div>
         <div class="form-group">
@@ -97,9 +95,21 @@
                 <a class="add-new-element" (click)="addNew('identifiers')"><i class="fa fa-plus" aria-hidden="true"></i> Add
                     Identifier</a>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group-divider"></div>
+
+        <div >
+            <label class="col-sm-2 col-md-2 control-label">
+                Public
+            </label>
+            <div class="col-sm-10 col-md-10">
+                <label class="col-sm-7 col-md-7 radio-label">
+                    <input type="checkbox" formControlName="public">
+                    Check if the resource is meant for private use.
+                </label>
+            </div>
+        </div>
 
     </div>
 </accordion-group>

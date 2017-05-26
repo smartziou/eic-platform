@@ -5,9 +5,10 @@
 
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormArray, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
-import {Description, relatedPersonTypeDesc, personIdentifierDesc, myStringDesc} from "../../../domain/omtd.description";
-import {EnumValues, personIdentifierSchemeNameEnum} from "../../../domain/omtd.enum";
+import {Description, personIdentifierDesc} from "../../../domain/omtd.description";
+import {EnumValues} from "../../../domain/omtd.enum";
 import {IdentifierFormControl} from "./identifier-common-form.component";
+import {MyStringFormControl} from "./my-string-form.component";
 
 
 @Component({
@@ -136,7 +137,6 @@ export class RelatedCommonForm implements OnInit{
 
     constructor(private _fb: FormBuilder) {
         this.relatedPersonIdentifier = personIdentifierDesc;
-        this.relatedPerson = relatedPersonTypeDesc;
         this.radioButtonSelected = this.radioButton[0];
         this.personDesc = personIdentifierDesc;
     }
@@ -144,10 +144,7 @@ export class RelatedCommonForm implements OnInit{
     public static newPerson(_fb : FormBuilder, type : string, schemeName? : string, validate : boolean = true) : any {
         let required = (validate) ? ['', Validators.required] : '' ;
         if(type=="Names") {
-            return _fb.group({
-                value: required,
-                lang: required
-            });
+            return MyStringFormControl.generate(_fb);
         } else if (type === "Identifiers"){
             return _fb.group(IdentifierFormControl.generate(schemeName,validate));
         }
@@ -155,12 +152,10 @@ export class RelatedCommonForm implements OnInit{
 
 
     public applyChanges() {
-        console.log(this.type,this.radioButtonSelected,this.parentForm.controls);
         if(this.radioButtonSelected == "Names") {
             this.parentForm.removeControl(this.type + 'Identifiers');
             this.parentForm.addControl(this.type + 'Names',this.myFormPerson);
         } else if(this.radioButtonSelected == "Identifiers") {
-            console.log(this.radioButtonSelected,'delete');
             this.parentForm.removeControl(this.type + 'Names');
             this.parentForm.addControl(this.type + 'Identifiers',this.myFormIdentifier);
         }

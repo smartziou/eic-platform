@@ -5,7 +5,7 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
-import { AccordionModule, TypeaheadModule } from "ng2-bootstrap";
+import {AccordionModule, TypeaheadModule, TooltipModule} from "ngx-bootstrap";
 import { MetadataIdentifierFormControl } from "./shared/metadata-identifier-form.component";
 import { MetadataHeaderInfoFormControl } from "./shared/metadata-header-info-form.component";
 import { ValuesPipe } from "./shared/values-pipe";
@@ -20,15 +20,20 @@ import { EnumCommonForm } from "./shared/enum-common-form";
 import { ContactInfoFormControl } from "./shared/contact-info-form.component";
 import { SizeInfoFormControl } from "./shared/size-info-form.component";
 import { LingualityInfoFormControl } from "./shared/linguality-info-form.component";
-import { RightsInfoForm, RightsStatementInfoForm, LicenseInfosForm } from "./shared/rights-info-form.component";
+import { RightsInfoForm, LicenseInfosForm } from "./shared/rights-info-form.component";
 import { LanguageVarietyInfoFormControl } from "./shared/language-variety-info-form.component";
 import { LanguageInfoFormControl } from "./shared/language-info-form.component";
 import { DatasetDistributionsInfoFormControl } from "./shared/dataset-distribution-info-form.component";
 import { ZipUploadComponent } from "./shared/zip-upload-form.component";
 import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormControl } from "./shared/component-distribution-info-form.component";
 import {ExampleFormControl} from "./shared/example.component";
-import {MyArray, MyArrayWrapper} from "./myform/my-array.interface";
+import {MyArray, MyArrayWrapper, MyInlineArrayWrapper} from "./myform/my-array.interface";
 import {MyFormDirective} from "./myform/my-form.directive";
+import {VersionFormControl} from "./shared/versionInfo.component";
+import {ComponentGenericFormControl} from "./shared/componentGeneric.component";
+import {InlineFormWrapper} from "./myform/my-group.interface";
+import {ContactPersonFormControl} from "./shared/contactPerson.component";
+import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
 
 
 @NgModule({
@@ -36,18 +41,25 @@ import {MyFormDirective} from "./myform/my-form.directive";
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        TooltipModule.forRoot(),
         AccordionModule.forRoot(),
         TypeaheadModule.forRoot()
     ],
-    entryComponents: [ ExampleFormControl,MyArrayWrapper ],
+    entryComponents: [ ExampleFormControl,MyArrayWrapper,ContactPersonFormControl,MyInlineArrayWrapper ],
     declarations: [
         MyArrayWrapper,
+        InlineFormWrapper,
+        MyInlineArrayWrapper,
+        ContactPersonFormControl,
         MyArray,
         MyFormDirective,
         ExampleFormControl,
         MetadataIdentifierFormControl,
         MetadataHeaderInfoFormControl,
+        VersionFormControl,
         ValuesPipe,
+        IdentifierCommonFormControl,
+        ComponentGenericFormControl,
         RelatedCommonsForm,
         RelatedCommonForm,
         LanguageTypeForm,
@@ -63,7 +75,6 @@ import {MyFormDirective} from "./myform/my-form.directive";
         LingualityInfoFormControl,
         ContactInfoFormControl,
         RightsInfoForm,
-        RightsStatementInfoForm,
         LicenseInfosForm,
         LanguageVarietyInfoFormControl,
         LanguageInfoFormControl, 
@@ -76,7 +87,13 @@ import {MyFormDirective} from "./myform/my-form.directive";
     ],
     exports: [
         MyArrayWrapper,
+        InlineFormWrapper,
         MyArray,
+        MyInlineArrayWrapper,
+        VersionFormControl,
+        ContactPersonFormControl,
+        ComponentGenericFormControl,
+        IdentifierCommonFormControl,
         MyFormDirective,
         ExampleFormControl,
         MetadataIdentifierFormControl,
@@ -97,7 +114,6 @@ import {MyFormDirective} from "./myform/my-form.directive";
         LingualityInfoFormControl,
         ContactInfoFormControl,
         RightsInfoForm,
-        RightsStatementInfoForm,
         LicenseInfosForm,
         LanguageVarietyInfoFormControl,
         LanguageInfoFormControl, 

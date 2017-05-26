@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {FormGroup, FormBuilder, FormArray} from "@angular/forms";
-import {EnumValues, rightsStmtNameEnum, licenceEnum, versionEnum} from "../../../domain/omtd.enum";
-import {Description, rightsStatementInfoDesc, licenceInfoDesc} from "../../../domain/omtd.description";
+import {EnumValues, licenceEnum} from "../../../domain/omtd.enum";
+import {Description, licenceInfoDesc} from "../../../domain/omtd.description";
 /**
  * Created by stefanos on 19/1/2017.
  */
@@ -10,7 +10,6 @@ import {Description, rightsStatementInfoDesc, licenceInfoDesc} from "../../../do
     selector: 'rights-info',
     template: `
     <license-infos [group]="myForm"></license-infos>
-    <rights-statement-info [group]="myForm"></rights-statement-info>
 `,
     styleUrls: ['./templates/common.css']
 })
@@ -31,55 +30,6 @@ export class RightsInfoForm implements OnInit {
 
 }
 
-
-@Component({
-    selector: 'rights-statement-info',
-    template: `
-<div [formGroup]="myForm" class="form-group">
-    <label class="col-sm-2 col-md-2 control-label">{{rightsStmtDescription.label}}</label>
-    <div class="col-sm-6 col-md-6">
-        <input type="text" class="form-control" formControlName="rightsStmtURL" placeholder="URL">
-    </div>
-    <div class="col-sm-3 col-md-3">
-        <select name="role" class="form-control" formControlName="rightsStmtName">
-            <option *ngFor="let value of rightsStmtName" [value]="value.key" [selected]="value.key == ''">
-                {{value.value}}
-            </option>
-        </select>
-    </div>
-</div>
-
-`,
-    styleUrls: ['./templates/common.css']
-})
-export class RightsStatementInfoForm implements OnInit {
-    @Input('group')
-    parentForm: FormGroup;
-
-    myForm: FormGroup;
-
-    rightsStmtName : EnumValues[];
-    rightsStmtDescription : Description;
-
-    constructor(private _fb: FormBuilder){
-        this.rightsStmtName = rightsStmtNameEnum;
-        this.rightsStmtDescription = rightsStatementInfoDesc;
-    }
-
-    static generate(_fb : FormBuilder) {
-        return _fb.group({
-            rightsStmtName : '',
-            rightsStmtURL : ''
-        })
-    }
-
-    ngOnInit(): void {
-        this.myForm = RightsStatementInfoForm.generate(this._fb);
-        this.parentForm.addControl('rightsStmtInfo',this.myForm);
-    }
-
-}
-
 @Component({
     selector: 'license-infos',
     template: `
@@ -88,16 +38,9 @@ export class RightsStatementInfoForm implements OnInit {
     <div *ngFor="let c of formArray.controls; let i=index" formGroupName="{{i}}">
         <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
         <div class="form-group">
-            <div class="col-sm-5 col-md-5">
+            <div class="col-sm-6 col-md-6">
                 <select name="role" class="form-control" formControlName="licence">
                     <option *ngFor="let value of licenceEnum" [value]="value.key" [selected]="value.key == ''">
-                        {{value.value}}
-                    </option>
-                </select>
-            </div>
-            <div class="col-sm-3 col-md-3">
-                <select name="role" class="form-control" formControlName="version">
-                    <option *ngFor="let value of versionEnum" [value]="value.key" [selected]="value.key == ''">
                         {{value.value}}
                     </option>
                 </select>
@@ -123,13 +66,11 @@ export class LicenseInfosForm implements OnInit {
     formArray : FormArray;
 
     licenceEnum : EnumValues[];
-    versionEnum : EnumValues[];
 
     licenceInfosDesc : Description;
 
     constructor(private _fb: FormBuilder){
         this.licenceEnum = licenceEnum;
-        this.versionEnum = versionEnum;
         this.licenceInfosDesc = licenceInfoDesc;
     }
 

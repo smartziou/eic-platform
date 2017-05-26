@@ -106,10 +106,6 @@
                                                  heading="Evaluation" class="infoTab">
                                                 <component-evaluation-info [componentEvaluationInfo]="component.componentInfo.componentEvaluationInfo"></component-evaluation-info>
                                             </tab>
-                                            <tab *ngIf="component.componentInfo.componentDocumentationInfo"
-                                                 heading="Documentation" class="infoTab">
-                                                <component-documentation-info [componentDocumentationInfo]="component.componentInfo.componentDocumentationInfo"></component-documentation-info>
-                                            </tab>
                                             <tab *ngIf="component.componentInfo.componentCreationInfo"
                                                  heading="Creation" class="infoTab">
                                                 <component-creation-info [componentCreationInfo]="component.componentInfo.componentCreationInfo"></component-creation-info>

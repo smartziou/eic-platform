@@ -1,7 +1,7 @@
 /**
  * Created by stefanos on 2/3/2017.
  */
-import {allEnum} from "./omtd.enum";
+// import {allEnum} from "./omtd.enum";
 
 export function transform(object : any ) : any {
     transformR(object);

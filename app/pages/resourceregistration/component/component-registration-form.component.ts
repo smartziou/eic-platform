@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder } from '@angular/forms'
 import { OMTDComponent } from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
 import {ExampleFormControl} from "../shared/example.component";
+import {ContactPersonFormControl} from "../shared/contactPerson.component";
 
 @Component({
     selector: 'component-registration-form',
@@ -24,7 +25,7 @@ export class ComponentRegistrationFormComponent implements OnInit {
     componentForm : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
 
-    type : Type<any> = ExampleFormControl;
+    type : Type<any> = ContactPersonFormControl;
 
     constructor(private _fb: FormBuilder) {
     }
@@ -54,23 +55,4 @@ export class ComponentRegistrationFormComponent implements OnInit {
         }
 
     }
-
-    private askdjhflkjsadfh() {
-        this.myForm.patchValue({
-            example1 : {
-                info : 'Hello',
-                uri : 'World'
-            },
-            example : [
-                {
-                    info : 'This is 1'
-                },
-                {
-                    uri : 'This is 2'
-                }
-            ]
-        });
-    }
-
-
 }

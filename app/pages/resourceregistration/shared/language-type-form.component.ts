@@ -1,13 +1,14 @@
 /**
  * Created by stefanos on 6/12/2016.
  */
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {FormGroup, FormBuilder, FormArray, Validators, FormControl, AbstractControl} from '@angular/forms';
 import {Description, languageIdDesc, scriptIdDesc, variantIdDesc,regiontIdDesc,languageTagDesc} from "../../../domain/omtd.description";
 import {
     EnumValues, personIdentifierSchemeNameEnum, scriptIdTypeEnum, regionIdTypeEnum,
     variantIdTypeEnum, languageIdTypeEnum
 } from "../../../domain/omtd.enum";
+import {Language} from "../../../domain/openminted-model";
 
 
 
@@ -117,42 +118,25 @@ export class LanguageTypeForm implements OnInit {
     private regionIdEnum : EnumValues[];
     private variantIdEnum : EnumValues[];
 
-    private withIdentifier;
+    private compositionObject : Language = new Language();
 
     static validate( c :AbstractControl) {
         if(!c.get('languageId').value &&
-            (c.get("scriptId").value || c.get("regionId").value || c.get("variantId").value)) {
+            (c.get("scriptId").value || c.get("regiontId").value || c.get("variantId").value)) {
             return {error: "If language is set and required"};
         }
         else
             return null;
     }
 
-    public addIdentifier() {
-        this.withIdentifier = true;
-        this.parentForm.addControl('languageId',new FormControl('',[Validators.required]));
-        this.parentForm.addControl('scriptId',new FormControl(''));
-        this.parentForm.addControl('regionId',new FormControl(''));
-        this.parentForm.addControl('variantId',new FormControl(''));
-    }
-
-    public deleteIdentifier() {
-        this.withIdentifier = false;
-        this.parentForm.removeControl('languageId');
-        this.parentForm.removeControl('scriptId');
-        this.parentForm.removeControl('regionId');
-        this.parentForm.removeControl('variantId');
-
-    }
-
     static addNew(_fb : FormBuilder) : FormGroup {
         return _fb.group({
             languageTag : ['', Validators.required],
-            languageId : '',
+            languageId : ['', Validators.required],
             scriptId : '',
-            regionId : '',
+            regiontId : '',
             variantId: ''
-        },{validator : LanguageTypeForm.validate});
+        });
     }
 
     constructor(private _fb: FormBuilder) {
@@ -166,11 +150,31 @@ export class LanguageTypeForm implements OnInit {
         this.scriptIdEnum = scriptIdTypeEnum;
         this.regionIdEnum = regionIdTypeEnum;
         this.variantIdEnum = variantIdTypeEnum;
+    }
 
-        this.withIdentifier = true;
+    private setLangiageId($event : any) : void {
+        this.compositionObject.languageId = $event.item.key;
+        this.parentForm.controls.languageId.setValue($event.item.key);
+    }
+
+    private get languageTag() {
+        let arr : string[] = [];
+        for(let type of ['languageId','scriptId','regiontId','variantId']) {
+            if (this.compositionObject[type]) {
+                arr.push(this.compositionObject[type])
+            }
+        }
+        return !this.compositionObject.languageId ? '' : arr.join('-');
     }
 
     ngOnInit() {
+        // this.parentForm.controls.languageTag.setValue(_.languageId + '-' + _.scriptId + '-' + _.variantId);
+        for(let type of ['languageId','scriptId','regiontId','variantId']) {
+            this.parentForm.controls[type].valueChanges.subscribe(_ => {
+                this.compositionObject[type] =   this.parentForm.controls[type].value;
+                this.parentForm.controls.languageTag.setValue(this.languageTag);
+            });
+        }
     }
 }
 

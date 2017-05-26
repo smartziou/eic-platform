@@ -3,9 +3,7 @@
  */
 import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
-import {
-    MetadataHeaderInfo, OMTDComponent, Order, OMTDCorpus,
-    DatasetDistributionInfo, DistributionMediumEnum, RightsInfo, RightsStatementInfo, RightsStmtNameEnum
+import {OMTDCorpus, DatasetDistributionInfo, DistributionMediumEnum, RightsInfo
 } from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
 
@@ -91,10 +89,11 @@ export class CorpusUploadComponent implements OnInit {
                 let corpusBody : OMTDCorpus = this.corpusForm.value;
                 let distributionInfo : DatasetDistributionInfo = new DatasetDistributionInfo();
                 distributionInfo.distributionMediums = [DistributionMediumEnum.DOWNLOADABLE];
-                distributionInfo.downloadURLs = [id];
+                distributionInfo.downloadURL = id;
                 distributionInfo.rightsInfo = new RightsInfo();
-                distributionInfo.rightsInfo.rightsStatementInfo = new RightsStatementInfo();
-                distributionInfo.rightsInfo.rightsStatementInfo.rightsStmtName = RightsStmtNameEnum.OPEN_ACCESS;
+                distributionInfo.rightsInfo.licenceInfos =
+                // distributionInfo.rightsInfo.rightsStatementInfo = new RightsStatementInfo();
+                // distributionInfo.rightsInfo.rightsStatementInfo.rightsStmtName = RightsStmtNameEnum.OPEN_ACCESS;
                 corpusBody.corpusInfo.distributionInfos  = [];
                 corpusBody.corpusInfo.distributionInfos.push(distributionInfo);
                 

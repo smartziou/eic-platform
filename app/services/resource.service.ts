@@ -119,7 +119,12 @@ export class ResourceService {
         var isArray = obj instanceof Array;
         for (var k in obj){
             if (obj[k]===null || obj[k]==='') isArray ? obj.splice(k,1) : delete obj[k];
-            else if (typeof obj[k]=="object") ResourceService.removeNulls(obj[k]);
+            else if (typeof obj[k]=="object") {
+                if (typeof obj[k].value != 'undefined' && typeof obj[k].lang != 'undefined')
+                    if (obj[k].value == '' && obj[k].lang=='en')
+                        obj[k].lang = '';
+                ResourceService.removeNulls(obj[k]);
+            }
         }
     }
 

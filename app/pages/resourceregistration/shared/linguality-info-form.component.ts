@@ -17,16 +17,18 @@ import { EnumValues, multilingualityTypeEnum, lingualityTypeEnum } from "../../.
                 </option>
             </select>
         </div>
-        <div class="col-sm-3 col-md-3">
-            <select name="role" class="form-control" formControlName="multilingualityType">
-                <option *ngFor="let value of multiLingualityTypes" [value]="value.key" [selected]="value.key == ''">
-                    {{value.value}}
-                </option>
-            </select>
-        </div>
-        <div class="col-sm-3 col-md-3">
-            <input type="text" class="form-control" formControlName="multilingualityTypeDetails" placeholder="Multilinguality type details">
-        </div>
+        <ng-template [ngIf]="myForm.controls.lingualityType.value != '' && myForm.controls.lingualityType.value != 'MONOLINGUAL'">
+            <div class="col-sm-3 col-md-3">
+                <select name="role" class="form-control" formControlName="multilingualityType">
+                    <option *ngFor="let value of multiLingualityTypes" [value]="value.key" [selected]="value.key == ''">
+                        {{value.value}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <input type="text" class="form-control" formControlName="multilingualityTypeDetails" placeholder="Multilinguality type details">
+            </div>
+        </ng-template>
     </div>
     `,
     styleUrls : ['./templates/common.css']

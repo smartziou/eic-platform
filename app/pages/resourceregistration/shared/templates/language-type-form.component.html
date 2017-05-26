@@ -1,17 +1,23 @@
+<template #customItemTemplate let-model="item">
+    <h5>{{model.value}} - {{ model.key }}</h5>
+</template>
+
 <div [formGroup]="parentForm">
+    <!--<div class="form-group">-->
+        <!--<label class="col-sm-2 control-label">{{languageTagDesc.label}}</label>-->
+        <!--<div class="col-sm-10 col-md-9"  >-->
+            <!---->
+        <!--</div>-->
+    <!--</div>-->
+    <input type="hidden" class="form-control" formControlName="languageTag" placeholder="Language Tag">
     <div class="form-group">
-        <label class="col-sm-2 control-label">{{languageTagDesc.label}}</label>
-        <div class="col-sm-10 col-md-9"  [ngClass]="{'has-error':!parentForm.controls.languageTag.valid}">
-            <input type="text" class="form-control" formControlName="languageTag" placeholder="Language Tag">
-        </div>
-        <!--<a *ngIf="withIdentifier==false" class="add-element col-sm-1 col-md-1" (click)="addIdentifier()"><i-->
-                <!--class="fa fa-plus" aria-hidden="true"></i></a>-->
-    </div>
-    <div class="form-group" *ngIf="withIdentifier==true">
         <label class="col-sm-2 control-label">{{languageIdDesc.label}}</label>
-        <div class="col-sm-2 col-md-2">
-            <input type="text" class="form-control" formControlName="languageId" placeholder="Language id"
+        <div class="col-sm-2 col-md-2" [ngClass]="{'has-error':!parentForm.controls.languageTag.valid}">
+            <input type="text" class="form-control" placeholder="Language id" formControlName="languageId"
+
                    [typeahead]="languageIdEnum"
+                   [typeaheadItemTemplate]="customItemTemplate"
+                   (typeaheadOnSelect)="setLangiageId($event)"
                    [typeaheadOptionField]="'value'">
         </div>
         <div class="col-sm-2 col-md-2">
@@ -22,7 +28,7 @@
             </select>
         </div>
         <div class="col-sm-2 col-md-2">
-            <select name="role" class="form-control" formControlName="regionId">
+            <select name="role" class="form-control" formControlName="regiontId">
                 <option *ngFor="let value of regionIdEnum" [value]="value.key" [selected]="value.key == ''">
                     {{value.value}}
                 </option>
@@ -35,7 +41,5 @@
                 </option>
             </select>
         </div>
-        <!--<a *ngIf="withIdentifier==true" class="remove-element col-sm-1 col-md-1" (click)="deleteIdentifier()"><i-->
-                <!--class="fa fa-times" aria-hidden="true"></i></a>-->
     </div>
 </div>

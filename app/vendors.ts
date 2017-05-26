@@ -11,5 +11,5 @@ import '@angular/router';
 
 import 'rxjs';
 
-//import 'ng2-bootstrap';
+//import 'ngx-bootstrap';
 import 'bootstrap';

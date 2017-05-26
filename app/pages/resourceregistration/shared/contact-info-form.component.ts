@@ -1,10 +1,14 @@
 /**
  * Created by stefania on 1/18/17.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Type} from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import {EnumValues, resourceIdentifierSchemeNameEnum, personIdentifierSchemeNameEnum} from "../../../domain/omtd.enum";
-import {Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc} from "../../../domain/omtd.description";
+import {
+    Description, resourceNameDesc, descriptionDesc, resourceShortNameDesc,
+    contactInfoDesc, landingPageDesc, contactEmailDesc
+} from "../../../domain/omtd.description";
+import {ContactPersonFormControl} from "./contactPerson.component";
 
 @Component({
     selector: 'contact-info-form',
@@ -22,15 +26,17 @@ export class ContactInfoFormControl implements OnInit {
 
     public myForm: FormGroup;
 
-    private radioButton : string[] = ["Contact Email","Landing Page"];
+    private radioButton : string[] = ["Contact Email","Landing Page",'Contact Person'];
     private radioButtonSelected : string = this.radioButton[0];
     private personEnum : EnumValues[] = personIdentifierSchemeNameEnum;
 
-    private resourceNameDescription: Description = resourceNameDesc;
-    private descriptionDescription: Description = descriptionDesc;
-    private resourceShortNameDescription: Description = resourceShortNameDesc;
+    private contactInfoDesc : Description = contactInfoDesc;
+    private landingPageDesc : Description = landingPageDesc;
+    private emailDesc : Description = contactEmailDesc;
 
     public customClass: string = 'customAccordionPanel';
+
+    type : Type<any> = ContactPersonFormControl;
 
     ngOnInit() {
         this.myForm = ContactInfoFormControl.generate(this._fb);

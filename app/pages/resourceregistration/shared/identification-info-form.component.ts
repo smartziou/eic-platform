@@ -67,7 +67,8 @@ export class IdentificationInfoFormControl implements OnInit {
             resourceNames : _fb.array([MyStringFormControl.generate(_fb,true)]),
             descriptions : _fb.array([MyStringFormControl.generate(_fb,true)]),
             resourceShortNames : _fb.array([MyStringFormControl.generate(_fb,false)]),
-            identifiers: _fb.array([_fb.group(IdentifierFormControl.generate('resourceIdentifierSchemeName',true))])
+            public : false
+            //identifiers: _fb.array([_fb.group(IdentifierFormControl.generate('resourceIdentifierSchemeName',true))])
         });
     }
 

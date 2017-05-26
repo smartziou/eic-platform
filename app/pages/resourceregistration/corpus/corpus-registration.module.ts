@@ -15,7 +15,7 @@ import { SearchForPublicationsComponent } from "./search-for-publications.compon
 import { ContentConnectorService } from "../../../services/content-connector.service";
 import { CorpusRegistrationFormComponent } from "./corpus-registration-form.component";
 import { ResourceRegistrationModule } from "../resource-registration.module";
-import { AccordionModule, TypeaheadModule } from "ng2-bootstrap";
+import { AccordionModule, TypeaheadModule } from "ngx-bootstrap";
 import { CorpusTextPartInfoFormControl } from "../shared/corpus-text-part-info-form.component";
 import { RawCorpusInfoFormControl } from "../shared/raw-corpus-info-form.component";
 import { CorpusSubtypeSpecificInfoForm } from "../shared/corpus-subtype-specific-info-form.component";

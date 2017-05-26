@@ -9,7 +9,7 @@ import { landingPageRouting } from "./landing-page.routing";
 import { ComponentLandingPageComponent } from "./component/component-landing-page.component";
 import { CorpusLandingPageComponent } from "./corpus/corpus-landing-page.component";
 import { MetadataHeaderInfoComponent } from "./resourceelements/metadata-header-info.component";
-import { TabsModule } from "ng2-bootstrap";
+import { TabsModule } from "ngx-bootstrap";
 import { VersionInfoComponent } from "./resourceelements/version-info.component";
 import { ContactInfoComponent } from "./resourceelements/contact-info.component";
 import { ValidationInfoComponent } from "./resourceelements/validation-info.component";
@@ -22,7 +22,6 @@ import { ProcessingResourceInfoComponent } from "./resourceelements/processing-r
 import { ComponentDependenciesComponent } from "./resourceelements/component-dependencies.component";
 import { ResourceDocumentationInfoComponent } from "./resourceelements/resource-documentation-info.component";
 import { ComponentEvaluationInfoComponent } from "./resourceelements/component-evaluation-info.component";
-import { ComponentDocumentationInfoComponent } from "./resourceelements/component-documentation-info.component";
 import { ComponentCreationInfoComponent } from "./resourceelements/component-creation-info.component";
 import { DatasetDistributionInfoComponent } from "./resourceelements/dataset-distribution-info.component";
 import { AnnotationInfoComponent } from "./resourceelements/annotation-info.component";
@@ -58,8 +57,7 @@ import { ModelLandingPageComponent } from "./model/model-landing-page.component"
         LicenseInfoComponent, 
         ProcessingResourceInfoComponent, 
         ComponentDependenciesComponent, 
-        ComponentEvaluationInfoComponent, 
-        ComponentDocumentationInfoComponent,
+        ComponentEvaluationInfoComponent,
         ComponentCreationInfoComponent, 
         DatasetDistributionInfoComponent,
         AnnotationInfoComponent,

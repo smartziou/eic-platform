@@ -2,7 +2,7 @@
     <form class="form-horizontal corpusForm" [formGroup]="myForm">
         <accordion>
             <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
-                <metadata-header-info-form [group]="myForm"></metadata-header-info-form>
+                <!--<metadata-header-info-form [group]="myForm"></metadata-header-info-form>-->
                 <!--<div formGroupName="corpusInfo">-->
                 <identification-info-form [group]="myForm.controls.corpusInfo"></identification-info-form>
                 <contact-info-form [group]="myForm.controls.corpusInfo"></contact-info-form>
@@ -13,8 +13,8 @@
         </accordion>
     </form>
 </div>
-<!--<div class="margin-20">-->
-    <!--<div>myForm details:-</div>-->
-    <!--<pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>-->
-    <!--<pre>form value: <br>{{myForm.value | json}}</pre>-->
-<!--</div>-->
+<div class="margin-20">
+    <div>myForm details:-</div>
+    <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+    <pre>form value: <br>{{myForm.value | json}}</pre>
+</div>

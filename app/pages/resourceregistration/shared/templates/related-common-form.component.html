@@ -19,13 +19,8 @@
             <label class="col-sm-2 col-md-2 control-label">{{personLabel}} Name</label>
             <div *ngFor="let address of myFormPerson.controls; let i=index" [ngClass]="{'has-error':!address.valid}">
                 <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
-                <div class="form-group" formGroupName="{{i}}">
-                    <div class="col-sm-6 col-md-6">
-                        <input type="text" class="form-control" formControlName="value" placeholder="Name">
-                    </div>
-                    <div class="col-sm-2 col-md-2">
-                        <input type="text" class="form-control" formControlName="lang" placeholder="Language">
-                    </div>
+                <my-string [group]="address" [required]="true"></my-string>
+                <div class="form-group" >
                     <a class="remove-element col-sm-1 col-md-1" (click)="deletePerson('Names',i)"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
