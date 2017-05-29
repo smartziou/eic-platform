@@ -3,7 +3,7 @@
  */
 import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
-import {OMTDCorpus, DatasetDistributionInfo, DistributionMediumEnum, RightsInfo
+import {Corpus as OMTDCorpus, DatasetDistributionInfo, DistributionMediumEnum, RightsInfo
 } from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
 

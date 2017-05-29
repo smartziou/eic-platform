@@ -6,7 +6,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { URLParameter } from "../domain/url-parameter";
 import { PublicationSearchResults } from "../domain/publications-search-results";
-import {OMTDCorpus} from "../domain/openminted-model";
+import {Corpus as OMTDCorpus} from "../domain/openminted-model";
 import {ResourceService} from "./resource.service";
 
 @Injectable()

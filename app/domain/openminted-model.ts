@@ -89,7 +89,7 @@ export class CommunicationInfo  {
     faxNumbers : string[];
 }
 
-export class OMTDComponent  {
+export class Component  {
     metadataHeaderInfo : MetadataHeaderInfo;
     componentInfo : ComponentInfo;
 }
@@ -178,7 +178,7 @@ export class ContactInfo  {
 export class CopyrightStatement extends MyString {
 }
 
-export class OMTDCorpus  {
+export class Corpus  {
     metadataHeaderInfo : MetadataHeaderInfo;
     corpusInfo : CorpusInfo;
 }
@@ -837,8 +837,8 @@ export class ResourceShortName extends MyString {
 }
 
 export class Result  {
-    corpora : Order<OMTDCorpus>[];
-    components : Order<OMTDComponent>[];
+    corpora : Order<Corpus>[];
+    components : Order<Component>[];
     lexicalConceptualResources : Order<Lexical>[];
     models : Order<Model>[];
     languageDescriptions : Order<LanguageDescription>[];

@@ -3,7 +3,7 @@
  */
 import {Component, OnInit, Input, Output, EventEmitter, Type} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
-import { OMTDComponent } from "../../../domain/openminted-model";
+import { Component as OMTDComponent } from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
 import {ExampleFormControl} from "../shared/example.component";
 import {ContactPersonFormControl} from "../shared/contactPerson.component";

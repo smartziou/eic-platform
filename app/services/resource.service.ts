@@ -4,7 +4,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import {OMTDComponent, OMTDCorpus, Order, LanguageDescription, Lexical, Model} from "../domain/openminted-model";
+import {Component as OMTDComponent, Corpus as OMTDCorpus, Order, LanguageDescription, Lexical, Model} from "../domain/openminted-model";
 import { URLParameter } from "../domain/url-parameter";
 import { SearchResults } from "../domain/search-results";
 import { Resource } from "../domain/resource";

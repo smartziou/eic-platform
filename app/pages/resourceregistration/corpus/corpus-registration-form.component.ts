@@ -3,7 +3,7 @@
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms'
-import { OMTDCorpus } from "../../../domain/openminted-model";
+import { Corpus as OMTDCorpus } from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
 import {ResourceService} from "../../../services/resource.service";
 

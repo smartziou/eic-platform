@@ -10,7 +10,7 @@ import { PublicationSearchResults } from "../../../domain/publications-search-re
 import { ContentConnectorService } from "../../../services/content-connector.service";
 import { Facet } from "../../../domain/facet";
 import { SearchQuery } from "../../../domain/search-query";
-import {OMTDCorpus} from "../../../domain/openminted-model";
+import {Corpus as OMTDCorpus} from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
 import {ResourceService} from "../../../services/resource.service";
 

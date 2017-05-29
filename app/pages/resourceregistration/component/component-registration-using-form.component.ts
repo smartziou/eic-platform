@@ -3,7 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms'
-import { OMTDComponent } from "../../../domain/openminted-model";
+import { Component as OMTDComponent } from "../../../domain/openminted-model";
 import { ResourceService } from "../../../services/resource.service";
 
 @Component({

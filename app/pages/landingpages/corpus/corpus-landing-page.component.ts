@@ -3,7 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { OMTDCorpus } from "../../../domain/openminted-model";
+import { Corpus as OMTDCorpus} from "../../../domain/openminted-model";
 import { ResourceService } from "../../../services/resource.service";
 import { Subscription } from "rxjs/Subscription";
 
