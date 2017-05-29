@@ -1,7 +1,7 @@
 /**
  * Created by stefanos on 25/5/2017.
  */
-import {AfterContentInit, AfterViewInit, Component} from "@angular/core";
+import {AfterContentInit, AfterViewInit, Component, Type} from "@angular/core";
 import { MyGroup } from "../myform/my-group.interface";
 import { FormArray, AbstractControl } from "@angular/forms";
 import { EnumValues, personIdentifierSchemeNameEnum } from "../../../domain/omtd.enum";
@@ -9,7 +9,7 @@ import {
     Description, surnameDesc, nameDesc, givenNameDesc,
     personIdentifierDesc
 } from "../../../domain/omtd.description";
-import { MyStringFormControl } from "./my-string-form.component";
+import {MyStringFormControl, MyStringFormGroup} from "./my-string-form.component";
 import { IdentifierCommonFormControl } from "./identifierCommon.component";
 
 @Component({
@@ -91,26 +91,31 @@ import { IdentifierCommonFormControl } from "./identifierCommon.component";
 
 <div class="form-group-divider"></div>
 
+
+<form-repeat-inline [component]="myStringType" [group]="group" 
+                    [name]="'namess'" [required]="true" [description]="surnameDesc">
+    
+</form-repeat-inline>
 <div [formGroup]="group">
-        <form-inline [description]="personIdentifierDesc" [width]="9">
-            <div *ngFor="let ident of getMyControl('personIdentifiers').controls; let i=index">
-                <identifierCommon-form [group]="ident" [index]="i"
-                [schemeName]="'personIdentifierSchemeName'" [enumValues]="personIdentifierEnum">
-                </identifierCommon-form>
-                <div class="form-group" >
-                    <a class="remove-element col-sm-1 col-md-1" (click)="remove(getMyControl('personIdentifiers'),i)"><i
-                            class="fa fa-times" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </form-inline>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <a class="add-new-element" (click)="add(getMyControl('personIdentifiers'),getIdentifier)">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Add {{nameDesc.label}}
-                </a>
+    <form-inline [description]="personIdentifierDesc" [width]="9">
+        <div *ngFor="let ident of getMyControl('personIdentifiers').controls; let i=index">
+            <identifierCommon-form [group]="ident" [index]="i"
+            [schemeName]="'personIdentifierSchemeName'" [enumValues]="personIdentifierEnum">
+            </identifierCommon-form>
+            <div class="form-group" >
+                <a class="remove-element col-sm-1 col-md-1" (click)="remove(getMyControl('personIdentifiers'),i)"><i
+                        class="fa fa-times" aria-hidden="true"></i></a>
             </div>
         </div>
+    </form-inline>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
+            <a class="add-new-element" (click)="add(getMyControl('personIdentifiers'),getIdentifier)">
+                <i class="fa fa-plus" aria-hidden="true"></i> Add {{nameDesc.label}}
+            </a>
+        </div>
     </div>
+</div>
 
 `,
     styleUrls : ['./templates/common.css']
@@ -127,6 +132,8 @@ export class ContactPersonFormControl extends MyGroup implements AfterViewInit {
 
     private readonly radioButton : string[] = ['Separate','Name'];
 
+
+    myStringType : Type<any> = MyStringFormGroup;
 
     private surnameDesc : Description = surnameDesc;
     private radioButtonSelected : string = this.radioButton[0];

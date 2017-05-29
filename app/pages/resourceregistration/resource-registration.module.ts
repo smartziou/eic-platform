@@ -14,7 +14,7 @@ import { LanguageTypeForm, LanguagesTypeForm } from "./shared/language-type-form
 import { IdentifierFormControl } from "./shared/identifier-common-form.component";
 import { ResourceService } from "../../services/resource.service";
 import { DatasetDistributionInfoFormControl } from "./shared/dataset-distribution-info-form.component";
-import { MyStringFormControl } from "./shared/my-string-form.component";
+import {MyStringFormControl, MyStringFormGroup} from "./shared/my-string-form.component";
 import { IdentificationInfoFormControl } from "./shared/identification-info-form.component";
 import { EnumCommonForm } from "./shared/enum-common-form";
 import { ContactInfoFormControl } from "./shared/contact-info-form.component";
@@ -27,7 +27,7 @@ import { DatasetDistributionsInfoFormControl } from "./shared/dataset-distributi
 import { ZipUploadComponent } from "./shared/zip-upload-form.component";
 import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormControl } from "./shared/component-distribution-info-form.component";
 import {ExampleFormControl} from "./shared/example.component";
-import {MyArray, MyArrayWrapper, MyInlineArrayWrapper} from "./myform/my-array.interface";
+import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./myform/my-array.interface";
 import {MyFormDirective} from "./myform/my-form.directive";
 import {VersionFormControl} from "./shared/versionInfo.component";
 import {ComponentGenericFormControl} from "./shared/componentGeneric.component";
@@ -45,13 +45,21 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         AccordionModule.forRoot(),
         TypeaheadModule.forRoot()
     ],
-    entryComponents: [ ExampleFormControl,MyArrayWrapper,ContactPersonFormControl,MyInlineArrayWrapper ],
+    entryComponents: [
+        ExampleFormControl,
+        MyArrayWrapper,
+        ContactPersonFormControl,
+        MyInlineArrayWrapper,
+        MyStringFormGroup
+    ],
     declarations: [
         MyArrayWrapper,
+        MyStringFormGroup,
         InlineFormWrapper,
         MyInlineArrayWrapper,
         ContactPersonFormControl,
         MyArray,
+        MyArrayInline,
         MyFormDirective,
         ExampleFormControl,
         MetadataIdentifierFormControl,
@@ -89,6 +97,8 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         MyArrayWrapper,
         InlineFormWrapper,
         MyArray,
+        MyArrayInline,
+        MyStringFormGroup,
         MyInlineArrayWrapper,
         VersionFormControl,
         ContactPersonFormControl,
