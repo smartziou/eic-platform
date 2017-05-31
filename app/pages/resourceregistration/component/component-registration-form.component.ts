@@ -7,6 +7,7 @@ import { Component as OMTDComponent } from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
 import {ExampleFormControl} from "../shared/example.component";
 import {ContactPersonFormControl} from "../shared/contactPerson.component";
+import {MyStringFormGroup} from "../shared/my-string-form.component";
 
 @Component({
     selector: 'component-registration-form',
@@ -25,7 +26,7 @@ export class ComponentRegistrationFormComponent implements OnInit {
     componentForm : EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
 
-    type : Type<any> = ContactPersonFormControl;
+    type : Type<any> = MyStringFormGroup;
 
     constructor(private _fb: FormBuilder) {
     }

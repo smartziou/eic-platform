@@ -20,7 +20,7 @@ import {
         </span>
     </div>
     <div [formGroup]="group">
-        <div class="form-group" formGroupName="{{name}}">
+        <div class="form-group">
         
             <form-inline [description]="versionDesc" [valid]="getMyControl('version').valid">
                 <input type="text" class="form-control" formControlName="version" placeholder="Version in the form of major.minor.patch">
@@ -28,7 +28,7 @@ import {
             
             <div class="form-group-divider"></div>
             
-            <form-inline [description]="versionTypeDesc" [params]="'tooltip'">
+            <form-inline [description]="versionTypeDesc">
                 <select name="role" class="form-control" formControlName="versionType">
                     <option *ngFor="let value of versionType" [value]="value.key" [selected]="value.key == ''">
                     {{value.value}}
@@ -38,13 +38,13 @@ import {
             
             <div class="form-group-divider"></div>
             
-            <form-inline [description]="revisionDesc" [params]="'tooltip'">
+            <form-inline [description]="revisionDesc">
                 <textarea type="text" class="form-control" formControlName="revision" placeholder="Revision Text"></textarea>
             </form-inline>
             
             <div class="form-group-divider"></div>
             
-            <form-inline [description]="updateFrequencyDesc" [params]="'tooltip'">
+            <form-inline [description]="updateFrequencyDesc">
                 <input type="text" class="form-control" formControlName="updateFrequency" placeholder="Update Frequency">
             </form-inline>
         </div>

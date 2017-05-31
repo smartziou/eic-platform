@@ -16,10 +16,10 @@ import {Description} from "../../../domain/omtd.description";
     selector : 'form-repeat',
     template : `
 
-<div [formGroup]="group">
-    <div formArrayName="{{name}}">
-        <ng-template *my-form></ng-template>
-    </div>
+<div [formGroup]="parentGroup">
+    <!--<div formArrayName="{{name}}">-->
+        <ng-template my-form></ng-template>
+    <!--</div>-->
 </div>
 <div class="form-group">
     <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
@@ -60,20 +60,28 @@ export class MyArray extends MyGroup implements OnInit, AfterViewInit{
 
         (<MyGroup>componentView.instance).index = this.viewContainerRef.length;
         (<MyGroup>componentView.instance).required = this.required;
+        (<MyGroup>componentView.instance).data = this.data;
         (<MyGroup>componentView.instance).description = this.description;
         let arrayGroup = (<MyGroup>componentView.instance).generate();
-        (<MyGroup>componentView.instance).group = <FormArray>this.group.controls[this.name];
+
+        (<MyGroup>componentView.instance).parentGroup = arrayGroup as FormGroup;
 
         (<MyWrapper>wrapperView.instance).component = componentView.hostView;
         (<MyWrapper>wrapperView.instance).viewRef = wrapperView.hostView;
         (<MyWrapper>wrapperView.instance).description = this.description;
+        (<MyWrapper>wrapperView.instance).first = this.viewContainerRef.length == 0;
         (<MyWrapper>wrapperView.instance).deleteNotifier.subscribe($event => {
             let index = this.viewContainerRef.indexOf($event);
-            this.remove(index);
-            <FormArray>this.group.controls[this.name].removeAt(index);
+            if( this.viewContainerRef.length == 1 && this.description.mandatory==true) {
+                console.log(this.viewContainerRef.get(0));
+                (<FormArray>this.parentGroup.controls[this.name].at(0).patchValue((<MyGroup>componentView.instance).generate().value));
+            } else {
+                this.remove(index);
+                <FormArray>this.parentGroup.controls[this.name].removeAt(index);
+            }
         });
 
-        (<FormArray>this.group.controls[this.name]).push(arrayGroup);
+        (<FormArray>this.parentGroup.controls[this.name]).push(arrayGroup);
 
         this.viewContainerRef.insert(wrapperView.hostView);
     }
@@ -84,8 +92,8 @@ export class MyArray extends MyGroup implements OnInit, AfterViewInit{
 
     ngOnInit(): void {
         this.viewContainerRef = this.formComponents.viewContainerRef;
-        (<FormGroup>this.group).addControl(<string>this.name, this._fb.array([]));
-        this.group.patchValue = this.patchValue();
+        (<FormGroup>this.parentGroup).addControl(<string>this.name, this._fb.array([]));
+        this.parentGroup.patchValue = this.patchValue();
     }
 
     ngAfterViewInit(): void {
@@ -97,7 +105,6 @@ export class MyArray extends MyGroup implements OnInit, AfterViewInit{
 
     protected patchValue() {
         let self = this;
-        console.log(this);
         return (value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) => {
             for (let i = (<FormArray>this.group.controls[this.name]).length; i < Object.keys(value).length; i++) {
                 self.createView();
@@ -116,11 +123,11 @@ export class MyArray extends MyGroup implements OnInit, AfterViewInit{
     selector : 'form-repeat-inline',
     template : `
     <form-inline [description]="description">
-        <ng-template *my-form></ng-template>
+        <ng-template my-form></ng-template>
     </form-inline>
     <div class="form-group">
         <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-            <a class="add-new-element" (click)="add(getMyControl('surnames'),myString)">
+            <a class="add-new-element" (click)="push()">
                 <i class="fa fa-plus" aria-hidden="true"></i> Add {{description.label}}
             </a>
         </div>
@@ -147,7 +154,7 @@ export class MyArrayInline extends MyArray {
             <div class="col-md-offset-2 col-sm-offset-2 col-sm-10 col-md-10">
                 <div class="group-label">
                     <span>{{description.label}}</span>
-                    <a class="remove-element" (click)="remove()">
+                    <a *ngIf="canDelete" class="remove-element" (click)="remove()">
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -162,30 +169,20 @@ export class MyArrayInline extends MyArray {
 
 })
 export class MyArrayWrapper extends MyWrapper{
-
-    public index : number = 0;
-
-    ngOnInit() {
-        super.ngOnInit();
-    }
 }
 
 @Component({
     selector : 'form-inline-repeat-wrapper',
-    template : `        
-    <ng-template my-form></ng-template>
-    <a class="remove-element col-sm-1 col-md-1" (click)="remove()"><i
+    template : `
+    <div class="col-sm-10 col-md-10">
+        <ng-template my-form></ng-template>
+    </div>
+    <a *ngIf="canDelete" class="remove-element col-sm-1 col-md-1" (click)="remove()"><i
             class="fa fa-times" aria-hidden="true"></i></a>
 `,
     styleUrls : ['../shared/templates/common.css']
 
 })
 export class MyInlineArrayWrapper extends MyWrapper {
-
-    public index : number = 0;
-
-    ngOnInit() {
-        super.ngOnInit();
-    }
 }
 

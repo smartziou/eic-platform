@@ -2,16 +2,17 @@
     <form class="form-horizontal componentForm" [formGroup]="myForm">
         <accordion>
             <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
+                <!--<form-repeat-inline [component]="type" [group]="myForm" [name]="'example'" [required]="true" [description]="{label : 'Hello'}">-->
+                <!--</form-repeat-inline>-->
                 <!--<metadata-header-info-form [group]="myForm"></metadata-header-info-form>-->
-                <componentGeneric-form [group]="myForm"></componentGeneric-form>
-                <identification-info-form [group]="myForm.controls.componentInfo"></identification-info-form>
-                <contact-info-form [group]="myForm.controls.componentInfo"></contact-info-form>
-                <versionInfo-form [group]="myForm.controls.componentInfo"></versionInfo-form>
+                <componentGeneric-form [parentGroup]="myForm" [name]="'componentInfo'"></componentGeneric-form>
+                <identification-info-form [parentGroup]="myForm.controls.componentInfo" [name]="'identificationInfo'"></identification-info-form>
+                <contact-info-form [required]="true" [parentGroup]="myForm.controls.componentInfo" [name]="'contactInfo'"></contact-info-form>
+                <versionInfo-form [parentGroup]="myForm.controls.componentInfo" [name]="'versionInfo'"></versionInfo-form>
                 <component-distributions-info-form-common [group]="myForm.controls.componentInfo"></component-distributions-info-form-common>
                 <!--<example-form [name]="'example1'" [group]="myForm"></example-form>-->
 
-                <!--<form-repeat [component]="type" [group]="myForm" [name]="'example'" [required]="true" [label]="'Contact Person'">-->
-                <!--</form-repeat>-->
+
             </div>
         </accordion>
     </form>

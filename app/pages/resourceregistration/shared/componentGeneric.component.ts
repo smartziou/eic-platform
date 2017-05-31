@@ -20,7 +20,7 @@ import {
         </span>
     </div>
     <div [formGroup]="group">
-        <div formGroupName="{{name}}">
+        <!--<div formGroupName="{{name}}">-->
             
             <form-inline [description]="componentDesc" [valid]="getMyControl('componentType').valid">
                 <select name="role" class="form-control" formControlName="componentType">
@@ -41,7 +41,8 @@ import {
                      
             <div class="form-group-divider"></div>
             
-            <form-inline [description]="applicationDesc" [params]="'tooltip'" [valid]="getMyControl('applicationFunction').valid">
+            <form-inline [description]="applicationDesc" [params]="''"
+                         [valid]="getMyControl('applicationFunction').valid">
                 <select name="role" class="form-control" formControlName="applicationFunction">
                     <option *ngFor="let value of applicationType" [value]="value.key" [selected]="value.key == ''">
                     {{value.value}}
@@ -49,7 +50,7 @@ import {
                 </select>
             </form-inline>
             
-        </div>
+        <!--</div>-->
     </div>
 </accordion-group>
 `,
@@ -77,6 +78,4 @@ export class ComponentGenericFormControl extends MyGroup {
 
     label = 'Component General Info';
 
-}/**
- * Created by stefanos on 24/5/2017.
- */
+}

@@ -21,6 +21,8 @@ export abstract class MyWrapper implements OnInit{
 
     @ViewChild(MyFormDirective) private formComponents: MyFormDirective;
 
+    public first = true;
+
     ngOnInit() {
         if (!this.formComponents) {
             console.log(this.formComponents);
@@ -32,5 +34,10 @@ export abstract class MyWrapper implements OnInit{
     public remove(){
         this.deleteNotifier.emit(this.viewRef);
     };
+
+
+    public get canDelete() {
+        return !(this.description.mandatory == true && this.first == true);
+    }
 
 }

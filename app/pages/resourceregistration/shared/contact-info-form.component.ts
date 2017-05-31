@@ -1,7 +1,7 @@
 /**
  * Created by stefania on 1/18/17.
  */
-import {Component, Input, OnInit, Type} from '@angular/core';
+import {AfterContentInit, Component, Input, OnInit, Type} from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import {EnumValues, resourceIdentifierSchemeNameEnum, personIdentifierSchemeNameEnum} from "../../../domain/omtd.enum";
 import {
@@ -9,6 +9,7 @@ import {
     contactInfoDesc, landingPageDesc, contactEmailDesc
 } from "../../../domain/omtd.description";
 import {ContactPersonFormControl} from "./contactPerson.component";
+import {MyGroup} from "../myform/my-group.interface";
 
 @Component({
     selector: 'contact-info-form',
@@ -16,15 +17,8 @@ import {ContactPersonFormControl} from "./contactPerson.component";
     styleUrls : ['./templates/common.css']
 })
 
-export class ContactInfoFormControl implements OnInit {
+export class ContactInfoFormControl extends MyGroup implements AfterContentInit {
 
-    @Input('group')
-    public parentForm: FormGroup;
-
-    @Input('name')
-    private name : string;
-
-    public myForm: FormGroup;
 
     private radioButton : string[] = ["Contact Email","Landing Page",'Contact Person'];
     private radioButtonSelected : string = this.radioButton[0];
@@ -36,54 +30,31 @@ export class ContactInfoFormControl implements OnInit {
 
     public customClass: string = 'customAccordionPanel';
 
+    public groupDefinition = {
+        contactEmail : ['',Validators.required],
+        landingPage : ['',Validators.required]
+    };
+
     type : Type<any> = ContactPersonFormControl;
 
-    ngOnInit() {
-        this.myForm = ContactInfoFormControl.generate(this._fb);
-        this.myForm.setValidators(this.validate);
-
-        this.parentForm.addControl("contactInfo", this.myForm);
-        this.deactivate();
-    }
-
-    public validate(): ValidatorFn {
-        //console.log('Bla bla bla bla cha cha cha');
-        return (c: AbstractControl): {[key: string]: any} => {
-            console.log('this is called the bla bla cha cha cha');
-            console.log(this.radioButtonSelected, c);
-            if(this.radioButtonSelected=='Contact Email') {
-                if(!c.get('contactEmail').value)
-                    return null;
-                else
-                    return {error: "Contact email is required"};
-            } else {
-                if(!c.get('landingPage').value)
-                    return null;
-                else
-                    return {error: "Landing page is required"};
-            }
-        };
-    }
-
-    constructor(private _fb: FormBuilder) {
-        this.radioButtonSelected = this.radioButton[0];
-    }
-
-    public static generate(_fb: FormBuilder) {
-        return _fb.group({
-            contactEmail: ['',Validators.required],
-            landingPage: ['',Validators.required]
-        });
+    ngAfterContentInit(): void {
+        this.getMyControl('landingPage').disable();
     }
 
     public deactivate() {
         if (this.radioButtonSelected == "Contact Email") {
-            this.myForm.get('contactEmail').enable();
-            this.myForm.get('landingPage').disable();
+            this.getMyControl('contactEmail').enable();
+            this.getMyControl('landingPage').disable();
+            this.getMyControl('contactPersons').disable();
         }
-        else {
-            this.myForm.get('contactEmail').disable();
-            this.myForm.get('landingPage').enable();
+        else if (this.radioButtonSelected == "Landing Page") {
+            this.getMyControl('contactEmail').disable();
+            this.getMyControl('landingPage').enable();
+            this.getMyControl('contactPersons').disable();
+        } else if (this.radioButtonSelected == "Contact Person") {
+            this.getMyControl('contactEmail').disable();
+            this.getMyControl('landingPage').disable();
+            this.getMyControl('contactPersons').enable();
         }
     }
 
@@ -92,9 +63,6 @@ export class ContactInfoFormControl implements OnInit {
         if (this.radioButtonSelected !== choice) {
             this.radioButtonSelected = choice;
         }
-
         this.deactivate();
-
-
     }
 }

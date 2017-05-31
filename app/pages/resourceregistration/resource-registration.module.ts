@@ -50,7 +50,8 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         MyArrayWrapper,
         ContactPersonFormControl,
         MyInlineArrayWrapper,
-        MyStringFormGroup
+        MyStringFormGroup,
+        IdentifierCommonFormControl,
     ],
     declarations: [
         MyArrayWrapper,
@@ -88,7 +89,7 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         LanguageInfoFormControl, 
         ZipUploadComponent,
         ComponentDistributionInfoFormControl,
-        ComponentDistributionsInfoFormControl
+        ComponentDistributionsInfoFormControl,
     ],
     providers: [
         ResourceService

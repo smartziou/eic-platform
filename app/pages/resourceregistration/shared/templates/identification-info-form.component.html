@@ -1,115 +1,36 @@
-<accordion-group #group [panelClass]="customClass"
-                 [isOpen]="true" [panelClass]="myForm.valid ? 'panel-success' : 'panel-danger'">
+<accordion-group #group1 [panelClass]="customClass"
+                 [isOpen]="true" [panelClass]="group.valid ? 'panel-success' : 'panel-danger'">
     <div accordion-heading>
         <span>Identification Info
-            <i class="fa" [ngClass]="{'fa-angle-down': !group?._isOpen, 'fa-angle-up': group?._isOpen}" aria-hidden="true"></i>
+            <i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>
         </span>
     </div>
-    <div [formGroup]="myForm" >
-        <div class="form-group" formArrayName="resourceNames">
-            <label class="col-sm-2 col-md-2 control-label">Resource Name</label>
-            <div *ngFor="let resourceName of myForm.controls.resourceNames.controls; let i=index" formGroupName="{{i}}">
-                <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
-                <div class="form-group">
-                    <my-string [group]="resourceName" [required]="true"></my-string>
-                    <a class="remove-element col-sm-1 col-md-1" (click)="$delete('resourceNames',i)"><i
-                            class="fa fa-times" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <small>{{resourceNameDescription.desc}}</small>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <a class="add-new-element" (click)="addNew('resourceNames')"><i class="fa fa-plus" aria-hidden="true"></i> Add
-                    Resource Name</a>
-            </div>
-        </div>
+    <div [formGroup]="group" >
+
+        <form-repeat-inline [component]="myStringType" [parentGroup]="group"
+                            [name]="'resourceNames'" [required]="true" [description]="resourceNameDesc">
+        </form-repeat-inline>
 
         <div class="form-group-divider"></div>
 
-        <div class="form-group" formArrayName="descriptions">
-            <label class="col-sm-2 col-md-2 control-label">Description</label>
-            <div *ngFor="let description of myForm.controls.descriptions.controls; let i=index" formGroupName="{{i}}">
-                <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
-                <div class="form-group">
-                    <my-string [group]="description" [required]="true"></my-string>
-                    <a class="remove-element col-sm-1 col-md-1" (click)="$delete('descriptions',i)"><i
-                            class="fa fa-times" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <small>{{descriptionDescription.desc}}</small>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <a class="add-new-element" (click)="addNew('descriptions')"><i class="fa fa-plus" aria-hidden="true"></i> Add
-                    Description</a>
-            </div>
-        </div>
+        <form-repeat-inline [component]="myStringType" [parentGroup]="group"
+                            [name]="'descriptions'" [required]="true" [description]="descriptionDesc">
+        </form-repeat-inline>
 
         <div class="form-group-divider"></div>
 
-        <div class="form-group" formArrayName="resourceShortNames">
-            <label class="col-sm-2 col-md-2 control-label">Resource Short Name</label>
-            <div *ngFor="let resourceShortName of myForm.controls.resourceShortNames.controls; let i=index" formGroupName="{{i}}">
-                <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
-                <div class="form-group">
-                    <my-string [group]="resourceShortName" [required]="false"></my-string>
-                    <a class="remove-element col-sm-1 col-md-1" (click)="$delete('resourceShortNames',i)"><i
-                            class="fa fa-times" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <small>{{resourceShortNameDescription.desc}}</small>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <a class="add-new-element" (click)="addNew('resourceShortNames')"><i class="fa fa-plus" aria-hidden="true"></i> Add
-                    Resource ShortName</a>
-            </div>
-        </div>
+        <form-repeat-inline [component]="myStringType" [parentGroup]="group"
+                            [name]="'resourceShortNames'" [description]="resourceShortNameDesc">
+        </form-repeat-inline>
 
         <div class="form-group-divider"></div>
 
-        <!-- <div class="form-group" formArrayName="identifiers">
-            <div *ngFor="let identifier of myForm.controls.identifiers.controls; let i=index" formGroupName="{{i}}">
-                    <identifier-common [group]="identifier" [scheme-name]="'resourceIdentifierSchemeName'"
-                                       [scheme-values]="resourceIdentifierEnum" [index]="i"
-                                       [label]="'Identifier'" [required]="true"></identifier-common>
-                    <a class="remove-element col-sm-1 col-md-1" (click)="$delete('identifiers',i)"><i
-                            class="fa fa-times" aria-hidden="true"></i></a>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <a class="add-new-element" (click)="addNew('identifiers')"><i class="fa fa-plus" aria-hidden="true"></i> Add
-                    Identifier</a>
-            </div>
-        </div> -->
-
-        <div class="form-group-divider"></div>
-
-        <div >
-            <label class="col-sm-2 col-md-2 control-label">
-                Public
+        <form-inline [description]="publicDesc">
+            <label class="col-sm-7 col-md-7 radio-label">
+                <input type="checkbox" formControlName="public">
+                Check if the resource is meant for private use.
             </label>
-            <div class="col-sm-10 col-md-10">
-                <label class="col-sm-7 col-md-7 radio-label">
-                    <input type="checkbox" formControlName="public">
-                    Check if the resource is meant for private use.
-                </label>
-            </div>
-        </div>
+        </form-inline>
 
     </div>
 </accordion-group>

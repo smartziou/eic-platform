@@ -3,6 +3,7 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import {MyGroup} from "../myform/my-group.interface";
 
 @Component({
     selector: 'my-string',
@@ -53,4 +54,25 @@ export class MyStringFormControl implements OnInit {
             lang : 'en'
         });
     }
+}
+
+@Component({
+    selector: 'myString',
+    template : `
+<div [formGroup]="group">
+    <div class="form-group" [attr.formGroupName]="isArray ? name : null" [ngClass]="{'has-error':!group.valid}">
+        <input type="text" class="form-control" formControlName="value" placeholder="Name">
+        <input type="hidden" class="form-control" formControlName="lang" placeholder="Language">
+    </div>
+</div>
+    `,
+    styleUrls : ['./templates/common.css']
+})
+
+export class MyStringFormGroup extends MyGroup {
+
+    public groupDefinition : any = {
+        value : ['', Validators.required],
+        lang : 'en'
+    };
 }
