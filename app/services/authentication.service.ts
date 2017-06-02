@@ -4,7 +4,7 @@
 import {Injectable} from '@angular/core';
 import {User} from "./../domain/user";
 import {URLSearchParams, Http} from "@angular/http";
-import {getCookie} from "../domain/utils";
+import {getCookie, deleteCookie} from "../domain/utils";
 
 @Injectable()
 export class AuthenticationService {
@@ -44,16 +44,16 @@ export class AuthenticationService {
     }
 
     logout() {
-        localStorage.removeItem('user');
-        this.isLoggedIn = false;
+        deleteCookie('name');
     }
 
-    public isUserLoggedIn() : boolean {
-        if (getCookie('name') != null) return true;
+    public get isUserLoggedIn() : boolean {
+        return getCookie('name') != null;
     }
 
-    public getLoggedInUser() : string {
-        return decodeURI(getCookie('name'));
+    public get getLoggedInUser() : string {
+        let name = getCookie('name');
+        return name ? decodeURI(name) : null;
     }
 
     public tryLogin() {

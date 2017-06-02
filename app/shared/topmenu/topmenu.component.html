@@ -3,14 +3,14 @@
          data-uk-sticky="{media: 768, clsactive:'uk-active uk-navbar-attached'}" style="position: fixed; top: 0px; width: 100%;">
         <div class="tm-toolbar uk-clearfix uk-visible-large">
             <div class="uk-float-right">
-                <div *ngIf="!name()" class="uk-panel">
+                <div *ngIf="!oAuthService.isUserLoggedIn" class="uk-panel">
                     <span><a [href]="oidcUrl" routerLinkActive="uk-active">SIGN IN</a></span>
                     <!--<span><a href="http://localhost:8080/omtd-registry/openid_connect_login" routerLinkActive="uk-active">SIGN IN</a></span>-->
                     |
                     <!--<span><a routerLink="/register" routerLinkActive="uk-active">REGISTER</a></span>-->
                 </div>
-                <div *ngIf="name()" class="uk-panel">
-                    <span><a routerLink="/home" routerLinkActive="uk-active" (click)="logout()">SIGN OUT {{name()}}</a></span>
+                <div *ngIf="oAuthService.isUserLoggedIn" class="uk-panel">
+                    <span><a routerLink="/home" routerLinkActive="uk-active" (click)="logout()">SIGN OUT {{oAuthService.getLoggedInUser}}</a></span>
                     |
                     <span><a [href]="'https://aai.openminted.eu/registry/auth/logout'" routerLinkActive="uk-active" >LOG OUT</a></span>
                 </div>
@@ -29,7 +29,7 @@
                 <ul class="uk-navbar-nav uk-visible-large">
                     <li [routerLinkActive]="['uk-active']"><a routerLink="/home" routerLinkActive="uk-active">Home</a></li>
                     <li [routerLinkActive]="['uk-active']"><a routerLink="/search" routerLinkActive="uk-active">Browse</a></li>
-                    <li [routerLinkActive]="['uk-active']" class="dropdown uk-parent" data-uk-dropdown="{'preventflip':'y'}" aria-haspopup="true" aria-expanded="false">
+                    <li *ngIf="oAuthService.isUserLoggedIn" [routerLinkActive]="['uk-active']" class="dropdown uk-parent" data-uk-dropdown="{'preventflip':'y'}" aria-haspopup="true" aria-expanded="false">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share</a>
                         <ul class="dropdown-menu uk-nav uk-nav-navbar">
                             <li><a routerLink="/resourceRegistration/component" routerLinkActive="uk-active">Component</a></li>
@@ -40,7 +40,7 @@
                     </li>
                     <!--<li [routerLinkActive]="['uk-active']"><a routerLink="/support" routerLinkActive="uk-active">Support</a></li>-->
                     <li [routerLinkActive]="['uk-active']"><a href="http://openminted.eu/support-training/" target="_blank">Support</a></li>
-                    <li *ngIf="name()" [routerLinkActive]="['uk-active']" class="dropdown uk-parent" data-uk-dropdown="{'preventflip':'y'}" aria-haspopup="true" aria-expanded="false">
+                    <li *ngIf="oAuthService.isUserLoggedIn" [routerLinkActive]="['uk-active']" class="dropdown uk-parent" data-uk-dropdown="{'preventflip':'y'}" aria-haspopup="true" aria-expanded="false">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
                         <ul class="dropdown-menu uk-nav uk-nav-navbar">
                             <li><a routerLink="/editProfile" routerLinkActive="uk-active">Edit Profile</a></li>

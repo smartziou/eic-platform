@@ -19,23 +19,4 @@ export class TopMenuComponent {
     constructor(private oAuthService: AuthenticationService) {
     }
 
-    name() {
-        // let claims = this.oAuthService.getIdentityClaims();
-        // if (!claims) return null;
-        // return claims.given_name + ' ' + claims.family_name;
-        let name = getCookie('name');
-        return name ? decodeURI(name) : null;
-    }
-
-    logIn() {
-        window.location.href = process.env.OIDC_ENDPOINT;
-    }
-
-    refresh() {
-        // this.oAuthService.;
-    }
-
-    logout() {
-        deleteCookie('name');
-    }
 }
