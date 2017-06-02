@@ -4,6 +4,7 @@
 import {Injectable} from '@angular/core';
 import {User} from "./../domain/user";
 import {URLSearchParams, Http} from "@angular/http";
+import {getCookie} from "../domain/utils";
 
 @Injectable()
 export class AuthenticationService {
@@ -47,15 +48,12 @@ export class AuthenticationService {
         this.isLoggedIn = false;
     }
 
-    isUserLoggedIn() {
-        if (localStorage.getItem("user") === null) {
-            return false;
-        }
-        return true;
+    public isUserLoggedIn() : boolean {
+        if (getCookie('name') != null) return true;
     }
 
-    getLoggedInUser() {
-        return JSON.parse(localStorage.getItem('user'));
+    public getLoggedInUser() : string {
+        return decodeURI(getCookie('name'));
     }
 
     public tryLogin() {
