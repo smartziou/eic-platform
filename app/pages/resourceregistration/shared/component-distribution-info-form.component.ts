@@ -1,98 +1,108 @@
 /**
  * Created by stefania on 1/22/17.
  */
-import {Component, OnInit, Input} from "@angular/core";
-import {FormGroup, FormBuilder, FormControl, FormArray} from "@angular/forms";
+import {Component, OnInit, Input, Type} from "@angular/core";
+import {FormGroup, FormBuilder, FormControl, FormArray, Validators} from "@angular/forms";
 import {EnumValues, distributionMediumEnum, componentDistributionFormEnum} from "../../../domain/omtd.enum";
+import {MyGroup} from "../myform/my-group.interface";
+import {
+    commandDesc,
+    componentDistributionFormDesc, componentDistributionInfoDesc, Description,
+    distributionURLDesc
+} from "../../../domain/omtd.description";
 
 @Component({
-    selector: 'component-distributions-info-form-common',
+    selector: 'componentDistributionInfos-form',
     template : `
-<accordion-group #group [panelClass]="customClass"
-                 [isOpen]="true" [panelClass]="parentForm.valid ? 'panel-success' : 'panel-danger'">
+<accordion-group #group1 [panelClass]="'customAccordionPanel'"
+                 [isOpen]="true" [panelClass]="parentGroup.controls.distributionInfos?.valid ? 'panel-success' : 'panel-danger'">
     <div accordion-heading>
-        <span>Distribution Info
-            <i class="fa" [ngClass]="{'fa-angle-down': !group?._isOpen, 'fa-angle-up': group?._isOpen}" aria-hidden="true"></i>
+        <span>
+            <i class="fa fa" [ngClass]="parentGroup.controls.distributionInfos?.valid ? 'fa-check':'fa-exclamation'" aria-hidden="true"></i>
+            Distribution Info
+            <i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>
         </span>
     </div>
                  
-    <div [formGroup]="myForm">
-        <div *ngFor="let c of myForm.controls; let i=index" class="group" formGroupName="{{i}}">
-            <div class="form-group">
-                <div class="col-md-offset-2 col-sm-offset-2 col-sm-10 col-md-10">
-                    <div class="group-label">
-                        <span>Distribution Info</span>
-                        <a class="remove-element" (click)="$delete(i)">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <component-distribution-info-form-common [group]="c"></component-distribution-info-form-common>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-                <a class="add-new-element add-new-group" (click)="$add()"><i class="fa fa-plus" aria-hidden="true"></i>
-                    Add New Distribution</a>
-            </div>
-        </div>
+    <div [formGroup]="parentGroup">
+
+        <form-repeat [component]="componentDistributionType" [parentGroup]="parentGroup" 
+                            [name]="'distributionInfos'" [required]="true" [description]="componentDistributionInfoDesc">
+        </form-repeat>
+        
     </div>
 
 </accordion-group>
 `,
     styleUrls : ['./templates/common.css']
 })
-export class ComponentDistributionsInfoFormControl implements OnInit{
-    @Input('group')
-    parentForm : FormGroup;
+export class ComponentDistributionsInfoFormControl {
 
-    myForm : FormArray;
-
-    public customClass: string = 'customAccordionPanel';
-
-    constructor(private _fb : FormBuilder) {
-    }
-
-    $add() {
-        this.myForm.push(ComponentDistributionInfoFormControl.generate(this._fb));
-    }
-
-    $delete(i : number) {
-        this.myForm.removeAt(i);
-    }
-
-    ngOnInit(): void {
-        this.myForm = this._fb.array([ComponentDistributionInfoFormControl.generate(this._fb)]);
-        this.parentForm.addControl("componentDistributionInfos",this.myForm);
-    }
-
+    @Input()
+    private parentGroup : FormGroup = null;
+    private componentDistributionType : Type<any> = ComponentDistributionInfoFormControl;
+    private componentDistributionInfoDesc : Description = componentDistributionInfoDesc;
 }
 
 
 @Component({
     selector: 'component-distribution-info-form-common',
-    templateUrl : './templates/component-distribution-info-form.component.html',
+    template : ` 
+<div [formGroup]="group">
+    <div formGroupName="componentLoc">
+        <form-inline [description]="componentDistributionFormDesc" [valid]="getMyControl('componentLoc.componentDistributionForm').valid">
+            <select name="role" class="form-control" formControlName="componentDistributionForm">
+                <option *ngFor="let value of componentDistributionFormEnum" [value]="value.key" [selected]="value.key == ''">
+                    {{value.value}}
+                </option>
+            </select>
+        </form-inline>
+        
+        <div class="form-group-divider"></div>
+    
+        <form-inline [description]="distributionURLDesc" [valid]="getMyControl('componentLoc.distributionURL').valid">
+            <input type="text" class="form-control" formControlName="distributionURL" placeholder="{{distributionURLDesc.label}}">
+        </form-inline>
+    </div>
+
+    <div [hidden]="getMyControl('componentLoc.componentDistributionForm').value !== 'WEB_SERVICE'">
+        <div  class="form-group-divider"></div>
+        
+        <form-inline [description]="commandDesc" [valid]="getMyControl('command').valid">
+            <input type="text" class="form-control" formControlName="command" placeholder="{{commandDesc.label}}">
+        </form-inline>
+    </div>
+    
+    <rightsInfo-form [parentGroup]="group" [name]="'rightsInfo'"></rightsInfo-form>
+    
+</div>  
+    
+    `,
     styleUrls : ['./templates/common.css']
 })
-export class ComponentDistributionInfoFormControl implements OnInit{
-    @Input('group')
-    parentForm : FormGroup;
+export class ComponentDistributionInfoFormControl extends MyGroup {
 
-    componentDistributionEnum : EnumValues[];
+    private componentDistributionFormDesc : Description = componentDistributionFormDesc;
+    private distributionURLDesc : Description = distributionURLDesc;
+    private commandDesc : Description = commandDesc;
+    private readonly componentDistributionFormEnum : EnumValues[] = componentDistributionFormEnum;
 
-    constructor(private _fb : FormBuilder) {
-        this.componentDistributionEnum = componentDistributionFormEnum;
-    }
+    readonly groupDefinition = {
+        componentLoc : this._fb.group({
+            componentDistributionForm : ['', Validators.required],
+            distributionURL : ['', Validators.required]
+        }),
+        command : ['', Validators.required]
+    };
 
-    static generate(_fb : FormBuilder) {
-        return _fb.group({
-            componentDistributionMedium : ''
+    ngOnInit() {
+        super.ngOnInit();
+        this.getMyControl('componentLoc.componentDistributionForm').valueChanges.subscribe(_ => {
+            let command = this.getMyControl('command');
+            if(_ ==='WEB_SERVICE') command.enable();
+            else command.disable();
         });
-    }
-
-    ngOnInit(): void {
+        this.getMyControl('command').disable();
     }
 
 }

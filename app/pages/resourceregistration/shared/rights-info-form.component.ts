@@ -1,97 +1,133 @@
-import {Component, OnInit, Input} from "@angular/core";
-import {FormGroup, FormBuilder, FormArray} from "@angular/forms";
-import {EnumValues, licenceEnum} from "../../../domain/omtd.enum";
-import {Description, licenceInfoDesc} from "../../../domain/omtd.description";
+import {Component, OnInit, Input, Type} from "@angular/core";
+import {FormGroup, FormBuilder, FormArray, Validators} from "@angular/forms";
+import {EnumValues, licenceEnum, rightsStatementEnum} from "../../../domain/omtd.enum";
+import {
+    Description, licenceDesc, licenceInfoDesc, nonStandardLicenceNameDesc,
+    nonStandardLicenceTermsURLDesc, rightsStatementDesc
+} from "../../../domain/omtd.description";
+import {MyGroup} from "../myform/my-group.interface";
 /**
  * Created by stefanos on 19/1/2017.
  */
 
 @Component({
-    selector: 'rights-info',
-    template: `
-    <license-infos [group]="myForm"></license-infos>
+    selector: 'rightsInfo-form',
+    template: `        
+        <div [formGroup]="group">
+            <form-repeat [component]="licenseType" [parentGroup]="group"
+                         [name]="'licenceInfos'" [required]="true" [description]="licenseInfoDesc">
+            </form-repeat>
+        </div>
 `,
     styleUrls: ['./templates/common.css']
 })
-export class RightsInfoForm implements OnInit {
-    @Input('group')
-    parentForm: FormGroup;
+export class RightsInfoForm extends MyGroup {
 
-    myForm: FormGroup;
+    readonly groupDefinition = {
 
-    constructor(private _fb: FormBuilder){
+    };
 
-    }
+    private licenseInfoDesc : Description = licenceInfoDesc;
 
-    ngOnInit(): void {
-        this.myForm = this._fb.group({});
-        this.parentForm.addControl("rightsInfo",this.myForm);
-    }
+    private licenseType : Type<any> = LicenseInfoForm;
 
 }
 
 @Component({
-    selector: 'license-infos',
+    selector: 'license-info',
     template: `
-<div [formGroup]="formArray" class="form-group">
-    <label class="col-sm-2 col-md-2 control-label">{{licenceInfosDesc.label}}</label>
-    <div *ngFor="let c of formArray.controls; let i=index" formGroupName="{{i}}">
-        <div *ngIf="i!=0" class="col-sm-2 col-md-2 control-label"></div>
-        <div class="form-group">
-            <div class="col-sm-6 col-md-6">
-                <select name="role" class="form-control" formControlName="licence">
-                    <option *ngFor="let value of licenceEnum" [value]="value.key" [selected]="value.key == ''">
-                        {{value.value}}
-                    </option>
-                </select>
-            </div>
-            <div class="col-sm-1 col-md-1">
-                <a class="remove-element col-sm-1 col-md-1" (click)="$delete(i)"><i
-                        class="fa fa-times" aria-hidden="true"></i></a>
-            </div>
-        </div>
+<div [formGroup]="group">
+    <form-inline [description]="licenceDesc" [valid]="getMyControl('licence').valid">
+        <select name="role" class="form-control" formControlName="licence">
+            <option *ngFor="let value of licenceEnum" [value]="value.key" [selected]="value.key == ''">
+                {{value.value}}
+            </option>
+        </select>
+    </form-inline>
+
+    <div [hidden]="getMyControl('licence').value !== 'NON_STANDARD_LICENCE_TERMS'">
+        <div class="form-group-divider"></div>
+    
+        <form-inline [description]="nonStandardLicenceNameDesc" [valid]="getMyControl('nonStandardLicenceName').valid">
+            <input type="text" class="form-control" formControlName="nonStandardLicenceName" placeholder="{{nonStandardLicenceNameDesc.label}}">
+        </form-inline>
+    
+        <div class="form-group-divider"></div>
+    
+        <form-inline [description]="nonStandardLicenceTermsURLDesc" [valid]="getMyControl('nonStandardLicenceTermsURL').valid">
+            <input type="text" class="form-control" formControlName="nonStandardLicenceTermsURL" placeholder="{{nonStandardLicenceTermsURLDesc.label}}">
+        </form-inline>
     </div>
-    <div class="col-sm-offset-2 col-md-offset-2 col-sm-9 col-md-9">
-        <a class="add-new-element" (click)="add()"><i class="fa fa-plus" aria-hidden="true"></i>
-            Add New {{label}}</a>
-    </div>
+
+    <form-inline [description]="rightsStatementDesc" [valid]="getMyControl('rightsStatement').valid">
+        <select name="role" class="form-control" formControlName="rightsStatement">
+            <option *ngFor="let value of rightsStatementEnum" [value]="value.key" [selected]="value.key == ''">
+                {{value.value}}
+            </option>
+        </select>
+    </form-inline>
+    
 </div>
 `,
     styleUrls: ['./templates/common.css']
 })
-export class LicenseInfosForm implements OnInit {
-    @Input('group')
-    parentForm: FormGroup;
+export class LicenseInfoForm extends MyGroup {
 
-    formArray : FormArray;
+    readonly groupDefinition = {
+        licence : ['', Validators.required],
+        nonStandardLicenceName : ['',Validators.required],
+        nonStandardLicenceTermsURL : ['',Validators.required],
+        rightsStatement : ['',Validators.required]
+    };
 
-    licenceEnum : EnumValues[];
+    private readonly licenceEnum : EnumValues[] = licenceEnum;
+    private readonly rightsStatementEnum : EnumValues[] = rightsStatementEnum;
+    private readonly licenceDesc : Description = licenceDesc;
+    private readonly rightsStatementDesc : Description = rightsStatementDesc;
+    private readonly nonStandardLicenceNameDesc : Description = nonStandardLicenceNameDesc;
+    private readonly nonStandardLicenceTermsURLDesc : Description = nonStandardLicenceTermsURLDesc;
 
-    licenceInfosDesc : Description;
-
-    constructor(private _fb: FormBuilder){
-        this.licenceEnum = licenceEnum;
-        this.licenceInfosDesc = licenceInfoDesc;
-    }
-
-    add() {
-        this.formArray.push(LicenseInfosForm.generate(this._fb));
-    }
-
-    $delete(i : number) {
-        this.formArray.removeAt(i);
-    }
-
-    ngOnInit(): void {
-        this.formArray = this._fb.array([LicenseInfosForm.generate(this._fb)]);
-        this.parentForm.addControl("licenceInfos",this.formArray);
-    }
-
-    static generate(_fb : FormBuilder) {
-        return _fb.group({
-            licence : '',
-            version : ''
+    ngOnInit() {
+        super.ngOnInit();
+        this.getMyControl('licence').valueChanges.subscribe(_ => {
+            let nonStandardLicenceName = this.getMyControl('nonStandardLicenceName');
+            let nonStandardLicenceTermsURL = this.getMyControl('nonStandardLicenceTermsURL');
+            if (_ !== 'NON_STANDARD_LICENCE_TERMS') {
+                nonStandardLicenceName.disable();
+                nonStandardLicenceTermsURL.disable();
+            } else {
+                nonStandardLicenceName.enable();
+                nonStandardLicenceTermsURL.enable();
+            }
         });
+
+        this.getMyControl('licence').statusChanges.subscribe(_ => {
+            let rightsStatement = this.getMyControl('rightsStatement');
+            if (_ === 'VALID') {
+                rightsStatement.clearValidators();
+                rightsStatement.updateValueAndValidity();
+            } else {
+                rightsStatement.setValidators(Validators.required);
+                rightsStatement.updateValueAndValidity();
+            }
+        });
+
+        // this.getMyControl('rightsStatement').statusChanges.subscribe(_ => {
+        //     let licence = this.getMyControl('licence');
+        //     if (_ === 'VALID') {
+        //         licence.clearValidators();
+        //         licence.updateValueAndValidity();
+        //     } else {
+        //         licence.setValidators(Validators.required);
+        //         licence.updateValueAndValidity();
+        //     }
+        // });
+
+        let nonStandardLicenceName = this.getMyControl('nonStandardLicenceName');
+        let nonStandardLicenceTermsURL = this.getMyControl('nonStandardLicenceTermsURL');
+        nonStandardLicenceName.disable();
+        nonStandardLicenceTermsURL.disable();
     }
+
 
 }

@@ -3,7 +3,6 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Model } from "../../../domain/openminted-model";
 import { ResourceService } from "../../../services/resource.service";
 import { Subscription } from "rxjs/Subscription";
 
@@ -15,7 +14,7 @@ import { Subscription } from "rxjs/Subscription";
 
 export class ModelLandingPageComponent implements OnInit {
 
-    public model: Model;
+    public model: any;
     public errorMessage: string;
     private sub: Subscription;
 

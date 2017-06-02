@@ -46,6 +46,7 @@ export class AnnotationInfo  {
     annotationStandoff : boolean;
     dataFormatInfo : DataFormatInfo;
     typesystem : RelatedResource;
+    annotationSchema : RelatedResource;
     annotationResource : RelatedResource;
     theoreticModel : string;
     guidelinesDocumentedIn : RelatedDocumentInfo[];
@@ -66,6 +67,10 @@ export class AnnotationsInfo  {
 }
 
 export class AttributionText extends MyString {
+}
+
+export class BaseMetadataRecord  {
+    metadataHeaderInfo : MetadataHeaderInfo;
 }
 
 export class Browsing  {
@@ -89,15 +94,14 @@ export class CommunicationInfo  {
     faxNumbers : string[];
 }
 
-export class Component  {
-    metadataHeaderInfo : MetadataHeaderInfo;
+export class Component extends BaseMetadataRecord {
     componentInfo : ComponentInfo;
 }
 
 export class ComponentCreationInfo  {
     framework : FrameworkEnum;
-    implementationLanguage : string;
     formalism : string;
+    implementationLanguage : string;
     hasOriginalSource : ResourceIdentifier[];
     creationDetails : string;
     tdmmethod : TDMMethodEnum;
@@ -105,14 +109,13 @@ export class ComponentCreationInfo  {
 
 export class ComponentDependencies  {
     typesystem : RelatedResource;
+    annotationSchema : any;
     annotationResources : RelatedResource[];
     softwareLibraries : string[];
 }
 
 export class ComponentDistributionInfo  {
-    componentDistributionForm : ComponentDistributionFormEnum;
-    downloadURLs : string[];
-    accessURL : string;
+    componentLoc : ComponentLoc;
     command : any;
     webServiceType : WebServiceTypeEnum;
     operatingSystems : OperatingSystemEnum[];
@@ -141,25 +144,31 @@ export class ComponentEvaluationInfo  {
 export class ComponentInfo  {
     resourceType : ResourceTypeEnum;
     identificationInfo : IdentificationInfo;
-    application : boolean;
+    versionInfo : VersionInfo;
+    contactInfo : ContactInfo;
+    validationInfos : ValidationInfo[];
+    usageInfo : UsageInfo;
+    resourceDocumentationInfo : ResourceDocumentationInfo;
+    resourceCreationInfo : ResourceCreationInfo;
     componentType : ComponentTypeEnum;
-    applicationFunction : ApplicationType;
+    application : boolean;
+    applicationFunction : any;
     workflow : boolean;
     workflowDescription : string;
-    versionInfo : VersionInfo;
     distributionInfos : ComponentDistributionInfo[];
-    contactInfo : ContactInfo;
     inputContentResourceInfo : ProcessingResourceInfo;
     outputResourceInfo : ProcessingResourceInfo;
     componentDependencies : ComponentDependencies;
     componentCreationInfo : ComponentCreationInfo;
-    resourceCreationInfo : ResourceCreationInfo;
-    resourceDocumentationInfo : ResourceDocumentationInfo;
     scmInfo : ScmInfo;
     issueManagementInfo : IssueManagementInfo;
-    usageInfo : UsageInfo;
-    validationInfos : ValidationInfo[];
+    relations : Relations2;
     componentEvaluationInfo : ComponentEvaluationInfo;
+}
+
+export class ComponentLoc  {
+    componentDistributionForm : ComponentDistributionFormEnum;
+    distributionURL : string;
 }
 
 export class ComponentOperationInfo  {
@@ -169,8 +178,8 @@ export class ComponentOperationInfo  {
 
 export class ContactInfo  {
     landingPage : string;
-    contactEmail : string;
     contactPersons : PersonInfo[];
+    contactEmail : string;
     contactGroups : GroupInfo[];
     mailingLists : MailingListInfo[];
 }
@@ -178,8 +187,7 @@ export class ContactInfo  {
 export class CopyrightStatement extends MyString {
 }
 
-export class Corpus  {
-    metadataHeaderInfo : MetadataHeaderInfo;
+export class Corpus extends BaseMetadataRecord {
     corpusInfo : CorpusInfo;
 }
 
@@ -192,6 +200,7 @@ export class CorpusInfo  {
     usageInfo : UsageInfo;
     resourceDocumentationInfo : ResourceDocumentationInfo;
     resourceCreationInfo : ResourceCreationInfo;
+    relations : Relations5;
     distributionInfos : DatasetDistributionInfo[];
     corpusSubtypeSpecificInfo : CorpusSubtypeSpecificInfo;
 }
@@ -241,9 +250,7 @@ export class DataFormatInfo  {
 }
 
 export class DatasetDistributionInfo  {
-    distributionMediums : DistributionMediumEnum[];
-    downloadURL : string;
-    accessURL : string;
+    distributionLoc : DistributionLoc;
     textFormats : TextFormatInfo[];
     characterEncodings : CharacterEncodingInfo[];
     sizes : SizeInfo[];
@@ -280,19 +287,22 @@ export class DepartmentName extends MyString {
 export class Description extends MyString {
 }
 
+export class DistributionLoc  {
+    distributionMedium : DistributionMediumEnum;
+    distributionURL : string;
+}
+
 export class Document  {
     publication : DocumentInfo;
     annotatedPublication : AnnotatedDocumentInfo;
 }
 
 export class DocumentDistributionInfo  {
-    distributionMediums : DistributionMediumEnum[];
+    distributionLoc : DistributionLoc;
     hashkey : string;
-    downloadURLs : string[];
-    accessURLs : string[];
-    fullText : FullText;
-    dataFormats : DataFormatInfo[];
-    characterEncodings : CharacterEncodingEnum[];
+    fullText : FullText2;
+    dataFormatInfo : DataFormatInfo;
+    characterEncoding : CharacterEncodingEnum;
     sizes : SizeInfo[];
     rightsInfo : RightsInfo;
     copyrightStatements : CopyrightStatement[];
@@ -324,13 +334,14 @@ export class DocumentInfo  {
     documentLanguages : Language[];
     subjects : Subject[];
     keywords : string[];
-    fundingProjects : ProjectInfo[];
+    fullText : FullText;
     abstracts : Abstract[];
+    fundingProjects : ProjectInfo[];
     sizes : SizeInfo[];
+    relations : Relations4;
 }
 
-export class DocumentMetadataRecord  {
-    metadataHeaderInfo : MetadataHeaderInfo;
+export class DocumentMetadataRecord extends BaseMetadataRecord {
     document : Document;
 }
 
@@ -356,6 +367,9 @@ export class Formalisms  {
 }
 
 export class FullText extends MyString {
+}
+
+export class FullText2 extends MyString {
 }
 
 export class GeographicCoverageInfo  {
@@ -422,8 +436,7 @@ export class Language  {
     variantId : VariantIdType;
 }
 
-export class LanguageDescription  {
-    metadataHeaderInfo : MetadataHeaderInfo;
+export class LanguageDescription extends BaseMetadataRecord {
     languageDescriptionInfo : LanguageDescriptionInfo;
 }
 
@@ -447,9 +460,11 @@ export class LanguageDescriptionInfo  {
     resourceCreationInfo : ResourceCreationInfo;
     distributionInfos : DatasetDistributionInfo[];
     languageDescriptionType : LanguageDescriptionTypeEnum;
+    modelOperationInfo : ModelOperationInfo;
     languageDescriptionEncodingInfo : LanguageDescriptionEncodingInfo;
     languageDescriptionOperationInfo : LanguageDescriptionOperationInfo;
     languageDescriptionPerformanceInfo : LanguageDescriptionPerformanceInfo;
+    relations : Relations3;
     languageDescriptionMediaType : LanguageDescriptionMediaType;
 }
 
@@ -473,7 +488,6 @@ export class LanguageDescriptionTextInfo  {
     lingualityInfo : LingualityInfo;
     languages : LanguageInfo[];
     metalanguages : LanguageInfo[];
-    modalities : ModalityInfo[];
     sizes : SizeInfo[];
     domains : DomainInfo[];
     timeClassifications : TimeCoverageInfo[];
@@ -493,19 +507,15 @@ export class LanguageVarietyInfo  {
     sizePerLanguageVariety : SizeInfo;
 }
 
-export class Lexical  {
-    metadataHeaderInfo : MetadataHeaderInfo;
+export class Lexical extends BaseMetadataRecord {
     lexicalConceptualResourceInfo : LexicalConceptualResourceInfo;
 }
 
 export class LexicalConceptualResourceEncodingInfo  {
-    encodingLevel : EncodingLevelEnum[];
-    linguisticInformation : LinguisticInformationEnum[];
+    contentTypes : ContentTypesEnum[];
     conformanceToStandardsBestPractices : ConformanceToStandardsBestPractices[];
     theoreticModel : string[];
     externalRef : string[];
-    extratextualInformation : ExtratextualInformationEnum[];
-    extraTextualInformationUnit : ExtraTextualInformationUnitEnum[];
 }
 
 export class LexicalConceptualResourceInfo  {
@@ -513,14 +523,15 @@ export class LexicalConceptualResourceInfo  {
     identificationInfo : IdentificationInfo;
     contactInfo : ContactInfo;
     versionInfo : VersionInfo;
+    distributionInfos : DatasetDistributionInfo[];
     validationInfos : ValidationInfo[];
     usageInfo : UsageInfo;
     resourceDocumentationInfo : ResourceDocumentationInfo;
     resourceCreationInfo : ResourceCreationInfo;
-    distributionInfos : DatasetDistributionInfo[];
     lexicalConceptualResourceType : LexicalConceptualResourceTypeEnum;
     lexicalConceptualResourceEncodingInfo : LexicalConceptualResourceEncodingInfo;
     lexicalConceptualResourceMediaType : LexicalConceptualResourceMediaType;
+    relations : RelationInfo[];
 }
 
 export class LexicalConceptualResourceMediaType  {
@@ -532,7 +543,6 @@ export class LexicalConceptualResourceTextInfo  {
     lingualityInfo : LingualityInfo;
     languages : LanguageInfo[];
     metalanguages : LanguageInfo[];
-    modalities : ModalityInfo[];
     sizes : SizeInfo[];
     domains : DomainInfo[];
     timeClassifications : TimeCoverageInfo[];
@@ -589,51 +599,15 @@ export class ModalityInfo  {
     sizePerModality : SizeInfo;
 }
 
-export class Model  {
-    metadataHeaderInfo : MetadataHeaderInfo;
-    modelInfo : ModelInfo;
-}
-
-export class ModelInfo  {
-    resourceType : string;
-    identificationInfo : IdentificationInfo;
-    contactInfo : ContactInfo;
-    versionInfo : VersionInfo;
-    validationInfos : ValidationInfo[];
-    usageInfo : UsageInfo;
-    resourceDocumentationInfo : ResourceDocumentationInfo;
-    resourceCreationInfo : ResourceCreationInfo;
-    distributionInfos : DatasetDistributionInfo[];
-    modelOperationInfo : ModelOperationInfo;
-    modelMediaType : ModelMediaType;
-}
-
-export class ModelMediaType  {
-    modelTextInfo : ModelTextInfo;
-}
-
 export class ModelOperationInfo  {
-    variantName : string;
-    tagset : string;
+    variant : string;
     typesystem : RelatedResource;
+    annotationSchema : RelatedResource;
     algorithm : string;
     algorithmDetails : string;
     trainingCorpusDetails : string;
+    tdmmethod : any;
 }
-
-export class ModelTextInfo  {
-    mediaType : string;
-    lingualityInfo : LingualityInfo;
-    languages : LanguageInfo[];
-    modalities : ModalityInfo[];
-    sizes : SizeInfo[];
-    domains : DomainInfo[];
-    timeClassifications : TimeCoverageInfo[];
-    geographicClassifications : GeographicCoverageInfo[];
-    creationInfo : CreationInfo;
-}
-
-
 
 export class Name extends MyString {
 }
@@ -743,8 +717,8 @@ export class ProjectInfo  {
     projectShortNames : ProjectShortName[];
     projectIdentifiers : ProjectIdentifier[];
     webpages : string[];
-    fundingTypes : FundingTypeEnum[];
     funders : OrganizationInfo[];
+    fundingTypes : FundingTypeEnum[];
     fundingProgramme : string;
     jurisdiction : string;
     fundingCountries : RegionIdType[];
@@ -792,8 +766,23 @@ export class RelatedResource  {
 
 export class RelationInfo  {
     relationType : RelationTypeEnum;
-    relatedResource1 : RelatedResource;
-    relatedResources : RelatedResource[];
+    relatedResource : RelatedResource;
+}
+
+export class Relations2  {
+    relationInfo : RelationInfo;
+}
+
+export class Relations3  {
+    relationInfo : RelationInfo;
+}
+
+export class Relations4  {
+    relationInfo : RelationInfo;
+}
+
+export class Relations5  {
+    relationInfo : RelationInfo;
 }
 
 export class RepositoryIdentifier  {
@@ -840,7 +829,6 @@ export class Result  {
     corpora : Order<Corpus>[];
     components : Order<Component>[];
     lexicalConceptualResources : Order<Lexical>[];
-    models : Order<Model>[];
     languageDescriptions : Order<LanguageDescription>[];
     total : number;
 }
@@ -971,6 +959,7 @@ export class Value extends Comparable<Value> {
 
 export class VersionInfo  {
     version : string;
+    versionDate : string;
     versionType : VersionTypeEnum;
     revision : string;
     lastDateUpdated : Date;
@@ -1010,9 +999,7 @@ export enum AnnotationLevelEnum {
 }
 
 export enum ApplicationType {
-    ALIGNMENT,
     ANNOTATION,
-    AVATAR_SYNTHESIS,
     BILINGUAL_LEXICON_INDUCTION,
     CONTRADICTION_DETECTION,
     DEPENDENCY_PARSING,
@@ -1024,6 +1011,7 @@ export enum ApplicationType {
     ENTITY_MENTION_RECOGNITION,
     EVENT_EXTRACTION,
     EXPRESSION_RECOGNITION,
+    EXTRACTION_OF_FUNDING_INFORMATION,
     INTRA_DOCUMENT_COREFERENCE_RESOLUTION,
     LANGUAGE_IDENTIFICATION,
     LANGUAGE_MODELLING,
@@ -1036,7 +1024,6 @@ export enum ApplicationType {
     LEXICON_FORMAT_CONVERSION,
     LEXICON_MERGING,
     LEXICON_VISUALIZATION,
-    LINGUISTIC_RESEARCH,
     MACHINE_TRANSLATION,
     MORPHOLOGICAL_ANALYSIS,
     MORPHOSYNTACTIC_ANNOTATION_B_POS_TAGGING,
@@ -1046,11 +1033,9 @@ export enum ApplicationType {
     OPINION_MINING,
     OTHER,
     PERSUASIVE_EXPRESSION_MINING,
-    PHRASE_ALIGNMENT,
     QUALITATIVE_ANALYSIS,
     QUESTION_ANSWERING,
     SEMANTIC_ROLE_LABELLING,
-    SENTENCE_ALIGNMENT,
     SENTENCE_SPLITTING,
     SHALLOW_PARSING,
     SPELL_CHECKING,
@@ -1060,8 +1045,9 @@ export enum ApplicationType {
     TEXT_MINING,
     TOKENIZATION,
     TOKENIZATION_AND_SENTENCE_SPLITTING,
-    TOPIC_DETECTION_TRACKING,
-    WORD_ALIGNMENT,
+    TOPIC_DETECTION,
+    TOPIC_DETECTION_AND_TRACKING,
+    TOPIC_MODELLING,
     TEXT_AND_DATA_MINING,
     CONTENT_MINING,
     TEXT_AND_DATA_ANALYTICS,
@@ -1425,10 +1411,61 @@ export enum ConformanceToStandardsBestPractices {
     OTHER
 }
 
+export enum ContentTypesEnum {
+    ACCENTUATION,
+    LEMMA,
+    LEMMA_MULTI_WORD_UNITS,
+    LEMMA_VARIANTS,
+    LEMMA_ABBREVIATIONS,
+    LEMMA_COMPOUNDS,
+    LEMMA_CLITIC_FORMS,
+    PART_OF_SPEECH,
+    MORPHO_FEATURES,
+    MORPHO_CASE,
+    MORPHO_GENDER,
+    MORPHO_NUMBER,
+    MORPHO_DEGREE,
+    MORPHO_IRREGULAR_FORMS,
+    MORPHO_MOOD,
+    MORPHO_TENSE,
+    MORPHO_PERSON,
+    MORPHO_ASPECT,
+    MORPHO_VOICE,
+    MORPHO_AUXILIARY,
+    MORPHO_INFLECTION,
+    MORPHO_REFLEXIVITY,
+    SYNTAX_SUBCAT_FRAME,
+    SEMANTICS_TRAITS,
+    SEMANTICS_SEMANTIC_CLASS,
+    SEMANTICS_CROSS_REFERENCES,
+    SEMANTICS_RELATIONS,
+    SEMANTICS_RELATIONS_HYPONYMS,
+    SEMANTICS_RELATIONS_HYPERONYMS,
+    SEMANTICS_RELATIONS_SYNONYMS,
+    SEMANTICS_RELATIONS_ANTONYMS,
+    SEMANTICS_RELATIONS_TROPONYMS,
+    SEMANTICS_RELATIONS_MERONYMS,
+    USAGE_FREQUENCY,
+    USAGE_REGISTER,
+    USAGE_COLLOCATIONS,
+    USAGE_EXAMPLES,
+    USAGE_NOTES,
+    DEFINITION_GLOSS,
+    TRANSLATION_EQUIVALENT,
+    SEMANTICS_DOMAIN,
+    SEMANTICS_EVENT_TYPE,
+    SEMANTICS_SEMANTIC_ROLES,
+    STATISTICAL_PROPERTIES,
+    MORPHO_DERIVATION,
+    SEMANTICS_QUALIA_STRUCTURE,
+    SYNTACTICO_SEMANTIC_LINKS,
+    OTHER
+}
+
 export enum DataFormatEnum {
     TEXT_PLAIN,
     APPLICATION_VND_XMI_XML,
-    TEXT_XML,
+    APPLICATION_XML,
     APPLICATION_X_XCES_XML,
     APPLICATION_TEI_XML,
     APPLICATION_RDF_XML,
@@ -1532,23 +1569,6 @@ export enum EvaluationTypeEnum {
     BLACK_BOX
 }
 
-export enum ExtraTextualInformationUnitEnum {
-    WORD,
-    LEMMA,
-    SEMANTICS,
-    EXAMPLE,
-    SYNTAX,
-    LEXICAL_UNIT,
-    OTHER
-}
-
-export enum ExtratextualInformationEnum {
-    IMAGES,
-    VIDEOS,
-    SOUND_RECORDINGS,
-    OTHER
-}
-
 export enum FrameworkEnum {
     UIMA,
     GATE,
@@ -1580,6 +1600,7 @@ export enum JournalIdentifierSchemeNameEnum {
 }
 
 export enum LanguageDescriptionTypeEnum {
+    ML_MODEL,
     GRAMMAR,
     OTHER
 }
@@ -1602,6 +1623,7 @@ export enum LexicalConceptualResourceTypeEnum {
     LEXICON,
     TYPESYSTEM,
     TAGSET,
+    ANNOTATION_SCHEME,
     MAPPING_OF_RESOURCES,
     OTHER
 }
@@ -1646,58 +1668,6 @@ export enum LingualityTypeEnum {
     MONOLINGUAL,
     BILINGUAL,
     MULTILINGUAL
-}
-
-export enum LinguisticInformationEnum {
-    ACCENTUATION,
-    LEMMA,
-    LEMMA_MULTI_WORD_UNITS,
-    LEMMA_VARIANTS,
-    LEMMA_ABBREVIATIONS,
-    LEMMA_COMPOUNDS,
-    LEMMA_CLITIC_FORMS,
-    PART_OF_SPEECH,
-    MORPHO_FEATURES,
-    MORPHO_CASE,
-    MORPHO_GENDER,
-    MORPHO_NUMBER,
-    MORPHO_DEGREE,
-    MORPHO_IRREGULAR_FORMS,
-    MORPHO_MOOD,
-    MORPHO_TENSE,
-    MORPHO_PERSON,
-    MORPHO_ASPECT,
-    MORPHO_VOICE,
-    MORPHO_AUXILIARY,
-    MORPHO_INFLECTION,
-    MORPHO_REFLEXIVITY,
-    SYNTAX_SUBCAT_FRAME,
-    SEMANTICS_TRAITS,
-    SEMANTICS_SEMANTIC_CLASS,
-    SEMANTICS_CROSS_REFERENCES,
-    SEMANTICS_RELATIONS,
-    SEMANTICS_RELATIONS_HYPONYMS,
-    SEMANTICS_RELATIONS_HYPERONYMS,
-    SEMANTICS_RELATIONS_SYNONYMS,
-    SEMANTICS_RELATIONS_ANTONYMS,
-    SEMANTICS_RELATIONS_TROPONYMS,
-    SEMANTICS_RELATIONS_MERONYMS,
-    USAGE_FREQUENCY,
-    USAGE_REGISTER,
-    USAGE_COLLOCATIONS,
-    USAGE_EXAMPLES,
-    USAGE_NOTES,
-    DEFINITION_GLOSS,
-    TRANSLATION_EQUIVALENT,
-    PHONETICS_TRANSCRIPTION,
-    SEMANTICS_DOMAIN,
-    SEMANTICS_EVENT_TYPE,
-    SEMANTICS_SEMANTIC_ROLES,
-    STATISTICAL_PROPERTIES,
-    MORPHO_DERIVATION,
-    SEMANTICS_QUALIA_STRUCTURE,
-    SYNTACTICO_SEMANTIC_LINKS,
-    OTHER
 }
 
 export enum MediaTypeEnum {
@@ -1849,7 +1819,7 @@ export enum PublicationIdentifierSchemeNameEnum {
 }
 
 export enum PublicationTypeEnum {
-    JOURAL_ARTICLE,
+    JOURNAL_ARTICLE,
     BACHELOR_THESIS,
     MASTER_THESIS,
     DOCTORAL_THESIS,
@@ -2201,7 +2171,7 @@ export enum RelationTypeEnum {
     IS_COMBINED_WITH,
     REQUIRES_LR,
     REQUIRES_SOFTWARE,
-    ISEXACT_MATCH,
+    IS_EXACT_MATCH,
     IS_SIMILAR_TO,
     IS_CONTINUATION_OF,
     IS_VERSION_OF,
@@ -2263,7 +2233,6 @@ export enum ResourceTypeEnum {
 
 export enum RightsStatementEnum {
     OPEN_ACCESS,
-    EMBARGOED_ACCESS,
     RESTRICTED_ACCESS
 }
 

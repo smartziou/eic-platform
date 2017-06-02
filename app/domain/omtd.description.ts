@@ -151,7 +151,7 @@ export var multiValueDesc = {
 
 export var resourceNameDesc = {
     desc : "Specifies the name (full title) by which the resource is known",
-    label : "resourceName",
+    label : "Resource Name",
     mandatory : true,
     recommended : false
 };
@@ -186,7 +186,7 @@ export var lexicalConceptualResourceTypeDesc = {
 
 export var publicDesc = {
     desc : "Declares whether the resource is meant for private use or can be publicly available through the registry",
-    label : "public",
+    label : "Public",
     mandatory : true,
     recommended : false
 };
@@ -327,7 +327,7 @@ export var languageDescriptionEncodingInfoDesc = {
 export var applicationFunctionDesc = {
     desc : "Specifies the type of an end-user application, in terms of the function/task it performs",
     label : "Type of application",
-    mandatory : false,
+    mandatory : true,
     recommended : false
 };
 
@@ -361,8 +361,8 @@ export var relationInfoDesc = {
 
 export var nonStandardLicenceNameDesc = {
     desc : "The name with which a licence is known; to be used for licences not included in the pre-defined list of licences",
-    label : "Name (for non-standard licences / terms of use)",
-    mandatory : false,
+    label : "Name",
+    mandatory : true,
     recommended : false
 };
 
@@ -424,8 +424,8 @@ export var mediaTypeDesc = {
 
 export var nonStandardLicenceTermsURLDesc = {
     desc : "Used to provide a hyperlink to a URL containing the text of a licence not included in the predefined list or describing the terms of use for a language resource or terms of service for web services",
-    label : "URL for non-standard licences / terms of use / terms of service",
-    mandatory : false,
+    label : "URL",
+    mandatory : true,
     recommended : false
 };
 
@@ -1929,7 +1929,7 @@ export var taskDesc = {
 
 export var frameworkDesc = {
     desc : "The framework used for developing and deploying the component",
-    label : "framework",
+    label : "Framework",
     mandatory : true,
     recommended : false
 };
@@ -1944,7 +1944,7 @@ export var journalTitleDesc = {
 export var commandDesc = {
     desc : "A command line used for the execution of a component",
     label : "Command",
-    mandatory : false,
+    mandatory : true,
     recommended : false
 };
 

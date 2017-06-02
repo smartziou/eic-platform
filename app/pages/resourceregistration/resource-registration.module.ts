@@ -20,7 +20,7 @@ import { EnumCommonForm } from "./shared/enum-common-form";
 import { ContactInfoFormControl } from "./shared/contact-info-form.component";
 import { SizeInfoFormControl } from "./shared/size-info-form.component";
 import { LingualityInfoFormControl } from "./shared/linguality-info-form.component";
-import { RightsInfoForm, LicenseInfosForm } from "./shared/rights-info-form.component";
+import { RightsInfoForm, LicenseInfoForm } from "./shared/rights-info-form.component";
 import { LanguageVarietyInfoFormControl } from "./shared/language-variety-info-form.component";
 import { LanguageInfoFormControl } from "./shared/language-info-form.component";
 import { DatasetDistributionsInfoFormControl } from "./shared/dataset-distribution-info-form.component";
@@ -34,6 +34,7 @@ import {ComponentGenericFormControl} from "./shared/componentGeneric.component";
 import {InlineFormWrapper} from "./myform/my-group.interface";
 import {ContactPersonFormControl} from "./shared/contactPerson.component";
 import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
+import {ComponentCreationInfoFormControl} from "./shared/componentCreationInfo.component";
 
 
 @NgModule({
@@ -52,6 +53,8 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         MyInlineArrayWrapper,
         MyStringFormGroup,
         IdentifierCommonFormControl,
+        ComponentDistributionInfoFormControl,
+        LicenseInfoForm
     ],
     declarations: [
         MyArrayWrapper,
@@ -61,6 +64,7 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         ContactPersonFormControl,
         MyArray,
         MyArrayInline,
+        ComponentCreationInfoFormControl,
         MyFormDirective,
         ExampleFormControl,
         MetadataIdentifierFormControl,
@@ -84,7 +88,7 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         LingualityInfoFormControl,
         ContactInfoFormControl,
         RightsInfoForm,
-        LicenseInfosForm,
+        LicenseInfoForm,
         LanguageVarietyInfoFormControl,
         LanguageInfoFormControl, 
         ZipUploadComponent,
@@ -102,6 +106,7 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         MyStringFormGroup,
         MyInlineArrayWrapper,
         VersionFormControl,
+        ComponentCreationInfoFormControl,
         ContactPersonFormControl,
         ComponentGenericFormControl,
         IdentifierCommonFormControl,
@@ -125,7 +130,7 @@ import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
         LingualityInfoFormControl,
         ContactInfoFormControl,
         RightsInfoForm,
-        LicenseInfosForm,
+        LicenseInfoForm,
         LanguageVarietyInfoFormControl,
         LanguageInfoFormControl, 
         ZipUploadComponent,

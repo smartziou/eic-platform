@@ -70,6 +70,10 @@ export class MyGroup implements OnInit {
         }
     }
 
+    public get valid() {
+        return this.group.valid;
+    }
+
 }
 
 @Component({

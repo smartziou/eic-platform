@@ -9,7 +9,9 @@
                 <identification-info-form [parentGroup]="myForm.controls.componentInfo" [name]="'identificationInfo'"></identification-info-form>
                 <contact-info-form [required]="true" [parentGroup]="myForm.controls.componentInfo" [name]="'contactInfo'"></contact-info-form>
                 <versionInfo-form [parentGroup]="myForm.controls.componentInfo" [name]="'versionInfo'"></versionInfo-form>
-                <component-distributions-info-form-common [group]="myForm.controls.componentInfo"></component-distributions-info-form-common>
+                <componentDistributionInfos-form [parentGroup]="myForm.controls.componentInfo">
+
+                </componentDistributionInfos-form>
                 <!--<example-form [name]="'example1'" [group]="myForm"></example-form>-->
 
 

@@ -24,7 +24,7 @@ export class TopMenuComponent {
         // if (!claims) return null;
         // return claims.given_name + ' ' + claims.family_name;
         let name = getCookie('name');
-        return name ? name.replace('|',' ') : null;
+        return name ? decodeURI(name) : null;
     }
 
     logIn() {

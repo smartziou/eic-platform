@@ -31,7 +31,7 @@ import {Description} from "../../../domain/omtd.description";
     styleUrls : ['../shared/templates/common.css']
 
 })
-export class MyArray extends MyGroup implements OnInit, AfterViewInit{
+export class MyArray extends MyGroup {
 
     @Input() public component : Type<MyGroup>;
 
@@ -91,16 +91,11 @@ export class MyArray extends MyGroup implements OnInit, AfterViewInit{
     }
 
     ngOnInit(): void {
+        // super.ngOnInit();
         this.viewContainerRef = this.formComponents.viewContainerRef;
         (<FormGroup>this.parentGroup).addControl(<string>this.name, this._fb.array([]));
         this.parentGroup.patchValue = this.patchValue();
-    }
-
-    ngAfterViewInit(): void {
-        let viewContainerRef = this.formComponents.viewContainerRef;
-        viewContainerRef.clear();
         this.createView();
-
     }
 
     protected patchValue() {

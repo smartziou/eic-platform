@@ -1,7 +1,9 @@
 <accordion-group #group1 [panelClass]="customClass"
                  [isOpen]="true" [panelClass]="group.valid ? 'panel-success' : 'panel-danger'">
     <div accordion-heading>
-        <span>Identification Info
+        <span>
+            <i class="fa fa" [ngClass]="valid ? 'fa-check':'fa-exclamation'" aria-hidden="true"></i>
+            Identification Info
             <i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>
         </span>
     </div>
