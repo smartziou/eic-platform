@@ -48,9 +48,9 @@
     color: #bbbbbb;
 }
 
-.uk-pagination > li > a {
-    color: #666666;
-}
+/*.uk-pagination > li > a {*/
+    /*color: #666666;*/
+/*}*/
 
 .resourceTypeIcon {
     background: none;
@@ -179,3 +179,21 @@ input.searchTextBox, input.searchTextBox:focus, input.searchTextBox:active  {
 }
 
 /******************************************************************/
+
+.search_box_bg .uk-button-default {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.resultsPageLabel {
+    margin-top: -40px;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 300;
+    color: #9f9b9b;
+    text-transform: uppercase;
+}
+
+

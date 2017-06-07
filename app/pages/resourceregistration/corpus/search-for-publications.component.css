@@ -61,7 +61,8 @@
 }
 
 .totalPublications h3 {
-    color: #004DB0;
+    /*color: #004DB0;*/
+    font-weight: 400;
 }
 
 .searchBoxContainer {
@@ -188,3 +189,9 @@ input.searchTextBox, input.searchTextBox:focus, input.searchTextBox:active  {
 }
 
 /******************************************************************/
+
+.search_box_bg .uk-button-default {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
