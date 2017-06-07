@@ -2,22 +2,15 @@
     <h5>{{model.value}} - {{ model.key }}</h5>
 </template>
 
-<div [formGroup]="parentForm">
-    <!--<div class="form-group">-->
-        <!--<label class="col-sm-2 control-label">{{languageTagDesc.label}}</label>-->
-        <!--<div class="col-sm-10 col-md-9"  >-->
-            <!---->
-        <!--</div>-->
-    <!--</div>-->
-    <input type="hidden" class="form-control" formControlName="languageTag" placeholder="Language Tag">
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{languageIdDesc.label}}</label>
-        <div class="col-sm-2 col-md-2" [ngClass]="{'has-error':!parentForm.controls.languageTag.valid}">
+<div [formGroup]="group">
+    <form-inline [description]="languageIdDesc">
+        <input type="hidden" class="form-control" formControlName="languageTag" placeholder="Language Tag">
+        <div class="col-sm-2 col-md-2" [ngClass]="{'has-error':!group.controls.languageTag.valid}">
             <input type="text" class="form-control" placeholder="Language id" formControlName="languageId"
 
                    [typeahead]="languageIdEnum"
                    [typeaheadItemTemplate]="customItemTemplate"
-                   (typeaheadOnSelect)="setLangiageId($event)"
+                   (typeaheadOnSelect)="setLanguageId($event)"
                    [typeaheadOptionField]="'value'">
         </div>
         <div class="col-sm-2 col-md-2">
@@ -41,5 +34,5 @@
                 </option>
             </select>
         </div>
-    </div>
+    </form-inline>
 </div>
