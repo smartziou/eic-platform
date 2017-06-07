@@ -6,9 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from "./pages/search/search.component";
-import { SupportComponent } from "./pages/support/support.component";
-import { ComponentLandingPageComponent } from "./pages/landingpages/component/component-landing-page.component";
-import { CorpusLandingPageComponent } from "./pages/landingpages/corpus/corpus-landing-page.component";
 import { LoginComponent } from "./pages/user/signin/login.component";
 import { RegisterComponent } from "./pages/user/register/register.component";
 import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.component";
@@ -25,16 +22,16 @@ const appRoutes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'support',
-        component: SupportComponent
-    },
-    {
         path: 'login',
         component: LoginComponent
     },
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'search',
+        component: SearchComponent
     },
     {
         path: 'search',

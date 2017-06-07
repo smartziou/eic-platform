@@ -4,7 +4,7 @@
 
     <div class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle"
          style="background-image: url('./imgs/omtd_home_2.jpeg'); box-sizing: border-box; height: 150px">
-        <div class="uk-position-cover"></div>
+        <!--<div class="uk-position-cover"></div>-->
         <div class="uk-width-1-1">
             <div class="uk-position-relative">
                 <div class="uk-container uk-margin-medium">
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    
+
     <div id="tm-main" class="tm-main uk-section uk-section-default" uk-height-viewport="expand: true" style="box-sizing: border-box;">
         <div class="uk-container">
 
@@ -100,7 +100,8 @@
                         </div>
 
                         <div class="uk-align-right uk-margin-top">
-                            <button class="uk-button uk-button-large uk-button-primary" (click)="buildCorpus()">Build corpus!</button>
+                            <!--<button class="uk-button uk-button-large uk-button-primary" (click)="buildCorpus()">Build corpus!</button>-->
+                            <button class="uk-button uk-button-primary" (click)="buildCorpus()">Build corpus!</button>
                         </div>
 
                     </div>
@@ -108,90 +109,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-    <!--<div class="uk-block tm-block-main uk-block-default uk-block-large">-->
-        <!--<div class="uk-container uk-container-center">-->
-            <!--<div data-uk-grid-margin="" data-uk-grid-match="" class="tm-middle uk-grid" id="tm-middle">-->
-                <!--<div class="tm-main uk-width-medium-1-1 uk-row-first">-->
-                    <!--<main class="tm-content" id="tm-content">-->
-                        <!--<div id="system-message-container">-->
-                        <!--</div>-->
-                        <!--<article class="uk-article">-->
-
-                            <!--<div class="uk-grid uk-margin-large-top">-->
-                                <!--<aside class="tm-sidebar-a uk-width-medium-1-4" style="min-height: 1217px;">-->
-
-                                    <!--<div *ngIf="publicationSearchResults && publicationSearchResults.facets && publicationSearchResults.facets.length>0"-->
-                                         <!--class="uk-panel uk-panel-box refines">-->
-
-                                        <!--<h3 class="uk-panel-title">Limit your search</h3>-->
-
-                                        <!--<div class="refineCategory uk-grid-margin" *ngFor="let facet of publicationSearchResults.facets">-->
-                                            <!--<read-more [maxHeight]="245">-->
-                                                <!--<span>{{facet.label}}</span>-->
-                                                <!--<div class="refineOption" *ngFor="let facetValue of facet.values">-->
-                                                    <!--<input type="checkbox" name="vehicle" value="Bike" data-md-icheck-->
-                                                           <!--(change)="onSelection($event, facet.field, facetValue.value)"-->
-                                                           <!--[checked]="facetValue.isChecked">-->
-                                                    <!--{{facetValue.value}}-->
-                                                    <!--<span>({{facetValue.count}})</span>-->
-                                                <!--</div>-->
-                                            <!--</read-more>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-
-                                <!--</aside>-->
-
-                                <!--<div *ngIf="errorMessage" class="uk-width-medium-3-4">-->
-                                    <!--<div data-uk-alert="" class="uk-alert uk-alert-danger">-->
-                                        <!--<p>{{errorMessage}}</p>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-
-                                <!--<div *ngIf="!errorMessage && publicationSearchResults" class="uk-width-medium-3-4">-->
-
-                                    <!--<div *ngIf="!foundResults">-->
-                                        <!--<div data-uk-alert="" class="uk-alert uk-alert-warning">-->
-                                            <!--<p>No results found</p>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-
-                                    <!--<div *ngIf="foundResults" class="uk-margin-left">-->
-                                        <!--<div class="uk-margin uk-grid uk-panel uk-panel-box uk-panel-box-primary totalPublications">-->
-                                            <!--<h3>We found a total of {{publicationSearchResults.totalHits}} publications.</h3>-->
-                                        <!--</div>-->
-
-                                        <!--<div *ngIf="publicationSources && publicationSources.values && publicationSources.values.length>0"-->
-                                             <!--class="uk-margin uk-grid uk-panel uk-panel-box uk-panel-box-primary sourcesList">-->
-                                            <!--<ul class="uk-list">-->
-                                                <!--<li *ngFor="let source of publicationSources.values">-->
-                                                    <!--<h4>{{source.count}} publications from {{source.value}}</h4>-->
-                                                <!--</li>-->
-                                            <!--</ul>-->
-                                        <!--</div>-->
-
-                                    <!--</div>-->
-
-                                    <!--<div class="uk-margin-left">-->
-                                        <!--<div class="uk-align-right uk-margin-top"><button class="uk-button uk-button-large-->
-                                        <!--uk-button-primary" (click)="buildCorpus()">Build corpus!</button></div>-->
-                                    <!--</div>-->
-
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</article>-->
-                    <!--</main>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
 </div>
