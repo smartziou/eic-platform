@@ -95,9 +95,7 @@ import { ComponentCreationInfoFormControl } from "./shared/componentCreationInfo
         ComponentDistributionInfoFormControl,
         ComponentDistributionsInfoFormControl,
     ],
-    providers: [
-        ResourceService
-    ],
+    
     exports: [
         MyArrayWrapper,
         InlineFormWrapper,

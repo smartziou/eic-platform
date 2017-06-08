@@ -68,6 +68,82 @@ export class ResourceService {
             .catch(this.handleError);
     }
 
+    searchForApplications(urlParameters: URLParameter[]) {
+
+        var searchQuery = '';
+        var counter = 0;
+        for (let urlParameter of urlParameters) {
+
+            if(counter === 0)
+                searchQuery += '?';
+
+            if(urlParameter.key === 'query') {
+                searchQuery += 'keyword=' + urlParameter.values[0];
+            } else {
+                var valuesCounter = 0;
+                for(let value of urlParameter.values) {
+                    if(valuesCounter!=0)
+                        searchQuery += '&';
+                    searchQuery += urlParameter.key + '=' + value;
+                    valuesCounter++;
+                }
+            }
+
+            if(counter != urlParameters.length-1)
+                searchQuery += '&';
+
+            counter++;
+        }
+
+        if(urlParameters.length==0) {
+            searchQuery += '?resourceType=component&advanced=false';
+        } else {
+            searchQuery += '&resourceType=component&advanced=false';
+        }
+
+        return this.http.get(this._searchUrl + searchQuery)
+            .map(res => <SearchResults> res.json())
+            .catch(this.handleError);
+    }
+
+    searchForCorpora(urlParameters: URLParameter[]) {
+
+        var searchQuery = '';
+        var counter = 0;
+        for (let urlParameter of urlParameters) {
+
+            if(counter === 0)
+                searchQuery += '?';
+
+            if(urlParameter.key === 'query') {
+                searchQuery += 'keyword=' + urlParameter.values[0];
+            } else {
+                var valuesCounter = 0;
+                for(let value of urlParameter.values) {
+                    if(valuesCounter!=0)
+                        searchQuery += '&';
+                    searchQuery += urlParameter.key + '=' + value;
+                    valuesCounter++;
+                }
+            }
+
+            if(counter != urlParameters.length-1)
+                searchQuery += '&';
+
+            counter++;
+        }
+
+        if(urlParameters.length==0) {
+            searchQuery += '?resourceType=corpus';
+        } else {
+            searchQuery += '&resourceType=corpus';
+        }
+
+        return this.http.get(this._searchUrl + searchQuery)
+            .map(res => <SearchResults> res.json())
+            .catch(this.handleError);
+    }
+
     getCorpus(id: string) {
         return this.http.get(this._resourcesUrl + "corpus/" + id)
             .map(res => <OMTDCorpus> res.json())

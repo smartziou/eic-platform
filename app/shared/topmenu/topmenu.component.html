@@ -272,7 +272,7 @@
                             <!-- Panel top -->
                             <div *ngIf="!oAuthService.isUserLoggedIn" class="btl-panel" style="float: right;">
                                 <!-- Login button -->
-			                    <span style="color: rgb(255, 255, 255); background-color: rgb(45, 114, 214); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">
+			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">
 			                        <a class="loginLink" [href]="oidcUrl"> SIGN IN   </a>
                                 </span>
                                 |
@@ -282,12 +282,12 @@
                             <!-- Panel top -->
                             <div *ngIf="oAuthService.isUserLoggedIn" class="btl-panel" style="float: right;">
                                 <!-- Login button -->
-			                    <span style="color: rgb(255, 255, 255); background-color: rgb(45, 114, 214); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
+			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
 			                        <a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT {{oAuthService.getLoggedInUser}}</a>
                                 </span>
                                 |
                                 <!-- Registration button -->
-                                <span style="color: rgb(255, 255, 255); background-color: rgb(45, 114, 214); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
+                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
 			                        <a [href]="'https://aai.openminted.eu/registry/auth/logout'" routerLinkActive="uk-active" class="loginLink">LOG OUT</a>
                                 </span>
                             </div>

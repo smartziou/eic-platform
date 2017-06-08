@@ -1,11 +1,52 @@
+<div class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle"
+     style="background-image: url('./imgs/omtd_home_2.jpeg'); box-sizing: border-box; height: 150px">
+    <div class="uk-width-1-1">
+        <div class="uk-position-relative">
+            <div class="uk-container uk-margin-medium">
+                <div class="search_box_bg uk-grid-large uk-flex-middle uk-grid uk-grid-stack" uk-grid="">
+                    <div class="uk-width-1-1@m uk-first-column">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="uk-section-default uk-section uk-section-small uk-padding-remove-bottom" style="min-height: 325px">
     <div class="uk-container">
-        <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
-            <div class="uk-width-1-1@m uk-first-column">
-                <h1>Run an application</h1>
-                <div class="uk-margin uk-text-lead">
-                    Coming soon....
+        <div class="uk-container uk-container-small uk-margin-large">
+            <div uk-grid="" class="uk-grid uk-grid-stack">
+                <div class="uk-width-1-1@m uk-first-column">
+                    <h2 class="uk-text-center uk-h5 uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
+                        Run an application
+                    </h2>
+                    <hr class="uk-scrollspy-inview uk-animation-slide-top-medium" style="" uk-scrollspy-class="">
                 </div>
+            </div>
+        </div>
+        <div class="uk-margin-medium uk-grid uk-margin-large-bottom" uk-grid="">
+            <div class="uk-width-1-5@m uk-first-column placeholderGrid" style="height: 200px">
+                <a style="height: 100%" (click)="selectInput()">
+                    <div class="uk-placeholder uk-text-center" style="height: 100%">Select an Input</div>
+                </a>
+            </div>
+            <div class="uk-width-1-5@m placeholderGrid" style="text-align: center; height: 200px; line-height: 200px">
+                <i aria-hidden="true" class="fa fa-plus fa-3x" style="vertical-align: middle;"></i>
+            </div>
+            <div class="uk-width-1-5@m placeholderGrid" style="height: 200px">
+                <a style="height: 100%" (click)="selectApplication()">
+                    <div class="uk-placeholder uk-text-center" style="height: 100%">Select an Application</div>
+                </a>
+            </div>
+            <div class="uk-width-1-5@m placeholderGrid" style="text-align: center; height: 200px; line-height: 200px">
+                <i aria-hidden="true" class="fa fa-arrow-right fa-3x" style="vertical-align: middle;"></i>
+            </div>
+            <div class="uk-width-1-5@m placeholderGrid uk-disabled" style="height: 200px">
+                <a style="height: 100%">
+                    <div class="uk-placeholder uk-text-center" style="height: 100%">Output</div>
+                </a>
             </div>
         </div>
     </div>
