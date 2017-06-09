@@ -19,7 +19,7 @@ import { SearchQuery } from "../../../domain/search-query";
 
 export class BrowseCorporaComponent {
 
-    private searchApplicationsForm: FormGroup;
+    private searchCorporaForm: FormGroup;
     private errorMessage: string;
     private sub: Subscription;
 
@@ -41,7 +41,7 @@ export class BrowseCorporaComponent {
 
     constructor(private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private resourceService: ResourceService) {
-        this.searchApplicationsForm = fb.group({
+        this.searchCorporaForm = fb.group({
             "query": [""],
         });
     }
@@ -113,7 +113,7 @@ export class BrowseCorporaComponent {
         //update form values using URLParameters
         for (let urlParameter of this.urlParameters) {
             if(urlParameter.key === 'query') {
-                this.searchApplicationsForm.get('query').setValue(urlParameter.values[0]);
+                this.searchCorporaForm.get('query').setValue(urlParameter.values[0]);
             } else {
                 for(let facet of this.searchResults.facets) {
                     if(facet.field === urlParameter.key) {
