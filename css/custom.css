@@ -242,7 +242,9 @@
     color: #767779;
 }
 
-
+.uk-tab::before {
+    border-bottom: 1px solid #e5e5e5;
+}
 
 
 

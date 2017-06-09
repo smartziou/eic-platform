@@ -73,14 +73,6 @@ export class RunApplicationComponent {
             });
     }
 
-    selectInput() {
-        this.router.navigate(['/browseCorpora']);
-    }
-
-    selectApplication() {
-        this.router.navigate(['/browseApplications']);
-    }
-
     handleError(error) {
         this.errorMessage = 'System error loading resource (Server responded: ' + error + ')';
     }

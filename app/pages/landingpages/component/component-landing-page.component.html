@@ -1,142 +1,169 @@
-<div class="uk-block tm-block-main uk-block-default uk-block-large">
-    <div class="uk-container uk-container-center">
-        <div data-uk-grid-margin="" data-uk-grid-match="" class="tm-middle uk-grid" id="tm-middle">
-            <div class="tm-main uk-width-medium-1-1 uk-row-first">
-                <main class="tm-content" id="tm-content">
+<div id="tm-main" class="tm-main uk-section uk-section-default" uk-height-viewport="expand: true" style="box-sizing: border-box;">
+    <div class="uk-container">
+        <div class="uk-grid" uk-grid="">
 
-                    <div *ngIf="errorMessage" data-uk-alert="" class="uk-alert uk-alert-danger">
+            <template [ngIf]="errorMessage">
+                <div class="uk-width-expand@m uk-first-column">
+                    <div data-uk-alert="" class="uk-alert uk-alert-danger">
                         <p>{{errorMessage}}</p>
                     </div>
+                </div>
+            </template>
 
-                    <div *ngIf="component && !errorMessage">
-                        <!--<div id="system-message-container">-->
-                        <!--</div>-->
-                        <div class="yoo-zoo">
+            <template [ngIf]="component && !errorMessage">
 
-                            <div class="uk-align-medium-right">
-                                <div class="uk-grid-margin uk-row-first">
-                                    <!--<button class="uk-button uk-button-large uk-button-secondary" (click)="goBack()">-->
-                                        <!--<i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back</button>-->
-                                </div>
-                            </div>
+                <div class="uk-width-1-1 uk-row-first uk-clearfix">
+                    <h2 class="uk-h2 uk-inline" *ngIf="component.componentInfo.identificationInfo.resourceNames
+                        && component.componentInfo.identificationInfo.resourceNames.length>0">
+                        {{component.componentInfo.identificationInfo.resourceNames[0].value}}
+                    </h2>
 
-                            <h2 class="uk-h2" *ngIf="component.componentInfo.identificationInfo.resourceNames
-                            && component.componentInfo.identificationInfo.resourceNames.length>0">
-                                {{component.componentInfo.identificationInfo.resourceNames[0].value}}
-                            </h2>
+                    <button class="uk-button uk-button-primary uk-float-right" (click)="process()">
+                        Process
+                    </button>
+                </div>
 
-                            <ul class="uk-subnav uk-subnav-line">
-                                <li *ngIf="component.componentInfo.identificationInfo.resourceShortNames
-                                && component.componentInfo.identificationInfo.resourceShortNames.length>0"
-                                    class="element element-text">
-                                    <strong>{{component.componentInfo.identificationInfo.resourceShortNames[0].value}} </strong> </li>
-                            </ul>
+                <div class="uk-width-expand@m uk-first-column">
 
-                            <div class="resourceIdentifiers" *ngIf="component.componentInfo.identificationInfo.identifiers
-                            && component.componentInfo.identificationInfo.identifiers.length>0">
-                                <div *ngFor="let identifier of component.componentInfo.identificationInfo.identifiers">
-                                    <a href="{{identifier.value}}" target="_blank">{{identifier.value}}</a>
-                                </div>
-                            </div>
+                    <ul class="uk-subnav">
+                        <li *ngIf="component.componentInfo.identificationInfo.resourceShortNames
+                            && component.componentInfo.identificationInfo.resourceShortNames.length>0"
+                            class="element element-text">
+                            <strong>{{component.componentInfo.identificationInfo.resourceShortNames[0].value}} </strong> </li>
+                    </ul>
 
-                            <div class="uk-margin">
-                                <div data-uk-grid-margin="" class="uk-grid">
-
-                                    <div class="uk-width-medium-3-4 uk-row-first">
-
-                                        <div class="uk-panel uk-panel-box resourceGeneralInfo">
-                                            <div class="uk-thumbnail uk-align-medium-right">
-                                                <img width="80" height="80" alt="Logo" src="/imgs/yourLogoHere.jpg">
-                                            </div>
-
-                                            <div class="uk-nbfc">
-                                                <!--<h2 class="uk-panel-title uk-margin-top-remove">Description </h2>-->
-                                                <ul class="uk-list" *ngIf="component.componentInfo.identificationInfo.descriptions
-                                                    && component.componentInfo.identificationInfo.descriptions.length>0">
-                                                    <li *ngFor="let description of component.componentInfo.identificationInfo.descriptions; let isFirst = first;"
-                                                        [class.uk-margin-top]="!isFirst">
-                                                        {{description.value}}
-                                                    </li>
-                                                </ul>
-                                                <ul *ngIf="component.componentInfo.componentTypes" class="uk-subnav uk-subnav-line componentTypes">
-                                                    <li *ngFor="let componentType of component.componentInfo.componentTypes" class="element element-text">
-                                                        <strong>{{componentType}} </strong> </li>
-                                                </ul>
-                                                <version-info *ngIf="component.componentInfo.versionInfo"
-                                                              [versionInfo]="component.componentInfo.versionInfo">
-                                                </version-info>
-                                                <resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo"
-                                                                             [resourceDocumentationInfo]="component.componentInfo.resourceDocumentationInfo">
-                                                </resource-documentation-info>
-                                            </div>
-
-                                        </div>
-
-                                        <tabset class="infoTabs">
-                                            <tab *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0"
-                                                 heading="Distribution" class="infoTab">
-                                                <component-distribution-info *ngFor="let distributionInfo of component.componentInfo.distributionInfos"
-                                                                 [componentDistributionInfo]="distributionInfo"></component-distribution-info>
-                                            </tab>
-                                            <tab *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0"
-                                                 heading="Validation" class="infoTab">
-                                                <validation-info *ngFor="let validationInfo of component.componentInfo.validationInfos"
-                                                                 [validationInfo]="validationInfo"></validation-info>
-                                            </tab>
-                                            <tab *ngIf="component.componentInfo.usageInfo"
-                                                 heading="Usage" class="infoTab">
-                                                <usage-info [usageInfo]="component.componentInfo.usageInfo"></usage-info>
-                                            </tab>
-                                            <tab *ngIf="component.componentInfo.inputContentResourceInfo || component.componentInfo.outputResourceInfo"
-                                                 heading="Input / Output" class="infoTab">
-                                                <div *ngIf="component.componentInfo.inputContentResourceInfo">
-                                                    <h4>Input</h4>
-                                                    <processing-resource-info [processingResourceInfo]="component.componentInfo.inputContentResourceInfo"></processing-resource-info>
-                                                </div>
-                                                <div *ngIf="component.componentInfo.outputResourceInfo" class="uk-margin-top">
-                                                    <h4>Output</h4>
-                                                    <processing-resource-info [processingResourceInfo]="component.componentInfo.outputResourceInfo"></processing-resource-info>
-                                                </div>
-                                            </tab>
-                                            <tab *ngIf="component.componentInfo.componentDependencies"
-                                                 heading="Dependencies" class="infoTab">
-                                                <component-dependencies [componentDependencies]="component.componentInfo.componentDependencies"></component-dependencies>
-                                            </tab>
-                                            <tab *ngIf="component.componentInfo.componentEvaluationInfo"
-                                                 heading="Evaluation" class="infoTab">
-                                                <component-evaluation-info [componentEvaluationInfo]="component.componentInfo.componentEvaluationInfo"></component-evaluation-info>
-                                            </tab>
-                                            <tab *ngIf="component.componentInfo.componentCreationInfo"
-                                                 heading="Creation" class="infoTab">
-                                                <component-creation-info [componentCreationInfo]="component.componentInfo.componentCreationInfo"></component-creation-info>
-                                            </tab>
-                                        </tabset>
-
-                                        <!--<h3>Directions</h3><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div><div class="uk-margin">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>-->
-                                    </div>
-
-                                    <div class="uk-width-medium-1-4 resourceSideInfo">
-
-                                        <div *ngIf="component.componentInfo.contactInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
-                                            <contact-info [contactInfo]="component.componentInfo.contactInfo"></contact-info>
-                                        </div>
-
-                                        <div *ngIf="component.componentInfo.resourceCreationInfo" class="uk-panel uk-panel-box uk-panel-box-blue">
-                                            <resource-creation-info [resourceCreationInfo]="component.componentInfo.resourceCreationInfo"></resource-creation-info>
-                                        </div>
-
-                                        <!--<div *ngIf="component.metadataHeaderInfo" class="uk-panel uk-panel-box uk-panel-box-blue">-->
-                                            <!--<metadata-header-info [metadataHeaderInfo]="component.metadataHeaderInfo"></metadata-header-info>-->
-                                        <!--</div>-->
-
-                                    </div>
-
-                                </div>
-                            </div>
+                    <div class="resourceIdentifiers" *ngIf="component.componentInfo.identificationInfo.identifiers
+                        && component.componentInfo.identificationInfo.identifiers.length>0">
+                        <div *ngFor="let identifier of component.componentInfo.identificationInfo.identifiers">
+                            <a href="{{identifier.value}}" target="_blank">{{identifier.value}}</a>
                         </div>
                     </div>
-                </main>
-            </div>
+
+                    <ul class="uk-list" *ngIf="component.componentInfo.identificationInfo.descriptions
+                                                && component.componentInfo.identificationInfo.descriptions.length>0">
+                        <li *ngFor="let description of component.componentInfo.identificationInfo.descriptions; let isFirst = first;"
+                            [class.uk-margin-top]="!isFirst" class="uk-text-justify">
+                            {{description.value}}
+                        </li>
+                    </ul>
+                    <ul *ngIf="component.componentInfo.componentTypes" class="uk-subnav uk-subnav-line componentTypes">
+                        <li *ngFor="let componentType of component.componentInfo.componentTypes" class="element element-text uk-margin-right">
+                            <strong>{{componentType}} </strong> </li>
+                    </ul>
+                    <version-info *ngIf="component.componentInfo.versionInfo"
+                                  [versionInfo]="component.componentInfo.versionInfo">
+                    </version-info>
+                    <resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo"
+                                                 [resourceDocumentationInfo]="component.componentInfo.resourceDocumentationInfo">
+                    </resource-documentation-info>
+
+
+
+                    <!--TABS-->
+                    <ul class=" uk-tab uk-visible@m" uk-tab="connect: #infoTabs; animation: uk-animation-fade">
+                        <li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">
+                            <a>Distribution</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">
+                            <a>Validations</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.usageInfo">
+                            <a>Usage</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.inputContentResourceInfo || component.componentInfo.outputResourceInfo">
+                            <a>Input/Output</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentDependencies">
+                            <a>Dependencies</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentEvaluationInfo">
+                            <a>Evaluation</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentCreationInfo">
+                            <a>Creation</a>
+                        </li>
+                    </ul>
+
+                    <button class="uk-button uk-button-default uk-hidden@m" type="button">
+                        <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">{{activeTab}}</span>
+                    </button>
+
+                    <ul id="toggle-small-tabs" class="uk-subnav uk-subnav-pill uk-dropdown uk-hidden@m" uk-switcher="{connect: #infoTabs; animation: uk-animation-fade}" uk-dropdown="mode: click" uk-toggle="target: #toggle-small-tabs">
+                        <li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">
+                            <a>Distribution</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">
+                            <a>Validations</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.usageInfo">
+                            <a>Usage</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.inputContentResourceInfo || component.componentInfo.outputResourceInfo">
+                            <a>Input/Output</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentDependencies">
+                            <a>Dependencies</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentEvaluationInfo">
+                            <a>Evaluation</a>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentCreationInfo">
+                            <a>Creation</a>
+                        </li>
+                    </ul>
+
+                    <ul id="infoTabs" class="uk-switcher  uk-width-1-1 uk-margin-top custom-tab-content-large">
+                        <li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">
+                            <component-distribution-info *ngFor="let distributionInfo of component.componentInfo.distributionInfos"
+                                                         [componentDistributionInfo]="distributionInfo"></component-distribution-info>
+                        </li>
+                        <li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">
+                            <validation-info *ngFor="let validationInfo of component.componentInfo.validationInfos"
+                                             [validationInfo]="validationInfo"></validation-info>
+                        </li>
+                        <li *ngIf="component.componentInfo.usageInfo">
+                            <usage-info [usageInfo]="component.componentInfo.usageInfo"></usage-info>
+                        </li>
+                        <li *ngIf="component.componentInfo.inputContentResourceInfo || component.componentInfo.outputResourceInfo">
+                            <div *ngIf="component.componentInfo.inputContentResourceInfo">
+                                <h4>Input</h4>
+                                <processing-resource-info [processingResourceInfo]="component.componentInfo.inputContentResourceInfo"></processing-resource-info>
+                            </div>
+                            <div *ngIf="component.componentInfo.outputResourceInfo" class="uk-margin-top">
+                                <h4>Output</h4>
+                                <processing-resource-info [processingResourceInfo]="component.componentInfo.outputResourceInfo"></processing-resource-info>
+                            </div>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentDependencies">
+                            <component-dependencies [componentDependencies]="component.componentInfo.componentDependencies"></component-dependencies>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentEvaluationInfo">
+                            <component-evaluation-info [componentEvaluationInfo]="component.componentInfo.componentEvaluationInfo"></component-evaluation-info>
+                        </li>
+                        <li *ngIf="component.componentInfo.componentCreationInfo">
+                            <component-creation-info [componentCreationInfo]="component.componentInfo.componentCreationInfo"></component-creation-info>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <!--SIDEBAR-->
+                <div class="tm-sidebar uk-width-1-4@m">
+
+                    <div *ngIf="component.componentInfo.contactInfo" class="uk-card uk-card-body uk-card-default sidemenu">
+                        <contact-info [contactInfo]="component.componentInfo.contactInfo"></contact-info>
+                    </div>
+
+                    <div *ngIf="component.componentInfo.resourceCreationInfo" class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top">
+                        <resource-creation-info [resourceCreationInfo]="component.componentInfo.resourceCreationInfo"></resource-creation-info>
+                    </div>
+                </div>
+
+            </template>
+
+
+
+
         </div>
     </div>
 </div>

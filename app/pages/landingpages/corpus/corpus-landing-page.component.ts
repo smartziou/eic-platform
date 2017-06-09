@@ -51,4 +51,20 @@ export class CorpusLandingPageComponent implements OnInit {
     handleError(error) {
         this.errorMessage = 'System error loading corpus (Server responded: ' + error + ')';
     }
+
+    process() {
+
+        sessionStorage.setItem('runApplication.input', this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value);
+
+        var map: { [name: string]: string; } = { };
+
+        if(sessionStorage.getItem('runApplication.input')) {
+            map['input'] = sessionStorage.getItem('runApplication.input');
+        }
+        if(sessionStorage.getItem('runApplication.application')) {
+            map['application'] = sessionStorage.getItem('runApplication.application');
+        }
+
+        this.router.navigate(['/runApplication', map]);
+    }
 }

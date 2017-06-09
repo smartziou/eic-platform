@@ -28,7 +28,7 @@
         </div>
         <div class="uk-margin-medium uk-grid uk-margin-large-bottom" uk-grid="">
             <div class="uk-width-1-5@m uk-first-column placeholderGrid" style="height: 200px">
-                <a style="height: 100%" (click)="selectInput()">
+                <a style="height: 100%" [routerLink]="['/browseCorpora']">
                     <div class="uk-placeholder uk-text-center" style="height: 100%">Select an Input</div>
                 </a>
             </div>
@@ -36,7 +36,7 @@
                 <i aria-hidden="true" class="fa fa-plus fa-3x" style="vertical-align: middle;"></i>
             </div>
             <div class="uk-width-1-5@m placeholderGrid" style="height: 200px">
-                <a style="height: 100%" (click)="selectApplication()">
+                <a style="height: 100%" [routerLink]="['/browseApplications']">
                     <div class="uk-placeholder uk-text-center" style="height: 100%">Select an Application</div>
                 </a>
             </div>
