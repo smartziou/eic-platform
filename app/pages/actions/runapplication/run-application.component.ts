@@ -53,19 +53,20 @@ export class RunApplicationComponent {
                     }
                 }
 
-                console.log(this.urlParameters);
+                sessionStorage.removeItem('runApplication.input');
+                sessionStorage.removeItem('runApplication.application');
 
                 //request selected resources from the registry
                 for (let urlParameter of this.urlParameters) {
-                    if(urlParameter.key === 'corpus') {
+                    if(urlParameter.key === 'input') {
                         sessionStorage.setItem(urlParameter.key, urlParameter.values[0]);
-                        this.resourceService.getCorpus(urlParameter.values[0]).subscribe(
+                        this.resourceService.getCorpus(btoa(urlParameter.values[0])).subscribe(
                             corpus => this.corpus = corpus,
                             error => this.handleError(<any>error));
                     }
                     if(urlParameter.key === 'application') {
                         sessionStorage.setItem(urlParameter.key, urlParameter.values[0]);
-                        this.resourceService.getComponent(urlParameter.values[0]).subscribe(
+                        this.resourceService.getComponent(btoa(urlParameter.values[0])).subscribe(
                             component => {this.component = component; transform(this.component)},
                             error => this.handleError(<any>error));
                     }
@@ -75,5 +76,30 @@ export class RunApplicationComponent {
 
     handleError(error) {
         this.errorMessage = 'System error loading resource (Server responded: ' + error + ')';
+    }
+
+    selectInput() {
+
+        if(this.corpus)
+            sessionStorage.setItem('runApplication.input', this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value);
+        if(this.component)
+            sessionStorage.setItem('runApplication.application', this.component.metadataHeaderInfo.metadataRecordIdentifier.value);
+
+        this.router.navigate(['/browseCorpora']);
+    }
+
+    selectApplication() {
+
+        if(this.corpus)
+            sessionStorage.setItem('runApplication.input', this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value);
+        if(this.component)
+            sessionStorage.setItem('runApplication.application', this.component.metadataHeaderInfo.metadataRecordIdentifier.value);
+
+        this.router.navigate(['/browseApplications']);
+    }
+
+    runApplication() {
+        console.log('corpusID', this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value);
+        console.log('workflowID', this.component.metadataHeaderInfo.metadataRecordIdentifier.value);
     }
 }

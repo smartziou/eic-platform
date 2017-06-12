@@ -17,3 +17,7 @@
 .placeholderGrid.uk-disabled .uk-placeholder {
     background-color: #eaeaea;
 }
+
+.placeholderGrid.output .uk-placeholder {
+    background-color: #eaeaea;
+}

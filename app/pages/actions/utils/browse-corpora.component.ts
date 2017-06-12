@@ -343,4 +343,20 @@ export class BrowseCorporaComponent {
             this.urlParameters.push(newToParameter);
         }
     }
+
+    process(id: string) {
+
+        sessionStorage.setItem('runApplication.input', id);
+
+        var map: { [name: string]: string; } = { };
+
+        if(sessionStorage.getItem('runApplication.input')) {
+            map['input'] = sessionStorage.getItem('runApplication.input');
+        }
+        if(sessionStorage.getItem('runApplication.application')) {
+            map['application'] = sessionStorage.getItem('runApplication.application');
+        }
+
+        this.router.navigate(['/runApplication', map]);
+    }
 }

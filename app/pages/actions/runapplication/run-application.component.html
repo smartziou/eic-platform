@@ -28,24 +28,34 @@
         </div>
         <div class="uk-margin-medium uk-grid uk-margin-large-bottom" uk-grid="">
             <div class="uk-width-1-5@m uk-first-column placeholderGrid" style="height: 200px">
-                <a style="height: 100%" [routerLink]="['/browseCorpora']">
-                    <div class="uk-placeholder uk-text-center" style="height: 100%">Select an Input</div>
+                <a style="height: 100%" (click)="selectInput()">
+                    <div *ngIf="!corpus" class="uk-placeholder uk-text-center" style="height: 100%">
+                        Select an Input
+                    </div>
+                    <div *ngIf="corpus" class="uk-placeholder uk-text-center" style="height: 100%">
+                        {{corpus.corpusInfo.identificationInfo.resourceNames[0].value}}
+                    </div>
                 </a>
             </div>
             <div class="uk-width-1-5@m placeholderGrid" style="text-align: center; height: 200px; line-height: 200px">
                 <i aria-hidden="true" class="fa fa-plus fa-3x" style="vertical-align: middle;"></i>
             </div>
             <div class="uk-width-1-5@m placeholderGrid" style="height: 200px">
-                <a style="height: 100%" [routerLink]="['/browseApplications']">
-                    <div class="uk-placeholder uk-text-center" style="height: 100%">Select an Application</div>
+                <a style="height: 100%" (click)="selectApplication()">
+                    <div *ngIf="!component" class="uk-placeholder uk-text-center" style="height: 100%">
+                        Select an Application
+                    </div>
+                    <div *ngIf="component" class="uk-placeholder uk-text-center" style="height: 100%">
+                        {{component.componentInfo.identificationInfo.resourceNames[0].value}}
+                    </div>
                 </a>
             </div>
             <div class="uk-width-1-5@m placeholderGrid" style="text-align: center; height: 200px; line-height: 200px">
                 <i aria-hidden="true" class="fa fa-arrow-right fa-3x" style="vertical-align: middle;"></i>
             </div>
-            <div class="uk-width-1-5@m placeholderGrid uk-disabled" style="height: 200px">
-                <a style="height: 100%">
-                    <div class="uk-placeholder uk-text-center" style="height: 100%">Output</div>
+            <div class="uk-width-1-5@m placeholderGrid output" style="height: 200px">
+                <a style="height: 100%" (click)="runApplication()">
+                    <div class="uk-placeholder uk-text-center" style="height: 100%">Click to run the application!</div>
                 </a>
             </div>
         </div>
