@@ -93,11 +93,8 @@ export class BrowseCorporaComponent {
             var order = corpus.order;
             var corpusBody = corpus.resource;
             let corpusInfo : CorpusInfo;
-            let title : string;
-            let description : string;
-            let resourceType : string;
             if (typeof corpusBody['corpusInfo'] != 'undefined') {
-                corpusInfo = corpusInfo['corpusInfo']
+                corpusInfo = corpusBody['corpusInfo']
                 var shortResultInfo: ShortResultInfo = {
                     // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
                     order: corpus.order,

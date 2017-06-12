@@ -93,7 +93,7 @@ export class BrowseApplicationsComponent {
             var componentBody = component.resource;
             let componentInfo : ComponentInfo;
             if (typeof componentBody['componentInfo'] != 'undefined') {
-                componentInfo = componentBody['corpusInfo'];
+                componentInfo = componentBody['componentInfo'];
                 var shortResultInfo: ShortResultInfo = {
                     // id: component.componentInfo.identificationInfo.identifiers[0].value,
                     order: component.order,
