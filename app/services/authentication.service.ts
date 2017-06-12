@@ -37,6 +37,8 @@ export class AuthenticationService {
 
     logout() {
         deleteCookie('name');
+        sessionStorage.removeItem('name');
+        //https://aai.openminted.eu/registry/auth/logout
     }
 
     public get isUserLoggedIn() : boolean {
@@ -50,8 +52,8 @@ export class AuthenticationService {
     public tryLogin() {
         if(getCookie('name')) {
             if(!sessionStorage.getItem('name')) {
-                this.http.get(this.endpoint + '/user').subscribe(
-                    userInfo => sessionStorage.setItem('name',userInfo['name']),
+                this.http.get(this.endpoint + '/user',{ withCredentials: true }).subscribe(
+                    userInfo => {console.log(userInfo.json());sessionStorage.setItem('name',userInfo.json()['name'])},
                     err => {sessionStorage.removeItem('name');deleteCookie('name');}
                 );
             }

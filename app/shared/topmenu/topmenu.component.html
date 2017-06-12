@@ -277,6 +277,9 @@
                                 </span>
                                 |
                                 <!-- Registration button -->
+                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
+			                        <a [href]="'https://aai.openminted.eu/signup'" routerLinkActive="uk-active" class="loginLink">REGISTER</a>
+                                </span>
                             </div>
 
                             <!-- Panel top -->
@@ -284,11 +287,6 @@
                                 <!-- Login button -->
 			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
 			                        <a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT {{oAuthService.getLoggedInUser}}</a>
-                                </span>
-                                |
-                                <!-- Registration button -->
-                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
-			                        <a [href]="'https://aai.openminted.eu/registry/auth/logout'" routerLinkActive="uk-active" class="loginLink">LOG OUT</a>
                                 </span>
                             </div>
                             <!-- content dropdown/modal box -->

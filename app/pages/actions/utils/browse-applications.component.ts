@@ -102,8 +102,8 @@ export class BrowseApplicationsComponent {
                     description: componentInfo.identificationInfo.descriptions[0].value,
                     resourceType: 'component'
                 };
+                this.shortResultsInfo.push(shortResultInfo);
             }
-            this.shortResultsInfo.push(shortResultInfo);
         }
 
         if(this.shortResultsInfo.length==0)
