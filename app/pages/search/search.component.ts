@@ -10,6 +10,7 @@ import { URLParameter } from "./../../domain/url-parameter";
 import { ResourceService } from "../../services/resource.service";
 import { SearchResults } from "../../domain/search-results";
 import {ShortResultInfo} from "../../domain/short-resource-info";
+import {BaseMetadataRecord, ComponentInfo, CorpusInfo, Order} from "../../domain/openminted-model";
 
 @Component({
     selector: 'search',
@@ -90,77 +91,35 @@ export class SearchComponent {
 
         this.shortResultsInfo.splice(0,this.shortResultsInfo.length);
 
-        for (let component of this.searchResults.results.components) {
-            var componentBody = component.resource;
-            var shortResultInfo: ShortResultInfo = {
+        for (let component of this.searchResults.results) {
+            let componentBody = component.resource;
+            let corpusInfo : CorpusInfo;
+            let componentInfo : ComponentInfo;
+            let title : string;
+            let description : string;
+            let resourceType : string;
+            if (typeof componentBody['corpusInfo'] != 'undefined') {
+                corpusInfo = componentBody['corpusInfo']
+                title = corpusInfo.identificationInfo.resourceNames[0].value;
+                description = corpusInfo.identificationInfo.descriptions[0].value;
+                resourceType = 'corpus';
+            } else if (typeof componentBody['componentInfo'] != 'undefined') {
+                componentInfo = componentBody['componentInfo'];
+                title = componentInfo.identificationInfo.resourceNames[0].value;
+                description = componentInfo.identificationInfo.descriptions[0].value;
+                resourceType = 'component';
+            }
+            let shortResultInfo: ShortResultInfo = {
                 // id: component.componentInfo.identificationInfo.identifiers[0].value,
                 order: component.order,
                 id: componentBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: componentBody.componentInfo.identificationInfo.resourceNames[0].value,
-                description: componentBody.componentInfo.identificationInfo.descriptions[0].value,
-                resourceType: 'component'
-            };
-            // console.log(component.resourceIdentificationInfo.resourceIdentifiers[0].id);
-            // console.log(shortResultInfo.id);
-            this.shortResultsInfo.push(shortResultInfo);
-        }
-
-
-        for (let corpus of this.searchResults.results.corpora) {
-            var order = corpus.order;
-            var corpusBody = corpus.resource;
-            var shortResultInfo: ShortResultInfo = {
-                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
-                order: corpus.order,
-                id: corpusBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: corpusBody.corpusInfo.identificationInfo.resourceNames[0].value,
-                description: corpusBody.corpusInfo.identificationInfo.descriptions[0].value,
-                resourceType: 'corpus'
+                title: title,
+                description: description,
+                resourceType: resourceType
             };
             this.shortResultsInfo.push(shortResultInfo);
         }
 
-        for (let model of this.searchResults.results.models) {
-            var order = model.order;
-            var modelBody = model.resource;
-            var shortResultInfo: ShortResultInfo = {
-                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
-                order: model.order,
-                id: modelBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: modelBody.modelInfo.identificationInfo.resourceNames[0].value,
-                description: modelBody.modelInfo.identificationInfo.descriptions[0].value,
-                resourceType: 'model'
-            };
-            this.shortResultsInfo.push(shortResultInfo);
-        }
-
-        for (let language of this.searchResults.results.languageDescriptions) {
-            var order = language.order;
-            var languageBody = language.resource;
-            var shortResultInfo: ShortResultInfo = {
-                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
-                order: language.order,
-                id: languageBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: languageBody.languageDescriptionInfo.identificationInfo.resourceNames[0].value,
-                description: languageBody.languageDescriptionInfo.identificationInfo.descriptions[0].value,
-                resourceType: 'language'
-            };
-            this.shortResultsInfo.push(shortResultInfo);
-        }
-
-        for (let lexical of this.searchResults.results.lexicalConceptualResources) {
-            var order = lexical.order;
-            var lexicalBody = lexical.resource;
-            var shortResultInfo: ShortResultInfo = {
-                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
-                order: lexical.order,
-                id: lexicalBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: lexicalBody.lexicalConceptualResourceInfo.identificationInfo.resourceNames[0].value,
-                description: lexicalBody.lexicalConceptualResourceInfo.identificationInfo.descriptions[0].value,
-                resourceType: 'lexical'
-            };
-            this.shortResultsInfo.push(shortResultInfo);
-        }
 
         if(this.shortResultsInfo.length==0)
             this.foundResults = false;

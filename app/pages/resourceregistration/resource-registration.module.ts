@@ -10,7 +10,7 @@ import { MetadataIdentifierFormControl } from "./shared/metadata-identifier-form
 import { MetadataHeaderInfoFormControl } from "./shared/metadata-header-info-form.component";
 import { ValuesPipe } from "./shared/values-pipe";
 import { RelatedCommonsForm, RelatedCommonForm } from "./shared/related-common-form.component";
-import { LanguageTypeForm, LanguagesTypeForm } from "./shared/language-type-form.component";
+import { LanguageTypeForm } from "./shared/language-type-form.component";
 import { IdentifierFormControl } from "./shared/identifier-common-form.component";
 import { ResourceService } from "../../services/resource.service";
 import { DatasetDistributionInfoFormControl } from "./shared/dataset-distribution-info-form.component";
@@ -18,23 +18,25 @@ import { MyStringFormControl, MyStringFormGroup } from "./shared/my-string-form.
 import { IdentificationInfoFormControl } from "./shared/identification-info-form.component";
 import { EnumCommonForm } from "./shared/enum-common-form";
 import { ContactInfoFormControl } from "./shared/contact-info-form.component";
-import { SizeInfoFormControl } from "./shared/size-info-form.component";
-import { LingualityInfoFormControl } from "./shared/linguality-info-form.component";
+import { SizeInfoFormControl } from "./shared/sizeInfo.component";
+import { LingualityInfoFormControl } from "./shared/lingualityInfo.component";
 import { RightsInfoForm, LicenseInfoForm } from "./shared/rights-info-form.component";
 import { LanguageVarietyInfoFormControl } from "./shared/language-variety-info-form.component";
-import { LanguageInfoFormControl } from "./shared/language-info-form.component";
-import { DatasetDistributionsInfoFormControl } from "./shared/dataset-distribution-info-form.component";
+import { LanguageInfoFormControl } from "./shared/languageInfo.component";
+import { DatasetDistributionsInfoFormControl } from "./shared/datasetDistributionInfo.component";
 import { ZipUploadComponent } from "./shared/zip-upload-form.component";
-import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormControl } from "./shared/component-distribution-info-form.component";
-import { ExampleFormControl } from "./shared/example.component";
-import { MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper } from "./myform/my-array.interface";
-import { MyFormDirective } from "./myform/my-form.directive";
-import { VersionFormControl } from "./shared/versionInfo.component";
-import { ComponentGenericFormControl } from "./shared/componentGeneric.component";
-import { InlineFormWrapper } from "./myform/my-group.interface";
-import { ContactPersonFormControl } from "./shared/contactPerson.component";
-import { IdentifierCommonFormControl } from "./shared/identifierCommon.component";
-import { ComponentCreationInfoFormControl } from "./shared/componentCreationInfo.component";
+import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormControl } from "./shared/componentDistributionInfo";
+import {ExampleFormControl} from "./shared/example.component";
+import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./myform/my-array.interface";
+import {MyFormDirective} from "./myform/my-form.directive";
+import {VersionFormControl} from "./shared/versionInfo.component";
+import {ComponentGenericFormControl} from "./shared/componentGeneric.component";
+import {InlineFormWrapper} from "./myform/my-group.interface";
+import {ContactPersonFormControl} from "./shared/contactPerson.component";
+import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
+import {ComponentCreationInfoFormControl} from "./shared/componentCreationInfo.component";
+import {CorpusTextPartInfoFormControl} from "./shared/corpusTextPartInfo.component";
+import {CorpusSubtypeSpecificInfoForm} from "./shared/corpus-subtype-specific-info-form.component";
 
 
 @NgModule({
@@ -54,14 +56,21 @@ import { ComponentCreationInfoFormControl } from "./shared/componentCreationInfo
         MyStringFormGroup,
         IdentifierCommonFormControl,
         ComponentDistributionInfoFormControl,
-        LicenseInfoForm
+        DatasetDistributionInfoFormControl,
+        CorpusTextPartInfoFormControl,
+        LicenseInfoForm,
+        SizeInfoFormControl,
+        LanguageTypeForm,
+        LanguageInfoFormControl
     ],
     declarations: [
         MyArrayWrapper,
         MyStringFormGroup,
         InlineFormWrapper,
+        CorpusSubtypeSpecificInfoForm,
         MyInlineArrayWrapper,
         ContactPersonFormControl,
+        CorpusTextPartInfoFormControl,
         MyArray,
         MyArrayInline,
         ComponentCreationInfoFormControl,
@@ -76,7 +85,6 @@ import { ComponentCreationInfoFormControl } from "./shared/componentCreationInfo
         RelatedCommonsForm,
         RelatedCommonForm,
         LanguageTypeForm,
-        LanguagesTypeForm,
         IdentifierFormControl,
         DatasetDistributionInfoFormControl,
         DatasetDistributionsInfoFormControl,
@@ -108,15 +116,16 @@ import { ComponentCreationInfoFormControl } from "./shared/componentCreationInfo
         ContactPersonFormControl,
         ComponentGenericFormControl,
         IdentifierCommonFormControl,
+        CorpusTextPartInfoFormControl,
         MyFormDirective,
         ExampleFormControl,
         MetadataIdentifierFormControl,
         MetadataHeaderInfoFormControl,
         ValuesPipe,
         RelatedCommonsForm,
+        CorpusSubtypeSpecificInfoForm,
         RelatedCommonForm,
         LanguageTypeForm,
-        LanguagesTypeForm,
         IdentifierFormControl,
         DatasetDistributionInfoFormControl,
         DatasetDistributionsInfoFormControl,

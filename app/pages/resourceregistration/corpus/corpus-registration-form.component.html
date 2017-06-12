@@ -4,9 +4,11 @@
             <div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">
                 <!--<metadata-header-info-form [group]="myForm"></metadata-header-info-form>-->
                 <!--<div formGroupName="corpusInfo">-->
+                <identification-info-form [parentGroup]="myForm.controls.corpusInfo" [name]="'identificationInfo'"></identification-info-form>
                 <contact-info-form [required]="true" [parentGroup]="myForm.controls.corpusInfo" [name]="'contactInfo'"></contact-info-form>
-                <dataset-distributions-info-form-common [group]="myForm.controls.corpusInfo"></dataset-distributions-info-form-common>
-                <corpus-subtype-specific-info-form [group]="myForm.controls.corpusInfo"></corpus-subtype-specific-info-form>
+                <versionInfo-form [parentGroup]="myForm.controls.corpusInfo" [name]="'versionInfo'"></versionInfo-form>
+                <datasetDistributionsInfo-form [parentGroup]="myForm.controls.corpusInfo"></datasetDistributionsInfo-form>
+                <corpusSubtypeSpecificInfo-form [parentGroup]="myForm.controls.corpusInfo"></corpusSubtypeSpecificInfo-form>
                 <!--</div>-->
             </div>
         </accordion>

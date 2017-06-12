@@ -16,9 +16,6 @@ import { ContentConnectorService } from "../../../services/content-connector.ser
 import { CorpusRegistrationFormComponent } from "./corpus-registration-form.component";
 import { ResourceRegistrationModule } from "../resource-registration.module";
 import { AccordionModule, TypeaheadModule } from "ngx-bootstrap";
-import { CorpusTextPartInfoFormControl } from "../shared/corpus-text-part-info-form.component";
-import { RawCorpusInfoFormControl } from "../shared/raw-corpus-info-form.component";
-import { CorpusSubtypeSpecificInfoForm } from "../shared/corpus-subtype-specific-info-form.component";
 import { CorpusUploadComponent } from "./corpus-upload.component";
 import { CorpusBuilderComponent } from "./corpus-builder.component";
 import { ReusableComponentsModule } from "../../../shared/reusablecomponents/reusable-components.module";
@@ -42,9 +39,6 @@ import { ReusableComponentsModule } from "../../../shared/reusablecomponents/reu
         CorpusRegistrationComponent, 
         SearchForPublicationsComponent,
         CorpusRegistrationFormComponent,
-        CorpusTextPartInfoFormControl,
-        RawCorpusInfoFormControl,
-        CorpusSubtypeSpecificInfoForm,
         CorpusBuilderComponent
     ],
     providers: [
