@@ -46,7 +46,7 @@ import {CorpusSubtypeSpecificInfoForm} from "./shared/corpus-subtype-specific-in
         FormsModule,
         ReactiveFormsModule,
         TooltipModule.forRoot(),
-        AccordionModule.forRoot(),
+        // AccordionModule.forRoot(),
         TypeaheadModule.forRoot()
     ],
     entryComponents: [

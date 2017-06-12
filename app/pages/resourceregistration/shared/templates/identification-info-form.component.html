@@ -1,12 +1,11 @@
-<accordion-group #group1 [panelClass]="customClass"
-                 [isOpen]="true" [panelClass]="group.valid ? 'panel-success' : 'panel-danger'">
-    <div accordion-heading>
-        <span>
-            <i class="fa fa" [ngClass]="valid ? 'fa-check':'fa-exclamation'" aria-hidden="true"></i>
-            Identification Info
-            <i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>
-        </span>
-    </div>
+<!--<li #group1 [class.uk-open]="true">-->
+    <!--<h3 class="uk-accordion-title">-->
+        <!--<span>-->
+            <!--&lt;!&ndash;<i class="fa fa" [ngClass]="valid ? 'fa-check':'fa-exclamation'" aria-hidden="true"></i>&ndash;&gt;-->
+            <!--Identification Info-->
+            <!--&lt;!&ndash;<i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>&ndash;&gt;-->
+        <!--</span>-->
+    <!--</h3>-->
     <div [formGroup]="group" >
 
         <form-repeat-inline [component]="myStringType" [parentGroup]="group"
@@ -35,4 +34,43 @@
         </form-inline>
 
     </div>
-</accordion-group>
+<!--</li>-->
+
+<!--<accordion-group #group1 [panelClass]="customClass"-->
+                 <!--[isOpen]="true" [panelClass]="group.valid ? 'panel-success' : 'panel-danger'">-->
+    <!--<div accordion-heading>-->
+        <!--<span>-->
+            <!--<i class="fa fa" [ngClass]="valid ? 'fa-check':'fa-exclamation'" aria-hidden="true"></i>-->
+            <!--Identification Info-->
+            <!--<i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>-->
+        <!--</span>-->
+    <!--</div>-->
+    <!--<div [formGroup]="group" >-->
+
+        <!--<form-repeat-inline [component]="myStringType" [parentGroup]="group"-->
+                            <!--[name]="'resourceNames'" [required]="true" [description]="resourceNameDesc">-->
+        <!--</form-repeat-inline>-->
+
+        <!--<div class="form-group-divider"></div>-->
+
+        <!--<form-repeat-inline [component]="myStringType" [parentGroup]="group"-->
+                            <!--[name]="'descriptions'" [required]="true" [description]="descriptionDesc">-->
+        <!--</form-repeat-inline>-->
+
+        <!--<div class="form-group-divider"></div>-->
+
+        <!--<form-repeat-inline [component]="myStringType" [parentGroup]="group"-->
+                            <!--[name]="'resourceShortNames'" [description]="resourceShortNameDesc">-->
+        <!--</form-repeat-inline>-->
+
+        <!--<div class="form-group-divider"></div>-->
+
+        <!--<form-inline [description]="publicDesc">-->
+            <!--<label class="col-sm-7 col-md-7 radio-label">-->
+                <!--<input type="checkbox" formControlName="public">-->
+                <!--Check if the resource is meant for private use.-->
+            <!--</label>-->
+        <!--</form-inline>-->
+
+    <!--</div>-->
+<!--</accordion-group>-->

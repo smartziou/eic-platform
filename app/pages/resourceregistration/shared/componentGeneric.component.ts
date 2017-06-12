@@ -12,15 +12,6 @@ import {
 @Component({
     selector: 'componentGeneric-form',
     template : `
-<accordion-group #group1 [panelClass]="'customAccordionPanel'"
-                 [isOpen]="true">
-    <div accordion-heading>
-        <span>
-            <i class="fa fa" [ngClass]="valid ? 'fa-check':'fa-exclamation'" aria-hidden="true"></i>
-            {{label}}
-            <i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>
-        </span>
-    </div>
     <div [formGroup]="group">
         <!--<div formGroupName="{{name}}">-->
             
@@ -59,7 +50,6 @@ import {
             
         <!--</div>-->
     </div>
-</accordion-group>
 `,
     styleUrls : ['./templates/common.css']
 })

@@ -12,26 +12,14 @@ import {
 
 @Component({
     selector: 'datasetDistributionsInfo-form',
-    template : `
-<accordion-group #group1 [panelClass]="'customAccordionPanel'"
-                 [isOpen]="true" [panelClass]="parentGroup.controls.distributionInfos?.valid ? 'panel-success' : 'panel-danger'">
-    <div accordion-heading>
-        <span>
-            <i class="fa fa" [ngClass]="parentGroup.controls.distributionInfos?.valid ? 'fa-check':'fa-exclamation'" aria-hidden="true"></i>
-            Distribution Info
-            <i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>
-        </span>
-    </div>
-                 
-    <div [formGroup]="parentGroup">
+    template : `    
+    <div formGroup]="parentGroup">
 
         <form-repeat [component]="datasetDistributionType" [parentGroup]="parentGroup" 
                             [name]="'distributionInfos'" [required]="true" [description]="datasetDistributionDesc">
         </form-repeat>
         
     </div>
-
-</accordion-group>
 `,
     styleUrls : ['./templates/common.css']
 })

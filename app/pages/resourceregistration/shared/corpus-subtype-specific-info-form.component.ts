@@ -10,17 +10,7 @@ import {Description, corpusTextPartInfoDesc} from "../../../domain/omtd.descript
 
 @Component({
     selector: 'corpusSubtypeSpecificInfo-form',
-    template: `
-<accordion-group #group1 [panelClass]="'customAccordionPanel'"
-                 [isOpen]="true" [panelClass]="valid ? 'panel-success' : 'panel-danger'">
-    <div accordion-heading>
-        <span>
-            <i class="fa" [ngClass]="valid ? 'fa-check':'fa-exclamation'" aria-hidden="true"></i>
-            Corpus Info
-            <i class="fa" [ngClass]="{'fa-angle-down': !group1?._isOpen, 'fa-angle-up': group1?._isOpen}" aria-hidden="true"></i>
-        </span>
-    </div>
-    
+    template: `    
     <div [formGroup]="group">
 
         <form-repeat [component]="textPartType" [parentGroup]="group" 
@@ -28,8 +18,6 @@ import {Description, corpusTextPartInfoDesc} from "../../../domain/omtd.descript
         </form-repeat>
         
     </div>
-
-</accordion-group>
 `,
     styleUrls: ['./templates/common.css']
 })

@@ -1,44 +1,66 @@
-<div class="uk-block tm-block-main uk-block-default uk-block-large">
-    <div class="uk-container uk-container-center">
-        <div id="tm-middle" class="tm-middle uk-grid" data-uk-grid-match="" data-uk-grid-margin="">
-            <div class="tm-main uk-width-medium-1-1 uk-row-first">
-                <main id="tm-content" class="tm-content">
-                    <div id="system-message-container">
-                    </div>
-                    <div class="yoo-zoo page-uikit page-uikit-test">
+<div class="uk-section-default uk-section uk-section-small uk-padding-remove-bottom" style="min-height: 325px">
+    <div class="uk-container">
+        <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
 
-                        <div class="uk-margin uk-grid componentXMLRegistration">
-                            <div class="uk-width-medium-1-1">
-
-                                <div *ngIf="!successfulMessage">
-                                    <article class="uk-article">
-
-                                        <h3 class="subtitle">Fill in the metadata for your component</h3>
-
-                                        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
-
-                                        <div *ngIf="componentFormErrorMessage" class="alert alert-danger">{{componentFormErrorMessage}}</div>
-                                        <component-registration-form [group]="componentForm" (componentForm)="handleComponent($event)"></component-registration-form>
-
-                                    </article>
-
-                                    <div>
-                                        <button (click)="onSubmit()" class="uk-button uk-button-large
-                                            uk-button-blue registerButton">Register!</button>
-                                    </div>
-                                </div>
-
-                                <div *ngIf="successfulMessage">
-                                    <article class="uk-article">
-                                        <div class="alert alert-success">{{successfulMessage}}</div>
-                                    </article>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </main>
+            <div *ngIf="!successfulMessage" class="uk-width-1-1@m uk-first-column uk-margin-bottom">
+                <h1 class="uk-h2">Fill in the metadata for your component</h1>
+                <hr class="uk-scrollspy-inview uk-animation-slide-top-medium" style="" uk-scrollspy-class="">
+                <div *ngIf="errorMessage" class="alert alert-danger uk-margin-top">{{errorMessage}}</div>
+                <div *ngIf="componentFormErrorMessage" class="alert alert-danger uk-margin-top">{{componentFormErrorMessage}}</div>
+                <component-registration-form [group]="componentForm" (componentForm)="handleComponent($event)"
+                                             class="uk-margin-top"></component-registration-form>
             </div>
+
+            <div *ngIf="successfulMessage" class="uk-width-1-1@m uk-first-column uk-margin-bottom">
+                <div class="alert alert-success">{{successfulMessage}}</div>
+            </div>
+
         </div>
     </div>
 </div>
+
+
+<!--<div class="uk-block tm-block-main uk-block-default uk-block-large">-->
+    <!--<div class="uk-container uk-container-center">-->
+        <!--<div id="tm-middle" class="tm-middle uk-grid" data-uk-grid-match="" data-uk-grid-margin="">-->
+            <!--<div class="tm-main uk-width-medium-1-1 uk-row-first">-->
+                <!--<main id="tm-content" class="tm-content">-->
+                    <!--<div id="system-message-container">-->
+                    <!--</div>-->
+                    <!--<div class="yoo-zoo page-uikit page-uikit-test">-->
+
+                        <!--<div class="uk-margin uk-grid componentXMLRegistration">-->
+                            <!--<div class="uk-width-medium-1-1">-->
+
+                                <!--<div *ngIf="!successfulMessage">-->
+                                    <!--<article class="uk-article">-->
+
+                                        <!--<h3 class="subtitle">Fill in the metadata for your component</h3>-->
+
+                                        <!--<div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>-->
+
+                                        <!--<div *ngIf="componentFormErrorMessage" class="alert alert-danger">{{componentFormErrorMessage}}</div>-->
+                                        <!--<component-registration-form [group]="componentForm" (componentForm)="handleComponent($event)"></component-registration-form>-->
+
+                                    <!--</article>-->
+
+                                    <!--<div>-->
+                                        <!--<button (click)="onSubmit()" class="uk-button uk-button-large-->
+                                            <!--uk-button-blue registerButton">Register!</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div *ngIf="successfulMessage">-->
+                                    <!--<article class="uk-article">-->
+                                        <!--<div class="alert alert-success">{{successfulMessage}}</div>-->
+                                    <!--</article>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</main>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
