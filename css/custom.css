@@ -250,6 +250,15 @@
     margin-top: -10px;
 }
 
+.strong {
+    font-weight: bold;
+}
+
+.description {
+    font-size: 12px;
+    text-transform: none;
+}
+
 
 
 

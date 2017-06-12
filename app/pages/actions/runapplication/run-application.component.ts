@@ -9,6 +9,8 @@ import { Subscription } from "rxjs/Subscription";
 import { transform } from "../../../domain/utils";
 import { Component as OMTDComponent} from "../../../domain/openminted-model";
 import { Corpus as OMTDCorpus} from "../../../domain/openminted-model";
+import { WorkflowService } from "../../../services/workflow.service";
+import {WSJobStatus} from "../../../domain/ws-job-status";
 
 @Component({
     selector: 'run-application',
@@ -19,17 +21,26 @@ import { Corpus as OMTDCorpus} from "../../../domain/openminted-model";
 export class RunApplicationComponent {
 
     private errorMessage: string;
+    private successfulMessage: string;
+
     private sub: Subscription;
 
     private urlParameters: URLParameter[] = [];
 
     private foundResults = true;
 
-    public corpus: OMTDCorpus;
-    public component: OMTDComponent;
+    private corpus: OMTDCorpus;
+    private component: OMTDComponent;
+
+    private jobId: string;
+    private intervalId: number = null;
+
+    private wsJobStatus: WSJobStatus = null;
+
+    private isRunning: boolean = false;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute,
-                private resourceService: ResourceService) {
+                private resourceService: ResourceService, private workflowService: WorkflowService) {
 
     }
 
@@ -41,6 +52,9 @@ export class RunApplicationComponent {
 
                 this.urlParameters.splice(0,this.urlParameters.length);
                 this.foundResults = true;
+                this.successfulMessage = null;
+                this.errorMessage = null;
+                this.wsJobStatus = null;
 
                 for (var obj in params) {
                     if (params.hasOwnProperty(obj)) {
@@ -99,7 +113,40 @@ export class RunApplicationComponent {
     }
 
     runApplication() {
-        console.log('corpusID', this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value);
-        console.log('workflowID', this.component.metadataHeaderInfo.metadataRecordIdentifier.value);
+
+        this.successfulMessage = null;
+        this.errorMessage = null;
+        this.wsJobStatus = null;
+
+        this.isRunning = true;
+
+        this.workflowService.executeJob(this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value,
+            this.component.metadataHeaderInfo.metadataRecordIdentifier.value).subscribe(
+                jobId => {
+                    this.jobId = jobId;
+                    console.log('jobId', jobId);
+                    this.intervalId = window.setInterval(() => {
+                        this.workflowService.getStatus(this.jobId).subscribe(
+                            res => { this.wsJobStatus=res; this.checkStatus(res) },
+                            error => this.handleError(<any>error)
+                        );
+                    },5000)},
+                error => this.handleError(<any>error)
+            );
+    }
+
+    checkStatus(wsJobStatus: WSJobStatus) {
+
+        console.log('Status', wsJobStatus);
+
+        if(wsJobStatus.status == 'FINISHED') {
+            this.successfulMessage = 'Application run finished successfully';
+            this.isRunning = false;
+            clearInterval(this.intervalId);
+        } else if(wsJobStatus.status == 'FAILED') {
+            this.errorMessage = 'There was a problem running the application. Try again in a while.';
+            this.isRunning = true;
+            clearInterval(this.intervalId);
+        }
     }
 }
