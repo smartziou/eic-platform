@@ -10,6 +10,7 @@ import { SearchResults } from "../../../domain/search-results";
 import { URLParameter } from "../../../domain/url-parameter";
 import { Subscription } from "rxjs/Subscription";
 import { SearchQuery } from "../../../domain/search-query";
+import {ComponentInfo} from "../../../domain/openminted-model";
 
 @Component({
     selector: 'browse-applications',
@@ -88,18 +89,20 @@ export class BrowseApplicationsComponent {
 
         this.shortResultsInfo.splice(0,this.shortResultsInfo.length);
 
-        for (let component of this.searchResults.results.components) {
+        for (let component of this.searchResults.results) {
             var componentBody = component.resource;
-            var shortResultInfo: ShortResultInfo = {
-                // id: component.componentInfo.identificationInfo.identifiers[0].value,
-                order: component.order,
-                id: componentBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: componentBody.componentInfo.identificationInfo.resourceNames[0].value,
-                description: componentBody.componentInfo.identificationInfo.descriptions[0].value,
-                resourceType: 'component'
-            };
-            // console.log(component.resourceIdentificationInfo.resourceIdentifiers[0].id);
-            // console.log(shortResultInfo.id);
+            let componentInfo : ComponentInfo;
+            if (typeof componentBody['componentInfo'] != 'undefined') {
+                componentInfo = componentBody['corpusInfo'];
+                var shortResultInfo: ShortResultInfo = {
+                    // id: component.componentInfo.identificationInfo.identifiers[0].value,
+                    order: component.order,
+                    id: componentBody.metadataHeaderInfo.metadataRecordIdentifier.value,
+                    title: componentInfo.identificationInfo.resourceNames[0].value,
+                    description: componentInfo.identificationInfo.descriptions[0].value,
+                    resourceType: 'component'
+                };
+            }
             this.shortResultsInfo.push(shortResultInfo);
         }
 

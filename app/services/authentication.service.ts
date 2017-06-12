@@ -9,6 +9,8 @@ import {getCookie, deleteCookie} from "../domain/utils";
 @Injectable()
 export class AuthenticationService {
 
+    private endpoint = process.env.API_ENDPOINT + ':' + process.env.API_PORT + process.env.API_PATH ;
+
     constructor (private http: Http) {}
 
     isLoggedIn: boolean = false;
@@ -31,16 +33,6 @@ export class AuthenticationService {
     login(user: User) {
         localStorage.setItem('user', JSON.stringify(user));
         this.isLoggedIn = true;
-
-        // this.lock.show((error: string, profile: Object, id_token: string) => {
-        //     if (error) {
-        //         console.log(error);
-        //     }
-        //     // We get a profile object for the user from Auth0
-        //     localStorage.setItem('profile', JSON.stringify(profile));
-        //     // We also get the user's JWT
-        //     localStorage.setItem('id_token', id_token);
-        // });
     }
 
     logout() {
@@ -48,15 +40,25 @@ export class AuthenticationService {
     }
 
     public get isUserLoggedIn() : boolean {
-        return getCookie('name') != null;
+        return sessionStorage.getItem('name') != null;
     }
 
     public get getLoggedInUser() : string {
-        let name = getCookie('name');
-        return name ? decodeURI(name) : null;
+        return sessionStorage.getItem('name');
     }
 
     public tryLogin() {
+        if(getCookie('name')) {
+            if(!sessionStorage.getItem('name')) {
+                this.http.get(this.endpoint + '/user').subscribe(
+                    userInfo => sessionStorage.setItem('name',userInfo['name']),
+                    err => {sessionStorage.removeItem('name');deleteCookie('name');}
+                );
+            }
+        }
+    }
+
+    private implicitFlow() {
         let parts = this.getFragment();
 
         let codeToken = parts["code"];

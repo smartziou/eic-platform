@@ -23,4 +23,8 @@ export class TopMenuComponent {
         var el: HTMLElement = document.getElementById(id);
         el.classList.remove('uk-open');
     }
+    private logout() {
+        this.oAuthService.logout();
+    }
+
 }

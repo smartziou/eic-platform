@@ -34,7 +34,8 @@ var webpackConfig = {
             API_PORT : JSON.stringify(process.env.API_PORT || "8080"),
             API_PATH : JSON.stringify("/omtd-registry"),
             CONNECTOR_PORT : JSON.stringify("8888"),
-            OIDC_ENDPOINT : JSON.stringify(process.env.OIDC_ENDPOINT || "http://localhost:8080/omtd-registry/openid_connect_login")
+            OIDC_ENDPOINT : JSON.stringify(process.env.OIDC_ENDPOINT || "http://localhost:8080/omtd-registry/openid_connect_login"),
+            AAI_ENDPOINT : JSON.stringify(process.env.AAI_ENDPOINT || "https://aai.openminted.eu/oidc")
         }})
     ],
 

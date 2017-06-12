@@ -25,8 +25,6 @@ export class ResourceService {
     
     search(urlParameters: URLParameter[]) {
 
-        var advanced:boolean = false;
-
         var searchQuery = '';
         var counter = 0;
         for (let urlParameter of urlParameters) {
@@ -36,11 +34,6 @@ export class ResourceService {
             
             if(urlParameter.key === 'query') {
                 searchQuery += 'keyword=' + urlParameter.values[0];
-            } else if(urlParameter.key === 'advanced') {
-                if(urlParameter.values[0]=='true')
-                    advanced = true;
-                else
-                    advanced = false;
             } else {
                 var valuesCounter = 0;
                 for(let value of urlParameter.values) {
@@ -55,12 +48,6 @@ export class ResourceService {
                 searchQuery += '&';
             
             counter++;
-        }
-
-        if(urlParameters.length==0) {
-            searchQuery += '?advanced=' + advanced;
-        } else {
-            searchQuery += '&advanced=' + advanced;
         }
         
         return this.http.get(this._searchUrl + searchQuery)
@@ -93,12 +80,6 @@ export class ResourceService {
                 searchQuery += '&';
 
             counter++;
-        }
-
-        if(urlParameters.length==0) {
-            searchQuery += '?resourceType=component&advanced=false';
-        } else {
-            searchQuery += '&resourceType=component&advanced=false';
         }
 
         return this.http.get(this._searchUrl + searchQuery)

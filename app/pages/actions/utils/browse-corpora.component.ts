@@ -10,6 +10,7 @@ import { SearchResults } from "../../../domain/search-results";
 import { URLParameter } from "../../../domain/url-parameter";
 import { Subscription } from "rxjs/Subscription";
 import { SearchQuery } from "../../../domain/search-query";
+import {CorpusInfo} from "../../../domain/openminted-model";
 
 @Component({
     selector: 'browse-corpora',
@@ -88,18 +89,27 @@ export class BrowseCorporaComponent {
 
         this.shortResultsInfo.splice(0,this.shortResultsInfo.length);
 
-        for (let corpus of this.searchResults.results.corpora) {
+        for (let corpus of this.searchResults.results) {
             var order = corpus.order;
             var corpusBody = corpus.resource;
-            var shortResultInfo: ShortResultInfo = {
-                // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
-                order: corpus.order,
-                id: corpusBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: corpusBody.corpusInfo.identificationInfo.resourceNames[0].value,
-                description: corpusBody.corpusInfo.identificationInfo.descriptions[0].value,
-                resourceType: 'corpus'
-            };
-            this.shortResultsInfo.push(shortResultInfo);
+            let corpusInfo : CorpusInfo;
+            let title : string;
+            let description : string;
+            let resourceType : string;
+            if (typeof corpusBody['corpusInfo'] != 'undefined') {
+                corpusInfo = corpusInfo['corpusInfo']
+                var shortResultInfo: ShortResultInfo = {
+                    // id: corpus.corpusInfo.identificationInfo.identifiers[0].value,
+                    order: corpus.order,
+                    id: corpusBody.metadataHeaderInfo.metadataRecordIdentifier.value,
+                    title: corpusInfo.identificationInfo.resourceNames[0].value,
+                    description: corpusInfo.identificationInfo.descriptions[0].value,
+                    resourceType: 'corpus'
+                };
+                this.shortResultsInfo.push(shortResultInfo);
+            }
+
+
         }
 
         if(this.shortResultsInfo.length==0)

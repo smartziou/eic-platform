@@ -12,8 +12,6 @@ import { ValuesPipe } from "./shared/values-pipe";
 import { RelatedCommonsForm, RelatedCommonForm } from "./shared/related-common-form.component";
 import { LanguageTypeForm } from "./shared/language-type-form.component";
 import { IdentifierFormControl } from "./shared/identifier-common-form.component";
-import { ResourceService } from "../../services/resource.service";
-import { DatasetDistributionInfoFormControl } from "./shared/dataset-distribution-info-form.component";
 import { MyStringFormControl, MyStringFormGroup } from "./shared/my-string-form.component";
 import { IdentificationInfoFormControl } from "./shared/identification-info-form.component";
 import { EnumCommonForm } from "./shared/enum-common-form";
@@ -23,7 +21,10 @@ import { LingualityInfoFormControl } from "./shared/lingualityInfo.component";
 import { RightsInfoForm, LicenseInfoForm } from "./shared/rights-info-form.component";
 import { LanguageVarietyInfoFormControl } from "./shared/language-variety-info-form.component";
 import { LanguageInfoFormControl } from "./shared/languageInfo.component";
-import { DatasetDistributionsInfoFormControl } from "./shared/datasetDistributionInfo.component";
+import {
+    DatasetDistributionInfoFormControl,
+    DatasetDistributionsInfoFormControl
+} from "./shared/datasetDistributionInfo.component";
 import { ZipUploadComponent } from "./shared/zip-upload-form.component";
 import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormControl } from "./shared/componentDistributionInfo";
 import {ExampleFormControl} from "./shared/example.component";
