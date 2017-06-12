@@ -3,6 +3,7 @@
  */
 import { Results } from "./results";
 import { Facet } from "./facet";
+import {BaseMetadataRecord, Order} from "./openminted-model";
     
 export class SearchResults {
 
@@ -10,6 +11,6 @@ export class SearchResults {
     to: number;
     total: number;
     
-    results: Results;
+    results: Order<BaseMetadataRecord>[];
     facets: Facet[];
 }

@@ -6,5 +6,6 @@ COPY dist/      /usr/share/nginx/html/dist
 COPY js/        /usr/share/nginx/html/js
 COPY css/        /usr/share/nginx/html/css
 COPY imgs/        /usr/share/nginx/html/imgs
+COPY warp/	/usr/share/nginx/html/warp
 
 EXPOSE 80
