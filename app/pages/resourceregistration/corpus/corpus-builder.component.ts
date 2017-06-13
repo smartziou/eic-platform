@@ -10,7 +10,11 @@ import { PublicationSearchResults } from "../../../domain/publications-search-re
 import { ContentConnectorService } from "../../../services/content-connector.service";
 import { Facet } from "../../../domain/facet";
 import { SearchQuery } from "../../../domain/search-query";
-import {Corpus as OMTDCorpus} from "../../../domain/openminted-model";
+import {
+    Corpus as OMTDCorpus, MetadataHeaderInfo, PersonInfo, Names, Name,
+    MetadataIdentifier, MetadataIdentifierSchemeNameEnum, ResourceIdentifier, ResourceIdentifierSchemeNameEnum,
+    RightsInfo, RightsStatementEnum
+} from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
 import {ResourceService} from "../../../services/resource.service";
 
@@ -90,6 +94,7 @@ export class CorpusBuilderComponent {
 
     loadCorpusMetadata(corpus: OMTDCorpus) {
         this.gettingCorpusMetadata = false;
+        this.corpus = corpus;
         console.log('Corpus returned from connector: ', corpus);
     }
 
@@ -118,7 +123,31 @@ export class CorpusBuilderComponent {
         if(this.corpusForm.valid) {
 
             this.callingBuildCorpus = true;
-            this.contentConnectorService.buildCorpus(this.corpusForm.value).subscribe(
+            let corpusFilled : OMTDCorpus = this.corpusForm.value;
+            corpusFilled.metadataHeaderInfo = new MetadataHeaderInfo();
+            corpusFilled.metadataHeaderInfo.revision = "1.0.0";
+            corpusFilled.metadataHeaderInfo.metadataCreators = [ new PersonInfo() ];
+            corpusFilled.metadataHeaderInfo.metadataCreators[0].names = [new Names()];
+            corpusFilled.metadataHeaderInfo.metadataCreators[0].names[0].name = [new Name()];
+            corpusFilled.metadataHeaderInfo.metadataCreators[0].names[0].name[0].value="Doe, John";
+            corpusFilled.metadataHeaderInfo.metadataRecordIdentifier = new MetadataIdentifier();
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for (var i = 0; i < 40; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            corpusFilled.metadataHeaderInfo.metadataRecordIdentifier.value=this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value;
+            corpusFilled.metadataHeaderInfo.metadataRecordIdentifier.metadataIdentifierSchemeName = this.corpus.metadataHeaderInfo.metadataRecordIdentifier.metadataIdentifierSchemeName;
+            corpusFilled.corpusInfo.identificationInfo.resourceIdentifiers = [new ResourceIdentifier()];
+            corpusFilled.corpusInfo.identificationInfo.resourceIdentifiers[0].value= corpusFilled.corpusInfo.distributionInfos[0].distributionLoc.distributionURL;
+            corpusFilled.corpusInfo.identificationInfo.resourceIdentifiers[0].resourceIdentifierSchemeName = ResourceIdentifierSchemeNameEnum.OTHER;
+            corpusFilled.corpusInfo.corpusSubtypeSpecificInfo.rawCorpusInfo.corpusSubtype="rawCorpus";
+            corpusFilled.corpusInfo.corpusSubtypeSpecificInfo.rawCorpusInfo.corpusMediaPartsType.corpusTextParts[0].mediaType='text';
+            corpusFilled.corpusInfo.distributionInfos[0].rightsInfo = new RightsInfo();
+            corpusFilled.corpusInfo.distributionInfos[0].rightsInfo.rightsStatement = [RightsStatementEnum.OPEN_ACCESS]
+            console.log(corpusFilled);
+            this.contentConnectorService.buildCorpus(corpusFilled).subscribe(
                 res => this.buildingCorpusFn(),
                 error => this.handleError(error)
             );

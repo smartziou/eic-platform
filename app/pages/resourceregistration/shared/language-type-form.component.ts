@@ -39,8 +39,8 @@ export class LanguageTypeForm extends MyGroup {
     private compositionObject : Language = new Language();
 
     private setLanguageId($event : any) : void {
-        this.compositionObject.languageId = $event.item.key;
-        this.getMyControl('languageId').setValue($event.item.key);
+        this.compositionObject.languageId = <string>$event.item.key.toLowerCase();
+        this.getMyControl('languageId').setValue($event.item.key.toLowerCase());
     }
 
     private get languageTag() {

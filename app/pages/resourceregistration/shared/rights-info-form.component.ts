@@ -14,9 +14,9 @@ import {MyGroup} from "../myform/my-group.interface";
     selector: 'rightsInfo-form',
     template: `        
         <div [formGroup]="group">
-            <form-repeat [component]="licenseType" [parentGroup]="group"
+            <form-repeat-inline [component]="licenseType" [parentGroup]="group"
                          [name]="'licenceInfos'" [required]="true" [description]="licenseInfoDesc">
-            </form-repeat>
+            </form-repeat-inline>
         </div>
 `,
     styleUrls: ['./templates/common.css']
@@ -24,8 +24,9 @@ import {MyGroup} from "../myform/my-group.interface";
 export class RightsInfoForm extends MyGroup {
 
     readonly groupDefinition = {
-
+        // rightsStatement : ''
     };
+
 
     private licenseInfoDesc : Description = licenceInfoDesc;
 
@@ -37,28 +38,29 @@ export class RightsInfoForm extends MyGroup {
     selector: 'license-info',
     template: `
 <div [formGroup]="group">
-    <form-inline [description]="licenceDesc" [valid]="getMyControl('licence').valid">
-        <select name="role" class="form-control" formControlName="licence">
-            <option *ngFor="let value of licenceEnum" [value]="value.key" [selected]="value.key == ''">
-                {{value.value}}
-            </option>
-        </select>
-    </form-inline>
-
-    <div [hidden]="getMyControl('licence').value !== 'NON_STANDARD_LICENCE_TERMS'">
-        <div class="form-group-divider"></div>
-    
-        <form-inline [description]="nonStandardLicenceNameDesc" [valid]="getMyControl('nonStandardLicenceName').valid">
-            <input type="text" class="form-control" formControlName="nonStandardLicenceName" placeholder="{{nonStandardLicenceNameDesc.label}}">
-        </form-inline>
-    
-        <div class="form-group-divider"></div>
-    
-        <form-inline [description]="nonStandardLicenceTermsURLDesc" [valid]="getMyControl('nonStandardLicenceTermsURL').valid">
-            <input type="text" class="form-control" formControlName="nonStandardLicenceTermsURL" placeholder="{{nonStandardLicenceTermsURLDesc.label}}">
-        </form-inline>
-    </div>
-
+    <!--<div formGroupName="licenceInfo">-->
+        <!--<form-inline [description]="licenceDesc" [valid]="getMyControl('licenceInfo.licence').valid">-->
+            <!--<select name="role" class="form-control" formControlName="licence">-->
+                <!--<option *ngFor="let value of licenceEnum" [value]="value.key" [selected]="value.key == ''">-->
+                    <!--{{value.value}}-->
+                <!--</option>-->
+            <!--</select>-->
+        <!--</form-inline>-->
+    <!---->
+        <!--<div [hidden]="getMyControl('licenceInfo.licence').value !== 'NON_STANDARD_LICENCE_TERMS'">-->
+            <!--<div class="form-group-divider"></div>-->
+        <!---->
+            <!--<form-inline [description]="nonStandardLicenceNameDesc" [valid]="getMyControl('licenceInfo.nonStandardLicenceName').valid">-->
+                <!--<input type="text" class="form-control" formControlName="nonStandardLicenceName" placeholder="{{nonStandardLicenceNameDesc.label}}">-->
+            <!--</form-inline>-->
+        <!---->
+            <!--<div class="form-group-divider"></div>-->
+        <!---->
+            <!--<form-inline [description]="nonStandardLicenceTermsURLDesc" [valid]="getMyControl('licenceInfo.nonStandardLicenceTermsURL').valid">-->
+                <!--<input type="text" class="form-control" formControlName="nonStandardLicenceTermsURL" placeholder="{{nonStandardLicenceTermsURLDesc.label}}">-->
+            <!--</form-inline>-->
+        <!--</div>-->
+    <!--</div>-->
     <form-inline [description]="rightsStatementDesc" [valid]="getMyControl('rightsStatement').valid">
         <select name="role" class="form-control" formControlName="rightsStatement">
             <option *ngFor="let value of rightsStatementEnum" [value]="value.key" [selected]="value.key == ''">
@@ -66,7 +68,6 @@ export class RightsInfoForm extends MyGroup {
             </option>
         </select>
     </form-inline>
-    
 </div>
 `,
     styleUrls: ['./templates/common.css']
@@ -74,43 +75,46 @@ export class RightsInfoForm extends MyGroup {
 export class LicenseInfoForm extends MyGroup {
 
     readonly groupDefinition = {
-        licence : ['', Validators.required],
-        nonStandardLicenceName : ['',Validators.required],
-        nonStandardLicenceTermsURL : ['',Validators.required],
-        rightsStatement : ['',Validators.required]
+        // licenceInfo : this._fb.group({
+        //     licence : ['', Validators.required],
+        //     nonStandardLicenceName : ['',Validators.required],
+        //     nonStandardLicenceTermsURL : ['',Validators.required]
+        // }),
+        rightsStatement : ''
     };
 
-    private readonly licenceEnum : EnumValues[] = licenceEnum;
+
     private readonly rightsStatementEnum : EnumValues[] = rightsStatementEnum;
-    private readonly licenceDesc : Description = licenceDesc;
     private readonly rightsStatementDesc : Description = rightsStatementDesc;
+    private readonly licenceEnum : EnumValues[] = licenceEnum;
+    private readonly licenceDesc : Description = licenceDesc;
     private readonly nonStandardLicenceNameDesc : Description = nonStandardLicenceNameDesc;
     private readonly nonStandardLicenceTermsURLDesc : Description = nonStandardLicenceTermsURLDesc;
 
     ngOnInit() {
         super.ngOnInit();
-        this.getMyControl('licence').valueChanges.subscribe(_ => {
-            let nonStandardLicenceName = this.getMyControl('nonStandardLicenceName');
-            let nonStandardLicenceTermsURL = this.getMyControl('nonStandardLicenceTermsURL');
-            if (_ !== 'NON_STANDARD_LICENCE_TERMS') {
-                nonStandardLicenceName.disable();
-                nonStandardLicenceTermsURL.disable();
-            } else {
-                nonStandardLicenceName.enable();
-                nonStandardLicenceTermsURL.enable();
-            }
-        });
+        // this.getMyControl('licenceInfo.licence').valueChanges.subscribe(_ => {
+        //     let nonStandardLicenceName = this.getMyControl('licenceInfo.nonStandardLicenceName');
+        //     let nonStandardLicenceTermsURL = this.getMyControl('licenceInfo.nonStandardLicenceTermsURL');
+        //     if (_ !== 'NON_STANDARD_LICENCE_TERMS') {
+        //         nonStandardLicenceName.disable();
+        //         nonStandardLicenceTermsURL.disable();
+        //     } else {
+        //         nonStandardLicenceName.enable();
+        //         nonStandardLicenceTermsURL.enable();
+        //     }
+        // });
 
-        this.getMyControl('licence').statusChanges.subscribe(_ => {
-            let rightsStatement = this.getMyControl('rightsStatement');
-            if (_ === 'VALID') {
-                rightsStatement.clearValidators();
-                rightsStatement.updateValueAndValidity();
-            } else {
-                rightsStatement.setValidators(Validators.required);
-                rightsStatement.updateValueAndValidity();
-            }
-        });
+        // this.getMyControl('licence').statusChanges.subscribe(_ => {
+        //     let rightsStatement = this.getMyControl('rightsStatement');
+        //     if (_ === 'VALID') {
+        //         rightsStatement.clearValidators();
+        //         rightsStatement.updateValueAndValidity();
+        //     } else {
+        //         rightsStatement.setValidators(Validators.required);
+        //         rightsStatement.updateValueAndValidity();
+        //     }
+        // });
 
         // this.getMyControl('rightsStatement').statusChanges.subscribe(_ => {
         //     let licence = this.getMyControl('licence');
@@ -123,10 +127,10 @@ export class LicenseInfoForm extends MyGroup {
         //     }
         // });
 
-        let nonStandardLicenceName = this.getMyControl('nonStandardLicenceName');
-        let nonStandardLicenceTermsURL = this.getMyControl('nonStandardLicenceTermsURL');
-        nonStandardLicenceName.disable();
-        nonStandardLicenceTermsURL.disable();
+        // let nonStandardLicenceName = this.getMyControl('licenceInfo.nonStandardLicenceName');
+        // let nonStandardLicenceTermsURL = this.getMyControl('licenceInfo.nonStandardLicenceTermsURL');
+        // nonStandardLicenceName.disable();
+        // nonStandardLicenceTermsURL.disable();
     }
 
 

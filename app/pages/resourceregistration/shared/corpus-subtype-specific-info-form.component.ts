@@ -13,7 +13,7 @@ import {Description, corpusTextPartInfoDesc} from "../../../domain/omtd.descript
     template: `    
     <div [formGroup]="group">
 
-        <form-repeat [component]="textPartType" [parentGroup]="group" 
+        <form-repeat [component]="textPartType" [parentGroup]="getMyControl('rawCorpusInfo.corpusMediaPartsType')" 
                             [name]="'corpusTextParts'" [required]="true" [description]="corpusTextPartInfoDesc">
         </form-repeat>
         

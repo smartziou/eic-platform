@@ -101,15 +101,15 @@ export class MyArray extends MyGroup {
     protected patchValue() {
         let self = this;
         return (value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) => {
-            for (let i = (<FormArray>this.group.controls[this.name]).length; i < Object.keys(value).length; i++) {
-                self.createView();
-            }
+            // TODO for (let i = (<FormArray>self.parentGroup.controls[self.name]).length; i < Object.keys(value).length; i++) {
+            // TODO    self.createView();
+            // TODO }
             Object.keys(value).forEach(name => {
-                if (self.group.controls[name]) {
-                    self.group.controls[name].patchValue(value[name], {onlySelf: true, emitEvent});
+                if (self.parentGroup.controls[name]) {
+                    self.parentGroup.controls[name].patchValue(value[name], {onlySelf: true, emitEvent});
                 }
             });
-            self.group.updateValueAndValidity({onlySelf, emitEvent});
+            self.parentGroup.updateValueAndValidity({onlySelf, emitEvent});
         };
     }
 }

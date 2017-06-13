@@ -13,7 +13,7 @@ import {
 @Component({
     selector: 'datasetDistributionsInfo-form',
     template : `    
-    <div formGroup]="parentGroup">
+    <div [formGroup]="parentGroup">
 
         <form-repeat [component]="datasetDistributionType" [parentGroup]="parentGroup" 
                             [name]="'distributionInfos'" [required]="true" [description]="datasetDistributionDesc">
@@ -52,7 +52,7 @@ export class DatasetDistributionsInfoFormControl {
         </form-inline>
     </div>
       
-    <rightsInfo-form [parentGroup]="group" [name]="'rightsInfo'"></rightsInfo-form>
+    <!--<rightsInfo-form [parentGroup]="group" [name]="'rightsInfo'"></rightsInfo-form>-->
     
 </div>  
     
