@@ -14,10 +14,10 @@ export class ContentConnectorService {
 
     constructor (private http: Http) {}
 
-    private _contentConnectorSearchUrl = 'http://83.212.101.85:8888/content-connector-service/content/browse/';
-    private _contentConnectorPrepareCorpusUrl = 'http://83.212.101.85:8888/content-connector-service/corpus/prepare/';
-    private _contentConnectorBuildCorpusUrl = 'http://83.212.101.85:8888/content-connector-service/corpus/build/';
-    private _contentConnectorBuildCorpusStatusUrl = 'http://83.212.101.85:8888/content-connector-service/corpus/status/?id=';
+    private _contentConnectorSearchUrl = process.env.API_ENDPOINT + ':8888/content-connector-service/content/browse/';
+    private _contentConnectorPrepareCorpusUrl = process.env.API_ENDPOINT + ':8888/content-connector-service/corpus/prepare/';
+    private _contentConnectorBuildCorpusUrl = process.env.API_ENDPOINT + ':8888/content-connector-service/corpus/build/';
+    private _contentConnectorBuildCorpusStatusUrl = process.env.API_ENDPOINT + ':8888/content-connector-service/corpus/status/?id=';
 
     search(urlParameters: URLParameter[]) {
 
@@ -35,7 +35,7 @@ export class ContentConnectorService {
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        
+        options.withCredentials = true;
         return this.http.post(this._contentConnectorSearchUrl, JSON.stringify(body), options)
             .map(res => <PublicationSearchResults> res.json())
             .catch(this.handleError);
@@ -57,7 +57,7 @@ export class ContentConnectorService {
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-
+        options.withCredentials = true;
         return this.http.post(this._contentConnectorPrepareCorpusUrl, JSON.stringify(body), options)
             .map(res => <OMTDCorpus> res.json())
             .catch(this.handleError).share();
@@ -67,6 +67,7 @@ export class ContentConnectorService {
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
+        options.withCredentials = true;
         ResourceService.removeNulls(corpus);
         return this.http.post(this._contentConnectorBuildCorpusUrl, JSON.stringify(corpus), options)
             .map(res => res.status)

@@ -69,7 +69,7 @@ export class BrowseApplicationsComponent {
 
                 // console.log(this.urlParameters);
                 //request results from the registry
-                this.resourceService.searchForApplications(this.urlParameters).subscribe(
+                this.resourceService.getComponents().subscribe(
                     searchResults => this.updateSearchResults(searchResults),
                     error => this.handleError(<any>error));
             });
@@ -266,7 +266,7 @@ export class BrowseApplicationsComponent {
     gotoDetail(resourceType: string, id: string) {
         //TODO remove ms. I have put it there because the id gets parsed without the ms
         // this.router.navigate(['/landingPage/' + resourceType + '/', 'ms' + id]);
-        this.router.navigate(['/landingPage/' + resourceType + '/', btoa(id)]);
+        this.router.navigate(['/landingPage/' + resourceType + '/', id]);
     }
 
     handleError(error) {

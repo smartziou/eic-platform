@@ -5,13 +5,14 @@ import {Injectable} from '@angular/core';
 import {User} from "./../domain/user";
 import {URLSearchParams, Http} from "@angular/http";
 import {getCookie, deleteCookie} from "../domain/utils";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthenticationService {
 
     private endpoint = process.env.API_ENDPOINT + ':' + process.env.API_PORT + process.env.API_PATH ;
 
-    constructor (private http: Http) {}
+    constructor (private http: Http,private router: Router) {}
 
     isLoggedIn: boolean = false;
 
@@ -38,6 +39,7 @@ export class AuthenticationService {
     logout() {
         deleteCookie('name');
         sessionStorage.removeItem('name');
+        window.location.href = `https://aai.openminted.eu/proxy/saml2/idp/SingleLogoutService.php?ReturnTo=${process.env.API_ENDPOINT}`;
         //https://aai.openminted.eu/registry/auth/logout
     }
 
@@ -54,9 +56,14 @@ export class AuthenticationService {
             if(!sessionStorage.getItem('name')) {
                 this.http.get(this.endpoint + '/user',{ withCredentials: true }).subscribe(
                     userInfo => {console.log(userInfo.json());sessionStorage.setItem('name',userInfo.json()['name'])},
-                    err => {sessionStorage.removeItem('name');deleteCookie('name');}
+                    () => {sessionStorage.removeItem('name');deleteCookie('name');}
                 );
             }
+        }
+        if(sessionStorage.getItem("state.location")) {
+            let state = sessionStorage.getItem("state.location");
+            sessionStorage.removeItem("state.location");
+            this.router.navigateByUrl(state);
         }
     }
 

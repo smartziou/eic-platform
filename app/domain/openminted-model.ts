@@ -32,7 +32,7 @@ export class Affiliation  {
 }
 
 export class AnnotatedCorpusInfo  {
-    corpusSubtype : any;
+    corpusSubtype : string;
     corpusMediaParts : CorpusMediaParts;
 }
 
@@ -61,7 +61,7 @@ export class AnnotationInfo  {
 }
 
 export class AnnotationsInfo  {
-    corpusSubtype : any;
+    corpusSubtype : string;
     rawCorpus : RelatedResource;
     annotationInfo : AnnotationInfo;
 }
@@ -73,11 +73,11 @@ export class BaseMetadataRecord  {
     metadataHeaderInfo : MetadataHeaderInfo;
 }
 
-export class Browsing  {
+export class Browsing<T>  {
     total : number;
     from : number;
     to : number;
-    results : Result;
+    results : Order<T>[];
     facets : Facet[];
 }
 
@@ -109,14 +109,13 @@ export class ComponentCreationInfo  {
 
 export class ComponentDependencies  {
     typesystem : RelatedResource;
-    annotationSchema : any;
+    annotationSchema : RelatedResource;
     annotationResources : RelatedResource[];
     softwareLibraries : string[];
 }
 
 export class ComponentDistributionInfo  {
     componentLoc : ComponentLoc;
-    command : any;
     webServiceType : WebServiceTypeEnum;
     operatingSystems : OperatingSystemEnum[];
     rightsInfo : RightsInfo;
@@ -135,6 +134,8 @@ export class ComponentEvaluationInfo  {
     evaluationTypes : EvaluationTypeEnum[];
     evaluationCriteria : EvaluationCriterionEnum[];
     evaluationMeasures : EvaluationMeasureEnum[];
+    goldStandardLocation : string;
+    performanceIndicators : PerformanceIndicatorInfo[];
     evaluationReports : RelatedDocumentInfo[];
     evaluationSwComponents : RelatedResource[];
     evaluationDetails : string;
@@ -152,7 +153,7 @@ export class ComponentInfo  {
     resourceCreationInfo : ResourceCreationInfo;
     componentType : ComponentTypeEnum;
     application : boolean;
-    applicationFunction : any;
+    applicationFunction : ApplicationType;
     workflow : boolean;
     workflowDescription : string;
     distributionInfos : ComponentDistributionInfo[];
@@ -162,13 +163,14 @@ export class ComponentInfo  {
     componentCreationInfo : ComponentCreationInfo;
     scmInfo : ScmInfo;
     issueManagementInfo : IssueManagementInfo;
-    relations : Relations2;
+    relations : RelationInfo[];
     componentEvaluationInfo : ComponentEvaluationInfo;
 }
 
 export class ComponentLoc  {
     componentDistributionForm : ComponentDistributionFormEnum;
-    distributionURL : string;
+    distributionLocation : string;
+    command : string;
 }
 
 export class ComponentOperationInfo  {
@@ -177,8 +179,8 @@ export class ComponentOperationInfo  {
 }
 
 export class ContactInfo  {
-    landingPage : string;
     contactPersons : PersonInfo[];
+    landingPage : string;
     contactEmail : string;
     contactGroups : GroupInfo[];
     mailingLists : MailingListInfo[];
@@ -200,7 +202,7 @@ export class CorpusInfo  {
     usageInfo : UsageInfo;
     resourceDocumentationInfo : ResourceDocumentationInfo;
     resourceCreationInfo : ResourceCreationInfo;
-    relations : Relations5;
+    relations : RelationInfo[];
     distributionInfos : DatasetDistributionInfo[];
     corpusSubtypeSpecificInfo : CorpusSubtypeSpecificInfo;
 }
@@ -250,7 +252,7 @@ export class DataFormatInfo  {
 }
 
 export class DatasetDistributionInfo  {
-    distributionLoc : DistributionLoc;
+    distributionLoc : DistributionLoc[];
     textFormats : TextFormatInfo[];
     characterEncodings : CharacterEncodingInfo[];
     sizes : SizeInfo[];
@@ -289,7 +291,7 @@ export class Description extends MyString {
 
 export class DistributionLoc  {
     distributionMedium : DistributionMediumEnum;
-    distributionURL : string;
+    distributionLocation : string;
 }
 
 export class Document  {
@@ -338,7 +340,7 @@ export class DocumentInfo  {
     abstracts : Abstract[];
     fundingProjects : ProjectInfo[];
     sizes : SizeInfo[];
-    relations : Relations4;
+    relations : RelationInfo[];
 }
 
 export class DocumentMetadataRecord extends BaseMetadataRecord {
@@ -378,10 +380,6 @@ export class GeographicCoverageInfo  {
 }
 
 export class GivenName extends MyString {
-}
-
-export class GivenNames  {
-    givenName : GivenName[];
 }
 
 export class GrammaticalPhenomenaCoverages  {
@@ -464,7 +462,7 @@ export class LanguageDescriptionInfo  {
     languageDescriptionEncodingInfo : LanguageDescriptionEncodingInfo;
     languageDescriptionOperationInfo : LanguageDescriptionOperationInfo;
     languageDescriptionPerformanceInfo : LanguageDescriptionPerformanceInfo;
-    relations : Relations3;
+    relations : RelationInfo[];
     languageDescriptionMediaType : LanguageDescriptionMediaType;
 }
 
@@ -606,14 +604,10 @@ export class ModelOperationInfo  {
     algorithm : string;
     algorithmDetails : string;
     trainingCorpusDetails : string;
-    tdmmethod : any;
+    tdmmethod : TDMMethodEnum;
 }
 
 export class Name extends MyString {
-}
-
-export class Names  {
-    name : Name[];
 }
 
 export class NonStandaradLicenceTermsText extends MyString {
@@ -668,6 +662,12 @@ export class ParameterInfo  {
     defaultValue : string[];
 }
 
+export class PerformanceIndicatorInfo  {
+    metric : MetricEnum;
+    measure : number;
+    unit : string;
+}
+
 export class PersonIdentifier  {
     value : string;
     personIdentifierSchemeName : PersonIdentifierSchemeNameEnum;
@@ -675,9 +675,8 @@ export class PersonIdentifier  {
 }
 
 export class PersonInfo  {
-    surnames : Surnames[];
-    givenNames : GivenNames[];
-    names : Names[];
+    separateNames : SeparateNames;
+    names : Name[];
     personIdentifiers : PersonIdentifier[];
     sex : SexEnum;
     communicationInfo : CommunicationInfo;
@@ -704,6 +703,7 @@ export class ProcessingResourceInfo  {
     parameterInfos : ParameterInfo[];
     domains : Domain[];
     keywords : string[];
+    samplesLocation : string;
 }
 
 export class ProjectIdentifier  {
@@ -738,7 +738,7 @@ export class PublicationIdentifier  {
 }
 
 export class RawCorpusInfo  {
-    corpusSubtype : any;
+    corpusSubtype : string;
     corpusMediaPartsType : CorpusMediaPartsType;
 }
 
@@ -767,22 +767,6 @@ export class RelatedResource  {
 export class RelationInfo  {
     relationType : RelationTypeEnum;
     relatedResource : RelatedResource;
-}
-
-export class Relations2  {
-    relationInfo : RelationInfo;
-}
-
-export class Relations3  {
-    relationInfo : RelationInfo;
-}
-
-export class Relations4  {
-    relationInfo : RelationInfo;
-}
-
-export class Relations5  {
-    relationInfo : RelationInfo;
 }
 
 export class RepositoryIdentifier  {
@@ -825,14 +809,6 @@ export class ResourceName extends MyString {
 export class ResourceShortName extends MyString {
 }
 
-export class Result  {
-    corpora : Order<Corpus>[];
-    components : Order<Component>[];
-    lexicalConceptualResources : Order<Lexical>[];
-    languageDescriptions : Order<LanguageDescription>[];
-    total : number;
-}
-
 export class RightsInfo  {
     licenceInfos : LicenceInfos[];
     rightsStatement : RightsStatementEnum[];
@@ -849,6 +825,11 @@ export class ScmInfo  {
     developerConnection : string;
     tag : string;
     url : string;
+}
+
+export class SeparateNames  {
+    surnames : Surname[];
+    givenNames : GivenName[];
 }
 
 export class SizeInfo  {
@@ -881,10 +862,6 @@ export class Subject  {
 }
 
 export class Surname extends MyString {
-}
-
-export class Surnames  {
-    surname : Surname[];
 }
 
 export class TextClassificationInfo  {
@@ -1244,7 +1221,11 @@ export enum ComponentDistributionFormEnum {
     WEB_SERVICE,
     SOURCE_CODE,
     EXECUTABLE_CODE,
-    SOURCE_AND_EXECUTABLE_CODE
+    SOURCE_AND_EXECUTABLE_CODE,
+    DOCKER_IMAGE,
+    WRAPPED_IN_GALAXY,
+    WORKFLOW_FILE,
+    OTHER
 }
 
 export enum ComponentTypeEnum {
@@ -1313,10 +1294,6 @@ export enum ComponentTypeEnum {
     LEXICON_EXTRACTOR_FROM_CORPORA,
     LEXICON_EXTRACTOR_FROM_LEXICA,
     WORD_SENSE_DISAMBIGUATOR,
-    PLATFORM,
-    INFRASTRUCTURE,
-    ARCHITECTURE,
-    NLP_DEVELOPMENT_ENVIRONMENT,
     OTHER
 }
 
@@ -1683,6 +1660,16 @@ export enum MetadataIdentifierSchemeNameEnum {
     PURL,
     URL,
     URN,
+    OTHER
+}
+
+export enum MetricEnum {
+    MAD,
+    MTDV,
+    MTSA,
+    ART,
+    MTBF,
+    MTTR,
     OTHER
 }
 

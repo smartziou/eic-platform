@@ -273,7 +273,7 @@
                             <div *ngIf="!oAuthService.isUserLoggedIn" class="btl-panel" style="float: right;">
                                 <!-- Login button -->
 			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">
-			                        <a class="loginLink" [href]="oidcUrl"> SIGN IN   </a>
+			                        <a class="loginLink" (click)="loginWithState()"> SIGN IN   </a>
                                 </span>
                                 |
                                 <!-- Registration button -->

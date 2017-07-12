@@ -131,8 +131,20 @@ export class ResourceService {
             .catch(this.handleError);
     }
 
+    getCorpora() {
+        return this.http.get(this._resourcesUrl + "corpus/all")
+            .map(res => <OMTDCorpus> res.json())
+            .catch(this.handleError);
+    }
+
     getComponent(id: string) {
         return this.http.get(this._resourcesUrl + "component/" + id)
+            .map(res => <OMTDComponent> res.json())
+            .catch(this.handleError);
+    }
+
+    getComponents() {
+        return this.http.get(this._resourcesUrl + "component/all")
             .map(res => <OMTDComponent> res.json())
             .catch(this.handleError);
     }

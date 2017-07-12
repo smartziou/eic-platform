@@ -5,6 +5,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from "../../services/authentication.service";
 import {getCookie, deleteCookie} from "../../domain/utils";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'top-menu',
@@ -16,7 +17,13 @@ export class TopMenuComponent {
 
     private oidcUrl = process.env.OIDC_ENDPOINT;
 
-    constructor(private oAuthService: AuthenticationService) {
+    constructor(private oAuthService: AuthenticationService,private route: ActivatedRoute,private router: Router) {
+    }
+
+    private loginWithState() {
+        console.log(this.route);
+        sessionStorage.setItem("state.location",this.router.url);
+        window.location.href =this.oidcUrl;
     }
 
     onClick(id: string) {

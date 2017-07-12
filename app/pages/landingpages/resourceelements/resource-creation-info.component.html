@@ -15,8 +15,8 @@
         && resourceCreationInfo.resourceCreators.length>0">
         <strong>Creators: </strong>
         <span *ngFor="let creator of resourceCreationInfo.resourceCreators; let isLast = last;">
-            <span *ngIf="creator.relatedPerson && creator.relatedPerson.personNames && creator.relatedPerson.personNames.length>0">
-                {{creator.relatedPerson.personNames[0].value}}
+            <span *ngIf="personName(creator.relatedPerson)">
+                {{personName(creator.relatedPerson)}}
             </span>
             <span *ngIf="creator.relatedPerson && creator.relatedPerson.personIdentifiers && creator.relatedPerson.personIdentifiers.length>0">
                 {{creator.relatedPerson.personIdentifiers[0].value}}

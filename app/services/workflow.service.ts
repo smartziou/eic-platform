@@ -23,9 +23,9 @@ export class WorkflowService {
         let options = new RequestOptions({headers: headers});
 
         let params = new URLSearchParams();
-        // params.append('corpusId','60446e38-ab69-4440-8d8f-a5c744c7d6d2');
+        params.append('corpusId','60446e38-ab69-4440-8d8f-a5c744c7d6d2');
         params.append('workflowId','DGTest1');
-        params.append('corpusId', corpusId);
+        // params.append('corpusId', corpusId);
         // params.append('workflowId', workflowId);
 
         return this.http.post(this._workflowServiceUrl + 'executeJob?' + params.toString(), {}, options)

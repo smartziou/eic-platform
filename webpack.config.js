@@ -30,12 +30,12 @@ var webpackConfig = {
 
         new webpack.DefinePlugin({"process.env" : {
             PRODUCTION: JSON.stringify(true),
-            API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://dev.openminted.eu"),
-            WORKFLOW_API_ENDPOINT : JSON.stringify(process.env.WORKFLOW_API_ENDPOINT || "http://snf-754063.vm.okeanos.grnet.gr:8881"),
+            API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "https://dev.openminted.eu"),
+            WORKFLOW_API_ENDPOINT : JSON.stringify(process.env.WORKFLOW_API_ENDPOINT || "https://dev.openminted.eu:8881"),
             API_PORT : JSON.stringify(process.env.API_PORT || "8080"),
             API_PATH : JSON.stringify("/omtd-registry"),
             CONNECTOR_PORT : JSON.stringify("8888"),
-            OIDC_ENDPOINT : JSON.stringify(process.env.OIDC_ENDPOINT || "http://dev.openminted.eu:8080/omtd-registry/openid_connect_login"),
+            OIDC_ENDPOINT : JSON.stringify(process.env.OIDC_ENDPOINT || "https://dev.openminted.eu:8080/omtd-registry/openid_connect_login"),
             AAI_ENDPOINT : JSON.stringify(process.env.AAI_ENDPOINT || "https://aai.openminted.eu/oidc")
         }})
     ],
