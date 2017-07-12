@@ -259,7 +259,12 @@
     text-transform: none;
 }
 
+/******************************************************/
 
+.modal-body {
+    padding: 30px;
+    max-height: 600px;
+}
 
 
 

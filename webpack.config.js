@@ -30,7 +30,7 @@ var webpackConfig = {
 
         new webpack.DefinePlugin({"process.env" : {
             PRODUCTION: JSON.stringify(true),
-            API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "https://dev.openminted.eu"),
+            API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://localhost"),
             WORKFLOW_API_ENDPOINT : JSON.stringify(process.env.WORKFLOW_API_ENDPOINT || "https://dev.openminted.eu:8881"),
             API_PORT : JSON.stringify(process.env.API_PORT || "8080"),
             API_PATH : JSON.stringify("/omtd-registry"),

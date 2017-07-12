@@ -2,9 +2,46 @@
     <div class="uk-container">
         <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-width-1-1@m uk-first-column">
-                <h1>FAQs</h1>
-                <div class="uk-margin uk-text-lead">
-                    Coming soon....
+
+                <h1 class="uk-h2">FAQs</h1>
+                <hr class="uk-divider-small">
+
+                <div class="uk-margin-medium-top uk-margin-large-bottom">
+
+                    <div *ngIf="errorMessage" class="uk-alert uk-alert-danger">{{errorMessage}}</div>
+
+                    <div *ngIf="activeTopicQuestions && !errorMessage">
+
+                        <div *ngIf="activeTopicQuestions.length==0" class="uk-alert uk-alert-warning">
+                            There are no active FAQs at the moment
+                        </div>
+
+                        <div *ngIf="activeTopicQuestions.length>0">
+
+
+                            <div *ngFor="let activeTopicQuestion of activeTopicQuestions">
+
+                                <h3 class="uk-h3">
+                                    <span class="uk-strong" style="color: #68b8b3">{{activeTopicQuestion.name}}</span>
+                                </h3>
+                                <p *ngIf="activeTopicQuestion.description">{{activeTopicQuestion.description}}</p>
+
+                                <ul *ngIf="activeTopicQuestion.questions.length>0" uk-accordion>
+                                    <li *ngFor="let question of activeTopicQuestion.questions" class="uk-margin-bottom">
+                                        <h3 class="uk-accordion-title">{{question.question}}</h3>
+                                        <div class="uk-accordion-content">
+                                            <p>{{question.answer}}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            <!--There are {{activeTopicQuestions.length}} active topics-->
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>

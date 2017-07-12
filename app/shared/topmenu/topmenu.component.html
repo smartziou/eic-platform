@@ -141,6 +141,14 @@
                                     <li><a [routerLink]="['/communities']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Communities</a></li>
                                 </ul>
                             </li>
+                            <li *ngIf="oAuthService.isUserLoggedIn" class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">My Space
+                                <ul class="uk-nav-sub">
+                                    <li><a [routerLink]="['/mySpace/corpora']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Corpora</a></li>
+                                    <li><a [routerLink]="['/mySpace/services']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Services/Tools</a></li>
+                                    <li><a [routerLink]="['/mySpace/operations']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Operations</a></li>
+                                    <li><a [routerLink]="['/mySpace/profile']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Profile</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -258,6 +266,20 @@
                                             <li><a [routerLink]="['/about/aboutUs']" routerLinkActive="uk-active">Who we are</a></li>
                                             <li><a href="http://openminted.eu/" target="_blank" routerLinkActive="uk-active">Project</a></li>
                                             <li><a [routerLink]="['/about/communities']" routerLinkActive="uk-active">Communities</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li *ngIf="oAuthService.isUserLoggedIn" class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">My Space</a>
+                            <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="mySpace" (click)="onClick('mySpace')">
+                                <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
+                                    <div class="uk-first-column">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a [routerLink]="['/mySpace/corpora']" routerLinkActive="uk-active">My Corpora</a></li>
+                                            <li><a [routerLink]="['/mySpace/services']" routerLinkActive="uk-active">My Services/Tools</a></li>
+                                            <li><a [routerLink]="['/mySpace/operations']" routerLinkActive="uk-active">My Operations</a></li>
+                                            <li><a [routerLink]="['/mySpace/profile']" routerLinkActive="uk-active">Profile</a></li>
                                         </ul>
                                     </div>
                                 </div>

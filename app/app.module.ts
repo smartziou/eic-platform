@@ -17,9 +17,6 @@ import { AppComponent } from "./app.component";
 import { TopMenuComponent } from "./shared/topmenu/topmenu.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { SearchComponent } from "./pages/search/search.component";
-import { LoginComponent } from "./pages/user/signin/login.component";
-import { RegisterComponent } from "./pages/user/register/register.component";
-import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.component";
 import { ComponentRegistrationModule } from "./pages/resourceregistration/component/component-registration.module";
 import { TabsModule } from "ngx-bootstrap";
 import { LandingPageModule } from "./pages/landingpages/landing-page.module";
@@ -31,6 +28,7 @@ import { SupportModule } from "./pages/support/support.module";
 import { AboutModule } from "./pages/about/about.module";
 import { DatasourceRegistrationModule } from "./pages/resourceregistration/datasource/datasource-registration.module";
 import { ActionsModule } from "./pages/actions/actions.module";
+import { UserSpaceModule } from "./pages/user/user-space.module";
 
 @NgModule({
     imports: [
@@ -50,14 +48,12 @@ import { ActionsModule } from "./pages/actions/actions.module";
         ReusableComponentsModule,
         SupportModule,
         AboutModule,
-        ActionsModule
+        ActionsModule,
+        UserSpaceModule
     ],
     declarations: [
         AppComponent,
         HomeComponent,
-        LoginComponent,
-        RegisterComponent,
-        EditProfileComponent,
         SearchComponent,
         TopMenuComponent,
         FooterComponent,

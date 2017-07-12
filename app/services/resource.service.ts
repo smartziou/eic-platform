@@ -2,9 +2,9 @@
  * Created by stefania on 9/6/16.
  */
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import {Component as OMTDComponent, Corpus as OMTDCorpus, Order, LanguageDescription, Lexical} from "../domain/openminted-model";
+import { Component as OMTDComponent, Corpus as OMTDCorpus, LanguageDescription, Lexical } from "../domain/openminted-model";
 import { URLParameter } from "../domain/url-parameter";
 import { SearchResults } from "../domain/search-results";
 import { Resource } from "../domain/resource";
@@ -194,6 +194,7 @@ export class ResourceService {
                         obj[k].lang = '';
                 ResourceService.removeNulls(obj[k]);
             }
+            if(obj[k] instanceof Array && obj[k].length == 0) delete obj[k];
         }
     }
 
@@ -232,6 +233,47 @@ export class ResourceService {
 
     public corpusDownloadURL(id : string) : string {
         return this._resourcesUrl + '/corpus/download?archiveId=' + id;
+    }
+
+    getMyCorpora() {
+        return this.http.get(this._resourcesUrl + "corpus/my", { withCredentials: true })
+            .map(res => <SearchResults> res.json())
+            .catch(this.handleError);
+    }
+
+    getMyComponents() {
+        return this.http.get(this._resourcesUrl + "component/my", { withCredentials: true })
+            .map(res => <SearchResults> res.json())
+            .catch(this.handleError);
+    }
+
+    deleteComponent(component: OMTDComponent) {
+
+        ResourceService.removeNulls(component);
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({
+            headers: headers,
+            withCredentials: true,
+            method: RequestMethod.Delete,
+            body: JSON.stringify(component)
+        });
+
+        return this.http.request(this._resourcesUrl + 'component', options)
+            .catch(this.handleError);
+    }
+
+    updateComponent(component: OMTDComponent) {
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+        options.withCredentials = true;
+
+        ResourceService.removeNulls(component);
+        console.log(component);
+        return this.http.put(this._resourcesUrl + 'component', JSON.stringify(component), options)
+            .map(res => <OMTDComponent> res.json())
+            .catch(this.handleError);
     }
 
 
