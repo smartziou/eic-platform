@@ -65,7 +65,7 @@
                         (You need to select both an input and an application first)</div>
                 </a>
             </div>
-            <div *ngIf="(corpus && component && !wsJobStatus) || (wsJobStatus && wsJobStatus.status=='FAILED')"
+            <div *ngIf="!isRunning && (corpus && component && !wsJobStatus) || (wsJobStatus && wsJobStatus.status=='FAILED')"
                  class="uk-width-1-5@m placeholderGrid" style="height: 200px">
                 <a style="height: 100%" (click)="runApplication()">
                     <div class="uk-placeholder uk-text-center" style="height: 100%">Click to run the application!</div>

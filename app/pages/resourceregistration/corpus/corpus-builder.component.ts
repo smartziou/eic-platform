@@ -6,17 +6,13 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from "rxjs/Subscription";
 import { URLParameter } from "../../../domain/url-parameter";
-import { PublicationSearchResults } from "../../../domain/publications-search-results";
 import { ContentConnectorService } from "../../../services/content-connector.service";
-import { Facet } from "../../../domain/facet";
-import { SearchQuery } from "../../../domain/search-query";
 import {
-    Corpus as OMTDCorpus, MetadataHeaderInfo, PersonInfo, Names, Name,
-    MetadataIdentifier, MetadataIdentifierSchemeNameEnum, ResourceIdentifier, ResourceIdentifierSchemeNameEnum,
+    Corpus as OMTDCorpus, MetadataHeaderInfo, PersonInfo, Name,
+    MetadataIdentifier, ResourceIdentifier, ResourceIdentifierSchemeNameEnum,
     RightsInfo, RightsStatementEnum
 } from "../../../domain/openminted-model";
 import { Observable } from 'rxjs/Rx';
-import {ResourceService} from "../../../services/resource.service";
 
 @Component({
     selector: 'corpus-builder',
@@ -124,23 +120,16 @@ export class CorpusBuilderComponent {
 
             this.callingBuildCorpus = true;
             let corpusFilled : OMTDCorpus = this.corpusForm.value;
-            corpusFilled.metadataHeaderInfo = new MetadataHeaderInfo();
-            corpusFilled.metadataHeaderInfo.revision = "1.0.0";
-            corpusFilled.metadataHeaderInfo.metadataCreators = [ new PersonInfo() ];
-            corpusFilled.metadataHeaderInfo.metadataCreators[0].names = [new Names()];
-            corpusFilled.metadataHeaderInfo.metadataCreators[0].names[0].name = [new Name()];
-            corpusFilled.metadataHeaderInfo.metadataCreators[0].names[0].name[0].value="Doe, John";
-            corpusFilled.metadataHeaderInfo.metadataRecordIdentifier = new MetadataIdentifier();
             var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
             for (var i = 0; i < 40; i++)
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-            corpusFilled.metadataHeaderInfo.metadataRecordIdentifier.value=this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value;
-            corpusFilled.metadataHeaderInfo.metadataRecordIdentifier.metadataIdentifierSchemeName = this.corpus.metadataHeaderInfo.metadataRecordIdentifier.metadataIdentifierSchemeName;
+            // corpusFilled.metadataHeaderInfo.metadataRecordIdentifier.value=this.corpus.metadataHeaderInfo.metadataRecordIdentifier.value;
+            // corpusFilled.metadataHeaderInfo.metadataRecordIdentifier.metadataIdentifierSchemeName = this.corpus.metadataHeaderInfo.metadataRecordIdentifier.metadataIdentifierSchemeName;
             corpusFilled.corpusInfo.identificationInfo.resourceIdentifiers = [new ResourceIdentifier()];
-            corpusFilled.corpusInfo.identificationInfo.resourceIdentifiers[0].value= corpusFilled.corpusInfo.distributionInfos[0].distributionLoc.distributionURL;
+            corpusFilled.corpusInfo.identificationInfo.resourceIdentifiers[0].value= corpusFilled.corpusInfo.distributionInfos[0].distributionLoc[0].distributionLocation;
             corpusFilled.corpusInfo.identificationInfo.resourceIdentifiers[0].resourceIdentifierSchemeName = ResourceIdentifierSchemeNameEnum.OTHER;
             corpusFilled.corpusInfo.corpusSubtypeSpecificInfo.rawCorpusInfo.corpusSubtype="rawCorpus";
             corpusFilled.corpusInfo.corpusSubtypeSpecificInfo.rawCorpusInfo.corpusMediaPartsType.corpusTextParts[0].mediaType='text';

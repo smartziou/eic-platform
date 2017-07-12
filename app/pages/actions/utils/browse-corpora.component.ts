@@ -69,7 +69,7 @@ export class BrowseCorporaComponent {
 
                 // console.log(this.urlParameters);
                 //request results from the registry
-                this.resourceService.searchForCorpora(this.urlParameters).subscribe(
+                this.resourceService.getCorpora().subscribe(
                     searchResults => this.updateSearchResults(searchResults),
                     error => this.handleError(<any>error));
             });

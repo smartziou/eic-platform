@@ -4,11 +4,8 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms'
 import {
-    Corpus as OMTDCorpus, DatasetDistributionInfo, DistributionLoc, DistributionMediumEnum, MetadataHeaderInfo,
-    MetadataIdentifier, Name,
-    Names, PersonInfo,
-    RightsInfo,
-    MetadataIdentifierSchemeNameEnum, ResourceIdentifier, ResourceIdentifierSchemeNameEnum, RightsStatementEnum,
+    Corpus as OMTDCorpus, DatasetDistributionInfo, DistributionLoc, DistributionMediumEnum,
+    RightsInfo, ResourceIdentifier, ResourceIdentifierSchemeNameEnum, RightsStatementEnum,
 } from "../../../domain/openminted-model";
 import {ResourceService} from "../../../services/resource.service";
 
@@ -93,33 +90,18 @@ export class CorpusUploadComponent implements OnInit {
             this.resourceService.uploadZip(this.zipFile.name,this.zipFile).subscribe(id => {
                 let corpusBody : OMTDCorpus = this.corpusForm.value;
                 let distributionInfo : DatasetDistributionInfo = new DatasetDistributionInfo();
-                distributionInfo.distributionLoc = new DistributionLoc();
+                distributionInfo.distributionLoc = [new DistributionLoc()];
                 distributionInfo.rightsInfo = corpusBody.corpusInfo.distributionInfos[0].rightsInfo;
                 distributionInfo.rightsInfo = new RightsInfo();
                 distributionInfo.rightsInfo.rightsStatement = [RightsStatementEnum.OPEN_ACCESS]
-                distributionInfo.distributionLoc.distributionMedium = DistributionMediumEnum.DOWNLOADABLE;
-                distributionInfo.distributionLoc.distributionURL = id;
+                distributionInfo.distributionLoc[0].distributionMedium = DistributionMediumEnum.DOWNLOADABLE;
+                distributionInfo.distributionLoc[0].distributionLocation = id;
                 corpusBody.corpusInfo.identificationInfo.resourceIdentifiers = [new ResourceIdentifier()];
                 corpusBody.corpusInfo.identificationInfo.resourceIdentifiers[0].value=id;
                 corpusBody.corpusInfo.identificationInfo.resourceIdentifiers[0].resourceIdentifierSchemeName = ResourceIdentifierSchemeNameEnum.OTHER;
 
-                corpusBody.corpusInfo.distributionInfos  = [];
-                corpusBody.corpusInfo.distributionInfos.push(distributionInfo);
-                corpusBody.metadataHeaderInfo = new MetadataHeaderInfo();
-                corpusBody.metadataHeaderInfo.revision = "1.0.0";
-                corpusBody.metadataHeaderInfo.metadataCreators = [ new PersonInfo() ];
-                corpusBody.metadataHeaderInfo.metadataCreators[0].names = [new Names()];
-                corpusBody.metadataHeaderInfo.metadataCreators[0].names[0].name = [new Name()];
-                corpusBody.metadataHeaderInfo.metadataCreators[0].names[0].name[0].value="Doe, John";
-                corpusBody.metadataHeaderInfo.metadataRecordIdentifier = new MetadataIdentifier();
-                var text = "";
-                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                corpusBody.corpusInfo.distributionInfos  = [distributionInfo];
 
-                for (var i = 0; i < 40; i++)
-                    text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-                corpusBody.metadataHeaderInfo.metadataRecordIdentifier.value=text;
-                corpusBody.metadataHeaderInfo.metadataRecordIdentifier.metadataIdentifierSchemeName = MetadataIdentifierSchemeNameEnum.OTHER;
                 this.resourceService.uploadCorpus(this.corpusForm.value).subscribe(
                     res => {
                         this.uploadingCorpus = false;

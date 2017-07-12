@@ -325,8 +325,6 @@ export class SearchComponent {
     }
 
     gotoDetail(resourceType: string, id: string) {
-        //TODO remove ms. I have put it there because the id gets parsed without the ms
-        // this.router.navigate(['/landingPage/' + resourceType + '/', 'ms' + id]);
         this.router.navigate(['/landingPage/' + resourceType + '/', id]);
     }
 
