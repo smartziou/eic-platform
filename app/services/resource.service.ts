@@ -258,9 +258,38 @@ export class ResourceService {
         options.withCredentials = true;
 
         ResourceService.removeNulls(component);
-        console.log(component);
+
         return this.http.put(this._resourcesUrl + 'component', JSON.stringify(component), options)
             .map(res => <OMTDComponent> res.json())
+            .catch(this.handleError);
+    }
+
+    deleteCorpus(corpus: OMTDCorpus) {
+
+        ResourceService.removeNulls(corpus);
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({
+            headers: headers,
+            withCredentials: true,
+            method: RequestMethod.Delete,
+            body: JSON.stringify(corpus)
+        });
+
+        return this.http.request(this._resourcesUrl + 'corpus', options)
+            .catch(this.handleError);
+    }
+
+    updateCorpus(corpus: OMTDCorpus) {
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+        options.withCredentials = true;
+
+        ResourceService.removeNulls(corpus);
+
+        return this.http.put(this._resourcesUrl + 'corpus', JSON.stringify(corpus), options)
+            .map(res => <OMTDCorpus> res.json())
             .catch(this.handleError);
     }
 

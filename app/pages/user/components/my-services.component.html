@@ -8,15 +8,15 @@
 
                 <div class="uk-margin">
 
-                    <div *ngIf="errorMessage" class="uk-alert uk-alert-danger">{{errorMessage}}</div>
+                    <div *ngIf="errorMessage" class="uk-alert uk-alert-danger uk-margin-medium-top">{{errorMessage}}</div>
 
                     <div *ngIf="searchResults && !errorMessage">
 
-                        <div *ngIf="successMessage" class="uk-alert uk-alert-success uk-margin-top">
+                        <div *ngIf="successMessage" class="uk-alert uk-alert-success uk-margin-medium-top">
                             {{successMessage}}
                         </div>
 
-                        <div *ngIf="searchResults.total==0" class="uk-alert uk-alert-warning">
+                        <div *ngIf="searchResults.total==0" class="uk-alert uk-alert-warning uk-margin-medium-top">
                             There are no services/tools registered under your account
                         </div>
 

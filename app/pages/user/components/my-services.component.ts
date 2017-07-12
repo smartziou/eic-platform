@@ -132,7 +132,6 @@ export class MyServicesComponent {
         if(components && components.length == 1) {
 
             let component = components[0];
-            console.log(component);
 
             this.resourceService.deleteComponent(component).subscribe(
                 _ => this.deleteComponent(id),
@@ -161,7 +160,6 @@ export class MyServicesComponent {
         if(components && components.length == 1) {
 
             let component = JSON.parse(JSON.stringify(components[0]));
-            console.log(component);
 
             component.componentInfo.identificationInfo.public = true;
 

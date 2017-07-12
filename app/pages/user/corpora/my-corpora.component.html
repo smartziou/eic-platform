@@ -8,11 +8,15 @@
 
                 <div class="uk-margin">
 
-                    <div *ngIf="errorMessage" class="uk-alert uk-alert-danger">{{errorMessage}}</div>
+                    <div *ngIf="errorMessage" class="uk-alert uk-alert-danger uk-margin-medium-top">{{errorMessage}}</div>
 
                     <div *ngIf="searchResults && !errorMessage">
 
-                        <div *ngIf="searchResults.total==0" class="uk-alert uk-alert-warning">
+                        <div *ngIf="successMessage" class="uk-alert uk-alert-success uk-margin-medium-top">
+                            {{successMessage}}
+                        </div>
+
+                        <div *ngIf="searchResults.total==0" class="uk-alert uk-alert-warning uk-margin-medium-top">
                             There are no corpora registered under your account
                         </div>
 
@@ -74,8 +78,17 @@
                                                         </td>
                                                         <td class=""><div class="el-title">--</div></td>
                                                         <td class=""><div class="el-title">--</div></td>
-                                                        <td class=""><div class="el-title">--</div></td>
-                                                        <!--<td class="uk-text-nowrap uk-table-shrink"><a href="http://www.google.com" class="el-link">Read more</a></td>-->
+                                                        <td class="uk-text-nowrap">
+                                                            <div *ngIf="!corpus.corpusInfo.identificationInfo.public" class="el-title">
+                                                                <a (click)="goToDetails(corpus)" class=""><i class="fa fa-info uk-margin-small-right" aria-hidden="true"></i></a>
+                                                                <a (click)="editCorpus(corpus)"><i class="fa fa-pencil uk-margin-small-right" aria-hidden="true"></i></a>
+                                                                <a (click)="deleteConfirmationCorpus(corpus)"><i class="fa fa-trash uk-margin-small-right" aria-hidden="true"></i></a>
+                                                                <a (click)="makePublicConfirmation(corpus)" class=""><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                                            </div>
+                                                            <div *ngIf="corpus.corpusInfo.identificationInfo.public" class="el-title">
+                                                                <a (click)="goToDetails(corpus)" class=""><i class="fa fa-info" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -127,3 +140,14 @@
         </div>
     </div>
 </div>
+
+<confirmation-dialog #deleteConfirmationModal [isModalShown]="isModalShown" [title]="'Delete Confirmation'"
+                     [confirmActionButton]="'Yes, delete it'" (emmitObject)="confirmedDeleteComponent($event)">
+    Are you sure you want to delete the selected corpus?
+</confirmation-dialog>
+
+<confirmation-dialog #makePublicConfirmationModal [title]="'Confirmation'" [isModalShown]="isModalShown"
+                     [confirmActionButton]="'Yes, make it public'" (emmitObject)="confirmedMakePublicCorpus($event)">
+    Are you sure you want to make public the selected corpus? Making it public will make it accessible to anyone using the
+    OpenMinTeD platform and you will no longer be able to edit it or delete it.
+</confirmation-dialog>

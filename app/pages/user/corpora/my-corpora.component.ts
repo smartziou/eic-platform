@@ -1,11 +1,12 @@
 /**
  * Created by stefania on 7/6/17.
  */
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Corpus as OMTDCorpus } from "../../../domain/openminted-model";
 import { ResourceService } from "../../../services/resource.service";
 import { SearchResults } from "../../../domain/search-results";
+import { ConfirmationDialogComponent } from "../../../shared/confirmation-dialog.component";
 
 @Component({
     selector: 'my-corpora',
@@ -15,9 +16,16 @@ import { SearchResults } from "../../../domain/search-results";
 
 export class MyCorporaComponent {
 
+    @ViewChild('deleteConfirmationModal')
+    public deleteConfirmationModal : ConfirmationDialogComponent;
+
+    @ViewChild('makePublicConfirmationModal')
+    public makePublicConfirmationModal : ConfirmationDialogComponent;
+
     public searchResults: SearchResults;
     public corpora: OMTDCorpus[] = [];
     public errorMessage: string;
+    public successMessage: string;
 
     private pageSize: number = 0;
     private currentPage: number = 0;
@@ -34,9 +42,13 @@ export class MyCorporaComponent {
         private resourceService: ResourceService) {}
 
     ngOnInit() {
+
+        this.errorMessage = null;
+        this.successMessage = null;
+
         this.resourceService.getMyCorpora().subscribe(
             searchResults => this.updateMyCorpora(searchResults),
-            error => this.handleError(<any>error));
+            error => this.handleError('System error retrieving user corpora', <any>error));
     }
 
     updateMyCorpora(searchResults: SearchResults) {
@@ -91,23 +103,89 @@ export class MyCorporaComponent {
         }
     }
 
-    handleError(error) {
-        this.errorMessage = 'System error retrieving user corpora (Server responded: ' + error + ')';
+    handleError(message: string, error) {
+        this.errorMessage = message + ' (Server responded: ' + error + ')';
     }
 
-    // process() {
-    //
-    //     sessionStorage.setItem('runApplication.application', this.component.metadataHeaderInfo.metadataRecordIdentifier.value);
-    //
-    //     var map: { [name: string]: string; } = { };
-    //
-    //     if(sessionStorage.getItem('runApplication.input')) {
-    //         map['input'] = sessionStorage.getItem('runApplication.input');
-    //     }
-    //     if(sessionStorage.getItem('runApplication.application')) {
-    //         map['application'] = sessionStorage.getItem('runApplication.application');
-    //     }
-    //
-    //     this.router.navigate(['/runApplication', map]);
-    // }
+    goToDetails(corpus: OMTDCorpus) {
+        this.router.navigate(['/landingPage/corpus/', corpus.metadataHeaderInfo.metadataRecordIdentifier.value]);
+    }
+
+    editCorpus(corpus: OMTDCorpus) {
+
+    }
+
+    deleteConfirmationCorpus(corpus: OMTDCorpus) {
+
+        this.errorMessage = null;
+        this.successMessage = null;
+
+        this.deleteConfirmationModal.ids = [corpus.metadataHeaderInfo.metadataRecordIdentifier.value];
+        this.deleteConfirmationModal.showModal();
+    }
+
+    confirmedDeleteCorpus(ids: string[]) {
+
+        let id = ids[0];
+        let corpora = this.corpora.filter(corpus => corpus.metadataHeaderInfo.metadataRecordIdentifier.value === id);
+
+        if(corpora && corpora.length == 1) {
+
+            let corpus = corpora[0];
+
+            this.resourceService.deleteCorpus(corpus).subscribe(
+                _ => this.deleteCorpus(id),
+                error => this.handleError('System error deleting the selected corpus', <any>error)
+            );
+
+        } else {
+            this.errorMessage = 'Error finding the corpus to delete';
+        }
+    }
+
+    makePublicConfirmation(corpus: OMTDCorpus) {
+
+        this.errorMessage = null;
+        this.successMessage = null;
+
+        this.makePublicConfirmationModal.ids = [corpus.metadataHeaderInfo.metadataRecordIdentifier.value];
+        this.makePublicConfirmationModal.showModal();
+    }
+
+    confirmedMakePublicCorpus(ids: string[]) {
+
+        let id = ids[0];
+        let corpora = this.corpora.filter(corpus => corpus.metadataHeaderInfo.metadataRecordIdentifier.value === id);
+
+        if(corpora && corpora.length == 1) {
+
+            let corpus = JSON.parse(JSON.stringify(corpora[0]));
+
+            corpus.corpusInfo.identificationInfo.public = true;
+
+            this.resourceService.updateCorpus(corpus).subscribe(
+                corpus => this.updateCorpus(corpus),
+                error => this.handleError('System error making this corpus public', <any>error)
+            );
+
+        } else {
+            this.errorMessage = 'Error finding the corpus to make public';
+        }
+    }
+
+    deleteCorpus(id: string) {
+
+        let i : number = this.corpora.findIndex(_ => _.metadataHeaderInfo.metadataRecordIdentifier.value == id);
+        this.corpora.splice(i, 1);
+
+        this.successMessage = `Corpus was deleted successfully`;
+    }
+
+    updateCorpus(corpus: OMTDCorpus) {
+
+        let i : number = this.corpora.findIndex(_ => _.metadataHeaderInfo.metadataRecordIdentifier.value == corpus.metadataHeaderInfo.metadataRecordIdentifier.value);
+        this.corpora[i] = corpus;
+
+        this.successMessage = `Corpus made public successfully`;
+    }
 }

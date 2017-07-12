@@ -141,12 +141,13 @@
                                     <li><a [routerLink]="['/communities']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Communities</a></li>
                                 </ul>
                             </li>
-                            <li *ngIf="oAuthService.isUserLoggedIn" class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">My Space
+                            <li *ngIf="oAuthService.isUserLoggedIn" class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">My Resources
                                 <ul class="uk-nav-sub">
                                     <li><a [routerLink]="['/mySpace/corpora']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Corpora</a></li>
                                     <li><a [routerLink]="['/mySpace/services']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Services/Tools</a></li>
                                     <li><a [routerLink]="['/mySpace/operations']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Operations</a></li>
-                                    <li><a [routerLink]="['/mySpace/profile']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Profile</a></li>
+                                    <!-- TODO Stefanos fix it!! -->
+                                    <!--<li><a [routerLink]="['/mySpace/profile']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Profile</a></li>-->
                                 </ul>
                             </li>
                         </ul>
@@ -271,7 +272,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li *ngIf="oAuthService.isUserLoggedIn" class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">My Space</a>
+                        <li *ngIf="oAuthService.isUserLoggedIn" class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">My Resources</a>
                             <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="mySpace" (click)="onClick('mySpace')">
                                 <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
                                     <div class="uk-first-column">
@@ -279,7 +280,8 @@
                                             <li><a [routerLink]="['/mySpace/corpora']" routerLinkActive="uk-active">My Corpora</a></li>
                                             <li><a [routerLink]="['/mySpace/services']" routerLinkActive="uk-active">My Services/Tools</a></li>
                                             <li><a [routerLink]="['/mySpace/operations']" routerLinkActive="uk-active">My Operations</a></li>
-                                            <li><a [routerLink]="['/mySpace/profile']" routerLinkActive="uk-active">Profile</a></li>
+                                            <!-- TODO Stefanos fix it!! -->
+                                            <!--<li><a [routerLink]="['/mySpace/profile']" routerLinkActive="uk-active">Profile</a></li>-->
                                         </ul>
                                     </div>
                                 </div>
