@@ -30,6 +30,6 @@ export class FAQsComponent implements OnInit {
     }
 
     handleError(error) {
-        this.errorMessage = 'System error retrieving user services (Server responded: ' + error + ')';
+        this.errorMessage = 'System error retrieving FAQs (Server responded: ' + error + ')';
     }
 }
