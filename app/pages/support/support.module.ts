@@ -8,6 +8,7 @@ import { supportRouting } from "./support.routing";
 import { PoliciesComponent } from "./policies/policies.component";
 import { FAQsComponent } from "./faqs/faqs.component";
 import { AskAQuestionComponent } from "./askquestion/ask-a-question.component";
+import { FAQService } from "../../services/faq.service";
 
     
 @NgModule({
@@ -20,6 +21,9 @@ import { AskAQuestionComponent } from "./askquestion/ask-a-question.component";
         FAQsComponent,
         AskAQuestionComponent
     ],
+    providers: [
+        FAQService
+    ]
 })
 
 export class SupportModule {}
