@@ -19,9 +19,13 @@ export class MyServicesComponent {
     @ViewChild('deleteConfirmationModal')
     public deleteConfirmationModal : ConfirmationDialogComponent;
 
+    @ViewChild('makePublicConfirmationModal')
+    public makePublicConfirmationModal : ConfirmationDialogComponent;
+
     public searchResults: SearchResults;
     public components: OMTDComponent[] = [];
     public errorMessage: string;
+    public successMessage: string;
 
     private pageSize: number = 0;
     private currentPage: number = 0;
@@ -38,9 +42,13 @@ export class MyServicesComponent {
         private resourceService: ResourceService) {}
 
     ngOnInit() {
+
+        this.errorMessage = null;
+        this.successMessage = null;
+
         this.resourceService.getMyComponents().subscribe(
             searchResults => this.updateMyComponents(searchResults),
-            error => this.handleError(<any>error));
+            error => this.handleError('System error retrieving user tools/services', <any>error));
     }
 
     updateMyComponents(searchResults: SearchResults) {
@@ -95,8 +103,12 @@ export class MyServicesComponent {
         }
     }
 
-    handleError(error) {
-        this.errorMessage = 'System error retrieving user services (Server responded: ' + error + ')';
+    handleError(message: string, error) {
+        this.errorMessage = message + ' (Server responded: ' + error + ')';
+    }
+
+    goToDetails(component: OMTDComponent) {
+        this.router.navigate(['/landingPage/component/', component.metadataHeaderInfo.metadataRecordIdentifier.value]);
     }
 
     editComponent(component: OMTDComponent) {
@@ -104,27 +116,78 @@ export class MyServicesComponent {
     }
 
     deleteConfirmationComponent(component: OMTDComponent) {
-        // this.deleteConfirmationModal.ids = [id];
+
+        this.errorMessage = null;
+        this.successMessage = null;
+
+        this.deleteConfirmationModal.ids = [component.metadataHeaderInfo.metadataRecordIdentifier.value];
         this.deleteConfirmationModal.showModal();
+    }
+
+    confirmedDeleteComponent(ids: string[]) {
+
+        let id = ids[0];
+        let components = this.components.filter(component => component.metadataHeaderInfo.metadataRecordIdentifier.value === id);
+
+        if(components && components.length == 1) {
+
+            let component = components[0];
+            console.log(component);
+
+            this.resourceService.deleteComponent(component).subscribe(
+                _ => this.deleteComponent(id),
+                error => this.handleError('System error deleting the selected component', <any>error)
+            );
+
+        } else {
+            this.errorMessage = 'Error finding the component to delete';
+        }
     }
 
     makePublicConfirmation(component: OMTDComponent) {
 
+        this.errorMessage = null;
+        this.successMessage = null;
+
+        this.makePublicConfirmationModal.ids = [component.metadataHeaderInfo.metadataRecordIdentifier.value];
+        this.makePublicConfirmationModal.showModal();
     }
 
-    // process() {
-    //
-    //     sessionStorage.setItem('runApplication.application', this.component.metadataHeaderInfo.metadataRecordIdentifier.value);
-    //
-    //     var map: { [name: string]: string; } = { };
-    //
-    //     if(sessionStorage.getItem('runApplication.input')) {
-    //         map['input'] = sessionStorage.getItem('runApplication.input');
-    //     }
-    //     if(sessionStorage.getItem('runApplication.application')) {
-    //         map['application'] = sessionStorage.getItem('runApplication.application');
-    //     }
-    //
-    //     this.router.navigate(['/runApplication', map]);
-    // }
+    confirmedMakePublicComponent(ids: string[]) {
+
+        let id = ids[0];
+        let components = this.components.filter(component => component.metadataHeaderInfo.metadataRecordIdentifier.value === id);
+
+        if(components && components.length == 1) {
+
+            let component = JSON.parse(JSON.stringify(components[0]));
+            console.log(component);
+
+            component.componentInfo.identificationInfo.public = true;
+
+            this.resourceService.updateComponent(component).subscribe(
+                component => this.updateComponent(component),
+                error => this.handleError('System error making this component public', <any>error)
+            );
+
+        } else {
+            this.errorMessage = 'Error finding the component to make public';
+        }
+    }
+
+    deleteComponent(id: string) {
+
+        let i : number = this.components.findIndex(_ => _.metadataHeaderInfo.metadataRecordIdentifier.value == id);
+        this.components.splice(i, 1);
+
+        this.successMessage = `Component was deleted successfully`;
+    }
+
+    updateComponent(component: OMTDComponent) {
+
+        let i : number = this.components.findIndex(_ => _.metadataHeaderInfo.metadataRecordIdentifier.value == component.metadataHeaderInfo.metadataRecordIdentifier.value);
+        this.components[i] = component;
+
+        this.successMessage = `Component made public successfully`;
+    }
 }

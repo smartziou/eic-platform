@@ -1,20 +1,26 @@
 /**
  * Created by stefania on 5/2/17.
  */
-import { Component, ViewChild, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'confirmation-dialog',
     templateUrl: './confirmation-dialog.component.html'
 })
-export class ConfirmationDialogComponent implements OnInit {
+export class ConfirmationDialogComponent {
 
     @ViewChild('autoShownModal')
     public autoShownModal:ModalDirective;
 
     @Input()
     public isModalShown:boolean = false;
+
+    @Input()
+    public title: string;
+
+    @Input()
+    public confirmActionButton: string;
 
     @Output() emmitObject: EventEmitter<any> = new EventEmitter();
 
@@ -25,12 +31,10 @@ export class ConfirmationDialogComponent implements OnInit {
     }
 
     public showModal():void {
-        console.log("SHOWN");
         this.isModalShown = true;
     }
 
     public hideModal():void {
-        console.log("HIDDEN");
         this.autoShownModal.hide();
     }
 
@@ -42,20 +46,4 @@ export class ConfirmationDialogComponent implements OnInit {
         this.emmitObject.emit(this._ids);
         this.hideModal();
     }
-
-    ngOnInit() {
-        console.log("I WAS CREATED AND IM ALIVE")
-    }
-
-    // public saveCustom(obj : any) {
-    //     if (this.type == 'topic') {
-    //         this._faqService.saveTopic(<Topic> obj).subscribe(
-    //             data => this.emmitObject.emit(data),
-    //             error => this.emmitError.emit(error)
-    //         );
-    //     } else if (this.type == 'question') {
-    //         return;
-    //     }
-    //     this.hideModal();
-    // }
 }

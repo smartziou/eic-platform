@@ -12,6 +12,10 @@
 
                     <div *ngIf="searchResults && !errorMessage">
 
+                        <div *ngIf="successMessage" class="uk-alert uk-alert-success uk-margin-top">
+                            {{successMessage}}
+                        </div>
+
                         <div *ngIf="searchResults.total==0" class="uk-alert uk-alert-warning">
                             There are no services/tools registered under your account
                         </div>
@@ -74,14 +78,17 @@
                                                     </td>
                                                     <td class=""><div class="el-title">--</div></td>
                                                     <td class=""><div class="el-title">--</div></td>
-                                                    <td class="">
+                                                    <td class="uk-text-nowrap">
                                                         <div *ngIf="!component.componentInfo.identificationInfo.public" class="el-title">
-                                                            <a (click)="editComponent(component)"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-                                                            <a (click)="deleteConfirmationComponent(component)"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
-                                                            <a (click)="makePublic(component)" class=""><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i></a>
+                                                            <a (click)="goToDetails(component)" class=""><i class="fa fa-info uk-margin-small-right" aria-hidden="true"></i></a>
+                                                            <a (click)="editComponent(component)"><i class="fa fa-pencil uk-margin-small-right" aria-hidden="true"></i></a>
+                                                            <a (click)="deleteConfirmationComponent(component)"><i class="fa fa-trash uk-margin-small-right" aria-hidden="true"></i></a>
+                                                            <a (click)="makePublicConfirmation(component)" class=""><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                                                        </div>
+                                                        <div *ngIf="component.componentInfo.identificationInfo.public" class="el-title">
+                                                            <a (click)="goToDetails(component)" class=""><i class="fa fa-info" aria-hidden="true"></i></a>
                                                         </div>
                                                     </td>
-                                                    <!--<td class="uk-text-nowrap uk-table-shrink"><a href="http://www.google.com" class="el-link">Read more</a></td>-->
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -119,11 +126,6 @@
                                 <div class="resultsPageLabel">page {{currentPage}} of {{totalPages}}</div>
                             </div>
 
-
-
-
-
-                            <!--You have {{searchResults.total}} corpora registered under your name-->
                         </div>
 
                     </div>
@@ -134,6 +136,13 @@
     </div>
 </div>
 
-<confirmation-dialog #deleteConfirmationModal [isModalShown]="isModalShown" (emmitObject)="confirmedDeleteQuestions($event)">
+<confirmation-dialog #deleteConfirmationModal [isModalShown]="isModalShown" [title]="'Delete Confirmation'"
+                     [confirmActionButton]="'Yes, delete it'" (emmitObject)="confirmedDeleteComponent($event)">
     Are you sure you want to delete the selected component?
+</confirmation-dialog>
+
+<confirmation-dialog #makePublicConfirmationModal [title]="'Confirmation'" [isModalShown]="isModalShown"
+                     [confirmActionButton]="'Yes, make it public'" (emmitObject)="confirmedMakePublicComponent($event)">
+    Are you sure you want to make public the selected component? Making it public will make it accessible to anyone using the
+    OpenMinTeD platform and you will no longer be able to edit it or delete it.
 </confirmation-dialog>
