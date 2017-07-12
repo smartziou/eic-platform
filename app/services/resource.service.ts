@@ -222,6 +222,18 @@ export class ResourceService {
         return this._resourcesUrl + '/corpus/download?archiveId=' + id;
     }
 
+    getMyCorpora() {
+        return this.http.get(this._resourcesUrl + "corpus/my", { withCredentials: true })
+            .map(res => <SearchResults> res.json())
+            .catch(this.handleError);
+    }
+
+    getMyComponents() {
+        return this.http.get(this._resourcesUrl + "component/my", { withCredentials: true })
+            .map(res => <SearchResults> res.json())
+            .catch(this.handleError);
+    }
+
 
     private extractData(res: Response) {
         let body = res.json();

@@ -6,10 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from "./pages/search/search.component";
-import { LoginComponent } from "./pages/user/signin/login.component";
-import { RegisterComponent } from "./pages/user/register/register.component";
-import { EditProfileComponent } from "./pages/user/editprofile/edit-profile.component";
-import { CanActivateViaAuthGuard } from "./services/can-activate-auth-guard.service";
 
 const appRoutes: Routes = [
     {
@@ -22,27 +18,12 @@ const appRoutes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path: 'register',
-        component: RegisterComponent
-    },
-    {
         path: 'search',
         component: SearchComponent
     },
     {
         path: 'search',
         component: SearchComponent
-    },
-    {
-        path: 'editProfile',
-        component: EditProfileComponent,
-        canActivate: [
-            CanActivateViaAuthGuard
-        ]
     },
 ];
 

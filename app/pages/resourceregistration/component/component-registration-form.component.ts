@@ -12,6 +12,7 @@ import {MyStringFormGroup} from "../shared/my-string-form.component";
 @Component({
     selector: 'component-registration-form',
     templateUrl: './component-registration-form.component.html',
+    styleUrls:  ['./component-registration-form.component.css'],
 })
 
 export class ComponentRegistrationFormComponent implements OnInit {

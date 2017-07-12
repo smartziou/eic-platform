@@ -1,0 +1,30 @@
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal"
+     class="modal in fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2 class="uk-modal-title">Delete Confirmation</h2>
+                <div class="uk-margin-bottom">
+                    <ng-content></ng-content>
+                </div>
+                <div class="uk-text-right uk-margin-bottom">
+                    <button (click)="hideModal()" class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                    <button (click)="confirmedAction()" class="uk-button uk-button-primary" type="button">Yes, delete it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<div *ngIf="isModalShown" id="modal-example">-->
+    <!--<div>LALALALALALALLALALLALALALLALALALLALALALALALALLALALALALALLALALALALALALLALALLALALALLALALALLALALALALALALLALALALALALLALALALALALALLALALLALALALLALALALLALALALALALALLALALALALALLALALALALALALLALALLALALALLALALALLALALALALALALLALALALALALLALALALALALALLALALLALALALLALALALLALALALALALALLALALALALALLALALALALALALLALALLALALALLALALALLALALALALALALLALALALALALLALALALALALALLALALLALALALLALALALLALALALALALALLALALALALAL</div>-->
+    <!--<div class="uk-modal-dialog uk-modal-body">-->
+        <!--<h2 class="uk-modal-title">Delete Confirmation</h2>-->
+        <!--<p><ng-content></ng-content></p>-->
+        <!--<p class="uk-text-right">-->
+            <!--<button (click)="hideModal()" class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>-->
+            <!--<button (click)="confirmedAction()" class="uk-button uk-button-primary" type="button">Yes, delete it</button>-->
+        <!--</p>-->
+    <!--</div>-->
+<!--</div>-->
