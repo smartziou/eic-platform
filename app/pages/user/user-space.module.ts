@@ -11,12 +11,14 @@ import { userSpaceRouting } from "./user-space.routing";
 import { MyCorporaComponent } from "./corpora/my-corpora.component";
 import { MyServicesComponent } from "./components/my-services.component";
 import { ConfirmationDialogComponent } from "../../shared/confirmation-dialog.component";
+import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
 
 @NgModule({
     imports: [
         CommonModule,
         userSpaceRouting,
         ModalModule.forRoot(),
+        ReusableComponentsModule
     ],
     declarations: [
         MyCorporaComponent,

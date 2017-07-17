@@ -3,22 +3,17 @@
  */
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PoliciesComponent } from "./policies/policies.component";
-import { FAQsComponent } from "./faqs/faqs.component";
-import { AskAQuestionComponent } from "./askquestion/ask-a-question.component";
+import { PoliciesComponent } from "./faqs/faqs-policies.component";
+import { FAQsComponent } from "./faqs/faqs-legal.component";
 
 const supportRoutes: Routes = [
     {
-        path: 'support/policies',
+        path: 'support/faqPolicies',
         component: PoliciesComponent,
     },
     {
-        path: 'support/faq',
+        path: 'support/faqLegal',
         component: FAQsComponent,
-    },
-    {
-        path: 'support/askQuestion',
-        component: AskAQuestionComponent,
     },
 ];
 

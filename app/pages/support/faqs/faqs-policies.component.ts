@@ -2,18 +2,17 @@
  * Created by stefania on 6/7/17.
  */
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FAQService } from "../../../services/faq.service";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ActiveTopicQuestions } from "../../../domain/faq-active-topic-questions";
 
 @Component({
-    selector: 'faqs',
-    templateUrl: './faqs.component.html',
+    selector: 'policies',
+    templateUrl: './faqs-policies.component.html',
     styles: ['h3.uk-accordion-title { text-transform: none; } .uk-tab > * > a, .nav-tabs > li > a { font-size: 14px;}']
-
 })
 
-export class FAQsComponent implements OnInit {
+export class PoliciesComponent implements OnInit {
 
     private activeTopicQuestions: ActiveTopicQuestions[] = [];
     private errorMessage: string;
@@ -30,10 +29,10 @@ export class FAQsComponent implements OnInit {
     }
 
     shiftThroughTopics(activeTopicQuestions: ActiveTopicQuestions[]) {
-        this.activeTopicQuestions = activeTopicQuestions.filter(_ => _.name === "Legal");
+        this.activeTopicQuestions = activeTopicQuestions.filter(_ => _.name !== "Legal");
     }
 
     handleError(error) {
-        this.errorMessage = 'System error retrieving FAQs (Server responded: ' + error + ')';
+        this.errorMessage = 'System error retrieving Policies (Server responded: ' + error + ')';
     }
 }

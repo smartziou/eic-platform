@@ -5,7 +5,7 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
-import {AccordionModule, TypeaheadModule, TooltipModule} from "ngx-bootstrap";
+import { AccordionModule, TypeaheadModule, TooltipModule } from "ngx-bootstrap";
 import { MetadataIdentifierFormControl } from "./shared/metadata-identifier-form.component";
 import { MetadataHeaderInfoFormControl } from "./shared/metadata-header-info-form.component";
 import { ValuesPipe } from "./shared/values-pipe";
@@ -27,17 +27,19 @@ import {
 } from "./shared/datasetDistributionInfo.component";
 import { ZipUploadComponent } from "./shared/zip-upload-form.component";
 import { ComponentDistributionInfoFormControl, ComponentDistributionsInfoFormControl } from "./shared/componentDistributionInfo";
-import {ExampleFormControl} from "./shared/example.component";
-import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./myform/my-array.interface";
-import {MyFormDirective} from "./myform/my-form.directive";
-import {VersionFormControl} from "./shared/versionInfo.component";
-import {ComponentGenericFormControl} from "./shared/componentGeneric.component";
-import {InlineFormWrapper} from "./myform/my-group.interface";
-import {ContactPersonFormControl} from "./shared/contactPerson.component";
-import {IdentifierCommonFormControl} from "./shared/identifierCommon.component";
-import {ComponentCreationInfoFormControl} from "./shared/componentCreationInfo.component";
-import {CorpusTextPartInfoFormControl} from "./shared/corpusTextPartInfo.component";
-import {CorpusSubtypeSpecificInfoForm} from "./shared/corpus-subtype-specific-info-form.component";
+import { ExampleFormControl } from "./shared/example.component";
+import { MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper } from "./myform/my-array.interface";
+import { MyFormDirective } from "./myform/my-form.directive";
+import { VersionFormControl } from "./shared/versionInfo.component";
+import { ComponentGenericFormControl } from "./shared/componentGeneric.component";
+import { InlineFormWrapper } from "./myform/my-group.interface";
+import { ContactPersonFormControl } from "./shared/contactPerson.component";
+import { IdentifierCommonFormControl } from "./shared/identifierCommon.component";
+import { ComponentCreationInfoFormControl } from "./shared/componentCreationInfo.component";
+import { CorpusTextPartInfoFormControl } from "./shared/corpusTextPartInfo.component";
+import { CorpusSubtypeSpecificInfoForm } from "./shared/corpus-subtype-specific-info-form.component";
+import { AppModule } from "../../app.module";
+import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import {CorpusSubtypeSpecificInfoForm} from "./shared/corpus-subtype-specific-in
         ReactiveFormsModule,
         TooltipModule.forRoot(),
         // AccordionModule.forRoot(),
-        TypeaheadModule.forRoot()
+        TypeaheadModule.forRoot(),
+        ReusableComponentsModule
     ],
     entryComponents: [
         ExampleFormControl,

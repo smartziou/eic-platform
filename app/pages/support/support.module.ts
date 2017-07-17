@@ -5,21 +5,21 @@ import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 
 import { supportRouting } from "./support.routing";
-import { PoliciesComponent } from "./policies/policies.component";
-import { FAQsComponent } from "./faqs/faqs.component";
-import { AskAQuestionComponent } from "./askquestion/ask-a-question.component";
+import { PoliciesComponent } from "./faqs/faqs-policies.component";
+import { FAQsComponent } from "./faqs/faqs-legal.component";
 import { FAQService } from "../../services/faq.service";
+import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
 
     
 @NgModule({
     imports: [
         CommonModule,
         supportRouting,
+        ReusableComponentsModule
     ],
     declarations: [
         PoliciesComponent,
         FAQsComponent,
-        AskAQuestionComponent
     ],
     providers: [
         FAQService

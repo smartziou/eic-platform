@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { ReadMoreComponent } from "./read-more.component";
+import { HelpContentComponent, AsideHelpContentComponent } from "./help-content.component";
+import { HelpContentService } from "../../services/help-content.service";
 
 
 @NgModule({
@@ -21,11 +23,18 @@ import { ReadMoreComponent } from "./read-more.component";
         JsonpModule
     ],
     declarations: [
-        ReadMoreComponent
+        ReadMoreComponent,
+        HelpContentComponent,
+        AsideHelpContentComponent
     ],
     exports: [
-        ReadMoreComponent
-    ]
+        ReadMoreComponent,
+        HelpContentComponent,
+        AsideHelpContentComponent
+    ],
+    providers: [
+        HelpContentService
+    ],
 })
 
 export class ReusableComponentsModule {}

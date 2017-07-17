@@ -32,12 +32,14 @@ import { AnnotationsInfoComponent } from "./resourceelements/annotations-info.co
 import { LanguageDescriptionLandingPageComponent } from "./languagedescription/language-description-landing-page.component";
 import { LexicalConceptualLandingPageComponent } from "./lexicalconceptual/lexical-conceptual-landing-page.component";
 import { ModelLandingPageComponent } from "./model/model-landing-page.component";
+import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
 
 @NgModule({
     imports: [
         CommonModule,
         landingPageRouting,
-        TabsModule.forRoot()
+        TabsModule.forRoot(),
+        ReusableComponentsModule
     ],
     declarations: [
         ComponentLandingPageComponent,
