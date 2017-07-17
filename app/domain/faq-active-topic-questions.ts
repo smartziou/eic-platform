@@ -4,8 +4,7 @@
 import { Topic } from "./faq-topic";
 import { Question } from "./faq-question";
 
-export class ActiveTopicQuestions {
+export class ActiveTopicQuestions extends Topic {
 
-    topic: Topic;
     questions: Question[];
 }

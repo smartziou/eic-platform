@@ -1,12 +1,38 @@
 /**
  * Created by stefania on 6/7/17.
  */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FAQService } from "../../../services/faq.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ActiveTopicQuestions } from "../../../domain/faq-active-topic-questions";
 
 @Component({
     selector: 'policies',
     templateUrl: './policies.component.html',
+    styles: ['h3.uk-accordion-title { text-transform: none; } .uk-tab > * > a, .nav-tabs > li > a { font-size: 14px;}']
 })
 
-export class PoliciesComponent {
+export class PoliciesComponent implements OnInit {
+
+    private activeTopicQuestions: ActiveTopicQuestions[] = [];
+    private errorMessage: string;
+
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private faqService: FAQService) {}
+
+    ngOnInit() {
+        this.faqService.getActiveTopicQuestions().subscribe(
+            activeTopicQuestions => this.shiftThroughTopics(activeTopicQuestions),
+            error => this.handleError(<any>error));
+    }
+
+    shiftThroughTopics(activeTopicQuestions: ActiveTopicQuestions[]) {
+        this.activeTopicQuestions = activeTopicQuestions.filter(_ => _.name !== "Legal");
+    }
+
+    handleError(error) {
+        this.errorMessage = 'System error retrieving Policies (Server responded: ' + error + ')';
+    }
 }

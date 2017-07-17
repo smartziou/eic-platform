@@ -4,7 +4,7 @@
             <div class="uk-width-1-1@m uk-first-column">
 
                 <h1 class="uk-h2">FAQs</h1>
-                <hr class="uk-divider-small">
+                <!--<hr class="uk-divider-small">-->
 
                 <div class="uk-margin-medium-top uk-margin-large-bottom">
 
@@ -19,25 +19,35 @@
                         <div *ngIf="activeTopicQuestions.length>0">
 
 
-                            <div *ngFor="let activeTopicQuestion of activeTopicQuestions">
+                            <ul class=" uk-tab uk-visible@m" uk-tab="connect: #faqTopicTabs; animation: uk-animation-fade">
+                                <li *ngFor="let activeTopicQuestion of activeTopicQuestions"><a>{{activeTopicQuestion.name}}</a></li>
+                            </ul>
 
-                                <h3 class="uk-h3">
-                                    <span class="uk-strong" style="color: #68b8b3">{{activeTopicQuestion.name}}</span>
-                                </h3>
-                                <p *ngIf="activeTopicQuestion.description">{{activeTopicQuestion.description}}</p>
+                            <button class="uk-button uk-button-default uk-hidden@m" type="button">
+                                <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">{{activeTab}}</span>
+                            </button>
 
-                                <ul *ngIf="activeTopicQuestion.questions.length>0" uk-accordion>
-                                    <li *ngFor="let question of activeTopicQuestion.questions" class="uk-margin-bottom">
-                                        <h3 class="uk-accordion-title">{{question.question}}</h3>
-                                        <div class="uk-accordion-content">
-                                            <p>{{question.answer}}</p>
-                                        </div>
-                                    </li>
-                                </ul>
+                            <ul id="toggle-small-tabs" class="uk-subnav uk-subnav-pill uk-dropdown uk-hidden@m"
+                                uk-switcher="{connect: #faqTopicTabs; animation: uk-animation-fade}" uk-dropdown="mode: click"
+                                uk-toggle="target: #toggle-small-tabs">
+                                <li *ngFor="let activeTopicQuestion of activeTopicQuestions"><a>{{activeTopicQuestion.name}}</a></li>
+                            </ul>
 
-                            </div>
+                            <ul id="faqTopicTabs" class="uk-switcher  uk-width-1-1 uk-margin-top custom-tab-content-large">
+                                <li *ngFor="let activeTopicQuestion of activeTopicQuestions">
+                                    <p *ngIf="activeTopicQuestion.description">{{activeTopicQuestion.description}}</p>
 
-                            <!--There are {{activeTopicQuestions.length}} active topics-->
+                                    <ul *ngIf="activeTopicQuestion.questions.length>0" uk-accordion>
+                                        <li *ngFor="let question of activeTopicQuestion.questions" class="uk-margin-bottom">
+                                            <h3 class="uk-accordion-title">{{question.question}}</h3>
+                                            <div class="uk-accordion-content">
+                                                <p>{{question.answer}}</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
                         </div>
 
                     </div>

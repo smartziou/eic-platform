@@ -9,7 +9,7 @@ import { ActiveTopicQuestions } from "../../../domain/faq-active-topic-questions
 @Component({
     selector: 'faqs',
     templateUrl: './faqs.component.html',
-    styles: ['h3.uk-accordion-title { text-transform: none; }']
+    styles: ['h3.uk-accordion-title { text-transform: none; } .uk-tab > * > a, .nav-tabs > li > a { font-size: 14px;}']
 
 })
 
@@ -25,8 +25,12 @@ export class FAQsComponent implements OnInit {
 
     ngOnInit() {
         this.faqService.getActiveTopicQuestions().subscribe(
-            activeTopicQuestions => this.activeTopicQuestions = activeTopicQuestions,
+            activeTopicQuestions => this.shiftThroughTopics(activeTopicQuestions),
             error => this.handleError(<any>error));
+    }
+
+    shiftThroughTopics(activeTopicQuestions: ActiveTopicQuestions[]) {
+        this.activeTopicQuestions = activeTopicQuestions.filter(_ => _.name === "Legal");
     }
 
     handleError(error) {

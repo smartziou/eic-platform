@@ -3,9 +3,10 @@
  */
 export class Topic {
 
-    id: string;
+    _id: string;
+    name: string;
+    description: string;
+    date : Date;
     weight: number;
     questionOrder: string;
-    date: Date;
-    description: string;
 }
