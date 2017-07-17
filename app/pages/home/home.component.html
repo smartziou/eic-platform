@@ -1,70 +1,3 @@
-<!--<div class="uk-block tm-block-top-a uk-block-default" id="tm-top-a">-->
-    <!--<div class="">-->
-        <!--<section data-uk-grid-margin="" data-uk-grid-match="{target:'&gt; div &gt; .uk-panel'}" class="tm-top-a uk-grid">-->
-            <!--<div class="uk-width-1-1 uk-row-first">-->
-                <!--<div class="uk-panel bigImageSearch">-->
-                    <!--<div class="tm-popover-chester ">-->
-                        <!--<div class="uk-position-relative uk-display-inline-block">-->
-
-                            <!--<img alt="" src="./imgs/home-page.jpg">-->
-                            <!--<div data-uk-dropdown="{'pos': 'right-bottom','mode': 'hover'}" style="left:10%; top:5%; width: 80%" class="uk-position-absolute uk-hidden-small">-->
-
-                                <!--<div class="uk-align-center uk-text-large uk-margin"><div style="color:#003D8C !important; text-align: left!important">-->
-                                    <!--<div style="font-size:60px; line-height:76px; font-variant: small-caps; font-weight: 400;">WELCOME TO THE OPENMINTED PLATFORM FOR TEXT AND DATA MINING </div>-->
-                                        <!--<p style="font-size:32px; line-height:38px;font-weight: 400; color: #fff;">-->
-                                            <!--This is a beta version. Browse through our resources or share your own components or corpora.-->
-                                        <!--</p>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div style="padding-top: 20px">-->
-                                    <!--<form [formGroup]="searchForm" class="searchForm uk-form" (ngSubmit)="onSubmit(searchForm.value)">-->
-                                        <!--<div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">-->
-                                            <!--<div class="input_container">-->
-                                                <!--<i class="fa fa-search" aria-hidden="true"></i>-->
-                                                <!--<input type="text" class="uk-width-1-1" placeholder="Search in the OpenMinTeD Resources ..."-->
-                                                       <!--formControlName="query">-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</form>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</section>-->
-    <!--</div>-->
-<!--</div>-->
-<!--<div class="uk-block tm-block-top-b uk-block-default uk-block-large" id="tm-top-b">-->
-    <!--<div class="uk-container uk-container-center tm-container-small">-->
-        <!--<section data-uk-grid-margin="" data-uk-grid-match="{target:'&gt; div &gt; .uk-panel'}" class="tm-top-b uk-grid">-->
-            <!--<div class="uk-width-1-1 uk-row-first"><div class="uk-panel">-->
-                <!--<div class="uk-grid uk-grid-width-medium-1-2 uk-margin-large-top">-->
-                    <!--<div>-->
-                        <!--<h1 class="uk-heading-large uk-text-right uk-text-center-small" style="color: #003D8C">-->
-                        <!--About<br class="uk-visible-large"> OpenMinTeD-->
-                        <!--</h1>-->
-                    <!--</div>-->
-                    <!--&lt;!&ndash;<div class="uk-flex uk-flex-bottom">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<p class="tm-panel-subtitle uk-text-center-small">&ndash;&gt;-->
-                        <!--&lt;!&ndash;Lorem ipsum dolor sit amet, adipi scing elit, sed do adipi scing eiusmod&ndash;&gt;-->
-                        <!--&lt;!&ndash;</p>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--</div>-->
-                <!--<p class="uk-column-medium-1-2">-->
-                    <!--OpenMinTeD is an EU-funded project that sets out to create an open, service-oriented e-Infrastructure for Text-->
-                    <!--and Data Mining (TDM) of scientific and scholarly content. This means that researchers can collaboratively create,-->
-                    <!--discover, share and re-use Knowledge from a wide range of text-based scientific related sources in a seamless way.-->
-                    <!--You are now at the beta-version of our platform. In the future it will be possible to run more services and-->
-                    <!--tools and even to combine them to build your own workflow.  For more information about the project visit-->
-                    <!--<a href="//www.openminted.eu" target="_blank">www.openminted.eu</a>.-->
-                <!--</p>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</section>-->
-    <!--</div>-->
-<!--</div>-->
-
 <div class="uk-section-secondary uk-position-relative" uk-scrollspy="{&quot;target&quot;:&quot;[uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-fade&quot;,&quot;delay&quot;:false}">
     <div style="background-image: url('./imgs/omtd_home_2.jpeg'); background-color: rgb(255, 255, 255); box-sizing: border-box; min-height: calc(100vh - 229.5px);" class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle" uk-height-viewport="offset-top: true;offset-bottom: 20">
         <div class="uk-position-cover" style="background-color: rgba(73, 102, 95, 0.53);"></div>
@@ -219,7 +152,7 @@
                         </li>
                     </ul>
                     <div class="uk-margin-medium uk-text-center">
-                        <a class="el-content uk-button uk-button-secondary" href="/www.cnn.com">
+                        <a class="el-content uk-button uk-button-secondary" [routerLink]="['/support/faqPolicies']">
                             View all
                         </a>
                     </div>
