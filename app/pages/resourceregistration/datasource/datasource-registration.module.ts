@@ -7,6 +7,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 
 import { datasourceRegistrationRouting } from "./datasource-registration.routing";
 import { DatasourceRegistrationComponent } from "./datasource-registration.component";
+import { ReusableComponentsModule } from "../../../shared/reusablecomponents/reusable-components.module";
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { DatasourceRegistrationComponent } from "./datasource-registration.compo
         BrowserModule,
         CommonModule,
         datasourceRegistrationRouting,
+        ReusableComponentsModule
     ],
     declarations: [
         DatasourceRegistrationComponent

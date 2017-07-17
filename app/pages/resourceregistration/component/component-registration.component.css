@@ -25,3 +25,11 @@
 /*.mavenCoordinatesForm label {*/
     /*font-weight: 300;*/
 /*}*/
+
+.uk-grid-divider.uk-grid-large > * {
+    padding-left: 0px;
+}
+
+.uk-grid-divider.uk-grid-large.uk-grid-stack > .uk-grid-margin::before {
+    left: 0px;
+}
