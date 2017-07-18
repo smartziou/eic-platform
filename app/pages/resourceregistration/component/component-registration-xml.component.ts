@@ -36,7 +36,7 @@ export class ComponentRegistrationXMLComponent {
     onSubmit(componentXML: any, event: Event) {
 
         // event.preventDefault();
-
+        this.errorMessage = null;
         this.successMessage = null;
         console.log(componentXML.xml);
 
