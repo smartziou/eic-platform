@@ -7,7 +7,7 @@ import {OAuthService} from "angular-oauth2-oidc";
 import {AuthenticationService} from "./services/authentication.service";
 
 @Component({
-    selector: 'openminted-platform',
+    selector: 'einfracentral-platform',
     templateUrl: './app.component.html',
 })
 
