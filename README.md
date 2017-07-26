@@ -1,7 +1,7 @@
-# omtd-platform
+# eic-platform
 
 ## First time
-`npm intall` for all the dependencies.
+`npm install` for all the dependencies.
 
 ## Build
 For development `npm run build` and it can be deployed with `npm run start` using lite-server and browsersync.
