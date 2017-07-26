@@ -21,10 +21,6 @@ const appRoutes: Routes = [
         path: 'search',
         component: SearchComponent
     },
-    {
-        path: 'search',
-        component: SearchComponent
-    },
 ];
 
 export const appRoutingProviders: any[] = [

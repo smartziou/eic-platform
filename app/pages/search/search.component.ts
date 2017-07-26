@@ -9,8 +9,6 @@ import { SearchQuery } from "../../domain/search-query";
 import { URLParameter } from "./../../domain/url-parameter";
 import { ResourceService } from "../../services/resource.service";
 import { SearchResults } from "../../domain/search-results";
-import {ShortResultInfo} from "../../domain/short-resource-info";
-import {BaseMetadataRecord, ComponentInfo, CorpusInfo, Order} from "../../domain/openminted-model";
 
 @Component({
     selector: 'search',
@@ -27,7 +25,6 @@ export class SearchComponent {
     private urlParameters: URLParameter[] = [];
     
     private searchResults: SearchResults;
-    private shortResultsInfo : ShortResultInfo[] = [];
 
     private pageSize: number = 0;
     private currentPage: number = 0;
@@ -89,45 +86,47 @@ export class SearchComponent {
         this.isLastPageDisabled = false;
         this.isNextPageDisabled = false;
 
-        this.shortResultsInfo.splice(0,this.shortResultsInfo.length);
+        // this.shortResultsInfo.splice(0,this.shortResultsInfo.length);
 
-        for (let component of this.searchResults.results) {
-            let componentBody = component.resource;
-            let corpusInfo : CorpusInfo;
-            let componentInfo : ComponentInfo;
-            let title : string;
-            let description : string;
-            let resourceType : string;
-            if (typeof componentBody['corpusInfo'] != 'undefined') {
-                corpusInfo = componentBody['corpusInfo']
-                title = corpusInfo.identificationInfo.resourceNames[0].value;
-                description = corpusInfo.identificationInfo.descriptions[0].value;
-                resourceType = 'corpus';
-            } else if (typeof componentBody['componentInfo'] != 'undefined') {
-                componentInfo = componentBody['componentInfo'];
-                title = componentInfo.identificationInfo.resourceNames[0].value;
-                description = componentInfo.identificationInfo.descriptions[0].value;
-                resourceType = 'component';
-            }
-            let shortResultInfo: ShortResultInfo = {
-                // id: component.componentInfo.identificationInfo.identifiers[0].value,
-                order: component.order,
-                id: componentBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-                title: title,
-                description: description,
-                resourceType: resourceType
-            };
-            this.shortResultsInfo.push(shortResultInfo);
-        }
+        // for (let component of this.searchResults.results) {
+        //     let componentBody = component.resource;
+        //     let corpusInfo : CorpusInfo;
+        //     let componentInfo : ComponentInfo;
+        //     let title : string;
+        //     let description : string;
+        //     let resourceType : string;
+        //     if (typeof componentBody['corpusInfo'] != 'undefined') {
+        //         corpusInfo = componentBody['corpusInfo']
+        //         title = corpusInfo.identificationInfo.resourceNames[0].value;
+        //         description = corpusInfo.identificationInfo.descriptions[0].value;
+        //         resourceType = 'corpus';
+        //     } else if (typeof componentBody['componentInfo'] != 'undefined') {
+        //         componentInfo = componentBody['componentInfo'];
+        //         title = componentInfo.identificationInfo.resourceNames[0].value;
+        //         description = componentInfo.identificationInfo.descriptions[0].value;
+        //         resourceType = 'component';
+        //     }
+        //     let shortResultInfo: ShortResultInfo = {
+        //         // id: component.componentInfo.identificationInfo.identifiers[0].value,
+        //         order: component.order,
+        //         id: componentBody.metadataHeaderInfo.metadataRecordIdentifier.value,
+        //         title: title,
+        //         description: description,
+        //         resourceType: resourceType
+        //     };
+        //     this.shortResultsInfo.push(shortResultInfo);
+        // }
 
-
-        if(this.shortResultsInfo.length==0)
+        if(this.searchResults.results.length==0)
             this.foundResults = false;
-        else {
-            this.shortResultsInfo.sort((lhs : ShortResultInfo,rhs: ShortResultInfo) => {
-                return lhs.order - rhs.order;
-            })
-        }
+
+        // if(this.shortResultsInfo.length==0)
+        //     this.foundResults = false;
+        // else {
+        //     this.shortResultsInfo.sort((lhs : ShortResultInfo,rhs: ShortResultInfo) => {
+        //         return lhs.order - rhs.order;
+        //     })
+        // }
 
         //update form values using URLParameters
         for (let urlParameter of this.urlParameters) {
@@ -166,47 +165,6 @@ export class SearchComponent {
             this.isLastPageDisabled = true;
             this.isNextPageDisabled = true;
         }
-    }
-
-    advancedView() {
-        
-        this.advanced = true;
-        
-        var foundAdvancedParameter = false;
-        for (let urlParameter of this.urlParameters) {
-            if(urlParameter.key === 'advanced') {
-                foundAdvancedParameter = true;
-                if(urlParameter.values[0] === 'false') {
-                    urlParameter.values.splice(0,urlParameter.values.length);
-                    urlParameter.values.push('true')
-                }
-            }
-        }
-        
-        if(!foundAdvancedParameter) {
-            var newParameter: URLParameter = {
-                key: 'advanced',
-                values: ['true']
-            };
-            this.urlParameters.push(newParameter);
-        }
-        
-        this.navigateUsingParameters();
-    }
-
-    simpleView() {
-
-        this.advanced = false;
-
-        var categoryIndex = 0;
-        for (let urlParameter of this.urlParameters) {
-            if(urlParameter.key === 'advanced') {
-                this.urlParameters.splice(categoryIndex, 1);
-            }
-            categoryIndex ++;
-        }
-
-        this.navigateUsingParameters();
     }
 
     ngOnDestroy() {
@@ -324,8 +282,8 @@ export class SearchComponent {
         this.router.navigate(['/search', map]);
     }
 
-    gotoDetail(resourceType: string, id: string) {
-        this.router.navigate(['/landingPage/' + resourceType + '/', id]);
+    gotoDetail(id: string) {
+        this.router.navigate(['/landingPage/service' + '/', id]);
     }
 
     handleError(error) {

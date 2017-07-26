@@ -1,0 +1,168 @@
+<div id="tm-main" class="tm-main uk-section uk-section-default" uk-height-viewport="expand: true" style="box-sizing: border-box;">
+    <div class="uk-container">
+        <div class="uk-grid" uk-grid="">
+
+            <template [ngIf]="errorMessage">
+                <div class="uk-width-expand@m uk-first-column">
+                    <div data-uk-alert="" class="uk-alert uk-alert-danger">
+                        <p>{{errorMessage}}</p>
+                    </div>
+                </div>
+            </template>
+
+            <template [ngIf]="service && !errorMessage">
+
+                <div class="uk-width-1-1 uk-row-first uk-clearfix">
+                    <h2 class="uk-h2 uk-inline" *ngIf="service.brandName">
+                        {{service.brandName}}
+                    </h2>
+
+                    <div *ngIf="service.tagline && (service.tagline.length>0)" style="margin-bottom: 10px; color: #D1303A">
+                        <i>"{{service.tagline}}"</i>
+                    </div>
+
+                    <!--<button class="uk-button uk-button-primary uk-float-right" (click)="process()">-->
+                        <!--Select <i class="fa fa-cogs" aria-hidden="true"></i>-->
+                    <!--</button>-->
+                </div>
+
+                <div class="uk-width-expand@m uk-first-column">
+
+                    <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
+
+                    <div class="tags">
+                        <a><span class="uk-label uk-label-primary">Production</span></a>
+                        <a><span class="uk-label uk-label-primary">OpenAIRE consortium</span></a>
+                        <a><span class="uk-label uk-label-primary">EC funding</span></a>
+                    </div>
+                    <div class="tags">
+                        <a><span class="uk-label uk-label-primary">Connectivity</span></a>
+                    </div>
+
+
+                    <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
+
+                    <div class="" *ngIf="service.description">
+                        <p>
+                            {{service.description}}
+                        </p>
+                    </div>
+
+                    bla
+                    <!--<ul class="uk-subnav">-->
+                        <!--<li *ngIf="component.componentInfo.identificationInfo.resourceShortNames-->
+                            <!--&& component.componentInfo.identificationInfo.resourceShortNames.length>0"-->
+                            <!--class="element element-text">-->
+                            <!--<strong>{{component.componentInfo.identificationInfo.resourceShortNames[0].value}} </strong> </li>-->
+                    <!--</ul>-->
+
+                    <!--<div class="resourceIdentifiers" *ngIf="component.componentInfo.identificationInfo.identifiers-->
+                        <!--&& component.componentInfo.identificationInfo.identifiers.length>0">-->
+                        <!--<div *ngFor="let identifier of component.componentInfo.identificationInfo.identifiers">-->
+                            <!--<a href="{{identifier.value}}" target="_blank">{{identifier.value}}</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<ul class="uk-list" *ngIf="component.componentInfo.identificationInfo.descriptions-->
+                                                <!--&& component.componentInfo.identificationInfo.descriptions.length>0">-->
+                        <!--<li *ngFor="let description of component.componentInfo.identificationInfo.descriptions; let isFirst = first;"-->
+                            <!--[class.uk-margin-top]="!isFirst" class="uk-text-justify">-->
+                            <!--{{description.value}}-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!--<ul *ngIf="component.componentInfo.componentTypes" class="uk-subnav uk-subnav-line componentTypes">-->
+                        <!--<li *ngFor="let componentType of component.componentInfo.componentTypes" class="element element-text uk-margin-right">-->
+                            <!--<strong>{{componentType}} </strong> </li>-->
+                    <!--</ul>-->
+                    <!--<version-info *ngIf="component.componentInfo.versionInfo"-->
+                                  <!--[versionInfo]="component.componentInfo.versionInfo">-->
+                    <!--</version-info>-->
+                    <!--<resource-documentation-info *ngIf="component.componentInfo.resourceDocumentationInfo"-->
+                                                 <!--[resourceDocumentationInfo]="component.componentInfo.resourceDocumentationInfo">-->
+                    <!--</resource-documentation-info>-->
+
+
+
+                    <!--TABS-->
+                    <!--<ul class=" uk-tab uk-visible@m" uk-tab="connect: #infoTabs; animation: uk-animation-fade">-->
+                        <!--<li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">-->
+                            <!--<a>Usage</a>-->
+                        <!--</li>-->
+                        <!--<li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">-->
+                            <!--<a>Related Services</a>-->
+                        <!--</li>-->
+                        <!--<li *ngIf="component.componentInfo.usageInfo">-->
+                            <!--<a>Service Coverage</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                    <!--<button class="uk-button uk-button-default uk-hidden@m" type="button">-->
+                        <!--<span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">{{activeTab}}</span>-->
+                    <!--</button>-->
+
+                    <!--<ul id="toggle-small-tabs" class="uk-subnav uk-subnav-pill uk-dropdown uk-hidden@m" uk-switcher="{connect: #infoTabs; animation: uk-animation-fade}" uk-dropdown="mode: click" uk-toggle="target: #toggle-small-tabs">-->
+                        <!--<li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">-->
+                            <!--<a>Usage</a>-->
+                        <!--</li>-->
+                        <!--<li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">-->
+                            <!--<a>Related Services</a>-->
+                        <!--</li>-->
+                        <!--<li *ngIf="component.componentInfo.usageInfo">-->
+                            <!--<a>Service Coverage</a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                    <!--<ul id="infoTabs" class="uk-switcher  uk-width-1-1 uk-margin-top custom-tab-content-large">-->
+                        <!--<li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">-->
+                            <!--<div></div>-->
+                        <!--</li>-->
+                        <!--<li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">-->
+                            <!--<div></div>-->
+                        <!--</li>-->
+                        <!--<li *ngIf="component.componentInfo.usageInfo">-->
+                            <!--<div></div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                </div>
+
+                <!--SIDEBAR-->
+                <div class="tm-sidebar uk-width-1-4@m">
+
+                    <div class="uk-card uk-card-body uk-card-default sidemenu">
+                        <ul class="uk-list">
+                            <li> Used by <strong> x </strong> groups</li>
+                            <li> Installed at <strong> 5 </strong> locations</li>
+                            <li> Accessed <strong> y </strong> times</li>
+                        </ul>
+                        <a style="font-size: 15px">View more ></a>
+                    </div>
+                    <div class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top">
+                        <h4>Service Support</h4>
+                        <ul class="uk-list">
+                            <li>
+                                <strong>Service request: </strong>
+                                <a href="www.openaire.eu">www.openaire.eu</a>,
+                                <a href="mailto:info@openaire.eu">info@openaire.eu</a>
+                            </li>
+                            <li>
+                                <strong>Service helpdesk: </strong>
+                                <a href="https://www.openaire.eu/support/helpdesk">https://www.openaire.eu/support/helpdesk</a>
+                            </li>
+                            <li>
+                                <strong>Service feedback: </strong>
+                                <a href="https://www.openaire.eu/support/helpdesk">https://www.openaire.eu/support/helpdesk</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </template>
+
+
+
+
+        </div>
+    </div>
+</div>

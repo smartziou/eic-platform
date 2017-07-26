@@ -1,9 +1,7 @@
 /**
  * Created by stefania on 9/9/16.
  */
-import { Results } from "./results";
 import { Facet } from "./facet";
-import {BaseMetadataRecord, Order} from "./openminted-model";
     
 export class SearchResults {
 
@@ -11,6 +9,11 @@ export class SearchResults {
     to: number;
     total: number;
     
-    results: Order<BaseMetadataRecord>[];
+    results: Order<any>[];
     facets: Facet[];
+}
+
+export class Order<T>  {
+    order : number;
+    resource : T;
 }

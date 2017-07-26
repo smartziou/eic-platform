@@ -1,53 +1,5 @@
-<!--<div class="uk-block tm-block-main uk-block-default uk-block-large searchBoxContainer">-->
-    <!--<div class="uk-container uk-container-center">-->
-        <!--<div data-uk-grid-margin="" data-uk-grid-match="" class="tm-middle uk-grid">-->
-            <!--<div class="tm-main uk-width-medium-1-1 uk-row-first">-->
-                <!--<main class="tm-content" >-->
-                    <!--<div >-->
-                    <!--</div>-->
-                    <!--<article class="uk-article uk-width-medium-3-4 uk-align-center">-->
-
-                        <!--<div class="" style="margin-bottom: 50px">-->
-                            <!--<div class="uk-align-right">-->
-                                <!--<button *ngIf='!advanced' class="uk-button-blue" style="width: 150px" (click)="advancedView()">Advanced view</button>-->
-                                <!--<button *ngIf='advanced' class="uk-button-blue" style="width: 150px" (click)="simpleView()">Simple view</button>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="uk-text-center">-->
-                            <!--<form [formGroup]="searchForm" class="searchForm uk-form" (ngSubmit)="onSubmit(searchForm.value)">-->
-                                <!--<div data-uk-grid-margin="" class="uk-grid uk-grid-width-1-1">-->
-                                    <!--<div class="uk-width-medium-9-10">-->
-                                        <!--<input type="text" class="uk-width-1-1 form-control searchTextBox" placeholder="Search" formControlName="query"-->
-                                               <!--style="padding: 6px 20px">-->
-                                    <!--</div>-->
-                                    <!--<div class="searchButton uk-width-medium-1-10">-->
-                                        <!--<button class="uk-button uk-button-large uk-button-primary uk-align-right">-->
-                                            <!--<i class="fa fa-search" aria-hidden="true"></i>-->
-                                        <!--</button>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</form>-->
-
-                            <!--<ul *ngIf="urlParameters && urlParameters.length>0" class="facets-selected cf uk-width-medium-9-10">-->
-                                <!--<template ngFor let-urlParameter [ngForOf]="urlParameters">-->
-                                    <!--<template [ngIf]="urlParameter.key!='advanced'">-->
-                                        <!--<li *ngFor="let facet of urlParameter.values" class="search-tag">-->
-                                                <!--<span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="deselectFacet(urlParameter.key, facet)" data-role="remove"></a>-->
-                                        <!--</li>-->
-                                    <!--</template>-->
-                                <!--</template>-->
-                            <!--</ul>-->
-                        <!--</div>-->
-                    <!--</article>-->
-                <!--</main>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
 <div class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle"
-     style="background-image: url('./imgs/omtd_home_2.jpeg'); box-sizing: border-box; height: 150px">
+     style="background-image: url('./imgs/iStock-629814372.jpg'); box-sizing: border-box; height: 150px">
     <div class="uk-position-cover"></div>
     <div class="uk-width-1-1">
         <div class="uk-position-relative">
@@ -59,7 +11,7 @@
                                 <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
                                     <input aria-describedby="sizing-addon2" class="uk-input uk-width-1-2 ng-pristine ng-valid
                                     uk-comment uk-comment-meta ng-untouched" formControlName="query" name="keyword"
-                                           placeholder="Search for scientific literature corpora or text mining services..." type="text">
+                                           placeholder="Search our service catalogue..." type="text">
                                     <button class=" uk-button uk-button-default" type="submit">Search</button>
                                 </form>
                                 <ul *ngIf="urlParameters && urlParameters.length>0" class="facets-selected cf uk-width-medium-9-10">
@@ -94,32 +46,32 @@
             <aside id="tm-sidebar" class="tm-sidebar uk-width-1-4@m">
 
                 <!--Simple view-->
-                <div *ngIf="searchResults && !advanced" class="uk-card uk-card-body uk-card-default sidemenu">
+                <!--<div *ngIf="searchResults && !advanced" class="uk-card uk-card-body uk-card-default sidemenu">-->
 
-                    <template ngFor let-facet [ngForOf]="searchResults.facets">
-                        <template [ngIf]="facet.field=='resourceType'">
-                            <h3 class="uk-h3 uk-heading-bullet">Resource Type</h3>
-                            <p *ngFor="let facetValue of facet.values" class="resourceType">
-                                <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                       (change)="onSelection($event, facet.field, facetValue.value)"
-                                       [checked]="facetValue.isChecked">
-                                                <span [ngSwitch]="facetValue.value">
-                                                    <span *ngSwitchCase="'component'">Applications</span>
-                                                    <span *ngSwitchCase="'corpus'">Corpora</span>
-                                                </span>
-                                <span class="resourceTypeCount">({{facetValue.count}})</span>
-                                                <span [ngSwitch]="facetValue.value">
-                                                    <span *ngSwitchCase="'component'"><i class="fa fa-cogs uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                    <span *ngSwitchCase="'corpus'"><i class="fa fa-database uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                    <span *ngSwitchDefault><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                </span>
-                            </p>
-                        </template>
-                    </template>
+                    <!--<template ngFor let-facet [ngForOf]="searchResults.facets">-->
+                        <!--<template [ngIf]="facet.field=='resourceType'">-->
+                            <!--<h3 class="uk-h3 uk-heading-bullet">Resource Type</h3>-->
+                            <!--<p *ngFor="let facetValue of facet.values" class="resourceType">-->
+                                <!--<input type="checkbox" name="vehicle" value="Bike" data-md-icheck-->
+                                       <!--(change)="onSelection($event, facet.field, facetValue.value)"-->
+                                       <!--[checked]="facetValue.isChecked">-->
+                                                <!--<span [ngSwitch]="facetValue.value">-->
+                                                    <!--<span *ngSwitchCase="'component'">Applications</span>-->
+                                                    <!--<span *ngSwitchCase="'corpus'">Corpora</span>-->
+                                                <!--</span>-->
+                                <!--<span class="resourceTypeCount">({{facetValue.count}})</span>-->
+                                                <!--<span [ngSwitch]="facetValue.value">-->
+                                                    <!--<span *ngSwitchCase="'component'"><i class="fa fa-cogs uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                    <!--<span *ngSwitchCase="'corpus'"><i class="fa fa-database uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                    <!--<span *ngSwitchDefault><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                <!--</span>-->
+                            <!--</p>-->
+                        <!--</template>-->
+                    <!--</template>-->
 
-                </div>
+                <!--</div>-->
 
-                <div *ngIf="searchResults && !advanced" class="uk-card uk-card-body uk-card-default sidemenu refines uk-margin-top">
+                <div *ngIf="searchResults && !advanced" class="uk-card uk-card-body uk-card-default sidemenu refines">
 
                     <h3 class="uk-h3 uk-heading-bullet">Refine</h3>
 
@@ -141,38 +93,38 @@
                 </div>
 
                 <!--Advanced view-->
-                <div *ngIf="searchResults && advanced" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary">
+                <!--<div *ngIf="searchResults && advanced" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary">-->
 
-                    <template ngFor let-facet [ngForOf]="searchResults.facets">
-                        <template [ngIf]="facet.field=='resourceType'">
-                            <h3 class="uk-h3 uk-heading-bullet">Resource Type</h3>
-                            <p *ngFor="let facetValue of facet.values"  class="resourceType">
-                                <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                       (change)="onSelection($event, facet.field, facetValue.value)"
-                                       [checked]="facetValue.isChecked">
-                                                <span [ngSwitch]="facetValue.value">
-                                                    <span *ngSwitchCase="'component'">Components</span>
-                                                    <span *ngSwitchCase="'corpus'">Corpora</span>
-                                                    <span *ngSwitchCase="'language'">Language Descriptions</span>
-                                                    <span *ngSwitchCase="'lexical'">Lexical/Conceptual</span>
-                                                    <span *ngSwitchCase="'model'">Models</span>
-                                                </span>
-                                <span class="resourceTypeCount">({{facetValue.count}})</span>
-                                                <span [ngSwitch]="facetValue.value">
-                                                    <span *ngSwitchCase="'component'"><i class="fa fa-cogs uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                    <span *ngSwitchCase="'corpus'"><i class="fa fa-database uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                    <span *ngSwitchCase="'language'"><i class="fa fa-file-o uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                    <span *ngSwitchCase="'lexical'"><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                    <span *ngSwitchCase="'model'"><i class="fa fa-clipboard uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                    <span *ngSwitchDefault><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>
-                                                </span>
-                            </p>
-                        </template>
-                    </template>
+                    <!--<template ngFor let-facet [ngForOf]="searchResults.facets">-->
+                        <!--<template [ngIf]="facet.field=='resourceType'">-->
+                            <!--<h3 class="uk-h3 uk-heading-bullet">Resource Type</h3>-->
+                            <!--<p *ngFor="let facetValue of facet.values"  class="resourceType">-->
+                                <!--<input type="checkbox" name="vehicle" value="Bike" data-md-icheck-->
+                                       <!--(change)="onSelection($event, facet.field, facetValue.value)"-->
+                                       <!--[checked]="facetValue.isChecked">-->
+                                                <!--<span [ngSwitch]="facetValue.value">-->
+                                                    <!--<span *ngSwitchCase="'component'">Components</span>-->
+                                                    <!--<span *ngSwitchCase="'corpus'">Corpora</span>-->
+                                                    <!--<span *ngSwitchCase="'language'">Language Descriptions</span>-->
+                                                    <!--<span *ngSwitchCase="'lexical'">Lexical/Conceptual</span>-->
+                                                    <!--<span *ngSwitchCase="'model'">Models</span>-->
+                                                <!--</span>-->
+                                <!--<span class="resourceTypeCount">({{facetValue.count}})</span>-->
+                                                <!--<span [ngSwitch]="facetValue.value">-->
+                                                    <!--<span *ngSwitchCase="'component'"><i class="fa fa-cogs uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                    <!--<span *ngSwitchCase="'corpus'"><i class="fa fa-database uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                    <!--<span *ngSwitchCase="'language'"><i class="fa fa-file-o uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                    <!--<span *ngSwitchCase="'lexical'"><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                    <!--<span *ngSwitchCase="'model'"><i class="fa fa-clipboard uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                    <!--<span *ngSwitchDefault><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
+                                                <!--</span>-->
+                            <!--</p>-->
+                        <!--</template>-->
+                    <!--</template>-->
 
-                </div>
+                <!--</div>-->
 
-                <div *ngIf="searchResults && advanced" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines uk-margin-top">
+                <div *ngIf="searchResults && advanced" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines">
 
                     <h3 class="uk-h3 uk-heading-bullet">Refine</h3>
 
@@ -203,7 +155,7 @@
                     </div>
                 </div>
 
-                <div *ngIf="!errorMessage && shortResultsInfo" class="">
+                <div *ngIf="!errorMessage && searchResults" class="">
 
                     <div *ngIf="!foundResults">
                         <div data-uk-alert="" class="uk-alert uk-alert-warning">
@@ -211,7 +163,7 @@
                         </div>
                     </div>
 
-                    <div *ngIf="shortResultsInfo.length>0">
+                    <div *ngIf="searchResults.results && searchResults.results.length>0">
 
                         <div class="uk-width-1-1 uk-row-first">
                             <ul class="uk-pagination">
@@ -243,36 +195,51 @@
 
                         <div class="uk-grid-margin">
 
-                            <template ngFor let-resourceInfo [ngForOf]="shortResultsInfo">
+                            <template ngFor let-resourceInfo [ngForOf]="searchResults.results">
 
                                 <div class="uk-grid" uk-grid="">
                                     <div class="uk-width-1-6@m uk-first-column">
-                                        <div class="uk-margin uk-text-center uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
-                                            <span class="uk-thumbnail uk-align-medium-left resourceTypeIcon">
-                                                <a (click)="gotoDetail(resourceInfo.resourceType, resourceInfo.id)">
-                                                    <i *ngIf="resourceInfo.resourceType==='corpus'"
-                                                    class="fa fa-database fa-3x" aria-hidden="true"></i>
-                                                    <i *ngIf="resourceInfo.resourceType==='component'"
-                                                    class="fa fa-cogs fa-3x" aria-hidden="true"></i>
-                                                    <i *ngIf="resourceInfo.resourceType==='language'"
-                                                    class="fa fa-file-o fa-3x" aria-hidden="true"></i>
-                                                    <i *ngIf="resourceInfo.resourceType==='lexical'"
-                                                    class="fa fa-language fa-3x" aria-hidden="true"></i>
-                                                    <i *ngIf="resourceInfo.resourceType==='model'"
-                                                    class="fa fa-clipboard fa-3x" aria-hidden="true"></i>
-                                                </a>
-                                            </span>
+                                        <div class="">
+                                            <div class="uk-first-column actionIcons uk-inline-block" style="width: 20%">
+                                                <div>
+                                                    <a (click)="addToFavorites(resourceInfo.resource.id)">
+                                                        <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="uk-margin-small-top">
+                                                    <a (click)="addToCompare(resourceInfo.resource.id)">
+                                                        <i class="fa fa-compress fa-flip-horizontal fa-lg" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="uk-inline-block uk-text-center uk-scrollspy-inview uk-animation-fade"
+                                                 uk-scrollspy-class="" style="width: 75%">
+                                                <div class="">
+                                                    <a (click)="gotoDetail(resourceInfo.resource.id)">
+                                                        <span><img src="http://fvtelibrary.com/img/user/NoLogo.png"></span>
+                                                    </a>
+                                                </div>
+                                                <div class="uk-margin-small-top">
+                                                    <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"
+                                                                      [showHalfStars]="true" [readOnly]="true" [size]="'small'"
+                                                                      [staticColor]="'ok'"></star-rating-comp>
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
                                     <div class="uk-width-5-6@m">
                                         <h3 class="uk-margin-small uk-text-left@m uk-text-center uk-h3 uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
-                                            <a (click)="gotoDetail(resourceInfo.resourceType, resourceInfo.id)">
-                                                {{resourceInfo.title}}
+                                            <a (click)="gotoDetail(resourceInfo.resource.id)">
+                                                {{resourceInfo.resource.brandName}}
                                             </a>
                                         </h3>
-                                        <div class="uk-margin-remove-vertical uk-text-left@m uk-text-center uk-text-meta uk-scrollspy-inview
-                                        uk-animation-fade" uk-scrollspy-class="" style="">
-                                            {{resourceInfo.description}}
+                                        <div class="uk-margin-remove-vertical uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
+                                            {{resourceInfo.resource.description}}
+                                        </div>
+                                        <div class="uk-margin-small-top uk-text-left@m uk-text-center uk-text-meta uk-scrollspy-inview
+                                        uk-animation-fade serviceTagLine" uk-scrollspy-class="" style="">
+                                            "{{resourceInfo.resource.tagline}}"
                                         </div>
                                         <!--<div class="uk-margin uk-text-left@m uk-text-center uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">-->
                                             <!--<div class="uk-child-width-auto uk-grid-small uk-flex-left@m uk-flex-center uk-grid" uk-grid="">-->

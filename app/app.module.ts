@@ -17,18 +17,14 @@ import { AppComponent } from "./app.component";
 import { TopMenuComponent } from "./shared/topmenu/topmenu.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { SearchComponent } from "./pages/search/search.component";
-import { ComponentRegistrationModule } from "./pages/resourceregistration/component/component-registration.module";
 import { TabsModule } from "ngx-bootstrap";
 import { LandingPageModule } from "./pages/landingpages/landing-page.module";
-import { CorpusRegistrationModule } from "./pages/resourceregistration/corpus/corpus-registration.module";
 import { FooterComponent } from "./shared/footer/footer.component";
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { ReusableComponentsModule } from "./shared/reusablecomponents/reusable-components.module";
 import { SupportModule } from "./pages/support/support.module";
 import { AboutModule } from "./pages/about/about.module";
-import { DatasourceRegistrationModule } from "./pages/resourceregistration/datasource/datasource-registration.module";
-import { ActionsModule } from "./pages/actions/actions.module";
-import { UserSpaceModule } from "./pages/user/user-space.module";
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
     imports: [
@@ -39,17 +35,13 @@ import { UserSpaceModule } from "./pages/user/user-space.module";
         JsonpModule,
         // ResourceRegistrationModule,
         routing,
-        ComponentRegistrationModule, 
-        CorpusRegistrationModule,
-        DatasourceRegistrationModule,
         LandingPageModule, 
         TabsModule,
         OAuthModule.forRoot(),
         ReusableComponentsModule,
         SupportModule,
         AboutModule,
-        ActionsModule,
-        UserSpaceModule
+        StarRatingModule.forRoot()
     ],
     declarations: [
         AppComponent,
