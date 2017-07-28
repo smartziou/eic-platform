@@ -7,5 +7,5 @@ COPY js/        /usr/share/nginx/html/js
 COPY css/        /usr/share/nginx/html/css
 COPY imgs/        /usr/share/nginx/html/imgs
 COPY warp/	/usr/share/nginx/html/warp
-
+COPY assets/	/usr/share/nginx/html/assets
 EXPOSE 80

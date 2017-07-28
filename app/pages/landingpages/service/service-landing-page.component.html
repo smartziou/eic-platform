@@ -130,27 +130,38 @@
 
                     <div class="uk-card uk-card-body uk-card-default sidemenu">
                         <ul class="uk-list">
-                            <li> Used by <strong> x </strong> groups</li>
-                            <li> Installed at <strong> 5 </strong> locations</li>
+                            <!--<li> Average rating <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"-->
+                                                                  <!--[showHalfStars]="true" [readOnly]="true" [size]="'small'"-->
+                                                                  <!--[staticColor]="'ok'"></star-rating-comp></li>-->
                             <li> Accessed <strong> y </strong> times</li>
+                            <li> Favored by <strong> x </strong> users</li>
                         </ul>
                         <a style="font-size: 15px">View more ></a>
                     </div>
-                    <div class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top">
+                    <div class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top"
+                         *ngIf="service.request || service.helpdesk || service.documentation || service.trainingInformation || service.feedback">
                         <h4>Service Support</h4>
                         <ul class="uk-list">
-                            <li>
+                            <li *ngIf="service.request">
                                 <strong>Service request: </strong>
-                                <a href="www.openaire.eu">www.openaire.eu</a>,
-                                <a href="mailto:info@openaire.eu">info@openaire.eu</a>
+                                <a href="{{service.request}}">{{service.request}}</a>
+                                <!--<a href="mailto:info@openaire.eu">info@openaire.eu</a>-->
                             </li>
-                            <li>
+                            <li *ngIf="service.helpdesk">
                                 <strong>Service helpdesk: </strong>
-                                <a href="https://www.openaire.eu/support/helpdesk">https://www.openaire.eu/support/helpdesk</a>
+                                <a href="{{service.helpdesk}}">{{service.helpdesk}}</a>
                             </li>
-                            <li>
+                            <li *ngIf="service.documentation">
+                                <strong>User manual: </strong>
+                                <a href="{{service.documentation}}">{{service.documentation}}</a>
+                            </li>
+                            <li *ngIf="service.trainingInformation">
+                                <strong>Training Information: </strong>
+                                <a href="{{service.trainingInformation}}">{{service.trainingInformation}}</a>
+                            </li>
+                            <li *ngIf="service.feedback">
                                 <strong>Service feedback: </strong>
-                                <a href="https://www.openaire.eu/support/helpdesk">https://www.openaire.eu/support/helpdesk</a>
+                                <a href="{{service.feedback}}">{{service.feedback}}</a>
                             </li>
                         </ul>
                     </div>

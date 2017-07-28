@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SearchQuery } from "../../domain/search-query";
+import { Service } from "../../domain/eic-model";
 
 @Component({
     selector: 'home',
@@ -15,6 +16,8 @@ import { SearchQuery } from "../../domain/search-query";
 export class HomeComponent {
 
     public searchForm: FormGroup;
+
+    private services: Service[];
 
     constructor(fb: FormBuilder, private router: Router) {
         this.searchForm = fb.group({
