@@ -8,7 +8,7 @@ import { FormsModule }    from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpModule, JsonpModule } from '@angular/http';
 
-import { ReadMoreComponent } from "./read-more.component";
+import { ReadMoreComponent, ReadMoreTextComponent } from "./read-more.component";
 import { HelpContentComponent, AsideHelpContentComponent } from "./help-content.component";
 import { HelpContentService } from "../../services/help-content.service";
 
@@ -24,11 +24,13 @@ import { HelpContentService } from "../../services/help-content.service";
     ],
     declarations: [
         ReadMoreComponent,
+        ReadMoreTextComponent,
         HelpContentComponent,
         AsideHelpContentComponent
     ],
     exports: [
         ReadMoreComponent,
+        ReadMoreTextComponent,
         HelpContentComponent,
         AsideHelpContentComponent
     ],

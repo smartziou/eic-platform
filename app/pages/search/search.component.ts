@@ -364,4 +364,8 @@ export class SearchComponent {
             this.urlParameters.push(newToParameter);
         }
     }
+
+    getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 }

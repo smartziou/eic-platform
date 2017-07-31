@@ -165,6 +165,12 @@
 
                     <div *ngIf="searchResults.results && searchResults.results.length>0">
 
+                        <div class="uk-width-1-1 uk-row-first uk-clearfix compareButton">
+                            <div class="uk-float-right">
+                                <a href="./compare.html" class="uk-button uk-button-blue"><i class="fa fa-compress fa-flip-horizontal" aria-hidden="true"></i> | 3 for comparison</a>
+                            </div>
+                        </div>
+
                         <div class="uk-width-1-1 uk-row-first">
                             <ul class="uk-pagination">
 
@@ -208,7 +214,7 @@
                                                 </div>
                                                 <div class="uk-margin-small-top">
                                                     <a (click)="addToCompare(resourceInfo.resource.id)">
-                                                        <i class="fa fa-compress fa-flip-horizontal fa-lg" aria-hidden="true"></i>
+                                                        <i class="fa fa-compress fa-flip-horizontal fa-lg" aria-hidden="true" style="color: #214c9c"></i>
                                                     </a>
                                                 </div>
                                             </div>
@@ -223,19 +229,22 @@
                                                     <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"
                                                                       [showHalfStars]="true" [readOnly]="true" [size]="'small'"
                                                                       [staticColor]="'ok'"></star-rating-comp>
+                                                    <span>({{getRandomInt(1,50)}})</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
                                     <div class="uk-width-5-6@m">
-                                        <h3 class="uk-margin-small uk-text-left@m uk-text-center uk-h3 uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
+                                        <h3 class="uk-margin-remove uk-text-left@m uk-text-center uk-h3 uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
                                             <a (click)="gotoDetail(resourceInfo.resource.id)">
                                                 {{resourceInfo.resource.brandName}}
                                             </a>
                                         </h3>
-                                        <div class="uk-margin-remove-vertical uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
-                                            {{resourceInfo.resource.description}}
+                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{resourceInfo.resource.provider}})</em></div>
+                                        <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
+                                            <read-more-text [text]="resourceInfo.resource.description" [maxHeight]="75">
+                                            </read-more-text>
                                         </div>
                                         <div class="uk-margin-small-top uk-text-left@m uk-text-center uk-text-meta uk-scrollspy-inview
                                         uk-animation-fade serviceTagLine" uk-scrollspy-class="" style="">
@@ -255,6 +264,34 @@
                                             <!--</div>-->
                                         <!--</div>-->
                                     </div>
+                                    <!--<div class="uk-width-1-6@m">-->
+                                        <!--<div class="description">-->
+                                            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<strong>Last Updated: </strong><span> - </span>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<strong>Accessed: </strong><span> - </span>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<strong>Viewed: </strong><span> - </span>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<strong>Favorited: </strong><span> - </span>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--<div>-->
+                                                <!--Last Updated: <span> - </span>-->
+                                            <!--</div>-->
+                                            <!--<div>-->
+                                                <!--Accessed: <span> - </span>-->
+                                            <!--</div>-->
+                                            <!--<div>-->
+                                                <!--Viewed: <span> - </span>-->
+                                            <!--</div>-->
+                                            <!--<div>-->
+                                                <!--Favorited: <span> - </span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
                                 <!--<div class="uk-width-1-2@l uk-width-1-1@m">-->
                                         <!--<h4 class="uk-text-left@m uk-text-center uk-h6 uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">-->
                                             <!--Traveled 18 times in 11 countries    </h4>-->

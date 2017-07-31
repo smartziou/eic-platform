@@ -211,3 +211,12 @@ input.searchTextBox, input.searchTextBox:focus, input.searchTextBox:active  {
 .actionIcons a {
     color: #bbbbbb;
 }
+
+.compareButton {
+    margin-bottom: 15px;
+}
+
+.compareButton a {
+    padding: 5px 15px;
+    color: #fff;
+}
