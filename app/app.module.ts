@@ -25,6 +25,7 @@ import { ReusableComponentsModule } from "./shared/reusablecomponents/reusable-c
 import { SupportModule } from "./pages/support/support.module";
 import { AboutModule } from "./pages/about/about.module";
 import { StarRatingModule } from 'angular-star-rating';
+import { UserModule } from "./pages/user/user.module";
 
 @NgModule({
     imports: [
@@ -41,6 +42,7 @@ import { StarRatingModule } from 'angular-star-rating';
         ReusableComponentsModule,
         SupportModule,
         AboutModule,
+        UserModule,
         StarRatingModule.forRoot()
     ],
     declarations: [

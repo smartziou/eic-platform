@@ -40,8 +40,8 @@ export class ReadMoreComponent implements AfterContentInit {
     ngAfterContentInit() {
         setTimeout(_ => {
             let currentHeight = this.readMoreDiv.nativeElement.offsetHeight;
-            console.log(this.readMoreDiv.nativeElement);
-            console.log('current height for ' + this.readMoreDiv.nativeElement.toString(),  currentHeight);
+            // console.log(this.readMoreDiv.nativeElement);
+            // console.log('current height for ' + this.readMoreDiv.nativeElement.toString(),  currentHeight);
 
             //collapsable only if the contents make container exceed the max height
             if (currentHeight > this.maxHeight) {

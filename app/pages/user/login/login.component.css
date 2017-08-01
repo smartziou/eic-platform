@@ -1,0 +1,15 @@
+.block {
+    display: block;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.m-b {
+    margin-bottom: 15px;
+}
+
+body.mini-navbar.fixed-sidebar .profile-element, .block {
+    display: block !important;
+}

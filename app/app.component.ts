@@ -13,6 +13,8 @@ import {AuthenticationService} from "./services/authentication.service";
 
 export class AppComponent implements OnInit {
 
+    private isLoginOrRegister: boolean = false;
+
     constructor(private router: Router,private oauthService: AuthenticationService) {
         // URL of the SPA to redirect the user to after login
         this.oauthService.redirectUri = window.location.origin + "/home";
@@ -32,6 +34,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.router.events.subscribe((evt: any) => {
+            this.isLoginOrRegister = ['/signUp', '/signIn'].includes(evt.url);
+        });
+
         this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;

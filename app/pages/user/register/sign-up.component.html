@@ -1,0 +1,97 @@
+<div class="tm-header  tm-header-transparent uk-margin-top uk-margin-medium-bottom" uk-header="">
+    <div class="uk-container uk-container-expand">
+        <nav class="uk-navbar" uk-navbar="{&quot;align&quot;:&quot;left&quot;}">
+            <div class="uk-navbar-center">
+                <div class="uk-logo uk-navbar-item">
+                    <img alt="eInfraCentral" class="uk-responsive-height" src="./imgs/einfracentral_logo_horizontal.png">
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="first_page_section uk-section-default uk-section uk-padding-remove-vertical">
+    <div class="first_page_banner_headline uk-grid-collapse uk-flex-middle uk-margin-remove-vertical uk-grid uk-grid-stack" uk-grid="">
+    </div>
+</div>
+<div class=" uk-section  uk-margin-small-top tm-middle custom-main-content" id="tm-main">
+    <div class="uk-container uk-container-small uk-margin-medium-top  uk-margin-small-bottom uk-text-center">
+        <h2 class="uk-h2 uk-margin-small-bottom">Welcome to eInfraCentral</h2>
+        <div class="uk-text-meta uk-margin-large-bottom">Sign up to gain full access of our services</div>
+        <div uk-grid="" class="uk-grid uk-grid-stack">
+            <div class="tm-main uk-width-1-1@s uk-width-1-1@m  uk-width-1-1@l uk-row-first uk-first-column">
+
+                <div class="uk-grid">
+
+
+                    <div class="uk-width-1-1@m uk-width-1-1@s uk-text-center">
+                        <h3 class="uk-h3">Create an eInfraCentral account</h3>
+                        <div class="middle-box text-center signUpscreen animated fadeInDown ">
+
+                            <div id="signUpForm">
+                                <div *ngIf="errorMessage" data-uk-alert="" class="uk-alert uk-alert-danger">
+                                    <p>{{errorMessage}}</p>
+                                </div>
+                                <div *ngIf="successMessage" data-uk-alert="" class="uk-alert uk-alert-success">
+                                    <p>{{successMessage}}</p>
+                                </div>
+                                <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value, signUpForm.valid)" role="form" class="m-t">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Username (*)" type="text" formControlName="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="First Name (*)" type="text" formControlName="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Last Name (*)" type="text" formControlName="surname">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Email (*)" type="text" formControlName="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="gwt-PasswordTextBox form-control" placeholder="Password (*)"
+                                               type="password" formControlName="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="gwt-PasswordTextBox form-control" placeholder="Re-enter password (*)"
+                                               type="password" formControlName="confirmPassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Institution" type="text" formControlName="affiliation">
+                                    </div>
+                                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-grid-stack" uk-grid="">
+                                        <label class="uk-first-column"><input class="uk-checkbox" type="checkbox" formControlName="providerAdministrator">
+                                            Check if you are a service provider administrator
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" formControlName="provider">
+                                            <option value="noneSelected">You are representing...</option>
+                                            <option value="OpenAIRE">OpenAIRE</option>
+                                            <option value="EUDAT">EUDAT</option>
+                                            <option value="GEANT">GEANT</option>
+                                            <option value="EGI">EGI</option>
+                                        </select>
+                                        <!--<input class="form-control" placeholder="You are representing" type="text" formControlName="providers">-->
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+                                    <!--<p class="text-muted text-center">-->
+                                        <!--<small>Already have an account?</small>-->
+                                    <!--</p>-->
+                                    <a routerLink="/signIn" class="btn btn-sm btn-white btn-block uk-margin-medium-top">
+                                        Already have an account?
+                                    </a>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

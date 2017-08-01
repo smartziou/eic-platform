@@ -1,5 +1,5 @@
 <div class="uk-offcanvas-content">
-    <top-menu></top-menu>
+    <top-menu *ngIf="!isLoginOrRegister"></top-menu>
     <router-outlet></router-outlet>
     <footer></footer>
 </div>
