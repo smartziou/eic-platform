@@ -15,7 +15,7 @@ import { UserService } from "../../../services/user.service";
 
 export class SignUpComponent {
 
-    private registrationForm: FormGroup;
+    private signUpForm: FormGroup;
     private user: User;
     private errorMessage: string = null;
     private successMessage: string = null;
@@ -33,7 +33,7 @@ export class SignUpComponent {
         //     }, {validator: this.areEqual}),
         //     "affiliation": [""],
         // });
-        this.registrationForm = fb.group({
+        this.signUpForm = fb.group({
             "name": ["", Validators.required],
             "surname": ["", Validators.required],
             "username": ["", Validators.required],
