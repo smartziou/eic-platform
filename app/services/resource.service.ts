@@ -69,6 +69,12 @@ export class ResourceService {
             .catch(this.handleError);
     }
 
+    getSelectedServices(ids: string[]) {
+        return this.http.get(`${this._searchUrl}service/some/${ids.toString()}/`)
+            .map(res => <Service[]> res.json())
+            .catch(this.handleError);
+    }
+
     static removeNulls(obj){
         var isArray = obj instanceof Array;
         for (var k in obj){

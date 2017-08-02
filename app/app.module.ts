@@ -26,6 +26,7 @@ import { SupportModule } from "./pages/support/support.module";
 import { AboutModule } from "./pages/about/about.module";
 import { StarRatingModule } from 'angular-star-rating';
 import { UserModule } from "./pages/user/user.module";
+import { CompareServicesComponent } from "./pages/compare/compare-services.component";
 
 @NgModule({
     imports: [
@@ -49,6 +50,7 @@ import { UserModule } from "./pages/user/user.module";
         AppComponent,
         HomeComponent,
         SearchComponent,
+        CompareServicesComponent,
         TopMenuComponent,
         FooterComponent,
     ],

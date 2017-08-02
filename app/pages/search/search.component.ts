@@ -39,6 +39,8 @@ export class SearchComponent {
 
     private advanced: boolean = false;
 
+    private servicesToCompare: string[] = [];
+
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private resourceService: ResourceService) {
         this.searchForm = fb.group({
@@ -47,6 +49,9 @@ export class SearchComponent {
     }
 
     ngOnInit() {
+
+        if(sessionStorage.getItem('compareServices'))
+            this.servicesToCompare = JSON.parse(sessionStorage.getItem('compareServices'));
 
         this.sub = this.activatedRoute
             .params
@@ -284,6 +289,38 @@ export class SearchComponent {
 
     gotoDetail(id: string) {
         this.router.navigate(['/landingPage/service' + '/', id]);
+    }
+
+    addToCompare(id: string) {
+        if(this.servicesToCompare.includes(id)) {
+            this.servicesToCompare.splice(this.servicesToCompare.indexOf(id),1)
+        } else
+            this.servicesToCompare.push(id);
+        sessionStorage.setItem('compareServices', JSON.stringify(this.servicesToCompare));
+    }
+
+    compareServices() {
+        //TODO make this dynamic
+
+        var map: { [name: string]: string; } = { };
+        // for (let urlParameter of this.urlParameters) {
+        //     var concatValue = '';
+        //     var counter = 0;
+        //     for(let value of urlParameter.values) {
+        //         if(counter!=0)
+        //             concatValue += ',';
+        //         concatValue += value;
+        //         counter++;
+        //     }
+        //     map[urlParameter.key] = concatValue;
+        // }
+
+        // map['services'] = '01.08,01.17,01.10';
+        // map['services'] = '01.08,01.17,01.10,03.14';
+
+        // console.log(this.servicesToCompare);
+        map['services'] = this.servicesToCompare.toString();
+        this.router.navigate(['/compare', map]);
     }
 
     handleError(error) {

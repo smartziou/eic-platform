@@ -1,10 +1,274 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle"
+     style="background-image: url('./imgs/iStock-629814372.jpg'); box-sizing: border-box; height: 150px">
+    <div class="uk-position-cover"></div>
+    <div class="uk-width-1-1">
+        <div class="uk-position-relative">
+            <div class="uk-container uk-margin-medium">
+                <div class="search_box_bg uk-grid-large uk-flex-middle uk-grid uk-grid-stack" uk-grid="">
+                    <div class="uk-width-1-1@m uk-first-column">
+                        <div>
+                            <div class="search_box_bg" style="text-align:center">
+                                <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+                                    <input aria-describedby="sizing-addon2" class="uk-input uk-width-1-2 ng-pristine ng-valid
+                                    uk-comment uk-comment-meta ng-untouched" formControlName="query" name="keyword"
+                                           placeholder="Search our service catalogue..." type="text">
+                                    <button class=" uk-button uk-button-default" type="submit">Search</button>
+                                </form>
+                                <!--<ul *ngIf="urlParameters && urlParameters.length>0" class="facets-selected cf uk-width-medium-9-10">-->
+                                    <!--<template ngFor let-urlParameter [ngForOf]="urlParameters">-->
+                                        <!--<template [ngIf]="urlParameter.key!='advanced'">-->
+                                            <!--<li *ngFor="let facet of urlParameter.values" class="search-tag">-->
+                                                <!--<span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="deselectFacet(urlParameter.key, facet)" data-role="remove"></a>-->
+                                            <!--</li>-->
+                                        <!--</template>-->
+                                    <!--</template>-->
+                                <!--</ul>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tm-main" class="tm-main uk-section uk-section-default" uk-height-viewport="expand: true" style="box-sizing: border-box;">
+    <div class="uk-container">
+
+        <!-- TOP HELP CONTENT -->
+        <help-content #topHelperContent [position]="'top'"
+                      [ngClass]="topHelperContent.isPresent()?'uk-margin-medium-top uk-margin-medium-bottom':'clear-style'">
+        </help-content>
+
+        <div class="uk-grid" uk-grid="">
+
+
+            <div class="uk-width-1-1">
+
+                <table id="myTable" class="uk-table uk-table-striped uk-text-center">
+                    <thead uk-sticky="offset: 70; width-element: #tm-main"
+                           class="uk-width-1-1 uk-margin-bottom">
+                    <!--<thead class="header uk-width-1-1 uk-margin-bottom">-->
+                        <tr style="min-width: 1000px">
+                            <!--<th *ngFor="let service of services" class="uk-width-1-{{services.length}}">-->
+                            <th *ngFor="let service of services">
+                               <div class="uk-card uk-card-default" style="height: 270px">
+                                   <div class="actionIcons">
+                                       <a (click)="addToFavorites(service.id)" class="uk-align-left">
+                                           <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+                                       </a>
+                                       <a (click)="removeFromComparison(service.id)" class="uk-align-right">
+                                           <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                                       </a>
+                                   </div>
+                                   <div class="">
+                                       <a (click)="gotoDetail(service.id)">
+                                           <span><img src="http://fvtelibrary.com/img/user/NoLogo.png"
+                                                      style="max-height: 150px; width: auto;"></span>
+                                       </a>
+                                   </div>
+                                   <div class="serviceBrandName">
+                                       {{service.brandName}}
+                                   </div>
+
+                               </div>
+                            </th>
+                            <!--<th>Table Heading</th>-->
+                            <!--<th>Table Heading</th>-->
+                            <!--<th>Table Heading</th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="uk-margin-small-top">
+                                    <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"
+                                                      [showHalfStars]="true" [readOnly]="true" [size]="'small'"
+                                                      [staticColor]="'ok'"></star-rating-comp>
+                                    <span>rated <strong>{{getRandomInt(1,50)}}</strong> times</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <template [ngIf]="service.tagline && service.tagline!=''">
+                                    <span style="color: #214c9c"><i>"{{service.tagline}}"</i></span>
+                                </template>
+                                <template [ngIf]="!service.tagline || service.tagline==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <template [ngIf]="service.provider && service.provider!=''">
+                                    by {{service.provider}}
+                                </template>
+                                <template [ngIf]="!service.provider || service.provider==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Options</div>
+                                <template [ngIf]="service.options && service.options!=''">
+                                    {{service.options}}
+                                </template>
+                                <template [ngIf]="!service.options || service.options==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Target Users</div>
+                                <template [ngIf]="service.targetUsers && service.targetUsers!=''">
+                                    {{service.targetUsers}}
+                                </template>
+                                <template [ngIf]="!service.targetUsers || service.targetUsers==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">User Value</div>
+                                <template [ngIf]="service.userValue && service.userValue!=''">
+                                    {{service.userValue}}
+                                </template>
+                                <template [ngIf]="!service.userValue || service.userValue==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">User Base</div>
+                                <template [ngIf]="service.userBase && service.userBase!=''">
+                                    {{service.userBase}}
+                                </template>
+                                <template [ngIf]="!service.userBase || service.userBase==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Funding sources</div>
+                                <template [ngIf]="service.fundingSources && service.fundingSources!=''">
+                                    {{service.fundingSources}}
+                                </template>
+                                <template [ngIf]="!service.fundingSources || service.fundingSources==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Version</div>
+                                <template [ngIf]="service.version && service.version!=''">
+                                    {{service.version}}
+                                </template>
+                                <template [ngIf]="!service.version || service.version==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Phase</div>
+                                <template [ngIf]="service.phase && service.phase!=''">
+                                    {{service.phase}}
+                                </template>
+                                <template [ngIf]="!service.phase || service.phase==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">TRL</div>
+                                <template [ngIf]="service.technologyReadinessLevel && service.technologyReadinessLevel!=''">
+                                    {{service.technologyReadinessLevel}}
+                                </template>
+                                <template [ngIf]="!service.technologyReadinessLevel || service.technologyReadinessLevel==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Category</div>
+                                <template [ngIf]="service.category && service.category!=''">
+                                    {{service.category}}
+                                </template>
+                                <template [ngIf]="!service.category || service.category==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Subcategory</div>
+                                <template [ngIf]="service.subcategory && service.subcategory!=''">
+                                    {{service.subcategory}}
+                                </template>
+                                <template [ngIf]="!service.subcategory || service.subcategory==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Countries</div>
+                                <template [ngIf]="service.country && service.country!=''">
+                                    {{service.country}}
+                                </template>
+                                <template [ngIf]="!service.country || service.country==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Regions</div>
+                                <template [ngIf]="service.region && service.region!=''">
+                                    {{service.region}}
+                                </template>
+                                <template [ngIf]="!service.region || service.region==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let service of services">
+                                <div class="fieldName">Languages</div>
+                                <template [ngIf]="service.language && service.language!=''">
+                                    {{service.language}}
+                                </template>
+                                <template [ngIf]="!service.language || service.language==''">
+                                    --
+                                </template>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- RIGHT HELP CONTENT -->
+            <aside-help-content #rightHelperContent [position]="'right'"
+                                [ngClass]="rightHelperContent.isPresent()?'tm-sidebar uk-width-1-4@m uk-first-column':'clear-style'">
+            </aside-help-content>
+
+        </div>
+
+        <!-- BOTTOM HELP CONTENT -->
+        <help-content #bottomHelperContent [position]="'bottom'"
+                      [ngClass]="bottomHelperContent.isPresent()?'uk-margin-medium-top uk-margin-medium-bottom':'clear-style'">
+        </help-content>
+
+    </div>
+</div>
+

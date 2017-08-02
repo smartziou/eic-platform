@@ -1,6 +1,6 @@
 <div class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle"
      style="background-image: url('./imgs/iStock-629814372.jpg'); box-sizing: border-box; height: 150px">
-    <div class="uk-position-cover"></div>
+    <!--<div class="uk-position-cover"></div>-->
     <div class="uk-width-1-1">
         <div class="uk-position-relative">
             <div class="uk-container uk-margin-medium">
@@ -77,7 +77,7 @@
 
                     <template ngFor let-facet [ngForOf]="searchResults.facets">
                         <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
-                            <read-more [maxHeight]="245">
+                            <read-more [maxHeight]="235">
                                 <span>{{facet.label}}</span>
                                 <div class="refineOption" *ngFor="let facetValue of facet.values">
                                     <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
@@ -130,7 +130,7 @@
 
                     <template ngFor let-facet [ngForOf]="searchResults.facets">
                         <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
-                            <read-more [maxHeight]="245">
+                            <read-more [maxHeight]="235">
                                 <span>{{facet.label}}</span>
                                 <div class="refineOption" *ngFor="let facetValue of facet.values">
                                     <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
@@ -165,9 +165,11 @@
 
                     <div *ngIf="searchResults.results && searchResults.results.length>0">
 
-                        <div class="uk-width-1-1 uk-row-first uk-clearfix compareButton">
+                        <div *ngIf="servicesToCompare && servicesToCompare.length>0" class="uk-width-1-1 uk-row-first uk-clearfix compareButton">
                             <div class="uk-float-right">
-                                <a href="./compare.html" class="uk-button uk-button-blue"><i class="fa fa-compress fa-flip-horizontal" aria-hidden="true"></i> | 3 for comparison</a>
+                                <a (click)="compareServices()" class="uk-button uk-button-blue">
+                                    <i class="fa fa-compress fa-flip-horizontal" aria-hidden="true"></i> | {{servicesToCompare.length}} for comparison
+                                </a>
                             </div>
                         </div>
 
@@ -214,7 +216,8 @@
                                                 </div>
                                                 <div class="uk-margin-small-top">
                                                     <a (click)="addToCompare(resourceInfo.resource.id)">
-                                                        <i class="fa fa-compress fa-flip-horizontal fa-lg" aria-hidden="true" style="color: #214c9c"></i>
+                                                        <i [ngClass]="{'blueActionIcons': servicesToCompare.includes(resourceInfo.resource.id)}"
+                                                           class="fa fa-compress fa-flip-horizontal fa-lg" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
                                             </div>

@@ -212,6 +212,14 @@ input.searchTextBox, input.searchTextBox:focus, input.searchTextBox:active  {
     color: #bbbbbb;
 }
 
+.grayActionIcons a {
+    color: #bbbbbb;
+}
+
+.blueActionIcons {
+    color: #214c9c;
+}
+
 .compareButton {
     margin-bottom: 15px;
 }

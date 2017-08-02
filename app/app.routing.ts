@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from "./pages/search/search.component";
+import { CompareServicesComponent } from "./pages/compare/compare-services.component";
 
 const appRoutes: Routes = [
     {
@@ -20,6 +21,10 @@ const appRoutes: Routes = [
     {
         path: 'search',
         component: SearchComponent
+    },
+    {
+        path: 'compare',
+        component: CompareServicesComponent
     },
 ];
 

@@ -42,38 +42,6 @@
                     <div class="uk-width-1-2@m uk-width-1-1@s uk-text-left">
                         <h3 class="uk-h3">Use your eInfraCentral account</h3>
                         <div class="middle-box text-center loginscreen animated fadeInDown ">
-                            <!--<ul uk-tab="" class="uk-margin-remove-bottom uk-tab">-->
-                                <!--<li aria-expanded="true" class="uk-active">-->
-                                    <!--<h6 class="aai-h6 uk-margin-small-bottom small-caps"><a href="#">Sign in</a></h6>-->
-                                <!--</li>-->
-                                <!--<li aria-expanded="false" class="">-->
-                                    <!--<h6 class="aai-h6 uk-margin-small-bottom"><a href="#">Create an account</a></h6></li>-->
-                            <!--</ul>-->
-
-                            <!--<div id="loginForm">-->
-                                <!--<form target="GWTBootstrap3_AbstractForm_RepositoryManager_1" role="form" class="m-t" id="login_form">-->
-                                    <!--<div class="alert alert-success" aria-hidden="true" style="display: none;"></div>-->
-                                    <!--<div class="alert alert-danger" aria-hidden="true" style="display: none;"></div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<span class="msg_login_username_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter your username / email.</span>-->
-                                        <!--<input id="login_username" name="login_username" placeholder="Username / Email" class="form-control" type="text"></div>-->
-                                    <!--<div class="form-group">-->
-                                        <!--<span class="msg_login_password_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter your password.</span>-->
-                                        <!--<input id="login_password" name="login_password" placeholder="Password" class="form-control" type="password"></div>-->
-                                    <!--<div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-grid-stack" uk-grid="">-->
-                                        <!--<label class="uk-first-column"><input class="uk-checkbox" type="checkbox"> Remember me</label>-->
-                                    <!--</div>-->
-                                    <!--<div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-grid-divider" uk-grid="">-->
-                                        <!--<div class="uk-first-column"><a href="javascript:;"></a><a href="javascript:;"><small>Forgot your password?</small></a></div>-->
-                                        <!--<div class=""><a href="javascript:;"></a><a href="javascript:;"><small>Forgot your username?</small></a></div>-->
-                                    <!--</div>-->
-                                    <!--<div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-grid-stack uk-text-left" uk-grid="">-->
-                                        <!--<div class="uk-width-1-1 uk-first-column">-->
-                                            <!--<button type="button" class="uk-button uk-button-primary" onclick="loginForm()">Login</button>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</form>-->
-                            <!--</div>-->
 
                             <div id="loginForm">
                                 <div *ngIf="errorMessage" data-uk-alert="" class="uk-alert uk-alert-danger">
@@ -103,55 +71,6 @@
                                 </form>
                             </div>
 
-                            <!--<ul class="uk-switcher uk-margin-remove-top">-->
-                                <!--<li class="uk-active">-->
-                                    <!--&lt;!&ndash; LOGIN FORM &ndash;&gt;-->
-                                    <!---->
-                                    <!--&lt;!&ndash; END OF LOGIN FORM &ndash;&gt;-->
-                                <!--</li>-->
-                                <!--<li class="">-->
-                                    <!--&lt;!&ndash; REGISTER FORM &ndash;&gt;-->
-                                    <!--<div id="registerForm">-->
-                                        <!--<form target="GWTBootstrap3_AbstractForm_RepositoryManager_1" role="form" class="m-t" id="register_form">-->
-                                            <!--<div class="alert alert-success" aria-hidden="true" style="display: none;"></div>-->
-                                            <!--<div class="alert alert-danger" aria-hidden="true" style="display: none;"></div>-->
-                                            <!--<div class="form-group">-->
-                                                <!--<span class="msg_first_name_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter your first name.</span>-->
-                                                <!--<input id="first_name" name="first_name" placeholder="First name" class="form-control" type="text"></div>-->
-                                            <!--<div class="form-group">-->
-                                                <!--<span class="msg_last_name_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter your last name.</span>-->
-                                                <!--<input id="last_name" name="last_name" placeholder="Last name" class="form-control" type="text"></div>-->
-                                            <!--<div class="form-group">-->
-                                                <!--<span class="msg_organization_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter your affiliation / organization.</span>-->
-                                                <!--<input id="organization" name="organization" placeholder="Affiliation / Organization" class="form-control" type="text"></div>-->
-                                            <!--<div class="form-group">-->
-                                                <!--<span class="msg_username_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter your username.</span>-->
-                                                <!--<input id="username" name="username" placeholder="Username" class="form-control" type="text"></div>-->
-                                            <!--<div class="form-group">-->
-                                                <!--<span class="msg_email_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter your email.</span>-->
-                                                <!--<span class="msg_email_validation_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter a valid email.</span>-->
-                                                <!--<span class="msg_email_conf_error uk-text-danger uk-text-small uk-float-left" style="display:none">These emails don't match.</span>-->
-                                                <!--<input id="email" name="email" placeholder="Email" class="form-control" type="text"></div>-->
-                                            <!--<div class="form-group">-->
-                                                <!--<input id="email_conf" name="email_conf" placeholder="Confirm email" class="form-control" type="text"></div>-->
-                                            <!--<div class="form-group">-->
-                                                <!--<span class="msg_password_error uk-text-danger uk-text-small uk-float-left" style="display:none">Please enter your password.</span>-->
-                                                <!--<span class="msg_pass_conf_error uk-text-danger uk-text-small uk-float-left" style="display:none">These passwords don't match.</span>-->
-                                                <!--<input id="password" name="password" placeholder="Password" class="form-control" type="password"></div>-->
-                                            <!--<div class="form-group">-->
-                                                <!--<input id="password_conf" name="password_conf" placeholder="Confirm password" class="form-control" type="password"></div>-->
-                                            <!--<div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-text-left uk-grid-stack" uk-grid="">-->
-                                                <!--<div class="uk-width-1-1 uk-text-meta uk-text-danger uk-first-column">All fields are required</div>-->
-                                                <!--<div class="uk-width-1-1 uk-grid-margin uk-first-column">RECAPTHA I AM NOT A ROBOT THING GOES HERE</div>-->
-                                                <!--<div class="uk-width-1-1 uk-grid-margin uk-first-column">-->
-                                                    <!--<button type="button" class="uk-button uk-button-primary" onclick="validateForm();">Register</button>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</form>-->
-                                    <!--</div>-->
-                                    <!--&lt;!&ndash; END OF REGISTER FORM &ndash;&gt;-->
-                                <!--</li>-->
-                            <!--</ul>-->
                         </div>
                     </div>
                     <!-- END OF RIGHT SIDE -->
