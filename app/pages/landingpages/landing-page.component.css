@@ -1,91 +1,14 @@
-.resourceSideInfo {
-    font-size: 12px;
+.uk-vertical-align-top {
+    vertical-align: top;
 }
 
-.resourceGeneralInfo {
-    font-size: 13px;
-    margin-bottom: 20px;
+.rateButton {
+    background-color: #FFc058;
+    border-color: #FFc058;
+    color: #ffffff;
 }
 
-.componentTypes {
-    margin-left: -2px;
-}
-
-.uk-subnav > * > * {
-    font-size: 11px;
-}
-
-.uk-grid + .uk-grid, .uk-grid-margin, .uk-grid > * > .uk-panel + .uk-panel {
-    margin-top: 20px;
-}
-
-* + .uk-margin {
-    margin-top: 25px;
-}
-
-.resourceIdentifiers {
-    margin-bottom: 10px;
-}
-
-.uk-subnav-line > * {
-    padding-left: 0;
-}
-
-.uk-thumbnail {
-    background: none;
-    border: none;
-    padding: 0px;
-}
-
-.infoTabs {
-    font-size: 13px;
-}
-
-.infoTab {
-    margin-top: 20px;
-    font-size: 13px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.infoTab ul.uk-list {
-}
-
-.uk-badge {
-    display: block;
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-* + .uk-article-divider {
-    margin-top: 10px;
-}
-
-.uk-article-divider {
-    border-color: #eeeeee;
-    margin-bottom: 10px;
-}
-
-.componentDistributionInfo .rightsInfo {
-
-}
-
-.componentDistributionInfo .rightsInfo .licenseInfo {
-
-}
-
-.lingualityInfo {
-    margin-left: 20px;
-}
-
-* + h1, * + h2, * + h3, * + h4, * + h5, * + h6 {
-    margin-top: 0;
-}
-
-.languageDescriptionType {
-    margin-left: -2px;
-}
-
-.lexicalConceptualResourceType {
-    margin-left: -2px;
+.rateButton:hover {
+    background-color: #E9a432;
+    border-color: #E9a432;
 }
