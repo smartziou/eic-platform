@@ -45,102 +45,48 @@
 
             <aside id="tm-sidebar" class="tm-sidebar uk-width-1-4@m">
 
-                <!--Simple view-->
-                <!--<div *ngIf="searchResults && !advanced" class="uk-card uk-card-body uk-card-default sidemenu">-->
+                <div *ngIf="searchResults" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines">
 
-                    <!--<template ngFor let-facet [ngForOf]="searchResults.facets">-->
-                        <!--<template [ngIf]="facet.field=='resourceType'">-->
-                            <!--<h3 class="uk-h3 uk-heading-bullet">Resource Type</h3>-->
-                            <!--<p *ngFor="let facetValue of facet.values" class="resourceType">-->
-                                <!--<input type="checkbox" name="vehicle" value="Bike" data-md-icheck-->
-                                       <!--(change)="onSelection($event, facet.field, facetValue.value)"-->
-                                       <!--[checked]="facetValue.isChecked">-->
-                                                <!--<span [ngSwitch]="facetValue.value">-->
-                                                    <!--<span *ngSwitchCase="'component'">Applications</span>-->
-                                                    <!--<span *ngSwitchCase="'corpus'">Corpora</span>-->
-                                                <!--</span>-->
-                                <!--<span class="resourceTypeCount">({{facetValue.count}})</span>-->
-                                                <!--<span [ngSwitch]="facetValue.value">-->
-                                                    <!--<span *ngSwitchCase="'component'"><i class="fa fa-cogs uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                    <!--<span *ngSwitchCase="'corpus'"><i class="fa fa-database uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                    <!--<span *ngSwitchDefault><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                <!--</span>-->
-                            <!--</p>-->
-                        <!--</template>-->
-                    <!--</template>-->
-
-                <!--</div>-->
-
-                <div *ngIf="searchResults && !advanced" class="uk-card uk-card-body uk-card-default sidemenu refines">
-
-                    <h3 class="uk-h3 uk-heading-bullet">Refine</h3>
+                    <h3 class="uk-h3 uk-heading-bullet">Category</h3>
 
                     <template ngFor let-facet [ngForOf]="searchResults.facets">
-                        <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
-                            <read-more [maxHeight]="235">
-                                <span>{{facet.label}}</span>
-                                <div class="refineOption" *ngFor="let facetValue of facet.values">
-                                    <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                           (change)="onSelection($event, facet.field, facetValue.value)"
-                                           [checked]="facetValue.isChecked">
-                                    {{facetValue.value}}
-                                    <span>({{facetValue.count}})</span>
-                                </div>
-                            </read-more>
-                        </div>
+                        <template [ngIf]="facet.field=='category'">
+                            <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
+                                <read-more [maxHeight]="235">
+                                    <!--<span>{{facet.label}}</span>-->
+                                    <div class="refineOption" *ngFor="let facetValue of facet.values">
+                                        <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
+                                               (change)="onSelection($event, facet.field, facetValue.value)"
+                                               [checked]="facetValue.isChecked">
+                                        {{facetValue.value}}
+                                        <span>({{facetValue.count}})</span>
+                                    </div>
+                                </read-more>
+                            </div>
+                        </template>
                     </template>
 
                 </div>
 
-                <!--Advanced view-->
-                <!--<div *ngIf="searchResults && advanced" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary">-->
+                <div *ngIf="searchResults" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines uk-margin-top">
 
-                    <!--<template ngFor let-facet [ngForOf]="searchResults.facets">-->
-                        <!--<template [ngIf]="facet.field=='resourceType'">-->
-                            <!--<h3 class="uk-h3 uk-heading-bullet">Resource Type</h3>-->
-                            <!--<p *ngFor="let facetValue of facet.values"  class="resourceType">-->
-                                <!--<input type="checkbox" name="vehicle" value="Bike" data-md-icheck-->
-                                       <!--(change)="onSelection($event, facet.field, facetValue.value)"-->
-                                       <!--[checked]="facetValue.isChecked">-->
-                                                <!--<span [ngSwitch]="facetValue.value">-->
-                                                    <!--<span *ngSwitchCase="'component'">Components</span>-->
-                                                    <!--<span *ngSwitchCase="'corpus'">Corpora</span>-->
-                                                    <!--<span *ngSwitchCase="'language'">Language Descriptions</span>-->
-                                                    <!--<span *ngSwitchCase="'lexical'">Lexical/Conceptual</span>-->
-                                                    <!--<span *ngSwitchCase="'model'">Models</span>-->
-                                                <!--</span>-->
-                                <!--<span class="resourceTypeCount">({{facetValue.count}})</span>-->
-                                                <!--<span [ngSwitch]="facetValue.value">-->
-                                                    <!--<span *ngSwitchCase="'component'"><i class="fa fa-cogs uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                    <!--<span *ngSwitchCase="'corpus'"><i class="fa fa-database uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                    <!--<span *ngSwitchCase="'language'"><i class="fa fa-file-o uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                    <!--<span *ngSwitchCase="'lexical'"><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                    <!--<span *ngSwitchCase="'model'"><i class="fa fa-clipboard uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                    <!--<span *ngSwitchDefault><i class="fa fa-language uk-float-right resourceTypeIcon" aria-hidden="true"></i></span>-->
-                                                <!--</span>-->
-                            <!--</p>-->
-                        <!--</template>-->
-                    <!--</template>-->
-
-                <!--</div>-->
-
-                <div *ngIf="searchResults && advanced" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines">
-
-                    <h3 class="uk-h3 uk-heading-bullet">Refine</h3>
+                    <h3 class="uk-h3 uk-heading-bullet">Further refine</h3>
 
                     <template ngFor let-facet [ngForOf]="searchResults.facets">
-                        <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
-                            <read-more [maxHeight]="235">
-                                <span>{{facet.label}}</span>
-                                <div class="refineOption" *ngFor="let facetValue of facet.values">
-                                    <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                           (change)="onSelection($event, facet.field, facetValue.value)"
-                                           [checked]="facetValue.isChecked">
-                                    {{facetValue.value}}
-                                    <span>({{facetValue.count}})</span>
-                                </div>
-                            </read-more>
-                        </div>
+                        <template [ngIf]="facet.field!='category'">
+                            <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
+                                <read-more [maxHeight]="235">
+                                    <span>{{facet.label}}</span>
+                                    <div class="refineOption" *ngFor="let facetValue of facet.values">
+                                        <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
+                                               (change)="onSelection($event, facet.field, facetValue.value)"
+                                               [checked]="facetValue.isChecked">
+                                        {{facetValue.value}}
+                                        <span>({{facetValue.count}})</span>
+                                    </div>
+                                </read-more>
+                            </div>
+                        </template>
                     </template>
 
                 </div>
