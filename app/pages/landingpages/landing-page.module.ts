@@ -8,12 +8,14 @@ import { ResourceService } from "../../services/resource.service";
 import { landingPageRouting } from "./landing-page.routing";
 import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
 import { ServiceLandingPageComponent } from "./service/service-landing-page.component";
+import { StarRatingModule } from "angular-star-rating";
 
 @NgModule({
     imports: [
         CommonModule,
         landingPageRouting,
-        ReusableComponentsModule
+        ReusableComponentsModule,
+        StarRatingModule.forRoot()
     ],
     declarations: [
         ServiceLandingPageComponent,

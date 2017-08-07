@@ -91,47 +91,8 @@ export class SearchComponent {
         this.isLastPageDisabled = false;
         this.isNextPageDisabled = false;
 
-        // this.shortResultsInfo.splice(0,this.shortResultsInfo.length);
-
-        // for (let component of this.searchResults.results) {
-        //     let componentBody = component.resource;
-        //     let corpusInfo : CorpusInfo;
-        //     let componentInfo : ComponentInfo;
-        //     let title : string;
-        //     let description : string;
-        //     let resourceType : string;
-        //     if (typeof componentBody['corpusInfo'] != 'undefined') {
-        //         corpusInfo = componentBody['corpusInfo']
-        //         title = corpusInfo.identificationInfo.resourceNames[0].value;
-        //         description = corpusInfo.identificationInfo.descriptions[0].value;
-        //         resourceType = 'corpus';
-        //     } else if (typeof componentBody['componentInfo'] != 'undefined') {
-        //         componentInfo = componentBody['componentInfo'];
-        //         title = componentInfo.identificationInfo.resourceNames[0].value;
-        //         description = componentInfo.identificationInfo.descriptions[0].value;
-        //         resourceType = 'component';
-        //     }
-        //     let shortResultInfo: ShortResultInfo = {
-        //         // id: component.componentInfo.identificationInfo.identifiers[0].value,
-        //         order: component.order,
-        //         id: componentBody.metadataHeaderInfo.metadataRecordIdentifier.value,
-        //         title: title,
-        //         description: description,
-        //         resourceType: resourceType
-        //     };
-        //     this.shortResultsInfo.push(shortResultInfo);
-        // }
-
         if(this.searchResults.results.length==0)
             this.foundResults = false;
-
-        // if(this.shortResultsInfo.length==0)
-        //     this.foundResults = false;
-        // else {
-        //     this.shortResultsInfo.sort((lhs : ShortResultInfo,rhs: ShortResultInfo) => {
-        //         return lhs.order - rhs.order;
-        //     })
-        // }
 
         //update form values using URLParameters
         for (let urlParameter of this.urlParameters) {
@@ -300,25 +261,7 @@ export class SearchComponent {
     }
 
     compareServices() {
-        //TODO make this dynamic
-
         var map: { [name: string]: string; } = { };
-        // for (let urlParameter of this.urlParameters) {
-        //     var concatValue = '';
-        //     var counter = 0;
-        //     for(let value of urlParameter.values) {
-        //         if(counter!=0)
-        //             concatValue += ',';
-        //         concatValue += value;
-        //         counter++;
-        //     }
-        //     map[urlParameter.key] = concatValue;
-        // }
-
-        // map['services'] = '01.08,01.17,01.10';
-        // map['services'] = '01.08,01.17,01.10,03.14';
-
-        // console.log(this.servicesToCompare);
         map['services'] = this.servicesToCompare.toString();
         this.router.navigate(['/compare', map]);
     }

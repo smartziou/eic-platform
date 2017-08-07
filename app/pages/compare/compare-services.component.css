@@ -20,15 +20,19 @@
     margin: 10px;
 }
 
-thead {
-    width: 100% !important;
+/*thead {*/
+    /*width: 100% !important;*/
+/*}*/
+
+.tablehead {
+    width: inherit !important;
 }
 
-.header{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 20px;
-}
+/*.header{*/
+    /*position: -webkit-sticky;*/
+    /*position: sticky;*/
+    /*top: 20px;*/
+/*}*/
 
 .serviceBrandName {
     padding-bottom: 20px;

@@ -167,9 +167,8 @@
                                 <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
                                     <div class="uk-first-column">
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                                            <li><a [routerLink]="['/support/faqPolicies']" routerLinkActive="uk-active">FAQs - Policies</a></li>
-                                            <li><a [routerLink]="['/support/faqLegal']" routerLinkActive="uk-active">FAQs - Legal</a></li>
-                                            <li><a href="http://openminted.eu/support/" target="_blank" routerLinkActive="uk-active">Ask a question</a></li>
+                                            <li><a [routerLink]="['/support/faqs']" routerLinkActive="uk-active">FAQs</a></li>
+                                            <li><a href="http://einfracentral.eu/contact" target="_blank" routerLinkActive="uk-active">Ask a question</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -180,9 +179,8 @@
                                 <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
                                     <div class="uk-first-column">
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                                            <li><a href="http://openminted.eu/about/overview/" target="_blank" routerLinkActive="uk-active">Who we are</a></li>
-                                            <li><a href="http://openminted.eu/" target="_blank" routerLinkActive="uk-active">Project</a></li>
-                                            <li><a [routerLink]="['/about/communities']" routerLinkActive="uk-active">Communities</a></li>
+                                            <li><a href="http://einfracentral.eu/basic-page/about-einfracentral" target="_blank" routerLinkActive="uk-active">Who we are</a></li>
+                                            <li><a href="http://einfracentral.eu" target="_blank" routerLinkActive="uk-active">Project</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -231,7 +229,16 @@
 			                        <a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT {{oAuthService.getLoggedInUser}}</a>
                                 </span>
                             </div>
+
+                            <!--<div class="btl-panel" style="float: right;">-->
+                                <!--&lt;!&ndash; Login button &ndash;&gt;-->
+                                <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">-->
+			                        <!--<a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT Jane Doe</a>-->
+                                <!--</span>-->
+                            <!--</div>-->
+
                             <!-- content dropdown/modal box -->
+
                         </div>
                     </div>
                 </div>

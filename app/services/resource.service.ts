@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import { URLParameter } from "../domain/url-parameter";
 import { SearchResults } from "../domain/search-results";
 import { Service } from "../domain/eic-model";
+import { BrowseResults } from "../domain/browse-results";
 
 @Injectable()
 export class ResourceService {
@@ -32,32 +33,6 @@ export class ResourceService {
 
         let questionMark = urlParameters.length>0?'?':'';
 
-        // var searchQuery = '';
-        // var counter = 0;
-        // for (let urlParameter of urlParameters) {
-        //
-        //     if(counter === 0)
-        //         searchQuery += '?';
-        //
-        //     if(urlParameter.key === 'query') {
-        //         searchQuery += 'keyword=' + urlParameter.values[0];
-        //     } else {
-        //         var valuesCounter = 0;
-        //         for(let value of urlParameter.values) {
-        //             if(valuesCounter!=0)
-        //                 searchQuery += '&';
-        //             searchQuery += urlParameter.key + '=' + value;
-        //             valuesCounter++;
-        //         }
-        //     }
-        //
-        //     if(counter != urlParameters.length-1)
-        //         searchQuery += '&';
-        //
-        //     counter++;
-        // }
-        // `${this._searchUrl}service${questionMark}${searchQuery}`;
-
         return this.http.get(`${this._searchUrl}service/all${questionMark}${searchQuery.toString()}`)
             .map(res => <SearchResults> res.json())
             .catch(this.handleError);
@@ -72,6 +47,12 @@ export class ResourceService {
     getSelectedServices(ids: string[]) {
         return this.http.get(`${this._searchUrl}service/some/${ids.toString()}/`)
             .map(res => <Service[]> res.json())
+            .catch(this.handleError);
+    }
+
+    getServicesByCategories() {
+        return this.http.get(`${this._searchUrl}service/by/category`)
+            .map(res => <BrowseResults> res.json())
             .catch(this.handleError);
     }
 

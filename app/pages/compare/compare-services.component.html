@@ -40,18 +40,18 @@
                       [ngClass]="topHelperContent.isPresent()?'uk-margin-medium-top uk-margin-medium-bottom':'clear-style'">
         </help-content>
 
-        <div class="uk-grid" uk-grid="">
+        <div id="myGrid" class="uk-grid" uk-grid="">
 
 
             <div class="uk-width-1-1">
 
                 <table id="myTable" class="uk-table uk-table-striped uk-text-center">
-                    <thead uk-sticky="offset: 70; width-element: #tm-main"
-                           class="uk-width-1-1 uk-margin-bottom">
+                    <thead uk-sticky="offset: 70; width-element: '#myGrid'; cls-active: headhead"
+                           class="uk-width-1-1 uk-margin-bottom tablehead" style="">
                     <!--<thead class="header uk-width-1-1 uk-margin-bottom">-->
-                        <tr style="min-width: 1000px">
-                            <!--<th *ngFor="let service of services" class="uk-width-1-{{services.length}}">-->
-                            <th *ngFor="let service of services">
+                        <tr>
+                            <th *ngFor="let service of services" class="uk-width-1-{{services.length}}" style="width: 300px;">
+                            <!--<th *ngFor="let service of services">-->
                                <div class="uk-card uk-card-default" style="height: 270px">
                                    <div class="actionIcons">
                                        <a (click)="addToFavorites(service.id)" class="uk-align-left">
@@ -80,7 +80,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="uk-margin-small-top">
                                     <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"
                                                       [showHalfStars]="true" [readOnly]="true" [size]="'small'"
@@ -90,7 +90,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <template [ngIf]="service.tagline && service.tagline!=''">
                                     <span style="color: #214c9c"><i>"{{service.tagline}}"</i></span>
                                 </template>
@@ -100,7 +100,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <template [ngIf]="service.provider && service.provider!=''">
                                     by {{service.provider}}
                                 </template>
@@ -110,7 +110,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Options</div>
                                 <template [ngIf]="service.options && service.options!=''">
                                     {{service.options}}
@@ -121,7 +121,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Target Users</div>
                                 <template [ngIf]="service.targetUsers && service.targetUsers!=''">
                                     {{service.targetUsers}}
@@ -132,7 +132,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">User Value</div>
                                 <template [ngIf]="service.userValue && service.userValue!=''">
                                     {{service.userValue}}
@@ -143,7 +143,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">User Base</div>
                                 <template [ngIf]="service.userBase && service.userBase!=''">
                                     {{service.userBase}}
@@ -154,7 +154,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Funding sources</div>
                                 <template [ngIf]="service.fundingSources && service.fundingSources!=''">
                                     {{service.fundingSources}}
@@ -165,7 +165,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Version</div>
                                 <template [ngIf]="service.version && service.version!=''">
                                     {{service.version}}
@@ -176,7 +176,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Phase</div>
                                 <template [ngIf]="service.phase && service.phase!=''">
                                     {{service.phase}}
@@ -187,7 +187,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">TRL</div>
                                 <template [ngIf]="service.technologyReadinessLevel && service.technologyReadinessLevel!=''">
                                     {{service.technologyReadinessLevel}}
@@ -198,7 +198,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Category</div>
                                 <template [ngIf]="service.category && service.category!=''">
                                     {{service.category}}
@@ -209,7 +209,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Subcategory</div>
                                 <template [ngIf]="service.subcategory && service.subcategory!=''">
                                     {{service.subcategory}}
@@ -220,7 +220,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Countries</div>
                                 <template [ngIf]="service.country && service.country!=''">
                                     {{service.country}}
@@ -231,7 +231,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Regions</div>
                                 <template [ngIf]="service.region && service.region!=''">
                                     {{service.region}}
@@ -242,7 +242,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td *ngFor="let service of services">
+                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Languages</div>
                                 <template [ngIf]="service.language && service.language!=''">
                                     {{service.language}}

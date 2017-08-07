@@ -13,32 +13,61 @@
             <template [ngIf]="service && !errorMessage">
 
                 <div class="uk-width-1-1 uk-row-first uk-clearfix">
-                    <h2 class="uk-h2 uk-inline" *ngIf="service.brandName">
-                        {{service.brandName}}
-                    </h2>
 
-                    <div *ngIf="service.tagline && (service.tagline.length>0)" style="margin-bottom: 10px; color: #D1303A">
-                        <i>"{{service.tagline}}"</i>
+                    <div class="uk-grid">
+                        <div class="uk-width-3-4@m">
+                            <img *ngIf="service.symbol" src="{{service.symbol}}">
+                            <img *ngIf="!service.symbol" src="http://fvtelibrary.com/img/user/NoLogo.png" style="max-width: 110px">
+                            <div class="uk-display-inline-block uk-vertical-align-top uk-margin-top">
+                                <h2 *ngIf="service.brandName" class="uk-h2 uk-inline" style="margin-bottom: 5px">
+                                    {{service.brandName}}
+                                </h2>
+                                <div *ngIf="service.provider">by {{service.provider}}</div>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-4@m">
+                            <div class="uk-margin-top">
+                                <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"
+                                                  [showHalfStars]="true" [readOnly]="true" [size]="'medium'"
+                                                  [staticColor]="'ok'"></star-rating-comp>
+                            </div>
+                            <div class="uk-margin-top" style="text-align: center">
+                                <button class="uk-button uk-button-primary rateButton" (click)="rateService()">
+                                    <strong>Rate it!</strong> <!--<i class="fa fa-star" aria-hidden="true"></i>-->
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!--<h2 class="uk-h2 uk-inline" *ngIf="service.brandName">-->
+                        <!--{{service.brandName}}-->
+                    <!--</h2>-->
+
+                    <!--<div *ngIf="service.tagline && (service.tagline.length>0)" style="margin-bottom: 10px; color: #D1303A">-->
+                        <!--<i>"{{service.tagline}}"</i>-->
+                    <!--</div>-->
 
                     <!--<button class="uk-button uk-button-primary uk-float-right" (click)="process()">-->
                         <!--Select <i class="fa fa-cogs" aria-hidden="true"></i>-->
                     <!--</button>-->
                 </div>
 
-                <div class="uk-width-expand@m uk-first-column">
+                <div class="uk-width-expand@m uk-first-column uk-grid-margin-medium">
+
+                    <div *ngIf="service.tagline && (service.tagline.length>0)" class="tagLine">
+                        <i>"{{service.tagline}}"</i>
+                    </div>
 
                     <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
 
-                    <div class="tags">
-                        <a><span class="uk-label uk-label-primary">Production</span></a>
-                        <a><span class="uk-label uk-label-primary">OpenAIRE consortium</span></a>
-                        <a><span class="uk-label uk-label-primary">EC funding</span></a>
+                    <div *ngIf="service.phase || service.technologyReadinessLevel || service.category || service.subcategory"
+                         class="tags">
+                        <a *ngIf="service.category"><span class="uk-label uk-label-primary">{{service.category}}</span></a>
+                        <a *ngIf="service.subcategory"><span class="uk-label uk-label-primary">{{service.subcategory}}</span></a>
+                        <a *ngIf="service.technologyReadinessLevel"><span class="uk-label uk-label-primary">TRL {{service.technologyReadinessLevel}}</span></a>
+                        <a *ngIf="service.phase"><span class="uk-label uk-label-primary">{{service.phase}}</span></a>
                     </div>
-                    <div class="tags">
-                        <a><span class="uk-label uk-label-primary">Connectivity</span></a>
-                    </div>
-
 
                     <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
 
@@ -47,6 +76,32 @@
                             {{service.description}}
                         </p>
                     </div>
+
+                    <dl class="uk-description-list">
+                        <template [ngIf]="service.version && service.version!=''">
+                            <dt>Version</dt>
+                            <dd>{{service.version}}</dd>
+                        </template>
+                        <template [ngIf]="service.fundingSources && service.fundingSources!=''">
+                            <dt>Funding sources</dt>
+                            <dd>{{service.fundingSources}}</dd>
+                        </template>
+                    </dl>
+
+                    <div class="" *ngIf="service.webpage">
+                        <p>
+                            <a href="{{service.webpage}}"><span style="color: #d1303a">{{service.webpage}}</span></a>
+                        </p>
+                    </div>
+
+                    <template [ngIf]="service.tag && service.tag.length>0">
+                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
+                        <div class="">
+                            <span *ngFor="let tag of service.tag" class="uk-label uk-label-default">{{tag}}</span>
+                        </div>
+                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
+                    </template>
+
 
                     <!--<ul class="uk-subnav">-->
                         <!--<li *ngIf="component.componentInfo.identificationInfo.resourceShortNames-->
@@ -83,45 +138,127 @@
 
 
                     <!--TABS-->
-                    <!--<ul class=" uk-tab uk-visible@m" uk-tab="connect: #infoTabs; animation: uk-animation-fade">-->
-                        <!--<li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">-->
-                            <!--<a>Usage</a>-->
-                        <!--</li>-->
-                        <!--<li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">-->
-                            <!--<a>Related Services</a>-->
-                        <!--</li>-->
-                        <!--<li *ngIf="component.componentInfo.usageInfo">-->
-                            <!--<a>Service Coverage</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
+                    <ul class=" uk-tab uk-visible@m uk-margin-medium-top" uk-tab="connect: #infoTabs; animation: uk-animation-fade">
+                        <li *ngIf="service.targetUsers || service.userValue || service.userBase">
+                            <a>Usage</a>
+                        </li>
+                        <li>
+                        <!--<li *ngIf="service.relatedService">-->
+                            <a>Related Services</a>
+                        </li>
+                        <li>
+                        <!--<li *ngIf="service.country || service.region || service.language">-->
+                            <a>Service Coverage</a>
+                        </li>
+                        <li *ngIf="service.options || service.pricingModel || service.serviceLevelAgreement || service.termsOfUse">
+                            <a>Contractual Info</a>
+                        </li>
+                    </ul>
 
-                    <!--<button class="uk-button uk-button-default uk-hidden@m" type="button">-->
-                        <!--<span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">{{activeTab}}</span>-->
-                    <!--</button>-->
+                    <button class="uk-button uk-button-default uk-hidden@m" type="button">
+                        <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">{{activeTab}}</span>
+                    </button>
 
-                    <!--<ul id="toggle-small-tabs" class="uk-subnav uk-subnav-pill uk-dropdown uk-hidden@m" uk-switcher="{connect: #infoTabs; animation: uk-animation-fade}" uk-dropdown="mode: click" uk-toggle="target: #toggle-small-tabs">-->
-                        <!--<li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">-->
-                            <!--<a>Usage</a>-->
-                        <!--</li>-->
-                        <!--<li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">-->
-                            <!--<a>Related Services</a>-->
-                        <!--</li>-->
-                        <!--<li *ngIf="component.componentInfo.usageInfo">-->
-                            <!--<a>Service Coverage</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
+                    <ul id="toggle-small-tabs" class="uk-subnav uk-subnav-pill uk-dropdown uk-hidden@m" uk-switcher="{connect: #infoTabs; animation: uk-animation-fade}" uk-dropdown="mode: click" uk-toggle="target: #toggle-small-tabs">
+                        <li *ngIf="service.targetUsers || service.userValue || service.userBase">
+                            <a>Usage</a>
+                        </li>
+                        <li>
+                        <!--<li *ngIf="service.relatedService">-->
+                            <a>Related Services</a>
+                        </li>
+                        <li>
+                        <!--<li *ngIf="service.country || service.region || service.language">-->
+                            <a>Service Coverage</a>
+                        </li>
+                        <li *ngIf="service.options || service.pricingModel || service.serviceLevelAgreement || service.termsOfUse">
+                            <a>Contractual Info</a>
+                        </li>
+                    </ul>
 
-                    <!--<ul id="infoTabs" class="uk-switcher  uk-width-1-1 uk-margin-top custom-tab-content-large">-->
-                        <!--<li *ngIf="component.componentInfo.distributionInfos && component.componentInfo.distributionInfos.length>0">-->
-                            <!--<div></div>-->
-                        <!--</li>-->
-                        <!--<li *ngIf="component.componentInfo.validationInfos && component.componentInfo.validationInfos.length>0">-->
-                            <!--<div></div>-->
-                        <!--</li>-->
-                        <!--<li *ngIf="component.componentInfo.usageInfo">-->
-                            <!--<div></div>-->
-                        <!--</li>-->
-                    <!--</ul>-->
+                    <ul id="infoTabs" class="uk-switcher  uk-width-1-1 uk-margin-top custom-tab-content-large">
+                        <li *ngIf="service.targetUsers || service.userValue || service.userBase">
+                            <div class="uk-margin-medium-top">
+                                <dl class="uk-description-list">
+                                    <template [ngIf]="service.targetUsers && service.targetUsers!=''">
+                                        <dt>Target users</dt>
+                                        <dd>{{service.targetUsers}}</dd>
+                                    </template>
+                                    <template [ngIf]="service.userValue && service.userValue!=''">
+                                        <dt>User value</dt>
+                                        <dd>{{service.userValue}}</dd>
+                                    </template>
+                                    <template [ngIf]="service.userBase && service.userBase!=''">
+                                        <dt>User base</dt>
+                                        <dd>{{service.userBase}}</dd>
+                                    </template>
+                                </dl>
+                            </div>
+                        </li>
+                        <li>
+                        <!--<li *ngIf="service.relatedService">-->
+                            <div class="uk-margin-medium-top">
+                                <ul *ngIf="service.relatedService && service.relatedService.length>0"> Related Services
+                                    <li *ngFor="let relatedService of service.relatedService"></li>
+                                </ul>
+                                <div *ngIf="!service.relatedService || service.relatedService.length==0" class="uk-alert uk-alert-warning">
+                                    There are no available related services
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                        <!--<li *ngIf="service.country || service.region || service.language">-->
+                            <div class="uk-grid uk-margin-medium-top">
+                                <div class="uk-width-1-2@m">
+                                    <img src="./imgs/eu-map-demo.png">
+                                </div>
+                                <div class="uk-width-1-2@m">
+                                    <dl class="uk-description-list">
+                                        <template [ngIf]="service.country && service.country.length>0">
+                                            <dt>Countries</dt>
+                                            <dd>
+                                                <span *ngFor="let country of service.country">{{country}}, </span>
+                                            </dd>
+                                        </template>
+                                        <template [ngIf]="service.region && service.region.length>0">
+                                            <dt>Regions</dt>
+                                            <dd>
+                                                <span *ngFor="let region of service.region">{{region}}, </span>
+                                            </dd>
+                                        </template>
+                                        <template [ngIf]="service.language && service.language.length>0">
+                                            <dt>Languages</dt>
+                                            <dd>
+                                                <span *ngFor="let language of service.language">{{language}}, </span>
+                                            </dd>
+                                        </template>
+                                    </dl>
+                                </div>
+                            </div>
+                        </li>
+                        <li *ngIf="service.options || service.pricingModel || service.serviceLevelAgreement || service.termsOfUse">
+                            <div class="uk-margin-medium-top">
+                                <dl class="uk-description-list">
+                                    <template [ngIf]="service.options && service.options!=''">
+                                        <dt>Options</dt>
+                                        <dd>{{service.options}}</dd>
+                                    </template>
+                                    <template [ngIf]="service.pricingModel && service.pricingModel!=''">
+                                        <dt>Pricing model</dt>
+                                        <dd>{{service.pricingModel}}</dd>
+                                    </template>
+                                    <template [ngIf]="service.serviceLevelAgreement && service.serviceLevelAgreement!=''">
+                                        <dt>Service Level Agreement</dt>
+                                        <dd>{{service.serviceLevelAgreement}}</dd>
+                                    </template>
+                                    <template [ngIf]="service.termsOfUse && service.termsOfUse!=''">
+                                        <dt>Terms of Use</dt>
+                                        <dd>{{service.termsOfUse}}</dd>
+                                    </template>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
 
                 </div>
 
@@ -129,19 +266,21 @@
                 <div class="tm-sidebar uk-width-1-4@m">
 
                     <div class="uk-card uk-card-body uk-card-default sidemenu">
+                        <h4>Usage Stats</h4>
                         <ul class="uk-list">
                             <!--<li> Average rating <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"-->
                                                                   <!--[showHalfStars]="true" [readOnly]="true" [size]="'small'"-->
                                                                   <!--[staticColor]="'ok'"></star-rating-comp></li>-->
                             <li> Accessed <strong> y </strong> times</li>
+                            <li> Visited <strong> z </strong> times</li>
                             <li> Favored by <strong> x </strong> users</li>
                         </ul>
-                        <a style="font-size: 15px">View more ></a>
+                        <!--<a style="font-size: 15px">View more ></a>-->
                     </div>
                     <div class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top"
                          *ngIf="service.request || service.helpdesk || service.documentation || service.trainingInformation || service.feedback">
-                        <h4>Service Support</h4>
-                        <ul class="uk-list">
+                        <h4>Support</h4>
+                        <ul class="uk-list" style="word-wrap: break-word;">
                             <li *ngIf="service.request">
                                 <strong>Service request: </strong>
                                 <a href="{{service.request}}">{{service.request}}</a>

@@ -1,91 +1,62 @@
-.resourceSideInfo {
-    font-size: 12px;
+.uk-vertical-align-top {
+    vertical-align: top;
 }
 
-.resourceGeneralInfo {
-    font-size: 13px;
-    margin-bottom: 20px;
+.rateButton {
+    background-color: #FFc058;
+    border-color: #FFc058;
+    color: #ffffff;
+    width: 100%;
 }
 
-.componentTypes {
-    margin-left: -2px;
+.rateButton:hover {
+    background-color: #E9a432;
+    border-color: #E9a432;
 }
 
-.uk-subnav > * > * {
-    font-size: 11px;
+.tags .uk-label-primary {
+    background: #214c9c none repeat scroll 0 0;
+    color: #fff;
+    border-color: #254190;
 }
 
-.uk-grid + .uk-grid, .uk-grid-margin, .uk-grid > * > .uk-panel + .uk-panel {
-    margin-top: 20px;
+.uk-description-list > dt {
+    color: #222;
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-family: "Open Sans";
 }
 
-* + .uk-margin {
-    margin-top: 25px;
+.uk-description-list > dd {
+    font-size: 14px;
+    font-weight: normal;
+    font-family: "Open Sans";
+    font-style: normal;
 }
 
-.resourceIdentifiers {
-    margin-bottom: 10px;
+.tagLine {
+    margin-bottom: 15px;
+    color: #D1303A;
 }
 
-.uk-subnav-line > * {
-    padding-left: 0;
+a, .uk-link {
+    color: #214c9c;
 }
 
-.uk-thumbnail {
-    background: none;
-    border: none;
-    padding: 0px;
+a:hover, .uk-link:hover {
+    color: #d1303a;
 }
 
-.infoTabs {
-    font-size: 13px;
+.uk-tab > * > a:hover, .uk-tab > * > a:focus {
+    color: #214c9c;
 }
 
-.infoTab {
-    margin-top: 20px;
-    font-size: 13px;
-    margin-left: 20px;
-    margin-right: 20px;
+.uk-tab > * > a, .nav-tabs > li > a {
+    color: #524f4f;
 }
 
-.infoTab ul.uk-list {
-}
-
-.uk-badge {
-    display: block;
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-* + .uk-article-divider {
-    margin-top: 10px;
-}
-
-.uk-article-divider {
-    border-color: #eeeeee;
-    margin-bottom: 10px;
-}
-
-.componentDistributionInfo .rightsInfo {
-
-}
-
-.componentDistributionInfo .rightsInfo .licenseInfo {
-
-}
-
-.lingualityInfo {
-    margin-left: 20px;
-}
-
-* + h1, * + h2, * + h3, * + h4, * + h5, * + h6 {
-    margin-top: 0;
-}
-
-.languageDescriptionType {
-    margin-left: -2px;
-}
-
-.lexicalConceptualResourceType {
-    margin-left: -2px;
+.uk-tab > .uk-active > a, .nav-tabs > .active > a {
+    border-color: #214c9c;
+    color: #214c9c;
 }

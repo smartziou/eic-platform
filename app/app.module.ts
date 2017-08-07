@@ -27,6 +27,8 @@ import { AboutModule } from "./pages/about/about.module";
 import { StarRatingModule } from 'angular-star-rating';
 import { UserModule } from "./pages/user/user.module";
 import { CompareServicesComponent } from "./pages/compare/compare-services.component";
+import { BrowseCategoriesComponent } from "./pages/browsecategories/browse-categories.component";
+import { KeysPipe } from "./services/key.pipe";
 
 @NgModule({
     imports: [
@@ -53,6 +55,8 @@ import { CompareServicesComponent } from "./pages/compare/compare-services.compo
         CompareServicesComponent,
         TopMenuComponent,
         FooterComponent,
+        BrowseCategoriesComponent,
+        KeysPipe
     ],
     providers: [
         UserService,

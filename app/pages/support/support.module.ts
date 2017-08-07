@@ -5,8 +5,7 @@ import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 
 import { supportRouting } from "./support.routing";
-import { PoliciesComponent } from "./faqs/faqs-policies.component";
-import { FAQsComponent } from "./faqs/faqs-legal.component";
+import { FAQsComponent } from "./faqs/faqs.component";
 import { FAQService } from "../../services/faq.service";
 import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
 
@@ -18,7 +17,6 @@ import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusab
         ReusableComponentsModule
     ],
     declarations: [
-        PoliciesComponent,
         FAQsComponent,
     ],
     providers: [
