@@ -65,11 +65,10 @@
                                     </div>
                                     <div class="form-group" *ngIf="showProvider">
                                         <select class="form-control" formControlName="provider">
-                                            <option [selected]="true" value="noneSelected">You are representing...</option>
-                                            <option value="OpenAIRE">OpenAIRE</option>
-                                            <option value="EUDAT">EUDAT</option>
-                                            <option value="GEANT">GEANT</option>
-                                            <option value="EGI">EGI</option>
+                                            <option value="" disabled selected hidden>You are representing...</option>
+                                            <option *ngFor="let provider of providers" [value]="provider">
+                                                {{provider}}
+                                            </option>
                                         </select>
                                         <!--<input class="form-control" placeholder="You are representing" type="text" formControlName="providers">-->
                                     </div>
