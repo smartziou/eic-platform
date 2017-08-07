@@ -59,11 +59,11 @@
                                         <input class="form-control" placeholder="Institution" type="text" formControlName="affiliation">
                                     </div>
                                     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid uk-grid-stack" uk-grid="">
-                                        <label class="uk-first-column"><input class="uk-checkbox" type="checkbox" formControlName="providerAdministrator">
+                                        <label class="uk-first-column"><input class="uk-checkbox" type="checkbox" formControlName="providerAdministrator" [(ngModel)]="showProvider">
                                             Check if you are a service provider administrator
                                         </label>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" *ngIf="showProvider">
                                         <select class="form-control" formControlName="provider">
                                             <option [selected]="true" value="noneSelected">You are representing...</option>
                                             <option value="OpenAIRE">OpenAIRE</option>
