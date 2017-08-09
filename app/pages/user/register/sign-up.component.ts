@@ -4,7 +4,7 @@
 
 import {Component} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../../domain/user";
+import {User} from "../../../domain/eic-model";
 import {UserService} from "../../../services/user.service";
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";

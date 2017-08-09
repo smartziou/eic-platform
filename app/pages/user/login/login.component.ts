@@ -4,7 +4,7 @@
 
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { User } from "../../../domain/user";
+import { User } from "../../../domain/eic-model";
 import { AuthenticationService } from "../../../services/authentication.service";
 import { UserService } from "../../../services/user.service";
 import { Router }       from '@angular/router';
@@ -41,7 +41,6 @@ export class LoginComponent {
     }
 
     loginUser(user: User) {
-
         this.user = user;
         this.authenticationService.login(user);
 

@@ -2,7 +2,7 @@
  * Created by stefania on 8/30/16.
  */
 import {Injectable} from '@angular/core';
-import {User} from "./../domain/user";
+import {User} from "../domain/eic-model";
 import {URLSearchParams, Http} from "@angular/http";
 import {getCookie, deleteCookie} from "../domain/utils";
 import {Router} from "@angular/router";
