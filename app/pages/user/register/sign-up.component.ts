@@ -68,13 +68,13 @@ export class SignUpComponent {
         //     "affiliation": [""],
         // });
         this.signUpForm = fb.group({
-            "name": ["", Validators.required],
-            "surname": ["", Validators.required],
-            "username": ["", Validators.required],
-            "email": ["", Validators.required],
-            'password': ['', Validators.required],
-            'confirmPassword': ['', Validators.required],
-            "affiliation": [""],
+            "name": ["Παναγιώτης", Validators.required],
+            "surname": ["Λαμπρόπουλος", Validators.required],
+            "username": ["pgl", Validators.required],
+            "email": ["pgl@otenet.gr", Validators.required],
+            "password": ["my actual password irl", Validators.required],
+            "confirmPassword": ["my actual password irl", Validators.required],
+            "affiliation": ["di"],
             "providerAdministrator": [false],
             "provider": [""],
         });
