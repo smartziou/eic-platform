@@ -22,7 +22,7 @@ export class UserService {
     registerUser(user: User): Observable<User> {
         let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
 
-        return this.http.post(process.env.API_ENDPOINT + "/user/register", JSON.stringify({user}), args)
+        return this.http.post(process.env.API_ENDPOINT + "/user/register", JSON.stringify(user), args)
             .map(res => <User> res.json())
             // .map(this.extractData)
             .catch(this.handleError);
