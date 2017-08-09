@@ -1,15 +1,29 @@
+// Generated using typescript-generator version 1.27.339 on 2017-08-09 13:31:49.
+
+export class Access implements Identifiable {
+    id: string;
+    instant: number;
+    type: string;
+    userID: string;
+    serviceID: string;
+}
+
+export interface Identifiable {
+    id: string;
+}
+
 export class JAXBComparable {
 }
 
-export class Provider {
-    id: number;
+export class Provider implements Identifiable {
+    id: string;
     name: string;
     contactInformation: string;
     user: User[];
     service: User[];
 }
 
-export class Service {
+export class Service implements Identifiable {
     id: string;
     brandName: string;
     tagline: string;
@@ -22,7 +36,7 @@ export class Service {
     provider: string;
     fundingSources: string;
     webpage: URL;
-    symbol: URL;
+    logo: URL;
     multimediaURL: URL;
     version: string;
     revisionDate: XMLGregorianCalendar;
@@ -43,21 +57,34 @@ export class Service {
     feedback: URL;
     pricingModel: URL;
     serviceLevelAgreement: string;
-    termsOfUse: string;
+    termOfUse: URL[];
+    averageRating: number;
+    ratings: number;
+    isPublic: boolean;
 }
 
-export class Vocabulary {
-    id: number;
+export class Vocabulary implements Identifiable {
+    id: string;
     name: string;
     type: string;
     parent: string;
 }
 
-export class User {
-    id: number;
-    organization: Provider;
-    role: Role;
-    grant: Grant[];
+export class User implements Identifiable {
+    id: string;
+    name: string;
+    surname: string;
+    username: string;
+    email: string;
+    password: string;
+    join_date: string;
+    affiliation: string;
+    isServiceProvider: boolean;
+    role: Role[];
+    favourite: Service[];
+    confirmPassword: string;
+    providerAdministrator: string;
+    provider: string;
 }
 
 export class URL implements Serializable {
@@ -67,11 +94,6 @@ export class XMLGregorianCalendar implements Cloneable {
 }
 
 export class Role {
-    id: number;
-    description: string;
-}
-
-export class Grant {
     id: number;
     description: string;
 }
