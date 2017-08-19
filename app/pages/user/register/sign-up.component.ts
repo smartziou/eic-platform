@@ -6,8 +6,8 @@ import {Component} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../domain/eic-model";
 import {UserService} from "../../../services/user.service";
-import {Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";
+import { ResourceService } from "../../../services/resource.service";
 
 @Component({
     selector: 'sign-up',
@@ -27,7 +27,7 @@ export class SignUpComponent {
     private showProvider: boolean = false;
 
     ngOnInit() {
-        this.getProviders().subscribe(
+        this.resourceService.getProviders().subscribe(
             providers => this.storeProviders(providers),
             error => this.handleError(<any>error)
         );
@@ -35,12 +35,6 @@ export class SignUpComponent {
 
     storeProviders(providers: string[]) {
         this.providers = providers;
-    }
-
-    getProviders() {
-        return this.http.get(`${this.endpoint}/provider/hard`)
-            .map(res => <String[]> res.json())
-            .catch(this.handleError);
     }
 
     private handleError (error: Response | any) {
@@ -55,7 +49,7 @@ export class SignUpComponent {
         return Observable.throw(errMsg);
     }
 
-    constructor(private http: Http, fb: FormBuilder, private userService: UserService) {
+    constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService) {
         // this.registrationForm = fb.group({
         //     "name": ["", Validators.required],
         //     "surname": ["", Validators.required],

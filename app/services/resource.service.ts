@@ -56,6 +56,12 @@ export class ResourceService {
             .catch(this.handleError);
     }
 
+    getProviders() {
+        return this.http.get(`${this.endpoint}/provider/hard`)
+            .map(res => <String[]> res.json())
+            .catch(this.handleError);
+    }
+
     static removeNulls(obj){
         var isArray = obj instanceof Array;
         for (var k in obj){
