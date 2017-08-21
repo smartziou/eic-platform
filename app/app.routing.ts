@@ -8,6 +8,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from "./pages/search/search.component";
 import { CompareServicesComponent } from "./pages/compare/compare-services.component";
 import { BrowseCategoriesComponent } from "./pages/browsecategories/browse-categories.component";
+import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
+import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
 
 const appRoutes: Routes = [
     {
@@ -31,6 +33,14 @@ const appRoutes: Routes = [
         path: 'browseCategories',
         component: BrowseCategoriesComponent
     },
+    {
+        path: 'upload',
+        component: ServiceUploadComponent
+    },
+    {
+        path: 'edit',
+        component: ServiceEditComponent
+    }
 ];
 
 export const appRoutingProviders: any[] = [
