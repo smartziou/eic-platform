@@ -19,7 +19,7 @@ export class ResourceService {
     }
 
     private _searchUrl = this.endpoint + '/';
-    
+
     search(urlParameters: URLParameter[]) {
 
 
@@ -59,6 +59,15 @@ export class ResourceService {
     getProviders() {
         return this.http.get(`${this.endpoint}/provider/hard`)
             .map(res => <String[]> res.json())
+            .catch(this.handleError);
+    }
+
+    uploadService(service: Service, shouldPut: boolean) {
+        let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
+
+        return this.http[shouldPut? "put": "post"](process.env.API_ENDPOINT + "/service", JSON.stringify(service), args)
+            .map(res => <Service> res.json())
+            // .map(this.extractData)
             .catch(this.handleError);
     }
 
