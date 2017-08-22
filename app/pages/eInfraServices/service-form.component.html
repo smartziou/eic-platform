@@ -196,7 +196,7 @@
                                                formControlName="termsOfUse"
                                                title="Document containing the rules, service conditions and usage policy which one must agree to abide by in order to use the service">
                                     </div>
-                                    <button type="submit" class="btn btn-primary block full-width m-b">{{editMode ? "Edit":"Add"}}</button>
+                                    <button [disabled]="!serviceForm.valid" type="submit" class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}</button>
                                 </form>
                             </div>
                         </div>

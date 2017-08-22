@@ -7,7 +7,7 @@ import {ServiceFormComponent} from "./service-form.component";
 @Component({
     selector: 'service-edit',
     templateUrl: './service-form.component.html',
-    styleUrls: ['./service-form.component.css'],
+    styleUrls: ['./service-edit.component.css'],
 })
 
 export class ServiceEditComponent extends ServiceFormComponent implements OnInit {

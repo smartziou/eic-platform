@@ -5,6 +5,8 @@ import {Component} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ResourceService} from "../../services/resource.service";
 import {Service} from "../../domain/eic-model";
+import {URLListValidator, URLValidator} from "../../services/generic.validator";
+import {CountryValidator, LanguageValidator, PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
 
 @Component({
     selector: 'service-form',
@@ -32,29 +34,29 @@ export abstract class ServiceFormComponent {
         "userBase": [""],
         "provider": ["", Validators.required],
         "fundingSources": [""],
-        "webpage": ["", Validators.required],
-        "logo": ["", Validators.required],
-        "multimediaURL": [""],
+        "webpage": ["", Validators.compose([Validators.required, URLValidator])],
+        "logo": ["", Validators.compose([Validators.required, URLValidator])],
+        "multimediaURL": ["", URLValidator],
         "version": [""],
         "revisionDate": [""],
         "versionHistory": [""],
-        "phase": ["", Validators.required],
-        "technologyReadinessLevel": ["", Validators.required],
+        "phase": ["", Validators.compose([Validators.required, PhaseValidator])],
+        "technologyReadinessLevel": ["", Validators.compose([Validators.required, TLRValidator])],
         "category": ["", Validators.required],
         "subcategory": ["", Validators.required],
-        "countries": ["", Validators.required],
+        "countries": ["", Validators.compose([Validators.required, CountryValidator])],
         "regions": ["", Validators.required],
-        "languages": ["", Validators.required],
+        "languages": ["", Validators.compose([Validators.required, LanguageValidator])],
         "tags": ["", Validators.required],
         "relatedServices": ["", Validators.required],
-        "request": ["", Validators.required],
-        "helpdesk": [""],
-        "documentation": [""],
-        "trainingInformation": [""],
-        "feedback": [""],
+        "request": ["", Validators.compose([Validators.required, URLValidator])],
+        "helpdesk": ["", URLValidator],
+        "documentation": ["", URLValidator],
+        "trainingInformation": ["", URLValidator],
+        "feedback": ["", URLValidator],
         "pricingModel": ["", Validators.required],
         "serviceLevelAgreement": [""],
-        "termsOfUse": ["", Validators.required]
+        "termsOfUse": ["", Validators.compose([Validators.required, URLListValidator])]
     };
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder) {
