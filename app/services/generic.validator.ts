@@ -13,31 +13,20 @@ export function URLListValidator(control: AbstractControl) {
 }
 
 export function PatternValidator(control: AbstractControl, pattern: RegExp) {
-    let val = "" + control.value;
-    let ret = val.match(pattern) ? null : {validationFailed: true};
-    return ret;
+    return ("" + control.value).match(pattern) ? null : {validationFailed: true};
 }
 
 export function CommaSeparatedPatternValidator(control: AbstractControl, pattern: RegExp) {
-    let val = ("" + control.value).split(",");
-    let ret = validateArray(val, pattern);
-    return ret;
+    return validateArray(("" + control.value).split(","), pattern);
 }
 
 export function validateArray(array: Array<string>, pattern: RegExp) {
     let ret = null;
-    if (array.length === 0) {
-        return ret;
-    }
     for (let e of array) {
-        let str = "" + e;
-        let matched = str.match(pattern);
-        console.log(e, matched, pattern);
-        if (matched === null) {
+        if (("" + e).match(pattern) === null) {
             ret = {validationFailed: true};
             break;
         }
     }
-
     return ret;
 }
