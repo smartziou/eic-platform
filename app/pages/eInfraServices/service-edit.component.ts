@@ -3,6 +3,9 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {ServiceFormComponent} from "./service-form.component";
+import {ActivatedRoute} from "@angular/router";
+import {ResourceService} from "../../services/resource.service";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
     selector: 'service-edit',
@@ -11,9 +14,18 @@ import {ServiceFormComponent} from "./service-form.component";
 })
 
 export class ServiceEditComponent extends ServiceFormComponent implements OnInit {
+
+    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute) {
+        super(resourceService, fb);
+    }
+
     ngOnInit() {
         this.editMode = true;
-        this.resourceService.getService("01.01").subscribe(this.onService.bind(this), console.error);
+        this.route.params.subscribe(this.onParams.bind(this));
+    }
+
+    onParams(params) {
+        this.resourceService.getService(atob(params["id"])).subscribe(this.onService.bind(this), console.error);
     }
 
     onService(service) {

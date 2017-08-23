@@ -38,7 +38,7 @@ const appRoutes: Routes = [
         component: ServiceUploadComponent
     },
     {
-        path: 'edit',
+        path: 'edit/:id',
         component: ServiceEditComponent
     }
 ];
