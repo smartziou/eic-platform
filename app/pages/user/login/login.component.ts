@@ -28,6 +28,7 @@ export class LoginComponent {
             "username": ["pgl@otenet.gr", Validators.required],
             "password": ["my actual password irl", Validators.required]
         });
+        //TODO: how to make the first control selectively email or username?
     }
 
     onSubmit(myUser: User, isValid: boolean) {
