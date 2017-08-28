@@ -31,6 +31,7 @@ import { BrowseCategoriesComponent } from "./pages/browsecategories/browse-categ
 import { KeysPipe } from "./services/key.pipe";
 import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
 import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
+import {DashboardComponent} from "./pages/user/dashboard/dashboard.component";
 
 @NgModule({
     imports: [
@@ -60,6 +61,7 @@ import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.componen
         BrowseCategoriesComponent,
         ServiceUploadComponent,
         ServiceEditComponent,
+        DashboardComponent,
         KeysPipe
     ],
     providers: [

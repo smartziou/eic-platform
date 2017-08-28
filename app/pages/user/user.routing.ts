@@ -5,6 +5,7 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from "./login/login.component";
 import { SignUpComponent } from "./register/sign-up.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 const userRoutes: Routes = [
     {
@@ -15,6 +16,10 @@ const userRoutes: Routes = [
         path: 'signUp',
         component: SignUpComponent,
     },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+    }
 ];
 
 export const userRouting: ModuleWithProviders = RouterModule.forChild(userRoutes);
