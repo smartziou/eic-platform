@@ -25,10 +25,9 @@ export class LoginComponent {
     constructor(fb: FormBuilder, private authenticationService: AuthenticationService,
                 private userService: UserService, private router: Router) {
         this.loginForm = fb.group({
-            "username": ["pgl@otenet.gr", Validators.required],
+            "email": ["pgl@otenet.gr", Validators.compose([Validators.required, Validators.email])],
             "password": ["my actual password irl", Validators.required]
         });
-        //TODO: how to make the first control selectively email or username?
     }
 
     onSubmit(myUser: User, isValid: boolean) {

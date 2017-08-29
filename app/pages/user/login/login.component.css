@@ -13,3 +13,6 @@
 body.mini-navbar.fixed-sidebar .profile-element, .block {
     display: block !important;
 }
+input.ng-dirty.ng-invalid  {
+    color: red;
+}
