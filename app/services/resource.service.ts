@@ -6,7 +6,7 @@ import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular
 import { Observable } from 'rxjs/Rx';
 import { URLParameter } from "../domain/url-parameter";
 import { SearchResults } from "../domain/search-results";
-import { Service } from "../domain/eic-model";
+import {Access, Service} from "../domain/eic-model";
 import { BrowseResults } from "../domain/browse-results";
 
 @Injectable()
@@ -105,5 +105,15 @@ export class ResourceService {
             console.error(errMsg); // log to console instead
         }
         return Observable.throw(errMsg);
+    }
+
+    recordHit(id: any, type: any) {
+        let hit = new Access();
+        let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
+        hit.serviceID = id;
+        hit.type = type;
+        return this.http.post(`${this.endpoint}/access/add`, JSON.stringify(hit), args)
+            .map(res => <String[]> res.json())
+            .catch(this.handleError);
     }
 }
