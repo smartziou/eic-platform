@@ -26,6 +26,7 @@ export class ServiceLandingPageComponent {
 
         this.sub = this.route.params.subscribe(params => {
             let id = params['id'];
+            this.resourceService.recordHit(id, "internal");
             this.resourceService.getService(id).subscribe(
                 service => this.service = service,
                 error => this.handleError(<any>error));
