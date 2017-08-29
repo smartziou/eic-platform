@@ -63,7 +63,7 @@ export class SignUpComponent {
         this.signUpForm = fb.group({
             "name": ["Παναγιώτης", Validators.required],
             "surname": ["Λαμπρόπουλος", Validators.required],
-            "email": ["pgl@otenet.gr", Validators.required],
+            "email": ["pgl@otenet.gr", Validators.compose([Validators.required, Validators.email])],
             "password": ["my actual password irl", Validators.required],
             "confirmPassword": ["my actual password irl", Validators.required],
             "affiliation": ["di"],
