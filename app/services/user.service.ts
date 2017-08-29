@@ -13,9 +13,9 @@ export class UserService {
     constructor(private http: Http) {
     }
 
-    loginUser(username: string, password: string): Observable<User> {
+    loginUser(email: string, password: string): Observable<User> {
         let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
-        return this.http.post(process.env.API_ENDPOINT + "/user/login", JSON.stringify({username, password}), args)
+        return this.http.post(process.env.API_ENDPOINT + "/user/login", JSON.stringify({email, password}), args)
             .map(res => <User> res.json())
             // .map(this.extractData)
             .catch(this.handleError);

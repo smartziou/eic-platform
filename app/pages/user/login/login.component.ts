@@ -36,7 +36,7 @@ export class LoginComponent {
         //TODO: check if model is valid
         console.log(myUser, isValid);
 
-        this.userService.loginUser(myUser.username, myUser.password).subscribe(
+        this.userService.loginUser(myUser.email, myUser.password).subscribe(
             user => this.loginUser(user),
             error =>  this.errorMessage = <any>error);
     }

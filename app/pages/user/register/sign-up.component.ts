@@ -53,7 +53,6 @@ export class SignUpComponent {
         // this.registrationForm = fb.group({
         //     "name": ["", Validators.required],
         //     "surname": ["", Validators.required],
-        //     "username": ["", Validators.required],
         //     "email": ["", Validators.required],
         //     'passwords': fb.group({
         //         password: ['', Validators.required],
@@ -64,7 +63,6 @@ export class SignUpComponent {
         this.signUpForm = fb.group({
             "name": ["Παναγιώτης", Validators.required],
             "surname": ["Λαμπρόπουλος", Validators.required],
-            "username": ["pgl", Validators.required],
             "email": ["pgl@otenet.gr", Validators.required],
             "password": ["my actual password irl", Validators.required],
             "confirmPassword": ["my actual password irl", Validators.required],
