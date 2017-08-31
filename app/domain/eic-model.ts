@@ -1,4 +1,4 @@
-// Generated using typescript-generator version 1.27.339 on 2017-08-29 14:53:48.
+// Generated using typescript-generator version 1.27.339 on 2017-08-31 15:48:27.
 
 export class Access implements Identifiable {
     id: string;
@@ -81,9 +81,10 @@ export class User implements Identifiable {
     isServiceProvider: boolean;
     role: Role[];
     favourite: Service[];
-    confirmPassword: string;
     providerAdministrator: boolean;
     provider: string;
+    iterationCount: number;
+    salt: any;
 }
 
 export class URL implements Serializable {
