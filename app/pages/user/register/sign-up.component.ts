@@ -8,6 +8,7 @@ import {User} from "../../../domain/eic-model";
 import {UserService} from "../../../services/user.service";
 import {Observable} from "rxjs/Observable";
 import { ResourceService } from "../../../services/resource.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'sign-up',
@@ -49,7 +50,7 @@ export class SignUpComponent {
         return Observable.throw(errMsg);
     }
 
-    constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService) {
+    constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService, private router: Router) {
         // this.registrationForm = fb.group({
         //     "name": ["", Validators.required],
         //     "surname": ["", Validators.required],
@@ -89,7 +90,14 @@ export class SignUpComponent {
     registerUser(user: User) {
         this.user = user;
         this.submitted = true;
-        console.log('registered User', this.user);
+        this.userService.loginUser(user.email, user.password).subscribe(
+            user => this.onLogIn(user),
+            error =>  this.errorMessage = <any>error);
+    }
+
+    onLogIn(user: User) {
+        this.user = user;
+        this.router.navigate(['/dashboard']);
     }
 
     // areEqual(group: FormGroup) {
