@@ -23,17 +23,9 @@ export class UserService {
 
     registerUser(user: User): Observable<User> {
         let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
-        // let xmlFormatUser = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-        //     "<tns:user xmlns=\"http://einfracentral.eu\" xmlns:tns=\"http://einfracentral.eu\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://einfracentral.eu https://builds.openminted.eu/job/eic-registry-model/ws/target/generated-resources/schemagen/schema1.xsd\">";
-        // for (let field in user) {
-        //     xmlFormatUser+=util.format("\n\t<%s>%s</%s>", field, user[field], field);
-        // }
-        // xmlFormatUser+="\n</tns:user>";
-        // console.log(xmlFormatUser);
-
         return this.http.post(process.env.API_ENDPOINT + "/user/register", user, args)
             .map(res => <User> res.json())
-            // .map(this.extractData)
+            .map(console.log)
             .catch(this.handleError);
     }
 

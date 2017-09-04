@@ -33,7 +33,6 @@ export class LoginComponent {
     onSubmit(myUser: User, isValid: boolean) {
 
         //TODO: check if model is valid
-        console.log(myUser, isValid);
 
         this.userService.loginUser(myUser.email, myUser.password).subscribe(
             user => this.loginUser(user),

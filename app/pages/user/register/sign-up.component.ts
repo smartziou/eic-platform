@@ -26,6 +26,7 @@ export class SignUpComponent {
     private providers: string[] = null;
     private endpoint = process.env.API_ENDPOINT;
     private showProvider: boolean = false;
+    private pass: string = "";
 
     ngOnInit() {
         this.resourceService.getProviders().subscribe(
@@ -51,16 +52,6 @@ export class SignUpComponent {
     }
 
     constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService, private router: Router) {
-        // this.registrationForm = fb.group({
-        //     "name": ["", Validators.required],
-        //     "surname": ["", Validators.required],
-        //     "email": ["", Validators.required],
-        //     'passwords': fb.group({
-        //         password: ['', Validators.required],
-        //         confirmPassword: ['', Validators.required]
-        //     }, {validator: this.areEqual}),
-        //     "affiliation": [""],
-        // });
         this.signUpForm = fb.group({
             "name": ["Παναγιώτης", Validators.required],
             "surname": ["Λαμπρόπουλος", Validators.required],
@@ -76,28 +67,20 @@ export class SignUpComponent {
     onSubmit(myUser: User, isValid: boolean) {
 
         //TODO: check if model is valid
-        console.log(myUser, isValid);
-
+        this.pass = myUser.password;
         if(isValid) {
             this.userService.registerUser(myUser).subscribe(
-                user => this.registerUser(user),
+                user => this.onRegisterFinished(user),
                 error => this.errorMessage = <any>error);
         } else {
             this.errorMessage = 'Form not valid';
         }
     }
 
-    registerUser(user: User) {
+    onRegisterFinished(user: User) {
         this.user = user;
         this.submitted = true;
-        this.userService.loginUser(user.email, user.password).subscribe(
-            user => this.onLogIn(user),
-            error =>  this.errorMessage = <any>error);
-    }
-
-    onLogIn(user: User) {
-        this.user = user;
-        this.router.navigate(['/dashboard']);
+        this.successMessage =  ""
     }
 
     // areEqual(group: FormGroup) {

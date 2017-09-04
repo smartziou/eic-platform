@@ -65,7 +65,6 @@ export abstract class ServiceFormComponent {
 
     onSubmit(service: Service, isValid: boolean) {
         //TODO: check if model is valid
-        console.log(service, isValid);
 
         if (isValid) {
             this.resourceService.uploadService(service, this.editMode).subscribe(user => this.onSuccess, error => this.onUploadError);
