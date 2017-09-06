@@ -7,6 +7,7 @@ import {ResourceService} from "../../services/resource.service";
 import {Service} from "../../domain/eic-model";
 import {URLListValidator, URLValidator} from "../../services/generic.validator";
 import {CountryValidator, LanguageValidator, PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
+import {countriesComponent} from "./countries.component"
 
 @Component({
     selector: 'service-form',

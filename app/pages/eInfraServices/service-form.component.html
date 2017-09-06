@@ -131,31 +131,22 @@
                                         <input class="form-control" type="text" placeholder="subcategory"
                                                formControlName="subcategory" title="Type of service within a category">
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="countries"
-                                               formControlName="countries"
-                                               title="List of countries within which the service is available">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="regions"
-                                               formControlName="regions"
-                                               title="List of regions within which the service is available">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="languages"
-                                               formControlName="languages"
-                                               title="List of languages in which the service is available">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="tags"
-                                               formControlName="tags"
-                                               title="Field to facilitate searching based on keywords">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="relatedServices"
-                                               formControlName="relatedServices"
-                                               title="Other services that are either required or commonly used with this service">
-                                    </div>
+                                    <countriesInfo-form></countriesInfo-form>
+                                    <form-repeat-inline [component]="regionsComponent" [parentGroup]="group"
+                                                        [name]="regions" [required]="true" [description]="regionsDesc">
+                                    </form-repeat-inline>
+
+                                    <form-repeat-inline [component]="languagesComponent" [parentGroup]="group"
+                                                        [name]="languages" [required]="true"
+                                                        [description]="languagesDesc">
+                                    </form-repeat-inline>
+                                    <form-repeat-inline [component]="tagsComponent" [parentGroup]="group"
+                                                        [name]="tags" [required]="true" [description]="tagsDesc">
+                                    </form-repeat-inline>
+                                    <form-repeat-inline [component]="relatedServicesComponent" [parentGroup]="group"
+                                                        [name]="relatedServices" [required]="true"
+                                                        [description]="relatedServicesDesc">
+                                    </form-repeat-inline>
                                     <div class="form-group">
                                         <input class="form-control" type="text" placeholder="request"
                                                formControlName="request"
@@ -191,11 +182,10 @@
                                                formControlName="serviceLevelAgreement"
                                                title="Document containing information about the levels of performance that a service provider is expected to achieve. Current service agreements (SLAs) available for the service or basis for a new SLA. These should be agreements with users (not providers)">
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="termsOfUse"
-                                               formControlName="termsOfUse"
-                                               title="Document containing the rules, service conditions and usage policy which one must agree to abide by in order to use the service">
-                                    </div>
+                                    <form-repeat-inline [component]="termsOfUseComponent" [parentGroup]="group"
+                                                        [name]="termsOfUse" [required]="true"
+                                                        [description]="termsOfUseDesc">
+                                    </form-repeat-inline>
                                     <button [disabled]="!serviceForm.valid" type="submit" class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}</button>
                                 </form>
                             </div>
