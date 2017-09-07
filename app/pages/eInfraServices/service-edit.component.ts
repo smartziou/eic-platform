@@ -17,6 +17,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute) {
         super(resourceService, fb);
+        this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 
     ngOnInit() {
@@ -29,10 +30,13 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     }
 
     onService(service) {
-        for (let i in this.formGroupMeta) {
-            this.formGroupMeta[i][0] = service[i] ||　this.formGroupMeta[i][0]　|| "";
-        }
-        this.serviceForm = this.fb.group(this.formGroupMeta);
+        // for (let i in this.formGroupMeta) {
+        //     this.formGroupMeta[i][0] = service[i] ||　this.formGroupMeta[i][0]　|| "";
+        // }
+        service.countries = [{"country" : "GR"}, {"country" : "ET"}];
+        ResourceService.removeNulls(service);
+        console.log("FormData:",service);
+        setTimeout(() => {this.serviceForm.patchValue(service)},1000);
     }
 
     onSuccess(service) {
