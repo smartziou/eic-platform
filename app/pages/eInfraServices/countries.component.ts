@@ -8,21 +8,30 @@ import {Validators} from "@angular/forms";
     selector: 'countriesInfo-form',
     template : `
         <div [formGroup]="group">
-            <countryInfo-form [parentGroup]="group" [name]="'country'"></countryInfo-form>
+            <select formControlName="country">
+                <option *ngFor="let c of countries | keys" [ngValue]="c">{{countries[c]}}</option>
+            </select>
         </div>
-
-        <form-repeat-inline [component]="countriesComponent" [parentGroup]="group"
-                            [name]="countries" [required]="true"
-                            [description]="countriesDesc">
-        </form-repeat-inline>
     `
 })
 
-export class countriesComponent extends MyGroup {
+export class CountriesComponent extends MyGroup {
 
-    readonly groupDefinition = {
-
+    countries = {
+        "GR": "Greece",
+        "ET": "Abyssinia",
+        "SY": "Palmyra"
     };
 
-    readonly countriesDesc : Description = countriesDesc;
+    readonly groupDefinition = {
+        country : ["", Validators.required]
+    };
+
+    readonly countriesDesc : sd.Description = sd.countriesDesc;
+
+    ngOnInit() {
+        super.ngOnInit();
+        // this.groupDefinition[this.name] = "";
+    }
+
 }
