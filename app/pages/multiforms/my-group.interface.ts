@@ -51,7 +51,12 @@ export class MyGroup implements OnInit, AfterContentInit {
     }
 
     public generate() : FormGroup {
-        let ret = this._fb.group(this.groupDefinition);
+        let ret : FormGroup;
+        // if(this.name) {
+            ret = this._fb.group(this.groupDefinition);//fb.group must change to have strings instead of objects
+        // } else {
+        //     ret = new FormControl();
+        // }
         if (this.patchData) {
             // console.log(this.patchData);
         }
@@ -113,13 +118,13 @@ export class MyGroup implements OnInit, AfterContentInit {
 
         <div class="uk-form-horizontal">
             <label class="uk-width-1-5 uk-form-label">
-                <span *ngIf="description.mandatory==true"><i class="fa fa-star" style="color : red"></i></span>
+                <span *ngIf="description.mandatory==true && !valid"><i class="fa fa-star" style="color : red"></i></span>
                 <!--<span *ngIf="description.recommended==true"><i class="fa fa-star" style="color : green"></i></span>-->
+                <span *ngIf="params==='tooltip'"><i class="fa fa-info-circle" title="{{description.desc}}" uk-tooltip></i></span>
                 {{description.label}}
-                <span *ngIf="params==='tooltip'"><i class="fa fa-info-circle" [tooltip]="descTemplate" container="body"></i></span>
             </label>
             <!--<div class="form-group">-->
-            <div class="uk-width-4-5 uk-form-controls" [ngClass]="{'has-error': !valid}">
+            <div class="uk-width-4-5 uk-form-controls" [ngClass]="{'uk-form-danger': !valid}">
                 <ng-content></ng-content>
             </div>
             <!--</div>-->
@@ -131,7 +136,7 @@ export class MyGroup implements OnInit, AfterContentInit {
         </div>
 
     `,
-    styleUrls : ['../shared/templates/common.css']
+    styleUrls : []
 
 })
 export class InlineFormWrapper implements OnChanges {

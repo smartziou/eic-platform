@@ -33,161 +33,133 @@
                                 <form [formGroup]="serviceForm"
                                       (ngSubmit)="onSubmit(serviceForm.value, serviceForm.valid)"
                                       role="form" class="m-t">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="brandName"
-                                               formControlName="brandName"
-                                               title="Brief marketing name of service as assigned by the service provider. Should be descriptive from a customer point of view, and should be quite simple, such that someone non-technical is able to understand what the service is about">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="tagline"
-                                               formControlName="tagline"
-                                               title="Catchline or slogan of service for marketing/advertising  purposes">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="fullName"
-                                               formControlName="fullName"
-                                               title="Extended name of service as assigned by the service provider">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="description"
-                                               formControlName="description"
-                                               title="High-level description of what the service does in terms of functionality it provides and the resources it enables access to. Should be similar to the name described above, and should cover the value provided by the service, in fairly non-technical terms. These descriptions may seem obvious but help everyone within the organization understand the service, and also will be needed for the Service Catalogue, which will be shown to users and customers. It may provide also information related to the offered capacity, number of installations, underlying data that is offered">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="options"
-                                               formControlName="options"
-                                               title="A choice of utility and warranty that the customer can/should specify when commissioning the service">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="targetUsers"
-                                               formControlName="targetUsers"
-                                               title="Type of users or end-users allowed to commission/benefit from the service">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="userValue"
-                                               formControlName="userValue"
-                                               title="The benefit to a customer and their users delivered by the service. Benefits are usually related to alleviating pains (e.g., eliminate undesired outcomes, obstacles or risks) or producing gains (e.g. increased performance, social gains, positive emotions or cost saving)">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="userBase"
-                                               formControlName="userBase"
-                                               title="List of customers, communities, etc using the service">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="provider"
-                                               formControlName="provider"
-                                               title="Organisation that manages and delivers the service and with whom the customer signs the SLA">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="fundingSources"
-                                               formControlName="fundingSources"
-                                               title="Sources of funding for the development and operation of the service">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="webpage"
-                                               formControlName="webpage"
-                                               title="Link to a webpage providing information about the service. This webpage is usually hosted and maintained by the service provider. It contains fresh and additional information, such as what APIs are supported or links to the documentation">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="logo"
-                                               formControlName="logo"
-                                               title="Link to a visual representation for the service">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="multimediaURL"
-                                               formControlName="multimediaURL"
-                                               title="Link to a page containing multimedia regarding the service">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="version"
-                                               formControlName="version"
-                                               title="Informs about the implementation of the service that is in force as well as about its previous implementations, if any">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="revisionDate"
-                                               formControlName="revisionDate" title="The date of the latest update">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="versionHistory"
-                                               formControlName="versionHistory"
-                                               title="A list of the service features added in the latest version">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="phase"
-                                               formControlName="phase"
-                                               title="Is used to tag the service to the full service cycle: e.g., discovery, alpha (prototype available for closed set of users), beta (service being developed while available for testing publicly), production, retired (not anymore offered)">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="technologyReadinessLevel"
-                                               formControlName="technologyReadinessLevel"
-                                               title="Is used to tag the service to the Technology Readiness Level">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="category"
-                                               formControlName="category"
-                                               title="A named group of services that offer access to the same type of resource. These are external ones that are of interest to a customer">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="subcategory"
-                                               formControlName="subcategory" title="Type of service within a category">
-                                    </div>
-                                    <countriesInfo-form></countriesInfo-form>
-                                    <form-repeat-inline [component]="regionsComponent" [parentGroup]="group"
-                                                        [name]="regions" [required]="true" [description]="regionsDesc">
-                                    </form-repeat-inline>
-
-                                    <form-repeat-inline [component]="languagesComponent" [parentGroup]="group"
-                                                        [name]="languages" [required]="true"
-                                                        [description]="languagesDesc">
-                                    </form-repeat-inline>
-                                    <form-repeat-inline [component]="tagsComponent" [parentGroup]="group"
-                                                        [name]="tags" [required]="true" [description]="tagsDesc">
-                                    </form-repeat-inline>
-                                    <form-repeat-inline [component]="relatedServicesComponent" [parentGroup]="group"
-                                                        [name]="relatedServices" [required]="true"
-                                                        [description]="relatedServicesDesc">
-                                    </form-repeat-inline>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="request"
-                                               formControlName="request"
-                                               title="Link to request the service from the service provider">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="helpdesk"
-                                               formControlName="helpdesk"
-                                               title="Link with contact to ask more information from the service provider about this service. A contact person or helpdesk within the organization must be assigned for communications, questions and issues relating to the service">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="documentation"
-                                               formControlName="documentation"
-                                               title="Link to user manual and documentation">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="trainingInformation"
-                                               formControlName="trainingInformation"
-                                               title="Link to training information">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="feedback"
-                                               formControlName="feedback"
-                                               title="Link to page where customers can provide feedback on the service">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="pricingModel"
-                                               formControlName="pricingModel"
-                                               title="Supported payment models that apply. List of sentences each of them stating the type of payment model and the restriction that applies to it">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="serviceLevelAgreement"
-                                               formControlName="serviceLevelAgreement"
-                                               title="Document containing information about the levels of performance that a service provider is expected to achieve. Current service agreements (SLAs) available for the service or basis for a new SLA. These should be agreements with users (not providers)">
-                                    </div>
-                                    <form-repeat-inline [component]="termsOfUseComponent" [parentGroup]="group"
-                                                        [name]="termsOfUse" [required]="true"
-                                                        [description]="termsOfUseDesc">
-                                    </form-repeat-inline>
+                                    <form-inline [description]="brandNameDesc" [valid]="serviceForm.get('brandName').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{brandNameDesc.label}}"
+                                               formControlName="brandName" [ngClass]="{'uk-form-danger': !serviceForm.get('brandName').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="fullNameDesc" [valid]="serviceForm.get('fullName').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{fullNameDesc.label}}"
+                                               formControlName="fullName" [ngClass]="{'uk-form-danger': !serviceForm.get('fullName').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="descriptionDesc" [valid]="serviceForm.get('description').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{descriptionDesc.label}}"
+                                               formControlName="description" [ngClass]="{'uk-form-danger': !serviceForm.get('description').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="optionsDesc" [valid]="serviceForm.get('options').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{optionsDesc.label}}"
+                                               formControlName="options" [ngClass]="{'uk-form-danger': !serviceForm.get('options').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="targetUsersDesc" [valid]="serviceForm.get('targetUsers').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{targetUsersDesc.label}}"
+                                               formControlName="targetUsers" [ngClass]="{'uk-form-danger': !serviceForm.get('targetUsers').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="userValueDesc" [valid]="serviceForm.get('userValue').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{userValueDesc.label}}"
+                                               formControlName="userValue" [ngClass]="{'uk-form-danger': !serviceForm.get('userValue').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="userBaseDesc" [valid]="serviceForm.get('userBase').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{userBaseDesc.label}}"
+                                               formControlName="userBase" [ngClass]="{'uk-form-danger': !serviceForm.get('userBase').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="providerDesc" [valid]="serviceForm.get('provider').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{providerDesc.label}}"
+                                               formControlName="provider" [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="fundingSourcesDesc" [valid]="serviceForm.get('fundingSources').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{fundingSourcesDesc.label}}"
+                                               formControlName="fundingSources" [ngClass]="{'uk-form-danger': !serviceForm.get('fundingSources').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="webpageDesc" [valid]="serviceForm.get('webpage').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{webpageDesc.label}}"
+                                               formControlName="webpage" [ngClass]="{'uk-form-danger': !serviceForm.get('webpage').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="logoDesc" [valid]="serviceForm.get('logo').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{logoDesc.label}}"
+                                               formControlName="logo" [ngClass]="{'uk-form-danger': !serviceForm.get('logo').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="multimediaURLDesc" [valid]="serviceForm.get('multimediaURL').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{multimediaURLDesc.label}}"
+                                               formControlName="multimediaURL" [ngClass]="{'uk-form-danger': !serviceForm.get('multimediaURL').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="versionDesc" [valid]="serviceForm.get('version').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{versionDesc.label}}"
+                                               formControlName="version" [ngClass]="{'uk-form-danger': !serviceForm.get('version').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="revisionDateDesc" [valid]="serviceForm.get('revisionDate').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{revisionDateDesc.label}}"
+                                               formControlName="revisionDate" [ngClass]="{'uk-form-danger': !serviceForm.get('revisionDate').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="versionHistoryDesc" [valid]="serviceForm.get('versionHistory').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{versionHistoryDesc.label}}"
+                                               formControlName="versionHistory" [ngClass]="{'uk-form-danger': !serviceForm.get('versionHistory').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="phaseDesc" [valid]="serviceForm.get('phase').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{phaseDesc.label}}"
+                                               formControlName="phase" [ngClass]="{'uk-form-danger': !serviceForm.get('phase').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="technologyReadinessLevelDesc" [valid]="serviceForm.get('technologyReadinessLevel').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{technologyReadinessLevelDesc.label}}"
+                                               formControlName="technologyReadinessLevel" [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="categoryDesc" [valid]="serviceForm.get('category').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{categoryDesc.label}}"
+                                               formControlName="category" [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="subcategoryDesc" [valid]="serviceForm.get('subcategory').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{subcategoryDesc.label}}"
+                                               formControlName="subcategory" [ngClass]="{'uk-form-danger': !serviceForm.get('subcategory').valid}">
+                                    </form-inline>
+                                    <form-repeat-inline [component]="countriesComponent" [parentGroup]="serviceForm"
+                                                        [name]="'countries'" [required]="true" [description]="countriesDesc">
+                                    </form-repeat-inline><div></div>
+                                    <!--<form-repeat-inline [component]="regionsComponent" [parentGroup]="serviceForm"-->
+                                                        <!--[name]="'regions'" [required]="true" [description]="regionsDesc">-->
+                                    <!--</form-repeat-inline><div></div>-->
+                                    <!--<form-repeat-inline [component]="languagesComponent" [parentGroup]="serviceForm"-->
+                                                        <!--[name]="'languages'" [required]="true" [description]="languagesDesc">-->
+                                    <!--</form-repeat-inline><div></div>-->
+                                    <!--<form-repeat-inline [component]="tagsComponent" [parentGroup]="serviceForm"-->
+                                                        <!--[name]="'tags'" [required]="true" [description]="tagsDesc">-->
+                                    <!--</form-repeat-inline><div></div>-->
+                                    <!--<form-repeat-inline [component]="relatedServicesComponent" [parentGroup]="serviceForm"-->
+                                                        <!--[name]="'relatedServices'" [required]="true" [description]="relatedServicesDesc">-->
+                                    <!--</form-repeat-inline><div></div>-->
+                                    <form-inline [description]="requestDesc" [valid]="serviceForm.get('request').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{requestDesc.label}}"
+                                               formControlName="request" [ngClass]="{'uk-form-danger': !serviceForm.get('request').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="helpdeskDesc" [valid]="serviceForm.get('helpdesk').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{helpdeskDesc.label}}"
+                                               formControlName="helpdesk" [ngClass]="{'uk-form-danger': !serviceForm.get('helpdesk').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="documentationDesc" [valid]="serviceForm.get('documentation').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{documentationDesc.label}}"
+                                               formControlName="documentation" [ngClass]="{'uk-form-danger': !serviceForm.get('documentation').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="trainingInformationDesc" [valid]="serviceForm.get('trainingInformation').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{trainingInformationDesc.label}}"
+                                               formControlName="trainingInformation" [ngClass]="{'uk-form-danger': !serviceForm.get('trainingInformation').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="feedbackDesc" [valid]="serviceForm.get('feedback').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{feedbackDesc.label}}"
+                                               formControlName="feedback" [ngClass]="{'uk-form-danger': !serviceForm.get('feedback').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="pricingModelDesc" [valid]="serviceForm.get('pricingModel').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{pricingModelDesc.label}}"
+                                               formControlName="pricingModel" [ngClass]="{'uk-form-danger': !serviceForm.get('pricingModel').valid}">
+                                    </form-inline>
+                                    <form-inline [description]="serviceLevelAgreementDesc" [valid]="serviceForm.get('serviceLevelAgreement').valid" [params]="'tooltip'">
+                                        <input class="uk-input" type="text" placeholder="{{serviceLevelAgreementDesc.label}}"
+                                               formControlName="serviceLevelAgreement" [ngClass]="{'uk-form-danger': !serviceForm.get('serviceLevelAgreement').valid}">
+                                    </form-inline>
+                                    <!--<form-repeat-inline [component]="termsOfUseComponent" [parentGroup]="serviceForm"-->
+                                                        <!--[name]="'termsOfUse'" [required]="true" [description]="termsOfUseDesc">-->
+                                    <!--</form-repeat-inline>-->
                                     <button [disabled]="!serviceForm.valid" type="submit" class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}</button>
                                 </form>
+                                <pre>
+                                    {{serviceForm.value | json}}
+                                </pre>
                             </div>
                         </div>
                     </div>

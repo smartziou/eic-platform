@@ -25,8 +25,41 @@ export abstract class ServiceFormComponent {
     protected successMessage: string = null;
     protected submitted = false;
     protected endpoint = process.env.API_ENDPOINT;
+    readonly countriesDesc : sd.Description = sd.countriesDesc;
+    readonly regionsDesc : sd.Description = sd.regionsDesc;
+    readonly languagesDesc : sd.Description = sd.languagesDesc;
+    readonly tagsDesc : sd.Description = sd.tagsDesc;
+    readonly relatedServicesDesc : sd.Description = sd.relatedServicesDesc;
+    readonly termsOfUseDesc : sd.Description = sd.termsOfUseDesc;
+    readonly brandNameDesc : sd.Description = sd.brandNameDesc;
+    readonly fullNameDesc : sd.Description = sd.fullNameDesc;
+    readonly descriptionDesc : sd.Description = sd.descriptionDesc;
+    readonly optionsDesc : sd.Description = sd.optionsDesc;
+    readonly targetUsersDesc : sd.Description = sd.targetUsersDesc;
+    readonly userValueDesc : sd.Description = sd.userValueDesc;
+    readonly userBaseDesc : sd.Description = sd.userBaseDesc;
+    readonly providerDesc : sd.Description = sd.providerDesc;
+    readonly fundingSourcesDesc : sd.Description = sd.fundingSourcesDesc;
+    readonly webpageDesc : sd.Description = sd.webpageDesc;
+    readonly logoDesc : sd.Description = sd.logoDesc;
+    readonly multimediaURLDesc : sd.Description = sd.multimediaURLDesc;
+    readonly versionDesc : sd.Description = sd.versionDesc;
+    readonly revisionDateDesc : sd.Description = sd.revisionDateDesc;
+    readonly versionHistoryDesc : sd.Description = sd.versionHistoryDesc;
+    readonly phaseDesc : sd.Description = sd.phaseDesc;
+    readonly technologyReadinessLevelDesc : sd.Description = sd.technologyReadinessLevelDesc;
+    readonly categoryDesc : sd.Description = sd.categoryDesc;
+    readonly subcategoryDesc : sd.Description = sd.subcategoryDesc;
+    readonly requestDesc : sd.Description = sd.requestDesc;
+    readonly helpdeskDesc : sd.Description = sd.helpdeskDesc;
+    readonly documentationDesc : sd.Description = sd.documentationDesc;
+    readonly trainingInformationDesc : sd.Description = sd.trainingInformationDesc;
+    readonly feedbackDesc : sd.Description = sd.feedbackDesc;
+    readonly pricingModelDesc : sd.Description = sd.pricingModelDesc;
+    readonly serviceLevelAgreementDesc : sd.Description = sd.serviceLevelAgreementDesc;
+    protected countriesComponent : Type<CountriesComponent> = CountriesComponent;
     protected formGroupMeta = {
-        "brandName": [""],
+        "brandName": ["", Validators.required],
         "tagline": ["", Validators.required],
         "fullName": ["", Validators.required],
         "description": ["", Validators.required],
@@ -46,7 +79,7 @@ export abstract class ServiceFormComponent {
         "technologyReadinessLevel": ["", Validators.compose([Validators.required, TLRValidator])],
         "category": ["", Validators.required],
         "subcategory": ["", Validators.required],
-        "countries": ["", Validators.compose([Validators.required, CountryValidator])],
+        // "countries": ["", Validators.compose([Validators.required, CountryValidator])], TODO: Do not re-define controls!
         "regions": ["", Validators.required],
         "languages": ["", Validators.compose([Validators.required, LanguageValidator])],
         "tags": ["", Validators.required],

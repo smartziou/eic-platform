@@ -29,7 +29,7 @@ import {Subject} from "rxjs/Subject";
             </div>
         </div>
     `,
-    styleUrls : ['../shared/templates/common.css']
+    styleUrls : []
 
 })
 export class MyArray extends MyGroup {
@@ -131,7 +131,7 @@ export class MyArray extends MyGroup {
         <!--</div>-->
         <!--</div>-->
     `,
-    styleUrls : ['../shared/templates/common.css']
+    styleUrls : []
 
 })
 export class MyArrayInline extends MyArray {
@@ -169,7 +169,7 @@ export class MyArrayInline extends MyArray {
             <!--</div>-->
         </fieldset>
     `,
-    styleUrls : ['../shared/templates/common.css']
+    styleUrls : []
 
 })
 export class MyArrayWrapper extends MyWrapper{
@@ -186,7 +186,7 @@ export class MyArrayWrapper extends MyWrapper{
                     class="fa fa-times" aria-hidden="true"></i></a>
         </div>
     `,
-    styleUrls : ['../shared/templates/common.css']
+    styleUrls : []
 
 })
 export class MyInlineArrayWrapper extends MyWrapper {
