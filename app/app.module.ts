@@ -32,6 +32,10 @@ import { KeysPipe } from "./services/key.pipe";
 import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
 import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
 import {DashboardComponent} from "./pages/user/dashboard/dashboard.component";
+import {CountriesComponent} from "./pages/eInfraServices/countries.component";
+import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./pages/multiforms/my-array";
+import {InlineFormWrapper} from "./pages/multiforms/my-group.interface";
+import {MyFormDirective} from "./pages/multiforms/my-form.directive";
 
 @NgModule({
     imports: [
@@ -62,7 +66,19 @@ import {DashboardComponent} from "./pages/user/dashboard/dashboard.component";
         ServiceUploadComponent,
         ServiceEditComponent,
         DashboardComponent,
-        KeysPipe
+        KeysPipe,
+        CountriesComponent,
+        MyArrayWrapper,
+        MyInlineArrayWrapper,
+        InlineFormWrapper,
+        MyArray,
+        MyFormDirective,
+        MyArrayInline,
+    ],
+    entryComponents: [
+        CountriesComponent,
+        MyArrayWrapper,
+        MyInlineArrayWrapper,
     ],
     providers: [
         UserService,

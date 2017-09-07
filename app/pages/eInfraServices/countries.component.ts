@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
 import {MyGroup} from "../multiforms/my-group.interface";
-import {Description, countriesDesc} from "./services.description";
+import * as sd from "./services.description";
+import {Validators} from "@angular/forms";
+// import {KeysPipe} from "../../services/key.pipe";
 
 @Component({
     selector: 'countriesInfo-form',

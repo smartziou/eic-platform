@@ -1,13 +1,14 @@
 /**
  * Created by pgl on 21/08/17.
  */
-import {Component} from "@angular/core";
+import {Component, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ResourceService} from "../../services/resource.service";
 import {Service} from "../../domain/eic-model";
 import {URLListValidator, URLValidator} from "../../services/generic.validator";
 import {CountryValidator, LanguageValidator, PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
-import {countriesComponent} from "./countries.component"
+import {CountriesComponent} from "./countries.component"
+import * as sd from "./services.description";
 
 @Component({
     selector: 'service-form',
