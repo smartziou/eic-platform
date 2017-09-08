@@ -33,7 +33,6 @@ export class CountriesComponent extends MyGroup {
 
     ngOnInit() {
         super.ngOnInit();
-        // this.groupDefinition[this.name] = "";
     }
 
 }
