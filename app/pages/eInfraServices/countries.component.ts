@@ -8,7 +8,7 @@ import {Validators} from "@angular/forms";
     selector: 'countriesInfo-form',
     template : `
         <div [formGroup]="group">
-            <select formControlName="country">
+            <select formControlName="entry">
                 <option *ngFor="let c of countries | keys" [ngValue]="c">{{countries[c]}}</option>
             </select>
         </div>
@@ -24,7 +24,6 @@ export class CountriesComponent extends MyGroup {
     };
 
     readonly groupDefinition = {
-        country : ["", Validators.required]
     };
 
     readonly countriesDesc : sd.Description = sd.countriesDesc;
