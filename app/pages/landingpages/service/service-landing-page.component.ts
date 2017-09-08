@@ -25,7 +25,7 @@ export class ServiceLandingPageComponent {
     ngOnInit() {
 
         this.sub = this.route.params.subscribe(params => {
-            let id = params['id'];
+            let id = atob(params['id']);
             this.resourceService.recordHit(id, "internal");
             this.resourceService.getService(id).subscribe(
                 service => this.service = service,
@@ -39,6 +39,10 @@ export class ServiceLandingPageComponent {
 
     handleError(error) {
         this.errorMessage = 'System error loading service (Server responded: ' + error + ')';
+    }
+
+    getEncodedID() {
+        return btoa(this.service.id);
     }
 
     // process() {

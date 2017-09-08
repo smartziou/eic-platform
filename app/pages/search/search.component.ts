@@ -249,7 +249,7 @@ export class SearchComponent {
     }
 
     gotoDetail(id: string) {
-        this.router.navigate(['/landingPage/service' + '/', id]);
+        this.router.navigate(['/landingPage/service' + '/', btoa(id)]);
     }
 
     addToCompare(id: string) {
