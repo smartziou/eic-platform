@@ -112,18 +112,18 @@
                                     <form-repeat-inline [component]="countriesComponent" [parentGroup]="serviceForm"
                                                         [name]="'countries'" [required]="true" [description]="countriesDesc">
                                     </form-repeat-inline><div></div>
-                                    <!--<form-repeat-inline [component]="regionsComponent" [parentGroup]="serviceForm"-->
-                                                        <!--[name]="'regions'" [required]="true" [description]="regionsDesc">-->
-                                    <!--</form-repeat-inline><div></div>-->
-                                    <!--<form-repeat-inline [component]="languagesComponent" [parentGroup]="serviceForm"-->
-                                                        <!--[name]="'languages'" [required]="true" [description]="languagesDesc">-->
-                                    <!--</form-repeat-inline><div></div>-->
-                                    <!--<form-repeat-inline [component]="tagsComponent" [parentGroup]="serviceForm"-->
-                                                        <!--[name]="'tags'" [required]="true" [description]="tagsDesc">-->
-                                    <!--</form-repeat-inline><div></div>-->
-                                    <!--<form-repeat-inline [component]="relatedServicesComponent" [parentGroup]="serviceForm"-->
-                                                        <!--[name]="'relatedServices'" [required]="true" [description]="relatedServicesDesc">-->
-                                    <!--</form-repeat-inline><div></div>-->
+                                    <form-repeat-inline [component]="regionsComponent" [parentGroup]="serviceForm"
+                                                        [name]="'regions'" [required]="true" [description]="regionsDesc">
+                                    </form-repeat-inline><div></div>
+                                    <form-repeat-inline [component]="languagesComponent" [parentGroup]="serviceForm"
+                                                        [name]="'languages'" [required]="true" [description]="languagesDesc">
+                                    </form-repeat-inline><div></div>
+                                    <form-repeat-inline [component]="tagsComponent" [parentGroup]="serviceForm"
+                                                        [name]="'tags'" [required]="true" [description]="tagsDesc">
+                                    </form-repeat-inline><div></div>
+                                    <form-repeat-inline [component]="relatedServicesComponent" [parentGroup]="serviceForm"
+                                                        [name]="'relatedServices'" [required]="true" [description]="relatedServicesDesc">
+                                    </form-repeat-inline><div></div>
                                     <form-inline [description]="requestDesc" [valid]="serviceForm.get('request').valid" [params]="'tooltip'">
                                         <input class="uk-input" type="text" placeholder="{{requestDesc.label}}"
                                                formControlName="request" [ngClass]="{'uk-form-danger': !serviceForm.get('request').valid}">
@@ -152,9 +152,9 @@
                                         <input class="uk-input" type="text" placeholder="{{serviceLevelAgreementDesc.label}}"
                                                formControlName="serviceLevelAgreement" [ngClass]="{'uk-form-danger': !serviceForm.get('serviceLevelAgreement').valid}">
                                     </form-inline>
-                                    <!--<form-repeat-inline [component]="termsOfUseComponent" [parentGroup]="serviceForm"-->
-                                                        <!--[name]="'termsOfUse'" [required]="true" [description]="termsOfUseDesc">-->
-                                    <!--</form-repeat-inline>-->
+                                    <form-repeat-inline [component]="termsOfUseComponent" [parentGroup]="serviceForm"
+                                                        [name]="'termsOfUse'" [required]="true" [description]="termsOfUseDesc">
+                                    </form-repeat-inline>
                                     <button [disabled]="!serviceForm.valid" type="submit" class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}</button>
                                 </form>
                                 <pre>

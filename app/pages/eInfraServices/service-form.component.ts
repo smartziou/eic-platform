@@ -7,8 +7,13 @@ import {ResourceService} from "../../services/resource.service";
 import {Service} from "../../domain/eic-model";
 import {URLListValidator, URLValidator} from "../../services/generic.validator";
 import {CountryValidator, LanguageValidator, PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
-import {CountriesComponent} from "./countries.component"
 import * as sd from "./services.description";
+import {CountriesComponent} from "./countries.component"
+import {LanguagesComponent} from "./languages.component";
+import {RegionsComponent} from "./regions.component";
+import {RelatedServicesComponent} from "./relatedServices.component";
+import {TagsComponent} from "./tags.component";
+import {TermsOfUseComponent} from "./termsOfUse.component";
 
 @Component({
     selector: 'service-form',
@@ -58,6 +63,11 @@ export abstract class ServiceFormComponent {
     readonly pricingModelDesc : sd.Description = sd.pricingModelDesc;
     readonly serviceLevelAgreementDesc : sd.Description = sd.serviceLevelAgreementDesc;
     protected countriesComponent : Type<CountriesComponent> = CountriesComponent;
+    protected languagesComponent : Type<LanguagesComponent> = LanguagesComponent;
+    protected regionsComponent : Type<RegionsComponent> = RegionsComponent;
+    protected relatedServicesComponent : Type<RelatedServicesComponent> = RelatedServicesComponent;
+    protected tagsComponent : Type<TagsComponent> = TagsComponent;
+    protected termsOfUseComponent : Type<TermsOfUseComponent> = TermsOfUseComponent;
     protected formGroupMeta = {
         "brandName": ["", Validators.required],
         "tagline": ["", Validators.required],
@@ -79,19 +89,13 @@ export abstract class ServiceFormComponent {
         "technologyReadinessLevel": ["", Validators.compose([Validators.required, TLRValidator])],
         "category": ["", Validators.required],
         "subcategory": ["", Validators.required],
-        // "countries": ["", Validators.compose([Validators.required, CountryValidator])], TODO: Do not re-define controls!
-        "regions": ["", Validators.required],
-        "languages": ["", Validators.compose([Validators.required, LanguageValidator])],
-        "tags": ["", Validators.required],
-        "relatedServices": ["", Validators.required],
         "request": ["", Validators.compose([Validators.required, URLValidator])],
         "helpdesk": ["", URLValidator],
         "documentation": ["", URLValidator],
         "trainingInformation": ["", URLValidator],
         "feedback": ["", URLValidator],
         "pricingModel": ["", Validators.required],
-        "serviceLevelAgreement": [""],
-        "termsOfUse": ["", Validators.compose([Validators.required, URLListValidator])]
+        "serviceLevelAgreement": [""]
     };
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder) {
