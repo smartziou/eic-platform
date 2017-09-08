@@ -36,6 +36,11 @@ import {CountriesComponent} from "./pages/eInfraServices/countries.component";
 import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./pages/multiforms/my-array";
 import {InlineFormWrapper} from "./pages/multiforms/my-group.interface";
 import {MyFormDirective} from "./pages/multiforms/my-form.directive";
+import {LanguagesComponent} from "./pages/eInfraServices/languages.component";
+import {RegionsComponent} from "./pages/eInfraServices/regions.component";
+import {TermsOfUseComponent} from "./pages/eInfraServices/termsOfUse.component";
+import {RelatedServicesComponent} from "./pages/eInfraServices/relatedServices.component";
+import {TagsComponent} from "./pages/eInfraServices/tags.component";
 
 @NgModule({
     imports: [
@@ -68,6 +73,11 @@ import {MyFormDirective} from "./pages/multiforms/my-form.directive";
         DashboardComponent,
         KeysPipe,
         CountriesComponent,
+        LanguagesComponent,
+        RegionsComponent,
+        RelatedServicesComponent,
+        TagsComponent,
+        TermsOfUseComponent,
         MyArrayWrapper,
         MyInlineArrayWrapper,
         InlineFormWrapper,
@@ -77,6 +87,11 @@ import {MyFormDirective} from "./pages/multiforms/my-form.directive";
     ],
     entryComponents: [
         CountriesComponent,
+        LanguagesComponent,
+        RegionsComponent,
+        RelatedServicesComponent,
+        TagsComponent,
+        TermsOfUseComponent,
         MyArrayWrapper,
         MyInlineArrayWrapper,
     ],
