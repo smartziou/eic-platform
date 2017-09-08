@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import {MyGroup} from "../multiforms/my-group.interface";
 import * as sd from "./services.description";
 import {Validators} from "@angular/forms";
+import {CountryValidator} from "../../services/vocabulary.validator";
 // import {KeysPipe} from "../../services/key.pipe";
 
 @Component({
@@ -24,6 +25,8 @@ export class CountriesComponent extends MyGroup {
     };
 
     readonly groupDefinition = {
+        //entry : ["", Validators.compose([Validators.required, CountryValidator])]
+        entry : ["", Validators.compose([Validators.required])]
     };
 
     readonly countriesDesc : sd.Description = sd.countriesDesc;
