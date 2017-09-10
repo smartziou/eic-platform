@@ -82,6 +82,7 @@ export class SignUpComponent {
         this.submitted = true;
 
         this.successMessage =  "Activation e-mail was sent to " + user.email;
+        setTimeout(()=>this.router.navigate(['/signIn']), 5000);
     }
 
     // areEqual(group: FormGroup) {
