@@ -65,7 +65,6 @@ export class SignUpComponent {
     }
 
     onSubmit(myUser: User, isValid: boolean) {
-
         //TODO: check if model is valid
         this.pass = myUser.password;
         if(isValid) {
@@ -78,9 +77,11 @@ export class SignUpComponent {
     }
 
     onRegisterFinished(user: User) {
+        console.log(user);
         this.user = user;
         this.submitted = true;
-        this.successMessage =  ""
+
+        this.successMessage =  "Activation e-mail was sent to " + user.email;
     }
 
     // areEqual(group: FormGroup) {
