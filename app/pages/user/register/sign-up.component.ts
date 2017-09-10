@@ -45,7 +45,7 @@ export class SignUpComponent {
             const body = error.text() || '';
             errMsg = `${error.status} - ${error.statusText || ''} ${body}`;
         } else {
-            errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+            errMsg = (error.message) ? error.message : error.status ? `${error.status}` : 'Server error';
             console.error(errMsg);
         }
         return Observable.throw(errMsg);
