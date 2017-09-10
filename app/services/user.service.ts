@@ -25,7 +25,6 @@ export class UserService {
         let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
         return this.http.post(process.env.API_ENDPOINT + "/user/register", user, args)
             .map(res => <User> res.json())
-            .map(console.log)
             .catch(this.handleError);
     }
 

@@ -21,8 +21,6 @@ export class ResourceService {
     private _searchUrl = this.endpoint + '/';
 
     search(urlParameters: URLParameter[]) {
-
-
         let searchQuery = new URLSearchParams();
         for (let urlParameter of urlParameters) {
             for(let value of urlParameter.values) {
