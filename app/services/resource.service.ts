@@ -38,6 +38,12 @@ export class ResourceService {
             .catch(this.handleError);
     }
 
+    getVocabularies() {
+        return this.http.get(`${this.endpoint}/vocabulary/all`)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
     getService(id: string) {
         return this.http.get(`${this._searchUrl}service/${id}/`)
             .map(res => <Service> res.json())
