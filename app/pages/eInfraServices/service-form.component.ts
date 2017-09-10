@@ -1,14 +1,14 @@
 /**
  * Created by pgl on 21/08/17.
  */
-import {Component, Type} from "@angular/core";
+import {Component, OnInit, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ResourceService} from "../../services/resource.service";
 import {Service} from "../../domain/eic-model";
-import {URLListValidator, URLValidator} from "../../services/generic.validator";
-import {CountryValidator, LanguageValidator, PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
+import {URLValidator} from "../../services/generic.validator";
+import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
 import * as sd from "./services.description";
-import {CountriesComponent} from "./countries.component"
+import {CountriesComponent} from "./countries.component";
 import {LanguagesComponent} from "./languages.component";
 import {RegionsComponent} from "./regions.component";
 import {RelatedServicesComponent} from "./relatedServices.component";
@@ -21,7 +21,7 @@ import {TermsOfUseComponent} from "./termsOfUse.component";
     styleUrls: ['./service-form.component.css'],
 })
 
-export abstract class ServiceFormComponent {
+export abstract class ServiceFormComponent implements OnInit {
 
     protected editMode: boolean;
     protected serviceForm: FormGroup;
@@ -30,44 +30,44 @@ export abstract class ServiceFormComponent {
     protected successMessage: string = null;
     protected submitted = false;
     protected endpoint = process.env.API_ENDPOINT;
-    readonly countriesDesc : sd.Description = sd.countriesDesc;
-    readonly regionsDesc : sd.Description = sd.regionsDesc;
-    readonly languagesDesc : sd.Description = sd.languagesDesc;
-    readonly tagsDesc : sd.Description = sd.tagsDesc;
-    readonly relatedServicesDesc : sd.Description = sd.relatedServicesDesc;
-    readonly termsOfUseDesc : sd.Description = sd.termsOfUseDesc;
-    readonly brandNameDesc : sd.Description = sd.brandNameDesc;
-    readonly fullNameDesc : sd.Description = sd.fullNameDesc;
-    readonly descriptionDesc : sd.Description = sd.descriptionDesc;
-    readonly optionsDesc : sd.Description = sd.optionsDesc;
-    readonly targetUsersDesc : sd.Description = sd.targetUsersDesc;
-    readonly userValueDesc : sd.Description = sd.userValueDesc;
-    readonly userBaseDesc : sd.Description = sd.userBaseDesc;
-    readonly providerDesc : sd.Description = sd.providerDesc;
-    readonly fundingSourcesDesc : sd.Description = sd.fundingSourcesDesc;
-    readonly webpageDesc : sd.Description = sd.webpageDesc;
-    readonly logoDesc : sd.Description = sd.logoDesc;
-    readonly multimediaURLDesc : sd.Description = sd.multimediaURLDesc;
-    readonly versionDesc : sd.Description = sd.versionDesc;
-    readonly revisionDateDesc : sd.Description = sd.revisionDateDesc;
-    readonly versionHistoryDesc : sd.Description = sd.versionHistoryDesc;
-    readonly phaseDesc : sd.Description = sd.phaseDesc;
-    readonly technologyReadinessLevelDesc : sd.Description = sd.technologyReadinessLevelDesc;
-    readonly categoryDesc : sd.Description = sd.categoryDesc;
-    readonly subcategoryDesc : sd.Description = sd.subcategoryDesc;
-    readonly requestDesc : sd.Description = sd.requestDesc;
-    readonly helpdeskDesc : sd.Description = sd.helpdeskDesc;
-    readonly documentationDesc : sd.Description = sd.documentationDesc;
-    readonly trainingInformationDesc : sd.Description = sd.trainingInformationDesc;
-    readonly feedbackDesc : sd.Description = sd.feedbackDesc;
-    readonly pricingModelDesc : sd.Description = sd.pricingModelDesc;
-    readonly serviceLevelAgreementDesc : sd.Description = sd.serviceLevelAgreementDesc;
-    protected countriesComponent : Type<CountriesComponent> = CountriesComponent;
-    protected languagesComponent : Type<LanguagesComponent> = LanguagesComponent;
-    protected regionsComponent : Type<RegionsComponent> = RegionsComponent;
-    protected relatedServicesComponent : Type<RelatedServicesComponent> = RelatedServicesComponent;
-    protected tagsComponent : Type<TagsComponent> = TagsComponent;
-    protected termsOfUseComponent : Type<TermsOfUseComponent> = TermsOfUseComponent;
+    readonly countriesDesc: sd.Description = sd.countriesDesc;
+    readonly regionsDesc: sd.Description = sd.regionsDesc;
+    readonly languagesDesc: sd.Description = sd.languagesDesc;
+    readonly tagsDesc: sd.Description = sd.tagsDesc;
+    readonly relatedServicesDesc: sd.Description = sd.relatedServicesDesc;
+    readonly termsOfUseDesc: sd.Description = sd.termsOfUseDesc;
+    readonly brandNameDesc: sd.Description = sd.brandNameDesc;
+    readonly fullNameDesc: sd.Description = sd.fullNameDesc;
+    readonly descriptionDesc: sd.Description = sd.descriptionDesc;
+    readonly optionsDesc: sd.Description = sd.optionsDesc;
+    readonly targetUsersDesc: sd.Description = sd.targetUsersDesc;
+    readonly userValueDesc: sd.Description = sd.userValueDesc;
+    readonly userBaseDesc: sd.Description = sd.userBaseDesc;
+    readonly providerDesc: sd.Description = sd.providerDesc;
+    readonly fundingSourcesDesc: sd.Description = sd.fundingSourcesDesc;
+    readonly webpageDesc: sd.Description = sd.webpageDesc;
+    readonly logoDesc: sd.Description = sd.logoDesc;
+    readonly multimediaURLDesc: sd.Description = sd.multimediaURLDesc;
+    readonly versionDesc: sd.Description = sd.versionDesc;
+    readonly revisionDateDesc: sd.Description = sd.revisionDateDesc;
+    readonly versionHistoryDesc: sd.Description = sd.versionHistoryDesc;
+    readonly phaseDesc: sd.Description = sd.phaseDesc;
+    readonly technologyReadinessLevelDesc: sd.Description = sd.technologyReadinessLevelDesc;
+    readonly categoryDesc: sd.Description = sd.categoryDesc;
+    readonly subcategoryDesc: sd.Description = sd.subcategoryDesc;
+    readonly requestDesc: sd.Description = sd.requestDesc;
+    readonly helpdeskDesc: sd.Description = sd.helpdeskDesc;
+    readonly documentationDesc: sd.Description = sd.documentationDesc;
+    readonly trainingInformationDesc: sd.Description = sd.trainingInformationDesc;
+    readonly feedbackDesc: sd.Description = sd.feedbackDesc;
+    readonly pricingModelDesc: sd.Description = sd.pricingModelDesc;
+    readonly serviceLevelAgreementDesc: sd.Description = sd.serviceLevelAgreementDesc;
+    protected countriesComponent: Type<CountriesComponent> = CountriesComponent;
+    protected languagesComponent: Type<LanguagesComponent> = LanguagesComponent;
+    protected regionsComponent: Type<RegionsComponent> = RegionsComponent;
+    protected relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
+    protected tagsComponent: Type<TagsComponent> = TagsComponent;
+    protected termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
     protected formGroupMeta = {
         "brandName": ["", Validators.required],
         "tagline": ["", Validators.required],
@@ -97,6 +97,16 @@ export abstract class ServiceFormComponent {
         "pricingModel": ["", Validators.required],
         "serviceLevelAgreement": [""]
     };
+
+    ngOnInit() {
+        this.resourceService.getVocabularies().subscribe(this.onVocabularies.bind(this), console.error);
+    }
+
+    onVocabularies(vocabularies) {
+        console.log(vocabularies);
+        //service.countries = [{"entry" : "GR"}, {"entry" : "ET"}];
+        //setTimeout(() => {this.serviceForm.patchValue()},1000);
+    }
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder) {
         this.serviceForm = this.fb.group(this.formGroupMeta);
