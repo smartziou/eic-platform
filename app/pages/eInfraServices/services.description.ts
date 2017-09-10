@@ -30,25 +30,25 @@ export const tagsDesc = {
 };
 export const relatedServicesDesc = {
     desc : "Other services that are either required or commonly used with this service",
-    label : "relatedServices",
+    label : "related Services",
     mandatory : false,
     recommended : false
 };
 export const termsOfUseDesc = {
     desc : "Document containing the rules, service conditions and usage policy which one must agree to abide by in order to use the service",
-    label : "termsOfUse",
+    label : "terms Of Use",
     mandatory : false,
     recommended : false
 };
 export const brandNameDesc = {
     desc : "Brief marketing name of service as assigned by the service provider. Should be descriptive from a customer point of view, and should be quite simple, such that someone non-technical is able to understand what the service is about",
-    label : "brandName",
+    label : "brand Name",
     mandatory : false,
     recommended : false
 };
 export const fullNameDesc = {
     desc : "Extended name of service as assigned by the service provider",
-    label : "fullName",
+    label : "full Name",
     mandatory : false,
     recommended : false
 };
@@ -66,19 +66,19 @@ export const optionsDesc = {
 };
 export const targetUsersDesc = {
     desc : "Type of users or end-users allowed to commission/benefit from the service",
-    label : "targetUsers",
+    label : "target Users",
     mandatory : false,
     recommended : false
 };
 export const userValueDesc = {
     desc : "The benefit to a customer and their users delivered by the service. Benefits are usually related to alleviating pains (e.g., eliminate undesired outcomes, obstacles or risks) or producing gains (e.g. increased performance, social gains, positive emotions or cost saving)",
-    label : "userValue",
+    label : "user Value",
     mandatory : false,
     recommended : false
 };
 export const userBaseDesc = {
     desc : "List of customers, communities, etc using the service",
-    label : "userBase",
+    label : "user Base",
     mandatory : false,
     recommended : false
 };
@@ -90,7 +90,7 @@ export const providerDesc = {
 };
 export const fundingSourcesDesc = {
     desc : "Sources of funding for the development and operation of the service",
-    label : "fundingSources",
+    label : "funding Sources",
     mandatory : false,
     recommended : false
 };
@@ -108,7 +108,7 @@ export const logoDesc = {
 };
 export const multimediaURLDesc = {
     desc : "Link to a page containing multimedia regarding the service",
-    label : "multimediaURL",
+    label : "multimedia URL",
     mandatory : false,
     recommended : false
 };
@@ -120,13 +120,13 @@ export const versionDesc = {
 };
 export const revisionDateDesc = {
     desc : "The date of the latest update",
-    label : "revisionDate",
+    label : "revision Date",
     mandatory : false,
     recommended : false
 };
 export const versionHistoryDesc = {
     desc : "A list of the service features added in the latest version",
-    label : "versionHistory",
+    label : "version History",
     mandatory : false,
     recommended : false
 };
@@ -186,7 +186,7 @@ export const feedbackDesc = {
 };
 export const pricingModelDesc = {
     desc : "Supported payment models that apply. List of sentences each of them stating the type of payment model and the restriction that applies to it",
-    label : "pricingModel",
+    label : "pricing Model",
     mandatory : false,
     recommended : false
 };
