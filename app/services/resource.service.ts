@@ -13,12 +13,7 @@ import { BrowseResults } from "../domain/browse-results";
 export class ResourceService {
 
     private endpoint = process.env.API_ENDPOINT;
-
-    constructor (private http: Http) {
-        console.log(this.endpoint);
-    }
-
-    private _searchUrl = this.endpoint + '/';
+    constructor(private http: Http) {}
 
     search(urlParameters: URLParameter[]) {
         let searchQuery = new URLSearchParams();
@@ -31,31 +26,31 @@ export class ResourceService {
 
         let questionMark = urlParameters.length>0?'?':'';
 
-        return this.http.get(`${this._searchUrl}service/all${questionMark}${searchQuery.toString()}`)
+        return this.http.get(`${this.endpoint}/service/all${questionMark}${searchQuery.toString()}`)
             .map(res => <SearchResults> res.json())
             .catch(this.handleError);
     }
 
     getVocabularies() {
-        return this.http.get(`${this.endpoint}/vocabulary/all`)
+        return this.http.get(`${this.endpoint}/vocabulary/by/type`)
             .map(res => res.json())
             .catch(this.handleError);
     }
 
     getService(id: string) {
-        return this.http.get(`${this._searchUrl}service/${id}/`)
+        return this.http.get(`${this.endpoint}/service/${id}/`)
             .map(res => <Service> res.json())
             .catch(this.handleError);
     }
 
     getSelectedServices(ids: string[]) {
-        return this.http.get(`${this._searchUrl}service/some/${ids.toString()}/`)
+        return this.http.get(`${this.endpoint}/service/some/${ids.toString()}/`)
             .map(res => <Service[]> res.json())
             .catch(this.handleError);
     }
 
     getServicesByCategories() {
-        return this.http.get(`${this._searchUrl}service/by/category`)
+        return this.http.get(`${this.endpoint}/service/by/category`)
             .map(res => <BrowseResults> res.json())
             .catch(this.handleError);
     }
@@ -69,7 +64,7 @@ export class ResourceService {
     uploadService(service: Service, shouldPut: boolean) {
         let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
 
-        return this.http[shouldPut? "put": "post"](process.env.API_ENDPOINT + "/service", JSON.stringify(service), args)
+        return this.http[shouldPut? "put": "post"](this.endpoint + "/service", JSON.stringify(service), args)
             .map(res => <Service> res.json())
             // .map(this.extractData)
             .catch(this.handleError);
