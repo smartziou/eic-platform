@@ -31,24 +31,12 @@ export class SignUpComponent {
     ngOnInit() {
         this.resourceService.getProviders().subscribe(
             providers => this.storeProviders(providers),
-            error => this.handleError(<any>error)
+            error => this.errorMessage = <any>error
         );
     }
 
     storeProviders(providers: string[]) {
         this.providers = providers;
-    }
-
-    private handleError (error: Response | any) {
-        let errMsg = "";
-        if (error instanceof Response) {
-            const body = error.text() || '';
-            errMsg = `${error.status} - ${error.statusText || ''} ${body}`;
-        } else {
-            errMsg = (error.message) ? error.message : error.status ? `${error.status}` : 'Server error';
-            console.error(errMsg);
-        }
-        return Observable.throw(errMsg);
     }
 
     constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService, private router: Router) {
