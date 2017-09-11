@@ -30,132 +30,170 @@
                                 <div *ngIf="successMessage" data-uk-alert="" class="uk-alert uk-alert-success">
                                     <p>{{successMessage}}</p>
                                 </div>
-                                <form [formGroup]="serviceForm"
-                                      (ngSubmit)="onSubmit(serviceForm.value, serviceForm.valid)"
-                                      role="form" class="m-t">
-                                    <form-inline [description]="brandNameDesc" [valid]="serviceForm.get('brandName').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{brandNameDesc.label}}"
-                                               formControlName="brandName" [ngClass]="{'uk-form-danger': !serviceForm.get('brandName').valid}">
+                                <form [formGroup]="serviceForm" role="form" class="m-t"
+                                      (ngSubmit)="onSubmit(serviceForm.value, serviceForm.valid)">
+                                    <form-inline [description]="brandNameDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('brandName').valid">
+                                        <input class="uk-input" type="text" formControlName="brandName"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('brandName').valid}">
                                     </form-inline>
-                                    <form-inline [description]="fullNameDesc" [valid]="serviceForm.get('fullName').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{fullNameDesc.label}}"
-                                               formControlName="fullName" [ngClass]="{'uk-form-danger': !serviceForm.get('fullName').valid}">
+                                    <form-inline [description]="fullNameDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('fullName').valid">
+                                        <input class="uk-input" type="text" formControlName="fullName"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('fullName').valid}">
                                     </form-inline>
-                                    <form-inline [description]="descriptionDesc" [valid]="serviceForm.get('description').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{descriptionDesc.label}}"
-                                               formControlName="description" [ngClass]="{'uk-form-danger': !serviceForm.get('description').valid}">
+                                    <form-inline [description]="descriptionDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('description').valid">
+                                        <input class="uk-input" type="text" formControlName="description"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('description').valid}">
                                     </form-inline>
-                                    <form-inline [description]="optionsDesc" [valid]="serviceForm.get('options').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{optionsDesc.label}}"
-                                               formControlName="options" [ngClass]="{'uk-form-danger': !serviceForm.get('options').valid}">
+                                    <form-inline [description]="optionsDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('options').valid">
+                                        <input class="uk-input" type="text" formControlName="options"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('options').valid}">
                                     </form-inline>
-                                    <form-inline [description]="targetUsersDesc" [valid]="serviceForm.get('targetUsers').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{targetUsersDesc.label}}"
-                                               formControlName="targetUsers" [ngClass]="{'uk-form-danger': !serviceForm.get('targetUsers').valid}">
+                                    <form-inline [description]="targetUsersDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('targetUsers').valid">
+                                        <input class="uk-input" type="text" formControlName="targetUsers"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('targetUsers').valid}">
                                     </form-inline>
-                                    <form-inline [description]="userValueDesc" [valid]="serviceForm.get('userValue').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{userValueDesc.label}}"
-                                               formControlName="userValue" [ngClass]="{'uk-form-danger': !serviceForm.get('userValue').valid}">
+                                    <form-inline [description]="userValueDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('userValue').valid">
+                                        <input class="uk-input" type="text" formControlName="userValue"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('userValue').valid}">
                                     </form-inline>
-                                    <form-inline [description]="userBaseDesc" [valid]="serviceForm.get('userBase').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{userBaseDesc.label}}"
-                                               formControlName="userBase" [ngClass]="{'uk-form-danger': !serviceForm.get('userBase').valid}">
+                                    <form-inline [description]="userBaseDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('userBase').valid">
+                                        <input class="uk-input" type="text" formControlName="userBase"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('userBase').valid}">
                                     </form-inline>
-                                    <form-inline [description]="providerDesc" [valid]="serviceForm.get('provider').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{providerDesc.label}}"
-                                               formControlName="provider" [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
+                                    <form-inline [description]="providerDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('provider').valid">
+                                        <input class="uk-input" type="text" formControlName="provider"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
                                     </form-inline>
-                                    <form-inline [description]="fundingSourcesDesc" [valid]="serviceForm.get('fundingSources').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{fundingSourcesDesc.label}}"
-                                               formControlName="fundingSources" [ngClass]="{'uk-form-danger': !serviceForm.get('fundingSources').valid}">
+                                    <form-inline [description]="fundingSourcesDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('fundingSources').valid">
+                                        <input class="uk-input" type="text" formControlName="fundingSources"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('fundingSources').valid}">
                                     </form-inline>
-                                    <form-inline [description]="webpageDesc" [valid]="serviceForm.get('webpage').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{webpageDesc.label}}"
-                                               formControlName="webpage" [ngClass]="{'uk-form-danger': !serviceForm.get('webpage').valid}">
+                                    <form-inline [description]="webpageDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('webpage').valid">
+                                        <input class="uk-input" type="text" formControlName="webpage"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('webpage').valid}">
                                     </form-inline>
-                                    <form-inline [description]="logoDesc" [valid]="serviceForm.get('logo').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{logoDesc.label}}"
-                                               formControlName="logo" [ngClass]="{'uk-form-danger': !serviceForm.get('logo').valid}">
+                                    <form-inline [description]="logoDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('logo').valid">
+                                        <input class="uk-input" type="text" formControlName="logo"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('logo').valid}">
                                     </form-inline>
-                                    <form-inline [description]="multimediaURLDesc" [valid]="serviceForm.get('multimediaURL').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{multimediaURLDesc.label}}"
-                                               formControlName="multimediaURL" [ngClass]="{'uk-form-danger': !serviceForm.get('multimediaURL').valid}">
+                                    <form-inline [description]="multimediaURLDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('multimediaURL').valid">
+                                        <input class="uk-input" type="text" formControlName="multimediaURL"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('multimediaURL').valid}">
                                     </form-inline>
-                                    <form-inline [description]="versionDesc" [valid]="serviceForm.get('version').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{versionDesc.label}}"
-                                               formControlName="version" [ngClass]="{'uk-form-danger': !serviceForm.get('version').valid}">
+                                    <form-inline [description]="versionDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('version').valid">
+                                        <input class="uk-input" type="text" formControlName="version"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('version').valid}">
                                     </form-inline>
-                                    <form-inline [description]="revisionDateDesc" [valid]="serviceForm.get('revisionDate').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{revisionDateDesc.label}}"
-                                               formControlName="revisionDate" [ngClass]="{'uk-form-danger': !serviceForm.get('revisionDate').valid}">
+                                    <form-inline [description]="revisionDateDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('revisionDate').valid">
+                                        <input class="uk-input" type="text" formControlName="revisionDate"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('revisionDate').valid}">
                                     </form-inline>
-                                    <form-inline [description]="versionHistoryDesc" [valid]="serviceForm.get('versionHistory').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{versionHistoryDesc.label}}"
-                                               formControlName="versionHistory" [ngClass]="{'uk-form-danger': !serviceForm.get('versionHistory').valid}">
+                                    <form-inline [description]="versionHistoryDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('versionHistory').valid">
+                                        <input class="uk-input" type="text" formControlName="versionHistory"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('versionHistory').valid}">
                                     </form-inline>
-                                    <form-inline [description]="phaseDesc" [valid]="serviceForm.get('phase').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{phaseDesc.label}}"
-                                               formControlName="phase" [ngClass]="{'uk-form-danger': !serviceForm.get('phase').valid}">
+                                    <form-inline [description]="phaseDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('phase').valid">
+                                        <input class="uk-input" type="text" formControlName="phase"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('phase').valid}">
                                     </form-inline>
-                                    <form-inline [description]="technologyReadinessLevelDesc" [valid]="serviceForm.get('technologyReadinessLevel').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{technologyReadinessLevelDesc.label}}"
-                                               formControlName="technologyReadinessLevel" [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
+                                    <form-inline [description]="technologyReadinessLevelDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('technologyReadinessLevel').valid">
+                                        <input class="uk-input" type="text" formControlName="technologyReadinessLevel"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
                                     </form-inline>
-                                    <form-inline [description]="categoryDesc" [valid]="serviceForm.get('category').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{categoryDesc.label}}"
-                                               formControlName="category" [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid}">
+                                    <form-inline [description]="categoryDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('category').valid">
+                                        <input class="uk-input" type="text" formControlName="category"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid}">
                                     </form-inline>
-                                    <form-inline [description]="subcategoryDesc" [valid]="serviceForm.get('subcategory').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{subcategoryDesc.label}}"
-                                               formControlName="subcategory" [ngClass]="{'uk-form-danger': !serviceForm.get('subcategory').valid}">
+                                    <form-inline [description]="subcategoryDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('subcategory').valid">
+                                        <input class="uk-input" type="text" formControlName="subcategory"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('subcategory').valid}">
                                     </form-inline>
                                     <form-repeat-inline [component]="countriesComponent" [parentGroup]="serviceForm"
-                                                        [name]="'countries'" [required]="true" [description]="countriesDesc">
-                                    </form-repeat-inline><div></div>
+                                                        [name]="'countries'" [required]="true"
+                                                        [description]="countriesDesc">
+                                    </form-repeat-inline>
+                                    <div></div>
                                     <form-repeat-inline [component]="regionsComponent" [parentGroup]="serviceForm"
-                                                        [name]="'regions'" [required]="true" [description]="regionsDesc">
-                                    </form-repeat-inline><div></div>
+                                                        [name]="'regions'" [required]="true"
+                                                        [description]="regionsDesc">
+                                    </form-repeat-inline>
+                                    <div></div>
                                     <form-repeat-inline [component]="languagesComponent" [parentGroup]="serviceForm"
-                                                        [name]="'languages'" [required]="true" [description]="languagesDesc">
-                                    </form-repeat-inline><div></div>
+                                                        [name]="'languages'" [required]="true"
+                                                        [description]="languagesDesc">
+                                    </form-repeat-inline>
+                                    <div></div>
                                     <form-repeat-inline [component]="tagsComponent" [parentGroup]="serviceForm"
                                                         [name]="'tags'" [required]="true" [description]="tagsDesc">
-                                    </form-repeat-inline><div></div>
-                                    <form-repeat-inline [component]="relatedServicesComponent" [parentGroup]="serviceForm"
-                                                        [name]="'relatedServices'" [required]="true" [description]="relatedServicesDesc">
-                                    </form-repeat-inline><div></div>
-                                    <form-inline [description]="requestDesc" [valid]="serviceForm.get('request').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{requestDesc.label}}"
-                                               formControlName="request" [ngClass]="{'uk-form-danger': !serviceForm.get('request').valid}">
+                                    </form-repeat-inline>
+                                    <div></div>
+                                    <form-repeat-inline [component]="relatedServicesComponent"
+                                                        [parentGroup]="serviceForm"
+                                                        [name]="'relatedServices'" [required]="true"
+                                                        [description]="relatedServicesDesc">
+                                    </form-repeat-inline>
+                                    <div></div>
+                                    <form-inline [description]="requestDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('request').valid">
+                                        <input class="uk-input" type="text" formControlName="request"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('request').valid}">
                                     </form-inline>
-                                    <form-inline [description]="helpdeskDesc" [valid]="serviceForm.get('helpdesk').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{helpdeskDesc.label}}"
-                                               formControlName="helpdesk" [ngClass]="{'uk-form-danger': !serviceForm.get('helpdesk').valid}">
+                                    <form-inline [description]="helpdeskDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('helpdesk').valid">
+                                        <input class="uk-input" type="text" formControlName="helpdesk"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('helpdesk').valid}">
                                     </form-inline>
-                                    <form-inline [description]="documentationDesc" [valid]="serviceForm.get('documentation').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{documentationDesc.label}}"
-                                               formControlName="documentation" [ngClass]="{'uk-form-danger': !serviceForm.get('documentation').valid}">
+                                    <form-inline [description]="documentationDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('documentation').valid">
+                                        <input class="uk-input" type="text" formControlName="documentation"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('documentation').valid}">
                                     </form-inline>
-                                    <form-inline [description]="trainingInformationDesc" [valid]="serviceForm.get('trainingInformation').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{trainingInformationDesc.label}}"
-                                               formControlName="trainingInformation" [ngClass]="{'uk-form-danger': !serviceForm.get('trainingInformation').valid}">
+                                    <form-inline [description]="trainingInformationDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('trainingInformation').valid">
+                                        <input class="uk-input" type="text" formControlName="trainingInformation"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('trainingInformation').valid}">
                                     </form-inline>
-                                    <form-inline [description]="feedbackDesc" [valid]="serviceForm.get('feedback').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{feedbackDesc.label}}"
-                                               formControlName="feedback" [ngClass]="{'uk-form-danger': !serviceForm.get('feedback').valid}">
+                                    <form-inline [description]="feedbackDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('feedback').valid">
+                                        <input class="uk-input" type="text" formControlName="feedback"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('feedback').valid}">
                                     </form-inline>
-                                    <form-inline [description]="pricingModelDesc" [valid]="serviceForm.get('pricingModel').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{pricingModelDesc.label}}"
-                                               formControlName="pricingModel" [ngClass]="{'uk-form-danger': !serviceForm.get('pricingModel').valid}">
+                                    <form-inline [description]="pricingModelDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('pricingModel').valid">
+                                        <input class="uk-input" type="text" formControlName="pricingModel"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('pricingModel').valid}">
                                     </form-inline>
-                                    <form-inline [description]="serviceLevelAgreementDesc" [valid]="serviceForm.get('serviceLevelAgreement').valid" [params]="'tooltip'">
-                                        <input class="uk-input" type="text" placeholder="{{serviceLevelAgreementDesc.label}}"
-                                               formControlName="serviceLevelAgreement" [ngClass]="{'uk-form-danger': !serviceForm.get('serviceLevelAgreement').valid}">
+                                    <form-inline [description]="serviceLevelAgreementDesc" [params]="'tooltip'"
+                                                 [valid]="serviceForm.get('serviceLevelAgreement').valid">
+                                        <input class="uk-input" type="text" formControlName="serviceLevelAgreement"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('serviceLevelAgreement').valid}">
                                     </form-inline>
                                     <form-repeat-inline [component]="termsOfUseComponent" [parentGroup]="serviceForm"
-                                                        [name]="'termsOfUse'" [required]="true" [description]="termsOfUseDesc">
+                                                        [name]="'termsOfUse'" [required]="true"
+                                                        [description]="termsOfUseDesc">
                                     </form-repeat-inline>
-                                    <button [disabled]="!serviceForm.valid" type="submit" class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}</button>
+                                    <button [disabled]="!serviceForm.valid" type="submit"
+                                            class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}
+                                    </button>
                                 </form>
                                 <pre>
                                     {{serviceForm.value | json}}
