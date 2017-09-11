@@ -11,7 +11,6 @@ import { BrowseResults } from "../domain/browse-results";
 
 @Injectable()
 export class ResourceService {
-
     private endpoint = process.env.API_ENDPOINT;
     constructor(private http: Http) {}
 
@@ -34,6 +33,12 @@ export class ResourceService {
     getVocabularies() {
         return this.http.get(`${this.endpoint}/vocabulary/by/type`)
             .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    getServices() {
+        return this.http.get(`${this.endpoint}/service/by/service_id`)
+            .map(res => <Service> res.json())
             .catch(this.handleError);
     }
 
