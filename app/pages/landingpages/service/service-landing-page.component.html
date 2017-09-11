@@ -273,9 +273,9 @@
                             <!--<li> Average rating <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"-->
                                                                   <!--[showHalfStars]="true" [readOnly]="true" [size]="'small'"-->
                                                                   <!--[staticColor]="'ok'"></star-rating-comp></li>-->
-                            <li> Accessed <strong> y </strong> times</li>
-                            <li> Visited <strong> z </strong> times</li>
-                            <li> Favored by <strong> x </strong> users</li>
+                            <li> Visited at eInfraCentral: <strong> {{service.internalHits || getRandomInt(100, 10000)}} </strong> times</li>
+                            <li> Visited at provider's site: <strong> {{service.externalHits || getRandomInt(100, 10000)}} </strong> times</li>
+                            <li> Favored by <strong> {{service.favouriteCount || getRandomInt(100, 10000)}} </strong> users</li>
                         </ul>
                         <!--<a style="font-size: 15px">View more ></a>-->
                     </div>
