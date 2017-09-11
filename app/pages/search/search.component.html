@@ -76,7 +76,7 @@
                         <template [ngIf]="facet.field!='category'">
                             <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
                                 <read-more [maxHeight]="235">
-                                    <span>{{facet.label}}</span>
+                                    <span>{{facet.label=='TRL'?'Technology Readiness':facet.label}}</span>
                                     <div class="refineOption" *ngFor="let facetValue of facet.values">
                                         <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
                                                (change)="onSelection($event, facet.field, facetValue.value)"
