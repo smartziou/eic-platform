@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Service } from "../../../domain/eic-model";
-import { ResourceService } from "../../../services/resource.service";
-import { Subscription } from "rxjs/Subscription";
+import {Component} from "@angular/core";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Service} from "../../../domain/eic-model";
+import {ResourceService} from "../../../services/resource.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: 'service-landing-page',
     templateUrl: './service-landing-page.component.html',
-    styleUrls:  ['../landing-page.component.css'],
+    styleUrls: ['../landing-page.component.css'],
 })
 
 export class ServiceLandingPageComponent {
@@ -17,10 +17,7 @@ export class ServiceLandingPageComponent {
     private sub: Subscription;
 
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private resourceService: ResourceService) {}
+    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService) {}
 
     ngOnInit() {
 
