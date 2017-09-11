@@ -1,4 +1,4 @@
-// Generated using typescript-generator version 1.27.339 on 2017-08-31 15:48:27.
+// Generated using typescript-generator version 1.27.339 on 2017-09-11 16:43:21.
 
 export class Access implements Identifiable {
     id: string;
@@ -34,6 +34,7 @@ export class Service implements Identifiable {
     userValue: string;
     userBase: string;
     provider: string;
+    providerDetails: string;
     fundingSources: string;
     webpage: URL;
     logo: URL;
@@ -61,6 +62,9 @@ export class Service implements Identifiable {
     averageRating: number;
     ratings: number;
     isPublic: boolean;
+    externalHits: number;
+    internalHits: number;
+    favouriteCount: number;
 }
 
 export class Vocabulary implements Identifiable {
@@ -76,7 +80,7 @@ export class User implements Identifiable {
     surname: string;
     email: string;
     password: string;
-    join_date: string;
+    joinDate: string;
     affiliation: string;
     isServiceProvider: boolean;
     role: Role[];
@@ -85,6 +89,7 @@ export class User implements Identifiable {
     provider: string;
     iterationCount: number;
     salt: any;
+    resetToken: string;
 }
 
 export class URL implements Serializable {
