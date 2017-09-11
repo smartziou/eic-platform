@@ -1,8 +1,9 @@
-import { Component} from '@angular/core';
+import {Component, Injector} from '@angular/core';
 import {MyGroup} from "../multiforms/my-group.interface";
 import * as sd from "./services.description";
 import {Validators} from "@angular/forms";
 import {CountryValidator} from "../../services/vocabulary.validator";
+import {ResourceService} from "../../services/resource.service";
 // import {KeysPipe} from "../../services/key.pipe";
 
 @Component({
@@ -17,11 +18,12 @@ import {CountryValidator} from "../../services/vocabulary.validator";
 })
 
 export class CountriesComponent extends MyGroup {
+    constructor(private resourceService: ResourceService, injector : Injector) {
+        super(injector);
+    }
 
-    countries = {
-        "GR": "Greece",
-        "ET": "Abyssinia",
-        "SY": "Palmyra"
+    private countries : any = {
+        "QQ": "Error fetching countries"
     };
 
     readonly groupDefinition = {
@@ -33,6 +35,19 @@ export class CountriesComponent extends MyGroup {
 
     ngOnInit() {
         super.ngOnInit();
+        this.resourceService.getVocabularies().subscribe(
+            suc=> this.countries = this.transformInput(suc["Country"]),
+            err => console.error(err)
+        );
+    }
+
+    transformInput(input) {
+        console.log(input);
+        let ret = {};
+        input.forEach((e,i,a) => {
+            ret[e.id] = e.name;
+        });
+        return ret;
     }
 
 }
