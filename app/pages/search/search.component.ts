@@ -9,6 +9,7 @@ import { SearchQuery } from "../../domain/search-query";
 import { URLParameter } from "./../../domain/url-parameter";
 import { ResourceService } from "../../services/resource.service";
 import { SearchResults } from "../../domain/search-results";
+import {Facet} from "../../domain/facet";
 
 @Component({
     selector: 'search',
@@ -25,6 +26,7 @@ export class SearchComponent {
     private urlParameters: URLParameter[] = [];
     
     private searchResults: SearchResults;
+    private facetOrder = ["category", "trl", "phase", "provider"];
 
     private pageSize: number = 0;
     private currentPage: number = 0;
@@ -36,9 +38,7 @@ export class SearchComponent {
     private isLastPageDisabled: boolean = false;
 
     private foundResults = true;
-
     private advanced: boolean = false;
-
     private servicesToCompare: string[] = [];
 
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
@@ -78,7 +78,7 @@ export class SearchComponent {
                     error => this.handleError(<any>error));
             });
     }
-    
+
     updateSearchResults(searchResults: SearchResults) {
 
         //INITIALISATIONS
@@ -93,6 +93,8 @@ export class SearchComponent {
 
         if(this.searchResults.results.length==0)
             this.foundResults = false;
+
+        this.orderFacets();
 
         //update form values using URLParameters
         for (let urlParameter of this.urlParameters) {
@@ -135,6 +137,16 @@ export class SearchComponent {
 
     ngOnDestroy() {
         this.sub.unsubscribe();
+    }
+
+    orderFacets() {
+        let facetValues = {};
+        this.facetOrder.forEach((e,i)=> {
+            facetValues[e] = i;
+        });
+        this.searchResults.facets.sort((a, b): number => {
+            return facetValues[a.field] - facetValues[b.field];
+        });
     }
 
     onSubmit(searchValue: SearchQuery) {
