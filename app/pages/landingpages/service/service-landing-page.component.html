@@ -63,10 +63,10 @@
 
                     <div *ngIf="service.phase || service.technologyReadinessLevel || service.category || service.subcategory"
                          class="tags">
-                        <a *ngIf="service.category"><span class="uk-label uk-label-primary">{{service.category}}</span></a>
-                        <a *ngIf="service.subcategory"><span class="uk-label uk-label-primary">{{service.subcategory}}</span></a>
-                        <a *ngIf="service.technologyReadinessLevel"><span class="uk-label uk-label-primary">TRL {{service.technologyReadinessLevel}}</span></a>
-                        <a *ngIf="service.phase"><span class="uk-label uk-label-primary">{{service.phase}}</span></a>
+                        <span title="Category" uk-tooltip="delay: 500" *ngIf="service.category" class="uk-label uk-label-primary">{{service.category}}</span>
+                        <span title="Subcategory" uk-tooltip="delay: 500" *ngIf="service.subcategory" class="uk-label uk-label-primary">{{service.subcategory}}</span>
+                        <span title="Technology Readiness Level" uk-tooltip="delay: 500" *ngIf="service.technologyReadinessLevel" class="uk-label uk-label-primary">TRL {{service.technologyReadinessLevel}}</span>
+                        <span title="Phase" uk-tooltip="delay: 500" *ngIf="service.phase" class="uk-label uk-label-primary">{{service.phase}}</span>
                     </div>
 
                     <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
