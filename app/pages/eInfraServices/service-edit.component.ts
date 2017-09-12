@@ -30,13 +30,10 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     }
 
     onService(service) {
-        // for (let i in this.formGroupMeta) {
-        //     this.formGroupMeta[i][0] = service[i] ||　this.formGroupMeta[i][0]　|| "";
-        // }
-        service.countries = [{"entry" : "GR"}, {"entry" : "ET"}];
         ResourceService.removeNulls(service);
-        console.log("FormData:",service);
-        setTimeout(() => {this.serviceForm.patchValue(service)},1000);
+        setTimeout(() => {
+            this.serviceForm.patchValue(service)
+        }, 1000);
     }
 
     onSuccess(service) {

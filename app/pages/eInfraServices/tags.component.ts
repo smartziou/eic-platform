@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component} from "@angular/core";
 import {MyGroup} from "../multiforms/my-group.interface";
 import * as sd from "./services.description";
 import {Validators} from "@angular/forms";
@@ -6,9 +6,9 @@ import {Validators} from "@angular/forms";
 
 @Component({
     selector: 'tagsInfo-form',
-    template : `
+    template: `
         <div [formGroup]="group">
-                <input type="text" formControlName="entry"/>
+            <input type="text" formControlName="entry"/>
         </div>
     `
 })
@@ -16,10 +16,10 @@ import {Validators} from "@angular/forms";
 export class TagsComponent extends MyGroup {
 
     readonly groupDefinition = {
-        entry : ["", Validators.required]
+        entry: ["", Validators.required]
     };
 
-    readonly tagsDesc : sd.Description = sd.tagsDesc;
+    readonly tagsDesc: sd.Description = sd.tagsDesc;
 
     ngOnInit() {
         super.ngOnInit();

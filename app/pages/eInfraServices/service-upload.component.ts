@@ -14,6 +14,7 @@ export class ServiceUploadComponent extends ServiceFormComponent implements OnIn
     ngOnInit() {
         this.editMode = false;
     }
+
     onSuccess(service) {
         this.successMessage = "Service uploaded successfully!";
     }
