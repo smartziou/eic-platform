@@ -90,7 +90,7 @@
 
                     <div class="" *ngIf="service.webpage">
                         <p>
-                            <a href="{{service.webpage}}"><span style="color: #d1303a">{{service.webpage}}</span></a>
+                            <a target="_blank" href="{{service.webpage}}"><span style="color: #d1303a">{{service.webpage}}</span></a>
                         </p>
                     </div>
 
@@ -113,7 +113,7 @@
                     <!--<div class="resourceIdentifiers" *ngIf="component.componentInfo.identificationInfo.identifiers-->
                         <!--&& component.componentInfo.identificationInfo.identifiers.length>0">-->
                         <!--<div *ngFor="let identifier of component.componentInfo.identificationInfo.identifiers">-->
-                            <!--<a href="{{identifier.value}}" target="_blank">{{identifier.value}}</a>-->
+                            <!--<a target="_blank" href="{{identifier.value}}" target="_blank">{{identifier.value}}</a>-->
                         <!--</div>-->
                     <!--</div>-->
 
@@ -285,24 +285,24 @@
                         <ul class="uk-list" style="word-wrap: break-word;">
                             <li *ngIf="service.request">
                                 <strong>Service request: </strong>
-                                <a href="{{service.request}}">{{service.request}}</a>
+                                <a target="_blank" href="{{service.request}}">{{service.request}}</a>
                                 <!--<a href="mailto:info@openaire.eu">info@openaire.eu</a>-->
                             </li>
                             <li *ngIf="service.helpdesk">
                                 <strong>Service helpdesk: </strong>
-                                <a href="{{service.helpdesk}}">{{service.helpdesk}}</a>
+                                <a target="_blank" href="{{service.helpdesk}}">{{service.helpdesk}}</a>
                             </li>
                             <li *ngIf="service.documentation">
                                 <strong>User manual: </strong>
-                                <a href="{{service.documentation}}">{{service.documentation}}</a>
+                                <a target="_blank" href="{{service.documentation}}">{{service.documentation}}</a>
                             </li>
                             <li *ngIf="service.trainingInformation">
                                 <strong>Training Information: </strong>
-                                <a href="{{service.trainingInformation}}">{{service.trainingInformation}}</a>
+                                <a target="_blank" href="{{service.trainingInformation}}">{{service.trainingInformation}}</a>
                             </li>
                             <li *ngIf="service.feedback">
                                 <strong>Service feedback: </strong>
-                                <a href="{{service.feedback}}">{{service.feedback}}</a>
+                                <a target="_blank" href="{{service.feedback}}">{{service.feedback}}</a>
                             </li>
                         </ul>
                     </div>
