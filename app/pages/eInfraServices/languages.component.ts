@@ -40,7 +40,6 @@ export class LanguagesComponent extends MyGroup {
             suc => this.languages = suc,
             err => console.error(err)
         );
-        setTimeout(() => console.log(this.languages), 10000);
     }
 
 }
