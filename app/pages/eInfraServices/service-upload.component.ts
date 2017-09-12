@@ -12,6 +12,7 @@ import {ServiceFormComponent} from "./service-form.component";
 
 export class ServiceUploadComponent extends ServiceFormComponent implements OnInit {
     ngOnInit() {
+        super.ngOnInit();
         this.editMode = false;
     }
 

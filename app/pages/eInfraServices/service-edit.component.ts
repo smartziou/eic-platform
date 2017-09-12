@@ -21,6 +21,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     }
 
     ngOnInit() {
+        super.ngOnInit();
         this.editMode = true;
         this.route.params.subscribe(this.onParams.bind(this));
     }
