@@ -11,6 +11,8 @@ import { ResourceService } from "../../services/resource.service";
 import { SearchResults } from "../../domain/search-results";
 import {Facet} from "../../domain/facet";
 
+declare var UIkit : any;
+
 @Component({
     selector: 'search',
     templateUrl: './search.component.html',
@@ -269,11 +271,24 @@ export class SearchComponent {
     }
 
     addToCompare(id: string) {
+
         if(this.servicesToCompare.includes(id)) {
-            this.servicesToCompare.splice(this.servicesToCompare.indexOf(id),1)
-        } else
-            this.servicesToCompare.push(id);
-        sessionStorage.setItem('compareServices', JSON.stringify(this.servicesToCompare));
+            this.servicesToCompare.splice(this.servicesToCompare.indexOf(id),1);
+            sessionStorage.setItem('compareServices', JSON.stringify(this.servicesToCompare));
+        } else {
+
+            if(this.servicesToCompare.length==4) {
+                UIkit.notification({
+                    message: 'You have reached the maximum number of items you can compare',
+                    status: 'primary',
+                    pos: 'top-center',
+                    timeout: 5000
+                });
+            } else {
+                this.servicesToCompare.push(id);
+                sessionStorage.setItem('compareServices', JSON.stringify(this.servicesToCompare));
+            }
+        }
     }
 
     compareServices() {

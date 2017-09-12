@@ -348,3 +348,40 @@ h1, .uk-h1, h2, .uk-h2, h3, .uk-h3, h4, .uk-h4, h5, .uk-h5, h6, .uk-h6 {
     font-family: "Open Sans";
 }
 
+/******************************************************/
+
+.uk-notification-message {
+    text-align: center;
+    font-size: 15px;
+    padding: 15px;
+}
+
+.uk-notification-message-primary {
+    background: #004db0 none repeat scroll 0 0;
+    color: #fff;
+}
+
+.uk-notification {
+    top: 0px;
+    width: 700px;
+}
+
+.uk-notification-top-center, .uk-notification-bottom-center {
+    left: 50%;
+    margin-left: -325px;
+}
+
+.uk-close {
+    color: #fff;
+    display: block;
+}
+
+.uk-close:hover, .uk-close:focus {
+    color: #fff1f0;
+}
+
+.uk-notification-close {
+    top: 20px;
+}
+
+/******************************************************/
