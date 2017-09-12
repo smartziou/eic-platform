@@ -1,38 +1,44 @@
 /**
  * Created by stefania on 9/6/16.
  */
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { URLParameter } from "../domain/url-parameter";
-import { SearchResults } from "../domain/search-results";
+import {Injectable} from "@angular/core";
+import {Headers, Http, RequestOptions, Response} from "@angular/http";
+import {Observable} from "rxjs/Rx";
+import {URLParameter} from "../domain/url-parameter";
+import {SearchResults} from "../domain/search-results";
 import {Access, Service} from "../domain/eic-model";
-import { BrowseResults } from "../domain/browse-results";
+import {BrowseResults} from "../domain/browse-results";
 
 @Injectable()
 export class ResourceService {
     private endpoint = process.env.API_ENDPOINT;
-    constructor(private http: Http) {}
+
+    constructor(private http: Http) {
+    }
 
     search(urlParameters: URLParameter[]) {
         let searchQuery = new URLSearchParams();
         for (let urlParameter of urlParameters) {
-            for(let value of urlParameter.values) {
+            for (let value of urlParameter.values) {
                 searchQuery.append(urlParameter.key, value);
             }
         }
         searchQuery.delete('to');
 
-        let questionMark = urlParameters.length>0?'?':'';
+        let questionMark = urlParameters.length > 0 ? '?' : '';
 
         return this.http.get(`${this.endpoint}/service/all${questionMark}${searchQuery.toString()}`)
             .map(res => <SearchResults> res.json())
             .catch(this.handleError);
     }
 
-    getVocabularies() {
-        return this.http.get(`${this.endpoint}/vocabulary/by/type`)
+    getVocabularies(type?: string) {
+        return this.http.get(`${this.endpoint}/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`)
             .map(res => res.json())
+            .map(e => e.results.reduce((accumulator, value) => {
+                    accumulator[value.resource.id] = value.resource.name;
+                    return accumulator;
+                }, {}))
             .catch(this.handleError);
     }
 
@@ -69,32 +75,32 @@ export class ResourceService {
     uploadService(service: Service, shouldPut: boolean) {
         let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
 
-        return this.http[shouldPut? "put": "post"](this.endpoint + "/service", JSON.stringify(service), args)
+        return this.http[shouldPut ? "put" : "post"](this.endpoint + "/service", JSON.stringify(service), args)
             .map(res => <Service> res.json())
             // .map(this.extractData)
             .catch(this.handleError);
     }
 
-    static removeNulls(obj){
+    static removeNulls(obj) {
         var isArray = obj instanceof Array;
-        for (var k in obj){
-            if (obj[k]===null || obj[k]==='') isArray ? obj.splice(k,1) : delete obj[k];
-            else if (typeof obj[k]=="object") {
+        for (var k in obj) {
+            if (obj[k] === null || obj[k] === '') isArray ? obj.splice(k, 1) : delete obj[k];
+            else if (typeof obj[k] == "object") {
                 if (typeof obj[k].value != 'undefined' && typeof obj[k].lang != 'undefined')
-                    if (obj[k].value == '' && obj[k].lang=='en')
+                    if (obj[k].value == '' && obj[k].lang == 'en')
                         obj[k].lang = '';
                 ResourceService.removeNulls(obj[k]);
             }
-            if(obj[k] instanceof Array && obj[k].length == 0) delete obj[k];
+            if (obj[k] instanceof Array && obj[k].length == 0) delete obj[k];
         }
     }
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.data || { };
+        return body.data || {};
     }
 
-    private handleError (error: Response | any) {
+    private handleError(error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
         let errMsg = "";
