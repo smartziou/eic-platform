@@ -156,12 +156,12 @@
                                         <div class="">
                                             <div class="uk-first-column actionIcons uk-inline-block" style="width: 20%">
                                                 <div>
-                                                    <a (click)="addToFavorites(resourceInfo.resource.id)">
+                                                    <a (click)="addToFavorites(resourceInfo.resource.id)" title="Favorites" uk-tooltip="delay: 500">
                                                         <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
                                                 <div class="uk-margin-small-top">
-                                                    <a (click)="addToCompare(resourceInfo.resource.id)">
+                                                    <a (click)="addToCompare(resourceInfo.resource.id)" title="Compare list" uk-tooltip="delay: 500">
                                                         <i [ngClass]="{'blueActionIcons': servicesToCompare.includes(resourceInfo.resource.id)}"
                                                            class="fa fa-compress fa-flip-horizontal fa-lg" aria-hidden="true"></i>
                                                     </a>

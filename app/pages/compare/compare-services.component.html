@@ -54,10 +54,10 @@
                             <!--<th *ngFor="let service of services">-->
                                <div class="uk-card uk-card-default" style="height: 270px">
                                    <div class="actionIcons">
-                                       <a (click)="addToFavorites(service.id)" class="uk-align-left">
+                                       <a (click)="addToFavorites(service.id)" class="uk-align-left" title="Favorites" uk-tooltip="delay: 500">
                                            <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                                        </a>
-                                       <a (click)="removeFromComparison(service.id)" class="uk-align-right">
+                                       <a (click)="removeFromComparison(service.id)" class="uk-align-right" title="Remove from comparison list" uk-tooltip="delay: 500">
                                            <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
                                        </a>
                                    </div>
