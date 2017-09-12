@@ -97,9 +97,29 @@ export abstract class ServiceFormComponent implements OnInit {
         "pricingModel": ["", Validators.required],
         "serviceLevelAgreement": [""]
     };
+    private providers: any = null;
+    private phases: any = null;
+    private trls: any = {
+        "7": "Operational prototype demonstration",
+        "8": "Qualified through test and demonstration",
+        "9": "Proven through successful operations"
+    };
 
     ngOnInit() {
-        this.resourceService.getVocabularies().subscribe(this.onVocabularies.bind(this), console.error);
+        this.resourceService.getVocabularies("Provider").subscribe(
+            suc => {
+                this.providers = suc;
+                console.log(suc);
+            },
+            err => console.error(err)
+        );
+        this.resourceService.getVocabularies("Phase").subscribe(
+            suc => {
+                this.phases = suc;
+                console.log(suc);
+            },
+            err => console.error(err)
+        );
     }
 
     onVocabularies(vocabularies) {

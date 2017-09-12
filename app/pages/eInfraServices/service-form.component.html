@@ -67,11 +67,13 @@
                                         <input class="uk-input" type="text" formControlName="userBase"
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('userBase').valid}">
                                     </form-inline>
-                                    <form-inline [description]="providerDesc" [params]="'tooltip'"
+                                    <form-inline *ngIf="this.providers" [description]="providerDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('provider').valid">
-                                        <input class="uk-input" type="text" formControlName="provider"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
+                                        <select formControlName="provider" [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
+                                            <option *ngFor="let c of providers | keys" [ngValue]="c">{{providers[c]}}</option>
+                                        </select>
                                     </form-inline>
+                                    <div></div>
                                     <form-inline [description]="fundingSourcesDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('fundingSources').valid">
                                         <input class="uk-input" type="text" formControlName="fundingSources"
@@ -107,16 +109,20 @@
                                         <input class="uk-input" type="text" formControlName="versionHistory"
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('versionHistory').valid}">
                                     </form-inline>
-                                    <form-inline [description]="phaseDesc" [params]="'tooltip'"
+                                    <form-inline *ngIf="this.phases" [description]="phaseDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('phase').valid">
-                                        <input class="uk-input" type="text" formControlName="phase"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('phase').valid}">
+                                        <select formControlName="phase" [ngClass]="{'uk-form-danger': !serviceForm.get('phase').valid}">
+                                            <option *ngFor="let c of phases | keys" [ngValue]="c">{{phases[c]}}</option>
+                                        </select>
                                     </form-inline>
-                                    <form-inline [description]="technologyReadinessLevelDesc" [params]="'tooltip'"
+                                    <div></div>
+                                    <form-inline *ngIf="this.trls" [description]="technologyReadinessLevelDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('technologyReadinessLevel').valid">
-                                        <input class="uk-input" type="text" formControlName="technologyReadinessLevel"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
+                                        <select formControlName="technologyReadinessLevel" [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
+                                            <option *ngFor="let c of trls | keys" [ngValue]="c">{{trls[c]}}</option>
+                                        </select>
                                     </form-inline>
+                                    <div></div>
                                     <form-inline [description]="categoryDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('category').valid">
                                         <input class="uk-input" type="text" formControlName="category"
