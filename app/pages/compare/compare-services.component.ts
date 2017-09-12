@@ -56,11 +56,16 @@ export class CompareServicesComponent implements OnInit {
                     }
                 }
 
-                // console.log('URL Parameters', this.urlParameters);
-                // request results from the registry
-                this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(
-                    services => this.services = services,
-                    error => this.handleError('System error loading services', <any>error));
+                if(this.urlParameters[0].values.length>4) {
+                    this.errorMessage = 'The maximum number of services for comparison is 4';
+                } else {
+                    // console.log('URL Parameters', this.urlParameters);
+                    // request results from the registry
+                    this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(
+                        services => this.services = services,
+                        error => this.handleError('System error loading services', <any>error));
+                }
+
             });
     }
 
