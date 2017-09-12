@@ -194,6 +194,10 @@ export class SearchComponent {
                 }
             }
             categoryIndex ++;
+
+            if(category==='query') {
+                this.searchForm.get('query').setValue('');
+            }
         }
 
         this.navigateUsingParameters();
@@ -287,7 +291,7 @@ export class SearchComponent {
         var from: number = 0;
         var to: number = 9;
 
-        this.updatePagingURLParameters(from, to);
+        this.updatePagingURLParameters(from);
         this.navigateUsingParameters();
     }
 
@@ -299,7 +303,7 @@ export class SearchComponent {
         from -= this.pageSize;
         to -= this.pageSize;
 
-        this.updatePagingURLParameters(from, to);
+        this.updatePagingURLParameters(from);
         this.navigateUsingParameters();
     }
 
@@ -311,7 +315,7 @@ export class SearchComponent {
         from += this.pageSize;
         to += this.pageSize;
 
-        this.updatePagingURLParameters(from, to);
+        this.updatePagingURLParameters(from);
         this.navigateUsingParameters();
     }
 
@@ -320,25 +324,19 @@ export class SearchComponent {
         var from: number = Math.floor(this.searchResults.total/this.pageSize) * this.pageSize;
         var to: number = this.searchResults.total - 1;
 
-        this.updatePagingURLParameters(from, to);
+        this.updatePagingURLParameters(from);
         this.navigateUsingParameters();
     }
 
-    updatePagingURLParameters(from: number, to: number) {
+    updatePagingURLParameters(from: number) {
 
         var foundFromCategory = false;
-        var foundToCategory = false;
 
         for (let urlParameter of this.urlParameters) {
             if(urlParameter.key === 'from') {
                 foundFromCategory = true;
                 urlParameter.values = [];
                 urlParameter.values.push(from+'');
-            }
-            if(urlParameter.key === 'to') {
-                foundToCategory = true;
-                urlParameter.values = [];
-                urlParameter.values.push(to+'');
             }
         }
         if(!foundFromCategory) {
@@ -347,13 +345,6 @@ export class SearchComponent {
                 values: [from+'']
             };
             this.urlParameters.push(newFromParameter);
-        }
-        if(!foundToCategory) {
-            var newToParameter: URLParameter = {
-                key: 'to',
-                values: [to+'']
-            };
-            this.urlParameters.push(newToParameter);
         }
     }
 
