@@ -128,11 +128,18 @@
                                         <input class="uk-input" type="text" formControlName="category"
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid}">
                                     </form-inline>
-                                    <form-inline [description]="subcategoryDesc" [params]="'tooltip'"
+                                    <div></div>
+                                    <form-inline *ngIf="this.vocabularies" [description]="subcategoryDesc"
+                                                 [params]="'tooltip'"
                                                  [valid]="serviceForm.get('subcategory').valid">
-                                        <input class="uk-input" type="text" formControlName="subcategory"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('subcategory').valid}">
+                                        <select formControlName="subcategory"
+                                                [ngClass]="{'uk-form-danger': !serviceForm.get('subcategory').valid}">
+                                            <option *ngFor="let c of this.vocabularies.Subcategory | keys"
+                                                    [ngValue]="c">{{this.vocabularies.Subcategory[c]}}
+                                            </option>
+                                        </select>
                                     </form-inline>
+                                    <div></div>
                                     <form-repeat-inline [component]="countriesComponent" [parentGroup]="serviceForm"
                                                         [name]="'countries'" [required]="true"
                                                         [description]="countriesDesc">
