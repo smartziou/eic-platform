@@ -32,9 +32,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
 
     onService(service) {
         ResourceService.removeNulls(service);
-        setTimeout(() => {
-            this.serviceForm.patchValue(service)
-        }, 1000);
+        this.serviceForm.patchValue(service)
     }
 
     onSuccess(service) {
