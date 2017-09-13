@@ -70,7 +70,7 @@
                                     <form-inline *ngIf="this.providers" [description]="providerDesc"
                                                  [params]="'tooltip'"
                                                  [valid]="serviceForm.get('provider').valid">
-                                        <select formControlName="provider"
+                                        <select formControlName="provider" class="uk-select"
                                                 [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
                                             <option *ngFor="let c of this.providers | keys" [ngValue]="c">
                                                 {{this.providers[c]}}
