@@ -109,17 +109,25 @@
                                         <input class="uk-input" type="text" formControlName="versionHistory"
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('versionHistory').valid}">
                                     </form-inline>
-                                    <form-inline *ngIf="this.phases" [description]="phaseDesc" [params]="'tooltip'"
+                                    <form-inline *ngIf="this.vocabularies" [description]="phaseDesc"
+                                                 [params]="'tooltip'"
                                                  [valid]="serviceForm.get('phase').valid">
-                                        <select formControlName="phase" [ngClass]="{'uk-form-danger': !serviceForm.get('phase').valid}">
-                                            <option *ngFor="let c of phases | keys" [ngValue]="c">{{phases[c]}}</option>
+                                        <select formControlName="phase"
+                                                [ngClass]="{'uk-form-danger': !serviceForm.get('phase').valid}">
+                                            <option *ngFor="let c of this.vocabularies.Phase | keys" [ngValue]="c">
+                                                {{this.vocabularies.Phase[c]}}
+                                            </option>
                                         </select>
                                     </form-inline>
                                     <div></div>
-                                    <form-inline *ngIf="this.trls" [description]="technologyReadinessLevelDesc" [params]="'tooltip'"
+                                    <form-inline *ngIf="this.vocabularies" [description]="technologyReadinessLevelDesc"
+                                                 [params]="'tooltip'"
                                                  [valid]="serviceForm.get('technologyReadinessLevel').valid">
-                                        <select formControlName="technologyReadinessLevel" [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
-                                            <option *ngFor="let c of trls | keys" [ngValue]="c">{{trls[c]}}</option>
+                                        <select formControlName="technologyReadinessLevel"
+                                                [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
+                                            <option *ngFor="let c of this.vocabularies.TechnologyReadinessLevel | keys"
+                                                    [ngValue]="c">{{this.vocabularies.TechnologyReadinessLevel[c]}}
+                                            </option>
                                         </select>
                                     </form-inline>
                                     <div></div>
