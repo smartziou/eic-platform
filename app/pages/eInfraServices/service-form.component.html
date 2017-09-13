@@ -67,10 +67,14 @@
                                         <input class="uk-input" type="text" formControlName="userBase"
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('userBase').valid}">
                                     </form-inline>
-                                    <form-inline *ngIf="this.providers" [description]="providerDesc" [params]="'tooltip'"
+                                    <form-inline *ngIf="this.providers" [description]="providerDesc"
+                                                 [params]="'tooltip'"
                                                  [valid]="serviceForm.get('provider').valid">
-                                        <select formControlName="provider" [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
-                                            <option *ngFor="let c of providers | keys" [ngValue]="c">{{providers[c]}}</option>
+                                        <select formControlName="provider"
+                                                [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
+                                            <option *ngFor="let c of this.providers | keys" [ngValue]="c">
+                                                {{this.providers[c]}}
+                                            </option>
                                         </select>
                                     </form-inline>
                                     <div></div>
