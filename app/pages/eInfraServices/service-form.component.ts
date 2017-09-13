@@ -98,13 +98,7 @@ export abstract class ServiceFormComponent implements OnInit {
         "serviceLevelAgreement": [""]
     };
     private providers: any = null;
-    private phases: any = null;
-    private trls: any = {
-        "7": "Operational prototype demonstration",
-        "8": "Qualified through test and demonstration",
-        "9": "Proven through successful operations"
-    };
-
+    private vocabularies: any = null;
     ngOnInit() {
         this.resourceService.getVocabularies("Provider").subscribe(
             suc => {
@@ -113,19 +107,24 @@ export abstract class ServiceFormComponent implements OnInit {
             },
             err => console.error(err)
         );
-        this.resourceService.getVocabularies("Phase").subscribe(
-            suc => {
-                this.phases = suc;
-                console.log(suc);
+                this.serviceForm.patchValue({});
             },
             err => console.error(err)
         );
+        this.resourceService.getVocabularies().subscribe(suc => this.onVocabularies(suc), console.error);
     }
 
     onVocabularies(vocabularies) {
-        console.log(vocabularies);
-        //service.countries = [{"entry" : "GR"}, {"entry" : "ET"}];
-        //setTimeout(() => {this.serviceForm.patchValue()},1000);
+        let ret = {};
+        Object.keys(vocabularies).forEach(e=> {
+            let item = {};
+            item[e] = vocabularies[e];
+            let prefix = e.split("_")[0];
+            ret[prefix] = ret[prefix] || {};
+            Object.assign(ret[prefix], item);
+        });
+        this.vocabularies = ret;
+        this.serviceForm.patchValue({});
     }
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder) {
