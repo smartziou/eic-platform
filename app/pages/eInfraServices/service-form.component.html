@@ -127,7 +127,7 @@
                                     <form-inline *ngIf="this.vocabularies" [description]="technologyReadinessLevelDesc"
                                                  [params]="'tooltip'"
                                                  [valid]="serviceForm.get('technologyReadinessLevel').valid">
-                                        <select formControlName="technologyReadinessLevel"
+                                        <select formControlName="technologyReadinessLevel" class="uk-select"
                                                 [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
                                             <option *ngFor="let c of this.vocabularies.TechnologyReadinessLevel | keys"
                                                     [ngValue]="c">{{this.vocabularies.TechnologyReadinessLevel[c]}}
@@ -138,7 +138,7 @@
                                     <form-inline *ngIf="this.vocabularies" [description]="categoryDesc"
                                                  [params]="'tooltip'"
                                                  [valid]="serviceForm.get('category').valid">
-                                        <select formControlName="category"
+                                        <select formControlName="category" class="uk-select"
                                                 [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid}">
                                             <option *ngFor="let c of this.vocabularies.Category | keys"
                                                     [ngValue]="c">{{this.vocabularies.Category[c]}}
@@ -149,7 +149,7 @@
                                     <form-inline *ngIf="this.vocabularies" [description]="subcategoryDesc"
                                                  [params]="'tooltip'"
                                                  [valid]="serviceForm.get('subcategory').valid">
-                                        <select formControlName="subcategory"
+                                        <select formControlName="subcategory" class="uk-select"
                                                 [ngClass]="{'uk-form-danger': !serviceForm.get('subcategory').valid}">
                                             <option *ngFor="let c of this.vocabularies.Subcategory | keys"
                                                     [ngValue]="c">{{this.vocabularies.Subcategory[c]}}
