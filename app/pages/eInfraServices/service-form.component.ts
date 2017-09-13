@@ -100,13 +100,9 @@ export abstract class ServiceFormComponent implements OnInit {
     private providers: any = null;
     private vocabularies: any = null;
     ngOnInit() {
-        this.resourceService.getVocabularies("Provider").subscribe(
+        this.resourceService.getProviders().subscribe(
             suc => {
                 this.providers = suc;
-                console.log(suc);
-            },
-            err => console.error(err)
-        );
                 this.serviceForm.patchValue({});
             },
             err => console.error(err)
