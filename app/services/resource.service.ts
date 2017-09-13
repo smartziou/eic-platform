@@ -35,11 +35,13 @@ export class ResourceService {
     getVocabularies(type?: string) {
         return this.http.get(`${this.endpoint}/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`)
             .map(res => res.json())
-            .map(e => e.results.reduce((accumulator, value) => {
-                    accumulator[value.resource.id] = value.resource.name;
-                    return accumulator;
-                }, {}))
+            .map(e => e.results.reduce(this.getActualResult, {}))
             .catch(this.handleError);
+    }
+
+    getActualResult(accumulator, value) {
+        accumulator[value.resource.id] = value.resource.name;
+        return accumulator;
     }
 
     getServices() {
@@ -67,8 +69,9 @@ export class ResourceService {
     }
 
     getProviders() {
-        return this.http.get(`${this.endpoint}/provider/hard`)
-            .map(res => <String[]> res.json())
+        return this.http.get(`${this.endpoint}/provider/all`)
+            .map(res => res.json())
+            .map(e => e.results.reduce(this.getActualResult, {}))
             .catch(this.handleError);
     }
 
