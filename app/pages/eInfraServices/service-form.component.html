@@ -123,10 +123,15 @@
                                         </select>
                                     </form-inline>
                                     <div></div>
-                                    <form-inline [description]="categoryDesc" [params]="'tooltip'"
+                                    <form-inline *ngIf="this.vocabularies" [description]="categoryDesc"
+                                                 [params]="'tooltip'"
                                                  [valid]="serviceForm.get('category').valid">
-                                        <input class="uk-input" type="text" formControlName="category"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid}">
+                                        <select formControlName="category"
+                                                [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid}">
+                                            <option *ngFor="let c of this.vocabularies.Category | keys"
+                                                    [ngValue]="c">{{this.vocabularies.Category[c]}}
+                                            </option>
+                                        </select>
                                     </form-inline>
                                     <div></div>
                                     <form-inline *ngIf="this.vocabularies" [description]="subcategoryDesc"
