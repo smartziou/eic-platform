@@ -14,8 +14,8 @@ export class CanActivateViaAuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-        // if (this.authenticationService.isUserLoggedIn()) { return true; }
-        if (getCookie('jwt') != null) return true;
+        if (this.authenticationService.isUserLoggedIn()) { return true; }
+
         // Store the attempted URL for redirecting
         this.authenticationService.redirectUrl = state.url;
 
