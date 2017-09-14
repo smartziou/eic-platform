@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Service} from "../../../domain/eic-model";
 import {ResourceService} from "../../../services/resource.service";
 import {Subscription} from "rxjs/Subscription";
+import {AuthenticationLocalService} from "../../../services/authentication.local.service";
 
 @Component({
     selector: 'service-landing-page',
@@ -17,7 +18,7 @@ export class ServiceLandingPageComponent {
     private sub: Subscription;
 
 
-    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService) {}
+    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {}
 
     ngOnInit() {
 
@@ -44,6 +45,14 @@ export class ServiceLandingPageComponent {
 
     getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    rateService() {
+         if (this.authenticationLocalService.loggedIn()) {
+             //Rate logic goes here
+         } else {
+             this.router.navigate(['/signIn']);
+         }
     }
 
     // process() {
