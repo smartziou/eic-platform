@@ -41,6 +41,7 @@ import {RegionsComponent} from "./pages/eInfraServices/regions.component";
 import {TermsOfUseComponent} from "./pages/eInfraServices/termsOfUse.component";
 import {RelatedServicesComponent} from "./pages/eInfraServices/relatedServices.component";
 import {TagsComponent} from "./pages/eInfraServices/tags.component";
+import {AuthenticationLocalService} from "./services/authentication.local.service";
 
 @NgModule({
     imports: [
@@ -100,7 +101,8 @@ import {TagsComponent} from "./pages/eInfraServices/tags.component";
         AuthenticationService,
         CanActivateViaAuthGuard,
         ResourceService,
-        appRoutingProviders
+        appRoutingProviders,
+        AuthenticationLocalService
     ],
     bootstrap: [ AppComponent ]
 })
