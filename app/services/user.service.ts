@@ -5,12 +5,18 @@ import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import {User} from "../domain/eic-model";
 import {Observable} from "rxjs/Rx";
-import * as util from "util";
 
 @Injectable()
 export class UserService {
 
     constructor(private http: Http) {
+    }
+
+    addFavourite(serviceID: string, userID: string): Observable<any> {
+        let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
+        return this.http.post(process.env.API_ENDPOINT + "/user/addFavourite", JSON.stringify({userID, serviceID}), args)
+            .map(res => res.json())
+            .catch(this.handleError);
     }
 
     loginUser(email: string, password: string): Observable<User> {
