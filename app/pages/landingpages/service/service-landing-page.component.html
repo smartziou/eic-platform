@@ -16,8 +16,8 @@
 
                     <div class="uk-grid">
                         <div class="uk-width-3-4@m">
-                            <img *ngIf="service.symbol" src="{{service.symbol}}">
-                            <img *ngIf="!service.symbol" src="http://fvtelibrary.com/img/user/NoLogo.png" style="max-width: 110px">
+                            <img *ngIf="service.logo" src="{{service.logo}}">
+                            <img *ngIf="!service.logo" src="http://fvtelibrary.com/img/user/NoLogo.png" style="max-width: 110px">
                             <div class="uk-display-inline-block uk-vertical-align-top uk-margin-top">
                                 <h2 *ngIf="service.brandName" class="uk-h2 uk-inline" style="margin-bottom: 5px">
                                     {{service.brandName}}
