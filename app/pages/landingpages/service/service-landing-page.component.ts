@@ -12,13 +12,16 @@ import {AuthenticationLocalService} from "../../../services/authentication.local
 })
 
 export class ServiceLandingPageComponent {
+    private Math: Math;
 
     public service: Service;
     public errorMessage: string;
     private sub: Subscription;
     private providers : any= {};
 
-    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {}
+    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {
+        this.Math = Math;
+    }
 
     ngOnInit() {
         this.resourceService.getProviders().subscribe(
@@ -51,6 +54,12 @@ export class ServiceLandingPageComponent {
 
     getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    getDeterminedInt(id) {
+        let parts = id.split(".");
+        let num = 100*parseInt(parts[0]) + parseInt(parts[1]);
+        return Math.floor(1371 + Math.abs(Math.sin(num) * 100000));
     }
 
     rateService() {
