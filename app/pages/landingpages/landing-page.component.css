@@ -14,6 +14,18 @@
     border-color: #E9a432;
 }
 
+.editButton {
+    background-color: #29b22e;
+    border-color: #29b22e;
+    color: #ffffff;
+    width: 100%;
+}
+
+.editButton:hover {
+    background-color: #0f6f13;
+    border-color: #0f6f13;
+}
+
 .tags .uk-label-primary {
     background: #214c9c none repeat scroll 0 0;
     color: #fff;
