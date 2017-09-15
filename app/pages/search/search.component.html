@@ -182,7 +182,7 @@
                                                 </div>
                                                 <div class="uk-margin-small-top">
                                                     <star-rating-comp [starType]="'svg'" [rating]="0" [step]="0.5"
-                                                                      [showHalfStars]="true" [readOnly]="true" [size]="'small'"
+                                                                      [showHalfStars]="true" [readOnly]=this.authenticationLocalService.loggedIn() [size]="'small'"
                                                                       [staticColor]="'ok'"></star-rating-comp>
                                                     <span>(0)</span>
                                                 </div>
