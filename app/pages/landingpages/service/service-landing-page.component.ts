@@ -16,11 +16,17 @@ export class ServiceLandingPageComponent {
     public service: Service;
     public errorMessage: string;
     private sub: Subscription;
-
+    private providers : any= {};
 
     constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {}
 
     ngOnInit() {
+        this.resourceService.getProviders().subscribe(
+            suc => {
+                this.providers = suc;
+            },
+            err => console.error(err)
+        );
 
         this.sub = this.route.params.subscribe(params => {
             let id = atob(params['id']);
