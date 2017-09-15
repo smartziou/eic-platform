@@ -19,11 +19,8 @@
                             <img *ngIf="service.logo" src="{{service.logo}}">
                             <img *ngIf="!service.logo" src="http://fvtelibrary.com/img/user/NoLogo.png" style="max-width: 110px">
                             <div class="uk-display-inline-block uk-vertical-align-top uk-margin-top">
-                                <h2 *ngIf="service.brandName" class="uk-h2 uk-inline" style="margin-bottom: 5px">
-                                    {{service.brandName}}
-                                </h2>
-                                <h2 *ngIf="!service.brandName" class="uk-h2 uk-inline" style="margin-bottom: 5px">
-                                    Not available
+                                <h2 class="uk-h2 uk-inline" style="margin-bottom: 5px">
+                                    {{service.brandName || "Not Available"}}
                                 </h2>
                                 <div *ngIf="service.provider">by {{service.provider}}</div>
                                 <div *ngIf="!service.provider">by --</div>
