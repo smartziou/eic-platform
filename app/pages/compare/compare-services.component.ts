@@ -1,19 +1,21 @@
 /**
  * Created by stefania on 8/1/17.
  */
-import {Component, OnInit} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from "rxjs/Subscription";
-import { Service } from "../../domain/eic-model";
-import { ResourceService } from "../../services/resource.service";
-import { SearchQuery } from "../../domain/search-query";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { URLParameter } from "../../domain/url-parameter";
+import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Subscription} from "rxjs/Subscription";
+import {Service} from "../../domain/eic-model";
+import {ResourceService} from "../../services/resource.service";
+import {SearchQuery} from "../../domain/search-query";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {URLParameter} from "../../domain/url-parameter";
+import {AuthenticationLocalService} from "../../services/authentication.local.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
     selector: 'compare-services',
     templateUrl: './compare-services.component.html',
-    styleUrls:  ['./compare-services.component.css'],
+    styleUrls: ['./compare-services.component.css'],
 })
 
 export class CompareServicesComponent implements OnInit {
@@ -26,11 +28,7 @@ export class CompareServicesComponent implements OnInit {
     public errorMessage: string;
     private sub: Subscription;
 
-
-    constructor(fb: FormBuilder,
-        private activatedRoute: ActivatedRoute,
-        private router: Router,
-        private resourceService: ResourceService) {
+    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService, private userService: UserService) {
 
         this.searchForm = fb.group({
             "query": [""],
@@ -43,7 +41,7 @@ export class CompareServicesComponent implements OnInit {
             .params
             .subscribe(params => {
 
-                this.urlParameters.splice(0,this.urlParameters.length);
+                this.urlParameters.splice(0, this.urlParameters.length);
 
                 for (var obj in params) {
                     if (params.hasOwnProperty(obj)) {
@@ -56,7 +54,7 @@ export class CompareServicesComponent implements OnInit {
                     }
                 }
 
-                if(this.urlParameters[0].values.length>4) {
+                if (this.urlParameters[0].values.length > 4) {
                     this.errorMessage = 'The maximum number of services for comparison is 4';
                 } else {
                     // console.log('URL Parameters', this.urlParameters);
@@ -74,11 +72,20 @@ export class CompareServicesComponent implements OnInit {
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(['/search', { query: searchValue.query}]);
+        this.router.navigate(['/search', {query: searchValue.query}]);
     }
 
     handleError(message: string, error) {
         this.errorMessage = message + ' (Server responded: ' + error + ')';
+    }
+
+    addToFavorites(service) {
+        if (this.authenticationLocalService.loggedIn()) {
+            this.userService.addFavourite(service, this.authenticationLocalService.getUser())
+        } else {
+            this.router.navigate(['/signIn']);
+        }
+
     }
 
     // process() {
