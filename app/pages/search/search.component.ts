@@ -10,6 +10,7 @@ import { URLParameter } from "./../../domain/url-parameter";
 import { ResourceService } from "../../services/resource.service";
 import { SearchResults } from "../../domain/search-results";
 import {Facet} from "../../domain/facet";
+import {AuthenticationLocalService} from "../../services/authentication.local.service";
 
 declare var UIkit : any;
 
@@ -42,9 +43,18 @@ export class SearchComponent {
     private foundResults = true;
     private advanced: boolean = false;
     private servicesToCompare: string[] = [];
+    private providers: any;
 
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
-                private resourceService: ResourceService) {
+                private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {
+
+        this.resourceService.getProviders().subscribe(
+            suc => {
+                this.providers = suc;
+            },
+            err => console.error(err)
+        );
+
         this.searchForm = fb.group({
             "query": [""],
         });
