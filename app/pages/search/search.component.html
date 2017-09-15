@@ -176,8 +176,7 @@
                                                 <div class="">
                                                     <a (click)="gotoDetail(resourceInfo.resource.id)">
                                                         <span>
-                                                            <img *ngIf="resourceInfo.resource.symbol" src="{{resourceInfo.resource.symbol}}">
-                                                            <img *ngIf="!resourceInfo.resource.symbol" src="http://fvtelibrary.com/img/user/NoLogo.png">
+                                                            <img src="{{resourceInfo.resource.logo || 'http://fvtelibrary.com/img/user/NoLogo.png'}}">
                                                         </span>
                                                     </a>
                                                 </div>
