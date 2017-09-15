@@ -143,4 +143,8 @@ export abstract class ServiceFormComponent implements OnInit {
         this.errorMessage = <any>error;
     }
 
+    isDev() {
+        return sessionStorage.getItem('dev') === 'aye'
+    }
+
 }

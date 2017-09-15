@@ -225,7 +225,7 @@
                                             class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}
                                     </button>
                                 </form>
-                                <pre>
+                                <pre *ngIf="this.isDev()">
                                     {{serviceForm.value | json}}
                                 </pre>
                             </div>
