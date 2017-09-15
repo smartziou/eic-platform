@@ -121,12 +121,15 @@ export class ResourceService {
     }
 
     recordHit(id: any, type: any) {
-        let hit = new Access();
-        let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
-        hit.serviceID = id;
-        hit.type = type;
-        return this.http.post(`${this.endpoint}/access/add`, JSON.stringify(hit), args)
-            .map(res => <String[]> res.json())
-            .catch(this.handleError);
+        if (sessionStorage.getItem("internal-" + id) !== "aye") {
+            let hit = new Access();
+            let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
+            hit.serviceID = id;
+            hit.type = type;
+            sessionStorage.setItem("internal-" + id, "aye");
+            return this.http.post(`${this.endpoint}/access/add`, JSON.stringify(hit), args)
+                .map(res => <String[]> res.json())
+                .catch(this.handleError);
+        }
     }
 }
