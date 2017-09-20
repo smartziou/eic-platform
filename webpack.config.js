@@ -32,9 +32,7 @@ var webpackConfig = {
             PRODUCTION: JSON.stringify(true),
             //API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://vereniki.athenarc.gr:8080/eic-registry")
             API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://dl105.madgik.di.uoa.gr:8080/eic-registry")
-        }}),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+        }})
     ],
 
     module: {
