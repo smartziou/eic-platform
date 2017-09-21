@@ -30,7 +30,6 @@ var webpackConfig = {
 
         new webpack.DefinePlugin({"process.env" : {
             PRODUCTION: JSON.stringify(true),
-            //API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://vereniki.athenarc.gr:8080/eic-registry")
             API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://dl105.madgik.di.uoa.gr:8080/eic-registry")
         }})
     ],
