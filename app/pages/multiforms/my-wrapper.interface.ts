@@ -2,7 +2,7 @@
  * Created by stefanos on 19/5/2017.
  */
 import {
-    Component, Input, ViewChild, ViewRef, OnInit, Output, EventEmitter, Injector
+    Component, Input, ViewChild, ViewRef, OnInit, Output, EventEmitter, Injector, Directive
 } from "@angular/core";
 import {MyFormDirective} from "./my-form.directive";
 import {Description} from "../eInfraServices/services.description";

@@ -34,7 +34,7 @@ import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.componen
 import {DashboardComponent} from "./pages/user/dashboard/dashboard.component";
 import {CountriesComponent} from "./pages/eInfraServices/countries.component";
 import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./pages/multiforms/my-array";
-import {InlineFormWrapper} from "./pages/multiforms/my-group.interface";
+import {InlineFormWrapper, MyGroup} from "./pages/multiforms/my-group.interface";
 import {MyFormDirective} from "./pages/multiforms/my-form.directive";
 import {LanguagesComponent} from "./pages/eInfraServices/languages.component";
 import {RegionsComponent} from "./pages/eInfraServices/regions.component";
@@ -42,6 +42,9 @@ import {TermsOfUseComponent} from "./pages/eInfraServices/termsOfUse.component";
 import {RelatedServicesComponent} from "./pages/eInfraServices/relatedServices.component";
 import {TagsComponent} from "./pages/eInfraServices/tags.component";
 import {AuthenticationLocalService} from "./services/authentication.local.service";
+import {ServiceFormComponent} from "./pages/eInfraServices/service-form.component";
+import {MyWrapper} from "./pages/multiforms/my-wrapper.interface";
+import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.component";
 
 @NgModule({
     imports: [
@@ -73,6 +76,9 @@ import {AuthenticationLocalService} from "./services/authentication.local.servic
         ServiceEditComponent,
         DashboardComponent,
         KeysPipe,
+        MyGroup,
+        ServiceFormComponent,
+        ConfirmationDialogComponent,
         CountriesComponent,
         LanguagesComponent,
         RegionsComponent,
