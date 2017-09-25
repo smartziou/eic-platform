@@ -21,7 +21,7 @@ export class CountriesComponent extends MyGroup {
         super(injector);
     }
 
-    private countries: any = {
+    countries: any = {
         "QQ": "Error fetching countries"
     };
 

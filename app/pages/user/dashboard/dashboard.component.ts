@@ -13,7 +13,9 @@ import {UserService} from "../../../services/user.service";
 })
 
 export class DashboardComponent {
-    constructor(private authenticationService: AuthenticationService, private userService: UserService) {
+
+
+    constructor(public authenticationService: AuthenticationService, public userService: UserService) {
 
     }
 }

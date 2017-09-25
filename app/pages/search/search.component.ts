@@ -22,28 +22,28 @@ declare var UIkit : any;
 
 export class SearchComponent {
 
-    private searchForm: FormGroup;
-    private errorMessage: string;
-    private sub: Subscription;
+    searchForm: FormGroup;
+    errorMessage: string;
+    sub: Subscription;
 
-    private urlParameters: URLParameter[] = [];
+    urlParameters: URLParameter[] = [];
     
-    private searchResults: SearchResults;
-    private facetOrder = ["category", "trl", "phase", "provider"];
+    searchResults: SearchResults;
+    facetOrder = ["category", "trl", "phase", "provider"];
 
-    private pageSize: number = 0;
-    private currentPage: number = 0;
-    private totalPages: number = 0;
+    pageSize: number = 0;
+    currentPage: number = 0;
+    totalPages: number = 0;
     
-    private isPreviousPageDisabled: boolean = false;
-    private isFirstPageDisabled: boolean = false;
-    private isNextPageDisabled: boolean = false;
-    private isLastPageDisabled: boolean = false;
+    isPreviousPageDisabled: boolean = false;
+    isFirstPageDisabled: boolean = false;
+    isNextPageDisabled: boolean = false;
+    isLastPageDisabled: boolean = false;
 
-    private foundResults = true;
-    private advanced: boolean = false;
-    private servicesToCompare: string[] = [];
-    private providers: any;
+    foundResults = true;
+    advanced: boolean = false;
+    servicesToCompare: string[] = [];
+    providers: any;
 
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {

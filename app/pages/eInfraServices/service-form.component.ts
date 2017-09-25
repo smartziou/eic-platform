@@ -23,13 +23,13 @@ import {TermsOfUseComponent} from "./termsOfUse.component";
 
 export abstract class ServiceFormComponent implements OnInit {
 
-    protected editMode: boolean;
-    protected serviceForm: FormGroup;
-    protected service: Service;
-    protected errorMessage: string = null;
-    protected successMessage: string = null;
-    protected submitted = false;
-    protected endpoint = process.env.API_ENDPOINT;
+    editMode: boolean;
+    serviceForm: FormGroup;
+    service: Service;
+    errorMessage: string = null;
+    successMessage: string = null;
+    submitted = false;
+    endpoint = process.env.API_ENDPOINT;
     readonly countriesDesc: sd.Description = sd.countriesDesc;
     readonly regionsDesc: sd.Description = sd.regionsDesc;
     readonly languagesDesc: sd.Description = sd.languagesDesc;
@@ -62,13 +62,13 @@ export abstract class ServiceFormComponent implements OnInit {
     readonly feedbackDesc: sd.Description = sd.feedbackDesc;
     readonly pricingModelDesc: sd.Description = sd.pricingModelDesc;
     readonly serviceLevelAgreementDesc: sd.Description = sd.serviceLevelAgreementDesc;
-    protected countriesComponent: Type<CountriesComponent> = CountriesComponent;
-    protected languagesComponent: Type<LanguagesComponent> = LanguagesComponent;
-    protected regionsComponent: Type<RegionsComponent> = RegionsComponent;
-    protected relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
-    protected tagsComponent: Type<TagsComponent> = TagsComponent;
-    protected termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
-    protected formGroupMeta = {
+    countriesComponent: Type<CountriesComponent> = CountriesComponent;
+    languagesComponent: Type<LanguagesComponent> = LanguagesComponent;
+    regionsComponent: Type<RegionsComponent> = RegionsComponent;
+    relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
+    tagsComponent: Type<TagsComponent> = TagsComponent;
+    termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
+    formGroupMeta = {
         "brandName": ["", Validators.required],
         "tagline": ["", Validators.required],
         "fullName": ["", Validators.required],
@@ -97,8 +97,8 @@ export abstract class ServiceFormComponent implements OnInit {
         "pricingModel": ["", Validators.required],
         "serviceLevelAgreement": [""]
     };
-    private providers: any = null;
-    private vocabularies: any = null;
+    providers: any = null;
+    vocabularies: any = null;
     ngOnInit() {
         this.resourceService.getProviders().subscribe(
             suc => {

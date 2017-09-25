@@ -22,7 +22,7 @@ export class RegionsComponent extends MyGroup {
         super(injector);
     }
 
-    private regions: any = {
+    regions: any = {
         "QQ": "Error fetching regions"
     };
 

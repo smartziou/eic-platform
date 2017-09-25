@@ -20,7 +20,7 @@ import {UserService} from "../../services/user.service";
 
 export class CompareServicesComponent implements OnInit {
 
-    private searchForm: FormGroup;
+    searchForm: FormGroup;
 
     private urlParameters: URLParameter[] = [];
 

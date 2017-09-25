@@ -46,7 +46,7 @@ export class MyArray extends MyGroup {
 
     private arrayData_ : Subject<any>[] = [];
 
-    protected push() {
+    push() {
         this.createView();
     }
 

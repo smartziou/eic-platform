@@ -18,15 +18,15 @@ import {Router} from "@angular/router";
 
 export class SignUpComponent {
 
-    private signUpForm: FormGroup;
-    private user: User;
-    private errorMessage: string = null;
-    private successMessage: string = null;
-    private submitted = false;
-    private providers: string[] = null;
-    private endpoint = process.env.API_ENDPOINT;
-    private showProvider: boolean = false;
-    private pass: string = "";
+    signUpForm: FormGroup;
+    user: User;
+    errorMessage: string = null;
+    successMessage: string = null;
+    submitted = false;
+    providers: string[] = null;
+    endpoint = process.env.API_ENDPOINT;
+    showProvider: boolean = false;
+    pass: string = "";
 
     ngOnInit() {
         this.resourceService.getProviders().subscribe(

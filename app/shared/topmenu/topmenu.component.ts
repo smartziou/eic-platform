@@ -17,7 +17,7 @@ export class TopMenuComponent {
 
     private oidcUrl = process.env.OIDC_ENDPOINT;
 
-    constructor(private oAuthService: AuthenticationService,private route: ActivatedRoute,private router: Router) {
+    constructor(public oAuthService: AuthenticationService,private route: ActivatedRoute,private router: Router) {
     }
 
     private loginWithState() {

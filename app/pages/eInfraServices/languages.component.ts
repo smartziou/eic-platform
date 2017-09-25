@@ -23,7 +23,7 @@ export class LanguagesComponent extends MyGroup {
         super(injector);
     }
 
-    private languages: any = {
+    languages: any = {
         "qq": "Error fetching languages"
     };
 
