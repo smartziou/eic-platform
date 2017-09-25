@@ -8,7 +8,7 @@ import {MyFormDirective} from "./my-form.directive";
 import {Description} from "../eInfraServices/services.description";
 
 
-@Component({})
+//@Directive({})
 export abstract class MyWrapper implements OnInit{
 
     @Input() public component : ViewRef;

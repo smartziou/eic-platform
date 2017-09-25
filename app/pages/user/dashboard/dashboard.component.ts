@@ -14,6 +14,7 @@ import {UserService} from "../../../services/user.service";
 
 export class DashboardComponent {
 
+    user : string = null;
 
     constructor(public authenticationService: AuthenticationService, public userService: UserService) {
 

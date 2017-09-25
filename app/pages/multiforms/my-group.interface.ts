@@ -9,7 +9,8 @@ import {Subject} from "rxjs/Subject";
  * Created by stefanos on 15/5/2017.
  */
 
-@Component({
+@Directive({
+    selector : 'hello-my-group'
 })
 export class MyGroup implements OnInit, AfterContentInit {
 

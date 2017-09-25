@@ -45,7 +45,7 @@
 
             <aside id="tm-sidebar" class="tm-sidebar uk-width-1-4@m">
 
-                <div *ngIf="searchResults" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines">
+                <div *ngIf="searchResults != null" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines">
 
                     <h3 class="uk-h3 uk-heading-bullet">Category</h3>
 
@@ -68,7 +68,7 @@
 
                 </div>
 
-                <div *ngIf="searchResults" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines uk-margin-top">
+                <div *ngIf="searchResults != null" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines uk-margin-top">
 
                     <h3 class="uk-h3 uk-heading-bullet">Further refine</h3>
 
@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                <div *ngIf="!errorMessage && searchResults" class="">
+                <div *ngIf="!errorMessage && searchResults != null" class="">
 
                     <div *ngIf="!foundResults">
                         <div data-uk-alert="" class="uk-alert uk-alert-warning">
@@ -109,7 +109,7 @@
                         </div>
                     </div>
 
-                    <div *ngIf="searchResults.results && searchResults.results.length>0">
+                    <div *ngIf="searchResults.results != null && searchResults.results.length>0">
 
                         <div *ngIf="servicesToCompare && servicesToCompare.length>0" class="uk-width-1-1 uk-row-first uk-clearfix compareButton">
                             <div class="uk-float-right">

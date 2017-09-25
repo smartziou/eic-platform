@@ -21,7 +21,7 @@ import {TermsOfUseComponent} from "./termsOfUse.component";
     styleUrls: ['./service-form.component.css'],
 })
 
-export abstract class ServiceFormComponent implements OnInit {
+export class ServiceFormComponent implements OnInit {
 
     editMode: boolean;
     serviceForm: FormGroup;
@@ -137,7 +137,7 @@ export abstract class ServiceFormComponent implements OnInit {
         }
     }
 
-    abstract onSuccess(service);
+    onSuccess(service) { throw Error('Implement me')};
 
     onUploadError(error) {
         this.errorMessage = <any>error;
