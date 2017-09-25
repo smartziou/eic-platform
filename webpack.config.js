@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var webpackMerge = require('webpack-merge');
+const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 // Webpack Config
 var webpackConfig = {
@@ -37,14 +38,14 @@ var webpackConfig = {
     module: {
         loaders: [
             // .ts files for TypeScript
-            {
-                test: /\.ts$/,
-                loaders: [
-                    'awesome-typescript-loader',
-                    'angular2-template-loader',
-                    'angular2-router-loader'
-                ]
-            },
+            // {
+            //     test: /\.ts$/,
+            //     loaders: [
+            //         'awesome-typescript-loader',
+            //         'angular2-template-loader',
+            //         'angular2-router-loader'
+            //     ]
+            // },
             { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
             { test: /\.html$/, loader: 'raw-loader' },
             { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
@@ -94,4 +95,44 @@ var defaultConfig = {
 };
 
 
-module.exports = webpackMerge(defaultConfig, webpackConfig);
+
+module.exports = function(env) {
+    if(process.env.NODE_ENV === 'production') {
+        webpackConfig.plugins.push(
+            new webpack.DefinePlugin({"process.env" : {
+                PRODUCTION: JSON.stringify(false)
+            }})
+        );
+        webpackConfig.module.loaders.push(
+            {
+                test: /\.ts$/,
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader',
+                    'angular2-router-loader'
+                ]
+            }
+        );
+    } else {
+        webpackConfig.plugins.push(
+            new AotPlugin({
+                tsConfigPath: 'tsconfig.json',
+                entryModule: path.resolve(__dirname,'./app/app.module#AppModule')
+            })
+        );
+        webpackConfig.plugins.push(
+            new webpack.DefinePlugin({"process.env" : {
+                PRODUCTION: JSON.stringify(true)
+            }})
+        );
+        webpackConfig.module.loaders.push(
+            {
+                test: /\.ts$/,
+                loaders: [
+                    '@ngtools/webpack'
+                ]
+            }
+        );
+    }
+    return webpackMerge(defaultConfig, webpackConfig);
+};
