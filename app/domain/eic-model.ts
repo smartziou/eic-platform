@@ -37,7 +37,7 @@ export class Service implements Identifiable {
     provider: string;
     providerDetails: string;
     fundingSources: string;
-    logo: URL;
+    symbol: URL;
     multimediaURL: URL;
     version: string;
     revisionDate: XMLGregorianCalendar;

@@ -101,8 +101,8 @@ export const webpageDesc = {
     recommended: false
 };
 export const logoDesc = {
-    desc: "Link to a visual representation for the service. If none exists, providers are urged to use the organization's logo",
-    label: "logo",
+    desc: "Link to a visual representation for the service. If none exists, providers are urged to use the organization's symbol",
+    label: "symbol",
     mandatory: false,
     recommended: false
 };
