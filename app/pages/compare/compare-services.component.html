@@ -156,10 +156,10 @@
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Funding sources</div>
-                                <template [ngIf]="service.fundingSources && service.fundingSources!=''">
-                                    {{service.fundingSources}}
+                                <template [ngIf]="service.funding && service.funding!=''">
+                                    {{service.funding}}
                                 </template>
-                                <template [ngIf]="!service.fundingSources || service.fundingSources==''">
+                                <template [ngIf]="!service.funding || service.funding==''">
                                     --
                                 </template>
                             </td>

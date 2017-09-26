@@ -79,9 +79,9 @@
                                     </form-inline>
                                     <div></div>
                                     <form-inline [description]="fundingSourcesDesc" [params]="'tooltip'"
-                                                 [valid]="serviceForm.get('fundingSources').valid">
-                                        <input class="uk-input" type="text" formControlName="fundingSources"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('fundingSources').valid}">
+                                                 [valid]="serviceForm.get('funding').valid">
+                                        <input class="uk-input" type="text" formControlName="funding"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('funding').valid}">
                                     </form-inline>
                                     <form-inline [description]="webpageDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('url').valid">

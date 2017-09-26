@@ -99,11 +99,11 @@
                             <dd>Not available</dd>
                         </template>
 
-                        <template [ngIf]="service.fundingSources && service.fundingSources!=''">
+                        <template [ngIf]="service.funding && service.funding!=''">
                             <dt>Funding sources</dt>
-                            <dd>{{service.fundingSources}}</dd>
+                            <dd>{{service.funding}}</dd>
                         </template>
-                        <template [ngIf]="!service.fundingSources || service.fundingSources==''">
+                        <template [ngIf]="!service.funding || service.funding==''">
                             <dt>Funding sources</dt>
                             <dd>Not available</dd>
                         </template>

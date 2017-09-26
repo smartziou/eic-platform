@@ -35,7 +35,6 @@ export class Service implements Identifiable {
     userValue: string;
     userBase: string;
     provider: string;
-    fundingSources: string;
     symbol: URL;
     multimediaURL: URL;
     providerDescription: string;
@@ -61,6 +60,7 @@ export class Service implements Identifiable {
     averageRating: number;
     ratings: number;
     isPublic: boolean;
+    funding: string;
     externalHits: number;
     internalHits: number;
     favouriteCount: number;
