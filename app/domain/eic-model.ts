@@ -1,4 +1,4 @@
-// Generated using typescript-generator version 1.27.339 on 2017-09-11 16:43:21.
+// Generated using typescript-generator version 1.27.339 on 2017-09-26 17:14:53.
 
 export class Access implements Identifiable {
     id: string;
@@ -34,9 +34,9 @@ export class Service implements Identifiable {
     targetUsers: string;
     userValue: string;
     userBase: string;
-    provider: string;
     symbol: URL;
     multimediaURL: URL;
+    provider: string;
     providerDescription: string;
     version: string;
     lastUpdate: XMLGregorianCalendar;
@@ -59,13 +59,13 @@ export class Service implements Identifiable {
     price: URL;
     serviceLevelAgreement: URL;
     termOfUse: URL[];
-    averageRating: number;
-    ratings: number;
-    isPublic: boolean;
     funding: string;
     externalHits: number;
     internalHits: number;
     favouriteCount: number;
+    averageRating: number;
+    ratings: number;
+    isPublic: boolean;
 }
 
 export class Vocabulary implements Identifiable {
