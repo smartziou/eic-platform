@@ -33,9 +33,9 @@
                                 <form [formGroup]="serviceForm" role="form" class="m-t"
                                       (ngSubmit)="onSubmit(serviceForm.value, serviceForm.valid)">
                                     <form-inline [description]="brandNameDesc" [params]="'tooltip'"
-                                                 [valid]="serviceForm.get('brandName').valid">
-                                        <input class="uk-input" type="text" formControlName="brandName"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('brandName').valid}">
+                                                 [valid]="serviceForm.get('name').valid">
+                                        <input class="uk-input" type="text" formControlName="name"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('name').valid}">
                                     </form-inline>
                                     <form-inline [description]="fullNameDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('fullName').valid">

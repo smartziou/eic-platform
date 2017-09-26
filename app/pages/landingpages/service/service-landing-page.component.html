@@ -20,7 +20,7 @@
                             <img *ngIf="!service.logo" src="http://fvtelibrary.com/img/user/NoLogo.png" style="max-width: 110px">
                             <div class="uk-display-inline-block uk-vertical-align-top uk-margin-top">
                                 <h2 class="uk-h2 uk-inline" style="margin-bottom: 5px">
-                                    {{service.brandName || "Not Available"}}
+                                    {{service.name || "Not Available"}}
                                 </h2>
                                 <div>by {{service.provider? this.providers[service.provider] : "--" }}</div>
                             </div>

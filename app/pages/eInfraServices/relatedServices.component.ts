@@ -42,7 +42,7 @@ export class RelatedServicesComponent extends MyGroup {
 
     transformInput(input) {
         return Object.keys(input).reduce((accumulator, value) => {
-            accumulator[value] = input[value][0].provider + " - " + input[value][0].brandName;
+            accumulator[value] = input[value][0].provider + " - " + input[value][0].name;
             return accumulator;
         }, {});
     }

@@ -25,7 +25,7 @@ export class Provider implements Identifiable {
 
 export class Service implements Identifiable {
     id: string;
-    brandName: string;
+    name: string;
     tagline: string;
     fullName: string;
     description: string;
