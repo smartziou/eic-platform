@@ -109,9 +109,9 @@
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('lastUpdate').valid}">
                                     </form-inline>
                                     <form-inline [description]="versionHistoryDesc" [params]="'tooltip'"
-                                                 [valid]="serviceForm.get('versionHistory').valid">
-                                        <input class="uk-input" type="text" formControlName="versionHistory"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('versionHistory').valid}">
+                                                 [valid]="serviceForm.get('changeLog').valid">
+                                        <input class="uk-input" type="text" formControlName="changeLog"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('changeLog').valid}">
                                     </form-inline>
                                     <form-inline *ngIf="this.vocabularies" [description]="phaseDesc"
                                                  [params]="'tooltip'"

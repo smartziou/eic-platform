@@ -40,9 +40,9 @@ export class Service implements Identifiable {
     multimediaURL: URL;
     providerDescription: string;
     version: string;
-    versionHistory: string;
     phase: string;
     lastUpdate: XMLGregorianCalendar;
+    changeLog: string;
     trl: string;
     category: string;
     subcategory: string;
