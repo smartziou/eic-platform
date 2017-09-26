@@ -40,10 +40,10 @@ export class Service implements Identifiable {
     symbol: URL;
     multimediaURL: URL;
     version: string;
-    revisionDate: XMLGregorianCalendar;
     versionHistory: string;
     phase: string;
     technologyReadinessLevel: string;
+    lastUpdate: XMLGregorianCalendar;
     category: string;
     subcategory: string;
     country: string[];

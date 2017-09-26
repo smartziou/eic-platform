@@ -104,9 +104,9 @@
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('version').valid}">
                                     </form-inline>
                                     <form-inline [description]="revisionDateDesc" [params]="'tooltip'"
-                                                 [valid]="serviceForm.get('revisionDate').valid">
-                                        <input class="uk-input" type="text" formControlName="revisionDate"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('revisionDate').valid}">
+                                                 [valid]="serviceForm.get('lastUpdate').valid">
+                                        <input class="uk-input" type="text" formControlName="lastUpdate"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('lastUpdate').valid}">
                                     </form-inline>
                                     <form-inline [description]="versionHistoryDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('versionHistory').valid">
