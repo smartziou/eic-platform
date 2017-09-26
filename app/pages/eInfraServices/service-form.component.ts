@@ -69,7 +69,7 @@ export class ServiceFormComponent implements OnInit {
     tagsComponent: Type<TagsComponent> = TagsComponent;
     termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
     formGroupMeta = {
-        "brandName": ["", Validators.required],
+        "name": ["", Validators.required],
         "tagline": ["", Validators.required],
         "fullName": ["", Validators.required],
         "description": ["", Validators.required],
@@ -78,23 +78,23 @@ export class ServiceFormComponent implements OnInit {
         "userValue": [""],
         "userBase": [""],
         "provider": ["", Validators.required],
-        "fundingSources": [""],
-        "webpage": ["", Validators.compose([Validators.required, URLValidator])],
-        "logo": ["", Validators.compose([Validators.required, URLValidator])],
+        "funding": [""],
+        "url": ["", Validators.compose([Validators.required, URLValidator])],
+        "symbol": ["", Validators.compose([Validators.required, URLValidator])],
         "multimediaURL": ["", URLValidator],
         "version": [""],
-        "revisionDate": [""],
-        "versionHistory": [""],
-        "phase": ["", Validators.compose([Validators.required, PhaseValidator])],
-        "technologyReadinessLevel": ["", Validators.compose([Validators.required, TLRValidator])],
+        "lastUpdate": [""],
+        "changeLog": [""],
+        "lifeCycleStatus": ["", Validators.compose([Validators.required, PhaseValidator])],
+        "trl": ["", Validators.compose([Validators.required, TLRValidator])],
         "category": ["", Validators.required],
         "subcategory": ["", Validators.required],
         "request": ["", Validators.compose([Validators.required, URLValidator])],
         "helpdesk": ["", URLValidator],
-        "documentation": ["", URLValidator],
+        "userManual": ["", URLValidator],
         "trainingInformation": ["", URLValidator],
         "feedback": ["", URLValidator],
-        "pricingModel": ["", Validators.required],
+        "price": ["", Validators.required],
         "serviceLevelAgreement": [""]
     };
     providers: any = null;
