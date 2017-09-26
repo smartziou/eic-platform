@@ -35,10 +35,10 @@ export class Service implements Identifiable {
     userValue: string;
     userBase: string;
     provider: string;
-    providerDetails: string;
     fundingSources: string;
     symbol: URL;
     multimediaURL: URL;
+    providerDescription: string;
     version: string;
     versionHistory: string;
     phase: string;
