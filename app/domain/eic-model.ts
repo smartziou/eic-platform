@@ -41,6 +41,7 @@ export class Service implements Identifiable {
     version: string;
     lastUpdate: XMLGregorianCalendar;
     changeLog: string;
+    validFor: XMLGregorianCalendar;
     lifeCycleStatus: string;
     trl: string;
     category: string;
