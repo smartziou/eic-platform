@@ -151,7 +151,7 @@
                             <a>Related Services</a>
                         </li>
                         <li>
-                        <!--<li *ngIf="service.country || service.region || service.language">-->
+                        <!--<li *ngIf="service.place || service.region || service.language">-->
                             <a>Service Coverage</a>
                         </li>
                         <!--<li *ngIf="service.options || service.pricingModel || service.serviceLevelAgreement || service.termsOfUse">-->
@@ -174,7 +174,7 @@
                             <a>Related Services</a>
                         </li>
                         <li>
-                        <!--<li *ngIf="service.country || service.region || service.language">-->
+                        <!--<li *ngIf="service.place || service.region || service.language">-->
                             <a>Service Coverage</a>
                         </li>
                         <!--<li *ngIf="service.options || service.pricingModel || service.serviceLevelAgreement || service.termsOfUse">-->
@@ -231,7 +231,7 @@
                             </div>
                         </li>
                         <li>
-                        <!--<li *ngIf="service.country || service.region || service.language">-->
+                        <!--<li *ngIf="service.place || service.region || service.language">-->
                             <div class="uk-grid uk-margin-medium-top">
                                 <div class="uk-width-1-2@m">
                                     <img src="./imgs/eu-map-demo.png">
@@ -239,13 +239,13 @@
                                 <div class="uk-width-1-2@m">
                                     <dl class="uk-description-list">
 
-                                        <template [ngIf]="service.country && service.country.length>0">
+                                        <template [ngIf]="service.place && service.place.length>0">
                                             <dt>Countries</dt>
                                             <dd>
-                                                <span *ngFor="let country of service.country">{{country}}, </span>
+                                                <span *ngFor="let place of service.place">{{place}}, </span>
                                             </dd>
                                         </template>
-                                        <template [ngIf]="!service.country || service.country.length==0">
+                                        <template [ngIf]="!service.place || service.place.length==0">
                                             <dt>Countries</dt>
                                             <dd>
                                                 <span>Not available</span>

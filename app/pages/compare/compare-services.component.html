@@ -222,15 +222,10 @@
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Countries</div>
-                                <template [ngIf]="service.country && service.country!=''">
-                                    {{service.country}}
+                                <template [ngIf]="service.place && service.place!=''">
+                                    {{service.place}}
                                 </template>
-                                <template [ngIf]="!service.country || service.country==''">
-                                    --
-                                </template>
-                            </td>
-                        </tr>
-                                </template>
+                                <template [ngIf]="!service.place || service.place==''">
                                     --
                                 </template>
                             </td>
