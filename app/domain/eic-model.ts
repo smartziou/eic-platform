@@ -49,6 +49,7 @@ export class Service implements Identifiable {
     place: string[];
     language: string[];
     tag: string[];
+    requiredService: string[];
     relatedService: string[];
     request: URL;
     helpdesk: URL;
