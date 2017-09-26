@@ -345,7 +345,7 @@
                         <!--<a style="font-size: 15px">View more ></a>-->
                     </div>
                     <!--<div class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top"-->
-                         <!--*ngIf="service.request || service.helpdesk || service.documentation || service.trainingInformation || service.feedback">-->
+                         <!--*ngIf="service.request || service.helpdesk || service.userManual || service.trainingInformation || service.feedback">-->
                     <div class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top">
                         <h4>Support</h4>
                         <ul class="uk-list" style="word-wrap: break-word;">
@@ -367,11 +367,11 @@
                                 <strong>Service helpdesk: </strong>not available
                             </li>
 
-                            <li *ngIf="service.documentation">
+                            <li *ngIf="service.userManual">
                                 <strong>User manual: </strong>
-                                <a target="_blank" href="{{service.documentation}}">{{service.documentation}}</a>
+                                <a target="_blank" href="{{service.userManual}}">{{service.userManual}}</a>
                             </li>
-                            <li *ngIf="!service.documentation">
+                            <li *ngIf="!service.userManual">
                                 <strong>User manual: </strong>not available
                             </li>
 

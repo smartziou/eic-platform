@@ -51,7 +51,7 @@ export class Service implements Identifiable {
     relatedService: string[];
     request: URL;
     helpdesk: URL;
-    documentation: URL;
+    userManual: URL;
     trainingInformation: URL;
     feedback: URL;
     serviceLevelAgreement: string;

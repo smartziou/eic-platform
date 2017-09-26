@@ -193,9 +193,9 @@
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('helpdesk').valid}">
                                     </form-inline>
                                     <form-inline [description]="documentationDesc" [params]="'tooltip'"
-                                                 [valid]="serviceForm.get('documentation').valid">
-                                        <input class="uk-input" type="text" formControlName="documentation"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('documentation').valid}">
+                                                 [valid]="serviceForm.get('userManual').valid">
+                                        <input class="uk-input" type="text" formControlName="userManual"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('userManual').valid}">
                                     </form-inline>
                                     <form-inline [description]="trainingInformationDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('trainingInformation').valid">
