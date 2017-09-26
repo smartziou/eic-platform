@@ -189,10 +189,10 @@
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">TRL</div>
-                                <template [ngIf]="service.technologyReadinessLevel && service.technologyReadinessLevel!=''">
-                                    {{service.technologyReadinessLevel}}
+                                <template [ngIf]="service.trl && service.trl!=''">
+                                    {{service.trl}}
                                 </template>
-                                <template [ngIf]="!service.technologyReadinessLevel || service.technologyReadinessLevel==''">
+                                <template [ngIf]="!service.trl || service.trl==''">
                                     --
                                 </template>
                             </td>

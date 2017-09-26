@@ -126,9 +126,9 @@
                                     <div></div>
                                     <form-inline *ngIf="this.vocabularies" [description]="technologyReadinessLevelDesc"
                                                  [params]="'tooltip'"
-                                                 [valid]="serviceForm.get('technologyReadinessLevel').valid">
-                                        <select formControlName="technologyReadinessLevel" class="uk-select"
-                                                [ngClass]="{'uk-form-danger': !serviceForm.get('technologyReadinessLevel').valid}">
+                                                 [valid]="serviceForm.get('trl').valid">
+                                        <select formControlName="trl" class="uk-select"
+                                                [ngClass]="{'uk-form-danger': !serviceForm.get('trl').valid}">
                                             <option *ngFor="let c of this.vocabularies.TechnologyReadinessLevel | keys"
                                                     [ngValue]="c">{{this.vocabularies.TechnologyReadinessLevel[c]}}
                                             </option>

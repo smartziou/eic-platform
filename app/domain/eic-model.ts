@@ -42,8 +42,8 @@ export class Service implements Identifiable {
     version: string;
     versionHistory: string;
     phase: string;
-    technologyReadinessLevel: string;
     lastUpdate: XMLGregorianCalendar;
+    trl: string;
     category: string;
     subcategory: string;
     country: string[];
