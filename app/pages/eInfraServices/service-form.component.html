@@ -208,9 +208,9 @@
                                                [ngClass]="{'uk-form-danger': !serviceForm.get('feedback').valid}">
                                     </form-inline>
                                     <form-inline [description]="pricingModelDesc" [params]="'tooltip'"
-                                                 [valid]="serviceForm.get('pricingModel').valid">
-                                        <input class="uk-input" type="text" formControlName="pricingModel"
-                                               [ngClass]="{'uk-form-danger': !serviceForm.get('pricingModel').valid}">
+                                                 [valid]="serviceForm.get('price').valid">
+                                        <input class="uk-input" type="text" formControlName="price"
+                                               [ngClass]="{'uk-form-danger': !serviceForm.get('price').valid}">
                                     </form-inline>
                                     <form-inline [description]="serviceLevelAgreementDesc" [params]="'tooltip'"
                                                  [valid]="serviceForm.get('serviceLevelAgreement').valid">

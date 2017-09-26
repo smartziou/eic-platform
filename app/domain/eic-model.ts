@@ -54,8 +54,8 @@ export class Service implements Identifiable {
     documentation: URL;
     trainingInformation: URL;
     feedback: URL;
-    pricingModel: URL;
     serviceLevelAgreement: string;
+    price: URL;
     termOfUse: URL[];
     averageRating: number;
     ratings: number;

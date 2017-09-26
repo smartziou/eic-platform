@@ -154,7 +154,7 @@
                         <!--<li *ngIf="service.place || service.region || service.language">-->
                             <a>Service Coverage</a>
                         </li>
-                        <!--<li *ngIf="service.options || service.pricingModel || service.serviceLevelAgreement || service.termsOfUse">-->
+                        <!--<li *ngIf="service.options || service.price || service.serviceLevelAgreement || service.termsOfUse">-->
                         <li>
                             <a>Contractual Info</a>
                         </li>
@@ -177,7 +177,7 @@
                         <!--<li *ngIf="service.place || service.region || service.language">-->
                             <a>Service Coverage</a>
                         </li>
-                        <!--<li *ngIf="service.options || service.pricingModel || service.serviceLevelAgreement || service.termsOfUse">-->
+                        <!--<li *ngIf="service.options || service.price || service.serviceLevelAgreement || service.termsOfUse">-->
                         <li>
                             <a>Contractual Info</a>
                         </li>
@@ -282,7 +282,7 @@
                                 </div>
                             </div>
                         </li>
-                        <!--<li *ngIf="service.options || service.pricingModel || service.serviceLevelAgreement || service.termsOfUse">-->
+                        <!--<li *ngIf="service.options || service.price || service.serviceLevelAgreement || service.termsOfUse">-->
                         <li>
                             <div class="uk-margin-medium-top">
                                 <dl class="uk-description-list">
@@ -296,11 +296,11 @@
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.pricingModel && service.pricingModel!=''">
+                                    <template [ngIf]="service.price && service.price!=''">
                                         <dt>Pricing model</dt>
-                                        <dd>{{service.pricingModel}}</dd>
+                                        <dd>{{service.price}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.pricingModel || service.pricingModel==''">
+                                    <template [ngIf]="!service.price || service.price==''">
                                         <dt>Pricing model</dt>
                                         <dd>Not available</dd>
                                     </template>
