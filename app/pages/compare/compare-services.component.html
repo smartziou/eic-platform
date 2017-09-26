@@ -178,10 +178,10 @@
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Phase</div>
-                                <template [ngIf]="service.phase && service.phase!=''">
-                                    {{service.phase}}
+                                <template [ngIf]="service.lifeCycleStatus && service.lifeCycleStatus!=''">
+                                    {{service.lifeCycleStatus}}
                                 </template>
-                                <template [ngIf]="!service.phase || service.phase==''">
+                                <template [ngIf]="!service.lifeCycleStatus || service.lifeCycleStatus==''">
                                     --
                                 </template>
                             </td>

@@ -132,7 +132,7 @@ export const versionHistoryDesc = {
 };
 export const phaseDesc = {
     desc: "Is used to tag the service to the full service cycle: e.g., discovery, alpha (prototype available for closed set of users), beta (service being developed while available for testing publicly), production, retired (not anymore offered)",
-    label: "phase",
+    label: "lifeCycleStatus",
     mandatory: false,
     recommended: false
 };

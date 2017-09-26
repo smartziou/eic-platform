@@ -115,9 +115,9 @@
                                     </form-inline>
                                     <form-inline *ngIf="this.vocabularies" [description]="phaseDesc"
                                                  [params]="'tooltip'"
-                                                 [valid]="serviceForm.get('phase').valid">
-                                        <select formControlName="phase" class="uk-select"
-                                                [ngClass]="{'uk-form-danger': !serviceForm.get('phase').valid}">
+                                                 [valid]="serviceForm.get('lifeCycleStatus').valid">
+                                        <select formControlName="lifeCycleStatus" class="uk-select"
+                                                [ngClass]="{'uk-form-danger': !serviceForm.get('lifeCycleStatus').valid}">
                                             <option *ngFor="let c of this.vocabularies.Phase | keys" [ngValue]="c">
                                                 {{this.vocabularies.Phase[c]}}
                                             </option>

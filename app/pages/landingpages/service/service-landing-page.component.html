@@ -57,12 +57,12 @@
 
                     <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
 
-                    <!--<div *ngIf="service.phase || servtrlevel || service.category || service.subcategory"-->
+                    <!--<div *ngIf="service.lifeCycleStatus || service.trl || service.category || service.subcategory"-->
                          <!--class="tags">-->
                         <!--<span title="Category" uk-tooltip="delay: 500" *ngIf="service.category" class="uk-label uk-label-primary">{{service.category}}</span>-->
                         <!--<span title="Subcategory" uk-tooltip="delay: 500" *ngIf="service.subcategory" class="uk-label uk-label-primary">{{service.subcategory}}</span>-->
-                        <!--<span title="Technology Readiness Level" uk-tooltip="delay: 500" *ngIf="servtrlevel" class="uk-label uk-label-primary">TRL {{servtrlevel}}</span>-->
-                        <!--<span title="Phase" uk-tooltip="delay: 500" *ngIf="service.phase" class="uk-label uk-label-primary">{{service.phase}}</span>-->
+                        <!--<span title="Technology Readiness Level" uk-tooltip="delay: 500" *ngIf="service.trl" class="uk-label uk-label-primary">TRL {{service.trl}}</span>-->
+                        <!--<span title="Phase" uk-tooltip="delay: 500" *ngIf="service.lifeCycleStatus" class="uk-label uk-label-primary">{{service.lifeCycleStatus}}</span>-->
                     <!--</div>-->
                     <div class="tags">
                         <span title="Category" uk-tooltip="delay: 500" *ngIf="service.category" class="uk-label uk-label-primary">{{service.category}}</span>
@@ -71,8 +71,8 @@
                         <span title="Subcategory" uk-tooltip="delay: 500" *ngIf="!service.subcategory" class="uk-label uk-label-primary">Service subcategory not available</span>
                         <span title="Technology Readiness Level" uk-tooltip="delay: 500" *ngIf="service.trl" class="uk-label uk-label-primary">TRL {{service.trl}}</span>
                         <span title="Technology Readiness Level" uk-tooltip="delay: 500" *ngIf="!service.trl" class="uk-label uk-label-primary">TRL not available</span>
-                        <span title="Phase" uk-tooltip="delay: 500" *ngIf="service.phase" class="uk-label uk-label-primary">{{service.phase}}</span>
-                        <span title="Phase" uk-tooltip="delay: 500" *ngIf="!service.phase" class="uk-label uk-label-primary">Phase not available</span>
+                        <span title="Phase" uk-tooltip="delay: 500" *ngIf="service.lifeCycleStatus" class="uk-label uk-label-primary">{{service.lifeCycleStatus}}</span>
+                        <span title="Phase" uk-tooltip="delay: 500" *ngIf="!service.lifeCycleStatus" class="uk-label uk-label-primary">Phase not available</span>
                     </div>
 
                     <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">

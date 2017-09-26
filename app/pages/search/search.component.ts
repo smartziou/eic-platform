@@ -29,7 +29,7 @@ export class SearchComponent {
     urlParameters: URLParameter[] = [];
     
     searchResults: SearchResults;
-    facetOrder = ["category", "trl", "phase", "provider"];
+    facetOrder = ["category", "trl", "lifeCycleStatus", "provider"];
 
     pageSize: number = 0;
     currentPage: number = 0;
