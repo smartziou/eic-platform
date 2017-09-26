@@ -230,17 +230,22 @@
                                 </template>
                             </td>
                         </tr>
-                        <tr>
-                            <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
-                                <div class="fieldName">Regions</div>
-                                <template [ngIf]="service.region && service.region!=''">
-                                    {{service.region}}
                                 </template>
-                                <template [ngIf]="!service.region || service.region==''">
                                     --
                                 </template>
                             </td>
                         </tr>
+                        <!--<tr>-->
+                            <!--<td *ngFor="let service of services" class="uk-width-1-{{services.length}}">-->
+                                <!--<div class="fieldName">Regions</div>-->
+                                <!--<template [ngIf]="service.region && service.region!=''">-->
+                                    <!--{{service.region}}-->
+                                <!--</template>-->
+                                <!--<template [ngIf]="!service.region || service.region==''">-->
+                                    <!--&#45;&#45;-->
+                                <!--</template>-->
+                            <!--</td>-->
+                        <!--</tr>-->
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Languages</div>

@@ -47,7 +47,6 @@ export class Service implements Identifiable {
     category: string;
     subcategory: string;
     country: string[];
-    region: string[];
     language: string[];
     tag: string[];
     relatedService: string[];

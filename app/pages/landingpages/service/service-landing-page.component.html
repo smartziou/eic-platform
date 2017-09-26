@@ -252,18 +252,18 @@
                                             </dd>
                                         </template>
 
-                                        <template [ngIf]="service.region && service.region.length>0">
-                                            <dt>Regions</dt>
-                                            <dd>
-                                                <span *ngFor="let region of service.region">{{region}}, </span>
-                                            </dd>
-                                        </template>
-                                        <template [ngIf]="!service.region || service.region.length==0">
-                                            <dt>Regions</dt>
-                                            <dd>
-                                                <span>Not available</span>
-                                            </dd>
-                                        </template>
+                                        <!--<template [ngIf]="service.region && service.region.length>0">-->
+                                            <!--<dt>Regions</dt>-->
+                                            <!--<dd>-->
+                                                <!--<span *ngFor="let region of service.region">{{region}}, </span>-->
+                                            <!--</dd>-->
+                                        <!--</template>-->
+                                        <!--<template [ngIf]="!service.region || service.region.length==0">-->
+                                            <!--<dt>Regions</dt>-->
+                                            <!--<dd>-->
+                                                <!--<span>Not available</span>-->
+                                            <!--</dd>-->
+                                        <!--</template>-->
 
                                         <template [ngIf]="service.language && service.language.length>0">
                                             <dt>Languages</dt>
