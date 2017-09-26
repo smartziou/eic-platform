@@ -25,6 +25,7 @@ export class Provider implements Identifiable {
 
 export class Service implements Identifiable {
     id: string;
+    url: URL;
     name: string;
     tagline: string;
     fullName: string;
@@ -36,7 +37,6 @@ export class Service implements Identifiable {
     provider: string;
     providerDetails: string;
     fundingSources: string;
-    webpage: URL;
     logo: URL;
     multimediaURL: URL;
     version: string;

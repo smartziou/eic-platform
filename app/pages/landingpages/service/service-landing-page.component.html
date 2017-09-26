@@ -109,14 +109,14 @@
                         </template>
                     </dl>
 
-                    <div class="" *ngIf="service.webpage">
+                    <div class="" *ngIf="service.url">
                         <p>
-                            <a target="_blank" href="{{service.webpage}}"><span style="color: #d1303a">{{service.webpage}}</span></a>
+                            <a target="_blank" href="{{service.url}}"><span style="color: #d1303a">{{service.url}}</span></a>
                         </p>
                     </div>
-                    <div class="" *ngIf="!service.webpage">
+                    <div class="" *ngIf="!service.url">
                         <p>
-                            <span style="color: #d1303a">Service webpage not available</span>
+                            <span style="color: #d1303a">Service url not available</span>
                         </p>
                     </div>
 

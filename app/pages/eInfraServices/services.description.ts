@@ -95,8 +95,8 @@ export const fundingSourcesDesc = {
     recommended: false
 };
 export const webpageDesc = {
-    desc: "Link to a webpage providing information about the service. This webpage is usually hosted and maintained by the service provider. It contains fresh and additional information, such as what APIs are supported or links to the documentation",
-    label: "webpage",
+    desc: "Link to a url providing information about the service. This url is usually hosted and maintained by the service provider. It contains fresh and additional information, such as what APIs are supported or links to the documentation",
+    label: "url",
     mandatory: false,
     recommended: false
 };
