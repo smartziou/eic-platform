@@ -6,8 +6,8 @@ export class Description {
 }
 export const countriesDesc = {
     desc: "List of countries within which the service is available",
-    label: "countries",
-    mandatory: false,
+    label: "places",
+    mandatory: true,
     recommended: false
 };
 // export const regionsDesc = {
@@ -19,13 +19,13 @@ export const countriesDesc = {
 export const languagesDesc = {
     desc: "List of languages in which the service is available",
     label: "languages",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const tagsDesc = {
     desc: "Field to facilitate searching based on keywords",
     label: "tags",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const relatedServicesDesc = {
@@ -42,7 +42,7 @@ export const termsOfUseDesc = {
 };
 export const brandNameDesc = {
     desc: "Brief marketing name of service as assigned by the service provider. Should be descriptive from a customer point of view, and should be quite simple, such that someone non-technical is able to understand what the service is about",
-    label: "brand Name",
+    label: "name",
     mandatory: true,
     recommended: false
 };
@@ -55,7 +55,7 @@ export const fullNameDesc = {
 export const descriptionDesc = {
     desc: "High-level description of what the service does in terms of functionality it provides and the resources it enables access to. Should be similar to the name described above, and should cover the value provided by the service, in fairly non-technical terms. These descriptions may seem obvious but help everyone within the organization understand the service, and also will be needed for the Service Catalogue, which will be shown to users and customers. It may provide also information related to the offered capacity, number of installations, underlying data that is offered",
     label: "description",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const optionsDesc = {
@@ -85,7 +85,7 @@ export const userBaseDesc = {
 export const providerDesc = {
     desc: "Organisation that manages and delivers the service and with whom the customer signs the SLA",
     label: "provider",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const fundingSourcesDesc = {
@@ -133,31 +133,31 @@ export const versionHistoryDesc = {
 export const phaseDesc = {
     desc: "Is used to tag the service to the full service cycle: e.g., discovery, alpha (prototype available for closed set of users), beta (service being developed while available for testing publicly), production, retired (not anymore offered)",
     label: "lifeCycleStatus",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const technologyReadinessLevelDesc = {
     desc: "Is used to tag the service to the Technology Readiness Level",
-    label: "TRL",
-    mandatory: false,
+    label: "trl",
+    mandatory: true,
     recommended: false
 };
 export const categoryDesc = {
     desc: "A named group of services that offer access to the same type of resource. These are external ones that are of interest to a customer",
     label: "category",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const subcategoryDesc = {
     desc: "Type of service within a category",
     label: "subcategory",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const requestDesc = {
     desc: "Link to request the service from the service provider",
     label: "request",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const helpdeskDesc = {
@@ -186,8 +186,8 @@ export const feedbackDesc = {
 };
 export const pricingModelDesc = {
     desc: "Supported payment models that apply. List of sentences each of them stating the type of payment model and the restriction that applies to it",
-    label: "pricing Model",
-    mandatory: false,
+    label: "price",
+    mandatory: true,
     recommended: false
 };
 export const serviceLevelAgreementDesc = {
