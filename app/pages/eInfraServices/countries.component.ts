@@ -30,7 +30,7 @@ export class CountriesComponent extends MyGroup {
         entry: ["", Validators.compose([Validators.required])]
     };
 
-    readonly countriesDesc: sd.Description = sd.countriesDesc;
+    readonly placesDesc: sd.Description = sd.placesDesc;
 
     ngOnInit() {
         super.ngOnInit();

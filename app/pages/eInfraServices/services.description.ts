@@ -4,7 +4,7 @@ export class Description {
     mandatory?: boolean;
     recommended?: boolean;
 }
-export const countriesDesc = {
+export const placesDesc = {
     desc: "List of countries within which the service is available",
     label: "places",
     mandatory: true,
@@ -40,7 +40,7 @@ export const termsOfUseDesc = {
     mandatory: false,
     recommended: false
 };
-export const brandNameDesc = {
+export const nameDesc = {
     desc: "Brief marketing name of service as assigned by the service provider. Should be descriptive from a customer point of view, and should be quite simple, such that someone non-technical is able to understand what the service is about",
     label: "name",
     mandatory: true,
@@ -94,13 +94,13 @@ export const fundingSourcesDesc = {
     mandatory: false,
     recommended: false
 };
-export const webpageDesc = {
+export const urlDesc = {
     desc: "Link to a url providing information about the service. This url is usually hosted and maintained by the service provider. It contains fresh and additional information, such as what APIs are supported or links to the documentation",
     label: "url",
     mandatory: false,
     recommended: false
 };
-export const logoDesc = {
+export const symbolDesc = {
     desc: "Link to a visual representation for the service. If none exists, providers are urged to use the organization's symbol",
     label: "symbol",
     mandatory: false,
@@ -118,25 +118,25 @@ export const versionDesc = {
     mandatory: false,
     recommended: false
 };
-export const revisionDateDesc = {
+export const lastUpdateDesc = {
     desc: "The date of the latest update",
     label: "revision Date",
     mandatory: false,
     recommended: false
 };
-export const versionHistoryDesc = {
+export const changeLogDesc = {
     desc: "A list of the service features added in the latest version",
     label: "version History",
     mandatory: false,
     recommended: false
 };
-export const phaseDesc = {
+export const lifeCycleStatusDesc = {
     desc: "Is used to tag the service to the full service cycle: e.g., discovery, alpha (prototype available for closed set of users), beta (service being developed while available for testing publicly), production, retired (not anymore offered)",
     label: "lifeCycleStatus",
     mandatory: true,
     recommended: false
 };
-export const technologyReadinessLevelDesc = {
+export const trlDesc = {
     desc: "Is used to tag the service to the Technology Readiness Level",
     label: "trl",
     mandatory: true,
@@ -166,9 +166,9 @@ export const helpdeskDesc = {
     mandatory: false,
     recommended: false
 };
-export const documentationDesc = {
+export const userManualDesc = {
     desc: "Link to user manual and documentation",
-    label: "documentation",
+    label: "user Manual",
     mandatory: false,
     recommended: false
 };
@@ -184,7 +184,7 @@ export const feedbackDesc = {
     mandatory: false,
     recommended: false
 };
-export const pricingModelDesc = {
+export const priceDesc = {
     desc: "Supported payment models that apply. List of sentences each of them stating the type of payment model and the restriction that applies to it",
     label: "price",
     mandatory: true,
