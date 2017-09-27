@@ -39,45 +39,45 @@
                                     <form [formGroup]="serviceForm" role="form" class="m-t"
                                           (ngSubmit)="onSubmit(serviceForm.value, serviceForm.valid)">
                                         <form-inline [description]="nameDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('name').valid && serviceForm.get('name').dirty">
+                                                     [valid]="serviceForm.get('name').valid">
                                             <input class="uk-input" type="text" formControlName="name"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('name').valid && serviceForm.get('name').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('name').valid}">
                                         </form-inline>
                                         <form-inline [description]="fullNameDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('fullName').valid && serviceForm.get('fullName').dirty">
+                                                     [valid]="serviceForm.get('fullName').valid">
                                             <input class="uk-input" type="text" formControlName="fullName"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('fullName').valid && serviceForm.get('fullName').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('fullName').valid}">
                                         </form-inline>
                                         <form-inline [description]="descriptionDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('description').valid && serviceForm.get('description').dirty">
+                                                     [valid]="serviceForm.get('description').valid">
                                             <textarea class="uk-textarea" type="text" formControlName="description" rows="5"
-                                                      [ngClass]="{'uk-form-danger': !serviceForm.get('description').valid && serviceForm.get('description').dirty}"></textarea>
+                                                      [ngClass]="{'uk-form-danger': !serviceForm.get('description').valid}"></textarea>
                                         </form-inline>
                                         <form-inline [description]="optionsDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('options').valid && serviceForm.get('options').dirty">
+                                                     [valid]="serviceForm.get('options').valid">
                                             <input class="uk-input" type="text" formControlName="options"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('options').valid && serviceForm.get('options').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('options').valid}">
                                         </form-inline>
                                         <form-inline [description]="targetUsersDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('targetUsers').valid && serviceForm.get('targetUsers').dirty">
+                                                     [valid]="serviceForm.get('targetUsers').valid">
                                             <input class="uk-input" type="text" formControlName="targetUsers"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('targetUsers').valid && serviceForm.get('targetUsers').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('targetUsers').valid}">
                                         </form-inline>
                                         <form-inline [description]="userValueDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('userValue').valid && serviceForm.get('userValue').dirty">
+                                                     [valid]="serviceForm.get('userValue').valid">
                                             <input class="uk-input" type="text" formControlName="userValue"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('userValue').valid && serviceForm.get('userValue').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('userValue').valid}">
                                         </form-inline>
                                         <form-inline [description]="userBaseDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('userBase').valid && serviceForm.get('userBase').dirty">
+                                                     [valid]="serviceForm.get('userBase').valid">
                                             <input class="uk-input" type="text" formControlName="userBase"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('userBase').valid && serviceForm.get('userBase').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('userBase').valid}">
                                         </form-inline>
                                         <form-inline *ngIf="this.providers" [description]="providerDesc"
                                                      [params]="'inline'"
-                                                     [valid]="serviceForm.get('provider').valid && serviceForm.get('provider').dirty">
+                                                     [valid]="serviceForm.get('provider').valid">
                                             <select formControlName="provider" class="uk-select"
-                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid && serviceForm.get('provider').dirty}">
+                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('provider').valid}">
                                                 <option *ngFor="let c of this.providers | keys" [ngValue]="c">
                                                     {{this.providers[c]}}
                                                 </option>
@@ -85,45 +85,45 @@
                                         </form-inline>
                                         <div></div>
                                         <form-inline [description]="fundingDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('funding').valid && serviceForm.get('funding').dirty">
+                                                     [valid]="serviceForm.get('funding').valid">
                                             <input class="uk-input" type="text" formControlName="funding"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('funding').valid && serviceForm.get('funding').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('funding').valid}">
                                         </form-inline>
                                         <form-inline [description]="urlDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('url').valid && serviceForm.get('url').dirty">
+                                                     [valid]="serviceForm.get('url').valid">
                                             <input class="uk-input" type="text" formControlName="url"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('url').valid && serviceForm.get('url').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('url').valid}">
                                         </form-inline>
                                         <form-inline [description]="symbolDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('symbol').valid && serviceForm.get('symbol').dirty">
+                                                     [valid]="serviceForm.get('symbol').valid">
                                             <input class="uk-input" type="text" formControlName="symbol"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('symbol').valid && serviceForm.get('symbol').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('symbol').valid}">
                                         </form-inline>
                                         <form-inline [description]="multimediaURLDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('multimediaURL').valid && serviceForm.get('multimediaURL').dirty">
+                                                     [valid]="serviceForm.get('multimediaURL').valid">
                                             <input class="uk-input" type="text" formControlName="multimediaURL"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('multimediaURL').valid && serviceForm.get('multimediaURL').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('multimediaURL').valid}">
                                         </form-inline>
                                         <form-inline [description]="versionDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('version').valid && serviceForm.get('version').dirty">
+                                                     [valid]="serviceForm.get('version').valid">
                                             <input class="uk-input" type="text" formControlName="version"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('version').valid && serviceForm.get('version').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('version').valid}">
                                         </form-inline>
                                         <form-inline [description]="lastUpdateDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('lastUpdate').valid && serviceForm.get('lastUpdate').dirty">
+                                                     [valid]="serviceForm.get('lastUpdate').valid">
                                             <input class="uk-input" type="text" formControlName="lastUpdate"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('lastUpdate').valid && serviceForm.get('lastUpdate').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('lastUpdate').valid}">
                                         </form-inline>
                                         <form-inline [description]="changeLogDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('changeLog').valid && serviceForm.get('changeLog').dirty">
+                                                     [valid]="serviceForm.get('changeLog').valid">
                                             <input class="uk-input" type="text" formControlName="changeLog"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('changeLog').valid && serviceForm.get('changeLog').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('changeLog').valid}">
                                         </form-inline>
                                         <form-inline *ngIf="this.vocabularies" [description]="lifeCycleStatusDesc"
                                                      [params]="'inline'"
-                                                     [valid]="serviceForm.get('lifeCycleStatus').valid && serviceForm.get('lifeCycleStatus').dirty">
+                                                     [valid]="serviceForm.get('lifeCycleStatus').valid">
                                             <select formControlName="lifeCycleStatus" class="uk-select"
-                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('lifeCycleStatus').valid && serviceForm.get('lifeCycleStatus').dirty}">
+                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('lifeCycleStatus').valid}">
                                                 <option *ngFor="let c of this.vocabularies.Phase | keys" [ngValue]="c">
                                                     {{this.vocabularies.Phase[c]}}
                                                 </option>
@@ -132,9 +132,9 @@
                                         <div></div>
                                         <form-inline *ngIf="this.vocabularies" [description]="trlDesc"
                                                      [params]="'inline'"
-                                                     [valid]="serviceForm.get('trl').valid && serviceForm.get('trl').dirty">
+                                                     [valid]="serviceForm.get('trl').valid">
                                             <select formControlName="trl" class="uk-select"
-                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('trl').valid && serviceForm.get('trl').dirty}">
+                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('trl').valid}">
                                                 <option *ngFor="let c of this.vocabularies.TechnologyReadinessLevel | keys"
                                                         [ngValue]="c">{{this.vocabularies.TechnologyReadinessLevel[c]}}
                                                 </option>
@@ -143,9 +143,9 @@
                                         <div></div>
                                         <form-inline *ngIf="this.vocabularies" [description]="categoryDesc"
                                                      [params]="'inline'"
-                                                     [valid]="serviceForm.get('category').valid && serviceForm.get('category').dirty">
+                                                     [valid]="serviceForm.get('category').valid">
                                             <select formControlName="category" class="uk-select"
-                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid && serviceForm.get('category').dirty}">
+                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('category').valid}">
                                                 <option *ngFor="let c of this.vocabularies.Category | keys"
                                                         [ngValue]="c">{{this.vocabularies.Category[c]}}
                                                 </option>
@@ -154,9 +154,9 @@
                                         <div></div>
                                         <form-inline *ngIf="this.vocabularies" [description]="subcategoryDesc"
                                                      [params]="'inline'"
-                                                     [valid]="serviceForm.get('subcategory').valid && serviceForm.get('subcategory').dirty">
+                                                     [valid]="serviceForm.get('subcategory').valid">
                                             <select formControlName="subcategory" class="uk-select"
-                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('subcategory').valid && serviceForm.get('subcategory').dirty}">
+                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('subcategory').valid}">
                                                 <option *ngFor="let c of this.vocabularies.Subcategory | keys"
                                                         [ngValue]="c">{{this.vocabularies.Subcategory[c]}}
                                                 </option>
@@ -189,39 +189,39 @@
                                         </form-repeat-inline>
                                         <div></div>
                                         <form-inline [description]="requestDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('request').valid && serviceForm.get('request').dirty">
+                                                     [valid]="serviceForm.get('request').valid">
                                             <input class="uk-input" type="text" formControlName="request"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('request').valid && serviceForm.get('request').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('request').valid}">
                                         </form-inline>
                                         <form-inline [description]="helpdeskDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('helpdesk').valid && serviceForm.get('helpdesk').dirty">
+                                                     [valid]="serviceForm.get('helpdesk').valid">
                                             <input class="uk-input" type="text" formControlName="helpdesk"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('helpdesk').valid && serviceForm.get('helpdesk').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('helpdesk').valid}">
                                         </form-inline>
                                         <form-inline [description]="userManualDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('userManual').valid && serviceForm.get('userManual').dirty">
+                                                     [valid]="serviceForm.get('userManual').valid">
                                             <input class="uk-input" type="text" formControlName="userManual"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('userManual').valid && serviceForm.get('userManual').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('userManual').valid}">
                                         </form-inline>
                                         <form-inline [description]="trainingInformationDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('trainingInformation').valid && serviceForm.get('trainingInformation').dirty">
+                                                     [valid]="serviceForm.get('trainingInformation').valid">
                                             <input class="uk-input" type="text" formControlName="trainingInformation"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('trainingInformation').valid && serviceForm.get('trainingInformation').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('trainingInformation').valid}">
                                         </form-inline>
                                         <form-inline [description]="feedbackDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('feedback').valid && serviceForm.get('feedback').dirty">
+                                                     [valid]="serviceForm.get('feedback').valid">
                                             <input class="uk-input" type="text" formControlName="feedback"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('feedback').valid && serviceForm.get('feedback').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('feedback').valid}">
                                         </form-inline>
                                         <form-inline [description]="priceDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('price').valid && serviceForm.get('price').dirty">
+                                                     [valid]="serviceForm.get('price').valid">
                                             <input class="uk-input" type="text" formControlName="price"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('price').valid && serviceForm.get('price').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('price').valid}">
                                         </form-inline>
                                         <form-inline [description]="serviceLevelAgreementDesc" [params]="'inline'"
-                                                     [valid]="serviceForm.get('serviceLevelAgreement').valid && serviceForm.get('serviceLevelAgreement').dirty">
+                                                     [valid]="serviceForm.get('serviceLevelAgreement').valid">
                                             <input class="uk-input" type="text" formControlName="serviceLevelAgreement"
-                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('serviceLevelAgreement').valid && serviceForm.get('serviceLevelAgreement').dirty}">
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('serviceLevelAgreement').valid}">
                                         </form-inline>
                                         <form-repeat-inline [component]="termsOfUseComponent" [parentGroup]="serviceForm"
                                                             [name]="'termsOfUse'" [required]="true"
