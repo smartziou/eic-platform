@@ -88,7 +88,7 @@ export const providerDesc = {
     mandatory: true,
     recommended: false
 };
-export const fundingSourcesDesc = {
+export const fundingDesc = {
     desc: "Sources of funding for the development and operation of the service",
     label: "funding Sources",
     mandatory: false,

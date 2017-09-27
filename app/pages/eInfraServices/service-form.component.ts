@@ -44,7 +44,7 @@ export class ServiceFormComponent implements OnInit {
     readonly userValueDesc: sd.Description = sd.userValueDesc;
     readonly userBaseDesc: sd.Description = sd.userBaseDesc;
     readonly providerDesc: sd.Description = sd.providerDesc;
-    readonly fundingSourcesDesc: sd.Description = sd.fundingSourcesDesc;
+    readonly fundingDesc: sd.Description = sd.fundingDesc;
     readonly urlDesc: sd.Description = sd.urlDesc;
     readonly symbolDesc: sd.Description = sd.symbolDesc;
     readonly multimediaURLDesc: sd.Description = sd.multimediaURLDesc;

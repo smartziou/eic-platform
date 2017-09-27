@@ -124,8 +124,8 @@
                                                      [valid]="serviceForm.get('lifeCycleStatus').valid && serviceForm.get('lifeCycleStatus').dirty">
                                             <select formControlName="lifeCycleStatus" class="uk-select"
                                                     [ngClass]="{'uk-form-danger': !serviceForm.get('lifeCycleStatus').valid && serviceForm.get('lifeCycleStatus').dirty}">
-                                                <option *ngFor="let c of this.vocabularies.lifeCycleStatus | keys" [ngValue]="c">
-                                                    {{this.vocabularies.lifeCycleStatus[c]}}
+                                                <option *ngFor="let c of this.vocabularies.Phase | keys" [ngValue]="c">
+                                                    {{this.vocabularies.Phase[c]}}
                                                 </option>
                                             </select>
                                         </form-inline>
@@ -135,8 +135,8 @@
                                                      [valid]="serviceForm.get('trl').valid && serviceForm.get('trl').dirty">
                                             <select formControlName="trl" class="uk-select"
                                                     [ngClass]="{'uk-form-danger': !serviceForm.get('trl').valid && serviceForm.get('trl').dirty}">
-                                                <option *ngFor="let c of this.vocabularies.trl | keys"
-                                                        [ngValue]="c">{{this.vocabularies.trl[c]}}
+                                                <option *ngFor="let c of this.vocabularies.TechnologyReadinessLevel | keys"
+                                                        [ngValue]="c">{{this.vocabularies.TechnologyReadinessLevel[c]}}
                                                 </option>
                                             </select>
                                         </form-inline>
