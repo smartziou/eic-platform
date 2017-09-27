@@ -117,27 +117,28 @@ export class MyGroup implements OnInit, AfterContentInit {
     template : `
         <template #descTemplate>{{description.desc}}</template>
 
-        <div class="uk-form-horizontal">
-            <label class="uk-width-1-5 uk-form-label">
-                <span *ngIf="description.mandatory==true && !valid"><i class="fa fa-star" style="color : red"></i></span>
-                <!--<span *ngIf="description.recommended==true"><i class="fa fa-star" style="color : green"></i></span>-->
-                <span *ngIf="params==='tooltip'"><i class="fa fa-info-circle" title="{{description.desc}}" uk-tooltip></i></span>
+        <div class="uk-form-horizontal uk-margin-bottom">
+            <label class="uk-width-1-5 uk-form-label" [ngClass]="{'required':description.mandatory}">
+                <!--<span *ngIf="description.mandatory==true && !valid"><i class="fa fa-star" style="color : red"></i></span>-->
+                <!--&lt;!&ndash;<span *ngIf="description.recommended==true"><i class="fa fa-star" style="color : green"></i></span>&ndash;&gt;-->
+                <!--<span *ngIf="params==='tooltip'"><i class="fa fa-info-circle" title="{{description.desc}}" uk-tooltip></i></span>-->
                 {{description.label}}
             </label>
             <!--<div class="form-group">-->
             <div class="uk-width-4-5 uk-form-controls" [ngClass]="{'uk-form-danger': !valid}">
                 <ng-content></ng-content>
+                <div *ngIf="params==='inline'" class="form-group">
+                    <div class="">
+                        <i><small>{{description.desc}}</small></i>
+                    </div>
+                </div>
             </div>
             <!--</div>-->
         </div>
-        <div *ngIf="params==='inline'" class="form-group">
-            <div class="col-sm-offset-2 col-md-offset-2 col-sm-{{width}} col-md-{{width}}">
-                <small>{{description.desc}}</small>
-            </div>
-        </div>
+        
 
     `,
-    styleUrls : []
+    styleUrls : ['./my-form.css']
 
 })
 export class InlineFormWrapper implements OnChanges {

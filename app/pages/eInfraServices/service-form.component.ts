@@ -133,6 +133,9 @@ export class ServiceFormComponent implements OnInit {
         if (isValid) {
             this.resourceService.uploadService(service, this.editMode).subscribe(user => this.onSuccess, error => this.onUploadError);
         } else {
+            console.log('Model is invalid');
+            this.serviceForm.markAsDirty();
+            this.serviceForm.updateValueAndValidity();
             this.errorMessage = 'Form not valid';
         }
     }

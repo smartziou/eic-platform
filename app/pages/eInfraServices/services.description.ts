@@ -43,7 +43,7 @@ export const termsOfUseDesc = {
 export const brandNameDesc = {
     desc: "Brief marketing name of service as assigned by the service provider. Should be descriptive from a customer point of view, and should be quite simple, such that someone non-technical is able to understand what the service is about",
     label: "brand Name",
-    mandatory: false,
+    mandatory: true,
     recommended: false
 };
 export const fullNameDesc = {

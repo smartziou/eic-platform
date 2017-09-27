@@ -119,7 +119,7 @@ export class MyArray extends MyGroup {
 @Component({
     selector : 'form-repeat-inline',
     template : `
-        <form-inline [description]="description">
+        <form-inline [description]="description" [params]="'inline'">
             <ng-template my-form></ng-template>
             <a class="add-new-element" (click)="push()">
                 <i class="fa fa-plus" aria-hidden="true"></i> Add {{description.label}}
@@ -178,7 +178,8 @@ export class MyArrayWrapper extends MyWrapper{
 @Component({
     selector : 'form-inline-repeat-wrapper',
     template : `
-        <div class="uk-grid uk-margin">
+        <!--<div class="uk-grid uk-margin-small-bottom">-->
+        <div class="uk-grid">
             <div class="uk-width-5-6">
                 <ng-template my-form></ng-template>
             </div>
