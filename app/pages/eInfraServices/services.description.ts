@@ -10,12 +10,12 @@ export const countriesDesc = {
     mandatory: false,
     recommended: false
 };
-export const regionsDesc = {
-    desc: "List of regions within which the service is available",
-    label: "regions",
-    mandatory: false,
-    recommended: false
-};
+// export const regionsDesc = {
+//     desc: "List of regions within which the service is available",
+//     label: "regions",
+//     mandatory: false,
+//     recommended: false
+// };
 export const languagesDesc = {
     desc: "List of languages in which the service is available",
     label: "languages",

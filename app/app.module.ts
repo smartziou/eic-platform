@@ -37,7 +37,7 @@ import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./pa
 import {InlineFormWrapper, MyGroup} from "./pages/multiforms/my-group.interface";
 import {MyFormDirective} from "./pages/multiforms/my-form.directive";
 import {LanguagesComponent} from "./pages/eInfraServices/languages.component";
-import {RegionsComponent} from "./pages/eInfraServices/regions.component";
+// import {RegionsComponent} from "./pages/eInfraServices/regions.component";
 import {TermsOfUseComponent} from "./pages/eInfraServices/termsOfUse.component";
 import {RelatedServicesComponent} from "./pages/eInfraServices/relatedServices.component";
 import {TagsComponent} from "./pages/eInfraServices/tags.component";
@@ -81,7 +81,7 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
         ConfirmationDialogComponent,
         CountriesComponent,
         LanguagesComponent,
-        RegionsComponent,
+        // RegionsComponent,
         RelatedServicesComponent,
         TagsComponent,
         TermsOfUseComponent,
@@ -95,7 +95,7 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
     entryComponents: [
         CountriesComponent,
         LanguagesComponent,
-        RegionsComponent,
+        // RegionsComponent,
         RelatedServicesComponent,
         TagsComponent,
         TermsOfUseComponent,

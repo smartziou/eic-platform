@@ -10,7 +10,7 @@ import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator"
 import * as sd from "./services.description";
 import {CountriesComponent} from "./countries.component";
 import {LanguagesComponent} from "./languages.component";
-import {RegionsComponent} from "./regions.component";
+// import {RegionsComponent} from "./regions.component";
 import {RelatedServicesComponent} from "./relatedServices.component";
 import {TagsComponent} from "./tags.component";
 import {TermsOfUseComponent} from "./termsOfUse.component";
@@ -31,7 +31,7 @@ export class ServiceFormComponent implements OnInit {
     submitted = false;
     endpoint = process.env.API_ENDPOINT;
     readonly countriesDesc: sd.Description = sd.countriesDesc;
-    readonly regionsDesc: sd.Description = sd.regionsDesc;
+    // readonly regionsDesc: sd.Description = sd.regionsDesc;
     readonly languagesDesc: sd.Description = sd.languagesDesc;
     readonly tagsDesc: sd.Description = sd.tagsDesc;
     readonly relatedServicesDesc: sd.Description = sd.relatedServicesDesc;
@@ -64,7 +64,7 @@ export class ServiceFormComponent implements OnInit {
     readonly serviceLevelAgreementDesc: sd.Description = sd.serviceLevelAgreementDesc;
     countriesComponent: Type<CountriesComponent> = CountriesComponent;
     languagesComponent: Type<LanguagesComponent> = LanguagesComponent;
-    regionsComponent: Type<RegionsComponent> = RegionsComponent;
+    // regionsComponent: Type<RegionsComponent> = RegionsComponent;
     relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
     tagsComponent: Type<TagsComponent> = TagsComponent;
     termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
