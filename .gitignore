@@ -5,3 +5,4 @@ dist/
 app/**/*.js
 app/**/*.js.map
 nohup.out
+stats.json
