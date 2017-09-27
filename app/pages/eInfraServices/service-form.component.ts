@@ -69,19 +69,18 @@ export class ServiceFormComponent implements OnInit {
     tagsComponent: Type<TagsComponent> = TagsComponent;
     termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
     formGroupMeta = {
+        "url": ["", Validators.compose([Validators.required, URLValidator])],
         "name": ["", Validators.required],
-        "tagline": ["", Validators.required],
-        "fullName": ["", Validators.required],
+        "tagline": [""],
+        "fullName": [""],
         "description": ["", Validators.required],
         "options": [""],
         "targetUsers": [""],
         "userValue": [""],
         "userBase": [""],
-        "provider": ["", Validators.required],
-        "funding": [""],
-        "url": ["", Validators.compose([Validators.required, URLValidator])],
-        "symbol": ["", Validators.compose([Validators.required, URLValidator])],
+        "symbol": ["", URLValidator],
         "multimediaURL": ["", URLValidator],
+        "provider": ["", Validators.required],
         "version": [""],
         "lastUpdate": [""],
         "changeLog": [""],
@@ -94,8 +93,9 @@ export class ServiceFormComponent implements OnInit {
         "userManual": ["", URLValidator],
         "trainingInformation": ["", URLValidator],
         "feedback": ["", URLValidator],
-        "price": ["", Validators.required],
-        "serviceLevelAgreement": [""]
+        "price": ["", Validators.compose([Validators.required, URLValidator])],
+        "serviceLevelAgreement": ["", Validators.compose([Validators.required, URLValidator])],
+        "funding": [""]
     };
     providers: any = null;
     vocabularies: any = null;
