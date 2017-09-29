@@ -28,7 +28,7 @@ import { StarRatingModule } from 'angular-star-rating';
 import { UserModule } from "./pages/user/user.module";
 import { CompareServicesComponent } from "./pages/compare/compare-services.component";
 import { BrowseCategoriesComponent } from "./pages/browsecategories/browse-categories.component";
-import { KeysPipe } from "./services/key.pipe";
+import {SharedModule} from "./shared/shared.module";
 import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
 import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
 import {DashboardComponent} from "./pages/user/dashboard/dashboard.component";
@@ -48,6 +48,7 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
 
 @NgModule({
     imports: [
+        SharedModule,
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
@@ -75,7 +76,6 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
         ServiceUploadComponent,
         ServiceEditComponent,
         DashboardComponent,
-        KeysPipe,
         MyGroup,
         ServiceFormComponent,
         ConfirmationDialogComponent,

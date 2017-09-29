@@ -3,8 +3,6 @@
 // import * as sd from "./services.description";
 // import {Validators} from "@angular/forms";
 // import {ResourceService} from "../../services/resource.service";
-// // import {KeysPipe} from "../../services/key.pipe";
-//
 // @Component({
 //     selector: 'regionsInfo-form',
 //     template: `
