@@ -63,8 +63,8 @@
                                     <div class="form-group" *ngIf="showProvider">
                                         <select class="form-control" formControlName="provider">
                                             <option value="" disabled selected hidden>You are representing...</option>
-                                            <option *ngFor="let provider of providers" [value]="provider">
-                                                {{provider}}
+                                            <option *ngFor="let c of this.providers | keys" [ngValue]="c">
+                                                {{this.providers[c]}}
                                             </option>
                                         </select>
                                         <!--<input class="form-control" placeholder="You are representing" type="text" formControlName="providers">-->
