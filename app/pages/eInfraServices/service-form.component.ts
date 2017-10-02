@@ -130,7 +130,8 @@ export class ServiceFormComponent implements OnInit {
     onSubmit(service: Service, isValid: boolean) {
         //TODO: check if model is valid
         let fixedObject : any = {};
-        if (isValid) {
+        let disableValidation = true;
+        if (isValid || disableValidation) {
             for (let i in service) {
                 if (Array.isArray(service[i])) {
                     fixedObject[i] = new Array();
