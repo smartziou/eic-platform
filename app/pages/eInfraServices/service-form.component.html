@@ -227,9 +227,7 @@
                                                             [name]="'termsOfUse'" [required]="true"
                                                             [description]="termsOfUseDesc">
                                         </form-repeat-inline>
-                                        <button type="submit" (click)="onSubmit(null,serviceForm.valid)"
-                                                class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}
-                                        </button>
+                                        <button type="submit" class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}</button>
                                     </form>
                                     <pre *ngIf="this.isDev()">
                                         {{serviceForm.value | json}}
