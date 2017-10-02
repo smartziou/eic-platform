@@ -129,9 +129,21 @@ export class ServiceFormComponent implements OnInit {
 
     onSubmit(service: Service, isValid: boolean) {
         //TODO: check if model is valid
-
+        let fixedObject : any = {};
         if (isValid) {
-            this.resourceService.uploadService(service, this.editMode).subscribe(user => this.onSuccess, error => this.onUploadError);
+            for (let i in service) {
+                if (Array.isArray(service[i])) {
+                    fixedObject[i] = new Array();
+                    for (let j =0; j< service[i].length; j++) {
+                        if (service[i][j].entry) {
+                            fixedObject[i].push(service[i][j].entry);
+                        }
+
+                    }
+                }
+            }
+            fixedObject.id = atob(decodeURIComponent(window.location.href).substr(decodeURIComponent(window.location.href).lastIndexOf('/') + 1));
+            this.resourceService.uploadService(Object.assign({}, service, fixedObject), this.editMode).subscribe(user => this.onSuccess, error => this.onUploadError);
         } else {
             console.log('Model is invalid');
             window.scrollTo(0, 0);
