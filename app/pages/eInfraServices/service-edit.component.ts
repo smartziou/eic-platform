@@ -3,7 +3,7 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {ServiceFormComponent} from "./service-form.component";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ResourceService} from "../../services/resource.service";
 import {FormBuilder} from "@angular/forms";
 
@@ -15,8 +15,8 @@ import {FormBuilder} from "@angular/forms";
 
 export class ServiceEditComponent extends ServiceFormComponent implements OnInit {
 
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute) {
-        super(resourceService, fb);
+    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute, protected router: Router) {
+        super(resourceService, fb, router);
         this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 
@@ -37,5 +37,6 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
 
     onSuccess(service) {
         this.successMessage = "Service edited successfully!";
+        this.router.navigate(['/landingPage/service/'+btoa(service.id)]);
     }
 }

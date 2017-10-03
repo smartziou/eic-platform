@@ -14,6 +14,7 @@ import {LanguagesComponent} from "./languages.component";
 import {RelatedServicesComponent} from "./relatedServices.component";
 import {TagsComponent} from "./tags.component";
 import {TermsOfUseComponent} from "./termsOfUse.component";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'service-form',
@@ -123,7 +124,7 @@ export class ServiceFormComponent implements OnInit {
         this.serviceForm.patchValue({});
     }
 
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder) {
+    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: Router) {
         this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 
@@ -144,7 +145,11 @@ export class ServiceFormComponent implements OnInit {
                 }
             }
             fixedObject.id = atob(decodeURIComponent(window.location.href).substr(decodeURIComponent(window.location.href).lastIndexOf('/') + 1));
-            this.resourceService.uploadService(Object.assign({}, service, fixedObject), this.editMode).subscribe(user => this.onSuccess, error => this.onUploadError);
+            this.resourceService
+                .uploadService(Object.assign({}, service, fixedObject),this.editMode)
+                .subscribe(service => {
+                    setTimeout(()=>this.router.navigate(['/landingPage/service/'+btoa(service.id)]), 1000);
+                }, error => this.onUploadError.bind(this));
         } else {
             console.log('Model is invalid');
             window.scrollTo(0, 0);
