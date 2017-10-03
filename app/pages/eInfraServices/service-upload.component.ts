@@ -3,6 +3,7 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {ServiceFormComponent} from "./service-form.component";
+import {Service} from "../../domain/eic-model";
 
 @Component({
     selector: 'service-upload',
@@ -18,5 +19,14 @@ export class ServiceUploadComponent extends ServiceFormComponent implements OnIn
 
     onSuccess(service) {
         this.successMessage = "Service uploaded successfully!";
+    }
+
+    onSubmit(service: Service, isValid: boolean) {
+        service.id = this.getRandomInt(300, 500);
+        super.onSubmit(service, false);
+    }
+
+    getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }

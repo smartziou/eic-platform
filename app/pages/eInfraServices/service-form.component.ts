@@ -130,9 +130,8 @@ export class ServiceFormComponent implements OnInit {
 
     onSubmit(service: Service, isValid: boolean) {
         //TODO: check if model is valid
-        let fixedObject : any = {};
-        let disableValidation = true;
-        if (isValid || disableValidation) {
+        if (isValid) {
+            let fixedObject : any = {};
             for (let i in service) {
                 if (Array.isArray(service[i])) {
                     fixedObject[i] = new Array();
@@ -144,7 +143,6 @@ export class ServiceFormComponent implements OnInit {
                     }
                 }
             }
-            fixedObject.id = atob(decodeURIComponent(window.location.href).substr(decodeURIComponent(window.location.href).lastIndexOf('/') + 1));
             this.resourceService
                 .uploadService(Object.assign({}, service, fixedObject),this.editMode)
                 .subscribe(service => {
