@@ -63,11 +63,12 @@ export class ServiceLandingPageComponent {
     }
 
     rateService() {
-         if (this.authenticationLocalService.loggedIn()) {
-             //Rate logic goes here
-         } else {
-             this.router.navigate(['/signIn']);
-         }
+        let allowLogin = false;
+        if (allowLogin && this.authenticationLocalService.loggedIn()) {
+            //Rate logic goes here
+        } else {
+            this.router.navigate(['/signIn']);
+        }
     }
 
     // process() {
