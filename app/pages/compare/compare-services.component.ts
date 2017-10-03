@@ -80,7 +80,8 @@ export class CompareServicesComponent implements OnInit {
     }
 
     addToFavorites(service) {
-        if (this.authenticationLocalService.loggedIn()) {
+        let allowLogin = false;
+        if (allowLogin && this.authenticationLocalService.loggedIn()) {
             this.userService.addFavourite(service, this.authenticationLocalService.getUser())
         } else {
             this.router.navigate(['/signIn']);
