@@ -40,6 +40,14 @@
     margin-left: 15px;
 }
 
+a.serviceLink {
+    color: #214c9c;
+}
+
+a.serviceLink:hover {
+    color: #D1303A;
+}
+
 /************ AWS *************/
 
 .aws-content-width-constrain {
