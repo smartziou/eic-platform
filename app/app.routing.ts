@@ -1,13 +1,13 @@
 /**
  * Created by stefania on 8/29/16.
  */
-import { ModuleWithProviders }  from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {ModuleWithProviders} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { SearchComponent } from "./pages/search/search.component";
-import { CompareServicesComponent } from "./pages/compare/compare-services.component";
-import { BrowseCategoriesComponent } from "./pages/browsecategories/browse-categories.component";
+import {HomeComponent} from './pages/home/home.component';
+import {SearchComponent} from "./pages/search/search.component";
+import {CompareServicesComponent} from "./pages/compare/compare-services.component";
+import {BrowseCategoriesComponent} from "./pages/browsecategories/browse-categories.component";
 import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
 import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
 

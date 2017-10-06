@@ -1,9 +1,8 @@
 /**
  * Created by stefania on 10/3/16.
  */
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import {OAuthService} from "angular-oauth2-oidc";
+import {Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 import {AuthenticationService} from "./services/authentication.service";
 
 @Component({

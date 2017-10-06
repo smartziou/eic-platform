@@ -1,10 +1,10 @@
 /**
  * Created by stefania on 7/12/17.
  */
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { ActiveTopicQuestions } from "../domain/faq-active-topic-questions";
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {ActiveTopicQuestions} from "../domain/faq-active-topic-questions";
 
 @Injectable()
 export class FAQService {

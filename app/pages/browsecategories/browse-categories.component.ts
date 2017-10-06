@@ -1,12 +1,11 @@
 /**
  * Created by stefania on 8/4/17.
  */
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ResourceService } from "../../services/resource.service";
-import { BrowseResults } from "../../domain/browse-results";
-import { Service } from "../../domain/eic-model";
-import {count} from "rxjs/operator/count";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ResourceService} from "../../services/resource.service";
+import {BrowseResults} from "../../domain/browse-results";
+import {Service} from "../../domain/eic-model";
 
 @Component({
     selector: 'browse-categories',

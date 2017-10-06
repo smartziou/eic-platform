@@ -1,8 +1,8 @@
 /**
  * Created by stefania on 8/31/16.
  */
-import { Injectable } from '@angular/core';
-import { CanActivate, Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthenticationLocalService} from "./authentication.local.service";
 
 

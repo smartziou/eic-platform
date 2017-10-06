@@ -2,7 +2,7 @@
  * Created by stefania on 8/4/17.
  */
 
-import { PipeTransform, Pipe } from "@angular/core"
+import {Pipe, PipeTransform} from "@angular/core"
 
 @Pipe({name : 'keys'})
 export class KeysPipe implements PipeTransform {

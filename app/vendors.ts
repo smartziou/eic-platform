@@ -10,6 +10,5 @@ import '@angular/http';
 import '@angular/router';
 
 import 'rxjs';
-
 //import 'ngx-bootstrap';
 import 'bootstrap';

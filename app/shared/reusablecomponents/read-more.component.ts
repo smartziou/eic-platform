@@ -1,10 +1,7 @@
 /**
  * Created by stefania on 4/6/17.
  */
-import {
-    Component, Input, AfterContentInit, ElementRef, ViewChild, OnChanges, SimpleChanges,
-    AfterViewInit
-} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnChanges, ViewChild} from '@angular/core';
 
 @Component({
     selector: 'read-more',

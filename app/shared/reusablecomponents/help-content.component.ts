@@ -1,10 +1,10 @@
 /**
  * Created by stefania on 7/17/17.
  */
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { HelpContentService } from "../../services/help-content.service";
-import { Content, PageContent } from "../../domain/page-content";
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {HelpContentService} from "../../services/help-content.service";
+import {Content, PageContent} from "../../domain/page-content";
 
 @Component({
     selector: 'help-content',

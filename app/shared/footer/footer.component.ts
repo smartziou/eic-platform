@@ -1,7 +1,7 @@
 /**
  * Created by stefania on 1/19/17.
  */
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'footer',

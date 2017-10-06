@@ -1,10 +1,10 @@
 /**
  * Created by stefania on 7/17/17.
  */
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { PageContent } from "../domain/page-content";
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {PageContent} from "../domain/page-content";
 
 
 @Injectable()

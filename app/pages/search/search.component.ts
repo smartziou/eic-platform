@@ -1,15 +1,14 @@
 /**
  * Created by stefania on 8/31/16.
  */
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from "rxjs/Subscription";
-import { SearchQuery } from "../../domain/search-query";
-import { URLParameter } from "./../../domain/url-parameter";
-import { ResourceService } from "../../services/resource.service";
-import { SearchResults } from "../../domain/search-results";
-import {Facet} from "../../domain/facet";
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from "rxjs/Subscription";
+import {SearchQuery} from "../../domain/search-query";
+import {URLParameter} from "./../../domain/url-parameter";
+import {ResourceService} from "../../services/resource.service";
+import {SearchResults} from "../../domain/search-results";
 import {AuthenticationLocalService} from "../../services/authentication.local.service";
 
 declare var UIkit : any;

@@ -2,7 +2,7 @@
  * Created by stefania on 5/26/16.
  */
 
-import { IndexedFields } from "./indexed-fields";
+import {IndexedFields} from "./indexed-fields";
 
 export class Resource {
     id: string;

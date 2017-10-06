@@ -3,8 +3,8 @@
  */
 import {Injectable} from '@angular/core';
 import {User} from "../domain/eic-model";
-import {URLSearchParams, Http} from "@angular/http";
-import {getCookie, deleteCookie} from "../domain/utils";
+import {Http, URLSearchParams} from "@angular/http";
+import {deleteCookie, getCookie} from "../domain/utils";
 import {Router} from "@angular/router";
 
 @Injectable()

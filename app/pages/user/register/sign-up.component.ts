@@ -6,8 +6,7 @@ import {Component} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../../domain/eic-model";
 import {UserService} from "../../../services/user.service";
-import {Observable} from "rxjs/Observable";
-import { ResourceService } from "../../../services/resource.service";
+import {ResourceService} from "../../../services/resource.service";
 import {Router} from "@angular/router";
 
 @Component({
