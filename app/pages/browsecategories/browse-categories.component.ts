@@ -1,8 +1,8 @@
 /**
  * Created by stefania on 8/4/17.
  */
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ResourceService} from "../../services/resource.service";
 import {BrowseResults} from "../../domain/browse-results";
 import {Service} from "../../domain/eic-model";

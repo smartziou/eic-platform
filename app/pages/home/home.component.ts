@@ -1,9 +1,9 @@
 /**
  * Created by stefania on 7/5/16.
  */
-import {Component} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Component} from "@angular/core";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 import {SearchQuery} from "../../domain/search-query";
 import {Service} from "../../domain/eic-model";
 

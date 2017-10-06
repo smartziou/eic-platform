@@ -2,7 +2,7 @@
  * Created by stefania on 7/5/16.
  */
 
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation} from "@angular/core";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ActivatedRoute, Router} from "@angular/router";
 

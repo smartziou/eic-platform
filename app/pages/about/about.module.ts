@@ -1,8 +1,8 @@
 /**
  * Created by stefania on 6/7/17.
  */
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
 
 import {aboutRouting} from "./about.routing";
 import {AboutUsComponent} from "./aboutus/about-us.component";

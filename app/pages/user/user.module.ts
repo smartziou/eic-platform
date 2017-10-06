@@ -1,8 +1,8 @@
 /**
  * Created by stefania on 8/1/17.
  */
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
 import {userRouting} from "./user.routing";
