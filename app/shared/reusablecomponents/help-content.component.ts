@@ -55,7 +55,8 @@ export class HelpContentComponent implements OnInit {
     template: `
         <template [ngIf]="contents && contents.length>0">
             <template ngFor let-content [ngForOf]="contents">
-                <div [innerHTML]="content.content" class="uk-card uk-card-body uk-card-default sidemenu uk-margin-bottom"></div>  
+                <div [innerHTML]="content.content"
+                     class="uk-card uk-card-body uk-card-default sidemenu uk-margin-bottom"></div>
             </template>
         </template>
     `,

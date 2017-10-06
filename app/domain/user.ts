@@ -12,7 +12,7 @@ export class User {
     joinDate: Date;
     affiliation: string;
     roles: [string];
-    
+
     // constructor(
     //     public id?: number,
     //     public name: string,

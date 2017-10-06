@@ -25,4 +25,5 @@ import {StarRatingModule} from "angular-star-rating";
     ]
 })
 
-export class LandingPageModule {}
+export class LandingPageModule {
+}

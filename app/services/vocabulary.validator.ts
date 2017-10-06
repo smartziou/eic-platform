@@ -21,5 +21,5 @@ export function LanguageValidator(control: AbstractControl) {
 }
 
 function regexFromArray(array) {
-    return new RegExp(util.format("\^(%s)\$", array.join("|")));;
+    return new RegExp(util.format("\^(%s)\$", array.join("|")));
 }

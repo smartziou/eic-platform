@@ -26,4 +26,5 @@ import {SignUpComponent} from "./register/sign-up.component";
     ],
 })
 
-export class UserModule {}
+export class UserModule {
+}

@@ -20,8 +20,7 @@ export class BrowseCategoriesComponent implements OnInit {
 
     public browseResultsColumns: BrowseResults[] = [];
 
-    constructor(
-                private activatedRoute: ActivatedRoute,
+    constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
                 private resourceService: ResourceService) {
     }

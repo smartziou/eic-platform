@@ -18,10 +18,10 @@ export class FAQsComponent implements OnInit {
     private activeTopicQuestions: ActiveTopicQuestions[] = [];
     private errorMessage: string;
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private faqService: FAQService) {}
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private faqService: FAQService) {
+    }
 
     ngOnInit() {
         this.faqService.getActiveTopicQuestions().subscribe(

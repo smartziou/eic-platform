@@ -29,10 +29,12 @@ var webpackConfig = {
             jquery: 'jquery'
         }),
 
-        new webpack.DefinePlugin({"process.env" : {
-            PRODUCTION: JSON.stringify(true),
-            API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://dl105.madgik.di.uoa.gr:8080/eic-registry")
-        }})
+        new webpack.DefinePlugin({
+            "process.env": {
+                PRODUCTION: JSON.stringify(true),
+                API_ENDPOINT: JSON.stringify(process.env.API_ENDPOINT || "http://dl105.madgik.di.uoa.gr:8080/eic-registry")
+            }
+        })
     ],
 
     module: {
@@ -98,9 +100,11 @@ var defaultConfig = {
 module.exports = function (env) {
     if (process.env.NODE_ENV === 'production') {
         webpackConfig.plugins.push(
-            new webpack.DefinePlugin({"process.env" : {
-                PRODUCTION: JSON.stringify(false)
-            }})
+            new webpack.DefinePlugin({
+                "process.env": {
+                    PRODUCTION: JSON.stringify(false)
+                }
+            })
         );
         webpackConfig.module.loaders.push(
             {
@@ -120,9 +124,11 @@ module.exports = function (env) {
             })
         );
         webpackConfig.plugins.push(
-            new webpack.DefinePlugin({"process.env" : {
-                PRODUCTION: JSON.stringify(true)
-            }})
+            new webpack.DefinePlugin({
+                "process.env": {
+                    PRODUCTION: JSON.stringify(true)
+                }
+            })
         );
         webpackConfig.module.loaders.push(
             {

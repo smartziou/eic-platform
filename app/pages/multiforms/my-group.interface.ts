@@ -137,13 +137,15 @@ export class MyGroup implements OnInit, AfterContentInit {
                 <ng-content></ng-content>
                 <div *ngIf="params==='inline'" class="form-group">
                     <div class="">
-                        <i><small>{{description.desc}}</small></i>
+                        <i>
+                            <small>{{description.desc}}</small>
+                        </i>
                     </div>
                 </div>
             </div>
             <!--</div>-->
         </div>
-        
+
 
     `,
     styleUrls: ['./my-form.css']

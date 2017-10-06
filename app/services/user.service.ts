@@ -14,7 +14,10 @@ export class UserService {
 
     addFavourite(serviceID: string, userID: string): Observable<any> {
         let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
-        return this.http.post(process.env.API_ENDPOINT + "/user/addFavourite", JSON.stringify({userID, serviceID}), args)
+        return this.http.post(process.env.API_ENDPOINT + "/user/addFavourite", JSON.stringify({
+            userID,
+            serviceID
+        }), args)
             .map(res => res.json())
             .catch(this.handleError);
     }

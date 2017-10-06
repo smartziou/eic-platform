@@ -12,7 +12,8 @@ export class AuthenticationService {
 
     private endpoint = process.env.API_ENDPOINT + ':' + process.env.API_PORT + process.env.API_PATH;
 
-    constructor (private http: Http,private router: Router) {}
+    constructor(private http: Http, private router: Router) {
+    }
 
     isLoggedIn: boolean = false;
 
@@ -52,11 +53,17 @@ export class AuthenticationService {
     }
 
     public tryLogin() {
-        if(getCookie('name')) {
-            if(!sessionStorage.getItem('name')) {
-                this.http.get(this.endpoint + '/user',{ withCredentials: true }).subscribe(
-                    userInfo => {console.log(userInfo.json());sessionStorage.setItem('name',userInfo.json()['name'])},
-                    () => {sessionStorage.removeItem('name');deleteCookie('name');}
+        if (getCookie('name')) {
+            if (!sessionStorage.getItem('name')) {
+                this.http.get(this.endpoint + '/user', {withCredentials: true}).subscribe(
+                    userInfo => {
+                        console.log(userInfo.json());
+                        sessionStorage.setItem('name', userInfo.json()['name'])
+                    },
+                    () => {
+                        sessionStorage.removeItem('name');
+                        deleteCookie('name');
+                    }
                 );
             }
         }

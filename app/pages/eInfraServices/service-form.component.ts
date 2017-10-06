@@ -100,6 +100,7 @@ export class ServiceFormComponent implements OnInit {
     };
     providers: any = null;
     vocabularies: any = null;
+
     ngOnInit() {
         this.resourceService.getProviders().subscribe(
             suc => {
@@ -157,7 +158,9 @@ export class ServiceFormComponent implements OnInit {
         }
     }
 
-    onSuccess(service) { throw Error('Implement me')};
+    onSuccess(service) {
+        throw Error('Implement me')
+    };
 
     onUploadError(error) {
         this.errorMessage = <any>error;

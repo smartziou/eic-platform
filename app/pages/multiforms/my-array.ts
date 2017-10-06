@@ -169,7 +169,7 @@ export class MyArrayInline extends MyArray {
     styleUrls: []
 
 })
-export class MyArrayWrapper extends MyWrapper{
+export class MyArrayWrapper extends MyWrapper {
 }
 
 @Component({

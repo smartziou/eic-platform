@@ -26,14 +26,14 @@ export class SearchComponent {
     sub: Subscription;
 
     urlParameters: URLParameter[] = [];
-    
+
     searchResults: SearchResults;
     facetOrder = ["category", "trl", "lifeCycleStatus", "provider"];
 
     pageSize: number = 0;
     currentPage: number = 0;
     totalPages: number = 0;
-    
+
     isPreviousPageDisabled: boolean = false;
     isFirstPageDisabled: boolean = false;
     isNextPageDisabled: boolean = false;
@@ -67,7 +67,7 @@ export class SearchComponent {
         this.sub = this.activatedRoute
             .params
             .subscribe(params => {
-                
+
                 this.urlParameters.splice(0, this.urlParameters.length);
                 this.foundResults = true;
 
@@ -253,7 +253,7 @@ export class SearchComponent {
                 categoryIndex++;
             }
         }
-        
+
         this.navigateUsingParameters();
     }
 

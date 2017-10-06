@@ -22,4 +22,5 @@ import {ReusableComponentsModule} from "../../shared/reusablecomponents/reusable
     ],
 })
 
-export class AboutModule {}
+export class AboutModule {
+}

@@ -38,4 +38,5 @@ import {HelpContentService} from "../../services/help-content.service";
     ],
 })
 
-export class ReusableComponentsModule {}
+export class ReusableComponentsModule {
+}

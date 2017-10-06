@@ -46,7 +46,7 @@ function transformR(object: any): any {
     //                 object[v] = allEnum[v].find(v => v.key === object[v]).value;
     //                 console.log(object[v]);
     //             }
-                
+
     //         }
     //     }
     // }

@@ -111,4 +111,5 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
     bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}
