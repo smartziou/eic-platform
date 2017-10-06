@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
-    styleUrls:  ['./login.component.css'],
+    styleUrls: ['./login.component.css'],
 })
 
 export class LoginComponent {
@@ -36,7 +36,7 @@ export class LoginComponent {
 
         this.userService.loginUser(myUser.email, myUser.password).subscribe(
             user => this.loginUser(user),
-            error =>  this.errorMessage = <any>error);
+            error => this.errorMessage = <any>error);
     }
 
     loginUser(user: User) {

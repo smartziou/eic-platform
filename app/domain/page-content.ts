@@ -22,7 +22,7 @@ export interface Content {
 
     _id: string;
     page: Page | string;
-    placement : string;
+    placement: string;
     order: number;
     content: string;
     isActive: boolean;

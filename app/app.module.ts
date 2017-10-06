@@ -54,7 +54,7 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
         JsonpModule,
         // ResourceRegistrationModule,
         routing,
-        LandingPageModule, 
+        LandingPageModule,
         TabsModule,
         OAuthModule.forRoot(),
         ReusableComponentsModule,
@@ -108,7 +108,7 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
         appRoutingProviders,
         AuthenticationLocalService
     ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [AppComponent]
 })
 
 export class AppModule { }

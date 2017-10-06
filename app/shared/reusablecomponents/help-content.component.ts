@@ -11,7 +11,7 @@ import {Content, PageContent} from "../../domain/page-content";
     template: `
         <template [ngIf]="contents && contents.length>0">
             <template ngFor let-content [ngForOf]="contents">
-                <div [innerHTML]="content.content" class="uk-margin-medium-bottom"></div>  
+                <div [innerHTML]="content.content" class="uk-margin-medium-bottom"></div>
             </template>
         </template>
     `,
@@ -25,7 +25,7 @@ export class HelpContentComponent implements OnInit {
     contents: Content[];
     errorMessage: string = null;
 
-    constructor(private _helpContentService: HelpContentService, private route: ActivatedRoute,private router: Router) {
+    constructor(private _helpContentService: HelpContentService, private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
@@ -42,7 +42,7 @@ export class HelpContentComponent implements OnInit {
     }
 
     isPresent() {
-        return (this.contents && this.contents.length>0);
+        return (this.contents && this.contents.length > 0);
     }
 
     handleError(error) {

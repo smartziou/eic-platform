@@ -18,39 +18,39 @@ import {Subject} from "rxjs/Subject";
  */
 
 @Directive({
-    selector : 'hello-my-group'
+    selector: 'hello-my-group'
 })
 export class MyGroup implements OnInit, AfterContentInit {
 
     @Input() public parentGroup: FormGroup | FormArray;
 
-    @Input() public name : string | number;
+    @Input() public name: string | number;
 
-    @Input() public data : any = null;
+    @Input() public data: any = null;
 
-    public patchData : Subject<any> = new Subject();
+    public patchData: Subject<any> = new Subject();
 
-    @Input() public required : boolean = false;
+    @Input() public required: boolean = false;
 
-    @Input() public description : Description = null;
+    @Input() public description: Description = null;
 
-    @Input() public index : number = -1;
+    @Input() public index: number = -1;
 
-    protected _fb : FormBuilder;
+    protected _fb: FormBuilder;
 
-    protected groupDefinition : { [key:string]:any };
+    protected groupDefinition: { [key: string]: any };
 
-    public group : FormGroup | FormArray;
+    public group: FormGroup | FormArray;
 
-    public createdEvent : EventEmitter<any> = new EventEmitter();
+    public createdEvent: EventEmitter<any> = new EventEmitter();
 
-    constructor(injector : Injector) {
+    constructor(injector: Injector) {
         this._fb = injector.get(FormBuilder);
         this.patchData.subscribe(_ => {
-            if(typeof _ != 'undefined') {
-                setTimeout( () => {
+            if (typeof _ != 'undefined') {
+                setTimeout(() => {
                     (this.group as FormGroup).patchValue(_);
-                },1000);
+                }, 1000);
             }
         });
     }
@@ -59,10 +59,10 @@ export class MyGroup implements OnInit, AfterContentInit {
         return this.index != -1;
     }
 
-    public generate() : FormGroup {
-        let ret : FormGroup;
+    public generate(): FormGroup {
+        let ret: FormGroup;
         // if(this.name) {
-            ret = this._fb.group(this.groupDefinition);//fb.group must change to have strings instead of objects
+        ret = this._fb.group(this.groupDefinition);//fb.group must change to have strings instead of objects
         // } else {
         //     ret = new FormControl();
         // }
@@ -74,7 +74,7 @@ export class MyGroup implements OnInit, AfterContentInit {
         return ret;
     }
 
-    public getMyControl(name : string) : AbstractControl {
+    public getMyControl(name: string): AbstractControl {
         if (this.isArray) {
             return this.group.get(<string>name);
         }
@@ -84,11 +84,11 @@ export class MyGroup implements OnInit, AfterContentInit {
     }
 
     ngOnInit(): void {
-        if(this.index == -1) {
-            if(<string>this.name == '' || (<FormGroup>this.parentGroup).contains(<string>this.name)) {
+        if (this.index == -1) {
+            if (<string>this.name == '' || (<FormGroup>this.parentGroup).contains(<string>this.name)) {
                 let obj = this.generate();
                 Object.keys(obj.controls).forEach(c => {
-                    (<FormGroup>this.parentGroup.get(<string>this.name)).addControl(c,obj.controls[c]);
+                    (<FormGroup>this.parentGroup.get(<string>this.name)).addControl(c, obj.controls[c]);
                 });
                 this.group = this.parentGroup.get(this.name as string) as FormGroup;
             } else {
@@ -121,8 +121,8 @@ export class MyGroup implements OnInit, AfterContentInit {
 }
 
 @Component({
-    selector : 'form-inline',
-    template : `
+    selector: 'form-inline',
+    template: `
         <template #descTemplate>{{description.desc}}</template>
 
         <div class="uk-form-horizontal uk-margin-bottom">
@@ -146,18 +146,18 @@ export class MyGroup implements OnInit, AfterContentInit {
         
 
     `,
-    styleUrls : ['./my-form.css']
+    styleUrls: ['./my-form.css']
 
 })
 export class InlineFormWrapper implements OnChanges {
 
-    @Input() public description : Description = null;
+    @Input() public description: Description = null;
 
-    @Input() public params : string = 'tooltip';
+    @Input() public params: string = 'tooltip';
 
-    @Input() public width : number = 9;
+    @Input() public width: number = 9;
 
-    @Input() public valid : boolean = true;
+    @Input() public valid: boolean = true;
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes && changes.valid)

@@ -10,7 +10,7 @@ import {Service} from "../../domain/eic-model";
 @Component({
     selector: 'browse-categories',
     templateUrl: './browse-categories.component.html',
-    styleUrls:  ['./browse-categories.component.css'],
+    styleUrls: ['./browse-categories.component.css'],
 })
 
 export class BrowseCategoriesComponent implements OnInit {
@@ -41,8 +41,8 @@ export class BrowseCategoriesComponent implements OnInit {
         let noOfServices: number = 0;
 
         let keys = Object.keys(this.browseResults);
-        for(let key of keys) {
-            let services : Service[] = this.browseResults[key];
+        for (let key of keys) {
+            let services: Service[] = this.browseResults[key];
             noOfServices += services.length;
         }
 
@@ -53,14 +53,14 @@ export class BrowseCategoriesComponent implements OnInit {
 
 
         this.browseResultsColumns.push(new BrowseResults());
-        for(let key of keys) {
+        for (let key of keys) {
 
-            let services : Service[] = this.browseResults[key];
+            let services: Service[] = this.browseResults[key];
             counter += services.length;
             console.log(this.browseResultsColumns);
             this.browseResultsColumns[columnIndex].data[key] = (services);
 
-            if(counter>servicesPerColumn) {
+            if (counter > servicesPerColumn) {
                 columnIndex++;
                 counter = 0;
                 this.browseResultsColumns.push(new BrowseResults());

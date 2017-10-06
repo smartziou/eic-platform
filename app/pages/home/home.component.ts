@@ -26,7 +26,7 @@ export class HomeComponent {
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(['/search', { query: searchValue.query}]);
+        this.router.navigate(['/search', {query: searchValue.query}]);
     }
 
     gotoDetail(id: string) {

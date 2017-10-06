@@ -38,7 +38,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
 
     onSuccess(service) {
         this.successMessage = "Service edited successfully!";
-        this.router.navigate(['/landingPage/service/'+btoa(service.id)]);
+        this.router.navigate(['/landingPage/service/' + btoa(service.id)]);
     }
 
     onSubmit(service: Service, isValid: boolean) {

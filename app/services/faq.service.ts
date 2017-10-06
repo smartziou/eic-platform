@@ -11,7 +11,7 @@ export class FAQService {
 
     private _faqUrl = 'http://83.212.101.85:5555/api/';
 
-    constructor (private http: Http) {
+    constructor(private http: Http) {
     }
 
     getActiveTopicQuestions() {
@@ -22,10 +22,10 @@ export class FAQService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.data || { };
+        return body.data || {};
     }
 
-    private handleError (error: Response | any) {
+    private handleError(error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
         let errMsg = "";

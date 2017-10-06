@@ -13,7 +13,7 @@ export class SearchResults {
     facets: Facet[];
 }
 
-export class Order<T>  {
-    order : number;
-    resource : T;
+export class Order<T> {
+    order: number;
+    resource: T;
 }

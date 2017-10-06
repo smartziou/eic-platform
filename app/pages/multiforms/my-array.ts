@@ -11,8 +11,8 @@ import {Subject} from "rxjs/Subject";
 
 
 @Component({
-    selector : 'form-repeat',
-    template : `
+    selector: 'form-repeat',
+    template: `
 
         <div [formGroup]="parentGroup">
             <!--<div formArrayName="{{name}}">-->
@@ -26,33 +26,33 @@ import {Subject} from "rxjs/Subject";
             </div>
         </div>
     `,
-    styleUrls : []
+    styleUrls: []
 
 })
 export class MyArray extends MyGroup {
 
-    @Input() public component : Type<MyGroup>;
+    @Input() public component: Type<MyGroup>;
 
-    @Input() public wrapper : Type<MyWrapper> = MyArrayWrapper;
+    @Input() public wrapper: Type<MyWrapper> = MyArrayWrapper;
 
     @ViewChild(MyFormDirective) protected formComponents: MyFormDirective;
 
-    protected _cfr : ComponentFactoryResolver;
+    protected _cfr: ComponentFactoryResolver;
 
-    protected viewContainerRef : ViewContainerRef;
+    protected viewContainerRef: ViewContainerRef;
 
-    private arrayData_ : Subject<any>[] = [];
+    private arrayData_: Subject<any>[] = [];
 
     push() {
         this.createView();
     }
 
-    constructor(injector : Injector) {
+    constructor(injector: Injector) {
         super(injector);
         this._cfr = injector.get(ComponentFactoryResolver);
     }
 
-    protected createView() : void {
+    protected createView(): void {
         let componentFactory = this._cfr.resolveComponentFactory(this.component);
         let wrapperFactory = this._cfr.resolveComponentFactory(this.wrapper);
         let wrapperView = wrapperFactory.create(this.viewContainerRef.injector);
@@ -72,13 +72,13 @@ export class MyArray extends MyGroup {
         (<MyWrapper>wrapperView.instance).deleteNotifier.subscribe($event => {
             let index = this.viewContainerRef.indexOf($event);
             console.log(index);
-            if( this.viewContainerRef.length == 1 && this.description.mandatory==true) {
+            if (this.viewContainerRef.length == 1 && this.description.mandatory == true) {
                 console.log(this.viewContainerRef.get(0));
                 (<FormArray>this.parentGroup.controls[this.name].at(0).corpus((<MyGroup>componentView.instance).generate().value));
             } else {
                 this.remove(index);
-                <FormArray>this.parentGroup.controls[this.name].removeAt(index-1);
-                this.arrayData_.splice(index-1,1);
+                <FormArray>this.parentGroup.controls[this.name].removeAt(index - 1);
+                this.arrayData_.splice(index - 1, 1);
             }
         });
 
@@ -87,7 +87,7 @@ export class MyArray extends MyGroup {
         this.viewContainerRef.insert(wrapperView.hostView);
     }
 
-    remove(i : number) : void {
+    remove(i: number): void {
         this.viewContainerRef.remove(i);
     }
 
@@ -102,7 +102,7 @@ export class MyArray extends MyGroup {
 
     protected patchValue() {
         let self = this;
-        return (value: {[key: string]: any}, {onlySelf, emitEvent}: {onlySelf?: boolean, emitEvent?: boolean} = {}) => {
+        return (value: { [key: string]: any }, {onlySelf, emitEvent}: { onlySelf?: boolean, emitEvent?: boolean } = {}) => {
             for (let i = (<FormArray>self.parentGroup.get(this.name as string)).length; i < Object.keys(value).length; i++) {
                 self.createView();
             }
@@ -114,8 +114,8 @@ export class MyArray extends MyGroup {
 }
 
 @Component({
-    selector : 'form-repeat-inline',
-    template : `
+    selector: 'form-repeat-inline',
+    template: `
         <form-inline [description]="description" [params]="'inline'">
             <ng-template my-form></ng-template>
             <a class="add-new-element" (click)="push()">
@@ -128,21 +128,21 @@ export class MyArray extends MyGroup {
         <!--</div>-->
         <!--</div>-->
     `,
-    styleUrls : []
+    styleUrls: []
 
 })
 export class MyArrayInline extends MyArray {
     @Input()
-    public wrapper : Type<MyWrapper> = MyInlineArrayWrapper;
+    public wrapper: Type<MyWrapper> = MyInlineArrayWrapper;
 
     @Input()
-    public description : Description;
+    public description: Description;
 }
 
 
 @Component({
-    selector : 'form-repeat-wrapper',
-    template : `
+    selector: 'form-repeat-wrapper',
+    template: `
 
         <fieldset class="uk-fieldset group">
             <legend class="uk-legend">
@@ -166,15 +166,15 @@ export class MyArrayInline extends MyArray {
             <!--</div>-->
         </fieldset>
     `,
-    styleUrls : []
+    styleUrls: []
 
 })
 export class MyArrayWrapper extends MyWrapper{
 }
 
 @Component({
-    selector : 'form-inline-repeat-wrapper',
-    template : `
+    selector: 'form-inline-repeat-wrapper',
+    template: `
         <!--<div class="uk-grid uk-margin-small-bottom">-->
         <div class="uk-grid">
             <div class="uk-width-5-6">
@@ -184,7 +184,7 @@ export class MyArrayWrapper extends MyWrapper{
                     class="fa fa-times" aria-hidden="true"></i></a>
         </div>
     `,
-    styleUrls : []
+    styleUrls: []
 
 })
 export class MyInlineArrayWrapper extends MyWrapper {

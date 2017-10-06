@@ -11,12 +11,12 @@ import {ResourceService} from "../../services/resource.service";
 import {SearchResults} from "../../domain/search-results";
 import {AuthenticationLocalService} from "../../services/authentication.local.service";
 
-declare var UIkit : any;
+declare var UIkit: any;
 
 @Component({
     selector: 'search',
     templateUrl: './search.component.html',
-    styleUrls:  ['./search.component.css'],
+    styleUrls: ['./search.component.css'],
 })
 
 export class SearchComponent {
@@ -61,14 +61,14 @@ export class SearchComponent {
 
     ngOnInit() {
 
-        if(sessionStorage.getItem('compareServices'))
+        if (sessionStorage.getItem('compareServices'))
             this.servicesToCompare = JSON.parse(sessionStorage.getItem('compareServices'));
 
         this.sub = this.activatedRoute
             .params
             .subscribe(params => {
                 
-                this.urlParameters.splice(0,this.urlParameters.length);
+                this.urlParameters.splice(0, this.urlParameters.length);
                 this.foundResults = true;
 
                 for (var obj in params) {
@@ -102,27 +102,27 @@ export class SearchComponent {
         this.isLastPageDisabled = false;
         this.isNextPageDisabled = false;
 
-        if(this.searchResults.results.length==0)
+        if (this.searchResults.results.length == 0)
             this.foundResults = false;
 
         this.orderFacets();
 
         //update form values using URLParameters
         for (let urlParameter of this.urlParameters) {
-            if(urlParameter.key === 'query') {
+            if (urlParameter.key === 'query') {
                 this.searchForm.get('query').setValue(urlParameter.values[0]);
-            } else if(urlParameter.key === 'advanced') {
-                if(urlParameter.values[0]=='true')
+            } else if (urlParameter.key === 'advanced') {
+                if (urlParameter.values[0] == 'true')
                     this.advanced = true;
                 else
                     this.advanced = false;
             } else {
-                for(let facet of this.searchResults.facets) {
-                    if(facet.field === urlParameter.key) {
+                for (let facet of this.searchResults.facets) {
+                    if (facet.field === urlParameter.key) {
                         //
-                        for(let parameterValue of urlParameter.values) {
-                            for(let facetValue of facet.values) {
-                                if(parameterValue === facetValue.value)
+                        for (let parameterValue of urlParameter.values) {
+                            for (let facetValue of facet.values) {
+                                if (parameterValue === facetValue.value)
                                     facetValue.isChecked = true;
                             }
                         }
@@ -135,12 +135,12 @@ export class SearchComponent {
         this.currentPage = (searchResults.from / this.pageSize) + 1;
         this.totalPages = Math.ceil(searchResults.total / this.pageSize);
 
-        if(this.currentPage == 1) {
+        if (this.currentPage == 1) {
             this.isFirstPageDisabled = true;
             this.isPreviousPageDisabled = true;
         }
 
-        if(this.currentPage == this.totalPages) {
+        if (this.currentPage == this.totalPages) {
             this.isLastPageDisabled = true;
             this.isNextPageDisabled = true;
         }
@@ -152,7 +152,7 @@ export class SearchComponent {
 
     orderFacets() {
         let facetValues = {};
-        this.facetOrder.forEach((e,i)=> {
+        this.facetOrder.forEach((e, i) => {
             facetValues[e] = i;
         });
         this.searchResults.facets.sort((a, b): number => {
@@ -166,20 +166,20 @@ export class SearchComponent {
 
         var queryParameterIndex = 0;
         for (let urlParameter of this.urlParameters) {
-            if(urlParameter.key === 'query') {
+            if (urlParameter.key === 'query') {
                 foundQuery = true;
-                if(searchValue.query === '')
+                if (searchValue.query === '')
                     this.urlParameters.splice(queryParameterIndex, 1);
                 else {
-                    urlParameter.values.splice(0,urlParameter.values.length);
+                    urlParameter.values.splice(0, urlParameter.values.length);
                     urlParameter.values.push(searchValue.query);
                 }
 
             }
-            queryParameterIndex ++;
+            queryParameterIndex++;
         }
 
-        if(!foundQuery && searchValue.query != '') {
+        if (!foundQuery && searchValue.query != '') {
 
             var searchQuery: URLParameter = {
                 key: 'query',
@@ -195,18 +195,18 @@ export class SearchComponent {
 
         var categoryIndex = 0;
         for (let urlParameter of this.urlParameters) {
-            if(urlParameter.key === category) {
+            if (urlParameter.key === category) {
                 var valueIndex = urlParameter.values.indexOf(value, 0);
                 if (valueIndex > -1) {
                     urlParameter.values.splice(valueIndex, 1);
-                    if(urlParameter.values.length == 0) {
+                    if (urlParameter.values.length == 0) {
                         this.urlParameters.splice(categoryIndex, 1);
                     }
                 }
             }
-            categoryIndex ++;
+            categoryIndex++;
 
-            if(category==='query') {
+            if (category === 'query') {
                 this.searchForm.get('query').setValue('');
             }
         }
@@ -216,18 +216,18 @@ export class SearchComponent {
 
     onSelection(e, category: string, value: string) {
 
-        if(e.target.checked) {
+        if (e.target.checked) {
 
             // console.log('Selected value \'' + value + '\' from category \'' + category + '\'');
 
             var foundCategory = false;
             for (let urlParameter of this.urlParameters) {
-                if(urlParameter.key === category) {
+                if (urlParameter.key === category) {
                     foundCategory = true;
                     urlParameter.values.push(value);
                 }
             }
-            if(!foundCategory) {
+            if (!foundCategory) {
                 var newParameter: URLParameter = {
                     key: category,
                     values: [value]
@@ -241,16 +241,16 @@ export class SearchComponent {
 
             var categoryIndex = 0;
             for (let urlParameter of this.urlParameters) {
-                if(urlParameter.key === category) {
+                if (urlParameter.key === category) {
                     var valueIndex = urlParameter.values.indexOf(value, 0);
                     if (valueIndex > -1) {
                         urlParameter.values.splice(valueIndex, 1);
-                        if(urlParameter.values.length == 0) {
+                        if (urlParameter.values.length == 0) {
                             this.urlParameters.splice(categoryIndex, 1);
                         }
                     }
                 }
-                categoryIndex ++;
+                categoryIndex++;
             }
         }
         
@@ -259,12 +259,12 @@ export class SearchComponent {
 
     navigateUsingParameters() {
 
-        var map: { [name: string]: string; } = { };
+        var map: { [name: string]: string; } = {};
         for (let urlParameter of this.urlParameters) {
             var concatValue = '';
             var counter = 0;
-            for(let value of urlParameter.values) {
-                if(counter!=0)
+            for (let value of urlParameter.values) {
+                if (counter != 0)
                     concatValue += ',';
                 concatValue += value;
                 counter++;
@@ -281,12 +281,12 @@ export class SearchComponent {
 
     addToCompare(id: string) {
 
-        if(this.servicesToCompare.includes(id)) {
-            this.servicesToCompare.splice(this.servicesToCompare.indexOf(id),1);
+        if (this.servicesToCompare.includes(id)) {
+            this.servicesToCompare.splice(this.servicesToCompare.indexOf(id), 1);
             sessionStorage.setItem('compareServices', JSON.stringify(this.servicesToCompare));
         } else {
 
-            if(this.servicesToCompare.length==4) {
+            if (this.servicesToCompare.length == 4) {
                 UIkit.notification({
                     message: 'You have reached the maximum number of items you can compare',
                     status: 'primary',
@@ -301,7 +301,7 @@ export class SearchComponent {
     }
 
     compareServices() {
-        var map: { [name: string]: string; } = { };
+        var map: { [name: string]: string; } = {};
         map['services'] = this.servicesToCompare.toString();
         this.router.navigate(['/compare', map]);
     }
@@ -345,7 +345,7 @@ export class SearchComponent {
 
     goToLastPage() {
 
-        var from: number = Math.floor(this.searchResults.total/this.pageSize) * this.pageSize;
+        var from: number = Math.floor(this.searchResults.total / this.pageSize) * this.pageSize;
         var to: number = this.searchResults.total - 1;
 
         this.updatePagingURLParameters(from);
@@ -357,16 +357,16 @@ export class SearchComponent {
         var foundFromCategory = false;
 
         for (let urlParameter of this.urlParameters) {
-            if(urlParameter.key === 'from') {
+            if (urlParameter.key === 'from') {
                 foundFromCategory = true;
                 urlParameter.values = [];
-                urlParameter.values.push(from+'');
+                urlParameter.values.push(from + '');
             }
         }
-        if(!foundFromCategory) {
+        if (!foundFromCategory) {
             var newFromParameter: URLParameter = {
                 key: 'from',
-                values: [from+'']
+                values: [from + '']
             };
             this.urlParameters.push(newFromParameter);
         }

@@ -8,8 +8,8 @@ import {AfterContentInit, AfterViewInit, Component, ElementRef, Input, OnChanges
     template: `
         <div [class.collapsed]="isCollapsed" [style.height]="isCollapsed ? maxHeight+'px' : 'auto'" #readMoreDiv>
             <ng-content></ng-content>
-        </div>     
-        <a *ngIf="isCollapsable" (click)="isCollapsed =! isCollapsed">View {{isCollapsed? 'more':'less'}}...</a>
+        </div>
+        <a *ngIf="isCollapsable" (click)="isCollapsed =! isCollapsed">View {{isCollapsed ? 'more' : 'less'}}...</a>
     `,
     styles: [`
         div.collapsed {
@@ -26,7 +26,7 @@ export class ReadMoreComponent implements AfterContentInit {
     @Input('maxHeight') maxHeight: number = 100;
 
     @ViewChild('readMoreDiv')
-    readMoreDiv : ElementRef;
+    readMoreDiv: ElementRef;
     //set these to false to get the height of the expended container
     public isCollapsed: boolean = false;
     public isCollapsable: boolean = false;
@@ -47,7 +47,7 @@ export class ReadMoreComponent implements AfterContentInit {
             } else {
 
             }
-        },200);
+        }, 200);
     }
 }
 
@@ -56,8 +56,8 @@ export class ReadMoreComponent implements AfterContentInit {
     template: `
         <div [class.collapsed]="isCollapsed" [style.height]="isCollapsed ? maxHeight+'px' : 'auto'" #readMoreDiv>
             {{text}}
-        </div>     
-        <a *ngIf="isCollapsable" (click)="isCollapsed =! isCollapsed">View {{isCollapsed? 'more':'less'}}...</a>
+        </div>
+        <a *ngIf="isCollapsable" (click)="isCollapsed =! isCollapsed">View {{isCollapsed ? 'more' : 'less'}}...</a>
     `,
     styles: [`
         div.collapsed {
@@ -76,6 +76,6 @@ export class ReadMoreTextComponent extends ReadMoreComponent implements OnChange
 
 
     @Input()
-    text : string = "";
+    text: string = "";
 }
 

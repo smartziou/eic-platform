@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 @Injectable()
 export class AuthenticationService {
 
-    private endpoint = process.env.API_ENDPOINT + ':' + process.env.API_PORT + process.env.API_PATH ;
+    private endpoint = process.env.API_ENDPOINT + ':' + process.env.API_PORT + process.env.API_PATH;
 
     constructor (private http: Http,private router: Router) {}
 
@@ -43,11 +43,11 @@ export class AuthenticationService {
         //https://aai.openminted.eu/registry/auth/logout
     }
 
-    public get isUserLoggedIn() : boolean {
+    public get isUserLoggedIn(): boolean {
         return sessionStorage.getItem('name') != null;
     }
 
-    public get getLoggedInUser() : string {
+    public get getLoggedInUser(): string {
         return sessionStorage.getItem('name');
     }
 
@@ -60,7 +60,7 @@ export class AuthenticationService {
                 );
             }
         }
-        if(sessionStorage.getItem("state.location")) {
+        if (sessionStorage.getItem("state.location")) {
             let state = sessionStorage.getItem("state.location");
             sessionStorage.removeItem("state.location");
             this.router.navigateByUrl(state);
@@ -86,8 +86,8 @@ export class AuthenticationService {
 
         if (!oauthSuccess) return false;
         let params = new URLSearchParams();
-        params.append('code',codeToken);
-        params.append('state',state);
+        params.append('code', codeToken);
+        params.append('state', state);
         console.log(params.toString());
 
         // this.http.get(this.serverLoginURL +'&'+ params.toString()).subscribe();

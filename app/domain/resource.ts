@@ -11,7 +11,7 @@ export class Resource {
     payload: string;
     payloadUrl: string;
     payloadFormat: string;
-    creationDate : Date;
+    creationDate: Date;
     modificationDate: Date;
     indexedFields: IndexedFields[];
 }

@@ -9,7 +9,7 @@ import {AfterViewInit, Directive, TemplateRef, ViewContainerRef} from '@angular/
 export class MyFormDirective implements AfterViewInit {
 
 
-    constructor(public viewContainerRef: ViewContainerRef, public templateRef : TemplateRef<any>) {
+    constructor(public viewContainerRef: ViewContainerRef, public templateRef: TemplateRef<any>) {
     }
 
     ngAfterViewInit(): void {

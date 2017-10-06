@@ -3,12 +3,12 @@
  */
 // import {allEnum} from "./omtd.enum";
 
-export function transform(object : any ) : any {
+export function transform(object: any): any {
     transformR(object);
     return object;
 }
 
-export function getCookie(name: string) : string {
+export function getCookie(name: string): string {
     let ca: Array<string> = document.cookie.split(';');
     let caLen: number = ca.length;
     let cookieName = `${name}=`;
@@ -28,14 +28,14 @@ export function deleteCookie(name) {
 }
 
 function setCookie(name: string, value: string, expireDays: number, path: string = '') {
-    let d:Date = new Date();
+    let d: Date = new Date();
     d.setTime(d.getTime() + expireDays * 24 * 60 * 60 * 1000);
-    let expires:string = `expires=${d.toUTCString()}`;
-    let cpath:string = path ? `; path=${path}` : '';
+    let expires: string = `expires=${d.toUTCString()}`;
+    let cpath: string = path ? `; path=${path}` : '';
     document.cookie = `${name}=${value}; ${expires}${cpath}`;
 }
 
-function transformR(object : any) : any {
+function transformR(object: any): any {
     // if(object instanceof Object) {
     //     for (var v in object) {
     //         transformR(object[v]);

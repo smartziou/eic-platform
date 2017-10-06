@@ -6,7 +6,7 @@ export class Topic {
     _id: string;
     name: string;
     description: string;
-    date : Date;
+    date: Date;
     weight: number;
     questionOrder: string;
 }

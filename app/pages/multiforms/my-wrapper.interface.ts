@@ -7,15 +7,15 @@ import {Description} from "../eInfraServices/services.description";
 
 
 //@Directive({})
-export abstract class MyWrapper implements OnInit{
+export abstract class MyWrapper implements OnInit {
 
-    @Input() public component : ViewRef;
+    @Input() public component: ViewRef;
 
-    @Input() description : Description = null;
+    @Input() description: Description = null;
 
-    @Input() viewRef : ViewRef;
+    @Input() viewRef: ViewRef;
 
-    @Output() deleteNotifier : EventEmitter<ViewRef> = new EventEmitter();
+    @Output() deleteNotifier: EventEmitter<ViewRef> = new EventEmitter();
 
     @ViewChild(MyFormDirective) private formComponents: MyFormDirective;
 
@@ -29,7 +29,7 @@ export abstract class MyWrapper implements OnInit{
         this.formComponents.viewContainerRef.insert(this.component);
     }
 
-    public remove(){
+    public remove() {
         this.deleteNotifier.emit(this.viewRef);
     };
 

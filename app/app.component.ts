@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
     isLoginOrRegister: boolean = false;
 
-    constructor(private router: Router,private oauthService: AuthenticationService) {
+    constructor(private router: Router, private oauthService: AuthenticationService) {
         // // URL of the SPA to redirect the user to after login
         // this.oauthService.redirectUri = window.location.origin + "/home";
         //
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
             if (!(evt instanceof NavigationEnd)) {
                 return;
             }
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         });
     }
 }

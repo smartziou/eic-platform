@@ -113,7 +113,7 @@ export class ServiceFormComponent implements OnInit {
 
     onVocabularies(vocabularies) {
         let ret = {};
-        Object.keys(vocabularies).forEach(e=> {
+        Object.keys(vocabularies).forEach(e => {
             let item = {};
             item[e] = vocabularies[e];
             let prefix = e.split("_")[0];
@@ -131,11 +131,11 @@ export class ServiceFormComponent implements OnInit {
     onSubmit(service: Service, isValid: boolean) {
         //TODO: check if model is valid
         if (isValid) {
-            let fixedObject : any = {};
+            let fixedObject: any = {};
             for (let i in service) {
                 if (Array.isArray(service[i])) {
                     fixedObject[i] = new Array();
-                    for (let j =0; j< service[i].length; j++) {
+                    for (let j = 0; j < service[i].length; j++) {
                         if (service[i][j].entry) {
                             fixedObject[i].push(service[i][j].entry);
                         }
@@ -144,9 +144,9 @@ export class ServiceFormComponent implements OnInit {
                 }
             }
             this.resourceService
-                .uploadService(Object.assign({}, service, fixedObject),this.editMode)
+                .uploadService(Object.assign({}, service, fixedObject), this.editMode)
                 .subscribe(service => {
-                    setTimeout(()=>this.router.navigate(['/landingPage/service/'+btoa(service.id)]), 1000);
+                    setTimeout(() => this.router.navigate(['/landingPage/service/' + btoa(service.id)]), 1000);
                 }, error => this.onUploadError.bind(this));
         } else {
             console.log('Model is invalid');

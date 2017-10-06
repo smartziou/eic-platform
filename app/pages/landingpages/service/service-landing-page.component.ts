@@ -17,7 +17,7 @@ export class ServiceLandingPageComponent {
     public service: Service;
     public errorMessage: string;
     private sub: Subscription;
-    private providers : any= {};
+    private providers: any = {};
 
     constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {
         this.Math = Math;
@@ -58,7 +58,7 @@ export class ServiceLandingPageComponent {
 
     getDeterminedInt(id) {
         let parts = id.split(".");
-        let num = 100*parseInt(parts[0]) + parseInt(parts[1]);
+        let num = 100 * parseInt(parts[0]) + parseInt(parts[1]);
         return Math.floor(1371 + Math.abs(Math.sin(num) * 100000));
     }
 

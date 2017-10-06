@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 @Component({
     selector: 'sign-up',
     templateUrl: './sign-up.component.html',
-    styleUrls:  ['./sign-up.component.css']
+    styleUrls: ['./sign-up.component.css']
 })
 
 export class SignUpComponent {
@@ -54,7 +54,7 @@ export class SignUpComponent {
     onSubmit(myUser: User, isValid: boolean) {
         //TODO: check if model is valid
         this.pass = myUser.password;
-        if(isValid) {
+        if (isValid) {
             this.userService.registerUser(myUser).subscribe(
                 user => this.onRegisterFinished(user),
                 error => this.errorMessage = <any>error);
@@ -68,8 +68,8 @@ export class SignUpComponent {
         this.user = user;
         this.submitted = true;
 
-        this.successMessage =  "Activation e-mail was sent to " + user.email;
-        setTimeout(()=>this.router.navigate(['/signIn']), 5000);
+        this.successMessage = "Activation e-mail was sent to " + user.email;
+        setTimeout(() => this.router.navigate(['/signIn']), 5000);
     }
 
     // areEqual(group: FormGroup) {

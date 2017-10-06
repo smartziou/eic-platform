@@ -16,13 +16,13 @@ export class TopMenuComponent {
 
     private oidcUrl = process.env.OIDC_ENDPOINT;
 
-    constructor(public oAuthService: AuthenticationService,private route: ActivatedRoute,private router: Router) {
+    constructor(public oAuthService: AuthenticationService, private route: ActivatedRoute, private router: Router) {
     }
 
     private loginWithState() {
         console.log(this.route);
-        sessionStorage.setItem("state.location",this.router.url);
-        window.location.href =this.oidcUrl;
+        sessionStorage.setItem("state.location", this.router.url);
+        window.location.href = this.oidcUrl;
     }
 
     onClick(id: string) {

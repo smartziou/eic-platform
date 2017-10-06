@@ -9,12 +9,12 @@ import {UserService} from "../../../services/user.service";
 @Component({
     selector: 'dashboard',
     templateUrl: './dashboard.component.html',
-    styleUrls:  ['./dashboard.component.css'],
+    styleUrls: ['./dashboard.component.css'],
 })
 
 export class DashboardComponent {
 
-    user : string = null;
+    user: string = null;
 
     constructor(public authenticationService: AuthenticationService, public userService: UserService) {
 
