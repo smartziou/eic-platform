@@ -75,6 +75,12 @@ export class ResourceService {
             .catch(this.handleError);
     }
 
+    activateUserAccount(id: any) {
+        return this.http.get(`${this.endpoint}/user/activate/${id}`)
+            .map(res => res.json())
+            .catch(err => err.status)
+    }
+
     uploadService(service: Service, shouldPut: boolean) {
         let args = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
 

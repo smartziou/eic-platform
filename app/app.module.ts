@@ -36,13 +36,13 @@ import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./pa
 import {InlineFormWrapper, MyGroup} from "./pages/multiforms/my-group.interface";
 import {MyFormDirective} from "./pages/multiforms/my-form.directive";
 import {LanguagesComponent} from "./pages/eInfraServices/languages.component";
-// import {RegionsComponent} from "./pages/eInfraServices/regions.component";
 import {TermsOfUseComponent} from "./pages/eInfraServices/termsOfUse.component";
 import {RelatedServicesComponent} from "./pages/eInfraServices/relatedServices.component";
 import {TagsComponent} from "./pages/eInfraServices/tags.component";
 import {AuthenticationLocalService} from "./services/authentication.local.service";
 import {ServiceFormComponent} from "./pages/eInfraServices/service-form.component";
 import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.component";
+import {ActivateComponent} from "./pages/user/activate/activate.component";
 
 @NgModule({
     imports: [
@@ -73,6 +73,7 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
         BrowseCategoriesComponent,
         ServiceUploadComponent,
         ServiceEditComponent,
+        ActivateComponent,
         DashboardComponent,
         MyGroup,
         ServiceFormComponent,
