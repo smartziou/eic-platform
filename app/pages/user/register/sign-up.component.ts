@@ -23,7 +23,7 @@ export class SignUpComponent {
     successMessage: string = null;
     submitted = false;
     providers: string[] = null;
-    endpoint = process.env.API_ENDPOINT;
+
     showProvider: boolean = false;
     pass: string = "";
 
