@@ -25,8 +25,8 @@ export class LoginComponent {
     constructor(fb: FormBuilder, private authenticationService: AuthenticationService,
                 private userService: UserService, private router: Router) {
         this.loginForm = fb.group({
-            "email": ["", Validators.compose([Validators.required, Validators.email])],
-            "password": ["", Validators.required]
+            "email": ["pgl@otenet.gr", Validators.compose([Validators.required, Validators.email])],
+            "password": ["my actual password irl", Validators.required]
         });
     }
 
@@ -42,9 +42,7 @@ export class LoginComponent {
     loginUser(user: User) {
         this.user = user;
         this.authenticationService.login(user);
-
         this.submitted = true;
-
         this.router.navigate(['/dashboard']);
 
         //TODO: see if authentication service has a redirect URL (https://angular.io/docs/ts/latest/guide/router.html#!#can-activate-guard)

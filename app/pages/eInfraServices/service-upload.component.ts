@@ -22,11 +22,6 @@ export class ServiceUploadComponent extends ServiceFormComponent implements OnIn
     }
 
     onSubmit(service: Service, isValid: boolean) {
-        service.id = this.getRandomInt(300, 500);
         super.onSubmit(service, false);
-    }
-
-    getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }
