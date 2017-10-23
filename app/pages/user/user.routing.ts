@@ -6,6 +6,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {SignUpComponent} from "./register/sign-up.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {ActivateComponent} from "./activate/activate.component";
+import {CanActivateViaAuthGuard} from "../../services/can-activate-auth-guard.service";
 
 const userRoutes: Routes = [
     {
@@ -19,6 +21,11 @@ const userRoutes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [CanActivateViaAuthGuard]
+    },
+    {
+        path: 'activate/:id',
+        component: ActivateComponent
     }
 ];
 
