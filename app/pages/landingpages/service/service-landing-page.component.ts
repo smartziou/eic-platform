@@ -52,10 +52,6 @@ export class ServiceLandingPageComponent {
         return btoa(this.service.id);
     }
 
-    getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
     getDeterminedInt(id) {
         let parts = id.split(".");
         let num = 100 * parseInt(parts[0]) + parseInt(parts[1]);
