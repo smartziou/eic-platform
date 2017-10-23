@@ -40,12 +40,12 @@ export class SignUpComponent {
 
     constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService, private router: Router) {
         this.signUpForm = fb.group({
-            "name": ["Παναγιώτης", Validators.required],
-            "surname": ["Λαμπρόπουλος", Validators.required],
-            "email": ["pgl@otenet.gr", Validators.compose([Validators.required, Validators.email])],
-            "password": ["my actual password irl", Validators.required],
-            "confirmPassword": ["my actual password irl", Validators.required],
-            "affiliation": ["di"],
+            "name": ["", Validators.required],
+            "surname": ["", Validators.required],
+            "email": ["", Validators.compose([Validators.required, Validators.email])],
+            "password": ["", Validators.required],
+            "confirmPassword": ["", Validators.required],
+            "affiliation": [""],
             "providerAdministrator": [false],
             "provider": [""],
         });

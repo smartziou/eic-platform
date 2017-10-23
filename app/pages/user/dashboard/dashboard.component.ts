@@ -3,6 +3,8 @@
  */
 
 import {Component} from "@angular/core";
+import {AuthenticationService} from "../../../services/authentication.service";
+import {UserService} from "../../../services/user.service";
 
 @Component({
     selector: 'dashboard',
@@ -14,7 +16,7 @@ export class DashboardComponent {
 
     user: string = null;
 
-    constructor() {
+    constructor(public authenticationService: AuthenticationService, public userService: UserService) {
 
     }
 }
