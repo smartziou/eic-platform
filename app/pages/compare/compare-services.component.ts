@@ -9,7 +9,7 @@ import {ResourceService} from "../../services/resource.service";
 import {SearchQuery} from "../../domain/search-query";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {URLParameter} from "../../domain/url-parameter";
-import {AuthenticationLocalService} from "../../services/authentication.local.service";
+import {AuthenticationService} from "../../services/authentication.service";
 import {UserService} from "../../services/user.service";
 
 @Component({
@@ -28,7 +28,7 @@ export class CompareServicesComponent implements OnInit {
     public errorMessage: string;
     private sub: Subscription;
 
-    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService, private userService: UserService) {
+    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationService: AuthenticationService, private userService: UserService) {
 
         this.searchForm = fb.group({
             "query": [""],
@@ -81,8 +81,8 @@ export class CompareServicesComponent implements OnInit {
 
     addToFavorites(service) {
         let allowLogin = false;
-        if (allowLogin && this.authenticationLocalService.loggedIn()) {
-            this.userService.addFavourite(service, this.authenticationLocalService.getUser())
+        if (allowLogin && this.authenticationService.isLoggedIn()) {
+            this.userService.addFavourite(service, this.authenticationService.getUser())
         } else {
             this.router.navigate(['/signIn']);
         }

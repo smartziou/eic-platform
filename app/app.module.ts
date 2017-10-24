@@ -39,7 +39,6 @@ import {LanguagesComponent} from "./pages/eInfraServices/languages.component";
 import {TermsOfUseComponent} from "./pages/eInfraServices/termsOfUse.component";
 import {RelatedServicesComponent} from "./pages/eInfraServices/relatedServices.component";
 import {TagsComponent} from "./pages/eInfraServices/tags.component";
-import {AuthenticationLocalService} from "./services/authentication.local.service";
 import {ServiceFormComponent} from "./pages/eInfraServices/service-form.component";
 import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.component";
 import {ActivateComponent} from "./pages/user/activate/activate.component";
@@ -106,8 +105,7 @@ import {ActivateComponent} from "./pages/user/activate/activate.component";
         AuthenticationService,
         CanActivateViaAuthGuard,
         ResourceService,
-        appRoutingProviders,
-        AuthenticationLocalService
+        appRoutingProviders
     ],
     bootstrap: [AppComponent]
 })

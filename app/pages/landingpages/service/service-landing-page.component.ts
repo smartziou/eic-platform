@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Service} from "../../../domain/eic-model";
 import {ResourceService} from "../../../services/resource.service";
 import {Subscription} from "rxjs/Subscription";
-import {AuthenticationLocalService} from "../../../services/authentication.local.service";
+import {AuthenticationService} from "../../../services/authentication.service";
 
 @Component({
     selector: 'service-landing-page',
@@ -19,7 +19,7 @@ export class ServiceLandingPageComponent {
     private sub: Subscription;
     private providers: any = {};
 
-    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {
+    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationService: AuthenticationService) {
         this.Math = Math;
     }
 
@@ -64,7 +64,7 @@ export class ServiceLandingPageComponent {
 
     rateService() {
         let allowLogin = false;
-        if (allowLogin && this.authenticationLocalService.loggedIn()) {
+        if (allowLogin && this.authenticationService.isLoggedIn()) {
             //Rate logic goes here
         } else {
             this.router.navigate(['/signIn']);

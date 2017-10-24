@@ -9,7 +9,7 @@ import {SearchQuery} from "../../domain/search-query";
 import {URLParameter} from "./../../domain/url-parameter";
 import {ResourceService} from "../../services/resource.service";
 import {SearchResults} from "../../domain/search-results";
-import {AuthenticationLocalService} from "../../services/authentication.local.service";
+import {AuthenticationService} from "../../services/authentication.service";
 
 declare var UIkit: any;
 
@@ -45,7 +45,7 @@ export class SearchComponent {
     providers: any;
 
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
-                private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {
+                private resourceService: ResourceService, private authenticationService: AuthenticationService) {
 
         this.resourceService.getProviders().subscribe(
             suc => {
