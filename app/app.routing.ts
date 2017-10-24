@@ -10,7 +10,7 @@ import {CompareServicesComponent} from "./pages/compare/compare-services.compone
 import {BrowseCategoriesComponent} from "./pages/browsecategories/browse-categories.component";
 import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
 import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
-import {ActivateComponent} from "./pages/user/activate/activate.component";
+import {CanActivateViaAuthGuard} from "./services/can-activate-auth-guard.service";
 
 const appRoutes: Routes = [
     {
@@ -36,15 +36,13 @@ const appRoutes: Routes = [
     },
     {
         path: 'upload',
-        component: ServiceUploadComponent
+        component: ServiceUploadComponent,
+        canActivate: [CanActivateViaAuthGuard]
     },
     {
         path: 'edit/:id',
-        component: ServiceEditComponent
-    },
-    {
-        path: 'activate/:id',
-        component: ActivateComponent
+        component: ServiceEditComponent,
+        canActivate: [CanActivateViaAuthGuard]
     }
 ];
 

@@ -104,8 +104,4 @@ export class CompareServicesComponent implements OnInit {
     //
     //     this.router.navigate(['/runApplication', map]);
     // }
-
-    getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
 }
