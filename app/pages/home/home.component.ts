@@ -14,9 +14,7 @@ import {Service} from "../../domain/eic-model";
 })
 
 export class HomeComponent {
-
     public searchForm: FormGroup;
-
     private services: Service[];
     public categories: category[] = [
         {
@@ -42,10 +40,22 @@ export class HomeComponent {
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(['/search', {query: searchValue.query}]);
+        this.router.navigate(['/search',
+            {query: searchValue.query}]);
     }
 
     gotoDetail(id: string) {
         this.router.navigate(['/landingPage/service' + '/', btoa(id)]);
     }
+
+    searchCategory(cat: string) {
+        this.router.navigate(['/search',
+            {category: cat}]);
+    }
+}
+
+class category {
+    value: string;
+    icon: string;
+    hover: string;
 }
