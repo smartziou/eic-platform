@@ -52,8 +52,7 @@ export class ServiceLandingPageComponent {
     }
 
     rateService() {
-        let allowLogin = false;
-        if (allowLogin && this.authenticationService.isLoggedIn()) {
+        if (this.authenticationService.isLoggedIn()) {
             //Rate logic goes here
         } else {
             this.router.navigate(['/signIn']);
