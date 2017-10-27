@@ -27,9 +27,7 @@ export class BrowseCategoriesComponent implements OnInit {
 
     ngOnInit() {
         // request results from the registry
-        this.resourceService.getServicesByCategories().subscribe(
-            browseResults => this.updateBrowseResults(browseResults),
-            error => this.handleError('System error retrieving browse results', <any>error));
+        this.resourceService.getServicesByCategories().subscribe(browseResults => this.updateBrowseResults(browseResults));
 
     }
 
@@ -74,7 +72,7 @@ export class BrowseCategoriesComponent implements OnInit {
         this.router.navigate(['/landingPage/service' + '/', btoa(id)]);
     }
 
-    handleError(message: string, error) {
-        this.errorMessage = message + ' (Server responded: ' + error + ')';
-    }
+    // handleError(message: string, error) {
+    //     this.errorMessage = message + ' (Server responded: ' + error + ')';
+    // }
 }

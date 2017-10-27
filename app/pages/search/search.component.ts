@@ -47,12 +47,7 @@ export class SearchComponent {
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
                 private resourceService: ResourceService, private authenticationService: AuthenticationService) {
 
-        this.resourceService.getProviders().subscribe(
-            suc => {
-                this.providers = suc;
-            },
-            err => console.error(err)
-        );
+        this.resourceService.getProviders().subscribe(suc => this.providers = suc);
 
         this.searchForm = fb.group({
             "query": [""],
@@ -84,9 +79,7 @@ export class SearchComponent {
 
                 // console.log(this.urlParameters);
                 //request results from the registry
-                this.resourceService.search(this.urlParameters).subscribe(
-                    searchResults => this.updateSearchResults(searchResults),
-                    error => this.handleError(<any>error));
+                this.resourceService.search(this.urlParameters).subscribe(searchResults => this.updateSearchResults(searchResults));
             });
     }
 
@@ -306,9 +299,9 @@ export class SearchComponent {
         this.router.navigate(['/compare', map]);
     }
 
-    handleError(error) {
-        this.errorMessage = 'System error searching for resources (Server responded: ' + error + ')';
-    }
+    // handleError(error) {
+    //     this.errorMessage = 'System error searching for resources (Server responded: ' + error + ')';
+    // }
 
     goToFirstPage() {
 

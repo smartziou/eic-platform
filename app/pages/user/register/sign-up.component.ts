@@ -28,10 +28,7 @@ export class SignUpComponent {
     pass: string = "";
 
     ngOnInit() {
-        this.resourceService.getProviders().subscribe(
-            providers => this.storeProviders(providers),
-            error => this.errorMessage = <any>error
-        );
+        this.resourceService.getProviders().subscribe(providers => this.storeProviders(providers));
     }
 
     storeProviders(providers: string[]) {
@@ -52,14 +49,11 @@ export class SignUpComponent {
     }
 
     onSubmit(myUser: User, isValid: boolean) {
-        //TODO: check if model is valid
         this.pass = myUser.password;
         if (isValid) {
-            this.userService.registerUser(myUser).subscribe(
-                user => this.onRegisterFinished(user),
-                error => this.errorMessage = <any>error);
+            this.userService.registerUser(myUser).subscribe(user => this.onRegisterFinished(user));
         } else {
-            this.errorMessage = 'Form not valid';
+            this.errorMessage = "Form not valid";
         }
     }
 

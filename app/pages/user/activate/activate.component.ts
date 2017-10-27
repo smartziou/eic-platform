@@ -20,10 +20,7 @@ export class ActivateComponent {
     }
 
     onParams(params) {
-        this.resourceService.activateUserAccount(params["id"]).subscribe(
-            suc => this.router.navigate(['/signIn']),
-            err => this.router.navigate(['/signIn'])
-        )
+        this.resourceService.activateUserAccount(params["id"]).subscribe(suc => this.router.navigate(['/signIn']));
     }
 
     constructor(private resourceService: ResourceService, private route: ActivatedRoute, private router: Router) {

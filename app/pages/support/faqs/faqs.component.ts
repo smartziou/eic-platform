@@ -24,16 +24,14 @@ export class FAQsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.faqService.getActiveTopicQuestions().subscribe(
-            activeTopicQuestions => this.shiftThroughTopics(activeTopicQuestions),
-            error => this.handleError(<any>error));
+        this.faqService.getActiveTopicQuestions().subscribe(activeTopicQuestions => this.shiftThroughTopics(activeTopicQuestions));
     }
 
     shiftThroughTopics(activeTopicQuestions: ActiveTopicQuestions[]) {
         this.activeTopicQuestions = activeTopicQuestions.filter(_ => _.name === "Legal");
     }
 
-    handleError(error) {
-        this.errorMessage = 'System error retrieving FAQs (Server responded: ' + error + ')';
-    }
+    // handleError(error) {
+    //     this.errorMessage = 'System error retrieving FAQs (Server responded: ' + error + ')';
+    // }
 }

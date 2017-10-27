@@ -33,10 +33,7 @@ export class RelatedServicesComponent extends MyGroup {
 
     ngOnInit() {
         super.ngOnInit();
-        this.resourceService.getServices().subscribe(
-            suc => this.relatedServices = this.transformInput(suc),
-            err => console.error(err)
-        );
+        this.resourceService.getServices().subscribe(suc => this.relatedServices = this.transformInput(suc));
     }
 
     transformInput(input) {

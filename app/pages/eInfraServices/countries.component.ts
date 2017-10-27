@@ -33,10 +33,7 @@ export class CountriesComponent extends MyGroup {
 
     ngOnInit() {
         super.ngOnInit();
-        this.resourceService.getVocabularies("Country").subscribe(
-            suc => this.countries = suc,
-            err => console.error(err)
-        );
+        this.resourceService.getVocabularies("Country").subscribe(suc => this.countries = suc);
     }
 
 }

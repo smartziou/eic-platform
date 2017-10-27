@@ -31,12 +31,11 @@ export class LoginComponent {
     }
 
     onSubmit(myUser: User, isValid: boolean) {
-
-        //TODO: check if model is valid
-
-        this.userService.loginUser(myUser.email, myUser.password).subscribe(
-            user => this.loginUser(user),
-            error => this.errorMessage = <any>error);
+        if (isValid) {
+            this.userService.loginUser(myUser.email, myUser.password).subscribe(user => this.saveLoginStatus(user));
+        } else {
+            this.errorMessage = "Invalid";
+        }
     }
 
     loginUser(user: User) {

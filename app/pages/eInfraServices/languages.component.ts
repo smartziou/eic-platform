@@ -35,10 +35,7 @@ export class LanguagesComponent extends MyGroup {
 
     ngOnInit() {
         super.ngOnInit();
-        this.resourceService.getVocabularies("Language").subscribe(
-            suc => this.languages = suc,
-            err => console.error(err)
-        );
+        this.resourceService.getVocabularies("Language").subscribe(suc => this.languages = suc);
     }
 
 }

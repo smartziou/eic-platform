@@ -59,9 +59,7 @@ export class CompareServicesComponent implements OnInit {
                 } else {
                     // console.log('URL Parameters', this.urlParameters);
                     // request results from the registry
-                    this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(
-                        services => this.services = services,
-                        error => this.handleError('System error loading services', <any>error));
+                    this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(services => this.services = services);
                 }
 
             });
@@ -75,9 +73,9 @@ export class CompareServicesComponent implements OnInit {
         this.router.navigate(['/search', {query: searchValue.query}]);
     }
 
-    handleError(message: string, error) {
-        this.errorMessage = message + ' (Server responded: ' + error + ')';
-    }
+    // handleError(message: string, error) {
+    //     this.errorMessage = message + ' (Server responded: ' + error + ')';
+    // }
 
     addToFavorites(service) {
         let allowLogin = false;

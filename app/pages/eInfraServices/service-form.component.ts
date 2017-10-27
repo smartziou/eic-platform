@@ -30,7 +30,6 @@ export class ServiceFormComponent implements OnInit {
     errorMessage: string = null;
     successMessage: string = null;
     submitted = false;
-    endpoint = process.env.API_ENDPOINT;
     readonly placesDesc: sd.Description = sd.placesDesc;
     // readonly regionsDesc: sd.Description = sd.regionsDesc;
     readonly languagesDesc: sd.Description = sd.languagesDesc;
@@ -106,8 +105,7 @@ export class ServiceFormComponent implements OnInit {
             suc => {
                 this.providers = suc;
                 this.serviceForm.patchValue({});
-            },
-            err => console.error(err)
+            }
         );
         this.resourceService.getVocabularies().subscribe(suc => this.onVocabularies(suc), console.error);
     }
@@ -144,11 +142,10 @@ export class ServiceFormComponent implements OnInit {
                     }
                 }
             }
-            this.resourceService
-                .uploadService(Object.assign({}, service, fixedObject), this.editMode)
+            this.resourceService.uploadService(Object.assign({}, service, fixedObject), this.editMode)
                 .subscribe(service => {
                     setTimeout(() => this.router.navigate(['/landingPage/service/' + btoa(service.id)]), 1000);
-                }, error => this.onUploadError.bind(this));
+                });
         } else {
             console.log('Model is invalid');
             window.scrollTo(0, 0);
@@ -156,14 +153,6 @@ export class ServiceFormComponent implements OnInit {
             this.serviceForm.updateValueAndValidity();
             this.errorMessage = 'Form not valid';
         }
-    }
-
-    onSuccess(service) {
-        throw Error('Implement me')
-    };
-
-    onUploadError(error) {
-        this.errorMessage = <any>error;
     }
 
     isDev() {
