@@ -13,14 +13,14 @@ export class UserService {
     }
 
     addFavourite(serviceID: string, userID: string): Observable<any> {
-        return this.http.post("/user/addFavourite", {userID,serviceID});
+        return this.http.post("/user/addFavourite", {userID, serviceID});
     }
 
-    loginUser(email: string, password: string): Observable<User> {
+    loginUser(email: string, password: string): Observable<any> {
         return this.http.post("/user/login", {email, password});
     }
 
-    registerUser(user: User): Observable<User> {
+    registerUser(user: User): Observable<any> {
         return this.http.post("/user/register", user);
     }
 }

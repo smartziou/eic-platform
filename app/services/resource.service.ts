@@ -2,7 +2,6 @@
  * Created by stefania on 9/6/16.
  */
 import {Injectable} from "@angular/core";
-import {Headers, RequestOptions, Response} from "@angular/http";
 import {URLParameter} from "../domain/url-parameter";
 import {SearchResults} from "../domain/search-results";
 import {Access, Service} from "../domain/eic-model";
@@ -26,11 +25,11 @@ export class ResourceService {
 
         let questionMark = urlParameters.length > 0 ? '?' : '';
 
-        return this.http.get(`/service/all${questionMark}${searchQuery.toString()}`).map(res => <SearchResults> res);
+        return this.http.get(`/service/all${questionMark}${searchQuery.toString()}`).map(res => <SearchResults> <any> res);
     }
 
     getVocabularies(type?: string) {
-        return this.http.get(`/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`).map(e => e.results.reduce(this.getActualResult, {}));
+        return this.http.get(`/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`).map(e => (<any>e).results.reduce(this.getActualResult, {}));
     }
 
     getActualResult(accumulator, value) {
@@ -39,23 +38,23 @@ export class ResourceService {
     }
 
     getServices() {
-        return this.http.get("/service/by/service_id").map(res => <Service> res);
+        return this.http.get("/service/by/service_id").map(res => <Service> <any> res);
     }
 
     getService(id: string) {
-        return this.http.get(`/service/${id}/`).map(res => <Service> res);
+        return this.http.get(`/service/${id}/`).map(res => <Service> <any> res);
     }
 
     getSelectedServices(ids: string[]) {
-        return this.http.get(`/service/some/${ids.toString()}/`).map(res => <Service[]> res);
+        return this.http.get(`/service/some/${ids.toString()}/`).map(res => <Service[]> <any> res);
     }
 
     getServicesByCategories() {
-        return this.http.get("/service/by/category").map(res => <BrowseResults> res);
+        return this.http.get("/service/by/category").map(res => <BrowseResults> <any> res);
     }
 
     getProviders() {
-        return this.http.get("/provider/all").map(e => e.results.reduce(this.getActualResult, {}));
+        return this.http.get("/provider/all").map(e => (<any>e).results.reduce(this.getActualResult, {}));
     }
 
     activateUserAccount(id: any) {
@@ -63,7 +62,7 @@ export class ResourceService {
     }
 
     uploadService(service: Service, shouldPut: boolean) {
-        return this.http[shouldPut ? "put" : "post"]("/service", service).map(res => <Service> res);
+        return this.http[shouldPut ? "put" : "post"]("/service", service).map(res => <Service> <any> res);
     }
 
     static removeNulls(obj) {
