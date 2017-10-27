@@ -10,7 +10,7 @@ declare var UIkit: any;
 
 @Injectable()
 export class HTTPWrapper extends Http {
-    private defaultOptions = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
+    private defaultOptions = new RequestOptions({headers: new Headers({"Content-Type": "application/json;charset=UTF-8"})});
     private base = process.env.API_ENDPOINT;
 
     constructor(backend: XHRBackend, options: RequestOptions, public http: Http) {
