@@ -8,15 +8,18 @@ import {SignUpComponent} from "./register/sign-up.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ActivateComponent} from "./activate/activate.component";
 import {CanActivateViaAuthGuard} from "../../services/can-activate-auth-guard.service";
+import {CanActivateViaPubGuard} from "../../services/can-activate-pub-guard.service";
 
 const userRoutes: Routes = [
     {
         path: 'signIn',
         component: LoginComponent,
+        canActivate: [CanActivateViaPubGuard]
     },
     {
         path: 'signUp',
         component: SignUpComponent,
+        canActivate: [CanActivateViaPubGuard]
     },
     {
         path: 'dashboard',
@@ -26,6 +29,7 @@ const userRoutes: Routes = [
     {
         path: 'activate/:id',
         component: ActivateComponent
+        canActivate: [CanActivateViaPubGuard]
     }
 ];
 

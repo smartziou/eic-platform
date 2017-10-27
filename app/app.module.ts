@@ -42,6 +42,7 @@ import {TagsComponent} from "./pages/eInfraServices/tags.component";
 import {ServiceFormComponent} from "./pages/eInfraServices/service-form.component";
 import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.component";
 import {ActivateComponent} from "./pages/user/activate/activate.component";
+import {CanActivateViaPubGuard} from "./services/can-activate-pub-guard.service";
 
 @NgModule({
     imports: [
@@ -104,6 +105,7 @@ import {ActivateComponent} from "./pages/user/activate/activate.component";
         UserService,
         AuthenticationService,
         CanActivateViaAuthGuard,
+        CanActivateViaPubGuard,
         ResourceService,
         appRoutingProviders
     ],
