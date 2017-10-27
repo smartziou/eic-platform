@@ -2,7 +2,7 @@
  * Created by pgl on 27/10/17.
  */
 
-import {Headers, Http, RequestOptions, RequestOptionsArgs, Response} from "@angular/http";
+import {Headers, Http, RequestOptions, RequestOptionsArgs, Response, XHRBackend} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 
@@ -10,17 +10,24 @@ declare var UIkit: any;
 
 @Injectable()
 export class HTTPWrapper extends Http {
-    private static defaultOptions = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
-    private static base = process.env.API_ENDPOINT;
+    private defaultOptions = new RequestOptions({headers: new Headers({"Content-Type": "application/json"})});
+    private base = process.env.API_ENDPOINT;
+
+    constructor(backend: XHRBackend, options: RequestOptions, public http: Http) {
+        super(backend, options)
+    }
 
     public post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-        return super.post(HTTPWrapper.base + url, JSON.stringify(body), Object.assign(HTTPWrapper.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
+        console.log(this.base);
+        return super.post(this.base + url, JSON.stringify(body), Object.assign(this.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
     }
+
     public put(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-        return super.put(HTTPWrapper.base + url, JSON.stringify(body), Object.assign(HTTPWrapper.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
+        return super.put(this.base + url, JSON.stringify(body), Object.assign(this.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
     }
+
     public get(url: string, options?: RequestOptionsArgs): Observable<any> {
-        return super.get(HTTPWrapper.base + url, Object.assign(HTTPWrapper.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
+        return super.get(this.base + url, Object.assign(this.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
     }
 
     public handleError(error: Response) {
