@@ -12,23 +12,23 @@ import {CanActivateViaPubGuard} from "../../services/can-activate-pub-guard.serv
 
 const userRoutes: Routes = [
     {
-        path: 'signIn',
+        path: "signIn",
         component: LoginComponent,
         canActivate: [CanActivateViaPubGuard]
     },
     {
-        path: 'signUp',
+        path: "signUp",
         component: SignUpComponent,
         canActivate: [CanActivateViaPubGuard]
     },
     {
-        path: 'dashboard',
+        path: "dashboard",
         component: DashboardComponent,
         canActivate: [CanActivateViaAuthGuard]
     },
     {
-        path: 'activate/:id',
-        component: ActivateComponent
+        path: "activate/:id",
+        component: ActivateComponent,
         canActivate: [CanActivateViaPubGuard]
     }
 ];

@@ -14,9 +14,7 @@ import {Router} from "@angular/router";
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
 })
-
 export class LoginComponent {
-
     public loginForm: FormGroup;
     public submitted: boolean;
     public user: User;
@@ -41,7 +39,6 @@ export class LoginComponent {
     saveLoginStatus(user: User) {
         this.user = user;
         this.authenticationService.login(user);
-
         this.submitted = true;
     }
 }
