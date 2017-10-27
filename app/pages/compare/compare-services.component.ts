@@ -78,8 +78,7 @@ export class CompareServicesComponent implements OnInit {
     // }
 
     addToFavorites(service) {
-        let allowLogin = false;
-        if (allowLogin && this.authenticationService.isLoggedIn()) {
+        if (this.authenticationService.isLoggedIn()) {
             this.userService.addFavourite(service, this.authenticationService.getUser())
         } else {
             this.router.navigate(['/signIn']);
