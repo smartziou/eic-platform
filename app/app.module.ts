@@ -43,6 +43,7 @@ import {ServiceFormComponent} from "./pages/eInfraServices/service-form.componen
 import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.component";
 import {ActivateComponent} from "./pages/user/activate/activate.component";
 import {CanActivateViaPubGuard} from "./services/can-activate-pub-guard.service";
+// import {EinfraErrorHandler} from "./services/error-handler.service";
 
 @NgModule({
     imports: [
@@ -107,7 +108,11 @@ import {CanActivateViaPubGuard} from "./services/can-activate-pub-guard.service"
         CanActivateViaAuthGuard,
         CanActivateViaPubGuard,
         ResourceService,
-        appRoutingProviders
+        appRoutingProviders,
+        // {
+        //     provide: ErrorHandler,
+        //     useClass: EinfraErrorHandler
+        // }
     ],
     bootstrap: [AppComponent]
 })
