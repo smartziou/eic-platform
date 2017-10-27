@@ -9,18 +9,19 @@ import {Router} from "@angular/router";
 @Injectable()
 export class AuthenticationService {
     private cookieName: string = "jwt";
-    redirectUrl: string;
+    redirectUrl: string = "/home";
 
     constructor(private router: Router) {
     }
 
     public login(user: User) {
         setCookie(this.cookieName, JSON.stringify(user), 1);
+        this.router.navigate([this.redirectUrl]);
     }
 
     public logout() {
         deleteCookie(this.cookieName);
-        this.router.navigate(['/home']);
+        this.router.navigate(["/home"]);
     }
 
     public isLoggedIn(): boolean {
