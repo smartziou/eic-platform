@@ -1,18 +1,7 @@
-// Generated using typescript-generator version 1.27.339 on 2017-09-26 17:14:53.
-
-export class Access implements Identifiable {
-    id: string;
-    instant: number;
-    type: string;
-    userID: string;
-    serviceID: string;
-}
+// Generated using typescript-generator version 1.27.339 on 2017-11-01 16:56:48.
 
 export interface Identifiable {
     id: string;
-}
-
-export class JAXBComparable {
 }
 
 export class Provider implements Identifiable {
@@ -28,7 +17,6 @@ export class Service implements Identifiable {
     url: URL;
     name: string;
     tagline: string;
-    fullName: string;
     description: string;
     options: string;
     targetUsers: string;
@@ -36,8 +24,7 @@ export class Service implements Identifiable {
     userBase: string;
     symbol: URL;
     multimediaURL: URL;
-    provider: string;
-    providerDescription: string;
+    provider: string[];
     version: string;
     lastUpdate: XMLGregorianCalendar;
     changeLog: string;
@@ -60,12 +47,18 @@ export class Service implements Identifiable {
     serviceLevelAgreement: URL;
     termOfUse: URL[];
     funding: string;
+    serviceAddenda: ServiceAddenda;
+}
+
+export class ServiceAddenda implements Identifiable {
+    id: string;
+    perfomanceData: Measurement<any>[];
     externalHits: number;
     internalHits: number;
     favouriteCount: number;
     averageRating: number;
     ratings: number;
-    isPublic: boolean;
+    published: boolean;
 }
 
 export class Vocabulary implements Identifiable {
@@ -75,19 +68,18 @@ export class Vocabulary implements Identifiable {
     parent: string;
 }
 
+export class WrappedComparable {
+}
+
 export class User implements Identifiable {
     id: string;
-    name: string;
-    surname: string;
     email: string;
     password: string;
+    name: string;
+    surname: string;
     joinDate: string;
-    affiliation: string;
-    isServiceProvider: boolean;
-    role: Role[];
+    membership: { [index: string]: Grant };
     favourite: Service[];
-    providerAdministrator: boolean;
-    provider: string;
     iterationCount: number;
     salt: any;
     resetToken: string;
@@ -99,8 +91,16 @@ export class URL implements Serializable {
 export class XMLGregorianCalendar implements Cloneable {
 }
 
-export class Role {
-    id: number;
+export class Measurement<T> implements Identifiable {
+    id: string;
+    indicator: string;
+    from: XMLGregorianCalendar;
+    to: XMLGregorianCalendar;
+    value: T;
+}
+
+export class Grant implements Identifiable {
+    id: string;
     description: string;
 }
 
