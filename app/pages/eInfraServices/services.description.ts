@@ -41,13 +41,13 @@ export const termsOfUseDesc = {
     recommended: false
 };
 export const nameDesc = {
-    desc: "Brief marketing name of service as assigned by the service provider. Should be descriptive from a customer point of view, and should be quite simple, such that someone non-technical is able to understand what the service is about",
+    desc: "Brief marketing name of service as assigned by the service providers. Should be descriptive from a customer point of view, and should be quite simple, such that someone non-technical is able to understand what the service is about",
     label: "name",
     mandatory: true,
     recommended: false
 };
 export const fullNameDesc = {
-    desc: "Extended name of service as assigned by the service provider",
+    desc: "Extended name of service as assigned by the service providers",
     label: "full Name",
     mandatory: false,
     recommended: false
@@ -84,7 +84,7 @@ export const userBaseDesc = {
 };
 export const providerDesc = {
     desc: "Organisation that manages and delivers the service and with whom the customer signs the SLA",
-    label: "provider",
+    label: "providers",
     mandatory: true,
     recommended: false
 };
@@ -95,7 +95,7 @@ export const fundingDesc = {
     recommended: false
 };
 export const urlDesc = {
-    desc: "Link to a url providing information about the service. This url is usually hosted and maintained by the service provider. It contains fresh and additional information, such as what APIs are supported or links to the documentation",
+    desc: "Link to a url providing information about the service. This url is usually hosted and maintained by the service providers. It contains fresh and additional information, such as what APIs are supported or links to the documentation",
     label: "url",
     mandatory: false,
     recommended: false
@@ -155,13 +155,13 @@ export const subcategoryDesc = {
     recommended: false
 };
 export const requestDesc = {
-    desc: "Link to request the service from the service provider",
+    desc: "Link to request the service from the service providers",
     label: "request",
     mandatory: true,
     recommended: false
 };
 export const helpdeskDesc = {
-    desc: "Link with contact to ask more information from the service provider about this service. A contact person or helpdesk within the organization must be assigned for communications, questions and issues relating to the service",
+    desc: "Link with contact to ask more information from the service providers about this service. A contact person or helpdesk within the organization must be assigned for communications, questions and issues relating to the service",
     label: "helpdesk",
     mandatory: false,
     recommended: false
@@ -191,7 +191,7 @@ export const priceDesc = {
     recommended: false
 };
 export const serviceLevelAgreementDesc = {
-    desc: "Document containing information about the levels of performance that a service provider is expected to achieve. Current service agreements (SLAs) available for the service or basis for a new SLA. These should be agreements with users (not providers)",
+    desc: "Document containing information about the levels of performance that a service providers is expected to achieve. Current service agreements (SLAs) available for the service or basis for a new SLA. These should be agreements with users (not providers)",
     label: "SLA",
     mandatory: false,
     recommended: false

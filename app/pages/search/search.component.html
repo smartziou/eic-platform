@@ -196,7 +196,7 @@
                                                 {{resourceInfo.resource.name}}
                                             </a>
                                         </h3>
-                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{this.providers[resourceInfo.resource.provider] || resourceInfo.resource.provider}})</em></div>
+                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{this.providers[resourceInfo.resource.providers[0]] || resourceInfo.resource.providers}})</em></div>
                                         <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
                                             <read-more-text [text]="resourceInfo.resource.description" [maxHeight]="75">
                                             </read-more-text>

@@ -22,7 +22,7 @@
                                 <h2 class="uk-h2 uk-inline" style="margin-bottom: 5px">
                                     {{service.name || "Not Available"}}
                                 </h2>
-                                <div>by {{service.provider? this.providers[service.provider] : "--" }}</div>
+                                <div>by {{service.providers? this.providers[service.providers[0]] : "--" }}</div>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">

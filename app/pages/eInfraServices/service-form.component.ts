@@ -80,7 +80,7 @@ export class ServiceFormComponent implements OnInit {
         "userBase": [""],
         "symbol": ["", URLValidator],
         "multimediaURL": ["", URLValidator],
-        "provider": ["", Validators.required],
+        "providers": ["", Validators.required],
         "version": [""],
         "lastUpdate": [""],
         "changeLog": [""],

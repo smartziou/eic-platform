@@ -100,10 +100,10 @@
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
-                                <template [ngIf]="service.provider && service.provider!=''">
-                                    by {{service.provider}}
+                                <template [ngIf]="service.providers && service.providers!=''">
+                                    by {{service.providers}}
                                 </template>
-                                <template [ngIf]="!service.provider || service.provider==''">
+                                <template [ngIf]="!service.providers || service.providers==''">
                                     --
                                 </template>
                             </td>
