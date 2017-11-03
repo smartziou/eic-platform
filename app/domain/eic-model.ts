@@ -1,4 +1,4 @@
-// Generated using typescript-generator version 1.27.339 on 2017-11-01 16:56:48.
+// Generated using typescript-generator version 1.27.339 on 2017-11-03 17:19:28.
 
 export interface Identifiable {
     id: string;
@@ -71,6 +71,19 @@ export class Vocabulary implements Identifiable {
 export class WrappedComparable {
 }
 
+export class Access implements Identifiable {
+    id: string;
+    instant: number;
+    type: string;
+    userID: string;
+    serviceID: string;
+}
+
+export class Grant implements Identifiable {
+    id: string;
+    description: string;
+}
+
 export class User implements Identifiable {
     id: string;
     email: string;
@@ -85,10 +98,9 @@ export class User implements Identifiable {
     resetToken: string;
 }
 
-export class URL implements Serializable {
-}
-
-export class XMLGregorianCalendar implements Cloneable {
+export class Indicator implements Identifiable {
+    id: string;
+    description: string;
 }
 
 export class Measurement<T> implements Identifiable {
@@ -99,9 +111,13 @@ export class Measurement<T> implements Identifiable {
     value: T;
 }
 
-export class Grant implements Identifiable {
-    id: string;
-    description: string;
+export class Target {
+}
+
+export class URL implements Serializable {
+}
+
+export class XMLGregorianCalendar implements Cloneable {
 }
 
 export interface Serializable {
@@ -109,3 +125,4 @@ export interface Serializable {
 
 export interface Cloneable {
 }
+
