@@ -361,6 +361,13 @@
                             <li *ngIf="!service.helpdesk">
                                 <strong>Service helpdesk: </strong>not available
                             </li>
+                            <li *ngIf="service.multimediaURL">
+                                <strong>Service media: </strong>
+                                <a target="_blank" href="{{service.multimediaURL}}">{{service.multimediaURL}}</a>
+                            </li>
+                            <li *ngIf="!service.multimediaURL">
+                                <strong>Service media: </strong>not available
+                            </li>
 
                             <li *ngIf="service.userManual">
                                 <strong>User manual: </strong>
