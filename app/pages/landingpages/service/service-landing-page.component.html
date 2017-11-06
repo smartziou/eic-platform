@@ -273,13 +273,13 @@
                                             <!--</dd>-->
                                         <!--</template>-->
 
-                                        <template [ngIf]="service.language && service.language.length>0">
+                                        <template [ngIf]="service.languages && service.languages.length>0">
                                             <dt>Languages</dt>
                                             <dd>
-                                                <span *ngFor="let language of service.language">{{language}}, </span>
+                                                <span *ngFor="let language of service.languages">{{language}}, </span>
                                             </dd>
                                         </template>
-                                        <template [ngIf]="!service.language || service.language.length==0">
+                                        <template [ngIf]="!service.languages || service.languages.length==0">
                                             <dt>Languages</dt>
                                             <dd>
                                                 <span>Not available</span>
@@ -357,7 +357,6 @@
                     <div class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top">
                         <h4>Support</h4>
                         <ul class="uk-list" style="word-wrap: break-word;">
-
                             <li *ngIf="service.request">
                                 <strong>Service request: </strong>
                                 <a target="_blank" href="{{service.request}}">{{service.request}}</a>
