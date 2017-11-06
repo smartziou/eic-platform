@@ -136,6 +136,10 @@
                         </li>
                         <li>
                         <!--<li *ngIf="service.relatedService">-->
+                            <!--<li *ngIf="service.requiredServices">-->
+                            <a>Required Services</a>
+                        </li>
+                        <li>
                             <a>Related Services</a>
                         </li>
                         <li>
@@ -156,6 +160,10 @@
                         <!--<li *ngIf="service.targetUsers || service.userValue || service.userBase">-->
                         <li>
                             <a>Usage</a>
+                        </li>
+                        <li>
+                            <!--<li *ngIf="service.requiredService">-->
+                            <a>Required Services</a>
                         </li>
                         <li>
                         <!--<li *ngIf="service.relatedService">-->
@@ -205,6 +213,17 @@
                                     </template>
 
                                 </dl>
+                            </div>
+                        </li>
+                        <li>
+                            <!--<li *ngIf="service.requiredServices">-->
+                            <div class="uk-margin-medium-top">
+                                <ul *ngIf="service.requiredServices && service.requiredServices.length>0"> Required Services
+                                    <li *ngFor="let requiredService of service.requiredServices">{{requiredService}}</li>
+                                </ul>
+                                <div *ngIf="!service.requiredServices || service.requiredServices.length==0" class="uk-alert uk-alert-warning">
+                                    There are no available required services
+                                </div>
                             </div>
                         </li>
                         <li>
