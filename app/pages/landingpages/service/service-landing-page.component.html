@@ -135,11 +135,11 @@
                             <a>Usage</a>
                         </li>
                         <li>
-                        <!--<li *ngIf="service.relatedService">-->
                             <!--<li *ngIf="service.requiredServices">-->
                             <a>Required Services</a>
                         </li>
                         <li>
+                        <!--<li *ngIf="service.relatedServices">-->
                             <a>Related Services</a>
                         </li>
                         <li>
@@ -229,10 +229,10 @@
                         <li>
                         <!--<li *ngIf="service.relatedService">-->
                             <div class="uk-margin-medium-top">
-                                <ul *ngIf="service.relatedService && service.relatedService.length>0"> Related Services
-                                    <li *ngFor="let relatedService of service.relatedService"></li>
+                                <ul *ngIf="service.relatedServices && service.relatedServices.length>0"> Related Services
+                                    <li *ngFor="let relatedService of service.relatedServices">{{relatedService}}</li>
                                 </ul>
-                                <div *ngIf="!service.relatedService || service.relatedService.length==0" class="uk-alert uk-alert-warning">
+                                <div *ngIf="!service.relatedServices || service.relatedServices.length==0" class="uk-alert uk-alert-warning">
                                     There are no available related services
                                 </div>
                             </div>
