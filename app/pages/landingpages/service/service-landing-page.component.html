@@ -89,20 +89,20 @@
 
                     <dl class="uk-description-list">
 
-                        <template [ngIf]="service.version && service.version!=''">
+                        <template [ngIf]="service.version">
                             <dt>Version</dt>
                             <dd>{{service.version}}</dd>
                         </template>
-                        <template [ngIf]="!service.version || service.version==''">
+                        <template [ngIf]="!service.version">
                             <dt>Version</dt>
                             <dd>Not available</dd>
                         </template>
 
-                        <template [ngIf]="service.funding && service.funding!=''">
+                        <template [ngIf]="service.funding">
                             <dt>Funding sources</dt>
                             <dd>{{service.funding}}</dd>
                         </template>
-                        <template [ngIf]="!service.funding || service.funding==''">
+                        <template [ngIf]="!service.funding">
                             <dt>Funding sources</dt>
                             <dd>Not available</dd>
                         </template>
@@ -188,29 +188,29 @@
                             <div class="uk-margin-medium-top">
                                 <dl class="uk-description-list">
 
-                                    <template [ngIf]="service.targetUsers && service.targetUsers!=''">
+                                    <template [ngIf]="service.targetUsers">
                                         <dt>Target users</dt>
                                         <dd>{{service.targetUsers}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.targetUsers || service.targetUsers==''">
+                                    <template [ngIf]="!service.targetUsers">
                                         <dt>Target users</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.userValue && service.userValue!=''">
+                                    <template [ngIf]="service.userValue">
                                         <dt>User value</dt>
                                         <dd>{{service.userValue}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.userValue || service.userValue==''">
+                                    <template [ngIf]="!service.userValue">
                                         <dt>User value</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.userBase && service.userBase!=''">
+                                    <template [ngIf]="service.userBase">
                                         <dt>User base</dt>
                                         <dd>{{service.userBase}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.userBase || service.userBase==''">
+                                    <template [ngIf]="!service.userBase">
                                         <dt>User base</dt>
                                         <dd>Not available</dd>
                                     </template>
@@ -286,38 +286,38 @@
                             <div class="uk-margin-medium-top">
                                 <dl class="uk-description-list">
 
-                                    <template [ngIf]="service.options && service.options!=''">
+                                    <template [ngIf]="service.options">
                                         <dt>Options</dt>
                                         <dd>{{service.options}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.options || service.options==''">
+                                    <template [ngIf]="!service.options">
                                         <dt>Options</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.price && service.price!=''">
+                                    <template [ngIf]="service.price">
                                         <dt>Pricing model</dt>
                                         <dd>{{service.price}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.price || service.price==''">
+                                    <template [ngIf]="!service.price">
                                         <dt>Pricing model</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.serviceLevelAgreement && service.serviceLevelAgreement!=''">
+                                    <template [ngIf]="service.serviceLevelAgreement">
                                         <dt>Service Level Agreement</dt>
                                         <dd>{{service.serviceLevelAgreement}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.serviceLevelAgreement || service.serviceLevelAgreement==''">
+                                    <template [ngIf]="!service.serviceLevelAgreement">
                                         <dt>Service Level Agreement</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.termsOfUse && service.termsOfUse!=''">
+                                    <template [ngIf]="service.termsOfUse">
                                         <dt>Terms of Use</dt>
                                         <dd>{{service.termsOfUse}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.termsOfUse || service.termsOfUse==''">
+                                    <template [ngIf]="!service.termsOfUse">
                                         <dt>Terms of Use</dt>
                                         <dd>Not available</dd>
                                     </template>
