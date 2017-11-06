@@ -302,7 +302,7 @@
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.termsOfUse">
+                                    <template [ngIf]="service.termsOfUse && service.termsOfUse.length > 0">
                                         <dt>Terms of Use</dt>
                                         <dd>{{service.termsOfUse}}</dd>
                                     </template>
