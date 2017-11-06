@@ -115,16 +115,16 @@
                         </p>
                     </div>
 
-                    <template [ngIf]="service.tag && service.tag.length>0">
+                    <template [ngIf]="service.tags && service.tags.length>0">
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                         <span>Service tags</span>
                         <div class="">
-                            <span *ngFor="let tag of service.tag" class="uk-label uk-label-default">{{tag}}</span>
+                            <span *ngFor="let tag of service.tags" class="uk-label uk-label-default">{{tag}}</span>
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                     </template>
 
-                    <template [ngIf]="!service.tag || service.tag.length==0">
+                    <template [ngIf]="!service.tags || service.tags.length==0">
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                         <span>Service tags</span>
                         <div class="">
