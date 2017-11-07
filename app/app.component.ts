@@ -4,14 +4,11 @@
 import {Component, OnInit} from "@angular/core";
 import {NavigationEnd, Router} from "@angular/router";
 import {AuthenticationService} from "./services/authentication.service";
-
 @Component({
     selector: 'einfracentral-platform',
     templateUrl: './app.component.html',
 })
-
 export class AppComponent implements OnInit {
-
     isLoginOrRegister: boolean = false;
 
     constructor(private router: Router, private oauthService: AuthenticationService) {
@@ -29,15 +26,12 @@ export class AppComponent implements OnInit {
         // this.oauthService.loginUrl = "https://aai.openminted.eu/oidc/authorize";
         //
         // this.oauthService.tryLogin();
-
     }
 
     ngOnInit() {
-
         this.router.events.subscribe((evt: any) => {
             this.isLoginOrRegister = ['/signUp', '/signIn'].includes(evt.url);
         });
-
         this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;

@@ -3,7 +3,6 @@
  */
 import {ModuleWithProviders} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-
 import {HomeComponent} from "./pages/home/home.component";
 import {SearchComponent} from "./pages/search/search.component";
 import {CompareServicesComponent} from "./pages/compare/compare-services.component";
@@ -11,7 +10,6 @@ import {BrowseCategoriesComponent} from "./pages/browsecategories/browse-categor
 import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
 import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
 import {CanActivateViaAuthGuard} from "./services/can-activate-auth-guard.service";
-
 const appRoutes: Routes = [
     {
         path: '',
@@ -45,7 +43,5 @@ const appRoutes: Routes = [
         canActivate: [CanActivateViaAuthGuard]
     }
 ];
-
 export const appRoutingProviders: any[] = [];
-
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

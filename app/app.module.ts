@@ -6,12 +6,10 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
 import {appRoutingProviders, routing} from "./app.routing";
-
 import {UserService} from "./services/user.service";
 import {AuthenticationService} from "./services/authentication.service";
 import {CanActivateViaAuthGuard} from "./services/can-activate-auth-guard.service";
 import {ResourceService} from "./services/resource.service";
-
 import {AppComponent} from "./app.component";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
 import {HomeComponent} from "./pages/home/home.component";
@@ -45,7 +43,6 @@ import {ActivateComponent} from "./pages/user/activate/activate.component";
 import {CanActivateViaPubGuard} from "./services/can-activate-pub-guard.service";
 import {HTTPWrapper} from "./services/http-wrapper.service";
 // import {EinfraErrorHandler} from "./services/error-handler.service";
-
 @NgModule({
     imports: [
         SharedModule,
@@ -118,6 +115,5 @@ import {HTTPWrapper} from "./services/http-wrapper.service";
     ],
     bootstrap: [AppComponent]
 })
-
 export class AppModule {
 }
