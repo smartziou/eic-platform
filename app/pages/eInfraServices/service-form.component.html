@@ -182,6 +182,11 @@
                                                             [name]="'tags'" [required]="true" [description]="tagsDesc">
                                         </form-repeat-inline>
                                         <div></div>
+                                        <form-repeat-inline [component]="requiredServicesComponent"
+                                                            [parentGroup]="serviceForm"
+                                                            [name]="'requiredServices'" [required]="true"
+                                                            [description]="requiredServicesDesc">
+                                        </form-repeat-inline>
                                         <form-repeat-inline [component]="relatedServicesComponent"
                                                             [parentGroup]="serviceForm"
                                                             [name]="'relatedServices'" [required]="true"

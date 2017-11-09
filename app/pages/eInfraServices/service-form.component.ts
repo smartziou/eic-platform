@@ -15,6 +15,7 @@ import {RelatedServicesComponent} from "./relatedServices.component";
 import {TagsComponent} from "./tags.component";
 import {TermsOfUseComponent} from "./termsOfUse.component";
 import {Router} from "@angular/router";
+import {RequiredServicesComponent} from "./requiredServices.component";
 
 @Component({
     selector: 'service-form',
@@ -30,31 +31,30 @@ export class ServiceFormComponent implements OnInit {
     errorMessage: string = null;
     successMessage: string = null;
     submitted = false;
-    readonly placesDesc: sd.Description = sd.placesDesc;
-    // readonly regionsDesc: sd.Description = sd.regionsDesc;
-    readonly languagesDesc: sd.Description = sd.languagesDesc;
-    readonly tagsDesc: sd.Description = sd.tagsDesc;
-    readonly relatedServicesDesc: sd.Description = sd.relatedServicesDesc;
-    readonly termsOfUseDesc: sd.Description = sd.termsOfUseDesc;
+    readonly urlDesc: sd.Description = sd.urlDesc;
     readonly nameDesc: sd.Description = sd.nameDesc;
-    readonly fullNameDesc: sd.Description = sd.fullNameDesc;
+    //whereis taglineDesc
     readonly descriptionDesc: sd.Description = sd.descriptionDesc;
     readonly optionsDesc: sd.Description = sd.optionsDesc;
     readonly targetUsersDesc: sd.Description = sd.targetUsersDesc;
     readonly userValueDesc: sd.Description = sd.userValueDesc;
     readonly userBaseDesc: sd.Description = sd.userBaseDesc;
-    readonly providerDesc: sd.Description = sd.providerDesc;
-    readonly fundingDesc: sd.Description = sd.fundingDesc;
-    readonly urlDesc: sd.Description = sd.urlDesc;
     readonly symbolDesc: sd.Description = sd.symbolDesc;
     readonly multimediaURLDesc: sd.Description = sd.multimediaURLDesc;
+    readonly providerDesc: sd.Description = sd.providerDesc;
     readonly versionDesc: sd.Description = sd.versionDesc;
     readonly lastUpdateDesc: sd.Description = sd.lastUpdateDesc;
     readonly changeLogDesc: sd.Description = sd.changeLogDesc;
+    //whereis validForDesc
     readonly lifeCycleStatusDesc: sd.Description = sd.lifeCycleStatusDesc;
     readonly trlDesc: sd.Description = sd.trlDesc;
     readonly categoryDesc: sd.Description = sd.categoryDesc;
     readonly subcategoryDesc: sd.Description = sd.subcategoryDesc;
+    readonly placesDesc: sd.Description = sd.placesDesc;
+    readonly languagesDesc: sd.Description = sd.languagesDesc;
+    readonly tagsDesc: sd.Description = sd.tagsDesc;
+    readonly requiredServicesDesc: sd.Description = sd.requiredServicesDesc;
+    readonly relatedServicesDesc: sd.Description = sd.relatedServicesDesc;
     readonly requestDesc: sd.Description = sd.requestDesc;
     readonly helpdeskDesc: sd.Description = sd.helpdeskDesc;
     readonly userManualDesc: sd.Description = sd.userManualDesc;
@@ -62,17 +62,19 @@ export class ServiceFormComponent implements OnInit {
     readonly feedbackDesc: sd.Description = sd.feedbackDesc;
     readonly priceDesc: sd.Description = sd.priceDesc;
     readonly serviceLevelAgreementDesc: sd.Description = sd.serviceLevelAgreementDesc;
+    readonly termsOfUseDesc: sd.Description = sd.termsOfUseDesc;
+    readonly fundingDesc: sd.Description = sd.fundingDesc;
+
     countriesComponent: Type<CountriesComponent> = CountriesComponent;
     languagesComponent: Type<LanguagesComponent> = LanguagesComponent;
-    // regionsComponent: Type<RegionsComponent> = RegionsComponent;
-    relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
     tagsComponent: Type<TagsComponent> = TagsComponent;
+    requiredServicesComponent: Type<RequiredServicesComponent> = RequiredServicesComponent;
+    relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
     termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
     formGroupMeta = {
         "url": ["", Validators.compose([Validators.required, URLValidator])],
         "name": ["", Validators.required],
         "tagline": [""],
-        "fullName": [""],
         "description": ["", Validators.required],
         "options": [""],
         "targetUsers": [""],
@@ -84,6 +86,7 @@ export class ServiceFormComponent implements OnInit {
         "version": [""],
         "lastUpdate": [""],
         "changeLog": [""],
+        "validFor": [""],
         "lifeCycleStatus": ["", Validators.compose([Validators.required, PhaseValidator])],
         "trl": ["", Validators.compose([Validators.required, TLRValidator])],
         "category": ["", Validators.required],
