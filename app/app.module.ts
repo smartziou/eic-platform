@@ -42,6 +42,8 @@ import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.componen
 import {ActivateComponent} from "./pages/user/activate/activate.component";
 import {CanActivateViaPubGuard} from "./services/can-activate-pub-guard.service";
 import {HTTPWrapper} from "./services/http-wrapper.service";
+import {RequiredServicesComponent} from "./pages/eInfraServices/requiredServices.component";
+
 // import {EinfraErrorHandler} from "./services/error-handler.service";
 @NgModule({
     imports: [
@@ -80,6 +82,7 @@ import {HTTPWrapper} from "./services/http-wrapper.service";
         CountriesComponent,
         LanguagesComponent,
         // RegionsComponent,
+        RequiredServicesComponent,
         RelatedServicesComponent,
         TagsComponent,
         TermsOfUseComponent,
@@ -94,6 +97,7 @@ import {HTTPWrapper} from "./services/http-wrapper.service";
         CountriesComponent,
         LanguagesComponent,
         // RegionsComponent,
+        RequiredServicesComponent,
         RelatedServicesComponent,
         TagsComponent,
         TermsOfUseComponent,
