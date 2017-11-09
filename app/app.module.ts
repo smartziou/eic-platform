@@ -81,7 +81,6 @@ import {RequiredServicesComponent} from "./pages/eInfraServices/requiredServices
         ConfirmationDialogComponent,
         CountriesComponent,
         LanguagesComponent,
-        // RegionsComponent,
         RequiredServicesComponent,
         RelatedServicesComponent,
         TagsComponent,
@@ -96,7 +95,6 @@ import {RequiredServicesComponent} from "./pages/eInfraServices/requiredServices
     entryComponents: [
         CountriesComponent,
         LanguagesComponent,
-        // RegionsComponent,
         RequiredServicesComponent,
         RelatedServicesComponent,
         TagsComponent,
