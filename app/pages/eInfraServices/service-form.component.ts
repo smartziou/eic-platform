@@ -9,6 +9,7 @@ import {URLValidator} from "../../services/generic.validator";
 import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
 import * as sd from "./services.description";
 import {PlacesComponent} from "./places.component";
+import {ProvidersComponent} from "./providers.component";
 import {LanguagesComponent} from "./languages.component";
 // import {RegionsComponent} from "./regions.component";
 import {RelatedServicesComponent} from "./relatedServices.component";
@@ -41,7 +42,7 @@ export class ServiceFormComponent implements OnInit {
     readonly userBaseDesc: sd.Description = sd.userBaseDesc;
     readonly symbolDesc: sd.Description = sd.symbolDesc;
     readonly multimediaURLDesc: sd.Description = sd.multimediaURLDesc;
-    readonly providerDesc: sd.Description = sd.providerDesc;
+    readonly providersDesc: sd.Description = sd.providersDesc;
     readonly versionDesc: sd.Description = sd.versionDesc;
     readonly lastUpdateDesc: sd.Description = sd.lastUpdateDesc;
     readonly changeLogDesc: sd.Description = sd.changeLogDesc;
@@ -67,6 +68,7 @@ export class ServiceFormComponent implements OnInit {
 
     placesComponent: Type<PlacesComponent> = PlacesComponent;
     languagesComponent: Type<LanguagesComponent> = LanguagesComponent;
+    providersComponent: Type<ProvidersComponent> = ProvidersComponent;
     tagsComponent: Type<TagsComponent> = TagsComponent;
     requiredServicesComponent: Type<RequiredServicesComponent> = RequiredServicesComponent;
     relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
@@ -82,7 +84,6 @@ export class ServiceFormComponent implements OnInit {
         "userBase": [""],
         "symbol": ["", URLValidator],
         "multimediaURL": ["", URLValidator],
-        "providers": ["", Validators.required],
         "version": [""],
         "lastUpdate": [""],
         "changeLog": [""],

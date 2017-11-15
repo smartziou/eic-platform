@@ -43,6 +43,7 @@ import {ActivateComponent} from "./pages/user/activate/activate.component";
 import {CanActivateViaPubGuard} from "./services/can-activate-pub-guard.service";
 import {HTTPWrapper} from "./services/http-wrapper.service";
 import {RequiredServicesComponent} from "./pages/eInfraServices/requiredServices.component";
+import {ProvidersComponent} from "./pages/eInfraServices/providers.component";
 
 // import {EinfraErrorHandler} from "./services/error-handler.service";
 @NgModule({
@@ -82,6 +83,7 @@ import {RequiredServicesComponent} from "./pages/eInfraServices/requiredServices
         PlacesComponent,
         LanguagesComponent,
         RequiredServicesComponent,
+        ProvidersComponent,
         RelatedServicesComponent,
         TagsComponent,
         TermsOfUseComponent,
@@ -95,6 +97,7 @@ import {RequiredServicesComponent} from "./pages/eInfraServices/requiredServices
     entryComponents: [
         PlacesComponent,
         LanguagesComponent,
+        ProvidersComponent,
         RequiredServicesComponent,
         RelatedServicesComponent,
         TagsComponent,

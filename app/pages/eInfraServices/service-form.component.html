@@ -77,16 +77,10 @@
                                             <input class="uk-input" type="text" formControlName="multimediaURL"
                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('multimediaURL').valid && serviceForm.get('multimediaURL').dirty}">
                                         </form-inline>
-                                        <form-inline *ngIf="this.providers" [description]="providerDesc"
-                                                     [params]="'inline'"
-                                                     [valid]="serviceForm.get('providers').valid && serviceForm.get('providers').dirty">
-                                            <select formControlName="providers" class="uk-select"
-                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('providers').valid && serviceForm.get('providers').dirty}">
-                                                <option *ngFor="let c of this.providers | keys" [ngValue]="c">
-                                                    {{this.providers[c]}}
-                                                </option>
-                                            </select>
-                                        </form-inline>
+                                        <form-repeat-inline [component]="providersComponent" [parentGroup]="serviceForm"
+                                                            [name]="'providers'" [required]="true"
+                                                            [description]="providersDesc">
+                                        </form-repeat-inline>
                                         <div></div>
                                         <form-inline [description]="versionDesc" [params]="'inline'"
                                                      [valid]="serviceForm.get('version').valid && serviceForm.get('version').dirty">
