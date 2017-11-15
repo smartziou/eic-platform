@@ -18,12 +18,11 @@ export class HTTPWrapper extends Http {
     }
 
     public post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-        console.log(this.base);
-        return super.post(this.base + url, JSON.stringify(body), Object.assign(this.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
+        return super.post(this.base + url, body, Object.assign(this.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
     }
 
     public put(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-        return super.put(this.base + url, JSON.stringify(body), Object.assign(this.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
+        return super.put(this.base + url, body, Object.assign(this.defaultOptions, options)).map(res => res.json()).catch(this.handleError);
     }
 
     public get(url: string, options?: RequestOptionsArgs): Observable<any> {
@@ -37,7 +36,6 @@ export class HTTPWrapper extends Http {
             pos: "top-center",
             timeout: 5000
         });
-        console.error(error);
         return Observable.throw(error);
     }
 }
