@@ -29,13 +29,19 @@ export class ResourceService {
     }
 
     getVocabularies(type?: string) {
-        return this.http.get(`/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`).map(e => (<any>e).results.reduce(this.getActualResult, {}));
+        return this.http.get(`/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`).map(e => (<any>e).results.reduce(type ? this.idToName : this.idToObject, {}));
     }
 
-    getActualResult(accumulator, value) {
+    idToName(accumulator, value) {
         accumulator[value.resource.id] = value.resource.name;
         return accumulator;
     }
+
+    idToObject(accumulator, value) {
+        accumulator[value.resource.id] = {"type": value.resource.type, "name": value.resource.name};
+        return accumulator;
+    }
+
 
     getServices() {
         return this.http.get("/service/by/service_id").map(res => <Service> <any> res);
@@ -54,7 +60,7 @@ export class ResourceService {
     }
 
     getProviders() {
-        return this.http.get("/provider/all").map(e => (<any>e).results.reduce(this.getActualResult, {}));
+        return this.http.get("/provider/all").map(e => (<any>e).results.reduce(this.idToName, {}));
     }
 
     activateUserAccount(id: any) {

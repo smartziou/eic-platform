@@ -115,10 +115,10 @@ export class ServiceFormComponent implements OnInit {
 
     onVocabularies(vocabularies) {
         let ret = {};
-        Object.keys(vocabularies).forEach(e => {
+        Object.keys(vocabularies).forEach((e:any) => {
             let item = {};
-            item[e] = vocabularies[e];
-            let prefix = e.split("_")[0];
+            item[e] = vocabularies[e].name;
+            let prefix = vocabularies[e].type;
             ret[prefix] = ret[prefix] || {};
             Object.assign(ret[prefix], item);
         });
