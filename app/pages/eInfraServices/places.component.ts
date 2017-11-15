@@ -5,23 +5,23 @@ import {Validators} from "@angular/forms";
 import {ResourceService} from "../../services/resource.service";
 
 @Component({
-    selector: 'countriesInfo-form',
+    selector: 'placesInfo-form',
     template: `
         <div [formGroup]="group">
             <select formControlName="entry">
-                <option *ngFor="let c of countries | keys" [ngValue]="c">{{countries[c]}}</option>
+                <option *ngFor="let c of places | keys" [ngValue]="c">{{places[c]}}</option>
             </select>
         </div>
     `
 })
 
-export class CountriesComponent extends MyGroup {
+export class PlacesComponent extends MyGroup {
     constructor(private resourceService: ResourceService, injector: Injector) {
         super(injector);
     }
 
-    countries: any = {
-        "QQ": "Error fetching countries"
+    places: any = {
+        "QQ": "Error fetching places"
     };
 
     readonly groupDefinition = {
@@ -33,7 +33,7 @@ export class CountriesComponent extends MyGroup {
 
     ngOnInit() {
         super.ngOnInit();
-        this.resourceService.getVocabularies("Country").subscribe(suc => this.countries = suc);
+        this.resourceService.getVocabularies("Country").subscribe(suc => this.places = suc);
     }
 
 }

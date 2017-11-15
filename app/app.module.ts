@@ -29,7 +29,7 @@ import {SharedModule} from "./shared/shared.module";
 import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
 import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
 import {DashboardComponent} from "./pages/user/dashboard/dashboard.component";
-import {CountriesComponent} from "./pages/eInfraServices/countries.component";
+import {PlacesComponent} from "./pages/eInfraServices/places.component";
 import {MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper} from "./pages/multiforms/my-array";
 import {InlineFormWrapper, MyGroup} from "./pages/multiforms/my-group.interface";
 import {MyFormDirective} from "./pages/multiforms/my-form.directive";
@@ -79,7 +79,7 @@ import {RequiredServicesComponent} from "./pages/eInfraServices/requiredServices
         MyGroup,
         ServiceFormComponent,
         ConfirmationDialogComponent,
-        CountriesComponent,
+        PlacesComponent,
         LanguagesComponent,
         RequiredServicesComponent,
         RelatedServicesComponent,
@@ -93,7 +93,7 @@ import {RequiredServicesComponent} from "./pages/eInfraServices/requiredServices
         MyArrayInline,
     ],
     entryComponents: [
-        CountriesComponent,
+        PlacesComponent,
         LanguagesComponent,
         RequiredServicesComponent,
         RelatedServicesComponent,

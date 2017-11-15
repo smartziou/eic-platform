@@ -247,14 +247,14 @@
                                     <dl class="uk-description-list">
 
                                         <template [ngIf]="service.places && service.places.length>0">
-                                            <dt>Countries</dt>
+                                            <dt>Places</dt>
                                             <dd>
                                                 <!--<span *ngFor="let place of service.places">{{place}}, </span>-->
                                                 <span >{{service.places.join()}}</span>
                                             </dd>
                                         </template>
                                         <template [ngIf]="!service.places || service.places.length==0">
-                                            <dt>Countries</dt>
+                                            <dt>Places</dt>
                                             <dd>
                                                 <span>Not available</span>
                                             </dd>

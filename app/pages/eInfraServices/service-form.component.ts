@@ -8,7 +8,7 @@ import {Service} from "../../domain/eic-model";
 import {URLValidator} from "../../services/generic.validator";
 import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
 import * as sd from "./services.description";
-import {CountriesComponent} from "./countries.component";
+import {PlacesComponent} from "./places.component";
 import {LanguagesComponent} from "./languages.component";
 // import {RegionsComponent} from "./regions.component";
 import {RelatedServicesComponent} from "./relatedServices.component";
@@ -65,7 +65,7 @@ export class ServiceFormComponent implements OnInit {
     readonly termsOfUseDesc: sd.Description = sd.termsOfUseDesc;
     readonly fundingDesc: sd.Description = sd.fundingDesc;
 
-    countriesComponent: Type<CountriesComponent> = CountriesComponent;
+    placesComponent: Type<PlacesComponent> = PlacesComponent;
     languagesComponent: Type<LanguagesComponent> = LanguagesComponent;
     tagsComponent: Type<TagsComponent> = TagsComponent;
     requiredServicesComponent: Type<RequiredServicesComponent> = RequiredServicesComponent;
