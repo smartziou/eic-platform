@@ -131,22 +131,29 @@ export class ServiceFormComponent implements OnInit {
         this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 
+    toServer(service: Service): Service {
+        let ret = {};
+        for (let fieldName in service) {
+            let fieldValue = service[fieldName];
+            let unPatchedValue = [];
+            if (Array.isArray(fieldValue)) {
+                for (let i = 0; i < fieldValue.length; i++) {
+                    if (fieldValue[i].entry) {
+                        unPatchedValue[i] = fieldValue[i].entry;
+                    }
+                }
+            } else {
+                unPatchedValue = fieldValue;
+            }
+            ret[fieldName] = unPatchedValue;
+        }
+        return <Service>ret;
+    }
+
     onSubmit(service: Service, isValid: boolean) {
         //TODO: check if model is valid
         if (isValid) {
-            let fixedObject: any = {};
-            for (let i in service) {
-                if (Array.isArray(service[i])) {
-                    fixedObject[i] = new Array();
-                    for (let j = 0; j < service[i].length; j++) {
-                        if (service[i][j].entry) {
-                            fixedObject[i].push(service[i][j].entry);
-                        }
-
-                    }
-                }
-            }
-            this.resourceService.uploadService(Object.assign({}, service, fixedObject), this.editMode)
+            this.resourceService.uploadService(this.toServer(service), this.editMode)
                 .subscribe(service => {
                     setTimeout(() => this.router.navigate(['/landingPage/service/' + btoa(service.id)]), 1000);
                 });

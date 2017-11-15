@@ -31,9 +31,26 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
         this.resourceService.getService(atob(params["id"])).subscribe(this.onService.bind(this), console.error);
     }
 
+    toForms(service: Service) {
+        let ret = {};
+        for (let fieldName in service) {
+            let fieldValue = service[fieldName];
+            let patchedValue = [];
+            if (Array.isArray(fieldValue)) {
+                for (let i = 0; i < fieldValue.length; i++) {
+                    patchedValue[i] = {"entry": fieldValue[i]};
+                }
+            } else {
+                patchedValue = fieldValue;
+            }
+            ret[fieldName] = patchedValue;
+        }
+        return <Service>ret;
+    }
+
     onService(service) {
         ResourceService.removeNulls(service);
-        this.serviceForm.patchValue(service)
+        this.serviceForm.patchValue(this.toForms(service));
     }
 
     onSuccess(service) {
