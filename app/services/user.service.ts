@@ -8,6 +8,8 @@ import {HTTPWrapper} from "./http-wrapper.service";
 
 @Injectable()
 export class UserService {
+    user: User;
+
     constructor(private http: HTTPWrapper) {
     }
 
@@ -16,7 +18,11 @@ export class UserService {
     }
 
     loginUser(email: string, password: string): Observable<any> {
-        return this.http.post("/user/login", {email, password});
+        return this.http.post("/user/login", {email, password}).map(
+            user => {
+                this.user = user;
+            }
+        );
     }
 
     registerUser(user: User): Observable<any> {
