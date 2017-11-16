@@ -41,7 +41,11 @@
                                             <input class="uk-input" type="text" formControlName="name"
                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('name').valid && serviceForm.get('name').dirty}">
                                         </form-inline>
-                                        <!--tagline goes here-->
+                                        <form-inline [description]="taglineDesc" [params]="'inline'"
+                                                     [valid]="serviceForm.get('tagline').valid && serviceForm.get('tagline').dirty">
+                                            <input class="uk-input" type="text" formControlName="tagline"
+                                                   [ngClass]="{'uk-form-danger': !serviceForm.get('tagline').valid && serviceForm.get('tagline').dirty}">
+                                        </form-inline>
                                         <form-inline [description]="descriptionDesc" [params]="'inline'"
                                                      [valid]="serviceForm.get('description').valid && serviceForm.get('description').dirty">
                                             <textarea class="uk-textarea" type="text" formControlName="description" rows="5"

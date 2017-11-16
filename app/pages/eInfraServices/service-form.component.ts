@@ -5,6 +5,7 @@ import {Component, OnInit, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Service} from "../../domain/eic-model";
+import {AuthenticationService} from "../../services/authentication.service";
 import {URLValidator} from "../../services/generic.validator";
 import {ResourceService} from "../../services/resource.service";
 import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
@@ -31,7 +32,7 @@ export class ServiceFormComponent implements OnInit {
     submitted = false;
     readonly urlDesc: sd.Description = sd.urlDesc;
     readonly nameDesc: sd.Description = sd.nameDesc;
-    //whereis taglineDesc
+    readonly taglineDesc: sd.Description = sd.taglineDesc;
     readonly descriptionDesc: sd.Description = sd.descriptionDesc;
     readonly optionsDesc: sd.Description = sd.optionsDesc;
     readonly targetUsersDesc: sd.Description = sd.targetUsersDesc;
