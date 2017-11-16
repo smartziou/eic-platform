@@ -17,7 +17,6 @@ import {UserService} from "../../../services/user.service";
 export class SignUpComponent implements OnInit {
 
     signUpForm: FormGroup;
-    user: User;
     errorMessage: string = null;
     successMessage: string = null;
     submitted = false;
@@ -57,7 +56,6 @@ export class SignUpComponent implements OnInit {
 
     onRegisterFinished(user: User) {
         console.log(user);
-        this.user = user;
         this.submitted = true;
         this.successMessage = "Activation e-mail was sent to " + user.email;
         setTimeout(() => this.router.navigate(["/signIn"]), 5000);

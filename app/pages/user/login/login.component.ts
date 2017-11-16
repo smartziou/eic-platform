@@ -16,7 +16,6 @@ import {UserService} from "../../../services/user.service";
 export class LoginComponent {
     public loginForm: FormGroup;
     public submitted: boolean;
-    public user: User;
     public errorMessage: string;
 
     constructor(fb: FormBuilder, private authenticationService: AuthenticationService,
@@ -36,7 +35,6 @@ export class LoginComponent {
     }
 
     saveLoginStatus(user: User) {
-        this.user = user;
         this.authenticationService.login(user);
         this.submitted = true;
     }
