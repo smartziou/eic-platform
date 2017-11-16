@@ -1,7 +1,7 @@
 /**
  * Created by stefania on 8/1/17.
  */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {User} from "../../../domain/eic-model";
