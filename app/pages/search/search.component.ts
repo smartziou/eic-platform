@@ -19,7 +19,7 @@ declare var UIkit: any;
     styleUrls: ["./search.component.css"]
 })
 
-export class SearchComponent {
+export class SearchComponent implements OnInit {
 
     searchForm: FormGroup;
     errorMessage: string;

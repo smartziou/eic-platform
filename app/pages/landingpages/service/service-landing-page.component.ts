@@ -11,7 +11,7 @@ import {ResourceService} from "../../../services/resource.service";
     styleUrls: ["../landing-page.component.css"]
 })
 
-export class ServiceLandingPageComponent {
+export class ServiceLandingPageComponent implements OnInit {
     public service: Service;
     public errorMessage: string;
     private Math: Math;

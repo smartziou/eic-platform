@@ -14,7 +14,7 @@ import {UserService} from "../../../services/user.service";
     styleUrls: ["./sign-up.component.css"]
 })
 
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
 
     signUpForm: FormGroup;
     user: User;

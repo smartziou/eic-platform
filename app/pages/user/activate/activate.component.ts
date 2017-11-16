@@ -11,7 +11,7 @@ import {ResourceService} from "../../../services/resource.service";
     styleUrls: ["./activate.component.css"]
 })
 
-export class ActivateComponent {
+export class ActivateComponent implements OnInit {
     errorMessage: string = null;
     successMessage: string = null;
 

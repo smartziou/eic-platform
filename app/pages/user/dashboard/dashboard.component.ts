@@ -1,8 +1,7 @@
 /**
  * Created by pgl on 28/08/17.
  */
-
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {UserService} from "../../../services/user.service";
 
@@ -12,7 +11,7 @@ import {UserService} from "../../../services/user.service";
     styleUrls: ["./dashboard.component.css"]
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
     user: string = null;
 
