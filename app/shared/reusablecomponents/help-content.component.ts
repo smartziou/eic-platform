@@ -3,25 +3,22 @@
  */
 import {Component, Input, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {HelpContentService} from "../../services/help-content.service";
 import {Content, PageContent} from "../../domain/page-content";
+import {HelpContentService} from "../../services/help-content.service";
 
 @Component({
-    selector: 'help-content',
+    selector: "help-content",
     template: `
-        <template [ngIf]="contents && contents.length>0">
-            <template ngFor let-content [ngForOf]="contents">
-                <div [innerHTML]="content.content" class="uk-margin-medium-bottom"></div>
-            </template>
-        </template>
-    `,
+                   <template [ngIf]="contents && contents.length>0">
+                       <template ngFor let-content [ngForOf]="contents">
+                           <div [innerHTML]="content.content" class="uk-margin-medium-bottom"></div>
+                       </template>
+                   </template>
+               `
 })
-
 export class HelpContentComponent implements OnInit {
-
-    @Input('position')
+    @Input("position")
     position: string;
-
     contents: Content[];
     errorMessage: string = null;
 
@@ -29,10 +26,9 @@ export class HelpContentComponent implements OnInit {
     }
 
     ngOnInit() {
-
         this.errorMessage = null;
-
-        this._helpContentService.getActivePageContent(this.router.url).subscribe(pageContent => this.shiftThroughContent(pageContent));
+        this._helpContentService.getActivePageContent(this.router.url).subscribe(
+            pageContent => this.shiftThroughContent(pageContent));
     }
 
     shiftThroughContent(pageContent: PageContent) {
@@ -44,21 +40,20 @@ export class HelpContentComponent implements OnInit {
     }
 
     handleError(error) {
-        this.errorMessage = 'System error retrieving page content (Server responded: ' + error + ')';
+        this.errorMessage = "System error retrieving page content (Server responded: " + error + ")";
     }
 }
 
 @Component({
-    selector: 'aside-help-content',
+    selector: "aside-help-content",
     template: `
-        <template [ngIf]="contents && contents.length>0">
-            <template ngFor let-content [ngForOf]="contents">
-                <div [innerHTML]="content.content"
-                     class="uk-card uk-card-body uk-card-default sidemenu uk-margin-bottom"></div>
-            </template>
-        </template>
-    `,
+                   <template [ngIf]="contents && contents.length>0">
+                       <template ngFor let-content [ngForOf]="contents">
+                           <div [innerHTML]="content.content"
+                                class="uk-card uk-card-body uk-card-default sidemenu uk-margin-bottom"></div>
+                       </template>
+                   </template>
+               `
 })
 export class AsideHelpContentComponent extends HelpContentComponent {
-
 }

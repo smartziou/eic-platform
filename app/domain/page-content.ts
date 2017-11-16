@@ -2,16 +2,13 @@
  * Created by stefania on 7/17/17.
  */
 export class PageContent {
-
     content: PositionContents;
-
     route: string;
     _id: string;
     name: string;
 }
 
 export interface PositionContents {
-
     top: Content[];
     right: Content[];
     bottom: Content[];
@@ -19,7 +16,6 @@ export interface PositionContents {
 }
 
 export interface Content {
-
     _id: string;
     page: Page | string;
     placement: string;

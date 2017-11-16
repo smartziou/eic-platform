@@ -1,7 +1,6 @@
 /**
  * Created by pgl on 29/09/17.
  */
-
 import {NgModule} from "@angular/core";
 import {KeysPipe} from "../services/key.pipe";
 
@@ -14,6 +13,5 @@ import {KeysPipe} from "../services/key.pipe";
         KeysPipe
     ]
 })
-
 export class SharedModule {
 }

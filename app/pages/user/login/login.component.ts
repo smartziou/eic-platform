@@ -1,18 +1,17 @@
 /**
  * Created by stefania on 8/1/17.
  */
-
 import {Component} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 import {User} from "../../../domain/eic-model";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {UserService} from "../../../services/user.service";
-import {Router} from "@angular/router";
 
 @Component({
-    selector: 'login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
+    selector: "login",
+    templateUrl: "./login.component.html",
+    styleUrls: ["./login.component.css"]
 })
 export class LoginComponent {
     public loginForm: FormGroup;
@@ -21,7 +20,7 @@ export class LoginComponent {
     public errorMessage: string;
 
     constructor(fb: FormBuilder, private authenticationService: AuthenticationService,
-                private userService: UserService, private router: Router) {
+        private userService: UserService, private router: Router) {
         this.loginForm = fb.group({
             "email": ["", Validators.compose([Validators.required, Validators.email])],
             "password": ["", Validators.required]

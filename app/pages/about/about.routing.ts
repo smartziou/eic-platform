@@ -8,13 +8,12 @@ import {CommunitiesComponent} from "./communitites/communities.component";
 
 const aboutRoutes: Routes = [
     {
-        path: 'about/aboutUs',
-        component: AboutUsComponent,
+        path: "about/aboutUs",
+        component: AboutUsComponent
     },
     {
-        path: 'about/communities',
-        component: CommunitiesComponent,
-    },
+        path: "about/communities",
+        component: CommunitiesComponent
+    }
 ];
-
 export const aboutRouting: ModuleWithProviders = RouterModule.forChild(aboutRoutes);

@@ -3,29 +3,27 @@
  */
 import {Component, OnInit, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ResourceService} from "../../services/resource.service";
+import {Router} from "@angular/router";
 import {Service} from "../../domain/eic-model";
 import {URLValidator} from "../../services/generic.validator";
+import {ResourceService} from "../../services/resource.service";
 import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
-import * as sd from "./services.description";
+import {LanguagesComponent} from "./languages.component";
 import {PlacesComponent} from "./places.component";
 import {ProvidersComponent} from "./providers.component";
-import {LanguagesComponent} from "./languages.component";
 // import {RegionsComponent} from "./regions.component";
 import {RelatedServicesComponent} from "./relatedServices.component";
+import {RequiredServicesComponent} from "./requiredServices.component";
+import * as sd from "./services.description";
 import {TagsComponent} from "./tags.component";
 import {TermsOfUseComponent} from "./termsOfUse.component";
-import {Router} from "@angular/router";
-import {RequiredServicesComponent} from "./requiredServices.component";
 
 @Component({
-    selector: 'service-form',
-    templateUrl: './service-form.component.html',
-    styleUrls: ['./service-form.component.css'],
+    selector: "service-form",
+    templateUrl: "./service-form.component.html",
+    styleUrls: ["./service-form.component.css"]
 })
-
 export class ServiceFormComponent implements OnInit {
-
     editMode: boolean;
     serviceForm: FormGroup;
     service: Service;
@@ -65,7 +63,6 @@ export class ServiceFormComponent implements OnInit {
     readonly serviceLevelAgreementDesc: sd.Description = sd.serviceLevelAgreementDesc;
     readonly termsOfUseDesc: sd.Description = sd.termsOfUseDesc;
     readonly fundingDesc: sd.Description = sd.fundingDesc;
-
     placesComponent: Type<PlacesComponent> = PlacesComponent;
     languagesComponent: Type<LanguagesComponent> = LanguagesComponent;
     providersComponent: Type<ProvidersComponent> = ProvidersComponent;
@@ -104,6 +101,10 @@ export class ServiceFormComponent implements OnInit {
     providers: any = null;
     vocabularies: any = null;
 
+    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: Router) {
+        this.serviceForm = this.fb.group(this.formGroupMeta);
+    }
+
     ngOnInit() {
         this.resourceService.getProviders().subscribe(
             suc => {
@@ -116,7 +117,7 @@ export class ServiceFormComponent implements OnInit {
 
     onVocabularies(vocabularies) {
         let ret = {};
-        Object.keys(vocabularies).forEach((e:any) => {
+        Object.keys(vocabularies).forEach((e: any) => {
             let item = {};
             item[e] = vocabularies[e].name;
             let prefix = vocabularies[e].type;
@@ -125,10 +126,6 @@ export class ServiceFormComponent implements OnInit {
         });
         this.vocabularies = ret;
         this.serviceForm.patchValue({});
-    }
-
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: Router) {
-        this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 
     toServer(service: Service): Service {
@@ -154,20 +151,19 @@ export class ServiceFormComponent implements OnInit {
         //TODO: check if model is valid
         if (isValid) {
             this.resourceService.uploadService(this.toServer(service), this.editMode)
-                .subscribe(service => {
-                    setTimeout(() => this.router.navigate(['/landingPage/service/' + btoa(service.id)]), 1000);
-                });
+            .subscribe(service => {
+                setTimeout(() => this.router.navigate(["/landingPage/service/" + btoa(service.id)]), 1000);
+            });
         } else {
-            console.log('Model is invalid');
+            console.log("Model is invalid");
             window.scrollTo(0, 0);
             this.serviceForm.markAsDirty();
             this.serviceForm.updateValueAndValidity();
-            this.errorMessage = 'Form not valid';
+            this.errorMessage = "Form not valid";
         }
     }
 
     isDev() {
-        return sessionStorage.getItem('dev') === 'aye'
+        return sessionStorage.getItem("dev") === "aye";
     }
-
 }

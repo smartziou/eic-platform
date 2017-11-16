@@ -3,73 +3,60 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ResourceService} from "../../services/resource.service";
 import {BrowseResults} from "../../domain/browse-results";
 import {Service} from "../../domain/eic-model";
+import {ResourceService} from "../../services/resource.service";
 
 @Component({
-    selector: 'browse-categories',
-    templateUrl: './browse-categories.component.html',
-    styleUrls: ['./browse-categories.component.css'],
+    selector: "browse-categories",
+    templateUrl: "./browse-categories.component.html",
+    styleUrls: ["./browse-categories.component.css"]
 })
-
 export class BrowseCategoriesComponent implements OnInit {
-
     public browseResults: BrowseResults;
     public errorMessage: string;
-
     public browseResultsColumns: BrowseResults[] = [];
 
     constructor(private activatedRoute: ActivatedRoute,
-                private router: Router,
-                private resourceService: ResourceService) {
+        private router: Router,
+        private resourceService: ResourceService) {
     }
 
     ngOnInit() {
         // request results from the registry
-        this.resourceService.getServicesByCategories().subscribe(browseResults => this.updateBrowseResults(browseResults));
-
+        this.resourceService.getServicesByCategories().subscribe(
+            browseResults => this.updateBrowseResults(browseResults));
     }
 
     updateBrowseResults(browseResults: BrowseResults) {
-
         this.browseResults = browseResults;
-
         let noOfServices: number = 0;
-
         let keys = Object.keys(this.browseResults);
         for (let key of keys) {
             let services: Service[] = this.browseResults[key];
             noOfServices += services.length;
         }
-
         let servicesPerColumn: number = noOfServices / 3;
-
         let counter: number = 0;
         let columnIndex: number = 0;
-
-
         this.browseResultsColumns.push(new BrowseResults());
         for (let key of keys) {
-
             let services: Service[] = this.browseResults[key];
             counter += services.length;
             console.log(this.browseResultsColumns);
             this.browseResultsColumns[columnIndex].data[key] = (services);
-
             if (counter > servicesPerColumn) {
                 columnIndex++;
                 counter = 0;
                 this.browseResultsColumns.push(new BrowseResults());
             }
         }
-
-        console.log('No of Services: ', noOfServices);
-        console.log('Services per column: ', servicesPerColumn);
+        console.log("No of Services: ", noOfServices);
+        console.log("Services per column: ", servicesPerColumn);
     }
 
     visitServiceDetails(id: string) {
-        this.router.navigate(['/landingPage/service' + '/', btoa(id)]);
+        this.router.navigate(["/landingPage/service" + "/", btoa(id)]);
     }
 
     // handleError(message: string, error) {

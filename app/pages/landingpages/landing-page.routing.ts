@@ -7,9 +7,8 @@ import {ServiceLandingPageComponent} from "./service/service-landing-page.compon
 
 const landingPageRoutes: Routes = [
     {
-        path: 'landingPage/service/:id',
-        component: ServiceLandingPageComponent,
+        path: "landingPage/service/:id",
+        component: ServiceLandingPageComponent
     }
 ];
-
 export const landingPageRouting: ModuleWithProviders = RouterModule.forChild(landingPageRoutes);

@@ -6,19 +6,17 @@ import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import {PageContent} from "../domain/page-content";
 
-
 @Injectable()
 export class HelpContentService {
-
-    private _helpServiceUrl = 'http://83.212.101.85:5555/api/';
+    private _helpServiceUrl = "http://83.212.101.85:5555/api/";
 
     constructor(private http: Http) {
     }
 
     getActivePageContent(route: string) {
         return this.http.get(this._helpServiceUrl + "page/route?q=" + route)
-            .map(res => <PageContent> res.json())
-            .catch(this.handleError);
+        .map(res => <PageContent> res.json())
+        .catch(this.handleError);
     }
 
     private extractData(res: Response) {
@@ -32,12 +30,12 @@ export class HelpContentService {
         let errMsg = "";
         console.log(error);
         if (error instanceof Response) {
-            const body = error.text() || '';
+            const body = error.text() || "";
             //const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${body}`;
+            errMsg = `${error.status} - ${error.statusText || ""} ${body}`;
         } else {
             errMsg = (error.message) ? error.message :
-                error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+                error.status ? `${error.status} - ${error.statusText}` : "Server error";
             console.error(errMsg); // log to console instead
         }
         return Observable.throw(errMsg);

@@ -1,11 +1,11 @@
 import {Component, Injector} from "@angular/core";
-import {MyGroup} from "../multiforms/my-group.interface";
-import * as sd from "./services.description";
 import {Validators} from "@angular/forms";
 import {ResourceService} from "../../services/resource.service";
+import {MyGroup} from "../multiforms/my-group.interface";
+import * as sd from "./services.description";
 
 @Component({
-    selector: 'requiredServicesInfo-form',
+    selector: "requiredServicesInfo-form",
     template: `
         <div [formGroup]="group">
             <select formControlName="entry">
@@ -14,22 +14,18 @@ import {ResourceService} from "../../services/resource.service";
         </div>
     `
 })
-
 export class RequiredServicesComponent extends MyGroup {
+    requiredServices: any = {
+        "00.00": "Failed to fetch services"
+    };
+    readonly groupDefinition = {
+        entry: ["", Validators.required]
+    };
+    readonly requiredServicesDesc: sd.Description = sd.requiredServicesDesc;
 
     constructor(private resourceService: ResourceService, injector: Injector) {
         super(injector);
     }
-
-    requiredServices: any = {
-        "00.00": "Failed to fetch services"
-    };
-
-    readonly groupDefinition = {
-        entry: ["", Validators.required]
-    };
-
-    readonly requiredServicesDesc: sd.Description = sd.requiredServicesDesc;
 
     ngOnInit() {
         super.ngOnInit();

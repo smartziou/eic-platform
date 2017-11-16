@@ -1,22 +1,22 @@
 /**
  * Created by stefania on 8/31/16.
  */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {SearchQuery} from "../../domain/search-query";
-import {URLParameter} from "./../../domain/url-parameter";
-import {ResourceService} from "../../services/resource.service";
 import {SearchResults} from "../../domain/search-results";
 import {AuthenticationService} from "../../services/authentication.service";
+import {ResourceService} from "../../services/resource.service";
+import {URLParameter} from "./../../domain/url-parameter";
 
 declare var UIkit: any;
 
 @Component({
-    selector: 'search',
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css'],
+    selector: "search",
+    templateUrl: "./search.component.html",
+    styleUrls: ["./search.component.css"]
 })
 
 export class SearchComponent {
@@ -24,115 +24,100 @@ export class SearchComponent {
     searchForm: FormGroup;
     errorMessage: string;
     sub: Subscription;
-
     urlParameters: URLParameter[] = [];
-
     searchResults: SearchResults;
     facetOrder = ["category", "trl", "lifeCycleStatus", "provider"];
-
     pageSize: number = 0;
     currentPage: number = 0;
     totalPages: number = 0;
-
     isPreviousPageDisabled: boolean = false;
     isFirstPageDisabled: boolean = false;
     isNextPageDisabled: boolean = false;
     isLastPageDisabled: boolean = false;
-
     foundResults = true;
     advanced: boolean = false;
     servicesToCompare: string[] = [];
     providers: any;
 
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
-                private resourceService: ResourceService, private authenticationService: AuthenticationService) {
-
+        private resourceService: ResourceService, private authenticationService: AuthenticationService) {
         this.resourceService.getProviders().subscribe(suc => this.providers = suc);
-
         this.searchForm = fb.group({
-            "query": [""],
+            "query": [""]
         });
     }
 
     ngOnInit() {
-
-        if (sessionStorage.getItem('compareServices'))
-            this.servicesToCompare = JSON.parse(sessionStorage.getItem('compareServices'));
-
+        if (sessionStorage.getItem("compareServices")) {
+            this.servicesToCompare = JSON.parse(sessionStorage.getItem("compareServices"));
+        }
         this.sub = this.activatedRoute
-            .params
-            .subscribe(params => {
-
-                this.urlParameters.splice(0, this.urlParameters.length);
-                this.foundResults = true;
-
-                for (var obj in params) {
-                    if (params.hasOwnProperty(obj)) {
-                        var urlParameter: URLParameter = {
-                            key: obj,
-                            values: params[obj].split(',')
-                        };
-                        this.urlParameters.push(urlParameter);
-                        // console.log(urlParameter);
-                    }
+        .params
+        .subscribe(params => {
+            this.urlParameters.splice(0, this.urlParameters.length);
+            this.foundResults = true;
+            for (var obj in params) {
+                if (params.hasOwnProperty(obj)) {
+                    var urlParameter: URLParameter = {
+                        key: obj,
+                        values: params[obj].split(",")
+                    };
+                    this.urlParameters.push(urlParameter);
+                    // console.log(urlParameter);
                 }
-
-                // console.log(this.urlParameters);
-                //request results from the registry
-                this.resourceService.search(this.urlParameters).subscribe(searchResults => this.updateSearchResults(searchResults));
-            });
+            }
+            // console.log(this.urlParameters);
+            //request results from the registry
+            this.resourceService.search(this.urlParameters).subscribe(
+                searchResults => this.updateSearchResults(searchResults));
+        });
     }
 
     updateSearchResults(searchResults: SearchResults) {
 
         //INITIALISATIONS
         this.errorMessage = null;
-
         this.searchResults = searchResults;
-
         this.isFirstPageDisabled = false;
         this.isPreviousPageDisabled = false;
         this.isLastPageDisabled = false;
         this.isNextPageDisabled = false;
-
-        if (this.searchResults.results.length == 0)
+        if (this.searchResults.results.length == 0) {
             this.foundResults = false;
-
+        }
         this.orderFacets();
-
         //update form values using URLParameters
         for (let urlParameter of this.urlParameters) {
-            if (urlParameter.key === 'query') {
-                this.searchForm.get('query').setValue(urlParameter.values[0]);
-            } else if (urlParameter.key === 'advanced') {
-                if (urlParameter.values[0] == 'true')
+            if (urlParameter.key === "query") {
+                this.searchForm.get("query").setValue(urlParameter.values[0]);
+            } else if (urlParameter.key === "advanced") {
+                if (urlParameter.values[0] == "true") {
                     this.advanced = true;
-                else
+                } else {
                     this.advanced = false;
+                }
             } else {
                 for (let facet of this.searchResults.facets) {
                     if (facet.field === urlParameter.key) {
                         //
                         for (let parameterValue of urlParameter.values) {
                             for (let facetValue of facet.values) {
-                                if (parameterValue === facetValue.value)
+                                if (parameterValue === facetValue.value) {
                                     facetValue.isChecked = true;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-
         this.pageSize = 10;
         this.currentPage = (searchResults.from / this.pageSize) + 1;
         this.totalPages = Math.ceil(searchResults.total / this.pageSize);
-
         if (this.currentPage == 1) {
             this.isFirstPageDisabled = true;
             this.isPreviousPageDisabled = true;
         }
-
         if (this.currentPage == this.totalPages) {
             this.isLastPageDisabled = true;
             this.isNextPageDisabled = true;
@@ -154,38 +139,31 @@ export class SearchComponent {
     }
 
     onSubmit(searchValue: SearchQuery) {
-
         var foundQuery = false;
-
         var queryParameterIndex = 0;
         for (let urlParameter of this.urlParameters) {
-            if (urlParameter.key === 'query') {
+            if (urlParameter.key === "query") {
                 foundQuery = true;
-                if (searchValue.query === '')
+                if (searchValue.query === "") {
                     this.urlParameters.splice(queryParameterIndex, 1);
-                else {
+                } else {
                     urlParameter.values.splice(0, urlParameter.values.length);
                     urlParameter.values.push(searchValue.query);
                 }
-
             }
             queryParameterIndex++;
         }
-
-        if (!foundQuery && searchValue.query != '') {
-
+        if (!foundQuery && searchValue.query != "") {
             var searchQuery: URLParameter = {
-                key: 'query',
+                key: "query",
                 values: [searchValue.query]
             };
             this.urlParameters.push(searchQuery);
         }
-
         this.navigateUsingParameters();
     }
 
     deselectFacet(category: string, value: string) {
-
         var categoryIndex = 0;
         for (let urlParameter of this.urlParameters) {
             if (urlParameter.key === category) {
@@ -198,21 +176,17 @@ export class SearchComponent {
                 }
             }
             categoryIndex++;
-
-            if (category === 'query') {
-                this.searchForm.get('query').setValue('');
+            if (category === "query") {
+                this.searchForm.get("query").setValue("");
             }
         }
-
         this.navigateUsingParameters();
     }
 
     onSelection(e, category: string, value: string) {
-
         if (e.target.checked) {
 
             // console.log('Selected value \'' + value + '\' from category \'' + category + '\'');
-
             var foundCategory = false;
             for (let urlParameter of this.urlParameters) {
                 if (urlParameter.key === category) {
@@ -227,11 +201,9 @@ export class SearchComponent {
                 };
                 this.urlParameters.push(newParameter);
             }
-
         } else {
 
             // console.log('Deselected value \'' + value + '\' from category \'' + category + '\'');
-
             var categoryIndex = 0;
             for (let urlParameter of this.urlParameters) {
                 if (urlParameter.key === category) {
@@ -246,120 +218,103 @@ export class SearchComponent {
                 categoryIndex++;
             }
         }
-
         this.navigateUsingParameters();
     }
 
     navigateUsingParameters() {
-
         var map: { [name: string]: string; } = {};
         for (let urlParameter of this.urlParameters) {
-            var concatValue = '';
+            var concatValue = "";
             var counter = 0;
             for (let value of urlParameter.values) {
-                if (counter != 0)
-                    concatValue += ',';
+                if (counter != 0) {
+                    concatValue += ",";
+                }
                 concatValue += value;
                 counter++;
             }
             map[urlParameter.key] = concatValue;
         }
-
-        this.router.navigate(['/search', map]);
+        this.router.navigate(["/search", map]);
     }
 
     gotoDetail(id: string) {
-        this.router.navigate(['/landingPage/service' + '/', btoa(id)]);
+        this.router.navigate(["/landingPage/service" + "/", btoa(id)]);
     }
 
     addToCompare(id: string) {
-
         if (this.servicesToCompare.includes(id)) {
             this.servicesToCompare.splice(this.servicesToCompare.indexOf(id), 1);
-            sessionStorage.setItem('compareServices', JSON.stringify(this.servicesToCompare));
+            sessionStorage.setItem("compareServices", JSON.stringify(this.servicesToCompare));
         } else {
-
             if (this.servicesToCompare.length == 4) {
                 UIkit.notification({
-                    message: 'You have reached the maximum number of items you can compare',
-                    status: 'primary',
-                    pos: 'top-center',
+                    message: "You have reached the maximum number of items you can compare",
+                    status: "primary",
+                    pos: "top-center",
                     timeout: 5000
                 });
             } else {
                 this.servicesToCompare.push(id);
-                sessionStorage.setItem('compareServices', JSON.stringify(this.servicesToCompare));
+                sessionStorage.setItem("compareServices", JSON.stringify(this.servicesToCompare));
             }
         }
     }
 
     compareServices() {
         var map: { [name: string]: string; } = {};
-        map['services'] = this.servicesToCompare.toString();
-        this.router.navigate(['/compare', map]);
+        map["services"] = this.servicesToCompare.toString();
+        this.router.navigate(["/compare", map]);
     }
 
     // handleError(error) {
     //     this.errorMessage = 'System error searching for resources (Server responded: ' + error + ')';
     // }
-
     goToFirstPage() {
-
         var from: number = 0;
         var to: number = 9;
-
         this.updatePagingURLParameters(from);
         this.navigateUsingParameters();
     }
 
     goToPreviousPage() {
-
         var from: number = this.searchResults.from;
         var to: number = this.searchResults.to;
-
         from -= this.pageSize;
         to -= this.pageSize;
-
         this.updatePagingURLParameters(from);
         this.navigateUsingParameters();
     }
 
     goToNextPage() {
-
         var from: number = this.searchResults.from;
         var to: number = this.searchResults.to;
-
         from += this.pageSize;
         to += this.pageSize;
-
         this.updatePagingURLParameters(from);
         this.navigateUsingParameters();
     }
 
     goToLastPage() {
-
         var from: number = Math.floor(this.searchResults.total / this.pageSize) * this.pageSize;
         var to: number = this.searchResults.total - 1;
-
         this.updatePagingURLParameters(from);
         this.navigateUsingParameters();
     }
 
     updatePagingURLParameters(from: number) {
-
         var foundFromCategory = false;
-
         for (let urlParameter of this.urlParameters) {
-            if (urlParameter.key === 'from') {
+            if (urlParameter.key === "from") {
                 foundFromCategory = true;
                 urlParameter.values = [];
-                urlParameter.values.push(from + '');
+                urlParameter.values.push(from + "");
             }
         }
         if (!foundFromCategory) {
             var newFromParameter: URLParameter = {
-                key: 'from',
-                values: [from + '']
+                key: "from",
+                values: [from + ""]
             };
             this.urlParameters.push(newFromParameter);
         }

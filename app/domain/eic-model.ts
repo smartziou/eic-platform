@@ -1,5 +1,4 @@
 // Generated using typescript-generator version 1.27.339 on 2017-11-03 17:19:28.
-
 export interface Identifiable {
     id: string;
 }

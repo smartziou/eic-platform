@@ -8,16 +8,15 @@ import {ActiveTopicQuestions} from "../domain/faq-active-topic-questions";
 
 @Injectable()
 export class FAQService {
-
-    private _faqUrl = 'http://83.212.101.85:5555/api/';
+    private _faqUrl = "http://83.212.101.85:5555/api/";
 
     constructor(private http: Http) {
     }
 
     getActiveTopicQuestions() {
         return this.http.get(this._faqUrl + "topic/active")
-            .map(res => <ActiveTopicQuestions[]> res.json())
-            .catch(this.handleError);
+        .map(res => <ActiveTopicQuestions[]> res.json())
+        .catch(this.handleError);
     }
 
     private extractData(res: Response) {
@@ -31,12 +30,12 @@ export class FAQService {
         let errMsg = "";
         console.log(error);
         if (error instanceof Response) {
-            const body = error.text() || '';
+            const body = error.text() || "";
             //const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${body}`;
+            errMsg = `${error.status} - ${error.statusText || ""} ${body}`;
         } else {
             errMsg = (error.message) ? error.message :
-                error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+                error.status ? `${error.status} - ${error.statusText}` : "Server error";
             console.error(errMsg); // log to console instead
         }
         return Observable.throw(errMsg);

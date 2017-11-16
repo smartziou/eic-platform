@@ -4,9 +4,10 @@
 import {Component, OnInit} from "@angular/core";
 import {NavigationEnd, Router} from "@angular/router";
 import {AuthenticationService} from "./services/authentication.service";
+
 @Component({
-    selector: 'einfracentral-platform',
-    templateUrl: './app.component.html',
+    selector: "einfracentral-platform",
+    templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
     isLoginOrRegister: boolean = false;
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.router.events.subscribe((evt: any) => {
-            this.isLoginOrRegister = ['/signUp', '/signIn'].includes(evt.url);
+            this.isLoginOrRegister = ["/signUp", "/signIn"].includes(evt.url);
         });
         this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {

@@ -4,11 +4,9 @@
 import {Facet} from "./facet";
 
 export class SearchResults {
-
     from: number;
     to: number;
     total: number;
-
     results: Order<any>[];
     facets: Facet[];
 }

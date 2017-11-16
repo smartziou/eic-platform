@@ -2,67 +2,58 @@
  * Created by stefania on 8/1/17.
  */
 import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../domain/eic-model";
-import {ResourceService} from "../../services/resource.service";
 import {SearchQuery} from "../../domain/search-query";
-import {FormBuilder, FormGroup} from "@angular/forms";
 import {URLParameter} from "../../domain/url-parameter";
 import {AuthenticationService} from "../../services/authentication.service";
+import {ResourceService} from "../../services/resource.service";
 import {UserService} from "../../services/user.service";
 
 @Component({
-    selector: 'compare-services',
-    templateUrl: './compare-services.component.html',
-    styleUrls: ['./compare-services.component.css'],
+    selector: "compare-services",
+    templateUrl: "./compare-services.component.html",
+    styleUrls: ["./compare-services.component.css"]
 })
-
 export class CompareServicesComponent implements OnInit {
-
     searchForm: FormGroup;
-
-    private urlParameters: URLParameter[] = [];
-
     public services: Service[] = [];
     public errorMessage: string;
+    private urlParameters: URLParameter[] = [];
     private sub: Subscription;
 
     constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationService: AuthenticationService, private userService: UserService) {
-
         this.searchForm = fb.group({
-            "query": [""],
+            "query": [""]
         });
     }
 
     ngOnInit() {
-
         this.sub = this.activatedRoute
-            .params
-            .subscribe(params => {
-
-                this.urlParameters.splice(0, this.urlParameters.length);
-
-                for (var obj in params) {
-                    if (params.hasOwnProperty(obj)) {
-                        var urlParameter: URLParameter = {
-                            key: obj,
-                            values: params[obj].split(',')
-                        };
-                        this.urlParameters.push(urlParameter);
-                        // console.log(urlParameter);
-                    }
+        .params
+        .subscribe(params => {
+            this.urlParameters.splice(0, this.urlParameters.length);
+            for (var obj in params) {
+                if (params.hasOwnProperty(obj)) {
+                    var urlParameter: URLParameter = {
+                        key: obj,
+                        values: params[obj].split(",")
+                    };
+                    this.urlParameters.push(urlParameter);
+                    // console.log(urlParameter);
                 }
-
-                if (this.urlParameters[0].values.length > 4) {
-                    this.errorMessage = 'The maximum number of services for comparison is 4';
-                } else {
-                    // console.log('URL Parameters', this.urlParameters);
-                    // request results from the registry
-                    this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(services => this.services = services);
-                }
-
-            });
+            }
+            if (this.urlParameters[0].values.length > 4) {
+                this.errorMessage = "The maximum number of services for comparison is 4";
+            } else {
+                // console.log('URL Parameters', this.urlParameters);
+                // request results from the registry
+                this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(
+                    services => this.services = services);
+            }
+        });
     }
 
     ngOnDestroy() {
@@ -70,20 +61,18 @@ export class CompareServicesComponent implements OnInit {
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(['/search', {query: searchValue.query}]);
+        this.router.navigate(["/search", {query: searchValue.query}]);
     }
 
     // handleError(message: string, error) {
     //     this.errorMessage = message + ' (Server responded: ' + error + ')';
     // }
-
     addToFavorites(service) {
         if (this.authenticationService.isLoggedIn()) {
-            this.userService.addFavourite(service, this.authenticationService.getUser())
+            this.userService.addFavourite(service, this.authenticationService.getUser());
         } else {
-            this.router.navigate(['/signIn']);
+            this.router.navigate(["/signIn"]);
         }
-
     }
 
     // process() {

@@ -1,11 +1,11 @@
 import {Component, Injector} from "@angular/core";
-import {MyGroup} from "../multiforms/my-group.interface";
-import * as sd from "./services.description";
 import {Validators} from "@angular/forms";
 import {ResourceService} from "../../services/resource.service";
+import {MyGroup} from "../multiforms/my-group.interface";
+import * as sd from "./services.description";
 
 @Component({
-    selector: 'placesInfo-form',
+    selector: "placesInfo-form",
     template: `
         <div [formGroup]="group">
             <select formControlName="entry">
@@ -14,26 +14,22 @@ import {ResourceService} from "../../services/resource.service";
         </div>
     `
 })
-
 export class PlacesComponent extends MyGroup {
-    constructor(private resourceService: ResourceService, injector: Injector) {
-        super(injector);
-    }
-
     places: any = {
         "QQ": "Error fetching places"
     };
-
     readonly groupDefinition = {
         //entry : ["", Validators.compose([Validators.required, CountryValidator])]
         entry: ["", Validators.compose([Validators.required])]
     };
-
     readonly placesDesc: sd.Description = sd.placesDesc;
+
+    constructor(private resourceService: ResourceService, injector: Injector) {
+        super(injector);
+    }
 
     ngOnInit() {
         super.ngOnInit();
         this.resourceService.getVocabularies("Country").subscribe(suc => this.places = suc);
     }
-
 }

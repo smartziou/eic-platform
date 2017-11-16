@@ -7,9 +7,9 @@ import {AuthenticationService} from "../../../services/authentication.service";
 import {UserService} from "../../../services/user.service";
 
 @Component({
-    selector: 'dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css'],
+    selector: "dashboard",
+    templateUrl: "./dashboard.component.html",
+    styleUrls: ["./dashboard.component.css"]
 })
 
 export class DashboardComponent {

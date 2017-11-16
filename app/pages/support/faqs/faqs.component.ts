@@ -3,28 +3,26 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FAQService} from "../../../services/faq.service";
 import {ActiveTopicQuestions} from "../../../domain/faq-active-topic-questions";
+import {FAQService} from "../../../services/faq.service";
 
 @Component({
-    selector: 'faqs',
-    templateUrl: './faqs.component.html',
-    styles: ['h3.uk-accordion-title { text-transform: none; } .uk-tab > * > a, .nav-tabs > li > a { font-size: 14px;}']
-
+    selector: "faqs",
+    templateUrl: "./faqs.component.html",
+    styles: ["h3.uk-accordion-title { text-transform: none; } .uk-tab > * > a, .nav-tabs > li > a { font-size: 14px;}"]
 })
-
 export class FAQsComponent implements OnInit {
-
     private activeTopicQuestions: ActiveTopicQuestions[] = [];
     private errorMessage: string;
 
     constructor(private route: ActivatedRoute,
-                private router: Router,
-                private faqService: FAQService) {
+        private router: Router,
+        private faqService: FAQService) {
     }
 
     ngOnInit() {
-        this.faqService.getActiveTopicQuestions().subscribe(activeTopicQuestions => this.shiftThroughTopics(activeTopicQuestions));
+        this.faqService.getActiveTopicQuestions().subscribe(
+            activeTopicQuestions => this.shiftThroughTopics(activeTopicQuestions));
     }
 
     shiftThroughTopics(activeTopicQuestions: ActiveTopicQuestions[]) {

@@ -3,12 +3,12 @@
  */
 import {ModuleWithProviders} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {LoginComponent} from "./login/login.component";
-import {SignUpComponent} from "./register/sign-up.component";
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {ActivateComponent} from "./activate/activate.component";
 import {CanActivateViaAuthGuard} from "../../services/can-activate-auth-guard.service";
 import {CanActivateViaPubGuard} from "../../services/can-activate-pub-guard.service";
+import {ActivateComponent} from "./activate/activate.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {LoginComponent} from "./login/login.component";
+import {SignUpComponent} from "./register/sign-up.component";
 
 const userRoutes: Routes = [
     {
@@ -24,7 +24,7 @@ const userRoutes: Routes = [
     {
         path: "dashboard",
         component: DashboardComponent,
-        canActivate: [CanActivateViaAuthGuard],
+        canActivate: [CanActivateViaAuthGuard]
     },
     {
         path: "activate/:id",
@@ -32,5 +32,4 @@ const userRoutes: Routes = [
         canActivate: [CanActivateViaPubGuard]
     }
 ];
-
 export const userRouting: ModuleWithProviders = RouterModule.forChild(userRoutes);

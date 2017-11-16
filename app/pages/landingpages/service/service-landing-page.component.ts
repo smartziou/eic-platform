@@ -1,21 +1,20 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Service} from "../../../domain/eic-model";
-import {ResourceService} from "../../../services/resource.service";
 import {Subscription} from "rxjs/Subscription";
+import {Service} from "../../../domain/eic-model";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {ResourceService} from "../../../services/resource.service";
 
 @Component({
-    selector: 'service-landing-page',
-    templateUrl: './service-landing-page.component.html',
-    styleUrls: ['../landing-page.component.css'],
+    selector: "service-landing-page",
+    templateUrl: "./service-landing-page.component.html",
+    styleUrls: ["../landing-page.component.css"]
 })
 
 export class ServiceLandingPageComponent {
-    private Math: Math;
-
     public service: Service;
     public errorMessage: string;
+    private Math: Math;
     private sub: Subscription;
     private providers: any = {};
 
@@ -25,9 +24,8 @@ export class ServiceLandingPageComponent {
 
     ngOnInit() {
         this.resourceService.getProviders().subscribe(suc => this.providers = suc);
-
         this.sub = this.route.params.subscribe(params => {
-            let id = atob(params['id']);
+            let id = atob(params["id"]);
             this.resourceService.recordHit(id, "internal");
             this.resourceService.getService(id).subscribe(service => this.service = service);
         });
@@ -38,7 +36,7 @@ export class ServiceLandingPageComponent {
     }
 
     handleError(error) {
-        this.errorMessage = 'System error loading service (Server responded: ' + error + ')';
+        this.errorMessage = "System error loading service (Server responded: " + error + ")";
     }
 
     getEncodedID() {
@@ -55,7 +53,7 @@ export class ServiceLandingPageComponent {
         if (this.authenticationService.isLoggedIn()) {
             //Rate logic goes here
         } else {
-            this.router.navigate(['/signIn']);
+            this.router.navigate(["/signIn"]);
         }
     }
 

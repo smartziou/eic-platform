@@ -4,18 +4,16 @@
 import {Component} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {SearchQuery} from "../../domain/search-query";
 import {Service} from "../../domain/eic-model";
+import {SearchQuery} from "../../domain/search-query";
 
 @Component({
-    selector: 'home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css'],
+    selector: "home",
+    templateUrl: "./home.component.html",
+    styleUrls: ["./home.component.css"]
 })
-
 export class HomeComponent {
     public searchForm: FormGroup;
-    private services: Service[];
     public categories: category[] = [
         {
             value: "Authentication and Authorization Infrastructure",
@@ -32,24 +30,25 @@ export class HomeComponent {
         {value: "Data Registration", icon: "cloud_server.svg", hover: "cloud_server_hover.svg"},
         {value: "Data Storage", icon: "database_security.svg", hover: "database_security_hover.svg"}
     ];
+    private services: Service[];
 
     constructor(fb: FormBuilder, private router: Router) {
         this.searchForm = fb.group({
-            "query": [""],
+            "query": [""]
         });
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(['/search',
+        this.router.navigate(["/search",
             {query: searchValue.query}]);
     }
 
     gotoDetail(id: string) {
-        this.router.navigate(['/landingPage/service' + '/', btoa(id)]);
+        this.router.navigate(["/landingPage/service" + "/", btoa(id)]);
     }
 
     searchCategory(cat: string) {
-        this.router.navigate(['/search',
+        this.router.navigate(["/search",
             {category: cat}]);
     }
 }

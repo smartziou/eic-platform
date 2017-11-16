@@ -7,9 +7,8 @@ import {FAQsComponent} from "./faqs/faqs.component";
 
 const supportRoutes: Routes = [
     {
-        path: 'support/faqs',
-        component: FAQsComponent,
-    },
+        path: "support/faqs",
+        component: FAQsComponent
+    }
 ];
-
 export const supportRouting: ModuleWithProviders = RouterModule.forChild(supportRoutes);

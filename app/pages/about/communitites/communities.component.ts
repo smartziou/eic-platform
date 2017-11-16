@@ -4,9 +4,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: 'communities',
-    templateUrl: './communities.component.html',
+    selector: "communities",
+    templateUrl: "./communities.component.html"
 })
-
 export class CommunitiesComponent {
 }

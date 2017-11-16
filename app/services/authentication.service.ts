@@ -2,9 +2,9 @@
  * Created by stefania on 8/30/16.
  */
 import {Injectable} from "@angular/core";
+import {Router} from "@angular/router";
 import {User} from "../domain/eic-model";
 import {deleteCookie, getCookie, setCookie} from "../domain/utils";
-import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthenticationService {
@@ -92,7 +92,6 @@ export class AuthenticationService {
     //         return {};
     //     }
     // }
-
     // private parseQueryString(queryString) {
     //     var data = {}, pairs, pair, separatorIndex, escapedKey, escapedValue, key, value;
     //

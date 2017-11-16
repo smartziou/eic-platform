@@ -2,7 +2,6 @@
  * Created by stefania on 8/30/16.
  */
 export class User {
-
     id: number;
     name: string;
     surname: string;
@@ -12,7 +11,6 @@ export class User {
     joinDate: Date;
     affiliation: string;
     roles: [string];
-
     // constructor(
     //     public id?: number,
     //     public name: string,

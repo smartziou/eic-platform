@@ -1,10 +1,9 @@
 /**
  * Created by stefania on 8/30/16.
  */
-
 import {Injectable} from "@angular/core";
-import {User} from "../domain/eic-model";
 import {Observable} from "rxjs/Rx";
+import {User} from "../domain/eic-model";
 import {HTTPWrapper} from "./http-wrapper.service";
 
 @Injectable()
