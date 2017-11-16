@@ -47,4 +47,12 @@ export class HTTPWrapper extends Http {
     private getJSON(response: Response): any {
         return response.json();
     }
+
+    private parse(request: any): any {
+        try {
+            return JSON.parse(request);
+        } catch (e) {
+            return request;
+        }
+    }
 }
