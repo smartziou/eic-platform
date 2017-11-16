@@ -232,7 +232,7 @@
                             <div *ngIf="authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">
                                 <!-- Login button -->
 			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
-			                        <a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT {{authenticationService.getLoggedInUser}}</a>
+			                        <a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT {{this.authenticationService.user.email}}</a>
                                 </span>
                             </div>
 

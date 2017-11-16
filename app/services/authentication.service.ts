@@ -9,26 +9,29 @@ import {deleteCookie, getCookie, setCookie} from "../domain/utils";
 @Injectable()
 export class AuthenticationService {
     redirectUrl: string = "/dashboard";
-    private cookieName: string = "jwt";
+    cookieName: string = "jwt";
+    user: User = null;
 
     constructor(private router: Router) {
     }
 
     public login(user: User) {
+        this.user = user;
         setCookie(this.cookieName, JSON.stringify(user), 1);
         this.router.navigate([this.redirectUrl]);
     }
 
     public logout() {
+        this.user = null;
         deleteCookie(this.cookieName);
         this.router.navigate(["/home"]);
     }
 
     public isLoggedIn(): boolean {
-        return getCookie(this.cookieName) != null;
+        return getCookie(this.cookieName) != null && this.user != null;
     }
 
-    public getUser(): string {
+    public getUserCookie(): string {
         return getCookie(this.cookieName);
     }
 

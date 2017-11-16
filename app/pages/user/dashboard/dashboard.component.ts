@@ -13,7 +13,7 @@ import {UserService} from "../../../services/user.service";
     styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-    constructor(protected authenticationService: AuthenticationService, protected userService: UserService,
+    constructor(public authenticationService: AuthenticationService, protected userService: UserService,
                 protected resourceService: ResourceService, protected router: Router) {
     }
 
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
         this.resourceService.getProviders().subscribe(
             suc => {
                 for (let provider in suc) {
-                    if (this.userService.user.email === provider + "@eic") {
+                    if (this.authenticationService.user.email === provider + "@eic") {
                         this.router.navigate(["/search", {provider: provider}]);
                         break;
                     }

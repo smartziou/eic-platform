@@ -5,11 +5,10 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {User} from "../domain/eic-model";
 import {HTTPWrapper} from "./http-wrapper.service";
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable()
 export class UserService {
-    user: User;
-
     constructor(private http: HTTPWrapper) {
     }
 
@@ -18,11 +17,7 @@ export class UserService {
     }
 
     loginUser(email: string, password: string): Observable<any> {
-        return this.http.post("/user/login", {email, password}).map(
-            user => {
-                this.user = user;
-            }
-        );
+        return this.http.post("/user/login", {email, password});
     }
 
     registerUser(user: User): Observable<any> {
