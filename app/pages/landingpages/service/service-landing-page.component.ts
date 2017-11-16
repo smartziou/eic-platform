@@ -10,7 +10,6 @@ import {ResourceService} from "../../../services/resource.service";
     templateUrl: "./service-landing-page.component.html",
     styleUrls: ["../landing-page.component.css"]
 })
-
 export class ServiceLandingPageComponent implements OnInit {
     public service: Service;
     public errorMessage: string;
@@ -18,7 +17,8 @@ export class ServiceLandingPageComponent implements OnInit {
     private sub: Subscription;
     private providers: any = {};
 
-    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationService: AuthenticationService) {
+    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService,
+                private authenticationService: AuthenticationService) {
         this.Math = Math;
     }
 

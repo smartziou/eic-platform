@@ -5,7 +5,6 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {User} from "../domain/eic-model";
 import {HTTPWrapper} from "./http-wrapper.service";
-import {AuthenticationService} from "./authentication.service";
 
 @Injectable()
 export class UserService {

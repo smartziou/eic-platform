@@ -9,12 +9,12 @@ import {HelpContentService} from "../../services/help-content.service";
 @Component({
     selector: "help-content",
     template: `
-                   <template [ngIf]="contents && contents.length>0">
-                       <template ngFor let-content [ngForOf]="contents">
-                           <div [innerHTML]="content.content" class="uk-margin-medium-bottom"></div>
-                       </template>
-                   </template>
-               `
+        <template [ngIf]="contents && contents.length>0">
+            <template ngFor let-content [ngForOf]="contents">
+                <div [innerHTML]="content.content" class="uk-margin-medium-bottom"></div>
+            </template>
+        </template>
+    `
 })
 export class HelpContentComponent implements OnInit {
     @Input("position")
@@ -22,7 +22,8 @@ export class HelpContentComponent implements OnInit {
     contents: Content[];
     errorMessage: string = null;
 
-    constructor(private _helpContentService: HelpContentService, private route: ActivatedRoute, private router: Router) {
+    constructor(private _helpContentService: HelpContentService, private route: ActivatedRoute,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -47,13 +48,13 @@ export class HelpContentComponent implements OnInit {
 @Component({
     selector: "aside-help-content",
     template: `
-                   <template [ngIf]="contents && contents.length>0">
-                       <template ngFor let-content [ngForOf]="contents">
-                           <div [innerHTML]="content.content"
-                                class="uk-card uk-card-body uk-card-default sidemenu uk-margin-bottom"></div>
-                       </template>
-                   </template>
-               `
+        <template [ngIf]="contents && contents.length>0">
+            <template ngFor let-content [ngForOf]="contents">
+                <div [innerHTML]="content.content"
+                     class="uk-card uk-card-body uk-card-default sidemenu uk-margin-bottom"></div>
+            </template>
+        </template>
+    `
 })
 export class AsideHelpContentComponent extends HelpContentComponent {
 }

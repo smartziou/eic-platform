@@ -1,5 +1,4 @@
 // Generated using typescript-generator version 1.27.339 on 2017-11-14 17:15:27.
-
 export class Access implements Identifiable {
     id: string;
     instant: number;

@@ -5,7 +5,6 @@ import {Component, OnInit, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Service} from "../../domain/eic-model";
-import {AuthenticationService} from "../../services/authentication.service";
 import {URLValidator} from "../../services/generic.validator";
 import {ResourceService} from "../../services/resource.service";
 import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";

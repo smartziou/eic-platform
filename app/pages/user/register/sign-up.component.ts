@@ -13,9 +13,7 @@ import {UserService} from "../../../services/user.service";
     templateUrl: "./sign-up.component.html",
     styleUrls: ["./sign-up.component.css"]
 })
-
 export class SignUpComponent implements OnInit {
-
     signUpForm: FormGroup;
     errorMessage: string = null;
     successMessage: string = null;
@@ -24,7 +22,8 @@ export class SignUpComponent implements OnInit {
     showProvider: boolean = false;
     pass: string = "";
 
-    constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService, private router: Router) {
+    constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService,
+                private router: Router) {
         this.signUpForm = fb.group({
             "name": ["", Validators.required],
             "surname": ["", Validators.required],

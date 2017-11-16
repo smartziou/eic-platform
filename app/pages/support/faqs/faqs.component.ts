@@ -16,8 +16,8 @@ export class FAQsComponent implements OnInit {
     private errorMessage: string;
 
     constructor(private route: ActivatedRoute,
-        private router: Router,
-        private faqService: FAQService) {
+                private router: Router,
+                private faqService: FAQService) {
     }
 
     ngOnInit() {

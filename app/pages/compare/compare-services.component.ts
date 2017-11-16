@@ -24,7 +24,9 @@ export class CompareServicesComponent implements OnInit {
     private urlParameters: URLParameter[] = [];
     private sub: Subscription;
 
-    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationService: AuthenticationService, private userService: UserService) {
+    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router,
+                private resourceService: ResourceService, private authenticationService: AuthenticationService,
+                private userService: UserService) {
         this.searchForm = fb.group({
             "query": [""]
         });
