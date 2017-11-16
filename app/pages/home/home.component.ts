@@ -39,8 +39,7 @@ export class HomeComponent {
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(["/search",
-            {query: searchValue.query}]);
+        this.router.navigate(["/search", {query: searchValue.query}]);
     }
 
     gotoDetail(id: string) {
@@ -48,8 +47,7 @@ export class HomeComponent {
     }
 
     searchCategory(cat: string) {
-        this.router.navigate(["/search",
-            {category: cat}]);
+        this.router.navigate(["/search", {category: cat}]);
     }
 }
 
