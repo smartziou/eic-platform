@@ -43,4 +43,8 @@ export class HTTPWrapper extends Http {
         });
         return Observable.throw(error);
     }
+
+    private getJSON(response: Response): any {
+        return response.json();
+    }
 }
