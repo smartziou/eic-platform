@@ -31,6 +31,7 @@
                                     </div>
                                     <form [formGroup]="serviceForm" role="form" class="m-t"
                                           (ngSubmit)="onSubmit(serviceForm.value, serviceForm.valid)">
+                                        <h4 style="text-align: center">Basic Information</h4>
                                         <form-inline [description]="urlDesc" [params]="'inline'"
                                                      [valid]="serviceForm.get('url').valid && serviceForm.get('url').dirty">
                                             <input class="uk-input" type="text" formControlName="url"
@@ -81,6 +82,7 @@
                                             <input class="uk-input" type="text" formControlName="multimediaURL"
                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('multimediaURL').valid && serviceForm.get('multimediaURL').dirty}">
                                         </form-inline>
+                                        <h4 style="text-align: center">Classification Information</h4>
                                         <form-repeat-inline [component]="providersComponent" [parentGroup]="serviceForm"
                                                             [name]="'providers'" [required]="true"
                                                             [description]="providersDesc">
@@ -172,6 +174,7 @@
                                                             [description]="relatedServicesDesc">
                                         </form-repeat-inline>
                                         <div></div>
+                                        <h4 style="text-align: center">Support Information</h4>
                                         <form-inline [description]="requestDesc" [params]="'inline'"
                                                      [valid]="serviceForm.get('request').valid && serviceForm.get('request').dirty">
                                             <input class="uk-input" type="text" formControlName="request"
