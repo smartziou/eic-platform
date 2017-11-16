@@ -1,10 +1,12 @@
 /**
  * Created by pgl on 21/08/17.
  */
+import {Location} from "@angular/common";
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Service} from "../../domain/eic-model";
+import {AuthenticationService} from "../../services/authentication.service";
 import {ResourceService} from "../../services/resource.service";
 import {ServiceFormComponent} from "./service-form.component";
 
@@ -14,7 +16,9 @@ import {ServiceFormComponent} from "./service-form.component";
     styleUrls: ["./service-edit.component.css"]
 })
 export class ServiceEditComponent extends ServiceFormComponent implements OnInit {
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute, protected router: Router) {
+    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute,
+                protected router: Router, private authenticationService: AuthenticationService,
+                private location: Location) {
         super(resourceService, fb, router);
         this.serviceForm = this.fb.group(this.formGroupMeta);
     }
@@ -48,6 +52,16 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
 
     onService(service) {
         ResourceService.removeNulls(service);
+        let ours = false;
+        for (let i = 0; i < service.providers.length; i++) {
+            if (this.authenticationService.user.email === service.providers[i] + "@eic") {
+                ours = true;
+                break;
+            }
+        }
+        if (!ours) {
+            this.location.back();
+        }
         this.serviceForm.patchValue(this.toForms(service));
     }
 
