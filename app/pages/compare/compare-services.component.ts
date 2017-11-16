@@ -42,13 +42,11 @@ export class CompareServicesComponent implements OnInit {
                         values: params[obj].split(",")
                     };
                     this.urlParameters.push(urlParameter);
-                    // console.log(urlParameter);
                 }
             }
             if (this.urlParameters[0].values.length > 4) {
                 this.errorMessage = "The maximum number of services for comparison is 4";
             } else {
-                // console.log('URL Parameters', this.urlParameters);
                 // request results from the registry
                 this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(
                     services => this.services = services);

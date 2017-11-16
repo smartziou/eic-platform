@@ -28,7 +28,6 @@ export class FAQService {
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
         let errMsg = "";
-        console.log(error);
         if (error instanceof Response) {
             const body = error.text() || "";
             //const err = body.error || JSON.stringify(body);

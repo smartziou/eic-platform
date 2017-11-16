@@ -39,10 +39,8 @@ function transformR(object: any): any {
     //         transformR(object[v]);
     //         if(typeof(object[v])!=="string" && object[v] != null) {
     //             let enumName = v.replace(/s$/, '') + 'Enum';
-    //             console.log("checking " + enumName);
     //             if (allEnum[v] != undefined) {
     //                 object[v] = allEnum[v].find(v => v.key === object[v]).value;
-    //                 console.log(object[v]);
     //             }
     //         }
     //     }

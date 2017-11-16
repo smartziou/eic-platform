@@ -23,7 +23,6 @@ export abstract class MyWrapper implements OnInit {
 
     ngOnInit() {
         if (!this.formComponents) {
-            console.log(this.formComponents);
             throw "Maybe you forgot [my-form] directive in the template";
         }
         this.formComponents.viewContainerRef.insert(this.component);

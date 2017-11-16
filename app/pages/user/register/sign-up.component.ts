@@ -55,7 +55,6 @@ export class SignUpComponent implements OnInit {
     }
 
     onRegisterFinished(user: User) {
-        console.log(user);
         this.submitted = true;
         this.successMessage = "Activation e-mail was sent to " + user.email;
         setTimeout(() => this.router.navigate(["/signIn"]), 5000);

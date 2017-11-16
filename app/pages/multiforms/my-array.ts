@@ -71,9 +71,7 @@ export class MyArray extends MyGroup {
         (<MyWrapper>wrapperView.instance).first = this.viewContainerRef.length == 0;
         (<MyWrapper>wrapperView.instance).deleteNotifier.subscribe($event => {
             let index = this.viewContainerRef.indexOf($event);
-            console.log(index);
             if (this.viewContainerRef.length == 1 && this.description.mandatory == true) {
-                console.log(this.viewContainerRef.get(0));
                 (<FormArray>this.parentGroup.controls[this.name].at(0).corpus((<MyGroup>componentView.instance).generate().value));
             } else {
                 this.remove(index);

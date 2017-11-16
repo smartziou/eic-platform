@@ -63,10 +63,8 @@ export class SearchComponent implements OnInit {
                         values: params[obj].split(",")
                     };
                     this.urlParameters.push(urlParameter);
-                    // console.log(urlParameter);
                 }
             }
-            // console.log(this.urlParameters);
             //request results from the registry
             this.resourceService.search(this.urlParameters).subscribe(
                 searchResults => this.updateSearchResults(searchResults));
@@ -185,8 +183,6 @@ export class SearchComponent implements OnInit {
 
     onSelection(e, category: string, value: string) {
         if (e.target.checked) {
-
-            // console.log('Selected value \'' + value + '\' from category \'' + category + '\'');
             var foundCategory = false;
             for (let urlParameter of this.urlParameters) {
                 if (urlParameter.key === category) {
@@ -202,8 +198,6 @@ export class SearchComponent implements OnInit {
                 this.urlParameters.push(newParameter);
             }
         } else {
-
-            // console.log('Deselected value \'' + value + '\' from category \'' + category + '\'');
             var categoryIndex = 0;
             for (let urlParameter of this.urlParameters) {
                 if (urlParameter.key === category) {

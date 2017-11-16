@@ -155,7 +155,6 @@ export class ServiceFormComponent implements OnInit {
                 setTimeout(() => this.router.navigate(["/landingPage/service/" + btoa(service.id)]), 1000);
             });
         } else {
-            console.log("Model is invalid");
             window.scrollTo(0, 0);
             this.serviceForm.markAsDirty();
             this.serviceForm.updateValueAndValidity();

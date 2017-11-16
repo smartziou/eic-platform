@@ -67,7 +67,6 @@ export class MyGroup implements OnInit, AfterContentInit {
         //     ret = new FormControl();
         // }
         if (this.patchData) {
-            // console.log(this.patchData);
         }
         if (!this.required)
             Object.keys(ret.controls).forEach(item => ret.controls[item].clearValidators());
@@ -109,7 +108,6 @@ export class MyGroup implements OnInit, AfterContentInit {
         //     }
         // },1000);
         // setTimeout(() => {
-        //     console.log(this.group,this.parentGroup);
         //     (this.group as FormGroup).updateValueAndValidity();
         // },2000);
     }

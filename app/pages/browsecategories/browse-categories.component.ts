@@ -43,7 +43,6 @@ export class BrowseCategoriesComponent implements OnInit {
         for (let key of keys) {
             let services: Service[] = this.browseResults[key];
             counter += services.length;
-            console.log(this.browseResultsColumns);
             this.browseResultsColumns[columnIndex].data[key] = (services);
             if (counter > servicesPerColumn) {
                 columnIndex++;
@@ -51,8 +50,6 @@ export class BrowseCategoriesComponent implements OnInit {
                 this.browseResultsColumns.push(new BrowseResults());
             }
         }
-        console.log("No of Services: ", noOfServices);
-        console.log("Services per column: ", servicesPerColumn);
     }
 
     visitServiceDetails(id: string) {
