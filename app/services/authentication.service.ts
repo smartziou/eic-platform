@@ -8,8 +8,8 @@ import {deleteCookie, getCookie, setCookie} from "../domain/utils";
 
 @Injectable()
 export class AuthenticationService {
+    redirectUrl: string = "/dashboard";
     private cookieName: string = "jwt";
-    redirectUrl: string = "/home";
 
     constructor(private router: Router) {
     }
