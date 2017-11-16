@@ -9,29 +9,22 @@ declare var UIkit: any;
 
 @Injectable()
 export class HTTPWrapper extends Http {
-    private defaultOptions = new RequestOptions(
-        {headers: new Headers({"Content-Type": "application/json;charset=UTF-8"})});
     private base = process.env.API_ENDPOINT;
 
-    constructor(backend: XHRBackend, options: RequestOptions, public http: Http) {
-        super(backend, options);
+    constructor(backend: XHRBackend) {
+        super(backend, new RequestOptions({headers: new Headers({"Content-Type": "application/json;charset=UTF-8"})}));
     }
 
     public post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-        return super.post(this.base + url, body, Object.assign(this.defaultOptions, options))
-        .map(res => res.json())
-        .catch(this.handleError);
+        return super.post(this.base + url, this.parse(body), options).map(this.getJSON).catch(this.handleError);
     }
 
     public put(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
-        return super.put(this.base + url, body, Object.assign(this.defaultOptions, options))
-        .map(res => res.json())
-        .catch(this.handleError);
+        return super.put(this.base + url, this.parse(body), options).map(this.getJSON).catch(this.handleError);
     }
 
     public get(url: string, options?: RequestOptionsArgs): Observable<any> {
-        return super.get(this.base + url, Object.assign(this.defaultOptions, options)).map(res => res.json()).catch(
-            this.handleError);
+        return super.get(this.base + url, options).map(this.getJSON).catch(this.handleError);
     }
 
     public handleError(error: Response) {
