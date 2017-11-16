@@ -18,9 +18,7 @@ declare var UIkit: any;
     templateUrl: "./search.component.html",
     styleUrls: ["./search.component.css"]
 })
-
 export class SearchComponent implements OnInit {
-
     searchForm: FormGroup;
     errorMessage: string;
     sub: Subscription;
@@ -40,7 +38,7 @@ export class SearchComponent implements OnInit {
     providers: any;
 
     constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
-        private resourceService: ResourceService, private authenticationService: AuthenticationService) {
+                private resourceService: ResourceService, private authenticationService: AuthenticationService) {
         this.resourceService.getProviders().subscribe(suc => this.providers = suc);
         this.searchForm = fb.group({
             "query": [""]

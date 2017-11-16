@@ -11,7 +11,6 @@ import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator"
 import {LanguagesComponent} from "./languages.component";
 import {PlacesComponent} from "./places.component";
 import {ProvidersComponent} from "./providers.component";
-// import {RegionsComponent} from "./regions.component";
 import {RelatedServicesComponent} from "./relatedServices.component";
 import {RequiredServicesComponent} from "./requiredServices.component";
 import * as sd from "./services.description";

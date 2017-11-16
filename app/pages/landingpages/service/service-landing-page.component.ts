@@ -56,20 +56,4 @@ export class ServiceLandingPageComponent implements OnInit {
             this.router.navigate(["/signIn"]);
         }
     }
-
-    // process() {
-    //
-    //     sessionStorage.setItem('runApplication.application', this.component.metadataHeaderInfo.metadataRecordIdentifier.value);
-    //
-    //     var map: { [name: string]: string; } = { };
-    //
-    //     if(sessionStorage.getItem('runApplication.input')) {
-    //         map['input'] = sessionStorage.getItem('runApplication.input');
-    //     }
-    //     if(sessionStorage.getItem('runApplication.application')) {
-    //         map['application'] = sessionStorage.getItem('runApplication.application');
-    //     }
-    //
-    //     this.router.navigate(['/runApplication', map]);
-    // }
 }
