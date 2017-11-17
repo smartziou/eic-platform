@@ -19,7 +19,7 @@ export class RelatedServicesComponent extends MyGroup {
         "00.00": "Failed to fetch services"
     };
     readonly groupDefinition = {
-        entry: ["", Validators.required]
+        entry: [""]
     };
     readonly relatedServicesDesc: sd.Description = sd.relatedServicesDesc;
 
