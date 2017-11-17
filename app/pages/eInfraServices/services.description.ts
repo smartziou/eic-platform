@@ -4,7 +4,7 @@ export class Description {
     mandatory?: boolean;
     recommended?: boolean;
 }
-export const urlDesc = {label: "url", mandatory: false, desc: "Link to a url providing information about the service. This url is usually hosted and maintained by the service providers. It contains fresh and additional information, such as what APIs are supported or links to the documentation"};
+export const urlDesc = {label: "url", mandatory: true, desc: "Link to a url providing information about the service. This url is usually hosted and maintained by the service providers. It contains fresh and additional information, such as what APIs are supported or links to the documentation"};
 export const nameDesc = {label: "name", mandatory: true, desc: "Brief marketing name of service as assigned by the service providers. Should be descriptive from a customer point of view, and should be quite simple, such that someone non-technical is able to understand what the service is about"};
 export const taglineDesc = {label: "tagline", mandatory: false, desc: "Catchline or slogan of service for marketing/advertising  purposes."};
 export const descriptionDesc = {label: "description", mandatory: true, desc: "High-level description of what the service does in terms of functionality it provides and the resources it enables access to. Should be similar to the name described above, and should cover the value provided by the service, in fairly non-technical terms. These descriptions may seem obvious but help everyone within the organization understand the service, and also will be needed for the Service Catalogue, which will be shown to users and customers. It may provide also information related to the offered capacity, number of installations, underlying data that is offered"};
@@ -34,6 +34,6 @@ export const userManualDesc = {label: "user Manual", mandatory: false, desc: "UR
 export const trainingInformationDesc = {label: "Training", mandatory: false, desc: "URL for training information"};
 export const feedbackDesc = {label: "feedback", mandatory: false, desc: "URL of the feedback page of the service"};
 export const priceDesc = {label: "price", mandatory: true, desc: "URL of the page with payment models that apply, the cost in Euros and any restrictions that may apply."};
-export const serviceLevelAgreementDesc = {label: "SLA", mandatory: false, desc: "URL of the page containing information about the levels of performance that a service providers is expected to achieve. Current service agreements (SLAs) available for the service or basis for a new SLA. These should be agreements with users (not providers)"};
+export const serviceLevelAgreementDesc = {label: "SLA", mandatory: true, desc: "URL of the page containing information about the levels of performance that a service providers is expected to achieve. Current service agreements (SLAs) available for the service or basis for a new SLA. These should be agreements with users (not providers)"};
 export const termsOfUseDesc = {label: "terms Of Use", mandatory: false, desc: "URLs of the pages containing the rules, service conditions and usage policy which one must agree to abide by in order to use the service"};
 export const fundingDesc = {label: "funding Sources", mandatory: false, desc: "Sources of funding for the development and operation of the service"};
