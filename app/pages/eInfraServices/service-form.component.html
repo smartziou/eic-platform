@@ -200,6 +200,7 @@
                                             <input class="uk-input" type="text" formControlName="feedback"
                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('feedback').valid && serviceForm.get('feedback').dirty}">
                                         </form-inline>
+                                        <h4 style="text-align: center">Contractual Information</h4>
                                         <form-inline [description]="priceDesc" [params]="'inline'"
                                                      [valid]="serviceForm.get('price').valid && serviceForm.get('price').dirty">
                                             <input class="uk-input" type="text" formControlName="price"
