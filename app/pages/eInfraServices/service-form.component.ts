@@ -164,7 +164,7 @@ export class ServiceFormComponent implements OnInit {
             window.scrollTo(0, 0);
             this.serviceForm.markAsDirty();
             this.serviceForm.updateValueAndValidity();
-            this.errorMessage = "Form not valid";
+            this.errorMessage = "Please fill in all required fields (marked with an asterisk), and fix the data format in fields underlined with a red colour.";
         }
     }
 
