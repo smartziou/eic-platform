@@ -20,7 +20,7 @@ export class LanguagesComponent extends MyGroup {
     };
     readonly groupDefinition = {
         //entry : ["", Validators.compose([Validators.required, LanguageValidator])],
-        entry: ["", Validators.compose([Validators.required])]
+        entry: ["", Validators.required]
     };
     readonly languagesDesc: sd.Description = sd.languagesDesc;
 

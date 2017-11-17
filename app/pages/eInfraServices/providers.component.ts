@@ -23,7 +23,7 @@ export class ProvidersComponent extends MyGroup {
     };
     readonly groupDefinition = {
         //entry : ["", Validators.compose([Validators.required, ProviderValidator])],
-        entry: ["", Validators.compose([Validators.required])]
+        entry: ["", Validators.required]
     };
     readonly providersDesc: sd.Description = sd.providersDesc;
 

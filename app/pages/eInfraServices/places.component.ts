@@ -20,7 +20,7 @@ export class PlacesComponent extends MyGroup {
     };
     readonly groupDefinition = {
         //entry : ["", Validators.compose([Validators.required, CountryValidator])]
-        entry: ["", Validators.compose([Validators.required])]
+        entry: ["", Validators.required]
     };
     readonly placesDesc: sd.Description = sd.placesDesc;
 
