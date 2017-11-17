@@ -80,14 +80,20 @@ export class ServiceFormComponent implements OnInit {
         "userBase": [""],
         "symbol": ["", URLValidator],
         "multimediaURL": ["", URLValidator],
+        //providers is defined in component
         "version": [""],
         "lastUpdate": [""],
         "changeLog": [""],
-        "validFor": [""],
+        //"validFor": [""],
         "lifeCycleStatus": ["", Validators.compose([Validators.required, PhaseValidator])],
         "trl": ["", Validators.compose([Validators.required, TLRValidator])],
         "category": ["", Validators.required],
         "subcategory": ["", Validators.required],
+        //place is defined in component
+        //lang is defined in component
+        //tags is defined in component
+        //requiredServices is defined in component
+        //relatedServices is defined in component
         "request": ["", Validators.compose([Validators.required, URLValidator])],
         "helpdesk": ["", URLValidator],
         "userManual": ["", URLValidator],
@@ -95,6 +101,7 @@ export class ServiceFormComponent implements OnInit {
         "feedback": ["", URLValidator],
         "price": ["", Validators.compose([Validators.required, URLValidator])],
         "serviceLevelAgreement": ["", Validators.compose([Validators.required, URLValidator])],
+        //TOS is defined in component
         "funding": [""]
     };
     providers: any = null;
