@@ -22,7 +22,7 @@ export class ServiceUploadComponent extends ServiceFormComponent implements OnIn
 
     onSubmit(service: Service, isValid: boolean) {
         service.id = this.getRandomInt(300, 500);
-        super.onSubmit(service, false);
+        super.onSubmit(service, isValid);
     }
 
     getRandomInt(min, max) {

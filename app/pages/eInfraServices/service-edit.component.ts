@@ -74,6 +74,6 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
         service.id = atob(
             decodeURIComponent(window.location.href).substr(decodeURIComponent(window.location.href).lastIndexOf(
                 "/") + 1));
-        super.onSubmit(service, true);
+        super.onSubmit(service, isValid);
     }
 }
