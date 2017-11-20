@@ -43,6 +43,10 @@ export class ServiceLandingPageComponent implements OnInit {
         return btoa(this.service.id);
     }
 
+    goToEdit() {
+        this.router.navigate([`/edit/${this.getEncodedID()}`]);
+    }
+
     getDeterminedInt(id) {
         let parts = id.split(".");
         let num = 100 * parseInt(parts[0]) + parseInt(parts[1]);
