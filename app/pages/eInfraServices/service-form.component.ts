@@ -136,20 +136,18 @@ export class ServiceFormComponent implements OnInit {
 
     toServer(service: Service): Service {
         let ret = {};
-        for (let fieldName in service) {
-            let fieldValue = service[fieldName];
-            let unPatchedValue = [];
-            if (Array.isArray(fieldValue)) {
-                for (let i = 0; i < fieldValue.length; i++) {
-                    if (fieldValue[i].entry) {
-                        unPatchedValue[i] = fieldValue[i].entry;
+        Object.entries(service).forEach(([name, values]) => {
+            let newValues = values;
+            if (Array.isArray(values)) {
+                newValues = [];
+                values.forEach(e => {
+                    if (e.entry !== "") {
+                        newValues.push(e.entry);
                     }
-                }
-            } else {
-                unPatchedValue = fieldValue;
+                });
             }
-            ret[fieldName] = unPatchedValue;
-        }
+            ret[name] = newValues;
+        });
         return <Service>ret;
     }
 
