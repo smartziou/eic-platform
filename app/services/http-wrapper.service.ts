@@ -28,8 +28,14 @@ export class HTTPWrapper extends Http {
     }
 
     public handleError(error: Response) {
+        let message = "Severe server error";
+        try {
+            JSON.parse(error.text()).error
+        } catch (e) {
+            console.error("HTTPWrapper", e);
+        }
         UIkit.notification({
-            message: JSON.parse(error.text()).error || "Severe server error",
+            message,
             status: "danger",
             pos: "top-center",
             timeout: 5000
