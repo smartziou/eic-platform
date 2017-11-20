@@ -69,7 +69,7 @@ export class CompareServicesComponent implements OnInit {
     // }
     addToFavorites(service) {
         if (this.authenticationService.isLoggedIn()) {
-            this.userService.addFavourite(service, this.authenticationService.getUserCookie());
+            this.userService.addFavourite(service, this.authenticationService.user.id);
         } else {
             this.router.navigate(["/signIn"]);
         }
