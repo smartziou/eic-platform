@@ -7,6 +7,8 @@ const AotPlugin = require('@ngtools/webpack').AotPlugin;
 var webpackConfig = {
     entry: {
         'main': './app/main.ts',
+        'vendors' : './app/vendors.ts',
+        'polyfills' : './app/polyfills.ts'
     },
 
     output: {
@@ -23,6 +25,9 @@ var webpackConfig = {
                 // your Angular Async Route paths relative to this root directory
             }
         ),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['app', 'vendors', 'polyfills']
+        }),
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',
