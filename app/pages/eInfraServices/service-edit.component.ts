@@ -47,6 +47,15 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
         return <Service>ret;
     }
 
+    canEdit(service) {
+        service.providers.forEach(provider => {
+            if (this.authenticationService.user.email === provider + "@eic") {
+                return true;
+            }
+        });
+        return false;
+    }
+
     onService(service) {
         ResourceService.removeNulls(service);
         let ours = false;
