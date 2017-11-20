@@ -169,6 +169,6 @@ export class ServiceFormComponent implements OnInit {
     }
 
     isDev() {
-        return sessionStorage.getItem("dev") === "aye";
+        return localStorage.getItem("dev") === "aye";
     }
 }
