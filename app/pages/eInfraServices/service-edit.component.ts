@@ -35,18 +35,15 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
 
     toForms(service: Service) {
         let ret = {};
-        for (let fieldName in service) {
-            let fieldValue = service[fieldName];
-            let patchedValue = [];
-            if (Array.isArray(fieldValue)) {
-                for (let i = 0; i < fieldValue.length; i++) {
-                    patchedValue[i] = {"entry": fieldValue[i]};
-                }
-            } else {
-                patchedValue = fieldValue;
+        Object.entries(service).forEach(([name, values]) => {
+            let newValues = values;
+            if (Array.isArray(values)) {
+                values.forEach(entry => {
+                    newValues.push({entry});
+                });
             }
-            ret[fieldName] = patchedValue;
-        }
+            ret[name] = newValues;
+        });
         return <Service>ret;
     }
 
