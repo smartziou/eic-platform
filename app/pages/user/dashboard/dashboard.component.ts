@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
             suc => {
                 for (let provider in suc) {
                     if (this.authenticationService.user.email === provider + "@eic") {
-                        this.router.navigate(["/search", {provider: provider}]);
+                        this.router.navigate(["/search", {provider}]);
                         break;
                     }
                 }
