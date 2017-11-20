@@ -58,17 +58,11 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
 
     onService(service) {
         ResourceService.removeNulls(service);
-        let ours = false;
-        for (let i = 0; i < service.providers.length; i++) {
-            if (this.authenticationService.user.email === service.providers[i] + "@eic") {
-                ours = true;
-                break;
-            }
-        }
-        if (!ours) {
+        if (this.canEdit(service)) {
+            this.serviceForm.patchValue(this.toForms(service));
+        } else {
             this.location.back();
         }
-        this.serviceForm.patchValue(this.toForms(service));
     }
 
     onSuccess(service) {
