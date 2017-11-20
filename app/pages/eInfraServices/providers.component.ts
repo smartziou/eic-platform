@@ -22,7 +22,7 @@ export class ProvidersComponent extends MyGroup {
         "qq": "Error fetching providers"
     };
     readonly groupDefinition = {
-        entry: [[""], Validators.required]
+        entry: ["", Validators.required]
     };
     readonly providersDesc: sd.Description = sd.providersDesc;
 

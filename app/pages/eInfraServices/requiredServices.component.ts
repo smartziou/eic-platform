@@ -19,7 +19,7 @@ export class RequiredServicesComponent extends MyGroup {
         "00.00": "Failed to fetch services"
     };
     readonly groupDefinition = {
-        entry: [[""]]
+        entry: ["00.00"]
     };
     readonly requiredServicesDesc: sd.Description = sd.requiredServicesDesc;
 
