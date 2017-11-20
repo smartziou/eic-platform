@@ -19,8 +19,7 @@ export class PlacesComponent extends MyGroup {
         "QQ": "Error fetching places"
     };
     readonly groupDefinition = {
-        //entry : ["", Validators.compose([Validators.required, CountryValidator])]
-        entry: ["", Validators.required]
+        entry: [[""], Validators.required]
     };
     readonly placesDesc: sd.Description = sd.placesDesc;
 

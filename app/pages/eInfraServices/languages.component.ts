@@ -19,8 +19,7 @@ export class LanguagesComponent extends MyGroup {
         "qq": "Error fetching languages"
     };
     readonly groupDefinition = {
-        //entry : ["", Validators.compose([Validators.required, LanguageValidator])],
-        entry: ["", Validators.required]
+        entry: [[""], Validators.required]
     };
     readonly languagesDesc: sd.Description = sd.languagesDesc;
 
