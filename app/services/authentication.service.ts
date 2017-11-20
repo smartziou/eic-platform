@@ -13,25 +13,26 @@ export class AuthenticationService {
     user: User = null;
 
     constructor(private router: Router) {
+        this.user = JSON.parse(getCookie(this.cookieName));
     }
 
     public login(user: User) {
-        this.user = user;
-        setCookie(this.cookieName, JSON.stringify(user), 1);
-        this.router.navigate([this.redirectURL]);
+        if (!this.isLoggedIn()) {
+            setCookie(this.cookieName, JSON.stringify(user), 1);
+            this.user = user;
+            this.router.navigate([this.redirectURL]);
+        }
     }
 
     public logout() {
-        this.user = null;
-        deleteCookie(this.cookieName);
-        this.router.navigate(["/home"]);
+        if (this.isLoggedIn()) {
+            deleteCookie(this.cookieName);
+            this.user = null;
+            this.router.navigate(["/home"]);
+        }
     }
 
     public isLoggedIn(): boolean {
         return getCookie(this.cookieName) != null && this.user != null;
-    }
-
-    public getUserCookie(): string {
-        return getCookie(this.cookieName);
     }
 }
