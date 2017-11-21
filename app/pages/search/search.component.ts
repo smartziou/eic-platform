@@ -47,9 +47,7 @@ export class SearchComponent implements OnInit {
         if (sessionStorage.getItem("compareServices")) {
             this.servicesToCompare = JSON.parse(sessionStorage.getItem("compareServices"));
         }
-        this.sub = this.activatedRoute
-        .params
-        .subscribe(params => {
+        this.sub = this.activatedRoute.params.subscribe(params => {
             this.urlParameters.splice(0, this.urlParameters.length);
             this.foundResults = true;
             for (var obj in params) {
@@ -123,9 +121,7 @@ export class SearchComponent implements OnInit {
     }
 
     prettyProviders(prov) {
-        console.error(prov);
-        prov = prov || [];
-        return prov.map(e => this.providers[e] || e).join(",");
+        return (prov || []).map(e => this.providers[e] || e).join(",");
     }
 
     orderFacets() {
