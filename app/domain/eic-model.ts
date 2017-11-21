@@ -1,4 +1,5 @@
-// Generated using typescript-generator version 1.27.339 on 2017-11-14 17:15:27.
+// Generated using typescript-generator version 1.27.339 on 2017-11-21 12:56:25.
+
 export class Access implements Identifiable {
     id: string;
     instant: number;
@@ -56,26 +57,26 @@ export class Service implements Identifiable {
     funding: string;
     helpdesk: URL;
     id: string;
-    language: string[];
+    languages: string[];
     lastUpdate: XMLGregorianCalendar;
     lifeCycleStatus: string;
     multimediaURL: URL;
     name: string;
     options: string;
-    place: string[];
+    places: string[];
     price: URL;
-    provider: string[];
-    relatedService: string[];
+    providers: string[];
+    relatedServices: string[];
     request: URL;
-    requiredService: string[];
+    requiredServices: string[];
     serviceAddenda: ServiceAddenda;
     serviceLevelAgreement: URL;
     subcategory: string;
     symbol: URL;
-    tag: string[];
     tagline: string;
+    tags: string[];
     targetUsers: string;
-    termOfUse: URL[];
+    termsOfUse: URL[];
     trainingInformation: URL;
     trl: string;
     url: URL;
