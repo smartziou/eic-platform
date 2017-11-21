@@ -156,9 +156,9 @@ export class ServiceFormComponent implements OnInit {
         //TODO: check if model is valid
         if (isValid) {
             this.resourceService.uploadService(this.toServer(service), this.editMode)
-            .subscribe(service => {
-                setTimeout(() => this.router.navigate(["/landingPage/service/" + btoa(service.id)]), 1000);
-            });
+                .subscribe(service => {
+                    setTimeout(() => this.router.navigate(["/landingPage/service/" + btoa(service.id)]), 1000);
+                });
         } else {
             window.scrollTo(0, 0);
             this.serviceForm.markAsDirty();

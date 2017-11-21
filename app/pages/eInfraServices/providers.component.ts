@@ -18,12 +18,8 @@ import * as sd from "./services.description";
     `
 })
 export class ProvidersComponent extends MyGroup {
-    providers: any = {
-        "qq": "Error fetching providers"
-    };
-    readonly groupDefinition = {
-        entry: ["", Validators.required]
-    };
+    providers: any = {"qq": "Error fetching providers"};
+    readonly groupDefinition = {entry: ["", Validators.required]};
     readonly providersDesc: sd.Description = sd.providersDesc;
 
     constructor(private resourceService: ResourceService, injector: Injector) {

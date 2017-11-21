@@ -15,12 +15,8 @@ import * as sd from "./services.description";
     `
 })
 export class PlacesComponent extends MyGroup {
-    places: any = {
-        "QQ": "Error fetching places"
-    };
-    readonly groupDefinition = {
-        entry: ["", Validators.required]
-    };
+    places: any = {"QQ": "Error fetching places"};
+    readonly groupDefinition = {entry: ["", Validators.required]};
     readonly placesDesc: sd.Description = sd.placesDesc;
 
     constructor(private resourceService: ResourceService, injector: Injector) {

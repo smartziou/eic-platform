@@ -15,12 +15,8 @@ import * as sd from "./services.description";
     `
 })
 export class LanguagesComponent extends MyGroup {
-    languages: any = {
-        "qq": "Error fetching languages"
-    };
-    readonly groupDefinition = {
-        entry: ["", Validators.required]
-    };
+    languages: any = {"qq": "Error fetching languages"};
+    readonly groupDefinition = {entry: ["", Validators.required]};
     readonly languagesDesc: sd.Description = sd.languagesDesc;
 
     constructor(private resourceService: ResourceService, injector: Injector) {

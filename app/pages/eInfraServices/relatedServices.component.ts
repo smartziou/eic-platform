@@ -1,5 +1,4 @@
 import {Component, Injector} from "@angular/core";
-import {Validators} from "@angular/forms";
 import {ResourceService} from "../../services/resource.service";
 import {MyGroup} from "../multiforms/my-group.interface";
 import * as sd from "./services.description";
@@ -15,12 +14,8 @@ import * as sd from "./services.description";
     `
 })
 export class RelatedServicesComponent extends MyGroup {
-    relatedServices: any = {
-        "00.00": "Failed to fetch services"
-    };
-    readonly groupDefinition = {
-        entry: [""]
-    };
+    relatedServices: any = {"00.00": "Failed to fetch services"};
+    readonly groupDefinition = {entry: [""]};
     readonly relatedServicesDesc: sd.Description = sd.relatedServicesDesc;
 
     constructor(private resourceService: ResourceService, injector: Injector) {

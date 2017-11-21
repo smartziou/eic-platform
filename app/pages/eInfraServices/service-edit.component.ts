@@ -52,10 +52,6 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
         return <Service>ret;
     }
 
-    canEdit(service) {
-        return;
-    }
-
     onSuccess(service) {
         this.successMessage = "Service edited successfully!";
         this.router.navigate(["/landingPage/service/" + btoa(service.id)]);
@@ -64,7 +60,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     onSubmit(service: Service, isValid: boolean) {
         service.id = atob(
             decodeURIComponent(window.location.href).substr(decodeURIComponent(window.location.href).lastIndexOf(
-                "/") + 1));
+                    "/") + 1));
         super.onSubmit(service, isValid);
     }
 }
