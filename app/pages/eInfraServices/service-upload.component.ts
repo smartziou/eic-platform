@@ -2,9 +2,12 @@
  * Created by pgl on 21/08/17.
  */
 import {Component, OnInit} from "@angular/core";
+import {FormBuilder} from "@angular/forms";
+import {Router} from "@angular/router";
+import {Observable} from "rxjs/Observable";
 import {Service} from "../../domain/eic-model";
+import {ResourceService} from "../../services/resource.service";
 import {ServiceFormComponent} from "./service-form.component";
-
 @Component({
     selector: "service-upload",
     templateUrl: "./service-form.component.html",

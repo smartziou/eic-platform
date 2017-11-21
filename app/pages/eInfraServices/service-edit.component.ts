@@ -9,6 +9,7 @@ import {Service} from "../../domain/eic-model";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ResourceService} from "../../services/resource.service";
 import {ServiceFormComponent} from "./service-form.component";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: "service-edit",

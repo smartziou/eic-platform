@@ -37,11 +37,7 @@ export class SignUpComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.resourceService.getProviders().subscribe(providers => this.storeProviders(providers));
-    }
-
-    storeProviders(providers: string[]) {
-        this.providers = providers;
+        this.resourceService.getProviders().subscribe(providers => this.providers = providers);
     }
 
     onSubmit(myUser: User, isValid: boolean) {
