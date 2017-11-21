@@ -35,7 +35,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
             this.resourceService.getService(atob(suc[2]["id"])).subscribe(service => {
                 ResourceService.removeNulls(service);
                 if (service.providers.indexOf(this.authenticationService.user.email.split("@")[0]) > -1) {
-                    this.serviceForm.patchValue(this.toForms(service));
+                    this.serviceForm.patchValue(service);
                 } else {
                     this.location.back();
                 }
