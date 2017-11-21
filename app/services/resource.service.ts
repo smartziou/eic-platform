@@ -61,11 +61,11 @@ export class ResourceService {
     }
 
     getServices() {
-        return this.http.get("/service/by/service_id").map(res => <Service> <any> res);
+        return this.http.get("/service/by/service_id");
     }
 
     getService(id: string) {
-        return this.http.get(`/service/${id}/`).map(res => <Service> <any> res);
+        return this.http.get(`/service/${id}/`);
     }
 
     getSelectedServices(ids: string[]) {
