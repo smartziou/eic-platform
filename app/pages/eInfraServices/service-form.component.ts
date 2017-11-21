@@ -23,7 +23,7 @@ import {TermsOfUseComponent} from "./termsOfUse.component";
     templateUrl: "./service-form.component.html",
     styleUrls: ["./service-form.component.css"]
 })
-export class ServiceFormComponent implements OnInit {
+export class ServiceFormComponent {
     editMode: boolean;
     serviceForm: FormGroup;
     service: Service;
@@ -110,17 +110,6 @@ export class ServiceFormComponent implements OnInit {
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: Router) {
         this.serviceForm = this.fb.group(this.formGroupMeta);
-    }
-
-    ngOnInit() {
-        Observable.zip(
-            this.resourceService.getProviders(),
-            this.resourceService.getVocabularies()
-        ).subscribe(suc => {
-            this.providers = suc[0];
-            this.vocabularies = this.transformVocabularies(suc[1]);
-            this.serviceForm.patchValue({});
-        });
     }
 
     transformVocabularies(vocabularies) {

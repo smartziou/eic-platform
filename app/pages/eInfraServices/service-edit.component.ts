@@ -28,6 +28,15 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
         this.editMode = true;
         this.route.params.subscribe(params => {
             this.resourceService.getService(atob(params["id"])).subscribe(service => {
+    ngOnInit() {
+        Observable.zip(
+            this.resourceService.getProviders(),
+            this.resourceService.getVocabularies(),
+            this.route.params
+        ).subscribe(suc => {
+            this.providers = suc[0];
+            this.vocabularies = this.transformVocabularies(suc[1]);
+            this.resourceService.getService(atob(suc[2]["id"])).subscribe(service => {
                 ResourceService.removeNulls(service);
                 if (service.providers.indexOf(this.authenticationService.user.email.split("@")[0]) > -1) {
                     this.serviceForm.patchValue(this.toForms(service));

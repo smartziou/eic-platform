@@ -16,6 +16,16 @@ export class ServiceUploadComponent extends ServiceFormComponent implements OnIn
         this.editMode = false;
     }
 
+    ngOnInit() {
+        Observable.zip(
+            this.resourceService.getProviders(),
+            this.resourceService.getVocabularies()
+        ).subscribe(suc => {
+            this.providers = suc[0];
+            this.vocabularies = this.transformVocabularies(suc[1]);
+        });
+    }
+
     onSuccess(service) {
         this.successMessage = "Service uploaded successfully!";
     }
