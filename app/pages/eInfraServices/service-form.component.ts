@@ -4,6 +4,7 @@
 import {Component, OnInit, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs/Observable";
 import {Service} from "../../domain/eic-model";
 import {URLValidator} from "../../services/generic.validator";
 import {ResourceService} from "../../services/resource.service";
@@ -122,17 +123,16 @@ export class ServiceFormComponent implements OnInit {
         });
     }
 
-    onVocabularies(vocabularies) {
+    transformVocabularies(vocabularies) {
         let ret = {};
-        Object.keys(vocabularies).forEach((e: any) => {
+        Object.entries(vocabularies).forEach(([key, value]) => {
             let item = {};
-            item[e] = vocabularies[e].name;
-            let prefix = vocabularies[e].type;
+            item[key] = String(value.name);
+            let prefix = value.type;
             ret[prefix] = ret[prefix] || {};
             Object.assign(ret[prefix], item);
         });
-        this.vocabularies = ret;
-        this.serviceForm.patchValue({});
+        return ret;
     }
 
     toServer(service: Service): Service {
