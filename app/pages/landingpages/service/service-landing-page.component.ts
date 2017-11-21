@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../../domain/eic-model";
 import {AuthenticationService} from "../../../services/authentication.service";
@@ -23,9 +24,12 @@ export class ServiceLandingPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.resourceService.getProviders().subscribe(suc => this.providers = suc);
-        this.sub = this.route.params.subscribe(params => {
-            let id = atob(params["id"]);
+        this.sub = Observable.combineLatest(
+            this.route.params,
+            this.resourceService.getProviders()
+        ).subscribe(suc => {
+            let id = atob(suc[0]["id"]);
+            this.providers = suc[1];
             this.resourceService.recordHit(id, "internal");
             this.resourceService.getService(id).subscribe(service => this.service = service);
         });
