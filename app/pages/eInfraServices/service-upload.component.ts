@@ -11,8 +11,8 @@ import {ServiceFormComponent} from "./service-form.component";
     styleUrls: ["./service-upload.component.css"]
 })
 export class ServiceUploadComponent extends ServiceFormComponent implements OnInit {
-    ngOnInit() {
-        super.ngOnInit();
+    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: Router) {
+        super(resourceService, fb, router);
         this.editMode = false;
     }
 

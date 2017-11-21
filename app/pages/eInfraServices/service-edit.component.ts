@@ -20,14 +20,9 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
                 protected router: Router, private authenticationService: AuthenticationService,
                 private location: Location) {
         super(resourceService, fb, router);
-        this.serviceForm = this.fb.group(this.formGroupMeta);
+        this.editMode = true;
     }
 
-    ngOnInit() {
-        super.ngOnInit();
-        this.editMode = true;
-        this.route.params.subscribe(params => {
-            this.resourceService.getService(atob(params["id"])).subscribe(service => {
     ngOnInit() {
         Observable.zip(
             this.resourceService.getProviders(),
