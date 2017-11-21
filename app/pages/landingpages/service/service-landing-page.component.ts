@@ -43,12 +43,8 @@ export class ServiceLandingPageComponent implements OnInit {
         this.errorMessage = "System error loading service (Server responded: " + error + ")";
     }
 
-    getEncodedID() {
-        return btoa(this.service.id);
-    }
-
     goToEdit() {
-        this.router.navigate([`/edit/${this.getEncodedID()}`]);
+        this.router.navigate([`/edit/${btoa(this.service.id)}`]);
     }
 
     getDeterminedInt(id) {
