@@ -77,7 +77,7 @@ export class ResourceService {
     }
 
     getProviders() {
-        return this.http.get("/provider/all").map(e => (<any>e).results.reduce(this.idToName, {}));
+        return this.http.get("/provider/all").map(e => e.results.reduce(this.idToName, {}));
     }
 
     activateUserAccount(id: any) {
