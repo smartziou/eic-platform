@@ -112,13 +112,14 @@ export class ServiceFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.resourceService.getProviders().subscribe(
-            suc => {
-                this.providers = suc;
-                this.serviceForm.patchValue({});
-            }
-        );
-        this.resourceService.getVocabularies().subscribe(suc => this.onVocabularies(suc), console.error);
+        Observable.zip(
+            this.resourceService.getProviders(),
+            this.resourceService.getVocabularies()
+        ).subscribe(suc => {
+            this.providers = suc[0];
+            this.vocabularies = this.transformVocabularies(suc[1]);
+            this.serviceForm.patchValue({});
+        });
     }
 
     onVocabularies(vocabularies) {
