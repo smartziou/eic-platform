@@ -26,11 +26,16 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     ngOnInit() {
         super.ngOnInit();
         this.editMode = true;
-        this.route.params.subscribe(this.onParams.bind(this));
-    }
-
-    onParams(params) {
-        this.resourceService.getService(atob(params["id"])).subscribe(this.onService.bind(this), console.error);
+        this.route.params.subscribe(params => {
+            this.resourceService.getService(atob(params["id"])).subscribe(service => {
+                ResourceService.removeNulls(service);
+                if (service.providers.indexOf(this.authenticationService.user.email.split("@")[0]) > -1) {
+                    this.serviceForm.patchValue(this.toForms(service));
+                } else {
+                    this.location.back();
+                }
+            });
+        });
     }
 
     toForms(service: Service) {
@@ -48,24 +53,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     }
 
     canEdit(service) {
-        try {
-            service.providers.forEach(provider => {
-                if (this.authenticationService.user.email === provider + "@eic") {
-                    return true;
-                }
-            });
-        } finally {
-            return false;
-        }
-    }
-
-    onService(service) {
-        ResourceService.removeNulls(service);
-        if (this.canEdit(service)) {
-            this.serviceForm.patchValue(this.toForms(service));
-        } else {
-            this.location.back();
-        }
+        return;
     }
 
     onSuccess(service) {
