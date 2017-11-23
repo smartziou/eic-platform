@@ -90,13 +90,13 @@ export class ResourceService {
     }
 
     recordHit(id: any, type: any) {
-        if (sessionStorage.getItem("internal-" + id) !== "aye") {
+        if (sessionStorage.getItem(type + "-" + id) !== "aye") {
             let hit = new Access();
             hit.serviceID = id;
             hit.instant = Date.now();
             hit.userID = (this.authenticationService.user || {id: ""}).id;
             hit.type = type;
-            sessionStorage.setItem("internal-" + id, "aye");
+            sessionStorage.setItem(type + "-" + id, "aye");
             return this.http.post("/access/add", hit);
         }
     }
