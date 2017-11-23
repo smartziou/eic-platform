@@ -44,6 +44,7 @@ import {FooterComponent} from "./shared/footer/footer.component";
 import {ReusableComponentsModule} from "./shared/reusablecomponents/reusable-components.module";
 import {SharedModule} from "./shared/shared.module";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
+import {FeedbackComponent} from "./shared/feedback/feedback.component";
 
 // import {EinfraErrorHandler} from "./services/error-handler.service";
 @NgModule({
@@ -70,6 +71,7 @@ import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
         HomeComponent,
         SearchComponent,
         CompareServicesComponent,
+        FeedbackComponent,
         TopMenuComponent,
         FooterComponent,
         BrowseCategoriesComponent,
