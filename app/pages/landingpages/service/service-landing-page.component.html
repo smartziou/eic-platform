@@ -23,7 +23,7 @@
                                         <span style="color: #d1303a">{{service.name || "Not Available"}}</span>
                                     </a>
                                 </h2>
-                                <div>by {{service.providers | prettifyWithDictionary:this.providers}}</div>
+                                <div>by {{service.providers | lookup:providers | join:", "}}</div>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
