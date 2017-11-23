@@ -35,6 +35,10 @@ export class ServiceLandingPageComponent implements OnInit {
         });
     }
 
+    visit() {
+        this.resourceService.recordHit(this.service.id, "external");
+    }
+
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
