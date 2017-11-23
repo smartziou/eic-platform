@@ -19,7 +19,9 @@
                             <img src="{{service.symbol || 'http://fvtelibrary.com/img/user/NoLogo.png'}}" style="max-width: 110px">
                             <div class="uk-display-inline-block uk-vertical-align-top uk-margin-top">
                                 <h2 class="uk-h2 uk-inline" style="margin-bottom: 5px">
-                                    {{service.name || "Not Available"}}
+                                    <a target="_blank" [href]="service.url" (click)="visit()">
+                                        <span style="color: #d1303a">{{service.name || "Not Available"}}</span>
+                                    </a>
                                 </h2>
                                 <div>by {{service.providers | prettifyWithDictionary:this.providers}}</div>
                             </div>
@@ -97,17 +99,6 @@
                         </template>
                     </dl>
 
-                    <div class="" *ngIf="service.url">
-                        <p>
-                            <a target="_blank" href="{{service.url}}"><span style="color: #d1303a">{{service.url}}</span></a>
-                        </p>
-                    </div>
-                    <div class="" *ngIf="!service.url">
-                        <p>
-                            <span style="color: #d1303a">Service url not available</span>
-                        </p>
-                    </div>
-
                     <template [ngIf]="service.tags && service.tags.length>0">
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                         <span>Service tags</span>
@@ -125,7 +116,6 @@
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                     </template>
-
 
 
                     <!--TABS-->
