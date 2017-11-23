@@ -24,7 +24,7 @@ export class ServiceLandingPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.sub = Observable.combineLatest(
+        this.sub = Observable.zip(
             this.route.params,
             this.resourceService.getProviders()
         ).subscribe(suc => {
