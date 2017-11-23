@@ -92,6 +92,8 @@ export class ResourceService {
         if (sessionStorage.getItem("internal-" + id) !== "aye") {
             let hit = new Access();
             hit.serviceID = id;
+            hit.instant = Date.now();
+            hit.userID = (this.authenticationService.user || {id: ""}).id;
             hit.type = type;
             sessionStorage.setItem("internal-" + id, "aye");
             return this.http.post("/access/add", hit);
