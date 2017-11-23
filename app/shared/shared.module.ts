@@ -3,14 +3,17 @@
  */
 import {NgModule} from "@angular/core";
 import {KeysPipe} from "../services/key.pipe";
+import {PrettifyWithDictionaryPipe} from "../services/prettifyWithDictionary.pipe";
 
 @NgModule({
     imports: [],
     declarations: [
-        KeysPipe
+        KeysPipe,
+        PrettifyWithDictionaryPipe
     ],
     exports: [
-        KeysPipe
+        KeysPipe,
+        PrettifyWithDictionaryPipe
     ]
 })
 export class SharedModule {
