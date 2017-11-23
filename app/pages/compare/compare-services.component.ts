@@ -11,6 +11,7 @@ import {URLParameter} from "../../domain/url-parameter";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ResourceService} from "../../services/resource.service";
 import {UserService} from "../../services/user.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: "compare-services",
@@ -23,6 +24,7 @@ export class CompareServicesComponent implements OnInit {
     public errorMessage: string;
     private urlParameters: URLParameter[] = [];
     private sub: Subscription;
+    providers: any;
 
     constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router,
                 private resourceService: ResourceService, private authenticationService: AuthenticationService,
@@ -33,15 +35,17 @@ export class CompareServicesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.sub = this.activatedRoute
-        .params
-        .subscribe(params => {
+        this.sub = Observable.zip(
+            this.activatedRoute.params,
+            this.resourceService.getProviders(),
+        ).subscribe(suc => {
+            this.providers = suc[1];
             this.urlParameters.splice(0, this.urlParameters.length);
-            for (var obj in params) {
-                if (params.hasOwnProperty(obj)) {
+            for (var obj in suc[0]) {
+                if (suc[0].hasOwnProperty(obj)) {
                     var urlParameter: URLParameter = {
                         key: obj,
-                        values: params[obj].split(",")
+                        values: suc[0][obj].split(",")
                     };
                     this.urlParameters.push(urlParameter);
                 }
@@ -49,7 +53,6 @@ export class CompareServicesComponent implements OnInit {
             if (this.urlParameters[0].values.length > 4) {
                 this.errorMessage = "The maximum number of services for comparison is 4";
             } else {
-                // request results from the registry
                 this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(
                     services => this.services = services);
             }
