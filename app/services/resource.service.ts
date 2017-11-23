@@ -6,11 +6,12 @@ import {BrowseResults} from "../domain/browse-results";
 import {Access, Service} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
+import {AuthenticationService} from "./authentication.service";
 import {HTTPWrapper} from "./http-wrapper.service";
 
 @Injectable()
 export class ResourceService {
-    constructor(private http: HTTPWrapper) {
+    constructor(private http: HTTPWrapper, private authenticationService: AuthenticationService) {
     }
 
     static removeNulls(obj) {
