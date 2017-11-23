@@ -10,7 +10,9 @@ import {SearchResults} from "../../domain/search-results";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ResourceService} from "../../services/resource.service";
 import {URLParameter} from "./../../domain/url-parameter";
+
 declare var UIkit: any;
+
 @Component({
     selector: "search",
     templateUrl: "./search.component.html",
@@ -118,10 +120,6 @@ export class SearchComponent implements OnInit {
 
     ngOnDestroy() {
         this.sub.unsubscribe();
-    }
-
-    prettyProviders(prov) {
-        return (prov || []).map(e => this.providers[e] || e).join(",");
     }
 
     orderFacets() {

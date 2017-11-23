@@ -196,7 +196,7 @@
                                                 {{resourceInfo.resource.name}}
                                             </a>
                                         </h3>
-                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{prettyProviders(resourceInfo.resource.providers)}})</em></div>
+                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{resourceInfo.resource.providers | prettifyWithDictionary:this.providers}})</em></div>
                                         <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
                                             <read-more-text [text]="resourceInfo.resource.description" [maxHeight]="75">
                                             </read-more-text>

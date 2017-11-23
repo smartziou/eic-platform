@@ -101,7 +101,7 @@
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <template [ngIf]="service.providers && service.providers!=''">
-                                    by {{service.providers}}
+                                    by {{service.providers | prettifyWithDictionary:this.providers}}
                                 </template>
                                 <template [ngIf]="!service.providers || service.providers==''">
                                     --
