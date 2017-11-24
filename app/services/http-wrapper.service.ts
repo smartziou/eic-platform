@@ -34,6 +34,7 @@ export class HTTPWrapper extends Http {
         } catch (e) {
             console.error("HTTPWrapper", e);
         }
+        UIkit.notification.closeAll();
         UIkit.notification({
             message,
             status: "danger",
