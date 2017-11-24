@@ -7,3 +7,5 @@ app/**/*.js.map
 nohup.out
 package-lock.json
 stats.json
+.DS_Store
+imgs/.DS_Store
