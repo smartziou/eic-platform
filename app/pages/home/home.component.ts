@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
         {value: "Compute", icon: "cloud_server.svg", hover: "cloud_server_hover.svg"},
         {value: "Connectivity", icon: "connectivity.svg", hover: "connectivity_hover.svg"},
         {value: "Consulting", icon: "consulting.svg", hover: "consulting_hover.svg"},
-        {value: "Content Delivery", icon: "keyword.svg", hover: "keyword_hover.svg"}
+        {value: "Operations", icon: "keyword.svg", hover: "keyword_hover.svg"}
         // {value: "Data Connectivity", icon: "data-connectivity.svg", hover: "data-connectivity_hover.svg"},
         // {value: "Data Discovery", icon: "keyword.svg", hover: "keyword_hover.svg"},
         // {value: "Data Movement", icon: "database.svg", hover: "database_hover.svg"},
