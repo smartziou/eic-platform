@@ -12,6 +12,7 @@ import {ResourceService} from "../../../services/resource.service";
     styleUrls: ["../landing-page.component.css"]
 })
 export class ServiceLandingPageComponent implements OnInit {
+    services: Service[];
     public service: Service;
     public errorMessage: string;
     private Math: Math;
@@ -31,8 +32,19 @@ export class ServiceLandingPageComponent implements OnInit {
             let id = atob(suc[0]["id"]);
             this.providers = suc[1];
             this.resourceService.recordHit(id, "internal");
-            this.resourceService.getService(id).subscribe(service => this.service = service);
+            this.resourceService.getService(id).subscribe(service => {
+                this.service = service;
+                let serviceIDs =
+                    (service.requiredServices || [])
+                    .concat(service.relatedServices || [])
+                    .filter((e, i, a) => a.indexOf(e) === i);
+                this.resourceService.getSelectedServices(serviceIDs).subscribe(services => this.services = services);
+            });
         });
+    }
+
+    getPrettyService(id) {
+        return this.services.find(e => e.id == id) || {id, name: "Name not found!"};
     }
 
     visit() {

@@ -208,8 +208,8 @@
                         <li>
                             <!--<li *ngIf="service.requiredServices">-->
                             <div class="uk-margin-medium-top">
-                                <ul *ngIf="service.requiredServices && service.requiredServices.length>0"> Required Services
-                                    <li *ngFor="let requiredService of service.requiredServices">{{requiredService}}</li>
+                                <ul *ngIf="service.requiredServices && service.requiredServices.length > 0">
+                                    <li *ngFor="let requiredService of service.requiredServices">{{getPrettyService(requiredService).name}}</li>
                                 </ul>
                                 <div *ngIf="!service.requiredServices || service.requiredServices.length==0" class="uk-alert uk-alert-warning">
                                     There are no available required services
@@ -219,8 +219,8 @@
                         <li>
                         <!--<li *ngIf="service.relatedService">-->
                             <div class="uk-margin-medium-top">
-                                <ul *ngIf="service.relatedServices && service.relatedServices.length>0"> Related Services
-                                    <li *ngFor="let relatedService of service.relatedServices">{{relatedService}}</li>
+                                <ul *ngIf="service.relatedServices && service.relatedServices.length>0">
+                                    <li *ngFor="let relatedService of service.relatedServices">{{getPrettyService(relatedService).name}}</li>
                                 </ul>
                                 <div *ngIf="!service.relatedServices || service.relatedServices.length==0" class="uk-alert uk-alert-warning">
                                     There are no available related services
