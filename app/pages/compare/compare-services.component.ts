@@ -25,6 +25,7 @@ export class CompareServicesComponent implements OnInit {
     private urlParameters: URLParameter[] = [];
     private sub: Subscription;
     providers: any;
+    nologo: URL = new URL("http://fvtelibrary.com/img/user/NoLogo.png");
 
     constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router,
                 private resourceService: ResourceService, private authenticationService: AuthenticationService,

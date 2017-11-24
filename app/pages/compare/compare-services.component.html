@@ -62,8 +62,9 @@
                                    </div>
                                    <div class="">
                                        <a (click)="gotoDetail(service.id)">
-                                           <span><img src="http://fvtelibrary.com/img/user/NoLogo.png"
-                                                      style="max-height: 150px; width: auto;"></span>
+                                           <span>
+                                               <img [src]="service.symbol|| nologo" style="max-height: 150px; width: auto;">
+                                           </span>
                                        </a>
                                    </div>
                                    <div class="serviceBrandName">
