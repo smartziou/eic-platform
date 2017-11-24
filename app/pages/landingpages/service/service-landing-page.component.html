@@ -16,27 +16,28 @@
 
                     <div class="uk-grid">
                         <div class="uk-width-3-4@m">
-                            <img *ngIf="service.symbol" src="{{service.symbol}}">
-                            <img *ngIf="!service.symbol" src="http://fvtelibrary.com/img/user/NoLogo.png" style="max-width: 110px">
+                            <img src="{{service.symbol || 'http://fvtelibrary.com/img/user/NoLogo.png'}}" style="max-width: 110px">
                             <div class="uk-display-inline-block uk-vertical-align-top uk-margin-top">
                                 <h2 class="uk-h2 uk-inline" style="margin-bottom: 5px">
-                                    {{service.name || "Not Available"}}
+                                    <a target="_blank" [href]="service.url" (click)="visit()">
+                                        <span style="color: #d1303a">{{service.name || "Not Available"}}</span>
+                                    </a>
                                 </h2>
-                                <div>by {{service.provider? this.providers[service.provider] : "--" }}</div>
+                                <div>by {{service.providers | lookup:providers | join:", "}}</div>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">
                             <div class="uk-margin-top">
-                                <star-rating-comp [starType]="'svg'" [rating]="0" [step]="0.5"
-                                                  [showHalfStars]="true" [readOnly]=this.authenticationLocalService.loggedIn() [size]="'medium'"
+                                <star-rating-comp [starType]="'svg'" [rating]="service.averageRating" [step]="1"
+                                                  [showHalfStars]="true" [readOnly]=!this.authenticationService.isLoggedIn() [size]="'medium'"
                                                   [staticColor]="'ok'"></star-rating-comp>
                             </div>
                             <div class="uk-margin-top" style="text-align: center">
-                                <button class="uk-button uk-button-primary rateButton" (click)="rateService()">
+                                <button class="uk-button uk-button-primary rateButton" (click)="this.rateService()">
                                     <strong>Rate it!</strong> <!--<i class="fa fa-star" aria-hidden="true"></i>-->
                                 </button>
                                 <div></div>
-                                <button class="uk-button uk-button-primary editButton" routerLink="/edit/{{this.getEncodedID()}}" routerLinkActive="active">
+                                <button class="uk-button uk-button-primary editButton" (click)="this.goToEdit()" routerLinkActive="active">
                                     <strong>Edit it!</strong>
                                 </button>
                             </div>
@@ -57,22 +58,11 @@
 
                     <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
 
-                    <!--<div *ngIf="service.lifeCycleStatus || service.trl || service.category || service.subcategory"-->
-                         <!--class="tags">-->
-                        <!--<span title="Category" uk-tooltip="delay: 500" *ngIf="service.category" class="uk-label uk-label-primary">{{service.category}}</span>-->
-                        <!--<span title="Subcategory" uk-tooltip="delay: 500" *ngIf="service.subcategory" class="uk-label uk-label-primary">{{service.subcategory}}</span>-->
-                        <!--<span title="Technology Readiness Level" uk-tooltip="delay: 500" *ngIf="service.trl" class="uk-label uk-label-primary">TRL {{service.trl}}</span>-->
-                        <!--<span title="Phase" uk-tooltip="delay: 500" *ngIf="service.lifeCycleStatus" class="uk-label uk-label-primary">{{service.lifeCycleStatus}}</span>-->
-                    <!--</div>-->
-                    <div class="tags">
-                        <span title="Category" uk-tooltip="delay: 500" *ngIf="service.category" class="uk-label uk-label-primary">{{service.category}}</span>
-                        <span title="Category" uk-tooltip="delay: 500" *ngIf="!service.category" class="uk-label uk-label-primary">Service category not available</span>
-                        <span title="Subcategory" uk-tooltip="delay: 500" *ngIf="service.subcategory" class="uk-label uk-label-primary">{{service.subcategory}}</span>
-                        <span title="Subcategory" uk-tooltip="delay: 500" *ngIf="!service.subcategory" class="uk-label uk-label-primary">Service subcategory not available</span>
-                        <span title="Technology Readiness Level" uk-tooltip="delay: 500" *ngIf="service.trl" class="uk-label uk-label-primary">TRL {{service.trl}}</span>
-                        <span title="Technology Readiness Level" uk-tooltip="delay: 500" *ngIf="!service.trl" class="uk-label uk-label-primary">TRL not available</span>
-                        <span title="Phase" uk-tooltip="delay: 500" *ngIf="service.lifeCycleStatus" class="uk-label uk-label-primary">{{service.lifeCycleStatus}}</span>
-                        <span title="Phase" uk-tooltip="delay: 500" *ngIf="!service.lifeCycleStatus" class="uk-label uk-label-primary">Phase not available</span>
+                    <div class="tags" *ngIf="service.lifeCycleStatus || service.trl || service.category || service.subcategory">
+                        <span title="Category" uk-tooltip="delay: 500" class="uk-label uk-label-primary">{{service.category || "Service category not available"}}</span>
+                        <span title="Subcategory" uk-tooltip="delay: 500" class="uk-label uk-label-primary">{{service.subcategory || "Service subcategory not available"}}</span>
+                        <span title="Technology Readiness Level" uk-tooltip="delay: 500" class="uk-label uk-label-primary">TRL {{service.trl || "not available"}}</span>
+                        <span title="Phase" uk-tooltip="delay: 500" class="uk-label uk-label-primary">{{service.lifeCycleStatus || "Phase not available"}}</span>
                     </div>
 
                     <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
@@ -90,46 +80,35 @@
 
                     <dl class="uk-description-list">
 
-                        <template [ngIf]="service.version && service.version!=''">
+                        <template [ngIf]="service.version">
                             <dt>Version</dt>
                             <dd>{{service.version}}</dd>
                         </template>
-                        <template [ngIf]="!service.version || service.version==''">
+                        <template [ngIf]="!service.version">
                             <dt>Version</dt>
                             <dd>Not available</dd>
                         </template>
 
-                        <template [ngIf]="service.funding && service.funding!=''">
+                        <template [ngIf]="service.funding">
                             <dt>Funding sources</dt>
                             <dd>{{service.funding}}</dd>
                         </template>
-                        <template [ngIf]="!service.funding || service.funding==''">
+                        <template [ngIf]="!service.funding">
                             <dt>Funding sources</dt>
                             <dd>Not available</dd>
                         </template>
                     </dl>
 
-                    <div class="" *ngIf="service.url">
-                        <p>
-                            <a target="_blank" href="{{service.url}}"><span style="color: #d1303a">{{service.url}}</span></a>
-                        </p>
-                    </div>
-                    <div class="" *ngIf="!service.url">
-                        <p>
-                            <span style="color: #d1303a">Service url not available</span>
-                        </p>
-                    </div>
-
-                    <template [ngIf]="service.tag && service.tag.length>0">
+                    <template [ngIf]="service.tags && service.tags.length>0">
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                         <span>Service tags</span>
                         <div class="">
-                            <span *ngFor="let tag of service.tag" class="uk-label uk-label-default">{{tag}}</span>
+                            <span *ngFor="let tag of service.tags" class="uk-label uk-label-default">{{tag}}</span>
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                     </template>
 
-                    <template [ngIf]="!service.tag || service.tag.length==0">
+                    <template [ngIf]="!service.tags || service.tags.length==0">
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                         <span>Service tags</span>
                         <div class="">
@@ -139,7 +118,6 @@
                     </template>
 
 
-
                     <!--TABS-->
                     <ul class=" uk-tab uk-visible@m uk-margin-medium-top" uk-tab="connect: #infoTabs; animation: uk-animation-fade">
                         <!--<li *ngIf="service.targetUsers || service.userValue || service.userBase">-->
@@ -147,11 +125,15 @@
                             <a>Usage</a>
                         </li>
                         <li>
-                        <!--<li *ngIf="service.relatedService">-->
+                            <!--<li *ngIf="service.requiredServices">-->
+                            <a>Required Services</a>
+                        </li>
+                        <li>
+                        <!--<li *ngIf="service.relatedServices">-->
                             <a>Related Services</a>
                         </li>
                         <li>
-                        <!--<li *ngIf="service.place || service.region || service.language">-->
+                        <!--<li *ngIf="service.places || service.region || service.language">-->
                             <a>Service Coverage</a>
                         </li>
                         <!--<li *ngIf="service.options || service.price || service.serviceLevelAgreement || service.termsOfUse">-->
@@ -170,11 +152,15 @@
                             <a>Usage</a>
                         </li>
                         <li>
+                            <!--<li *ngIf="service.requiredService">-->
+                            <a>Required Services</a>
+                        </li>
+                        <li>
                         <!--<li *ngIf="service.relatedService">-->
                             <a>Related Services</a>
                         </li>
                         <li>
-                        <!--<li *ngIf="service.place || service.region || service.language">-->
+                        <!--<li *ngIf="service.places || service.region || service.language">-->
                             <a>Service Coverage</a>
                         </li>
                         <!--<li *ngIf="service.options || service.price || service.serviceLevelAgreement || service.termsOfUse">-->
@@ -189,29 +175,29 @@
                             <div class="uk-margin-medium-top">
                                 <dl class="uk-description-list">
 
-                                    <template [ngIf]="service.targetUsers && service.targetUsers!=''">
+                                    <template [ngIf]="service.targetUsers">
                                         <dt>Target users</dt>
                                         <dd>{{service.targetUsers}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.targetUsers || service.targetUsers==''">
+                                    <template [ngIf]="!service.targetUsers">
                                         <dt>Target users</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.userValue && service.userValue!=''">
+                                    <template [ngIf]="service.userValue">
                                         <dt>User value</dt>
                                         <dd>{{service.userValue}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.userValue || service.userValue==''">
+                                    <template [ngIf]="!service.userValue">
                                         <dt>User value</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.userBase && service.userBase!=''">
+                                    <template [ngIf]="service.userBase">
                                         <dt>User base</dt>
                                         <dd>{{service.userBase}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.userBase || service.userBase==''">
+                                    <template [ngIf]="!service.userBase">
                                         <dt>User base</dt>
                                         <dd>Not available</dd>
                                     </template>
@@ -220,18 +206,29 @@
                             </div>
                         </li>
                         <li>
+                            <!--<li *ngIf="service.requiredServices">-->
+                            <div class="uk-margin-medium-top">
+                                <ul *ngIf="service.requiredServices && service.requiredServices.length>0"> Required Services
+                                    <li *ngFor="let requiredService of service.requiredServices">{{requiredService}}</li>
+                                </ul>
+                                <div *ngIf="!service.requiredServices || service.requiredServices.length==0" class="uk-alert uk-alert-warning">
+                                    There are no available required services
+                                </div>
+                            </div>
+                        </li>
+                        <li>
                         <!--<li *ngIf="service.relatedService">-->
                             <div class="uk-margin-medium-top">
-                                <ul *ngIf="service.relatedService && service.relatedService.length>0"> Related Services
-                                    <li *ngFor="let relatedService of service.relatedService"></li>
+                                <ul *ngIf="service.relatedServices && service.relatedServices.length>0"> Related Services
+                                    <li *ngFor="let relatedService of service.relatedServices">{{relatedService}}</li>
                                 </ul>
-                                <div *ngIf="!service.relatedService || service.relatedService.length==0" class="uk-alert uk-alert-warning">
+                                <div *ngIf="!service.relatedServices || service.relatedServices.length==0" class="uk-alert uk-alert-warning">
                                     There are no available related services
                                 </div>
                             </div>
                         </li>
                         <li>
-                        <!--<li *ngIf="service.place || service.region || service.language">-->
+                        <!--<li *ngIf="service.places || service.region || service.language">-->
                             <div class="uk-grid uk-margin-medium-top">
                                 <div class="uk-width-1-2@m">
                                     <img src="./imgs/eu-map-demo.png">
@@ -239,14 +236,15 @@
                                 <div class="uk-width-1-2@m">
                                     <dl class="uk-description-list">
 
-                                        <template [ngIf]="service.place && service.place.length>0">
-                                            <dt>Countries</dt>
+                                        <template [ngIf]="service.places && service.places.length>0">
+                                            <dt>Places</dt>
                                             <dd>
-                                                <span *ngFor="let place of service.place">{{place}}, </span>
+                                                <!--<span *ngFor="let place of service.places">{{place}}, </span>-->
+                                                <span >{{service.places.join()}}</span>
                                             </dd>
                                         </template>
-                                        <template [ngIf]="!service.place || service.place.length==0">
-                                            <dt>Countries</dt>
+                                        <template [ngIf]="!service.places || service.places.length==0">
+                                            <dt>Places</dt>
                                             <dd>
                                                 <span>Not available</span>
                                             </dd>
@@ -265,13 +263,13 @@
                                             <!--</dd>-->
                                         <!--</template>-->
 
-                                        <template [ngIf]="service.language && service.language.length>0">
+                                        <template [ngIf]="service.languages && service.languages.length>0">
                                             <dt>Languages</dt>
                                             <dd>
-                                                <span *ngFor="let language of service.language">{{language}}, </span>
+                                                <span *ngFor="let language of service.languages">{{language}}, </span>
                                             </dd>
                                         </template>
-                                        <template [ngIf]="!service.language || service.language.length==0">
+                                        <template [ngIf]="!service.languages || service.languages.length==0">
                                             <dt>Languages</dt>
                                             <dd>
                                                 <span>Not available</span>
@@ -287,38 +285,38 @@
                             <div class="uk-margin-medium-top">
                                 <dl class="uk-description-list">
 
-                                    <template [ngIf]="service.options && service.options!=''">
+                                    <template [ngIf]="service.options">
                                         <dt>Options</dt>
                                         <dd>{{service.options}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.options || service.options==''">
+                                    <template [ngIf]="!service.options">
                                         <dt>Options</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.price && service.price!=''">
+                                    <template [ngIf]="service.price">
                                         <dt>Pricing model</dt>
                                         <dd>{{service.price}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.price || service.price==''">
+                                    <template [ngIf]="!service.price">
                                         <dt>Pricing model</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.serviceLevelAgreement && service.serviceLevelAgreement!=''">
+                                    <template [ngIf]="service.serviceLevelAgreement">
                                         <dt>Service Level Agreement</dt>
                                         <dd>{{service.serviceLevelAgreement}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.serviceLevelAgreement || service.serviceLevelAgreement==''">
+                                    <template [ngIf]="!service.serviceLevelAgreement">
                                         <dt>Service Level Agreement</dt>
                                         <dd>Not available</dd>
                                     </template>
 
-                                    <template [ngIf]="service.termsOfUse && service.termsOfUse!=''">
+                                    <template [ngIf]="service.termsOfUse && service.termsOfUse.length > 0">
                                         <dt>Terms of Use</dt>
                                         <dd>{{service.termsOfUse}}</dd>
                                     </template>
-                                    <template [ngIf]="!service.termsOfUse || service.termsOfUse==''">
+                                    <template [ngIf]="!service.termsOfUse">
                                         <dt>Terms of Use</dt>
                                         <dd>Not available</dd>
                                     </template>
@@ -336,11 +334,11 @@
                         <h4>Usage Stats</h4>
                         <ul class="uk-list">
                             <!--<li> Average rating <star-rating-comp [starType]="'svg'" [rating]="4.5" [step]="0.5"-->
-                                                                  <!--[showHalfStars]="true" [readOnly]=this.authenticationLocalService.loggedIn() [size]="'small'"-->
+                                                                  <!--[showHalfStars]="true" [readOnly]=!this.authenticationService.isLoggedIn() [size]="'small'"-->
                                                                   <!--[staticColor]="'ok'"></star-rating-comp></li>-->
-                            <li> Visited at eInfraCentral: <strong> {{service.internalHits || Math.floor(getDeterminedInt(service.id) / 7)}} </strong> times</li>
-                            <li> Visited at provider's site: <strong> {{service.externalHits || Math.floor(getDeterminedInt(service.id) / 13)}} </strong> times</li>
-                            <li> Favored by <strong> {{service.favouriteCount || Math.floor(getDeterminedInt(service.id) / 37)}} </strong> users</li>
+                            <li> Visited at eInfraCentral: <strong> {{service.addenda ? service.addenda.internalHits : Math.floor(getDeterminedInt(service.id) / 7)}} </strong> times</li>
+                            <li> Visited at providers' site: <strong> {{service.addenda ? service.addenda.externalHits : Math.floor(getDeterminedInt(service.id) / 13)}} </strong> times</li>
+                            <li> Favored by <strong> {{service.addenda ? service.addenda.favouriteCount : Math.floor(getDeterminedInt(service.id) / 37)}} </strong> users</li>
                         </ul>
                         <!--<a style="font-size: 15px">View more ></a>-->
                     </div>
@@ -349,11 +347,9 @@
                     <div class="uk-card uk-card-body uk-card-default sidemenu uk-margin-top">
                         <h4>Support</h4>
                         <ul class="uk-list" style="word-wrap: break-word;">
-
                             <li *ngIf="service.request">
                                 <strong>Service request: </strong>
                                 <a target="_blank" href="{{service.request}}">{{service.request}}</a>
-                                <!--<a href="mailto:info@openaire.eu">info@openaire.eu</a>-->
                             </li>
                             <li *ngIf="!service.request">
                                 <strong>Service request: </strong>not available
@@ -365,6 +361,13 @@
                             </li>
                             <li *ngIf="!service.helpdesk">
                                 <strong>Service helpdesk: </strong>not available
+                            </li>
+                            <li *ngIf="service.multimediaURL">
+                                <strong>Service media: </strong>
+                                <a target="_blank" href="{{service.multimediaURL}}">{{service.multimediaURL}}</a>
+                            </li>
+                            <li *ngIf="!service.multimediaURL">
+                                <strong>Service media: </strong>not available
                             </li>
 
                             <li *ngIf="service.userManual">

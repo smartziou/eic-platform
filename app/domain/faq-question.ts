@@ -1,10 +1,9 @@
 /**
  * Created by stefania on 7/12/17.
  */
-import { Topic } from "./faq-topic";
+import {Topic} from "./faq-topic";
 
 export class Question {
-
     id: string;
     question: string;
     answer: string;
@@ -12,6 +11,5 @@ export class Question {
     weight: number;
     hitCount: number;
     isActive: boolean;
-
     topics: Topic[];
 }

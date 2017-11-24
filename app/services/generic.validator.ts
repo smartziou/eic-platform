@@ -1,7 +1,7 @@
 import {AbstractControl} from "@angular/forms";
 
 export function URLValidator(control: AbstractControl) {
-    return PatternValidator(control, /https?:\/\/.+/);
+    return PatternValidator(control, /^(https?:\/\/.+){0,1}$/);
 }
 
 export function URLListValidator(control: AbstractControl) {

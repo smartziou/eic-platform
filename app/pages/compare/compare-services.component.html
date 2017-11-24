@@ -46,8 +46,7 @@
             <div class="uk-width-1-1">
 
                 <table id="myTable" class="uk-table uk-table-striped uk-text-center">
-                    <thead uk-sticky="offset: 70; width-element: '#myGrid'; cls-active: headhead"
-                           class="uk-width-1-1 uk-margin-bottom tablehead" style="">
+                    <thead class="uk-width-1-1 uk-margin-bottom tablehead" style="">
                     <!--<thead class="header uk-width-1-1 uk-margin-bottom">-->
                         <tr>
                             <th *ngFor="let service of services" class="uk-width-1-{{services.length}}" style="width: 300px;">
@@ -83,7 +82,7 @@
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="uk-margin-small-top">
                                     <star-rating-comp [starType]="'svg'" [rating]="0" [step]="0.5"
-                                                      [showHalfStars]="true" [readOnly]=this.authenticationLocalService.loggedIn() [size]="'small'"
+                                                      [showHalfStars]="true" [readOnly]=!this.authenticationService.isLoggedIn() [size]="'small'"
                                                       [staticColor]="'ok'"></star-rating-comp>
                                     <span>rated <strong>0</strong> times</span>
                                 </div>
@@ -101,11 +100,8 @@
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
-                                <template [ngIf]="service.provider && service.provider!=''">
-                                    by {{service.provider}}
-                                </template>
-                                <template [ngIf]="!service.provider || service.provider==''">
-                                    --
+                                <template [ngIf]="service.providers">
+                                    by {{service.providers | lookup:providers | join:", "}}
                                 </template>
                             </td>
                         </tr>
@@ -221,7 +217,7 @@
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
-                                <div class="fieldName">Countries</div>
+                                <div class="fieldName">Places</div>
                                 <template [ngIf]="service.place && service.place!=''">
                                     {{service.place}}
                                 </template>

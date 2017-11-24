@@ -2,69 +2,61 @@
  * Created by stefania on 8/1/17.
  */
 import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../domain/eic-model";
-import {ResourceService} from "../../services/resource.service";
 import {SearchQuery} from "../../domain/search-query";
-import {FormBuilder, FormGroup} from "@angular/forms";
 import {URLParameter} from "../../domain/url-parameter";
-import {AuthenticationLocalService} from "../../services/authentication.local.service";
+import {AuthenticationService} from "../../services/authentication.service";
+import {ResourceService} from "../../services/resource.service";
 import {UserService} from "../../services/user.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
-    selector: 'compare-services',
-    templateUrl: './compare-services.component.html',
-    styleUrls: ['./compare-services.component.css'],
+    selector: "compare-services",
+    templateUrl: "./compare-services.component.html",
+    styleUrls: ["./compare-services.component.css"]
 })
-
 export class CompareServicesComponent implements OnInit {
-
     searchForm: FormGroup;
-
-    private urlParameters: URLParameter[] = [];
-
     public services: Service[] = [];
     public errorMessage: string;
+    private urlParameters: URLParameter[] = [];
     private sub: Subscription;
+    providers: any;
 
-    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService, private userService: UserService) {
-
+    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router,
+                private resourceService: ResourceService, private authenticationService: AuthenticationService,
+                private userService: UserService) {
         this.searchForm = fb.group({
-            "query": [""],
+            "query": [""]
         });
     }
 
     ngOnInit() {
-
-        this.sub = this.activatedRoute
-            .params
-            .subscribe(params => {
-
-                this.urlParameters.splice(0, this.urlParameters.length);
-
-                for (var obj in params) {
-                    if (params.hasOwnProperty(obj)) {
-                        var urlParameter: URLParameter = {
-                            key: obj,
-                            values: params[obj].split(',')
-                        };
-                        this.urlParameters.push(urlParameter);
-                        // console.log(urlParameter);
-                    }
+        this.sub = Observable.zip(
+            this.activatedRoute.params,
+            this.resourceService.getProviders(),
+        ).subscribe(suc => {
+            this.providers = suc[1];
+            this.urlParameters.splice(0, this.urlParameters.length);
+            for (var obj in suc[0]) {
+                if (suc[0].hasOwnProperty(obj)) {
+                    var urlParameter: URLParameter = {
+                        key: obj,
+                        values: suc[0][obj].split(",")
+                    };
+                    this.urlParameters.push(urlParameter);
                 }
-
-                if (this.urlParameters[0].values.length > 4) {
-                    this.errorMessage = 'The maximum number of services for comparison is 4';
-                } else {
-                    // console.log('URL Parameters', this.urlParameters);
-                    // request results from the registry
-                    this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(
-                        services => this.services = services,
-                        error => this.handleError('System error loading services', <any>error));
-                }
-
-            });
+            }
+            if (this.urlParameters[0].values.length > 4) {
+                this.errorMessage = "The maximum number of services for comparison is 4";
+            } else {
+                this.resourceService.getSelectedServices(this.urlParameters[0].values).subscribe(
+                    services => this.services = services);
+            }
+        });
     }
 
     ngOnDestroy() {
@@ -72,20 +64,18 @@ export class CompareServicesComponent implements OnInit {
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(['/search', {query: searchValue.query}]);
+        this.router.navigate(["/search", {query: searchValue.query}]);
     }
 
-    handleError(message: string, error) {
-        this.errorMessage = message + ' (Server responded: ' + error + ')';
-    }
-
+    // handleError(message: string, error) {
+    //     this.errorMessage = message + ' (Server responded: ' + error + ')';
+    // }
     addToFavorites(service) {
-        if (this.authenticationLocalService.loggedIn()) {
-            this.userService.addFavourite(service, this.authenticationLocalService.getUser())
+        if (this.authenticationService.isLoggedIn()) {
+            this.userService.addFavourite(service, this.authenticationService.user.id);
         } else {
-            this.router.navigate(['/signIn']);
+            this.router.navigate(["/signIn"]);
         }
-
     }
 
     // process() {
@@ -103,8 +93,4 @@ export class CompareServicesComponent implements OnInit {
     //
     //     this.router.navigate(['/runApplication', map]);
     // }
-
-    getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
 }

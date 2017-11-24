@@ -1,15 +1,13 @@
+import {CommonModule} from "@angular/common";
 /**
  * Created by stefania on 6/7/17.
  */
-import { NgModule }       from '@angular/core';
-import { CommonModule }   from '@angular/common';
+import {NgModule} from "@angular/core";
+import {FAQService} from "../../services/faq.service";
+import {ReusableComponentsModule} from "../../shared/reusablecomponents/reusable-components.module";
+import {FAQsComponent} from "./faqs/faqs.component";
+import {supportRouting} from "./support.routing";
 
-import { supportRouting } from "./support.routing";
-import { FAQsComponent } from "./faqs/faqs.component";
-import { FAQService } from "../../services/faq.service";
-import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
-
-    
 @NgModule({
     imports: [
         CommonModule,
@@ -17,11 +15,11 @@ import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusab
         ReusableComponentsModule
     ],
     declarations: [
-        FAQsComponent,
+        FAQsComponent
     ],
     providers: [
         FAQService
     ]
 })
-
-export class SupportModule {}
+export class SupportModule {
+}

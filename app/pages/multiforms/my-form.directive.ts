@@ -1,7 +1,7 @@
 /**
  * Created by stefanos on 15/5/2017.
  */
-import {Directive, ViewContainerRef, TemplateRef, OnChanges, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Directive, TemplateRef, ViewContainerRef} from "@angular/core";
 
 @Directive({
     selector: '[my-form]',
@@ -9,7 +9,7 @@ import {Directive, ViewContainerRef, TemplateRef, OnChanges, AfterViewInit} from
 export class MyFormDirective implements AfterViewInit {
 
 
-    constructor(public viewContainerRef: ViewContainerRef, public templateRef : TemplateRef<any>) {
+    constructor(public viewContainerRef: ViewContainerRef, public templateRef: TemplateRef<any>) {
     }
 
     ngAfterViewInit(): void {

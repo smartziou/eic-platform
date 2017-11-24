@@ -7,7 +7,7 @@
                     <div class="search_box_bg uk-grid-large uk-flex-middle uk-grid uk-grid-stack" uk-grid="">
                         <div class="uk-width-1-1@m uk-first-column">
                             <h2 class="uk-margin-large uk-margin-remove-top uk-text-center uk-h2 uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
-                                Your Gateway for European E-Infrastructure</h2>
+                                Your Gateway for European E-Infrastructures</h2>
                             <div>
                                 <div class="search_box_bg" style="text-align:center">
                                     <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
@@ -582,237 +582,30 @@
             </div>
         </div>
 
-
-        <!--FIRST ROW-->
         <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
-            <div class="uk-width-1-5@m">
+            <div *ngFor="let c of this.categories" class="uk-width-1-5@m" (click)="searchCategory(c.value)">
                 <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
                     <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
                     <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/fingerprint_scanning_authorization.svg" alt="AAI" width="64">
-                            <img src="./imgs/Icons/fingerprint_scanning_authorization_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="AAI" width="64">
+                        <div class="wk-overlay">
+                            <img src="./imgs/Icons/{{c.icon}}" alt="{{c.value}}" width="64">
+                            <img src="./imgs/Icons/{{c.hover}}" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="{{c.alt}}" width="64">
                         </div>
                     </div>
                     <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
+                        <!--<a class="wk-link-reset" href="#{{c.anchor}}">-->
+                        <!--{{c.value}}-->
                         <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Authentication and Authorization Infrastructure
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/cloud_server.svg" alt="Compute" width="64">
-                            <img src="./imgs/Icons/cloud_server_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="Compute" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Compute
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/connectivity.svg" alt="Connectivity" width="64">
-                            <img src="./imgs/Icons/connectivity_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="Connectivity" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Connectivity
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/consulting.svg" alt="Consulting" width="64">
-                            <img src="./imgs/Icons/consulting_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="AAI" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Consulting
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/keyword.svg" alt="Content Delivery" width="64">
-                            <img src="./imgs/Icons/keyword_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="Content Delivery" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Content Delivery
-                        </a>
-                    </h3>
-                </div>
-            </div>
 
-        </div>
 
-        <!--FIRST ROW SERVICES-->
-        <div id="aai" class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="" hidden="hidden">
-            <div class="uk-width-1-1@m uk-first-column">
-                <div class="uk-panel uk-card uk-card-default uk-card-body uk-margin-small">
-                    <div class="wk-grid-width-1-1 wk-grid-width-medium-1-3 wk-grid-width-large-1-3 wk-grid-width-xlarge-1-3
-                    wk-grid wk-grid-large wk-text-center" style="margin-left: 0px;">
-                        <div class="uk-margin-bottom"><a (click)="gotoDetail('05.02')" class="serviceLink">PRACE Preparatory Access</a></div>
-                        <div class="uk-margin-bottom"><a (click)="gotoDetail('05.01')" class="serviceLink">PRACE Project Access</a></div>
-                        <div class="uk-margin-bottom"><a (click)="gotoDetail('01.01')" class="serviceLink">Cloud Container Compute</a></div>
-                        <div class="uk-margin-bottom"><a (click)="gotoDetail('05.03')" class="serviceLink">PRACE DECI Access</a></div>
-                        <div class="uk-margin-bottom"><a (click)="gotoDetail('01.03')" class="serviceLink">High-Throughput Compute</a></div>
-                        <div class="uk-margin-bottom"><a (click)="gotoDetail('01.02')" class="serviceLink">Cloud Compute</a></div>
-                        <!--<div class="uk-margin-bottom">OpenAIRE ScholExplorer</div>-->
-                        <!--<div class="uk-margin-bottom">GÉANT Open</div>-->
-                        <!--<div class="uk-margin-bottom">Scsyukag erakurak</div>-->
-                    </div>
+                        <!--uk-toggle="target: {{c.value}}; animation: uk-animation-fade;" this can't go in the <a> for some reason-->
+                        <a class="wk-link-reset" type="button">
+                            {{c.value}}
+                        </a>
+                    </h3>
                 </div>
             </div>
         </div>
-
-        <!--SECOND ROW-->
-        <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/data-connectivity.svg" alt="Data Connectivity" width="64">
-                            <img src="./imgs/Icons/data-connectivity_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="Data Connectivity" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Data Connectivity
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/keyword.svg" alt="Data Discovery" width="64">
-                            <img src="./imgs/Icons/keyword_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="Data Discovery" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Data Discovery
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/database.svg" alt="Data Movement" width="64">
-                            <img src="./imgs/Icons/database_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="Data Movement" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Data Movement
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/cloud_server.svg" alt="Data Registration" width="64">
-                            <img src="./imgs/Icons/cloud_server_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="Data Registration" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Data Registration
-                        </a>
-                    </h3>
-                </div>
-            </div>
-            <div class="uk-width-1-5@m">
-                <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
-                    <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
-                    <div class="wk-text-center wk-margin wk-margin-top-remove">
-                        <div class="wk-overlay ">
-                            <img src="./imgs/Icons/database_security.svg" alt="Data Storage" width="64">
-                            <img src="./imgs/Icons/database_security_hover.svg" class=" wk-overlay-panel wk-overlay-image wk-overlay-fade" alt="Data Storage" width="64">
-                        </div>
-                    </div>
-                    <h3 class="wk-h4 wk-margin-top-remove uk-text-center">
-                        <!--<a class="wk-link-reset" href="#aai">-->
-                        <!--Authentication and Authorization Infrastructure-->
-                        <!--</a>-->
-                        <a class="wk-link-reset" type="button" href="#aai"
-                           uk-toggle="target: #aai; animation: uk-animation-fade;">
-                            Data Storage
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-        </div>
-
         <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-width-1-1@m uk-first-column">
                 <div class="uk-margin uk-text-center">
@@ -1631,7 +1424,7 @@
             <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
                 <div class="uk-width-1-1@m uk-first-column">
                     <div class="uk-margin-large uk-margin-remove-bottom uk-text-center uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
-                        <a class="el-content uk-button uk-button-secondary" href="/www.cnn.com">
+                        <a class="el-content uk-button uk-button-secondary" href="http://einfracentral.eu/basic-page/about-einfracentral">
                             Learn more
                         </a>
                     </div>

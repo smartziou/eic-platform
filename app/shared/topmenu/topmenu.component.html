@@ -39,7 +39,7 @@
                             <li class="uk-nav-header" [routerLinkActive]="['uk-active']">
                                 <a [routerLink]="['/search']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Search</a>
                             </li>
-                            <li class="uk-nav-header" [routerLinkActive]="['uk-active']">
+                            <li *ngIf="this.authenticationService.isLoggedIn()" class="uk-nav-header" [routerLinkActive]="['uk-active']">
                                 <a [routerLink]="['/upload']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Upload</a>
                             </li>
                             <!--<li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">Actions-->
@@ -70,7 +70,7 @@
                                     <li><a [routerLink]="['/communities']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Communities</a></li>
                                 </ul>
                             </li>
-                            <!--<li *ngIf="oAuthService.isUserLoggedIn" class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">My Resources-->
+                            <!--<li *ngIf="authenticationService.isUserLoggedIn" class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">My Resources-->
                                 <!--<ul class="uk-nav-sub">-->
                                     <!--<li><a [routerLink]="['/mySpace/corpora']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Corpora</a></li>-->
                                     <!--<li><a [routerLink]="['/mySpace/services']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Services/Tools</a></li>-->
@@ -139,7 +139,7 @@
                         <li class="uk-parent" [routerLinkActive]="['uk-active']">
                             <a routerLink="/search" routerLinkActive="uk-active">Search</a>
                         </li>
-                        <li class="uk-parent" [routerLinkActive]="['uk-active']">
+                        <li *ngIf="this.authenticationService.isLoggedIn()" class="uk-parent" [routerLinkActive]="['uk-active']">
                             <a routerLink="/upload" routerLinkActive="uk-active">Upload</a>
                         </li>
                         <!--<li class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">Actions</a>-->
@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                         </li>
-                        <!--<li *ngIf="oAuthService.isUserLoggedIn" class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">My Resources</a>-->
+                        <!--<li *ngIf="authenticationService.isUserLoggedIn" class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">My Resources</a>-->
                             <!--<div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="mySpace" (click)="onClick('mySpace')">-->
                                 <!--<div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">-->
                                     <!--<div class="uk-first-column">-->
@@ -214,7 +214,7 @@
                         <div id="btl">
 
                             <!-- Panel top -->
-                            <div *ngIf="!oAuthService.isUserLoggedIn" class="btl-panel" style="float: right;">
+                            <div *ngIf="!authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">
                                 <!-- Login button -->
 			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">
 			                        <!--<a class="loginLink" (click)="loginWithState()"> SIGN IN   </a>-->
@@ -229,10 +229,10 @@
                             </div>
 
                             <!-- Panel top -->
-                            <div *ngIf="oAuthService.isUserLoggedIn" class="btl-panel" style="float: right;">
+                            <div *ngIf="authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">
                                 <!-- Login button -->
 			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
-			                        <a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT {{oAuthService.getLoggedInUser}}</a>
+			                        <a routerLinkActive="uk-active" (click)="this.authenticationService.logout()" class="loginLink">SIGN OUT {{this.authenticationService.user.email}}</a>
                                 </span>
                             </div>
 

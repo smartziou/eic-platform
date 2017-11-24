@@ -181,9 +181,9 @@
                                                     </a>
                                                 </div>
                                                 <div class="uk-margin-small-top">
-                                                    <star-rating-comp [starType]="'svg'" [rating]="0" [step]="0.5"
-                                                                      [showHalfStars]="true" [readOnly]=this.authenticationLocalService.loggedIn() [size]="'small'"
-                                                                      [staticColor]="'ok'"></star-rating-comp>
+                                                    <star-rating-comp [starType]="'svg'" [rating]="0" [step]="1"
+                                                                      [showHalfStars]="true" [readOnly]=!this.authenticationService.isLoggedIn() [size]="'small'"
+                                                                      [staticColor]="'ok'" title="Rate this service" uk-tooltip="delay: 500"></star-rating-comp>
                                                     <span>(0)</span>
                                                 </div>
                                             </div>
@@ -196,7 +196,7 @@
                                                 {{resourceInfo.resource.name}}
                                             </a>
                                         </h3>
-                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{this.providers[resourceInfo.resource.provider] || resourceInfo.resource.provider}})</em></div>
+                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{resourceInfo.resource.providers | lookup:providers | join:", "}})</em></div>
                                         <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
                                             <read-more-text [text]="resourceInfo.resource.description" [maxHeight]="75">
                                             </read-more-text>

@@ -1,15 +1,12 @@
+import {CommonModule} from "@angular/common";
 /**
  * Created by stefania on 6/7/17.
  */
-import { NgModule }       from '@angular/core';
-import { CommonModule }   from '@angular/common';
-
-import { aboutRouting } from "./about.routing";
-import { AboutUsComponent } from "./aboutus/about-us.component";
-import { CommunitiesComponent } from "./communitites/communities.component";
-import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
-
-
+import {NgModule} from "@angular/core";
+import {ReusableComponentsModule} from "../../shared/reusablecomponents/reusable-components.module";
+import {aboutRouting} from "./about.routing";
+import {AboutUsComponent} from "./aboutus/about-us.component";
+import {CommunitiesComponent} from "./communitites/communities.component";
 
 @NgModule({
     imports: [
@@ -20,7 +17,7 @@ import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusab
     declarations: [
         AboutUsComponent,
         CommunitiesComponent
-    ],
+    ]
 })
-
-export class AboutModule {}
+export class AboutModule {
+}

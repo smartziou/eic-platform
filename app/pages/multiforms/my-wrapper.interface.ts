@@ -1,23 +1,21 @@
 /**
  * Created by stefanos on 19/5/2017.
  */
-import {
-    Component, Input, ViewChild, ViewRef, OnInit, Output, EventEmitter, Injector, Directive
-} from "@angular/core";
+import {EventEmitter, Input, OnInit, Output, ViewChild, ViewRef} from "@angular/core";
 import {MyFormDirective} from "./my-form.directive";
 import {Description} from "../eInfraServices/services.description";
 
 
 //@Directive({})
-export abstract class MyWrapper implements OnInit{
+export abstract class MyWrapper implements OnInit {
 
-    @Input() public component : ViewRef;
+    @Input() public component: ViewRef;
 
-    @Input() description : Description = null;
+    @Input() description: Description = null;
 
-    @Input() viewRef : ViewRef;
+    @Input() viewRef: ViewRef;
 
-    @Output() deleteNotifier : EventEmitter<ViewRef> = new EventEmitter();
+    @Output() deleteNotifier: EventEmitter<ViewRef> = new EventEmitter();
 
     @ViewChild(MyFormDirective) private formComponents: MyFormDirective;
 
@@ -25,13 +23,12 @@ export abstract class MyWrapper implements OnInit{
 
     ngOnInit() {
         if (!this.formComponents) {
-            console.log(this.formComponents);
             throw "Maybe you forgot [my-form] directive in the template";
         }
         this.formComponents.viewContainerRef.insert(this.component);
     }
 
-    public remove(){
+    public remove() {
         this.deleteNotifier.emit(this.viewRef);
     };
 

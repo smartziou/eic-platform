@@ -1,43 +1,42 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Service} from "../../../domain/eic-model";
-import {ResourceService} from "../../../services/resource.service";
+import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
-import {AuthenticationLocalService} from "../../../services/authentication.local.service";
+import {Service} from "../../../domain/eic-model";
+import {AuthenticationService} from "../../../services/authentication.service";
+import {ResourceService} from "../../../services/resource.service";
 
 @Component({
-    selector: 'service-landing-page',
-    templateUrl: './service-landing-page.component.html',
-    styleUrls: ['../landing-page.component.css'],
+    selector: "service-landing-page",
+    templateUrl: "./service-landing-page.component.html",
+    styleUrls: ["../landing-page.component.css"]
 })
-
-export class ServiceLandingPageComponent {
-    private Math: Math;
-
+export class ServiceLandingPageComponent implements OnInit {
     public service: Service;
     public errorMessage: string;
+    private Math: Math;
     private sub: Subscription;
-    private providers : any= {};
+    private providers: any = {};
 
-    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService, private authenticationLocalService: AuthenticationLocalService) {
+    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService,
+                private authenticationService: AuthenticationService) {
         this.Math = Math;
     }
 
     ngOnInit() {
-        this.resourceService.getProviders().subscribe(
-            suc => {
-                this.providers = suc;
-            },
-            err => console.error(err)
-        );
-
-        this.sub = this.route.params.subscribe(params => {
-            let id = atob(params['id']);
+        this.sub = Observable.zip(
+            this.route.params,
+            this.resourceService.getProviders()
+        ).subscribe(suc => {
+            let id = atob(suc[0]["id"]);
+            this.providers = suc[1];
             this.resourceService.recordHit(id, "internal");
-            this.resourceService.getService(id).subscribe(
-                service => this.service = service,
-                error => this.handleError(<any>error));
+            this.resourceService.getService(id).subscribe(service => this.service = service);
         });
+    }
+
+    visit() {
+        this.resourceService.recordHit(this.service.id, "external");
     }
 
     ngOnDestroy() {
@@ -45,44 +44,24 @@ export class ServiceLandingPageComponent {
     }
 
     handleError(error) {
-        this.errorMessage = 'System error loading service (Server responded: ' + error + ')';
+        this.errorMessage = "System error loading service (Server responded: " + error + ")";
     }
 
-    getEncodedID() {
-        return btoa(this.service.id);
-    }
-
-    getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+    goToEdit() {
+        this.router.navigate([`/edit/${btoa(this.service.id)}`]);
     }
 
     getDeterminedInt(id) {
         let parts = id.split(".");
-        let num = 100*parseInt(parts[0]) + parseInt(parts[1]);
+        let num = 100 * parseInt(parts[0]) + parseInt(parts[1]);
         return Math.floor(1371 + Math.abs(Math.sin(num) * 100000));
     }
 
     rateService() {
-         if (this.authenticationLocalService.loggedIn()) {
-             //Rate logic goes here
-         } else {
-             this.router.navigate(['/signIn']);
-         }
+        if (this.authenticationService.isLoggedIn()) {
+            //Rate logic goes here
+        } else {
+            this.router.navigate(["/signIn"]);
+        }
     }
-
-    // process() {
-    //
-    //     sessionStorage.setItem('runApplication.application', this.component.metadataHeaderInfo.metadataRecordIdentifier.value);
-    //
-    //     var map: { [name: string]: string; } = { };
-    //
-    //     if(sessionStorage.getItem('runApplication.input')) {
-    //         map['input'] = sessionStorage.getItem('runApplication.input');
-    //     }
-    //     if(sessionStorage.getItem('runApplication.application')) {
-    //         map['application'] = sessionStorage.getItem('runApplication.application');
-    //     }
-    //
-    //     this.router.navigate(['/runApplication', map]);
-    // }
 }

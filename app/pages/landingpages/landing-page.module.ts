@@ -1,28 +1,29 @@
+import {CommonModule} from "@angular/common";
 /**
  * Created by stefania on 11/16/16.
  */
-import { NgModule }       from '@angular/core';
-import { CommonModule }   from '@angular/common';
-
-import { ResourceService } from "../../services/resource.service";
-import { landingPageRouting } from "./landing-page.routing";
-import { ReusableComponentsModule } from "../../shared/reusablecomponents/reusable-components.module";
-import { ServiceLandingPageComponent } from "./service/service-landing-page.component";
-import { StarRatingModule } from "angular-star-rating";
+import {NgModule} from "@angular/core";
+import {StarRatingModule} from "angular-star-rating";
+import {ResourceService} from "../../services/resource.service";
+import {ReusableComponentsModule} from "../../shared/reusablecomponents/reusable-components.module";
+import {SharedModule} from "../../shared/shared.module";
+import {landingPageRouting} from "./landing-page.routing";
+import {ServiceLandingPageComponent} from "./service/service-landing-page.component";
 
 @NgModule({
     imports: [
         CommonModule,
         landingPageRouting,
         ReusableComponentsModule,
-        StarRatingModule.forRoot()
+        StarRatingModule.forRoot(),
+        SharedModule
     ],
     declarations: [
-        ServiceLandingPageComponent,
+        ServiceLandingPageComponent
     ],
     providers: [
         ResourceService
     ]
 })
-
-export class LandingPageModule {}
+export class LandingPageModule {
+}

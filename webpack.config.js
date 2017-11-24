@@ -7,6 +7,8 @@ const AotPlugin = require('@ngtools/webpack').AotPlugin;
 var webpackConfig = {
     entry: {
         'main': './app/main.ts',
+        'vendors' : './app/vendors.ts',
+        'polyfills' : './app/polyfills.ts'
     },
 
     output: {
@@ -23,16 +25,21 @@ var webpackConfig = {
                 // your Angular Async Route paths relative to this root directory
             }
         ),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['app', 'vendors', 'polyfills']
+        }),
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',
             jquery: 'jquery'
         }),
 
-        new webpack.DefinePlugin({"process.env" : {
-            PRODUCTION: JSON.stringify(true),
-            API_ENDPOINT : JSON.stringify(process.env.API_ENDPOINT || "http://dl105.madgik.di.uoa.gr:8080/eic-registry")
-        }})
+        new webpack.DefinePlugin({
+            "process.env": {
+                PRODUCTION: JSON.stringify(true),
+                API_ENDPOINT: JSON.stringify(process.env.API_ENDPOINT || "http://dl105.madgik.di.uoa.gr:8080/eic-registry")
+            }
+        })
     ],
 
     module: {
@@ -46,11 +53,11 @@ var webpackConfig = {
             //         'angular2-router-loader'
             //     ]
             // },
-            { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
-            { test: /\.html$/, loader: 'raw-loader' },
-            { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
-            { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
-            { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' }
+            {test: /\.css$/, loaders: ['to-string-loader', 'css-loader']},
+            {test: /\.html$/, loader: 'raw-loader'},
+            {test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass']},
+            {test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000'},
+            {test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery'}
         ]
     }
 
@@ -68,13 +75,13 @@ var defaultConfig = {
     },
 
     resolve: {
-        extensions: [ '.ts', '.js' ],
-        modules: [ path.resolve(__dirname, 'node_modules') ]
+        extensions: ['.ts', '.js'],
+        modules: [path.resolve(__dirname, 'node_modules')]
     },
 
     devServer: {
         historyApiFallback: true,
-        watchOptions: { aggregateTimeout: 300, poll: 1000 },
+        watchOptions: {aggregateTimeout: 300, poll: 1000},
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
@@ -95,13 +102,14 @@ var defaultConfig = {
 };
 
 
-
-module.exports = function(env) {
-    if(process.env.NODE_ENV === 'production') {
+module.exports = function (env) {
+    if (process.env.NODE_ENV === 'production') {
         webpackConfig.plugins.push(
-            new webpack.DefinePlugin({"process.env" : {
-                PRODUCTION: JSON.stringify(false)
-            }})
+            new webpack.DefinePlugin({
+                "process.env": {
+                    PRODUCTION: JSON.stringify(false)
+                }
+            })
         );
         webpackConfig.module.loaders.push(
             {
@@ -117,13 +125,15 @@ module.exports = function(env) {
         webpackConfig.plugins.push(
             new AotPlugin({
                 tsConfigPath: 'tsconfig.json',
-                entryModule: path.resolve(__dirname,'./app/app.module#AppModule')
+                entryModule: path.resolve(__dirname, './app/app.module#AppModule')
             })
         );
         webpackConfig.plugins.push(
-            new webpack.DefinePlugin({"process.env" : {
-                PRODUCTION: JSON.stringify(true)
-            }})
+            new webpack.DefinePlugin({
+                "process.env": {
+                    PRODUCTION: JSON.stringify(true)
+                }
+            })
         );
         webpackConfig.module.loaders.push(
             {
