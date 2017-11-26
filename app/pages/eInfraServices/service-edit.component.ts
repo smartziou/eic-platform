@@ -35,7 +35,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
             this.resourceService.getService(atob(suc[2]["id"])).subscribe(service => {
                 ResourceService.removeNulls(service);
                 if (service.providers.indexOf(this.authenticationService.user.email.split("@")[0]) > -1) {
-                    this.serviceForm.patchValue(service);
+                    this.serviceForm.patchValue(this.toForms(service));
                 } else {
                     this.location.back();
                 }
@@ -46,11 +46,13 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     toForms(service: Service) {
         let ret = {};
         Object.entries(service).forEach(([name, values]) => {
-            let newValues = values;
+            let newValues = [];
             if (Array.isArray(values)) {
                 values.forEach(entry => {
                     newValues.push({entry});
                 });
+            } else {
+                newValues = values;
             }
             ret[name] = newValues;
         });
