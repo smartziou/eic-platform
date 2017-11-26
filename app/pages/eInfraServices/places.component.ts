@@ -9,7 +9,7 @@ import * as sd from "./services.description";
     template: `
         <div [formGroup]="group">
             <select formControlName="entry">
-                <option *ngFor="let c of places | keys" [ngValue]="c">{{places[c]}}</option>
+                <option *ngFor="let c of places | keys | premiumsort:this.weights" [ngValue]="c">{{places[c]}}</option>
             </select>
         </div>
     `
@@ -18,6 +18,7 @@ export class PlacesComponent extends MyGroup {
     places: any = {"QQ": "Error fetching places"};
     readonly groupDefinition = {entry: ["", Validators.required]};
     readonly placesDesc: sd.Description = sd.placesDesc;
+    weights:string[] = ["EU", "WW"];
 
     constructor(private resourceService: ResourceService, injector: Injector) {
         super(injector);
