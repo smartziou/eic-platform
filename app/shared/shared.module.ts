@@ -5,6 +5,7 @@ import {NgModule} from "@angular/core";
 import {JoinPipe} from "../services/join.pipe";
 import {KeysPipe} from "../services/key.pipe";
 import {LookUpPipe} from "../services/lookup.pipe";
+import {PremiumSortPipe} from "../services/premiumsort.pipe";
 
 @NgModule({
     imports: [],
@@ -12,11 +13,13 @@ import {LookUpPipe} from "../services/lookup.pipe";
         JoinPipe,
         KeysPipe,
         LookUpPipe,
+        PremiumSortPipe
     ],
     exports: [
         JoinPipe,
         KeysPipe,
         LookUpPipe,
+        PremiumSortPipe
     ]
 })
 export class SharedModule {
