@@ -8,7 +8,7 @@
                     <div class="uk-width-1-1@m uk-first-column">
                         <div>
                             <div class="search_box_bg" style="text-align:center">
-                                <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+                                <form [formGroup]="searchForm" (ngSubmit)="this.onSubmit(searchForm.value)">
                                     <input aria-describedby="sizing-addon2" class="uk-input uk-width-1-2 ng-pristine ng-valid
                                     uk-comment uk-comment-meta ng-untouched" formControlName="query" name="keyword"
                                            placeholder="Search our service catalogue..." type="text">
@@ -53,10 +53,10 @@
                             <!--<th *ngFor="let service of services">-->
                                <div class="uk-card uk-card-default" style="height: 270px">
                                    <div class="actionIcons">
-                                       <a (click)="addToFavorites(service.id)" class="uk-align-left" title="Favorites" uk-tooltip="delay: 500">
+                                       <a (click)="this.favourite(service.id)" class="uk-align-left" title="Favorites" uk-tooltip="delay: 500">
                                            <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                                        </a>
-                                       <a (click)="removeFromComparison(service.id)" class="uk-align-right" title="Remove from comparison list" uk-tooltip="delay: 500">
+                                       <a (click)="this.comparisonService.addOrRemove(service.id, true)" class="uk-align-right" title="Remove from comparison list" uk-tooltip="delay: 500">
                                            <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
                                        </a>
                                    </div>

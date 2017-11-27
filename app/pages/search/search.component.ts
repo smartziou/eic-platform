@@ -1,6 +1,7 @@
 /**
  * Created by stefania on 8/31/16.
  */
+
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
@@ -8,8 +9,10 @@ import {Subscription} from "rxjs/Subscription";
 import {SearchQuery} from "../../domain/search-query";
 import {SearchResults} from "../../domain/search-results";
 import {AuthenticationService} from "../../services/authentication.service";
+import {ComparisonService} from "../../services/comparison.service";
 import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
+import {UserService} from "../../services/user.service";
 import {URLParameter} from "./../../domain/url-parameter";
 
 declare var UIkit: any;
@@ -35,36 +38,33 @@ export class SearchComponent implements OnInit {
     isLastPageDisabled: boolean = false;
     foundResults = true;
     advanced: boolean = false;
-    servicesToCompare: string[] = [];
     providers: any;
 
-    constructor(fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
-                private resourceService: ResourceService, private authenticationService: AuthenticationService) {
-        this.resourceService.getProviders().subscribe(suc => this.providers = suc);
-        this.searchForm = fb.group({
-            "query": [""]
-        });
+    constructor(fb: FormBuilder, private router: NavigationService, private activatedRoute: ActivatedRoute,
+                private userService: UserService, private resourceService: ResourceService,
+                private authenticationService: AuthenticationService, public comparisonService: ComparisonService) {
+        this.searchForm = fb.group({"query": [""]});
     }
 
     ngOnInit() {
-        if (sessionStorage.getItem("compareServices")) {
-            this.servicesToCompare = JSON.parse(sessionStorage.getItem("compareServices"));
-        }
-        this.sub = this.activatedRoute.params.subscribe(params => {
-            this.urlParameters.splice(0, this.urlParameters.length);
-            this.foundResults = true;
-            for (var obj in params) {
-                if (params.hasOwnProperty(obj)) {
-                    var urlParameter: URLParameter = {
-                        key: obj,
-                        values: params[obj].split(",")
-                    };
-                    this.urlParameters.push(urlParameter);
+        this.resourceService.getProviders().subscribe(providers => {
+            this.providers = providers;
+            this.sub = this.activatedRoute.params.subscribe(params => {
+                this.urlParameters.splice(0, this.urlParameters.length);
+                this.foundResults = true;
+                for (let obj in params) {
+                    if (params.hasOwnProperty(obj)) {
+                        let urlParameter: URLParameter = {
+                            key: obj,
+                            values: params[obj].split(",")
+                        };
+                        this.urlParameters.push(urlParameter);
+                    }
                 }
-            }
-            //request results from the registry
-            this.resourceService.search(this.urlParameters).subscribe(
-                searchResults => this.updateSearchResults(searchResults));
+                //request results from the registry
+                return this.resourceService.search(this.urlParameters).subscribe(
+                    searchResults => this.updateSearchResults(searchResults));
+            });
         });
     }
 
@@ -155,7 +155,7 @@ export class SearchComponent implements OnInit {
             };
             this.urlParameters.push(searchQuery);
         }
-        this.navigateUsingParameters();
+        return this.navigateUsingParameters();
     }
 
     deselectFacet(category: string, value: string) {
@@ -175,7 +175,7 @@ export class SearchComponent implements OnInit {
                 this.searchForm.get("query").setValue("");
             }
         }
-        this.navigateUsingParameters();
+        return this.navigateUsingParameters();
     }
 
     onSelection(e, category: string, value: string) {
@@ -209,7 +209,7 @@ export class SearchComponent implements OnInit {
                 categoryIndex++;
             }
         }
-        this.navigateUsingParameters();
+        return this.navigateUsingParameters();
     }
 
     navigateUsingParameters() {
@@ -229,40 +229,11 @@ export class SearchComponent implements OnInit {
         return this.router.search(map);
     }
 
-
-    addToCompare(id: string) {
-        if (this.servicesToCompare.includes(id)) {
-            this.servicesToCompare.splice(this.servicesToCompare.indexOf(id), 1);
-            sessionStorage.setItem("compareServices", JSON.stringify(this.servicesToCompare));
-        } else {
-            if (this.servicesToCompare.length == 4) {
-                UIkit.notification({
-                    message: "You have reached the maximum number of items you can compare",
-                    status: "primary",
-                    pos: "top-center",
-                    timeout: 5000
-                });
-            } else {
-                this.servicesToCompare.push(id);
-                sessionStorage.setItem("compareServices", JSON.stringify(this.servicesToCompare));
-            }
-        }
-    }
-
-    compareServices() {
-        var map: { [name: string]: string; } = {};
-        map["services"] = this.servicesToCompare.toString();
-        this.router.navigate(["/compare", map]);
-    }
-
-    // handleError(error) {
-    //     this.errorMessage = 'System error searching for resources (Server responded: ' + error + ')';
-    // }
     goToFirstPage() {
         var from: number = 0;
         var to: number = 9;
         this.updatePagingURLParameters(from);
-        this.navigateUsingParameters();
+        return this.navigateUsingParameters();
     }
 
     goToPreviousPage() {
@@ -271,7 +242,7 @@ export class SearchComponent implements OnInit {
         from -= this.pageSize;
         to -= this.pageSize;
         this.updatePagingURLParameters(from);
-        this.navigateUsingParameters();
+        return this.navigateUsingParameters();
     }
 
     goToNextPage() {
@@ -280,14 +251,14 @@ export class SearchComponent implements OnInit {
         from += this.pageSize;
         to += this.pageSize;
         this.updatePagingURLParameters(from);
-        this.navigateUsingParameters();
+        return this.navigateUsingParameters();
     }
 
     goToLastPage() {
         var from: number = Math.floor(this.searchResults.total / this.pageSize) * this.pageSize;
         var to: number = this.searchResults.total - 1;
         this.updatePagingURLParameters(from);
-        this.navigateUsingParameters();
+        return this.navigateUsingParameters();
     }
 
     updatePagingURLParameters(from: number) {
@@ -305,6 +276,14 @@ export class SearchComponent implements OnInit {
                 values: [from + ""]
             };
             this.urlParameters.push(newFromParameter);
+        }
+    }
+
+    favourite(service) {
+        if (this.authenticationService.isLoggedIn()) {
+            this.userService.addFavourite(service, this.authenticationService.user.id);
+        } else {
+            this.router.login();
         }
     }
 }

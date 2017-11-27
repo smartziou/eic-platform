@@ -37,6 +37,7 @@ import {UserModule} from "./pages/user/user.module";
 import {AuthenticationService} from "./services/authentication.service";
 import {CanActivateViaAuthGuard} from "./services/can-activate-auth-guard.service";
 import {CanActivateViaPubGuard} from "./services/can-activate-pub-guard.service";
+import {ComparisonService} from "./services/comparison.service";
 import {HTTPWrapper} from "./services/http-wrapper.service";
 import {NavigationService} from "./services/navigation.service";
 import {ResourceService} from "./services/resource.service";
@@ -117,6 +118,7 @@ import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
     providers: [
         appRoutingProviders,
         AuthenticationService,
+        ComparisonService,
         CanActivateViaAuthGuard,
         CanActivateViaPubGuard,
         HTTPWrapper,

@@ -8,7 +8,7 @@
                     <div class="uk-width-1-1@m uk-first-column">
                         <div>
                             <div class="search_box_bg" style="text-align:center">
-                                <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+                                <form [formGroup]="searchForm" (ngSubmit)="this.onSubmit(searchForm.value)">
                                     <input aria-describedby="sizing-addon2" class="uk-input uk-width-1-2 ng-pristine ng-valid
                                     uk-comment uk-comment-meta ng-untouched" formControlName="query" name="keyword"
                                            placeholder="Search our service catalogue..." type="text">
@@ -18,7 +18,7 @@
                                     <template ngFor let-urlParameter [ngForOf]="urlParameters">
                                         <template [ngIf]="urlParameter.key!='from'">
                                             <li *ngFor="let facet of urlParameter.values" class="search-tag">
-                                                <span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
+                                                <span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
                                             </li>
                                         </template>
                                     </template>
@@ -56,7 +56,7 @@
                                     <!--<span>{{facet.label}}</span>-->
                                     <div class="refineOption" *ngFor="let facetValue of facet.values">
                                         <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                               (change)="onSelection($event, facet.field, facetValue.value)"
+                                               (change)="this.onSelection($event, facet.field, facetValue.value)"
                                                [checked]="facetValue.isChecked">
                                         {{facetValue.value}}
                                         <span>({{facetValue.count}})</span>
@@ -79,7 +79,7 @@
                                     <span>{{facet.label=='TRL'?'Technology Readiness':facet.label}}</span>
                                     <div class="refineOption" *ngFor="let facetValue of facet.values">
                                         <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                               (change)="onSelection($event, facet.field, facetValue.value)"
+                                               (change)="this.onSelection($event, facet.field, facetValue.value)"
                                                [checked]="facetValue.isChecked">
                                         {{facet.label==="Provider"? this.providers[facetValue.value] : facetValue.value ? facetValue.value : "N/A"}}
                                         <span>({{facetValue.count}})</span>
@@ -111,10 +111,10 @@
 
                     <div *ngIf="searchResults.results != null && searchResults.results.length>0">
 
-                        <div *ngIf="servicesToCompare && servicesToCompare.length>0" class="uk-width-1-1 uk-row-first uk-clearfix compareButton">
+                        <div *ngIf="this.comparisonService.servicesToCompare && this.comparisonService.servicesToCompare.length>0" class="uk-width-1-1 uk-row-first uk-clearfix compareButton">
                             <div class="uk-float-right">
-                                <a (click)="compareServices()" class="uk-button uk-button-blue">
-                                    <i class="fa fa-compress fa-flip-horizontal" aria-hidden="true"></i> | {{servicesToCompare.length}} for comparison
+                                <a (click)="this.comparisonService.go()" class="uk-button uk-button-blue">
+                                    <i class="fa fa-compress fa-flip-horizontal" aria-hidden="true"></i> | {{this.comparisonService.servicesToCompare.length}} for comparison
                                 </a>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                                     </a>
                                 </li>
                                 <li *ngIf="!isPreviousPageDisabled">
-                                    <a (click)="goToPreviousPage()">
+                                    <a (click)="this.goToPreviousPage()">
                                         <span class="uk-margin-small-right" uk-pagination-previous></span> Previous
                                     </a>
                                 </li>
@@ -143,7 +143,7 @@
                                     </a>
                                 </li>
                                 <li class="uk-margin-auto-left" *ngIf="!isNextPageDisabled">
-                                    <a (click)="goToNextPage()">Next
+                                    <a (click)="this.goToNextPage()">Next
                                         <span class="uk-margin-small-left" uk-pagination-next></span>
                                     </a>
                                 </li>
@@ -160,13 +160,13 @@
                                         <div class="">
                                             <div class="uk-first-column actionIcons uk-inline-block" style="width: 20%">
                                                 <div>
-                                                    <a (click)="addToFavorites(resourceInfo.resource.id)" title="Favorites" uk-tooltip="delay: 500">
+                                                    <a (click)="this.favourite(resourceInfo.resource.id)" title="Favorites" uk-tooltip="delay: 500">
                                                         <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
                                                 <div class="uk-margin-small-top">
-                                                    <a (click)="addToCompare(resourceInfo.resource.id)" title="Compare list" uk-tooltip="delay: 500">
-                                                        <i [ngClass]="{'blueActionIcons': servicesToCompare.includes(resourceInfo.resource.id)}"
+                                                    <a (click)="this.comparisonService.addOrRemove(resourceInfo.resource.id)" title="Compare list" uk-tooltip="delay: 500">
+                                                        <i [ngClass]="{'blueActionIcons': this.comparisonService.servicesToCompare.includes(resourceInfo.resource.id)}"
                                                            class="fa fa-compress fa-flip-horizontal fa-lg" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
@@ -196,7 +196,7 @@
                                                 {{resourceInfo.resource.name}}
                                             </a>
                                         </h3>
-                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{resourceInfo.resource.providers | lookup:providers | join:", "}})</em></div>
+                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{resourceInfo.resource.providers | lookup:this.providers | join:", "}})</em></div>
                                         <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
                                             <read-more-text [text]="resourceInfo.resource.description" [maxHeight]="75">
                                             </read-more-text>
@@ -269,7 +269,7 @@
                                     </a>
                                 </li>
                                 <li *ngIf="!isPreviousPageDisabled">
-                                    <a (click)="goToPreviousPage()">
+                                    <a (click)="this.goToPreviousPage()">
                                         <span class="uk-margin-small-right" uk-pagination-previous></span> Previous
                                     </a>
                                 </li>
@@ -280,7 +280,7 @@
                                     </a>
                                 </li>
                                 <li class="uk-margin-auto-left" *ngIf="!isNextPageDisabled">
-                                    <a (click)="goToNextPage()">Next
+                                    <a (click)="this.goToNextPage()">Next
                                         <span class="uk-margin-small-left" uk-pagination-next></span>
                                     </a>
                                 </li>
