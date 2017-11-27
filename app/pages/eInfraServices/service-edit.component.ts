@@ -5,12 +5,12 @@ import {Location} from "@angular/common";
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs/Observable";
 import {Service} from "../../domain/eic-model";
 import {AuthenticationService} from "../../services/authentication.service";
 import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
 import {ServiceFormComponent} from "./service-form.component";
-import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: "service-edit",

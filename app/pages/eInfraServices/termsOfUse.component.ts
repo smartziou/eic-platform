@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {URLValidator} from "../../services/generic.validator";
+import {URLValidator} from "../../shared/validators/generic.validator";
 import {MyGroup} from "../multiforms/my-group.interface";
 import * as sd from "./services.description";
 

@@ -1,14 +1,13 @@
 /**
  * Created by pgl on 21/08/17.
  */
-import {Component, OnInit, Type} from "@angular/core";
+import {Component, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Observable} from "rxjs/Observable";
 import {Service} from "../../domain/eic-model";
-import {URLValidator} from "../../services/generic.validator";
+import {URLValidator} from "../../shared/validators/generic.validator";
 import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
-import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
+import {PhaseValidator, TLRValidator} from "../../shared/validators/vocabulary.validator";
 import {LanguagesComponent} from "./languages.component";
 import {PlacesComponent} from "./places.component";
 import {ProvidersComponent} from "./providers.component";
@@ -145,9 +144,9 @@ export class ServiceFormComponent {
         //TODO: check if model is valid
         if (isValid) {
             this.resourceService.uploadService(this.toServer(service), this.editMode)
-                .subscribe(service => {
-                    setTimeout(() => this.router.navigate(["/landingPage/service/" + btoa(service.id)]), 1000);
-                });
+            .subscribe(service => {
+                setTimeout(() => this.router.service(service.id), 1000);
+            });
         } else {
             window.scrollTo(0, 0);
             this.serviceForm.markAsDirty();
