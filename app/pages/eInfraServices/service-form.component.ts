@@ -3,10 +3,10 @@
  */
 import {Component, OnInit, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {Service} from "../../domain/eic-model";
 import {URLValidator} from "../../services/generic.validator";
+import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
 import {PhaseValidator, TLRValidator} from "../../services/vocabulary.validator";
 import {LanguagesComponent} from "./languages.component";
@@ -108,7 +108,7 @@ export class ServiceFormComponent {
     providers: any = null;
     vocabularies: any = null;
 
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: Router) {
+    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: NavigationService) {
         this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 

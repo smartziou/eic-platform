@@ -3,9 +3,9 @@
  */
 
 import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
 import {User} from "../domain/eic-model";
 import {deleteCookie, getCookie, setCookie} from "../domain/utils";
+import {NavigationService} from "./navigation.service";
 
 @Injectable()
 export class AuthenticationService {
@@ -13,7 +13,7 @@ export class AuthenticationService {
     cookieName: string = "jwt";
     user: User = null;
 
-    constructor(private router: Router) {
+    constructor(private router: NavigationService) {
         this.user = JSON.parse(getCookie(this.cookieName));
     }
 
@@ -21,7 +21,7 @@ export class AuthenticationService {
         if (!this.isLoggedIn()) {
             setCookie(this.cookieName, JSON.stringify(user), 1);
             this.user = user;
-            this.router.navigate([this.redirectURL]);
+            this.router.go(this.redirectURL);
         }
     }
 
@@ -29,7 +29,7 @@ export class AuthenticationService {
         if (this.isLoggedIn()) {
             deleteCookie(this.cookieName);
             this.user = null;
-            this.router.navigate(["/home"]);
+            this.router.home();
         }
     }
 

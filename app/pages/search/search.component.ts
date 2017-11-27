@@ -3,11 +3,12 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {SearchQuery} from "../../domain/search-query";
 import {SearchResults} from "../../domain/search-results";
 import {AuthenticationService} from "../../services/authentication.service";
+import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
 import {URLParameter} from "./../../domain/url-parameter";
 
@@ -225,12 +226,9 @@ export class SearchComponent implements OnInit {
             }
             map[urlParameter.key] = concatValue;
         }
-        this.router.navigate(["/search", map]);
+        return this.router.search(map);
     }
 
-    gotoDetail(id: string) {
-        this.router.navigate(["/landingPage/service" + "/", btoa(id)]);
-    }
 
     addToCompare(id: string) {
         if (this.servicesToCompare.includes(id)) {

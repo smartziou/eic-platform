@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {ResourceService} from "../../../services/resource.service";
 import {UserService} from "../../../services/user.service";
+import {NavigationService} from "../../../services/navigation.service";
 
 @Component({
     selector: "dashboard",
@@ -14,7 +15,7 @@ import {UserService} from "../../../services/user.service";
 })
 export class DashboardComponent implements OnInit {
     constructor(public authenticationService: AuthenticationService, protected userService: UserService,
-                protected resourceService: ResourceService, protected router: Router) {
+                protected resourceService: ResourceService, protected router: NavigationService) {
     }
 
     ngOnInit() {
@@ -22,8 +23,7 @@ export class DashboardComponent implements OnInit {
             suc => {
                 for (let provider in suc) {
                     if (this.authenticationService.user.email === provider + "@eic") {
-                        this.router.navigate(["/search", {provider}]);
-                        break;
+                        return this.router.search({provider});
                     }
                 }
             }

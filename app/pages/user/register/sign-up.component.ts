@@ -3,8 +3,8 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {User} from "../../../domain/eic-model";
+import {NavigationService} from "../../../services/navigation.service";
 import {ResourceService} from "../../../services/resource.service";
 import {UserService} from "../../../services/user.service";
 
@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
     pass: string = "";
 
     constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService,
-                private router: Router) {
+                private router: NavigationService) {
         this.signUpForm = fb.group({
             "name": ["", Validators.required],
             "surname": ["", Validators.required],
@@ -43,7 +43,7 @@ export class SignUpComponent implements OnInit {
     onSubmit(myUser: User, isValid: boolean) {
         this.pass = myUser.password;
         if (isValid) {
-            this.userService.registerUser(myUser).subscribe(user => this.onRegisterFinished(user));
+            this.userService.registerUser(myUser).subscribe(this.onRegisterFinished);
         } else {
             this.errorMessage = "Form not valid";
         }
@@ -52,7 +52,7 @@ export class SignUpComponent implements OnInit {
     onRegisterFinished(user: User) {
         this.submitted = true;
         this.successMessage = "Activation e-mail was sent to " + user.email;
-        setTimeout(() => this.router.navigate(["/signIn"]), 5000);
+        setTimeout(this.router.login, 5000);
     }
 
     // areEqual(group: FormGroup) {

@@ -3,12 +3,13 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../domain/eic-model";
 import {SearchQuery} from "../../domain/search-query";
 import {URLParameter} from "../../domain/url-parameter";
 import {AuthenticationService} from "../../services/authentication.service";
+import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
 import {UserService} from "../../services/user.service";
 import {Observable} from "rxjs/Observable";
@@ -27,7 +28,7 @@ export class CompareServicesComponent implements OnInit {
     providers: any;
     nologo: URL = new URL("http://fvtelibrary.com/img/user/NoLogo.png");
 
-    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router,
+    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: NavigationService,
                 private resourceService: ResourceService, private authenticationService: AuthenticationService,
                 private userService: UserService) {
         this.searchForm = fb.group({
@@ -65,7 +66,7 @@ export class CompareServicesComponent implements OnInit {
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(["/search", {query: searchValue.query}]);
+        return this.router.search({query: searchValue.query});
     }
 
     // handleError(message: string, error) {

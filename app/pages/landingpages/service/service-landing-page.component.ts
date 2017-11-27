@@ -1,9 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../../domain/eic-model";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {NavigationService} from "../../../services/navigation.service";
 import {ResourceService} from "../../../services/resource.service";
 
 @Component({
@@ -19,7 +20,7 @@ export class ServiceLandingPageComponent implements OnInit {
     private sub: Subscription;
     private providers: any = {};
 
-    constructor(private route: ActivatedRoute, private router: Router, private resourceService: ResourceService,
+    constructor(private route: ActivatedRoute, private router: NavigationService, private resourceService: ResourceService,
                 private authenticationService: AuthenticationService) {
         this.Math = Math;
     }
@@ -59,10 +60,6 @@ export class ServiceLandingPageComponent implements OnInit {
         this.errorMessage = "System error loading service (Server responded: " + error + ")";
     }
 
-    goToEdit() {
-        this.router.navigate([`/edit/${btoa(this.service.id)}`]);
-    }
-
     getDeterminedInt(id) {
         let parts = id.split(".");
         let num = 100 * parseInt(parts[0]) + parseInt(parts[1]);
@@ -73,7 +70,7 @@ export class ServiceLandingPageComponent implements OnInit {
         if (this.authenticationService.isLoggedIn()) {
             //Rate logic goes here
         } else {
-            this.router.navigate(["/signIn"]);
+            this.router.login();
         }
     }
 }

@@ -61,7 +61,7 @@
                                        </a>
                                    </div>
                                    <div class="">
-                                       <a (click)="gotoDetail(service.id)">
+                                       <a (click)="this.router.service(service.id)">
                                            <span>
                                                <img [src]="service.symbol|| nologo" style="max-height: 150px; width: auto;">
                                            </span>

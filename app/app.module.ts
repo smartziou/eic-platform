@@ -38,6 +38,7 @@ import {AuthenticationService} from "./services/authentication.service";
 import {CanActivateViaAuthGuard} from "./services/can-activate-auth-guard.service";
 import {CanActivateViaPubGuard} from "./services/can-activate-pub-guard.service";
 import {HTTPWrapper} from "./services/http-wrapper.service";
+import {NavigationService} from "./services/navigation.service";
 import {ResourceService} from "./services/resource.service";
 import {UserService} from "./services/user.service";
 import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.component";
@@ -119,6 +120,7 @@ import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
         CanActivateViaAuthGuard,
         CanActivateViaPubGuard,
         HTTPWrapper,
+        NavigationService,
         ResourceService,
         UserService
     ],

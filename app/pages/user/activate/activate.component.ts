@@ -4,6 +4,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ResourceService} from "../../../services/resource.service";
+import {NavigationService} from "../../../services/navigation.service";
 
 @Component({
     selector: "activate",
@@ -14,7 +15,7 @@ export class ActivateComponent implements OnInit {
     errorMessage: string = null;
     successMessage: string = null;
 
-    constructor(private resourceService: ResourceService, private route: ActivatedRoute, private router: Router) {
+    constructor(private resourceService: ResourceService, private route: ActivatedRoute, private router: NavigationService) {
     }
 
     ngOnInit() {
@@ -22,6 +23,6 @@ export class ActivateComponent implements OnInit {
     }
 
     onParams(params) {
-        this.resourceService.activateUserAccount(params["id"]).subscribe(suc => this.router.navigate(["/signIn"]));
+        this.resourceService.activateUserAccount(params["id"]).subscribe(this.router.login);
     }
 }

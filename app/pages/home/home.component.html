@@ -583,7 +583,7 @@
         </div>
 
         <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
-            <div *ngFor="let c of this.categories" class="uk-width-1-5@m" (click)="searchCategory(c.value)">
+            <div *ngFor="let c of this.categories" class="uk-width-1-5@m" (click)="this.router.search({category:c.value})">
                 <div class="wk-panel wk-overlay-hover" style="min-height: 100px;">
                     <!--<a class="wk-position-cover wk-position-z-index" ></a>-->
                     <div class="wk-text-center wk-margin wk-margin-top-remove">

@@ -1,10 +1,11 @@
 /**
  * Created by stefania on 8/4/17.
  */
+
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
 import {BrowseResults} from "../../domain/browse-results";
 import {Service} from "../../domain/eic-model";
+import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
 
 @Component({
@@ -17,15 +18,11 @@ export class BrowseCategoriesComponent implements OnInit {
     public errorMessage: string;
     public browseResultsColumns: BrowseResults[] = [];
 
-    constructor(private activatedRoute: ActivatedRoute,
-                private router: Router,
-                private resourceService: ResourceService) {
+    constructor(private router: NavigationService, private resourceService: ResourceService) {
     }
 
     ngOnInit() {
-        // request results from the registry
-        this.resourceService.getServicesByCategories().subscribe(
-            browseResults => this.updateBrowseResults(browseResults));
+        this.resourceService.getServicesByCategories().subscribe(this.updateBrowseResults);
     }
 
     updateBrowseResults(browseResults: BrowseResults) {
@@ -50,9 +47,5 @@ export class BrowseCategoriesComponent implements OnInit {
                 this.browseResultsColumns.push(new BrowseResults());
             }
         }
-    }
-
-    visitServiceDetails(id: string) {
-        this.router.navigate(["/landingPage/service" + "/", btoa(id)]);
     }
 }

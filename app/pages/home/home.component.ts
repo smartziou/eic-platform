@@ -4,9 +4,9 @@
 
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
 import {Service} from "../../domain/eic-model";
 import {SearchQuery} from "../../domain/search-query";
+import {NavigationService} from "../../services/navigation.service";
 
 @Component({
     selector: "home",
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     ];
     private services: Service[];
 
-    constructor(fb: FormBuilder, private router: Router) {
+    constructor(fb: FormBuilder, private router: NavigationService) {
         this.searchForm = fb.group({"query": [""]});
     }
 
@@ -42,15 +42,7 @@ export class HomeComponent implements OnInit {
     }
 
     onSubmit(searchValue: SearchQuery) {
-        this.router.navigate(["/search", {query: searchValue.query}]);
-    }
-
-    gotoDetail(id: string) {
-        this.router.navigate(["/landingPage/service" + "/", btoa(id)]);
-    }
-
-    searchCategory(cat: string) {
-        this.router.navigate(["/search", {category: cat}]);
+        return this.router.search({query: searchValue.query});
     }
 }
 
