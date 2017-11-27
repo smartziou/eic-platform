@@ -22,7 +22,8 @@ export class BrowseCategoriesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.resourceService.getServicesByCategories().subscribe(this.updateBrowseResults);
+        this.resourceService.getServicesByCategories()
+        .subscribe(browseResults => this.updateBrowseResults(browseResults));
     }
 
     updateBrowseResults(browseResults: BrowseResults) {
