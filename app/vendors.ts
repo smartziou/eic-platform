@@ -1,6 +1,7 @@
 /**
  * Created by stefanos on 21/2/2017.
  */
+
 // Angular 2
 import "@angular/platform-browser";
 import "@angular/platform-browser-dynamic";

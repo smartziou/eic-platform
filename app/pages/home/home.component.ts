@@ -1,6 +1,7 @@
 /**
  * Created by stefania on 7/5/16.
  */
+
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -33,9 +34,7 @@ export class HomeComponent implements OnInit {
     private services: Service[];
 
     constructor(fb: FormBuilder, private router: Router) {
-        this.searchForm = fb.group({
-            "query": [""]
-        });
+        this.searchForm = fb.group({"query": [""]});
     }
 
     ngOnInit() {
@@ -60,3 +59,4 @@ class category {
     icon: string;
     hover: string;
 }
+

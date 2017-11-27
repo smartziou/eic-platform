@@ -55,8 +55,4 @@ export class BrowseCategoriesComponent implements OnInit {
     visitServiceDetails(id: string) {
         this.router.navigate(["/landingPage/service" + "/", btoa(id)]);
     }
-
-    // handleError(message: string, error) {
-    //     this.errorMessage = message + ' (Server responded: ' + error + ')';
-    // }
 }

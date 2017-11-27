@@ -1,6 +1,7 @@
 /**
  * Created by stefania on 9/6/16.
  */
+
 import {Injectable} from "@angular/core";
 import {BrowseResults} from "../domain/browse-results";
 import {Access, Service} from "../domain/eic-model";

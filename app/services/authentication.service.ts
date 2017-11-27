@@ -1,6 +1,7 @@
 /**
  * Created by stefania on 8/30/16.
  */
+
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 import {User} from "../domain/eic-model";

@@ -1,6 +1,7 @@
 /**
  * Created by stefania on 8/29/16.
  */
+
 import {ModuleWithProviders} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {BrowseCategoriesComponent} from "./pages/browsecategories/browse-categories.component";

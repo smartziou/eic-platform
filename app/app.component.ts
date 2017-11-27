@@ -1,6 +1,7 @@
 /**
  * Created by stefania on 10/3/16.
  */
+
 import {Component, OnInit} from "@angular/core";
 import {NavigationEnd, Router} from "@angular/router";
 import {AuthenticationService} from "./services/authentication.service";
