@@ -1,11 +1,12 @@
 /**
  * Created by pgl on 29/09/17.
  */
+
 import {NgModule} from "@angular/core";
-import {JoinPipe} from "../services/join.pipe";
-import {KeysPipe} from "../services/key.pipe";
-import {LookUpPipe} from "../services/lookup.pipe";
-import {PremiumSortPipe} from "../services/premiumsort.pipe";
+import {JoinPipe} from "./pipes/join.pipe";
+import {KeysPipe} from "./pipes/keys.pipe";
+import {LookUpPipe} from "./pipes/lookup.pipe";
+import {PremiumSortPipe} from "./pipes/premium-sort.pipe";
 
 @NgModule({
     imports: [],
