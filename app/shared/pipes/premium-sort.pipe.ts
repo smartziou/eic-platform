@@ -1,6 +1,7 @@
 /**
  * Created by pgl on 26/11/17.
  */
+
 import {Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({name: "premiumsort"})
