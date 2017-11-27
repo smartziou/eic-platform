@@ -39,7 +39,9 @@ export class ServiceLandingPageComponent implements OnInit {
                     (service.requiredServices || [])
                     .concat(service.relatedServices || [])
                     .filter((e, i, a) => a.indexOf(e) === i);
-                this.resourceService.getSelectedServices(serviceIDs).subscribe(services => this.services = services);
+                if (serviceIDs.length > 0) {
+                    this.resourceService.getSelectedServices(serviceIDs).subscribe(services => this.services = services);
+                }
             });
         });
     }
