@@ -229,11 +229,11 @@ input.searchTextBox, input.searchTextBox:focus, input.searchTextBox:active  {
     color: #fff;
 }
 
-.compareButton {
-    float: right;
-    position: fixed;
-    top: calc(33%);
-    right: 0;
-    z-index: 10000;
-    display: block;
-}
+/*.compareButton {*/
+    /*float: right;*/
+    /*position: fixed;*/
+    /*top: calc(33%);*/
+    /*right: 0;*/
+    /*z-index: 10000;*/
+    /*display: block;*/
+/*}*/
