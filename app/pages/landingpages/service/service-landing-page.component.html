@@ -20,7 +20,7 @@
                             <div class="uk-display-inline-block uk-vertical-align-top uk-margin-top">
                                 <h2 class="uk-h2 uk-inline" style="margin-bottom: 5px">
                                     <a target="_blank" [href]="service.url" (click)="visit()">
-                                        <span style="color: #d1303a">{{service.name || "Not Available"}}</span>
+                                      {{service.name || "Not Available"}}
                                     </a>
                                 </h2>
                                 <div>by {{service.providers | lookup:providers | join:", "}}</div>
