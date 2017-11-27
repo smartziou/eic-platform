@@ -7,7 +7,7 @@ import {ServiceLandingPageComponent} from "./service/service-landing-page.compon
 
 const landingPageRoutes: Routes = [
     {
-        path: "landingPage/service/:id",
+        path: "service/:id",
         component: ServiceLandingPageComponent
     }
 ];
