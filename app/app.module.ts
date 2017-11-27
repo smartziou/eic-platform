@@ -40,85 +40,86 @@ import {HTTPWrapper} from "./services/http-wrapper.service";
 import {ResourceService} from "./services/resource.service";
 import {UserService} from "./services/user.service";
 import {ConfirmationDialogComponent} from "./shared/confirmation-dialog.component";
+import {FeedbackComponent} from "./shared/feedback/feedback.component";
 import {FooterComponent} from "./shared/footer/footer.component";
 import {ReusableComponentsModule} from "./shared/reusablecomponents/reusable-components.module";
 import {SharedModule} from "./shared/shared.module";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
-import {FeedbackComponent} from "./shared/feedback/feedback.component";
 
-// import {EinfraErrorHandler} from "./services/error-handler.service";
 @NgModule({
     imports: [
-        SharedModule,
+        AboutModule,
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule,
         HttpModule,
         JsonpModule,
-        // ResourceRegistrationModule,
-        routing,
         LandingPageModule,
-        TabsModule,
         OAuthModule.forRoot(),
+        ReactiveFormsModule,
+        //ResourceRegistrationModule,
         ReusableComponentsModule,
+        routing,
+        SharedModule,
+        StarRatingModule.forRoot(),
         SupportModule,
-        AboutModule,
-        UserModule,
-        StarRatingModule.forRoot()
+        TabsModule,
+        UserModule
     ],
     declarations: [
+        //MAIN
         AppComponent,
+        BrowseCategoriesComponent,
+        CompareServicesComponent,
         HomeComponent,
         SearchComponent,
-        CompareServicesComponent,
+        //PERSISTENT
+        ConfirmationDialogComponent,
         FeedbackComponent,
-        TopMenuComponent,
         FooterComponent,
-        BrowseCategoriesComponent,
-        ServiceUploadComponent,
-        ServiceEditComponent,
+        TopMenuComponent,
+        //USER
         ActivateComponent,
         DashboardComponent,
-        MyGroup,
+        //FORMS
+        ServiceEditComponent,
         ServiceFormComponent,
-        ConfirmationDialogComponent,
-        PlacesComponent,
-        LanguagesComponent,
-        RequiredServicesComponent,
-        ProvidersComponent,
-        RelatedServicesComponent,
-        TagsComponent,
-        TermsOfUseComponent,
+        ServiceUploadComponent,
+        //FORMS SUPPORT
+        MyArray,
+        MyArrayInline,
         MyArrayWrapper,
         MyInlineArrayWrapper,
         InlineFormWrapper,
-        MyArray,
         MyFormDirective,
-        MyArrayInline
-    ],
-    entryComponents: [
+        MyGroup,
+        //FORMS TYPES
+        ProvidersComponent,
         PlacesComponent,
         LanguagesComponent,
-        ProvidersComponent,
+        TagsComponent,
         RequiredServicesComponent,
         RelatedServicesComponent,
-        TagsComponent,
-        TermsOfUseComponent,
+        TermsOfUseComponent
+    ],
+    entryComponents: [
         MyArrayWrapper,
-        MyInlineArrayWrapper
+        MyInlineArrayWrapper,
+        ProvidersComponent,
+        PlacesComponent,
+        LanguagesComponent,
+        TagsComponent,
+        RequiredServicesComponent,
+        RelatedServicesComponent,
+        TermsOfUseComponent
     ],
     providers: [
-        UserService,
+        appRoutingProviders,
         AuthenticationService,
         CanActivateViaAuthGuard,
         CanActivateViaPubGuard,
+        HTTPWrapper,
         ResourceService,
-        appRoutingProviders,
-        HTTPWrapper
-        // {
-        //     provide: ErrorHandler,
-        //     useClass: EinfraErrorHandler
-        // }
+        UserService
     ],
     bootstrap: [AppComponent]
 })
