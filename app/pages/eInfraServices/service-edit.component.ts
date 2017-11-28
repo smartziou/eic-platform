@@ -20,6 +20,7 @@ import {ServiceFormComponent} from "./service-form.component";
 })
 export class ServiceEditComponent extends ServiceFormComponent implements OnInit {
     private sub: Subscription;
+    private serviceID: string;
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute,
                 protected router: NavigationService, private authenticationService: AuthenticationService,
@@ -69,6 +70,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     }
 
     onSubmit(service: Service, isValid: boolean) {
+        service.id = this.serviceID;
         super.onSubmit(service, isValid);
     }
 }
