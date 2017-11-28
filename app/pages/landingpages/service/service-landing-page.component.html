@@ -213,7 +213,9 @@
                             <!--<li *ngIf="service.requiredServices">-->
                             <div class="uk-margin-medium-top">
                                 <ul *ngIf="service.requiredServices && service.requiredServices.length > 0">
-                                    <li *ngFor="let requiredService of service.requiredServices">{{getPrettyService(requiredService).name}}</li>
+                                    <li *ngFor="let requiredService of service.requiredServices">
+                                        <a (click)="this.router.service(getPrettyService(requiredService).id)">{{getPrettyService(requiredService).name}}</a>
+                                    </li>
                                 </ul>
                                 <div *ngIf="!service.requiredServices || service.requiredServices.length==0" class="uk-alert uk-alert-warning">
                                     There are no available required services
@@ -224,7 +226,9 @@
                         <!--<li *ngIf="service.relatedService">-->
                             <div class="uk-margin-medium-top">
                                 <ul *ngIf="service.relatedServices && service.relatedServices.length>0">
-                                    <li *ngFor="let relatedService of service.relatedServices">{{getPrettyService(relatedService).name}}</li>
+                                    <li *ngFor="let relatedService of service.relatedServices">
+                                        <a (click)="this.router.service(getPrettyService(relatedService).id)">{{getPrettyService(relatedService).name}}</a>
+                                    </li>
                                 </ul>
                                 <div *ngIf="!service.relatedServices || service.relatedServices.length==0" class="uk-alert uk-alert-warning">
                                     There are no available related services
