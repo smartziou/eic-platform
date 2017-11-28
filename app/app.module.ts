@@ -49,6 +49,11 @@ import {ReusableComponentsModule} from "./shared/reusablecomponents/reusable-com
 import {SharedModule} from "./shared/shared.module";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
 
+const eicForms = [
+    ProvidersComponent, PlacesComponent, LanguagesComponent, TagsComponent,
+    RequiredServicesComponent, RelatedServicesComponent, TermsOfUseComponent
+];
+
 @NgModule({
     imports: [
         AboutModule,
@@ -96,24 +101,12 @@ import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
         MyFormDirective,
         MyGroup,
         //FORMS TYPES
-        ProvidersComponent,
-        PlacesComponent,
-        LanguagesComponent,
-        TagsComponent,
-        RequiredServicesComponent,
-        RelatedServicesComponent,
-        TermsOfUseComponent
+        ...eicForms
     ],
     entryComponents: [
         MyArrayWrapper,
         MyInlineArrayWrapper,
-        ProvidersComponent,
-        PlacesComponent,
-        LanguagesComponent,
-        TagsComponent,
-        RequiredServicesComponent,
-        RelatedServicesComponent,
-        TermsOfUseComponent
+        ...eicForms
     ],
     providers: [
         appRoutingProviders,
