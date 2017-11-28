@@ -1,9 +1,9 @@
 /**
  * Created by pgl on 21/08/17.
  */
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
-import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../domain/eic-model";
 import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
@@ -21,13 +21,11 @@ export class ServiceUploadComponent extends ServiceFormComponent implements OnIn
     }
 
     ngOnInit() {
-        Observable.zip(
-            this.resourceService.getProviders(),
-            this.resourceService.getVocabularies()
-        ).subscribe(suc => {
-            this.providers = suc[0];
-            this.vocabularies = this.transformVocabularies(suc[1]);
-        });
+        super.ngOnInit();
+    }
+
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 
     onSuccess(service) {

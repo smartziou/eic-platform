@@ -1,10 +1,12 @@
 /**
  * Created by pgl on 09/10/17.
  */
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ResourceService} from "../../../services/resource.service";
+
+import {Component, OnDestroy, OnInit} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs/Subscription";
 import {NavigationService} from "../../../services/navigation.service";
+import {ResourceService} from "../../../services/resource.service";
 
 @Component({
     selector: "activate",
@@ -14,15 +16,18 @@ import {NavigationService} from "../../../services/navigation.service";
 export class ActivateComponent implements OnInit {
     errorMessage: string = null;
     successMessage: string = null;
+    private sub: Subscription;
 
     constructor(private resourceService: ResourceService, private route: ActivatedRoute, private router: NavigationService) {
     }
 
     ngOnInit() {
-        this.route.params.subscribe(this.onParams.bind(this));
+        this.sub = this.route.params.subscribe(params => {
+            this.resourceService.activateUserAccount(params["id"]).subscribe(this.router.login);
+        });
     }
 
-    onParams(params) {
-        this.resourceService.activateUserAccount(params["id"]).subscribe(this.router.login);
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 }

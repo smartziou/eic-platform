@@ -1,7 +1,7 @@
 /**
  * Created by stefania on 8/1/17.
  */
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
@@ -18,7 +18,7 @@ import {UserService} from "../../services/user.service";
     templateUrl: "./compare-services.component.html",
     styleUrls: ["./compare-services.component.css"]
 })
-export class CompareServicesComponent implements OnInit {
+export class CompareServicesComponent implements OnInit, OnDestroy {
     searchForm: FormGroup;
     public services: Service[] = [];
     public errorMessage: string;
@@ -26,7 +26,7 @@ export class CompareServicesComponent implements OnInit {
     providers: any;
     nologo: URL = new URL("http://fvtelibrary.com/img/user/NoLogo.png");
 
-    constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: NavigationService,
+    constructor(fb: FormBuilder, private route: ActivatedRoute, private router: NavigationService,
                 private resourceService: ResourceService, private authenticationService: AuthenticationService,
                 private userService: UserService, public comparisonService: ComparisonService) {
         this.searchForm = fb.group({"query": [""]});
@@ -35,7 +35,7 @@ export class CompareServicesComponent implements OnInit {
     ngOnInit() {
         this.resourceService.getProviders().subscribe(providers => {
             this.providers = providers;
-            this.sub = this.activatedRoute.params.subscribe(params => {
+            this.sub = this.route.params.subscribe(params => {
                 let ids = (params.services || "").split(",");
                 if (ids.length > 1) {
                     this.resourceService.getSelectedServices(ids).subscribe(

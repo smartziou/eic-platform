@@ -2,7 +2,7 @@
  * Created by stefania on 8/31/16.
  */
 
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
@@ -22,7 +22,7 @@ declare var UIkit: any;
     templateUrl: "./search.component.html",
     styleUrls: ["./search.component.css"]
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
     searchForm: FormGroup;
     errorMessage: string;
     sub: Subscription;
@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit {
     advanced: boolean = false;
     providers: any;
 
-    constructor(fb: FormBuilder, private router: NavigationService, private activatedRoute: ActivatedRoute,
+    constructor(fb: FormBuilder, private router: NavigationService, private route: ActivatedRoute,
                 private userService: UserService, private resourceService: ResourceService,
                 private authenticationService: AuthenticationService, public comparisonService: ComparisonService) {
         this.searchForm = fb.group({"query": [""]});
@@ -49,7 +49,7 @@ export class SearchComponent implements OnInit {
     ngOnInit() {
         this.resourceService.getProviders().subscribe(providers => {
             this.providers = providers;
-            this.sub = this.activatedRoute.params.subscribe(params => {
+            this.sub = this.route.params.subscribe(params => {
                 this.urlParameters.splice(0, this.urlParameters.length);
                 this.foundResults = true;
                 for (let obj in params) {
@@ -66,6 +66,10 @@ export class SearchComponent implements OnInit {
                     searchResults => this.updateSearchResults(searchResults));
             });
         });
+    }
+
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 
     updateSearchResults(searchResults: SearchResults) {
@@ -117,10 +121,6 @@ export class SearchComponent implements OnInit {
             this.isLastPageDisabled = true;
             this.isNextPageDisabled = true;
         }
-    }
-
-    ngOnDestroy() {
-        this.sub.unsubscribe();
     }
 
     orderFacets() {

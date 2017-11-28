@@ -16,6 +16,7 @@ import {RequiredServicesComponent} from "./requiredServices.component";
 import * as sd from "./services.description";
 import {TagsComponent} from "./tags.component";
 import {TermsOfUseComponent} from "./termsOfUse.component";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: "service-form",
@@ -157,5 +158,15 @@ export class ServiceFormComponent {
 
     isDev() {
         return localStorage.getItem("dev") === "aye";
+    }
+
+    ngOnInit() {
+        Observable.zip(
+            this.resourceService.getProviders(),
+            this.resourceService.getVocabularies()
+        ).subscribe(suc => {
+            this.providers = suc[0];
+            this.vocabularies = this.transformVocabularies(suc[1]);
+        });
     }
 }

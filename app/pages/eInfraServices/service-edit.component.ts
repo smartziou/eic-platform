@@ -1,11 +1,12 @@
 /**
  * Created by pgl on 21/08/17.
  */
+
 import {Location} from "@angular/common";
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../domain/eic-model";
 import {AuthenticationService} from "../../services/authentication.service";
 import {NavigationService} from "../../services/navigation.service";
@@ -18,6 +19,8 @@ import {ServiceFormComponent} from "./service-form.component";
     styleUrls: ["./service-edit.component.css"]
 })
 export class ServiceEditComponent extends ServiceFormComponent implements OnInit {
+    private sub: Subscription;
+
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute,
                 protected router: NavigationService, private authenticationService: AuthenticationService,
                 private location: Location) {
@@ -26,14 +29,10 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     }
 
     ngOnInit() {
-        Observable.zip(
-            this.resourceService.getProviders(),
-            this.resourceService.getVocabularies(),
-            this.route.params
-        ).subscribe(suc => {
-            this.providers = suc[0];
-            this.vocabularies = this.transformVocabularies(suc[1]);
-            this.resourceService.getService(atob(suc[2]["id"])).subscribe(service => {
+        super.ngOnInit();
+        this.sub = this.route.params.subscribe(params => {
+            this.serviceID = atob(params["id"]);
+            this.resourceService.getService(this.serviceID).subscribe(service => {
                 ResourceService.removeNulls(service);
                 if (service.providers.indexOf(this.authenticationService.user.email.split("@")[0]) > -1) {
                     this.serviceForm.patchValue(this.toForms(service));
@@ -42,6 +41,10 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
                 }
             });
         });
+    }
+
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 
     toForms(service: Service) {

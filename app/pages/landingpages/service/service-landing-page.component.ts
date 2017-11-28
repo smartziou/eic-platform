@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
@@ -12,7 +12,7 @@ import {ResourceService} from "../../../services/resource.service";
     templateUrl: "./service-landing-page.component.html",
     styleUrls: ["../landing-page.component.css"]
 })
-export class ServiceLandingPageComponent implements OnInit {
+export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     services: Service[];
     public service: Service;
     public errorMessage: string;
@@ -26,12 +26,9 @@ export class ServiceLandingPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.sub = Observable.zip(
-            this.route.params,
-            this.resourceService.getProviders()
-        ).subscribe(suc => {
-            let id = atob(suc[0]["id"]);
-            this.providers = suc[1];
+        this.resourceService.getProviders().subscribe(providers =>this.providers = providers);
+        this.sub = this.route.params.subscribe(params => {
+            let id = atob(params["id"]);
             this.resourceService.recordHit(id, "internal");
             this.resourceService.getService(id).subscribe(service => {
                 this.service = service;
@@ -44,6 +41,10 @@ export class ServiceLandingPageComponent implements OnInit {
                 }
             });
         });
+    }
+
+    ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 
     getPrettyService(id) {
