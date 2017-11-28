@@ -101,8 +101,10 @@
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
-                                <template [ngIf]="service.providers">
-                                    by {{service.providers | lookup:providers | join:", "}}
+                                <template [ngIf]="service.providers" style="display: flex">by&nbsp;
+                                    <span class="comma-element" *ngFor="let provider of service.providers">
+                                        <a (click)="this.router.search({provider: provider})">{{[provider]|lookup:providers}}</a>
+                                    </span>
                                 </template>
                             </td>
                         </tr>

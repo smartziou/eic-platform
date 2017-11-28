@@ -196,7 +196,14 @@
                                                 {{resourceInfo.resource.name}}
                                             </a>
                                         </h3>
-                                        <div class="" style="text-transform: none"><em style="color: #524f4f">(by {{resourceInfo.resource.providers | lookup:this.providers | join:", "}})</em></div>
+                                        <div class="" style="text-transform: none" >
+                                            <em style="color: #524f4f; display: flex">(by&nbsp;
+                                                <span class="comma-element" *ngFor="let provider of resourceInfo.resource.providers">
+                                                    <a (click)="this.router.search({provider: provider})">{{[provider]|lookup:providers}}</a>
+                                                </span>
+                                                )
+                                            </em>
+                                        </div>
                                         <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
                                             <read-more-text [text]="resourceInfo.resource.description" [maxHeight]="75">
                                             </read-more-text>

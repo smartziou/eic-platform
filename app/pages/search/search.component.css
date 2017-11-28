@@ -237,3 +237,11 @@ input.searchTextBox, input.searchTextBox:focus, input.searchTextBox:active  {
     /*z-index: 10000;*/
     /*display: block;*/
 /*}*/
+
+.comma-element::before {
+    content: ', ';
+}
+
+.comma-element:first-child::before {
+    content: '';
+}

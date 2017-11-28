@@ -23,7 +23,11 @@
                                       {{service.name || "Not Available"}}
                                     </a>
                                 </h2>
-                                <div>by {{service.providers | lookup:providers | join:", "}}</div>
+                                <div style="display: flex">by&nbsp;
+                                    <span class="comma-element" *ngFor="let provider of service.providers">
+                                        <a (click)="this.router.search({provider: provider})">{{[provider]|lookup:providers}}</a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div class="uk-width-1-4@m">

@@ -72,3 +72,11 @@ a:hover, .uk-link:hover {
     border-color: #214c9c;
     color: #214c9c;
 }
+
+.comma-element::before {
+    content: ', ';
+}
+
+.comma-element:first-child::before {
+    content: '';
+}

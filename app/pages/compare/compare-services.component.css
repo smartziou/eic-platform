@@ -46,3 +46,11 @@
     margin-bottom: 10px !important;
     text-transform: uppercase;
 }
+
+.comma-element::before {
+    content: ', ';
+}
+
+.comma-element:first-child::before {
+    content: '';
+}
