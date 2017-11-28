@@ -55,10 +55,6 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
         this.resourceService.recordHit(this.service.id, "external");
     }
 
-    ngOnDestroy() {
-        this.sub.unsubscribe();
-    }
-
     handleError(error) {
         this.errorMessage = "System error loading service (Server responded: " + error + ")";
     }
