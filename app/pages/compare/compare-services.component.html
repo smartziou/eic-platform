@@ -221,10 +221,10 @@
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Places</div>
-                                <template [ngIf]="service.place && service.place!=''">
-                                    {{service.place}}
+                                <template [ngIf]="service.places && service.places!=''">
+                                    {{service.places | lookup:this.vocabularies.Country | join:", "}}
                                 </template>
-                                <template [ngIf]="!service.place || service.place==''">
+                                <template [ngIf]="!service.places || service.place==''">
                                     --
                                 </template>
                             </td>
