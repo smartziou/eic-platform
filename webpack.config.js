@@ -7,8 +7,8 @@ const AotPlugin = require('@ngtools/webpack').AotPlugin;
 var webpackConfig = {
     entry: {
         'main': './app/main.ts',
-        'vendors' : './app/vendors.ts',
-        'polyfills' : './app/polyfills.ts'
+        'vendors': './app/vendors.ts',
+        'polyfills': './app/polyfills.ts'
     },
 
     output: {
@@ -100,7 +100,6 @@ var defaultConfig = {
         setImmediate: false
     }
 };
-
 
 module.exports = function (env) {
     if (process.env.NODE_ENV === 'production') {
