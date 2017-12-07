@@ -130,6 +130,9 @@
                 </div>
                 <div class="uk-navbar-center">
                     <ul class="uk-navbar-nav">
+                        <li *ngIf="this.authenticationService.isLoggedIn() && this.authenticationService.user.id == 'stefania'" class="uk-parent" [routerLinkActive]="['uk-active']">
+                            <a routerLink="/dashboard" routerLinkActive="uk-active">Dashboard</a>
+                        </li>
                         <li class="uk-parent" [routerLinkActive]="['uk-active']">
                             <a routerLink="/home" routerLinkActive="uk-active">
                                 Home
