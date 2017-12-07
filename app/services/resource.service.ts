@@ -3,6 +3,7 @@
  */
 
 import {Injectable} from "@angular/core";
+import {URLSearchParams} from "@angular/http";
 import {BrowseResults} from "../domain/browse-results";
 import {Access, Service} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
