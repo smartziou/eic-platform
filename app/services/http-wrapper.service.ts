@@ -24,14 +24,18 @@ export class HTTPWrapper extends Http {
         return super.put(this.base + url, this.parse(body), options).map(this.getJSON).catch(this.handleError);
     }
 
+    public getAny(url: string, options?: RequestOptionsArgs): Observable<any> {
+        return super.get(url, options).map(this.getJSON).catch(this.handleError);
+    }
+
     public get(url: string, options?: RequestOptionsArgs): Observable<any> {
-        return super.get(this.base + url, options).map(this.getJSON).catch(this.handleError);
+        return this.getAny(this.base + url, options);
     }
 
     public handleError(error: Response) {
         let message = "Severe server error";
         try {
-            JSON.parse(error.text()).error
+            JSON.parse(error.text()).error;
         } catch (e) {
             console.error("HTTPWrapper", e);
         }
