@@ -6,6 +6,7 @@ import {Service} from "../../../domain/eic-model";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {NavigationService} from "../../../services/navigation.service";
 import {ResourceService} from "../../../services/resource.service";
+import {UserService} from "../../../services/user.service";
 
 declare var Highcharts;
 
@@ -24,7 +25,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     private providers: any = {};
 
     constructor(private route: ActivatedRoute, private router: NavigationService, private resourceService: ResourceService,
-                private authenticationService: AuthenticationService) {
+                private authenticationService: AuthenticationService, private userService: UserService) {
         this.Math = Math;
     }
 
