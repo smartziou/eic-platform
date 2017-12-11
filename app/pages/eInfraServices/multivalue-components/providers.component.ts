@@ -3,10 +3,10 @@
  */
 import {Component, Injector} from "@angular/core";
 import {Validators} from "@angular/forms";
-import {AuthenticationService} from "../../services/authentication.service";
-import {ResourceService} from "../../services/resource.service";
-import {MyGroup} from "../multiforms/my-group.interface";
-import * as sd from "./services.description";
+import {AuthenticationService} from "../../../services/authentication.service";
+import {ResourceService} from "../../../services/resource.service";
+import {MyGroup} from "../../multiforms/my-group.interface";
+import * as sd from "../services.description";
 
 @Component({
     selector: "providersInfo-form",
@@ -24,7 +24,7 @@ export class ProvidersComponent extends MyGroup {
     providers: any = {"qq": "Error fetching providers"};
     readonly groupDefinition = {entry: ["", Validators.required]};
     readonly providersDesc: sd.Description = sd.providersDesc;
-    weights:string[] = [];
+    weights: string[] = [];
 
     constructor(private resourceService: ResourceService, private authenticationService: AuthenticationService,
                 injector: Injector) {

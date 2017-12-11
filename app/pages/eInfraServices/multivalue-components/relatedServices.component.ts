@@ -1,7 +1,7 @@
 import {Component, Injector} from "@angular/core";
-import {ResourceService} from "../../services/resource.service";
-import {MyGroup} from "../multiforms/my-group.interface";
-import * as sd from "./services.description";
+import {ResourceService} from "../../../services/resource.service";
+import {MyGroup} from "../../multiforms/my-group.interface";
+import * as sd from "../services.description";
 
 @Component({
     selector: "relatedServicesInfo-form",

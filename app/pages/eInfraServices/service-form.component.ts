@@ -3,20 +3,20 @@
  */
 import {Component, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Observable} from "rxjs/Observable";
 import {Service} from "../../domain/eic-model";
-import {URLValidator} from "../../shared/validators/generic.validator";
 import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
+import {URLValidator} from "../../shared/validators/generic.validator";
 import {PhaseValidator, TLRValidator} from "../../shared/validators/vocabulary.validator";
-import {LanguagesComponent} from "./languages.component";
-import {PlacesComponent} from "./places.component";
-import {ProvidersComponent} from "./providers.component";
-import {RelatedServicesComponent} from "./relatedServices.component";
-import {RequiredServicesComponent} from "./requiredServices.component";
+import {LanguagesComponent} from "./multivalue-components/languages.component";
+import {PlacesComponent} from "./multivalue-components/places.component";
+import {ProvidersComponent} from "./multivalue-components/providers.component";
+import {RelatedServicesComponent} from "./multivalue-components/relatedServices.component";
+import {RequiredServicesComponent} from "./multivalue-components/requiredServices.component";
+import {TagsComponent} from "./multivalue-components/tags.component";
+import {TermsOfUseComponent} from "./multivalue-components/termsOfUse.component";
 import * as sd from "./services.description";
-import {TagsComponent} from "./tags.component";
-import {TermsOfUseComponent} from "./termsOfUse.component";
-import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: "service-form",
