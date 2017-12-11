@@ -4,12 +4,14 @@
 
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
-import {User} from "../domain/eic-model";
+import {Service, User} from "../domain/eic-model";
+import {AuthenticationService} from "./authentication.service";
 import {HTTPWrapper} from "./http-wrapper.service";
+import {NavigationService} from "./navigation.service";
 
 @Injectable()
 export class UserService {
-    constructor(private http: HTTPWrapper) {
+    constructor(private http: HTTPWrapper, private router: NavigationService, private authenticationService: AuthenticationService) {
     }
 
     addFavourite(serviceID: string, userID: string): Observable<any> {
@@ -22,6 +24,11 @@ export class UserService {
 
     registerUser(user: User): Observable<any> {
         return this.http.post("/user/register", user);
+    }
+
+    public canEditService(service: Service) {
+        return this.authenticationService.isLoggedIn() && service.providers && service.providers.length > 0 &&
+            service.providers.indexOf(this.authenticationService.user.email.split("@")[0]) > -1;
     }
 
     public rateService(id: string) {

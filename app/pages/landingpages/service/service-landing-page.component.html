@@ -37,11 +37,7 @@
                                                   [staticColor]="'ok'"></star-rating-comp>
                             </div>
                             <div class="uk-margin-top" style="text-align: center">
-                                <button class="uk-button uk-button-primary rateButton" (click)="this.rateService()">
-                                    <strong>Rate it!</strong> <!--<i class="fa fa-star" aria-hidden="true"></i>-->
-                                </button>
-                                <div></div>
-                                <button class="uk-button uk-button-primary editButton" (click)="this.router.edit(service.id)" routerLinkActive="active">
+                                <button *ngIf="this.userService.canEditService(service)" class="uk-button uk-button-primary editButton" (click)="this.router.edit(service.id)" routerLinkActive="active">
                                     <strong>Edit it!</strong>
                                 </button>
                             </div>

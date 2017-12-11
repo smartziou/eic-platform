@@ -3,7 +3,7 @@
  */
 
 import {Location} from "@angular/common";
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
@@ -11,6 +11,7 @@ import {Service} from "../../domain/eic-model";
 import {AuthenticationService} from "../../services/authentication.service";
 import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
+import {UserService} from "../../services/user.service";
 import {ServiceFormComponent} from "./service-form.component";
 
 @Component({
@@ -24,7 +25,7 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute,
                 protected router: NavigationService, private authenticationService: AuthenticationService,
-                private location: Location) {
+                private location: Location, private userService: UserService) {
         super(resourceService, fb, router);
         this.editMode = true;
     }
@@ -34,8 +35,8 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
         this.sub = this.route.params.subscribe(params => {
             this.serviceID = atob(params["id"]);
             this.resourceService.getService(this.serviceID).subscribe(service => {
-                ResourceService.removeNulls(service);
-                if (service.providers.indexOf(this.authenticationService.user.email.split("@")[0]) > -1) {
+                if (this.userService.canEditService(service)) {
+                    ResourceService.removeNulls(service);
                     this.serviceForm.patchValue(this.toForms(service));
                 } else {
                     this.location.back();
