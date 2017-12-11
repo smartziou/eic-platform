@@ -239,7 +239,7 @@
                         <!--<li *ngIf="service.places || service.region || service.language">-->
                             <div class="uk-grid uk-margin-medium-top">
                                 <div class="uk-width-1-2@m">
-                                    <img src="./imgs/eu-map-demo.png">
+                                    <div id="coverageMap">{{this.runHighCharts()}}</div>
                                 </div>
                                 <div class="uk-width-1-2@m">
                                     <dl class="uk-description-list">
