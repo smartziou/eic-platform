@@ -14,8 +14,15 @@ export class UserService {
     constructor(private http: HTTPWrapper, private router: NavigationService, private authenticationService: AuthenticationService) {
     }
 
-    addFavourite(serviceID: string, userID: string): Observable<any> {
-        return this.http.post("/user/addFavourite", {userID, serviceID});
+    addFavourite(serviceID: string): Observable<any> {
+        if (this.authenticationService.isLoggedIn()) {
+            let userID = this.authenticationService.user.id;
+            return this.http.post("/user/addFavourite", {userID, serviceID});
+        } else {
+            this.router.login();
+            return Observable.throw("Not logged in");
+        }
+
     }
 
     loginUser(email: string, password: string): Observable<any> {

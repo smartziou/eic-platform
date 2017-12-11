@@ -281,7 +281,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     favourite(service) {
         if (this.authenticationService.isLoggedIn()) {
-            this.userService.addFavourite(service, this.authenticationService.user.id);
+            this.userService.addFavourite(service);
         } else {
             this.router.login();
         }
