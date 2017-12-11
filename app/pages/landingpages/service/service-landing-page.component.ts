@@ -56,7 +56,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     }
 
     runHighCharts() {
-        let places = JSON.parse(JSON.stringify(this.service.places));
+        let places = JSON.parse(JSON.stringify(this.service.places || []));
         let iEU = places.indexOf("EU");
         if (iEU > -1) {
             places.splice(iEU, 1);
