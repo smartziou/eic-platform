@@ -4,17 +4,33 @@
 
 import {Injectable} from "@angular/core";
 import {Headers, RequestOptions, URLSearchParams} from "@angular/http";
+import {Observable} from "rxjs/Observable";
 import {BrowseResults} from "../domain/browse-results";
 import {Access, Service} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";
 import {HTTPWrapper} from "./http-wrapper.service";
-import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ResourceService {
     constructor(private http: HTTPWrapper, private authenticationService: AuthenticationService) {
+    }
+
+    getAll(resourceType: string) {
+        return this.http.get(`/${resourceType}/all`);
+    }
+
+    getBy(resourceType: string, resourceField: string) {
+        return this.http.get(`/${resourceType}/by/${resourceField}/`);
+    }
+
+    getSome(resourceType: string, ids: string[]) {
+        return this.http.get(`/${resourceType}/some/${ids.toString()}/`);
+    }
+
+    get(resourceType: string, id: string) {
+        return this.http.get(`/${resourceType}/${id}/`);
     }
 
     static removeNulls(obj) {
@@ -65,23 +81,23 @@ export class ResourceService {
     }
 
     getServices() {
-        return this.http.get("/service/by/service_id");
+        return this.getBy("service", "service_id");
     }
 
     getService(id: string) {
-        return this.http.get(`/service/${id}/`);
+        return this.get("service", id);
     }
 
     getSelectedServices(ids: string[]) {
-        return this.http.get(`/service/some/${ids.toString()}/`).map(res => <Service[]> <any> res);
+        return this.getSome("service", ids).map(res => <Service[]> <any> res);
     }
 
     getServicesByCategories() {
-        return this.http.get("/service/by/category").map(res => <BrowseResults> <any> res);
+        return this.getBy("service", "category").map(res => <BrowseResults> <any> res);
     }
 
     getProviders() {
-        return this.http.get("/provider/all").map(e => e.results.reduce(this.idToName, {}));
+        return this.getAll("provider").map(e => e.results.reduce(this.idToName, {}));
     }
 
     getEU() {
