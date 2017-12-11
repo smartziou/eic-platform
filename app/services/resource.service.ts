@@ -10,6 +10,7 @@ import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";
 import {HTTPWrapper} from "./http-wrapper.service";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ResourceService {
@@ -107,6 +108,8 @@ export class ResourceService {
             hit.type = type;
             sessionStorage.setItem(type + "-" + id, "aye");
             return this.http.post("/access/add", hit);
+        } else {
+            return Observable.from(["k"]);
         }
     }
 }
