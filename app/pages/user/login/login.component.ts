@@ -3,7 +3,6 @@
  */
 import {Component} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {User} from "../../../domain/eic-model";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {UserService} from "../../../services/user.service";
@@ -19,7 +18,7 @@ export class LoginComponent {
     public errorMessage: string;
 
     constructor(fb: FormBuilder, private authenticationService: AuthenticationService,
-                private userService: UserService, private router: Router) {
+                private userService: UserService) {
         this.loginForm = fb.group({
             "email": ["", Validators.compose([Validators.required, Validators.email])],
             "password": ["", Validators.required]
