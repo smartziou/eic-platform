@@ -100,7 +100,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     }
 
     visit() {
-        this.resourceService.recordHit(this.service.id, "external");
+        this.resourceService.recordHit(this.service.id, "external").subscribe(console.log);
     }
 
     handleError(error) {
