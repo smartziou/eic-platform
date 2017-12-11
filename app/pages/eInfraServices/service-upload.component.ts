@@ -26,10 +26,6 @@ export class ServiceUploadComponent extends ServiceFormComponent implements OnIn
         super.ngOnInit();
     }
 
-    ngOnDestroy(): void {
-        this.sub.unsubscribe();
-    }
-
     onSuccess(service) {
         this.successMessage = "Service uploaded successfully!";
     }
