@@ -73,12 +73,4 @@ export class CompareServicesComponent implements OnInit, OnDestroy {
     onSubmit(searchValue: SearchQuery) {
         return this.router.search({query: searchValue.query});
     }
-
-    favourite(service) {
-        if (this.authenticationService.isLoggedIn()) {
-            this.userService.addFavourite(service);
-        } else {
-            this.router.login();
-        }
-    }
 }

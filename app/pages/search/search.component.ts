@@ -278,12 +278,4 @@ export class SearchComponent implements OnInit, OnDestroy {
             this.urlParameters.push(newFromParameter);
         }
     }
-
-    favourite(service) {
-        if (this.authenticationService.isLoggedIn()) {
-            this.userService.addFavourite(service);
-        } else {
-            this.router.login();
-        }
-    }
 }
