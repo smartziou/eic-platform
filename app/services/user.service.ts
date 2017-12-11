@@ -14,13 +14,12 @@ export class UserService {
     constructor(private http: HTTPWrapper, private router: NavigationService, private authenticationService: AuthenticationService) {
     }
 
-    addFavourite(serviceID: string): Observable<any> {
+    addFavourite(serviceID: string) {
         if (this.authenticationService.isLoggedIn()) {
             let userID = this.authenticationService.user.id;
-            return this.http.post("/user/addFavourite", {userID, serviceID});
+            this.http.post("/user/addFavourite", {userID, serviceID}).subscribe(console.log);
         } else {
             this.router.login();
-            return Observable.throw("Not logged in");
         }
 
     }
