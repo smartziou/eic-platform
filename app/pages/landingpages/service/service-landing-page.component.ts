@@ -89,6 +89,10 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
         return "";
     }
 
+    getShownRating() {
+        //if user has rated, then show user rating
+        //else show average rating
+    }
 
     getPrettyService(id) {
         return (this.services || []).find(e => e.id == id) || {id, name: "Name not found!"};
