@@ -3,7 +3,7 @@
  */
 
 import {Injectable} from "@angular/core";
-import {URLSearchParams} from "@angular/http";
+import {Headers, RequestOptions, URLSearchParams} from "@angular/http";
 import {BrowseResults} from "../domain/browse-results";
 import {Access, Service} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
@@ -81,6 +81,13 @@ export class ResourceService {
 
     getProviders() {
         return this.http.get("/provider/all").map(e => e.results.reduce(this.idToName, {}));
+    }
+
+    getEU() {
+        return this.http.getAny(
+            "https://restcountries.eu/rest/v2/regionalbloc/EU?fields=alpha2Code",
+            new RequestOptions({headers: new Headers({"Accept": "*"})})
+        ).map(suc => suc.map(e => e.alpha2Code.toLowerCase()));
     }
 
     activateUserAccount(id: any) {
