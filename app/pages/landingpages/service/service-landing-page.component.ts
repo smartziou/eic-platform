@@ -89,8 +89,9 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
         return "";
     }
 
+
     getPrettyService(id) {
-        return this.services.find(e => e.id == id) || {id, name: "Name not found!"};
+        return (this.services || []).find(e => e.id == id) || {id, name: "Name not found!"};
     }
 
     visit() {
