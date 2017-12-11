@@ -181,7 +181,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="uk-margin-small-top">
-                                                    <star-rating-comp [starType]="'svg'" [rating]="0" [step]="1"
+                                                    <star-rating-comp (click)="this.userService.rateService(resourceInfo.resource.id)" [starType]="'svg'" [rating]="0" [step]="1"
                                                                       [showHalfStars]="true" [readOnly]=!this.authenticationService.isLoggedIn() [size]="'small'"
                                                                       [staticColor]="'ok'" title="Rate this service" uk-tooltip="delay: 500"></star-rating-comp>
                                                     <span>(0)</span>

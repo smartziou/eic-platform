@@ -23,4 +23,12 @@ export class UserService {
     registerUser(user: User): Observable<any> {
         return this.http.post("/user/register", user);
     }
+
+    public rateService(id: string) {
+        if (this.authenticationService.isLoggedIn()) {
+            console.log(`Gon rate ${id} when this is implemented!`);
+        } else {
+            this.router.login();
+        }
+    }
 }

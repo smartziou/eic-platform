@@ -32,7 +32,7 @@
                         </div>
                         <div class="uk-width-1-4@m">
                             <div class="uk-margin-top">
-                                <star-rating-comp [starType]="'svg'" [rating]="service.averageRating" [step]="1"
+                                <star-rating-comp (click)="this.userService.rateService(service.id)" [starType]="'svg'" [rating]="this.getShownRating()" [step]="1"
                                                   [showHalfStars]="true" [readOnly]=!this.authenticationService.isLoggedIn() [size]="'medium'"
                                                   [staticColor]="'ok'"></star-rating-comp>
                             </div>

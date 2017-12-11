@@ -64,12 +64,4 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
         let num = 100 * parseInt(parts[0]) + parseInt(parts[1]);
         return Math.floor(1371 + Math.abs(Math.sin(num) * 100000));
     }
-
-    rateService() {
-        if (this.authenticationService.isLoggedIn()) {
-            //Rate logic goes here
-        } else {
-            this.router.login();
-        }
-    }
 }
