@@ -1,6 +1,7 @@
 /**
  * Created by stefania on 6/7/17.
  */
+
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActiveTopicQuestions} from "../../../domain/faq-active-topic-questions";
