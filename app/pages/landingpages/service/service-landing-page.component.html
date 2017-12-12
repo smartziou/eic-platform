@@ -2,15 +2,15 @@
     <div class="uk-container">
         <div class="uk-grid" uk-grid="">
 
-            <template [ngIf]="errorMessage">
+            <ng-template [ngIf]="errorMessage">
                 <div class="uk-width-expand@m uk-first-column">
                     <div data-uk-alert="" class="uk-alert uk-alert-danger">
                         <p>{{errorMessage}}</p>
                     </div>
                 </div>
-            </template>
+            </ng-template>
 
-            <template [ngIf]="service && !errorMessage">
+            <ng-template [ngIf]="service && !errorMessage">
 
                 <div class="uk-width-1-1 uk-row-first uk-clearfix">
 
@@ -80,42 +80,42 @@
 
                     <dl class="uk-description-list">
 
-                        <template [ngIf]="service.version">
+                        <ng-template [ngIf]="service.version">
                             <dt>Version</dt>
                             <dd>{{service.version}}</dd>
-                        </template>
-                        <template [ngIf]="!service.version">
+                        </ng-template>
+                        <ng-template [ngIf]="!service.version">
                             <dt>Version</dt>
                             <dd>Not available</dd>
-                        </template>
+                        </ng-template>
 
-                        <template [ngIf]="service.funding">
+                        <ng-template [ngIf]="service.funding">
                             <dt>Funding sources</dt>
                             <dd>{{service.funding}}</dd>
-                        </template>
-                        <template [ngIf]="!service.funding">
+                        </ng-template>
+                        <ng-template [ngIf]="!service.funding">
                             <dt>Funding sources</dt>
                             <dd>Not available</dd>
-                        </template>
+                        </ng-template>
                     </dl>
 
-                    <template [ngIf]="service.tags && service.tags.length>0">
+                    <ng-template [ngIf]="service.tags && service.tags.length>0">
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                         <span>Service tags</span>
                         <div class="">
                             <span *ngFor="let tag of service.tags" class="uk-label uk-label-default">{{tag}}</span>
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
-                    </template>
+                    </ng-template>
 
-                    <template [ngIf]="!service.tags || service.tags.length==0">
+                    <ng-template [ngIf]="!service.tags || service.tags.length==0">
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
                         <span>Service tags</span>
                         <div class="">
                             <span class="uk-label uk-label-default">Not available</span>
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
-                    </template>
+                    </ng-template>
 
 
                     <!--TABS-->
@@ -175,32 +175,32 @@
                             <div class="uk-margin-medium-top">
                                 <dl class="uk-description-list">
 
-                                    <template [ngIf]="service.targetUsers">
+                                    <ng-template [ngIf]="service.targetUsers">
                                         <dt>Target users</dt>
                                         <dd>{{service.targetUsers}}</dd>
-                                    </template>
-                                    <template [ngIf]="!service.targetUsers">
+                                    </ng-template>
+                                    <ng-template [ngIf]="!service.targetUsers">
                                         <dt>Target users</dt>
                                         <dd>Not available</dd>
-                                    </template>
+                                    </ng-template>
 
-                                    <template [ngIf]="service.userValue">
+                                    <ng-template [ngIf]="service.userValue">
                                         <dt>User value</dt>
                                         <dd>{{service.userValue}}</dd>
-                                    </template>
-                                    <template [ngIf]="!service.userValue">
+                                    </ng-template>
+                                    <ng-template [ngIf]="!service.userValue">
                                         <dt>User value</dt>
                                         <dd>Not available</dd>
-                                    </template>
+                                    </ng-template>
 
-                                    <template [ngIf]="service.userBase">
+                                    <ng-template [ngIf]="service.userBase">
                                         <dt>User base</dt>
                                         <dd>{{service.userBase}}</dd>
-                                    </template>
-                                    <template [ngIf]="!service.userBase">
+                                    </ng-template>
+                                    <ng-template [ngIf]="!service.userBase">
                                         <dt>User base</dt>
                                         <dd>Not available</dd>
-                                    </template>
+                                    </ng-template>
 
                                 </dl>
                             </div>
@@ -240,45 +240,45 @@
                                 <div class="uk-width-1-2@m">
                                     <dl class="uk-description-list">
 
-                                        <template [ngIf]="service.places && service.places.length>0">
+                                        <ng-template [ngIf]="service.places && service.places.length>0">
                                             <dt>Places</dt>
                                             <dd>
                                                 <!--<span *ngFor="let place of service.places">{{place}}, </span>-->
                                                 <span >{{service.places.join()}}</span>
                                             </dd>
-                                        </template>
-                                        <template [ngIf]="!service.places || service.places.length==0">
+                                        </ng-template>
+                                        <ng-template [ngIf]="!service.places || service.places.length==0">
                                             <dt>Places</dt>
                                             <dd>
                                                 <span>Not available</span>
                                             </dd>
-                                        </template>
+                                        </ng-template>
 
-                                        <!--<template [ngIf]="service.region && service.region.length>0">-->
+                                        <!--<ng-template [ngIf]="service.region && service.region.length>0">-->
                                             <!--<dt>Regions</dt>-->
                                             <!--<dd>-->
                                                 <!--<span *ngFor="let region of service.region">{{region}}, </span>-->
                                             <!--</dd>-->
-                                        <!--</template>-->
-                                        <!--<template [ngIf]="!service.region || service.region.length==0">-->
+                                        <!--</ng-template>-->
+                                        <!--<ng-template [ngIf]="!service.region || service.region.length==0">-->
                                             <!--<dt>Regions</dt>-->
                                             <!--<dd>-->
                                                 <!--<span>Not available</span>-->
                                             <!--</dd>-->
-                                        <!--</template>-->
+                                        <!--</ng-template>-->
 
-                                        <template [ngIf]="service.languages && service.languages.length>0">
+                                        <ng-template [ngIf]="service.languages && service.languages.length>0">
                                             <dt>Languages</dt>
                                             <dd>
                                                 <span *ngFor="let language of service.languages">{{language}}, </span>
                                             </dd>
-                                        </template>
-                                        <template [ngIf]="!service.languages || service.languages.length==0">
+                                        </ng-template>
+                                        <ng-template [ngIf]="!service.languages || service.languages.length==0">
                                             <dt>Languages</dt>
                                             <dd>
                                                 <span>Not available</span>
                                             </dd>
-                                        </template>
+                                        </ng-template>
 
                                     </dl>
                                 </div>
@@ -289,41 +289,41 @@
                             <div class="uk-margin-medium-top">
                                 <dl class="uk-description-list">
 
-                                    <template [ngIf]="service.options">
+                                    <ng-template [ngIf]="service.options">
                                         <dt>Options</dt>
                                         <dd>{{service.options}}</dd>
-                                    </template>
-                                    <template [ngIf]="!service.options">
+                                    </ng-template>
+                                    <ng-template [ngIf]="!service.options">
                                         <dt>Options</dt>
                                         <dd>Not available</dd>
-                                    </template>
+                                    </ng-template>
 
-                                    <template [ngIf]="service.price">
+                                    <ng-template [ngIf]="service.price">
                                         <dt>Pricing model</dt>
                                         <dd>{{service.price}}</dd>
-                                    </template>
-                                    <template [ngIf]="!service.price">
+                                    </ng-template>
+                                    <ng-template [ngIf]="!service.price">
                                         <dt>Pricing model</dt>
                                         <dd>Not available</dd>
-                                    </template>
+                                    </ng-template>
 
-                                    <template [ngIf]="service.serviceLevelAgreement">
+                                    <ng-template [ngIf]="service.serviceLevelAgreement">
                                         <dt>Service Level Agreement</dt>
                                         <dd>{{service.serviceLevelAgreement}}</dd>
-                                    </template>
-                                    <template [ngIf]="!service.serviceLevelAgreement">
+                                    </ng-template>
+                                    <ng-template [ngIf]="!service.serviceLevelAgreement">
                                         <dt>Service Level Agreement</dt>
                                         <dd>Not available</dd>
-                                    </template>
+                                    </ng-template>
 
-                                    <template [ngIf]="service.termsOfUse && service.termsOfUse.length > 0">
+                                    <ng-template [ngIf]="service.termsOfUse && service.termsOfUse.length > 0">
                                         <dt>Terms of Use</dt>
                                         <dd>{{service.termsOfUse}}</dd>
-                                    </template>
-                                    <template [ngIf]="!service.termsOfUse">
+                                    </ng-template>
+                                    <ng-template [ngIf]="!service.termsOfUse">
                                         <dt>Terms of Use</dt>
                                         <dd>Not available</dd>
-                                    </template>
+                                    </ng-template>
 
                                 </dl>
                             </div>
@@ -402,7 +402,7 @@
 
                 </div>
 
-            </template>
+            </ng-template>
 
 
 

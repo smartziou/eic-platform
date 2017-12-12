@@ -15,13 +15,13 @@
                                     <button class=" uk-button uk-button-default" type="submit">Search</button>
                                 </form>
                                 <!--<ul *ngIf="urlParameters && urlParameters.length>0" class="facets-selected cf uk-width-medium-9-10">-->
-                                    <!--<template ngFor let-urlParameter [ngForOf]="urlParameters">-->
-                                        <!--<template [ngIf]="urlParameter.key!='advanced'">-->
+                                    <!--<ng-template ngFor let-urlParameter [ngForOf]="urlParameters">-->
+                                        <!--<ng-template [ngIf]="urlParameter.key!='advanced'">-->
                                             <!--<li *ngFor="let facet of urlParameter.values" class="search-tag">-->
                                                 <!--<span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="deselectFacet(urlParameter.key, facet)" data-role="remove"></a>-->
                                             <!--</li>-->
-                                        <!--</template>-->
-                                    <!--</template>-->
+                                        <!--</ng-template>-->
+                                    <!--</ng-template>-->
                                 <!--</ul>-->
                             </div>
                         </div>
@@ -91,164 +91,164 @@
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
-                                <template [ngIf]="service.tagline && service.tagline!=''">
+                                <ng-template [ngIf]="service.tagline && service.tagline!=''">
                                     <span style="color: #214c9c"><i>"{{service.tagline}}"</i></span>
-                                </template>
-                                <template [ngIf]="!service.tagline || service.tagline==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.tagline || service.tagline==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
-                                <template [ngIf]="service.providers" style="display: flex">by&nbsp;
+                                <ng-template [ngIf]="service.providers" style="display: flex">by&nbsp;
                                     <span class="comma-element" *ngFor="let provider of service.providers">
                                         <a (click)="this.router.search({provider: provider})">{{[provider]|lookup:providers}}</a>
                                     </span>
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Options</div>
-                                <template [ngIf]="service.options && service.options!=''">
+                                <ng-template [ngIf]="service.options && service.options!=''">
                                     {{service.options}}
-                                </template>
-                                <template [ngIf]="!service.options || service.options==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.options || service.options==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Target Users</div>
-                                <template [ngIf]="service.targetUsers && service.targetUsers!=''">
+                                <ng-template [ngIf]="service.targetUsers && service.targetUsers!=''">
                                     {{service.targetUsers}}
-                                </template>
-                                <template [ngIf]="!service.targetUsers || service.targetUsers==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.targetUsers || service.targetUsers==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">User Value</div>
-                                <template [ngIf]="service.userValue && service.userValue!=''">
+                                <ng-template [ngIf]="service.userValue && service.userValue!=''">
                                     {{service.userValue}}
-                                </template>
-                                <template [ngIf]="!service.userValue || service.userValue==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.userValue || service.userValue==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">User Base</div>
-                                <template [ngIf]="service.userBase && service.userBase!=''">
+                                <ng-template [ngIf]="service.userBase && service.userBase!=''">
                                     {{service.userBase}}
-                                </template>
-                                <template [ngIf]="!service.userBase || service.userBase==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.userBase || service.userBase==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Funding sources</div>
-                                <template [ngIf]="service.funding && service.funding!=''">
+                                <ng-template [ngIf]="service.funding && service.funding!=''">
                                     {{service.funding}}
-                                </template>
-                                <template [ngIf]="!service.funding || service.funding==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.funding || service.funding==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Version</div>
-                                <template [ngIf]="service.version && service.version!=''">
+                                <ng-template [ngIf]="service.version && service.version!=''">
                                     {{service.version}}
-                                </template>
-                                <template [ngIf]="!service.version || service.version==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.version || service.version==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Phase</div>
-                                <template [ngIf]="service.lifeCycleStatus && service.lifeCycleStatus!=''">
+                                <ng-template [ngIf]="service.lifeCycleStatus && service.lifeCycleStatus!=''">
                                     {{service.lifeCycleStatus}}
-                                </template>
-                                <template [ngIf]="!service.lifeCycleStatus || service.lifeCycleStatus==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.lifeCycleStatus || service.lifeCycleStatus==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">TRL</div>
-                                <template [ngIf]="service.trl && service.trl!=''">
+                                <ng-template [ngIf]="service.trl && service.trl!=''">
                                     {{service.trl}}
-                                </template>
-                                <template [ngIf]="!service.trl || service.trl==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.trl || service.trl==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Category</div>
-                                <template [ngIf]="service.category && service.category!=''">
+                                <ng-template [ngIf]="service.category && service.category!=''">
                                     {{service.category}}
-                                </template>
-                                <template [ngIf]="!service.category || service.category==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.category || service.category==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Subcategory</div>
-                                <template [ngIf]="service.subcategory && service.subcategory!=''">
+                                <ng-template [ngIf]="service.subcategory && service.subcategory!=''">
                                     {{service.subcategory}}
-                                </template>
-                                <template [ngIf]="!service.subcategory || service.subcategory==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.subcategory || service.subcategory==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Places</div>
-                                <template [ngIf]="service.places && service.places!=''">
+                                <ng-template [ngIf]="service.places && service.places!=''">
                                     {{service.places | lookup:this.vocabularies.Country | join:", "}}
-                                </template>
-                                <template [ngIf]="!service.places || service.place==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.places || service.place==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                         <!--<tr>-->
                             <!--<td *ngFor="let service of services" class="uk-width-1-{{services.length}}">-->
                                 <!--<div class="fieldName">Regions</div>-->
-                                <!--<template [ngIf]="service.region && service.region!=''">-->
+                                <!--<ng-template [ngIf]="service.region && service.region!=''">-->
                                     <!--{{service.region}}-->
-                                <!--</template>-->
-                                <!--<template [ngIf]="!service.region || service.region==''">-->
+                                <!--</ng-template>-->
+                                <!--<ng-template [ngIf]="!service.region || service.region==''">-->
                                     <!--&#45;&#45;-->
-                                <!--</template>-->
+                                <!--</ng-template>-->
                             <!--</td>-->
                         <!--</tr>-->
                         <tr>
                             <td *ngFor="let service of services" class="uk-width-1-{{services.length}}">
                                 <div class="fieldName">Languages</div>
-                                <template [ngIf]="service.languages && service.languages!=''">
+                                <ng-template [ngIf]="service.languages && service.languages!=''">
                                     {{service.languages | lookup:this.vocabularies.Language | join:", "}}
-                                </template>
-                                <template [ngIf]="!service.languages || service.languages==''">
+                                </ng-template>
+                                <ng-template [ngIf]="!service.languages || service.languages==''">
                                     --
-                                </template>
+                                </ng-template>
                             </td>
                         </tr>
                     </tbody>

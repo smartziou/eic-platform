@@ -9,11 +9,11 @@ import {HelpContentService} from "../../services/help-content.service";
 @Component({
     selector: "help-content",
     template: `
-        <template [ngIf]="contents && contents.length>0">
-            <template ngFor let-content [ngForOf]="contents">
+        <ng-template [ngIf]="contents && contents.length>0">
+            <ng-template ngFor let-content [ngForOf]="contents">
                 <div [innerHTML]="content.content" class="uk-margin-medium-bottom"></div>
-            </template>
-        </template>
+            </ng-template>
+        </ng-template>
     `
 })
 export class HelpContentComponent implements OnInit {
@@ -48,12 +48,12 @@ export class HelpContentComponent implements OnInit {
 @Component({
     selector: "aside-help-content",
     template: `
-        <template [ngIf]="contents && contents.length>0">
-            <template ngFor let-content [ngForOf]="contents">
+        <ng-template [ngIf]="contents && contents.length>0">
+            <ng-template ngFor let-content [ngForOf]="contents">
                 <div [innerHTML]="content.content"
                      class="uk-card uk-card-body uk-card-default sidemenu uk-margin-bottom"></div>
-            </template>
-        </template>
+            </ng-template>
+        </ng-template>
     `
 })
 export class AsideHelpContentComponent extends HelpContentComponent {

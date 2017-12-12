@@ -121,7 +121,7 @@ export class MyGroup implements OnInit, AfterContentInit {
 @Component({
     selector: 'form-inline',
     template: `
-        <template #descTemplate>{{description.desc}}</template>
+        <ng-template #descTemplate>{{description.desc}}</ng-template>
 
         <div class="uk-form-horizontal uk-margin-bottom">
             <label class="uk-width-1-5 uk-form-label" [ngClass]="{'required':description.mandatory}">
