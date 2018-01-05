@@ -123,7 +123,7 @@ export class ResourceService {
             hit.userID = (this.authenticationService.user || {id: ""}).id;
             hit.type = type;
             sessionStorage.setItem(type + "-" + id, "aye");
-            return this.http.post("/access/add", hit);
+            return this.http.post("/access", hit);
         } else {
             return Observable.from(["k"]);
         }
