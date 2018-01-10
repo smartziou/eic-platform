@@ -9,6 +9,7 @@ import {ActivateComponent} from "./activate/activate.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {LoginComponent} from "./login/login.component";
 import {SignUpComponent} from "./register/sign-up.component";
+import { ServiceDashboardComponent } from "./dashboard/service-dashboard.component";
 
 const userRoutes: Routes = [
     {
@@ -24,6 +25,11 @@ const userRoutes: Routes = [
     {
         path: "dashboard",
         component: DashboardComponent,
+        canActivate: [CanActivateViaAuthGuard]
+    },
+    {
+        path: "dashboard/:id",
+        component: ServiceDashboardComponent,
         canActivate: [CanActivateViaAuthGuard]
     },
     {

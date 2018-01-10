@@ -48,6 +48,7 @@ import {FooterComponent} from "./shared/footer/footer.component";
 import {ReusableComponentsModule} from "./shared/reusablecomponents/reusable-components.module";
 import {SharedModule} from "./shared/shared.module";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
+import { ServiceDashboardComponent } from "./pages/user/dashboard/service-dashboard.component";
 
 const eicForms = [
     ProvidersComponent, PlacesComponent, LanguagesComponent, TagsComponent,
@@ -88,6 +89,7 @@ const eicForms = [
         //USER
         ActivateComponent,
         DashboardComponent,
+        ServiceDashboardComponent,
         //FORMS
         ServiceEditComponent,
         ServiceFormComponent,
