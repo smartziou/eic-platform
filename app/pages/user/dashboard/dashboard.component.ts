@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
     providerServices: Service[] = [];
 
     public errorMessage: string;
-    private removeThisAfterDashboardIsWorking: boolean = true;
 
     constructor(public authenticationService: AuthenticationService, protected userService: UserService,
                 protected resourceService: ResourceService, private router: Router,
@@ -31,21 +30,16 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (this.removeThisAfterDashboardIsWorking) {
-            this.navigationRouter.go("search;provider=" + this.provider);
-            return;
-        }
         this.resourceService.getProviders().subscribe(
             suc => {
                 for (let provider in suc) {
-
                     if (provider === "egi") {
                         console.log("Provider: " + provider);
                         this.provider = provider;
                         this.getServicesForProvider(provider);
                     }
-
                     if (this.authenticationService.user.email === provider + "@eic") {
+                        this.router.navigate(["/search", {provider: provider}]); //remove after dashboard is ready
                         console.log("Provider: " + provider);
                         this.provider = provider;
                         this.getServicesForProvider(provider);
@@ -57,23 +51,19 @@ export class DashboardComponent implements OnInit {
     }
 
     getServicesForProvider(provider) {
-
         let urlParameter: URLParameter = {
             key: "provider",
             values: ["egi"]
         };
         this.urlParameters.push(urlParameter);
-
-        this.resourceService.search(this.urlParameters).subscribe(
-            searchResults => this.showServicesForProvider(searchResults));
+        this.resourceService.search(this.urlParameters).subscribe(searchResults => this.showServicesForProvider(
+            searchResults));
     }
 
     showServicesForProvider(searchResults: SearchResults) {
-
         for (let service of searchResults.results) {
             this.providerServices.push(service.resource);
         }
-
     }
 
     goToServiceDashboard(providerServiceId: string) {
