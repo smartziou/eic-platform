@@ -20,12 +20,14 @@ case $1 in
     ;;
     maintenance)
         inst $1
-        sudo mkdir ${www}.old
-        sudo mv ${www}/* ${www}.old/
-        sudo cp -R ../UnderMaintenance/* /usr/share/nginx/html/
+        back=${www}.$(date +%s)
+        sudo mkdir ${back}
+        sudo mv ${www} ${back}
+        sudo mkdir -p ${www}
+        sudo cp -R ../UnderMaintenance ${www}
     ;;
     clean)
-        sudo rm ${root}sites-enabled/*
+        sudo rm ${enab}*
     ;;
     install)
         sudo apt install nginx
