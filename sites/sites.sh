@@ -20,11 +20,10 @@ case $1 in
     ;;
     maintenance)
         inst $1
-        back=${www}.$(date +%s)
-        sudo mkdir ${back}
-        sudo mv ${www} ${back}
         sudo mkdir -p ${www}
-        sudo cp -R ../UnderMaintenance ${www}
+        sudo mv ${www} ${www}.$(date +%s)
+        sudo mkdir -p ${www}
+        sudo cp -R ../UnderMaintenance/* ${www}
     ;;
     clean)
         sudo rm ${enab}*
