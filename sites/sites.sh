@@ -6,24 +6,33 @@ www=/usr/share/nginx/html
 avail=${root}sites-available/
 enab=${root}sites-enabled/
 
-inst() {
-    ${sites} clean
+install() {
     sudo cp nginx.${1} ${avail}nginx.${1}
     sudo nano ${avail}nginx.${1}
+}
+
+enable() {
+    ${sites} clean
     sudo ln -s ${avail}nginx.${1} ${enab}nginx.${1}
     ${sites} restart
 }
 
 case $1 in
-    proxy)
-        inst $1
+    install)
+        install $2
     ;;
-    maintenance)
-        inst $1
-        sudo mkdir -p ${www}
-        sudo mv ${www} ${www}.$(date +%s)
-        sudo mkdir -p ${www}
-        sudo cp -R ../UnderMaintenance/* ${www}
+    enable)
+        enable $2
+        case $2 in
+            proxy)
+            ;;
+            maintenance)
+                sudo mkdir -p ${www}
+                sudo mv ${www} ${www}.$(date +%s)
+                sudo mkdir -p ${www}
+                sudo cp -R ../UnderMaintenance/* ${www}
+            ;;
+        esac
     ;;
     clean)
         sudo rm ${enab}*
