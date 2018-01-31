@@ -14,6 +14,7 @@ import {UserService} from "../../../services/user.service";
     styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
+    dashboardOn = true;
 
     provider: string;
     providerServices: Service[] = [];
@@ -32,8 +33,11 @@ export class DashboardComponent implements OnInit {
                         //eventually manager/provider/aai should provide the relevant info,
                         // but for now, we just check if user's email=provider+eic
                         this.provider = provider;
+                        if (this.dashboardOn) {
                             return this.getServicesForProvider(provider);
+                        } else {
                             return this.router.search({provider});
+                        }
                     }
                 }
             }
