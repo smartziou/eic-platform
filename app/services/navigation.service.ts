@@ -14,6 +14,10 @@ export class NavigationService {
         return this.router.navigate(["/service", btoa(id)]);
     }
 
+    dashboard(id: string) {
+        return this.router.navigate(["/dashboard", btoa(id)]);
+    }
+
     edit(id: string) {
         return this.router.navigate(["/edit", btoa(id)]);
     }
