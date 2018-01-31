@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
 
     provider: string;
     providerServices: Service[] = [];
+    providerServicesGroupedByPlace: any;
+    providerCoverage: string[];
     public errorMessage: string;
 
     constructor(public authenticationService: AuthenticationService, protected userService: UserService,
@@ -46,7 +48,25 @@ export class DashboardComponent implements OnInit {
 
     getServicesForProvider(provider) {
         return this.resourceService.getServicesOfferedByProvider(provider)
-        .subscribe(res => this.providerServices = Object.values(res).map(e => e.resource));
+        .subscribe(res => {
+            this.providerServices = res;
+            this.providerServicesGroupedByPlace = this.groupServicesOfProviderPerPlace(this.providerServices);
+            this.providerCoverage = Object.keys(this.providerServicesGroupedByPlace);
+        });
+    }
+
+    groupServicesOfProviderPerPlace(services: Service[]) {
+        let ret = {};
+        for (let service of services) {
+            for (let place of service.places) {
+                if (ret[place]) {
+                    ret[place].push(this.providerServices);
+                } else {
+                    ret[place] = [];
+                }
+            }
+        }
+        return ret;
     }
 
     goToServiceDashboard(id: string) {

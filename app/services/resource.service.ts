@@ -103,8 +103,25 @@ export class ResourceService {
         return this.getBy("service", "category").map(res => <BrowseResults> <any> res);
     }
 
-    getServicesOfferedByProvider(id: string) {
-        return this.search([{key: "provider", values: [id]}]).map(res => <Service[]> <any> res.results);
+    getServicesOfferedByProvider(id: string): Observable<Service[]> {
+        return this.search([{key: "provider", values: [id]}]).map(res => Object.values(res.results)
+        .map(e => e.resource));
+    }
+
+    groupServicesOfProviderPerPlace(id: string) {
+        return this.getServicesOfferedByProvider(id).map(res => {
+            let servicesGroupedByPlace = {};
+            for (let service of res) {
+                for (let place of service.places) {
+                    if (servicesGroupedByPlace[place]) {
+                        servicesGroupedByPlace[place].push(res);
+                    } else {
+                        servicesGroupedByPlace[place] = [];
+                    }
+                }
+            }
+            return servicesGroupedByPlace;
+        });
     }
 
     getProviders() {
