@@ -70,14 +70,21 @@ export class ResourceService {
             e => (<any>e).results.reduce(type ? this.idToName : this.idToObject, {}));
     }
 
-    idToName(accumulator, value) {
-        accumulator[value.resource.id] = value.resource.name;
-        return accumulator;
+    idToName(acc, v) {
+        acc[v.resource.id] = v.resource.name;
+        return acc;
     }
 
-    idToObject(accumulator, value) {
-        accumulator[value.resource.id] = {"type": value.resource.type, "name": value.resource.name};
-        return accumulator;
+    idToObject(acc, v) {
+        acc[v.resource.id] = {"type": v.resource.type, "name": v.resource.name};
+        return acc;
+    }
+
+    uniq(acc, v) {
+        if (!acc.includes(v)) {
+            acc.push(v);
+        }
+        return acc;
     }
 
     getServices() {
