@@ -14,7 +14,7 @@ import {UserService} from "../../../services/user.service";
     styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-    dashboardOn = true;
+    dashboardOn = false;
 
     provider: string;
     providerServices: Service[] = [];
