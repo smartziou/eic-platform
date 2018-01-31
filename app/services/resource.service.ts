@@ -96,6 +96,10 @@ export class ResourceService {
         return this.getBy("service", "category").map(res => <BrowseResults> <any> res);
     }
 
+    getServicesOfferedByProvider(id: string) {
+        return this.search([{key: "provider", values: [id]}]).map(res => <Service[]> <any> res.results);
+    }
+
     getProviders() {
         return this.getAll("provider").map(e => e.results.reduce(this.idToName, {}));
     }
