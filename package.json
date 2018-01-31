@@ -30,6 +30,7 @@
     "core-js": "2.4.1",
     "ie-shim": "0.1.0",
     "ngx-bootstrap": "2.0.0-beta.11",
+    "mydatepicker":"2.6.1",
     "reflect-metadata": "0.1.10",
     "rxjs": "5.4.0",
     "zone.js": "0.8.14"

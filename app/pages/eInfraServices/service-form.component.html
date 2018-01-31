@@ -98,6 +98,9 @@
                                             <input class="uk-input" type="text" formControlName="lastUpdate"
                                                    [ngClass]="{'uk-form-danger': !serviceForm.get('lastUpdate').valid && serviceForm.get('lastUpdate').dirty}">
                                         </form-inline>
+                                        <!--<form #myForm="ngForm" novalidate>-->
+                                            <!--<my-date-picker name="mydate" [options]="dp.options" [(ngModel)]="dp.default"></my-date-picker>-->
+                                        <!--</form>-->
                                         <form-inline [description]="changeLogDesc" [params]="'inline'"
                                                      [valid]="serviceForm.get('changeLog').valid && serviceForm.get('changeLog').dirty">
                                             <input class="uk-input" type="text" formControlName="changeLog"
