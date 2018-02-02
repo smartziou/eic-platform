@@ -8,13 +8,13 @@ import {HttpModule, JsonpModule} from "@angular/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {OAuthModule} from "angular-oauth2-oidc";
 import {StarRatingModule} from "angular-star-rating";
+import {MyDatePickerModule} from "mydatepicker";
 import {TabsModule} from "ngx-bootstrap";
 import {AppComponent} from "./app.component";
 import {appRoutingProviders, routing} from "./app.routing";
 import {AboutModule} from "./pages/about/about.module";
 import {BrowseCategoriesComponent} from "./pages/browsecategories/browse-categories.component";
 import {CompareServicesComponent} from "./pages/compare/compare-services.component";
-import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
 import {LanguagesComponent} from "./pages/eInfraServices/multivalue-components/languages.component";
 import {PlacesComponent} from "./pages/eInfraServices/multivalue-components/places.component";
 import {ProvidersComponent} from "./pages/eInfraServices/multivalue-components/providers.component";
@@ -22,6 +22,7 @@ import {RelatedServicesComponent} from "./pages/eInfraServices/multivalue-compon
 import {RequiredServicesComponent} from "./pages/eInfraServices/multivalue-components/requiredServices.component";
 import {TagsComponent} from "./pages/eInfraServices/multivalue-components/tags.component";
 import {TermsOfUseComponent} from "./pages/eInfraServices/multivalue-components/termsOfUse.component";
+import {ServiceEditComponent} from "./pages/eInfraServices/service-edit.component";
 import {ServiceFormComponent} from "./pages/eInfraServices/service-form.component";
 import {ServiceUploadComponent} from "./pages/eInfraServices/service-upload.component";
 import {HomeComponent} from "./pages/home/home.component";
@@ -33,6 +34,7 @@ import {SearchComponent} from "./pages/search/search.component";
 import {SupportModule} from "./pages/support/support.module";
 import {ActivateComponent} from "./pages/user/activate/activate.component";
 import {DashboardComponent} from "./pages/user/dashboard/dashboard.component";
+import {ServiceDashboardComponent} from "./pages/user/dashboard/service-dashboard.component";
 import {UserModule} from "./pages/user/user.module";
 import {AuthenticationService} from "./services/authentication.service";
 import {CanActivateViaAuthGuard} from "./services/can-activate-auth-guard.service";
@@ -48,7 +50,6 @@ import {FooterComponent} from "./shared/footer/footer.component";
 import {ReusableComponentsModule} from "./shared/reusablecomponents/reusable-components.module";
 import {SharedModule} from "./shared/shared.module";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
-import { ServiceDashboardComponent } from "./pages/user/dashboard/service-dashboard.component";
 
 const eicForms = [
     ProvidersComponent, PlacesComponent, LanguagesComponent, TagsComponent,
@@ -59,6 +60,7 @@ const eicForms = [
     imports: [
         AboutModule,
         BrowserModule,
+        MyDatePickerModule,
         FormsModule,
         HttpModule,
         JsonpModule,

@@ -107,6 +107,14 @@ export class ServiceFormComponent {
     };
     providers: any = null;
     vocabularies: any = null;
+    // dp: any = {
+    //     options: {
+    //         dateFormat: "dd.mm.yyyy"
+    //     },
+    //     default: {
+    //         date: {year: 2018, month: 10, day: 9}
+    //     }
+    // };
 
     constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: NavigationService) {
         this.serviceForm = this.fb.group(this.formGroupMeta);

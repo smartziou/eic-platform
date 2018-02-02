@@ -70,14 +70,21 @@ export class ResourceService {
             e => (<any>e).results.reduce(type ? this.idToName : this.idToObject, {}));
     }
 
-    idToName(accumulator, value) {
-        accumulator[value.resource.id] = value.resource.name;
-        return accumulator;
+    idToName(acc, v) {
+        acc[v.resource.id] = v.resource.name;
+        return acc;
     }
 
-    idToObject(accumulator, value) {
-        accumulator[value.resource.id] = {"type": value.resource.type, "name": value.resource.name};
-        return accumulator;
+    idToObject(acc, v) {
+        acc[v.resource.id] = {"type": v.resource.type, "name": v.resource.name};
+        return acc;
+    }
+
+    uniq(acc, v) {
+        if (!acc.includes(v)) {
+            acc.push(v);
+        }
+        return acc;
     }
 
     getServices() {
@@ -94,6 +101,27 @@ export class ResourceService {
 
     getServicesByCategories() {
         return this.getBy("service", "category").map(res => <BrowseResults> <any> res);
+    }
+
+    getServicesOfferedByProvider(id: string): Observable<Service[]> {
+        return this.search([{key: "provider", values: [id]}]).map(res => Object.values(res.results)
+        .map(e => e.resource));
+    }
+
+    groupServicesOfProviderPerPlace(id: string) {
+        return this.getServicesOfferedByProvider(id).map(res => {
+            let servicesGroupedByPlace = {};
+            for (let service of res) {
+                for (let place of service.places) {
+                    if (servicesGroupedByPlace[place]) {
+                        servicesGroupedByPlace[place].push(res);
+                    } else {
+                        servicesGroupedByPlace[place] = [];
+                    }
+                }
+            }
+            return servicesGroupedByPlace;
+        });
     }
 
     getProviders() {

@@ -9,7 +9,8 @@ import {PageContent} from "../domain/page-content";
 
 @Injectable()
 export class HelpContentService {
-    private _helpServiceUrl = "http://83.212.101.85:5555/api/";
+    //private _helpServiceUrl = "http://83.212.101.85:5555/api/";
+    private _helpServiceUrl = "http://beta.einfracentral.eu/help/";
 
     constructor(private http: Http) {
     }

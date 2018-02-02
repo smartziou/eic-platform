@@ -2,14 +2,11 @@
  * Created by pgl on 28/08/17.
  */
 import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
+import {Service} from "../../../domain/eic-model";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {NavigationService} from "../../../services/navigation.service";
 import {ResourceService} from "../../../services/resource.service";
 import {UserService} from "../../../services/user.service";
-import {NavigationService} from "../../../services/navigation.service";
-import { URLParameter } from "../../../domain/url-parameter";
-import { Service } from "../../../domain/eic-model";
-import { SearchResults } from "../../../domain/search-results";
 
 @Component({
     selector: "dashboard",
@@ -17,34 +14,32 @@ import { SearchResults } from "../../../domain/search-results";
     styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
+    dashboardOn = false;
 
-    urlParameters: URLParameter[] = [];
     provider: string;
     providerServices: Service[] = [];
-
+    providerServicesGroupedByPlace: any;
+    providerCoverage: string[];
     public errorMessage: string;
 
     constructor(public authenticationService: AuthenticationService, protected userService: UserService,
-                protected resourceService: ResourceService, private router: Router,
-                protected navigationRouter: NavigationService) {
+                protected resourceService: ResourceService, protected router: NavigationService) {
+
     }
 
     ngOnInit() {
         this.resourceService.getProviders().subscribe(
             suc => {
                 for (let provider in suc) {
-
-                    if(provider === 'egi') {
-                        console.log('Provider: ' + provider);
-                        this.provider = provider;
-                        this.getServicesForProvider(provider);
-                    }
-
                     if (this.authenticationService.user.email === provider + "@eic") {
-                        console.log('Provider: ' + provider);
+                        //eventually manager/provider/aai should provide the relevant info,
+                        // but for now, we just check if user's email=provider+eic
                         this.provider = provider;
-                        this.getServicesForProvider(provider);
-                        // return this.router.search({provider});
+                        if (this.dashboardOn) {
+                            return this.getServicesForProvider(provider);
+                        } else {
+                            return this.router.search({provider});
+                        }
                     }
                 }
             }
@@ -52,28 +47,29 @@ export class DashboardComponent implements OnInit {
     }
 
     getServicesForProvider(provider) {
-
-        let urlParameter: URLParameter = {
-            key: 'provider',
-            values: ['egi']
-        };
-        this.urlParameters.push(urlParameter);
-
-        this.resourceService.search(this.urlParameters).subscribe(
-            searchResults => this.showServicesForProvider(searchResults));
+        return this.resourceService.getServicesOfferedByProvider(provider)
+        .subscribe(res => {
+            this.providerServices = res;
+            this.providerServicesGroupedByPlace = this.groupServicesOfProviderPerPlace(this.providerServices);
+            this.providerCoverage = Object.keys(this.providerServicesGroupedByPlace);
+        });
     }
 
-    showServicesForProvider(searchResults: SearchResults) {
-
-        for(let service of searchResults.results) {
-            this.providerServices.push(service.resource);
+    groupServicesOfProviderPerPlace(services: Service[]) {
+        let ret = {};
+        for (let service of services) {
+            for (let place of service.places) {
+                if (ret[place]) {
+                    ret[place].push(this.providerServices);
+                } else {
+                    ret[place] = [];
+                }
+            }
         }
-
-
+        return ret;
     }
 
-    goToServiceDashboard(providerServiceId: string) {
-        console.log("navigate to service dashboard");
-        this.router.navigate(['/dashboard/', btoa(providerServiceId)]);
+    goToServiceDashboard(id: string) {
+        return this.router.dashboard(id);
     }
 }
