@@ -39,23 +39,6 @@
                             <li class="uk-nav-header" [routerLinkActive]="['uk-active']">
                                 <a [routerLink]="['/search']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Search</a>
                             </li>
-                            <li *ngIf="this.authenticationService.isLoggedIn()" class="uk-nav-header" [routerLinkActive]="['uk-active']">
-                                <a [routerLink]="['/upload']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Upload</a>
-                            </li>
-                            <!--<li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">Actions-->
-                                <!--<ul class="uk-nav-sub">-->
-                                    <!--<li><a [routerLink]="['/resourceRegistration/corpus/searchForPublications']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Access OA docs</a></li>-->
-                                    <!--<li><a [routerLink]="['/resourceRegistration/corpus/upload']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Upload docs</a></li>-->
-                                    <!--<li><a [routerLink]="['/runApplication']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Run a service</a></li>-->
-                                    <!--<li><a [routerLink]="['/buildWorkflow']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Build a workflow</a></li>-->
-                                <!--</ul>-->
-                            <!--</li>-->
-                            <!--<li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">Add-->
-                                <!--<ul class="uk-nav-sub">-->
-                                    <!--<li><a [routerLink]="['/resourceRegistration/component']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Tool/Service/Component</a></li>-->
-                                    <!--<li><a [routerLink]="['/resourceRegistration/dataSource']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Data Source</a></li>-->
-                                <!--</ul>-->
-                            <!--</li>-->
                             <li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">Support
                                 <ul class="uk-nav-sub">
                                     <li><a [routerLink]="['/support/faqPolicies']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">FAQs - Policies</a></li>
@@ -63,22 +46,30 @@
                                     <li><a href="http://openminted.eu/support/" target="_blank" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Ask a question</a></li>
                                 </ul>
                             </li>
-                            <li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">About
-                                <ul class="uk-nav-sub">
-                                    <li><a href="http://openminted.eu/about/overview/" target="_blank" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Who we are</a></li>
-                                    <li><a href="http://openminted.eu/" target="_blank" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Project</a></li>
-                                    <li><a [routerLink]="['/communities']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Communities</a></li>
+
+                            <li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">
+
+                                <span *ngIf="authenticationService.isLoggedIn()" >
+                                  <span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>
+                                </span>
+                                <span *ngIf="!authenticationService.isLoggedIn()">
+                                    <!--Sign in | Register <span class="uk-margin-small-right uk-icon" ></span>-->
+                                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
+                                        <a class="loginLink" [routerLink]="['/signIn']"> Sign In   </a>
+                                    </span>
+                                    |
+                                        <!-- Registration button -->
+                                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
+                                        <a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">Register</a>
+                                    </span>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg>
+                               </span>
+
+                                <ul *ngIf="authenticationService.isLoggedIn()" class="uk-nav-sub">
+                                    <li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>
+                                    <li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>
                                 </ul>
                             </li>
-                            <!--<li *ngIf="authenticationService.isUserLoggedIn" class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">My Resources-->
-                                <!--<ul class="uk-nav-sub">-->
-                                    <!--<li><a [routerLink]="['/mySpace/corpora']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Corpora</a></li>-->
-                                    <!--<li><a [routerLink]="['/mySpace/services']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Services/Tools</a></li>-->
-                                    <!--<li><a [routerLink]="['/mySpace/operations']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">My Operations</a></li>-->
-                                    <!--&lt;!&ndash; TODO Stefanos fix it!! &ndash;&gt;-->
-                                    <!--&lt;!&ndash;<li><a [routerLink]="['/mySpace/profile']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Profile</a></li>&ndash;&gt;-->
-                                <!--</ul>-->
-                            <!--</li>-->
                         </ul>
                     </div>
                 </div>
@@ -130,9 +121,9 @@
                 </div>
                 <div class="uk-navbar-center">
                     <ul class="uk-navbar-nav">
-                        <li *ngIf="this.authenticationService.isLoggedIn() && this.authenticationService.user.id == 'stefania'" class="uk-parent" [routerLinkActive]="['uk-active']">
-                            <a routerLink="/dashboard" routerLinkActive="uk-active">Dashboard</a>
-                        </li>
+                        <!--<li *ngIf="this.authenticationService.isLoggedIn() && this.authenticationService.user.id == 'stefania'" class="uk-parent" [routerLinkActive]="['uk-active']">-->
+                            <!--<a routerLink="/dashboard" routerLinkActive="uk-active">Dashboard</a>-->
+                        <!--</li>-->
                         <li class="uk-parent" [routerLinkActive]="['uk-active']">
                             <a routerLink="/home" routerLinkActive="uk-active">
                                 Home
@@ -142,35 +133,6 @@
                         <li class="uk-parent" [routerLinkActive]="['uk-active']">
                             <a routerLink="/search" routerLinkActive="uk-active">Search</a>
                         </li>
-                        <li *ngIf="this.authenticationService.isLoggedIn()" class="uk-parent" [routerLinkActive]="['uk-active']">
-                            <a routerLink="/upload" routerLinkActive="uk-active">Upload</a>
-                        </li>
-                        <!--<li class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">Actions</a>-->
-                            <!--<div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="actions" (click)="onClick('actions')">-->
-                                <!--<div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">-->
-                                    <!--<div class="uk-first-column">-->
-                                        <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
-                                            <!--<li><a [routerLink]="['/resourceRegistration/corpus/searchForPublications']" routerLinkActive="uk-active">Access OA docs</a></li>-->
-                                            <!--<li><a [routerLink]="['/resourceRegistration/corpus/upload']" routerLinkActive="uk-active">Upload docs</a></li>-->
-                                            <!--<li><a [routerLink]="['/runApplication']" routerLinkActive="uk-active">Run a service</a></li>-->
-                                            <!--<li><a [routerLink]="['/buildWorkflow']" routerLinkActive="uk-active">Build a workflow</a></li>-->
-                                        <!--</ul>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</li>-->
-                        <!--<li class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">Add</a>-->
-                            <!--<div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="add" (click)="onClick('add')">-->
-                                <!--<div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">-->
-                                    <!--<div class="uk-first-column">-->
-                                        <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
-                                            <!--<li><a [routerLink]="['/resourceRegistration/component']" routerLinkActive="uk-active">Tool/Service/Component</a></li>-->
-                                            <!--<li><a [routerLink]="['/resourceRegistration/dataSource']" routerLinkActive="uk-active">Data Source</a></li>-->
-                                        <!--</ul>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</li>-->
                         <li class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">Support</a>
                             <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="support" (click)="onClick('support')">
                                 <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
@@ -184,74 +146,86 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">About</a>
-                            <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="about" (click)="onClick('about')">
+                    </ul>
+                </div>
+
+                <div class="uk-navbar-right">
+
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-parent">
+
+                            <a *ngIf="authenticationService.isLoggedIn()" class="loginLink">
+                                <span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>
+                            </a>
+                            <a *ngIf="!authenticationService.isLoggedIn()" class="loginLink" >
+                                <!--Sign in | Register <span class="uk-margin-small-right uk-icon" ></span>-->
+                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">
+                                    <a class="loginLink" [routerLink]="['/signIn']"> Sign In   </a>
+                                </span>
+                                |
+                                <!-- Registration button -->
+                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
+                                    <a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">Register</a>
+                                </span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg>
+                            </a>
+
+
+                            <div *ngIf="authenticationService.isLoggedIn()" class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left"   id="userMenu" (click)="onClick('userMenu')"  >
                                 <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
                                     <div class="uk-first-column">
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                                            <li><a href="http://einfracentral.eu/basic-page/about-einfracentral" target="_blank" routerLinkActive="uk-active">Who we are</a></li>
-                                            <li><a href="http://einfracentral.eu" target="_blank" routerLinkActive="uk-active">Project</a></li>
+                                            <!--<li><a href="" >My profile</a></li>-->
+                                            <li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>
+                                            <li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <!--<li *ngIf="authenticationService.isUserLoggedIn" class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">My Resources</a>-->
-                            <!--<div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="mySpace" (click)="onClick('mySpace')">-->
-                                <!--<div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">-->
-                                    <!--<div class="uk-first-column">-->
-                                        <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
-                                            <!--<li><a [routerLink]="['/mySpace/corpora']" routerLinkActive="uk-active">My Corpora</a></li>-->
-                                            <!--<li><a [routerLink]="['/mySpace/services']" routerLinkActive="uk-active">My Services/Tools</a></li>-->
-                                            <!--<li><a [routerLink]="['/mySpace/operations']" routerLinkActive="uk-active">My Operations</a></li>-->
-                                            <!--&lt;!&ndash; TODO Stefanos fix it!! &ndash;&gt;-->
-                                            <!--&lt;!&ndash;<li><a [routerLink]="['/mySpace/profile']" routerLinkActive="uk-active">Profile</a></li>&ndash;&gt;-->
-                                        <!--</ul>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</li>-->
                     </ul>
+
                 </div>
-                <div class="uk-navbar-right">
-                    <div class="uk-navbar-item btlogin" id="module-367">
-                        <div id="btl">
 
-                            <!-- Panel top -->
-                            <div *ngIf="!authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">
-                                <!-- Login button -->
-			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">
-			                        <!--<a class="loginLink" (click)="loginWithState()"> SIGN IN   </a>-->
-                                    <a class="loginLink" [routerLink]="['/signIn']"> SIGN IN   </a>
-                                </span>
-                                |
-                                <!-- Registration button -->
-                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
-			                        <!--<a [href]="'https://aai.openminted.eu/signup'" routerLinkActive="uk-active" class="loginLink">REGISTER</a>-->
-                                    <a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">REGISTER</a>
-                                </span>
-                            </div>
+                <!--<div class="uk-navbar-right">-->
+                    <!--<div class="uk-navbar-item btlogin" id="module-367">-->
+                        <!--<div id="btl">-->
 
-                            <!-- Panel top -->
-                            <div *ngIf="authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">
-                                <!-- Login button -->
-			                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
-			                        <a routerLinkActive="uk-active" (click)="this.authenticationService.logout()" class="loginLink">SIGN OUT {{this.authenticationService.user.email}}</a>
-                                </span>
-                            </div>
-
-                            <!--<div class="btl-panel" style="float: right;">-->
+                            <!--&lt;!&ndash; Panel top &ndash;&gt;-->
+                            <!--<div *ngIf="!authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">-->
                                 <!--&lt;!&ndash; Login button &ndash;&gt;-->
+			                    <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">-->
+			                        <!--&lt;!&ndash;<a class="loginLink" (click)="loginWithState()"> SIGN IN   </a>&ndash;&gt;-->
+                                    <!--<a class="loginLink" [routerLink]="['/signIn']"> SIGN IN   </a>-->
+                                <!--</span>-->
+                                <!--|-->
+                                <!--&lt;!&ndash; Registration button &ndash;&gt;-->
                                 <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">-->
-			                        <!--<a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT Jane Doe</a>-->
+			                        <!--&lt;!&ndash;<a [href]="'https://aai.openminted.eu/signup'" routerLinkActive="uk-active" class="loginLink">REGISTER</a>&ndash;&gt;-->
+                                    <!--<a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">REGISTER</a>-->
                                 <!--</span>-->
                             <!--</div>-->
 
-                            <!-- content dropdown/modal box -->
+                            <!--&lt;!&ndash; Panel top &ndash;&gt;-->
+                            <!--<div *ngIf="authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">-->
+                                <!--&lt;!&ndash; Login button &ndash;&gt;-->
+			                    <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">-->
+			                        <!--<a routerLinkActive="uk-active" (click)="this.authenticationService.logout()" class="loginLink">SIGN OUT {{this.authenticationService.user.email}}</a>-->
+                                <!--</span>-->
+                            <!--</div>-->
 
-                        </div>
-                    </div>
-                </div>
+                            <!--&lt;!&ndash;<div class="btl-panel" style="float: right;">&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash; Login button &ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">&ndash;&gt;-->
+			                        <!--&lt;!&ndash;<a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT Jane Doe</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash; content dropdown/modal box &ndash;&gt;-->
+
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </nav>
         </div>
     </div><div class="uk-sticky-placeholder" style="height: 80px; margin: 0px;" hidden="hidden"></div>
