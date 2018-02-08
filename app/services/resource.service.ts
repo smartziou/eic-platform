@@ -6,7 +6,7 @@ import {Injectable} from "@angular/core";
 import {Headers, RequestOptions, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BrowseResults} from "../domain/browse-results";
-import {Access, Service} from "../domain/eic-model";
+import {Access, Service, ServiceAddenda} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";
@@ -108,6 +108,11 @@ export class ResourceService {
         .map(e => e.resource));
     }
 
+    getServiceAnalytics(id: string): Observable<ServiceAddenda> {
+        return Observable.from([{
+            id, internalHits: 31337, externalHits: 1337, favouriteCount: 70, averageRating: 3, ratings: 12
+        }]);
+    }
     groupServicesOfProviderPerPlace(id: string) {
         return this.getServicesOfferedByProvider(id).map(res => {
             let servicesGroupedByPlace = {};
