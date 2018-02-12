@@ -37,6 +37,7 @@ export class SignUpComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.router.home(); //TEMP OFF
         this.resourceService.getProviders().subscribe(providers => this.providers = providers);
     }
 
