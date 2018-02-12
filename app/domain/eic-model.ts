@@ -1,4 +1,4 @@
-// Generated using typescript-generator version 1.27.339 on 2017-11-21 12:56:25.
+// Generated using typescript-generator version 1.27.339 on 2018-02-12 16:39:25.
 
 export class Access implements Identifiable {
     id: string;
@@ -24,6 +24,12 @@ export class Indicator implements Identifiable {
     dimensions: Dimension[];
     id: string;
     unit: Unit;
+}
+
+export class Manager implements Identifiable {
+    id: string;
+    service: User[];
+    user: User[];
 }
 
 export class Measurement<T> implements Identifiable {
@@ -73,8 +79,8 @@ export class Service implements Identifiable {
     serviceLevelAgreement: URL;
     subcategory: string;
     symbol: URL;
-    tagline: string;
     tags: string[];
+    tagline: string;
     targetUsers: string;
     termsOfUse: URL[];
     trainingInformation: URL;
@@ -91,11 +97,14 @@ export class ServiceAddenda implements Identifiable {
     averageRating: number;
     externalHits: number;
     favouriteCount: number;
+    featured: boolean;
+    from: number;
     id: string;
     internalHits: number;
-    perfomanceData: Measurement<any>[];
+    performanceData: Measurement<any>[];
     published: boolean;
     ratings: number;
+    to: number;
 }
 
 export class Unit {
