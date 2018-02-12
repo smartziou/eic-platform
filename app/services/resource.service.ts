@@ -108,11 +108,34 @@ export class ResourceService {
         .map(e => e.resource));
     }
 
-    getServiceAnalytics(id: string): Observable<ServiceAddenda> {
-        return Observable.from([{
-            id, internalHits: 31337, externalHits: 1337, favouriteCount: 70, averageRating: 3, ratings: 12
-        }]);
+    getServiceAnalytics(id: string): Observable<ServiceAddenda[]> {
+        let ret: ServiceAddenda[] = [];
+        ret[0] = {
+            from: 0, to: 1500000000, id: "0", internalHits: 0, externalHits: 0, favouriteCount: 0,
+            ratings: 0, averageRating: 0, performanceData: null, published: false, featured: false
+        };
+        for (let i = 1, from = ret[0].to; from < 1520000000; from += 200000, i++) {
+            ret[i] = {
+                from: ret[i - 1].to,
+                to: from,
+                id: "" + i,
+                internalHits: ret[i - 1].internalHits + this.randomInt(10, 50),
+                externalHits: ret[i - 1].externalHits + this.randomInt(5, 10),
+                favouriteCount: ret[i - 1].favouriteCount + this.randomInt(0, 5),
+                ratings: ret[i - 1].favouriteCount + this.randomInt(0, 5),
+                averageRating: this.randomInt(1, 5),
+                performanceData: null,
+                published: true,
+                featured: Math.random() > 0.99
+            };
+        }
+        return Observable.from([ret]);
     }
+
+    private randomInt(from: number, to: number) {
+        return Math.floor(Math.random() * (to - from) + from);
+    }
+
     groupServicesOfProviderPerPlace(id: string) {
         return this.getServicesOfferedByProvider(id).map(res => {
             let servicesGroupedByPlace = {};
