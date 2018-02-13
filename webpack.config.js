@@ -37,6 +37,7 @@ var webpackConfig = {
         new webpack.DefinePlugin({
             "process.env": {
                 PRODUCTION: JSON.stringify(true),
+                FAQ_ENDPOINT: JSON.stringify(process.env.FAQ_ENDPOINT || "http://beta.einfracentral.eu/faq"),
                 API_ENDPOINT: JSON.stringify(process.env.API_ENDPOINT || "http://dl105.madgik.di.uoa.gr:8080/eic-registry")
             }
         })
