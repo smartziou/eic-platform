@@ -71,12 +71,12 @@ export class ResourceService {
     }
 
     idToName(acc, v) {
-        acc[v.resource.id] = v.resource.name;
+        acc[v.id] = v.name;
         return acc;
     }
 
     idToObject(acc, v) {
-        acc[v.resource.id] = {"type": v.resource.type, "name": v.resource.name};
+        acc[v.id] = {"type": v.type, "name": v.name};
         return acc;
     }
 
