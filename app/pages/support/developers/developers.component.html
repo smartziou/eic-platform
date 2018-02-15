@@ -1,1 +1,19 @@
-<iframe [src]="this.getUI() | safe"></iframe>
+<div class="uk-section-default uk-section uk-section-small uk-padding-remove-bottom" style="min-height: 325px">
+    <div class="uk-container">
+        <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid="">
+            <div class="uk-width-1-1@m uk-first-column">
+                <h2 class="uk-h2 uk-text-center">Developer Information</h2>
+                <div class="uk-container uk-margin-medium-top uk-margin-medium-bottom">
+                    <div class="uk-grid">
+                        <div class=" uk-width-expand@m">
+                            To use the REST API, one needs an account with eInfraCentral. <br/>
+                            A subsequent POST request to beta.einfracentral.eu:8080/login with a JSON body containing fields email and password issues a jwt cookie.<br/>
+                            Any subsequent request to the API using that cookie, is authenticated.<br/>
+                            The complete <a [routerLink]="['/openapi']" routerLinkActive="uk-active">eInfraCentral API documentation</a> is a living document, generated using frameworks compliant with OpenAPI Specification 2.0<br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
