@@ -10,6 +10,7 @@ import {SharedModule} from "../../shared/shared.module";
 import {DevelopersComponent} from "./developers/developers.component";
 import {FAQsComponent} from "./faqs/faqs.component";
 import {supportRouting} from "./support.routing";
+import {OpenAPIComponent} from "./openapi/openapi.component";
 
 @NgModule({
     imports: [
@@ -17,11 +18,11 @@ import {supportRouting} from "./support.routing";
         supportRouting,
         ReusableComponentsModule,
         SharedModule,
-
     ],
     declarations: [
+        DevelopersComponent,
         FAQsComponent,
-        DevelopersComponent
+        OpenAPIComponent
     ],
     providers: [
         FAQService
