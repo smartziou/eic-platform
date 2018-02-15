@@ -160,13 +160,13 @@
                                         <div class="">
                                             <div class="uk-first-column actionIcons uk-inline-block" style="width: 20%">
                                                 <div>
-                                                    <a (click)="this.userService.addFavourite(resourceInfo.resource.id)" title="Favorites" uk-tooltip="delay: 500">
+                                                    <a (click)="this.userService.addFavourite(resourceInfo.id)" title="Favorites" uk-tooltip="delay: 500">
                                                         <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
                                                 <div class="uk-margin-small-top">
-                                                    <a (click)="this.comparisonService.addOrRemove(resourceInfo.resource.id)" title="Compare list" uk-tooltip="delay: 500">
-                                                        <i [ngClass]="{'blueActionIcons': this.comparisonService.servicesToCompare.includes(resourceInfo.resource.id)}"
+                                                    <a (click)="this.comparisonService.addOrRemove(resourceInfo.id)" title="Compare list" uk-tooltip="delay: 500">
+                                                        <i [ngClass]="{'blueActionIcons': this.comparisonService.servicesToCompare.includes(resourceInfo.id)}"
                                                            class="fa fa-compress fa-flip-horizontal fa-lg" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
@@ -174,14 +174,14 @@
                                             <div class="uk-inline-block uk-text-center uk-scrollspy-inview uk-animation-fade"
                                                  uk-scrollspy-class="" style="width: 75%">
                                                 <div class="">
-                                                    <a (click)="this.router.service(resourceInfo.resource.id)">
+                                                    <a (click)="this.router.service(resourceInfo.id)">
                                                         <span>
-                                                            <img src="{{resourceInfo.resource.symbol || 'http://fvtelibrary.com/img/user/NoLogo.png'}}">
+                                                            <img src="{{resourceInfo.symbol || 'http://fvtelibrary.com/img/user/NoLogo.png'}}">
                                                         </span>
                                                     </a>
                                                 </div>
                                                 <div class="uk-margin-small-top">
-                                                    <star-rating-comp (click)="this.userService.rateService(resourceInfo.resource.id)" [starType]="'svg'" [rating]="0" [step]="1"
+                                                    <star-rating-comp (click)="this.userService.rateService(resourceInfo.id)" [starType]="'svg'" [rating]="0" [step]="1"
                                                                       [showHalfStars]="true" [readOnly]=!this.authenticationService.isLoggedIn() [size]="'small'"
                                                                       [staticColor]="'ok'" title="Rate this service" uk-tooltip="delay: 500"></star-rating-comp>
                                                     <span>(0)</span>
@@ -192,25 +192,25 @@
                                     </div>
                                     <div class="uk-width-5-6@m">
                                         <h3 class="uk-margin-remove uk-text-left@m uk-text-center uk-h3 uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
-                                            <a (click)="this.router.service(resourceInfo.resource.id)">
-                                                {{resourceInfo.resource.name}}
+                                            <a (click)="this.router.service(resourceInfo.id)">
+                                                {{resourceInfo.name}}
                                             </a>
                                         </h3>
                                         <div class="" style="text-transform: none" >
                                             <em style="color: #524f4f; display: flex">(by&nbsp;
-                                                <span class="comma-element" *ngFor="let provider of resourceInfo.resource.providers">
+                                                <span class="comma-element" *ngFor="let provider of resourceInfo.providers">
                                                     <a (click)="this.router.search({provider: provider})">{{[provider]|lookup:providers}}</a>
                                                 </span>
                                                 )
                                             </em>
                                         </div>
                                         <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
-                                            <read-more-text [text]="resourceInfo.resource.description" [maxHeight]="75">
+                                            <read-more-text [text]="resourceInfo.description" [maxHeight]="75">
                                             </read-more-text>
                                         </div>
                                         <div class="uk-margin-small-top uk-text-left@m uk-text-center uk-text-meta uk-scrollspy-inview
                                         uk-animation-fade serviceTagLine" uk-scrollspy-class="" style="">
-                                            "{{resourceInfo.resource.tagline}}"
+                                            "{{resourceInfo.tagline}}"
                                         </div>
                                         <!--<div class="uk-margin uk-text-left@m uk-text-center uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">-->
                                             <!--<div class="uk-child-width-auto uk-grid-small uk-flex-left@m uk-flex-center uk-grid" uk-grid="">-->
