@@ -1,4 +1,4 @@
-// Generated using typescript-generator version 1.27.339 on 2018-02-12 16:39:25.
+// Generated using typescript-generator version 1.27.339 on 2018-02-15 14:03:41.
 
 export class Access implements Identifiable {
     id: string;
@@ -104,6 +104,7 @@ export class ServiceAddenda implements Identifiable {
     performanceData: Measurement<any>[];
     published: boolean;
     ratings: number;
+    serviceID: string;
     to: number;
 }
 
