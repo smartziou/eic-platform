@@ -1,13 +1,10 @@
 /**
  * Created by pgl on 27/10/17.
  */
-
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, RequestOptionsArgs, Response, XHRBackend} from "@angular/http";
 import {Observable} from "rxjs/Rx";
-
 declare var UIkit: any;
-
 @Injectable()
 export class HTTPWrapper extends Http {
     private base = process.env.API_ENDPOINT;
@@ -41,12 +38,7 @@ export class HTTPWrapper extends Http {
             console.error("HTTPWrapper", e);
         }
         UIkit.notification.closeAll();
-        UIkit.notification({
-            message,
-            status: "danger",
-            pos: "top-center",
-            timeout: 5000
-        });
+        UIkit.notification({message, status: "danger", pos: "top-center", timeout: 5000});
         return Observable.throw(error);
     }
 
