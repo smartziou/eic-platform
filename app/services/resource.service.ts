@@ -1,9 +1,8 @@
 /**
  * Created by stefania on 9/6/16.
  */
-
 import {Injectable} from "@angular/core";
-import {Headers, RequestOptions, URLSearchParams} from "@angular/http";
+import {URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BrowseResults} from "../domain/browse-results";
 import {Access, Service, ServiceAddenda} from "../domain/eic-model";
@@ -11,7 +10,6 @@ import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";
 import {HTTPWrapper} from "./http-wrapper.service";
-
 @Injectable()
 export class ResourceService {
     constructor(private http: HTTPWrapper, private authenticationService: AuthenticationService) {
@@ -156,10 +154,7 @@ export class ResourceService {
     }
 
     getEU() {
-        return this.http.getAny(
-            "https://restcountries.eu/rest/v2/regionalbloc/EU?fields=alpha2Code",
-            new RequestOptions({headers: new Headers({"Accept": "*"})})
-        ).map(suc => suc.map(e => e.alpha2Code.toLowerCase()));
+        return this.http.get("/vocabulary/getEU").map(e => e.toLowerCase);
     }
 
     activateUserAccount(id: any) {
