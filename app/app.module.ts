@@ -51,6 +51,7 @@ import {ReusableComponentsModule} from "./shared/reusablecomponents/reusable-com
 import {SharedModule} from "./shared/shared.module";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
 import { AccordionComponent } from "./pages/eInfraServices/accordion-section.component";
+import { CKEditorModule } from "ng2-ckeditor";
 
 const eicForms = [
     ProvidersComponent, PlacesComponent, LanguagesComponent, TagsComponent,
@@ -75,7 +76,8 @@ const eicForms = [
         StarRatingModule.forRoot(),
         SupportModule,
         TabsModule,
-        UserModule
+        UserModule,
+        CKEditorModule
     ],
     declarations: [
         //MAIN

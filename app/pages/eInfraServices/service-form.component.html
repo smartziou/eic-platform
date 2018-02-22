@@ -53,8 +53,18 @@
                                                 </form-inline>
                                                 <form-inline [description]="descriptionDesc" [params]="'inline'"
                                                              [valid]="serviceForm.get('description').valid && serviceForm.get('description').dirty">
-                                                    <textarea class="uk-textarea" type="text" formControlName="description" rows="5"
-                                                      [ngClass]="{'uk-form-danger': !serviceForm.get('description').valid && serviceForm.get('description').dirty}"></textarea>
+                                                    <ckeditor
+                                                            [readonly]="false"
+                                                            debounce="500"
+                                                            formControlName="description"
+                                                            [config]="{allowedContent: true,extraAllowedContent : '*(*)'}">
+                                                        <!--id="contentTag"-->
+                                                        <!--(ready)="onReady($event)"-->
+                                                        <!--(focus)="onFocus($event)"-->
+                                                        <!--[config]="{uiColor: '#99000'}"-->
+                                                        <!--(blur)="onBlur($event)"-->
+                                                        <!--(change)="onChange($event)"-->
+                                                    </ckeditor>
                                                 </form-inline>
                                                 <form-inline [description]="optionsDesc" [params]="'inline'"
                                                              [valid]="serviceForm.get('options').valid && serviceForm.get('options').dirty">

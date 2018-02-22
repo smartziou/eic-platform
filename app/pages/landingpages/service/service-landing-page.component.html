@@ -68,8 +68,7 @@
                     <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
 
                     <div class="" *ngIf="service.description">
-                        <p>
-                            {{service.description}}
+                        <p [innerHTML]="service.description">
                         </p>
                     </div>
                     <div class="" *ngIf="!service.description">
