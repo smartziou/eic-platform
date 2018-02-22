@@ -31,7 +31,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            let id = atob(params["id"]);
+            let id = params["id"];
             Observable.zip(
                 this.resourceService.getEU(),
                 this.resourceService.getService(id),

@@ -29,10 +29,10 @@ export class ServiceDashboardComponent implements OnInit {
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            let id = atob(params["id"]);
             this.resourceService.getService(id).subscribe(
                 service => this.service = service,
                 error => this.handleError(<any>error));
+            let id = params["id"];
         });
     }
 
