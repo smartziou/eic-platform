@@ -103,8 +103,7 @@ export class ResourceService {
     }
 
     getServicesOfferedByProvider(id: string): Observable<Service[]> {
-        return this.search([{key: "provider", values: [id]}]).map(res => Object.values(res.results)
-        .map(e => e.resource));
+        return this.search([{key: "provider", values: [id]}]).map(res => Object.values(res.results));
     }
 
     getServiceAnalytics(serviceID: string): Observable<ServiceAddenda[]> {
