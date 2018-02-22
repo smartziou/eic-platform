@@ -61,13 +61,12 @@ export class ResourceService {
         }
         searchQuery.delete("to");
         let questionMark = urlParameters.length > 0 ? "?" : "";
-        return this.http.get(`/service/all${questionMark}${searchQuery.toString()}`).map(
-            res => <SearchResults> <any> res);
+        return this.http.get(`/service/all${questionMark}${searchQuery.toString()}`).map(res => <SearchResults> <any> res);
     }
 
     getVocabularies(type?: string) {
-        return this.http.get(`/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`).map(
-            e => (<any>e).results.reduce(type ? this.idToName : this.idToObject, {}));
+        return this.http.get(`/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`)
+        .map(e => (<any>e).results.reduce(type ? this.idToName : this.idToObject, {}));
     }
 
     idToName(acc, v) {
@@ -111,8 +110,8 @@ export class ResourceService {
     getServiceAnalytics(serviceID: string): Observable<ServiceAddenda[]> {
         let ret: ServiceAddenda[] = [];
         ret[0] = {
-            from: 0, to: 1500000000, id: "0", internalHits: 0, externalHits: 0, favouriteCount: 0,
-            ratings: 0, averageRating: 0, performanceData: null, published: false, featured: false, serviceID
+            from: 0, to: 1500000000, id: "0", internalHits: 0, externalHits: 0, favouriteCount: 0, ratings: 0,
+            averageRating: 0, performanceData: null, published: false, featured: false, serviceID
         };
         for (let id = 1, from = ret[0].to; from < 1520000000; from += 200000, id++) {
             ret[id] = {
