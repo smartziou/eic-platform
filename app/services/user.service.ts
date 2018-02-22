@@ -46,4 +46,8 @@ export class UserService {
             this.router.login();
         }
     }
+
+    isDev() {
+        return localStorage.getItem("dev") === "aye";
+    }
 }

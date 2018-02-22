@@ -7,6 +7,7 @@ import {Observable} from "rxjs/Observable";
 import {Service} from "../../domain/eic-model";
 import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
+import {UserService} from "../../services/user.service";
 import {URLValidator} from "../../shared/validators/generic.validator";
 import {PhaseValidator, TLRValidator} from "../../shared/validators/vocabulary.validator";
 import {LanguagesComponent} from "./multivalue-components/languages.component";
@@ -116,7 +117,7 @@ export class ServiceFormComponent {
     //     }
     // };
 
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: NavigationService) {
+    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: NavigationService, protected userService: UserService) {
         this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 
@@ -162,10 +163,6 @@ export class ServiceFormComponent {
             this.serviceForm.updateValueAndValidity();
             this.errorMessage = "Please fill in all required fields (marked with an asterisk), and fix the data format in fields underlined with a red colour.";
         }
-    }
-
-    isDev() {
-        return localStorage.getItem("dev") === "aye";
     }
 
     ngOnInit() {

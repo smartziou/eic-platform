@@ -225,7 +225,7 @@
                                         </form-inline>
                                         <button type="submit" class="btn btn-primary block full-width m-b">{{editMode ? "Update":"Add"}}</button>
                                     </form>
-                                    <pre *ngIf="this.isDev()">
+                                    <pre *ngIf="this.userService.isDev()">
                                         {{serviceForm.value | json}}
                                     </pre>
                                 </div>
