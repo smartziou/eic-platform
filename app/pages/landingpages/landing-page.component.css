@@ -14,16 +14,20 @@
     border-color: #E9a432;
 }
 
-.editButton {
-    background-color: #29b22e;
-    border-color: #29b22e;
+.visitButton {
+    background-color: #214c9c;
+    border-color: #214c9c;
     color: #ffffff;
     width: 100%;
 }
 
-.editButton:hover {
-    background-color: #0f6f13;
-    border-color: #0f6f13;
+.visitButton:hover {
+    background-color: #254190;
+    border-color: #254190;
+}
+
+.tags {
+    margin-bottom: 20px;
 }
 
 .tags .uk-label-primary {
@@ -79,4 +83,14 @@ a:hover, .uk-link:hover {
 
 .comma-element:first-child::before {
     content: '';
+}
+
+.contractualInfo {
+    padding: 30px;
+    box-shadow: 0 6px 50px rgba(33,76,156,.4);
+}
+
+.contractualInfo h4 {
+    margin: 0 0 5px 0;
+    font-size: 15px;
 }

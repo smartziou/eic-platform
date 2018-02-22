@@ -19,9 +19,13 @@
                             <img src="{{service.symbol || 'http://fvtelibrary.com/img/user/NoLogo.png'}}" style="max-width: 110px; margin: 32px 32px 0px 0px;">
                             <div class="uk-display-inline-block uk-vertical-align-top uk-margin-top">
                                 <h2 class="uk-h2 uk-inline" style="margin-bottom: 5px">
-                                    <a target="_blank" [href]="service.url" (click)="visit()">
-                                      {{service.name || "Not Available"}}
-                                    </a>
+                                    {{service.name || "Not Available"}}
+                                    <!--<a target="_blank" [href]="service.url" (click)="visit()">-->
+                                      <!--{{service.name || "Not Available"}}-->
+                                    <!--</a>-->
+                                    <span class="uk-margin-left" *ngIf="this.userService.canEditService(service)">
+                                        <a (click)="this.router.edit(service.id)" routerLinkActive="active"><i class="fa fa-pencil"></i></a>
+                                    </span>
                                 </h2>
                                 <div style="display: flex">by&nbsp;
                                     <span class="comma-element" *ngFor="let provider of service.providers">
@@ -37,8 +41,8 @@
                                                   [staticColor]="'ok'"></star-rating-comp>
                             </div>
                             <div class="uk-margin-top" style="text-align: center">
-                                <button *ngIf="this.userService.canEditService(service)" class="uk-button uk-button-primary editButton" (click)="this.router.edit(service.id)" routerLinkActive="active">
-                                    <strong>Edit it!</strong>
+                                <button class="uk-button uk-button-primary visitButton" (click)="this.router.edit(service.id)" routerLinkActive="active">
+                                    <strong>Visit Service</strong>
                                 </button>
                             </div>
                         </div>
@@ -56,16 +60,12 @@
                         <i>"--"</i>
                     </div>
 
-                    <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
-
                     <div class="tags" *ngIf="service.lifeCycleStatus || service.trl || service.category || service.subcategory">
                         <span title="Category" uk-tooltip="delay: 500" class="uk-label uk-label-primary">{{service.category || "Service category not available"}}</span>
                         <span title="Subcategory" uk-tooltip="delay: 500" class="uk-label uk-label-primary">{{service.subcategory || "Service subcategory not available"}}</span>
                         <span title="Technology Readiness Level" uk-tooltip="delay: 500" class="uk-label uk-label-primary">TRL {{service.trl || "not available"}}</span>
                         <span title="Phase" uk-tooltip="delay: 500" class="uk-label uk-label-primary">{{service.lifeCycleStatus || "Phase not available"}}</span>
                     </div>
-
-                    <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
 
                     <div class="" *ngIf="service.description">
                         <p [innerHTML]="service.description">
@@ -76,6 +76,69 @@
                             Service description not available
                         </p>
                     </div>
+
+                    <ng-template [ngIf]="service.tags && service.tags.length>0">
+                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
+                        <span>Service tags</span>
+                        <div class="">
+                            <span *ngFor="let tag of service.tags" class="uk-label uk-label-default">{{tag}}</span>
+                        </div>
+                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
+                    </ng-template>
+
+                    <ng-template [ngIf]="!service.tags || service.tags.length==0">
+                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
+                        <span>Service tags</span>
+                        <div class="">
+                            <span class="uk-label uk-label-default">Not available</span>
+                        </div>
+                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
+                    </ng-template>
+
+                    <!--<hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">-->
+                    <div class="contractualInfo uk-margin-medium-top">
+                        <h4>Contractual Info</h4>
+                        <dl class="uk-description-list">
+
+                            <ng-template [ngIf]="service.options">
+                                <dt>Options</dt>
+                                <dd>{{service.options}}</dd>
+                            </ng-template>
+                            <ng-template [ngIf]="!service.options">
+                                <dt>Options</dt>
+                                <dd>Not available</dd>
+                            </ng-template>
+
+                            <ng-template [ngIf]="service.price">
+                                <dt>Pricing model</dt>
+                                <dd>{{service.price}}</dd>
+                            </ng-template>
+                            <ng-template [ngIf]="!service.price">
+                                <dt>Pricing model</dt>
+                                <dd>Not available</dd>
+                            </ng-template>
+
+                            <ng-template [ngIf]="service.serviceLevelAgreement">
+                                <dt>Service Level Agreement</dt>
+                                <dd>{{service.serviceLevelAgreement}}</dd>
+                            </ng-template>
+                            <ng-template [ngIf]="!service.serviceLevelAgreement">
+                                <dt>Service Level Agreement</dt>
+                                <dd>Not available</dd>
+                            </ng-template>
+
+                            <ng-template [ngIf]="service.termsOfUse && service.termsOfUse.length > 0">
+                                <dt>Terms of Use</dt>
+                                <dd>{{service.termsOfUse}}</dd>
+                            </ng-template>
+                            <ng-template [ngIf]="!service.termsOfUse">
+                                <dt>Terms of Use</dt>
+                                <dd>Not available</dd>
+                            </ng-template>
+
+                        </dl>
+                    </div>
+                    <!--<hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">-->
 
                     <dl class="uk-description-list">
 
@@ -98,24 +161,6 @@
                         </ng-template>
                     </dl>
 
-                    <ng-template [ngIf]="service.tags && service.tags.length>0">
-                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
-                        <span>Service tags</span>
-                        <div class="">
-                            <span *ngFor="let tag of service.tags" class="uk-label uk-label-default">{{tag}}</span>
-                        </div>
-                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
-                    </ng-template>
-
-                    <ng-template [ngIf]="!service.tags || service.tags.length==0">
-                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
-                        <span>Service tags</span>
-                        <div class="">
-                            <span class="uk-label uk-label-default">Not available</span>
-                        </div>
-                        <hr style="margin-top: 10px; margin-bottom: 8px; border-top: dotted 1px #CCCCCC;" class="ng-scope">
-                    </ng-template>
-
 
                     <!--TABS-->
                     <ul class=" uk-tab uk-visible@m uk-margin-medium-top" uk-tab="connect: #infoTabs; animation: uk-animation-fade">
@@ -136,9 +181,9 @@
                             <a>Service Coverage</a>
                         </li>
                         <!--<li *ngIf="service.options || service.price || service.serviceLevelAgreement || service.termsOfUse">-->
-                        <li>
-                            <a>Contractual Info</a>
-                        </li>
+                        <!--<li>-->
+                            <!--<a>Contractual Info</a>-->
+                        <!--</li>-->
                     </ul>
 
                     <button class="uk-button uk-button-default uk-hidden@m" type="button">
@@ -163,9 +208,9 @@
                             <a>Service Coverage</a>
                         </li>
                         <!--<li *ngIf="service.options || service.price || service.serviceLevelAgreement || service.termsOfUse">-->
-                        <li>
-                            <a>Contractual Info</a>
-                        </li>
+                        <!--<li>-->
+                            <!--<a>Contractual Info</a>-->
+                        <!--</li>-->
                     </ul>
 
                     <ul id="infoTabs" class="uk-switcher  uk-width-1-1 uk-margin-top custom-tab-content-large">
@@ -284,49 +329,49 @@
                             </div>
                         </li>
                         <!--<li *ngIf="service.options || service.price || service.serviceLevelAgreement || service.termsOfUse">-->
-                        <li>
-                            <div class="uk-margin-medium-top">
-                                <dl class="uk-description-list">
+                        <!--<li>-->
+                            <!--<div class="uk-margin-medium-top">-->
+                                <!--<dl class="uk-description-list">-->
 
-                                    <ng-template [ngIf]="service.options">
-                                        <dt>Options</dt>
-                                        <dd>{{service.options}}</dd>
-                                    </ng-template>
-                                    <ng-template [ngIf]="!service.options">
-                                        <dt>Options</dt>
-                                        <dd>Not available</dd>
-                                    </ng-template>
+                                    <!--<ng-template [ngIf]="service.options">-->
+                                        <!--<dt>Options</dt>-->
+                                        <!--<dd>{{service.options}}</dd>-->
+                                    <!--</ng-template>-->
+                                    <!--<ng-template [ngIf]="!service.options">-->
+                                        <!--<dt>Options</dt>-->
+                                        <!--<dd>Not available</dd>-->
+                                    <!--</ng-template>-->
 
-                                    <ng-template [ngIf]="service.price">
-                                        <dt>Pricing model</dt>
-                                        <dd>{{service.price}}</dd>
-                                    </ng-template>
-                                    <ng-template [ngIf]="!service.price">
-                                        <dt>Pricing model</dt>
-                                        <dd>Not available</dd>
-                                    </ng-template>
+                                    <!--<ng-template [ngIf]="service.price">-->
+                                        <!--<dt>Pricing model</dt>-->
+                                        <!--<dd>{{service.price}}</dd>-->
+                                    <!--</ng-template>-->
+                                    <!--<ng-template [ngIf]="!service.price">-->
+                                        <!--<dt>Pricing model</dt>-->
+                                        <!--<dd>Not available</dd>-->
+                                    <!--</ng-template>-->
 
-                                    <ng-template [ngIf]="service.serviceLevelAgreement">
-                                        <dt>Service Level Agreement</dt>
-                                        <dd>{{service.serviceLevelAgreement}}</dd>
-                                    </ng-template>
-                                    <ng-template [ngIf]="!service.serviceLevelAgreement">
-                                        <dt>Service Level Agreement</dt>
-                                        <dd>Not available</dd>
-                                    </ng-template>
+                                    <!--<ng-template [ngIf]="service.serviceLevelAgreement">-->
+                                        <!--<dt>Service Level Agreement</dt>-->
+                                        <!--<dd>{{service.serviceLevelAgreement}}</dd>-->
+                                    <!--</ng-template>-->
+                                    <!--<ng-template [ngIf]="!service.serviceLevelAgreement">-->
+                                        <!--<dt>Service Level Agreement</dt>-->
+                                        <!--<dd>Not available</dd>-->
+                                    <!--</ng-template>-->
 
-                                    <ng-template [ngIf]="service.termsOfUse && service.termsOfUse.length > 0">
-                                        <dt>Terms of Use</dt>
-                                        <dd>{{service.termsOfUse}}</dd>
-                                    </ng-template>
-                                    <ng-template [ngIf]="!service.termsOfUse">
-                                        <dt>Terms of Use</dt>
-                                        <dd>Not available</dd>
-                                    </ng-template>
+                                    <!--<ng-template [ngIf]="service.termsOfUse && service.termsOfUse.length > 0">-->
+                                        <!--<dt>Terms of Use</dt>-->
+                                        <!--<dd>{{service.termsOfUse}}</dd>-->
+                                    <!--</ng-template>-->
+                                    <!--<ng-template [ngIf]="!service.termsOfUse">-->
+                                        <!--<dt>Terms of Use</dt>-->
+                                        <!--<dd>Not available</dd>-->
+                                    <!--</ng-template>-->
 
-                                </dl>
-                            </div>
-                        </li>
+                                <!--</dl>-->
+                            <!--</div>-->
+                        <!--</li>-->
                     </ul>
 
                 </div>
