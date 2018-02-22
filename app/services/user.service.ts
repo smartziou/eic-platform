@@ -16,8 +16,10 @@ export class UserService {
 
     addFavourite(serviceID: string) {
         if (this.authenticationService.isLoggedIn()) {
-            let userID = this.authenticationService.user.id;
-            this.http.post("/user/addFavourite", {userID, serviceID}).subscribe(console.log);
+            let params = new URLSearchParams();
+            params.append("userID", this.authenticationService.user.id);
+            params.append("serviceID", serviceID);
+            return this.http.post("/user/addFavourite", {}, {params}).subscribe(console.log);
         } else {
             this.router.login();
         }
