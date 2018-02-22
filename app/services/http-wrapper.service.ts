@@ -11,9 +11,10 @@ declare var UIkit: any;
 @Injectable()
 export class HTTPWrapper extends Http {
     private base = process.env.API_ENDPOINT;
+    private static jsonHeaders = {"Content-Type": "application/json;charset=UTF-8", "Accept": "application/json;charset=UTF-8"};
 
     constructor(backend: XHRBackend) {
-        super(backend, new RequestOptions({headers: new Headers({"Content-Type": "application/json;charset=UTF-8"})}));
+        super(backend, new RequestOptions({headers: new Headers(HTTPWrapper.jsonHeaders)}));
     }
 
     public post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
