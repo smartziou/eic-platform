@@ -50,6 +50,7 @@ import {FooterComponent} from "./shared/footer/footer.component";
 import {ReusableComponentsModule} from "./shared/reusablecomponents/reusable-components.module";
 import {SharedModule} from "./shared/shared.module";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
+import { AccordionComponent } from "./pages/eInfraServices/accordion-section.component";
 
 const eicForms = [
     ProvidersComponent, PlacesComponent, LanguagesComponent, TagsComponent,
@@ -96,6 +97,7 @@ const eicForms = [
         ServiceEditComponent,
         ServiceFormComponent,
         ServiceUploadComponent,
+        AccordionComponent,
         //FORMS SUPPORT
         MyArray,
         MyArrayInline,

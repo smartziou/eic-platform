@@ -173,6 +173,11 @@
 
 /******************************************************/
 
+h2, .uk-h2 {
+    font-size: 27px;
+    text-transform: none;
+}
+
 .customAccordionPanel {
     margin-top: 10px !important;
     margin-bottom: 20px !important;
