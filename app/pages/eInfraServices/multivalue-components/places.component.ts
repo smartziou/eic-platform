@@ -20,7 +20,7 @@ export class PlacesComponent extends MyGroup {
     readonly placesDesc: sd.Description = sd.placesDesc;
     weights: string[] = ["EU", "WW"];
 
-    constructor(public resourceService: ResourceService, public injector: Injector) {
+    constructor(public resourceService: ResourceService, protected injector: Injector) {
         super(injector);
     }
 

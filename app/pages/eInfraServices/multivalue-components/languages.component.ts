@@ -22,7 +22,7 @@ export class LanguagesComponent extends MyGroup {
     readonly languagesDesc: sd.Description = sd.languagesDesc;
     weights: string[] = ["en"];
 
-    constructor(public resourceService: ResourceService, public injector: Injector) {
+    constructor(public resourceService: ResourceService, protected injector: Injector) {
         super(injector);
     }
 

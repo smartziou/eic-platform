@@ -27,7 +27,7 @@ export class ProvidersComponent extends MyGroup {
     weights: string[] = [];
 
     constructor(public resourceService: ResourceService, public authenticationService: AuthenticationService,
-                public injector: Injector) {
+                protected injector: Injector) {
         super(injector);
         this.weights[0] = this.authenticationService.user.email.split("@")[0];
     }

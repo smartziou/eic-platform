@@ -18,7 +18,7 @@ export class RequiredServicesComponent extends MyGroup {
     readonly groupDefinition = {entry: [""]};
     readonly requiredServicesDesc: sd.Description = sd.requiredServicesDesc;
 
-    constructor(public resourceService: ResourceService, public injector: Injector) {
+    constructor(public resourceService: ResourceService, protected injector: Injector) {
         super(injector);
     }
 
