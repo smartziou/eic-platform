@@ -1,7 +1,7 @@
 /**
  * Created by pgl on 21/08/17.
  */
-import {Component, Type} from "@angular/core";
+import {Component, Injector, Type} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
 import {Service} from "../../domain/eic-model";
@@ -116,8 +116,16 @@ export class ServiceFormComponent {
     //         date: {year: 2018, month: 10, day: 9}
     //     }
     // };
+    resourceService: ResourceService = this.injector.get(ResourceService);
+    fb: FormBuilder = this.injector.get(FormBuilder);
+    router: NavigationService = this.injector.get(NavigationService);
+    userService: UserService = this.injector.get(UserService);
 
-    constructor(public resourceService: ResourceService, public fb: FormBuilder, public router: NavigationService, public userService: UserService) {
+    constructor(protected injector: Injector) {
+        this.resourceService = this.injector.get(ResourceService);
+        this.fb = this.injector.get(FormBuilder);
+        this.router = this.injector.get(NavigationService);
+        this.userService = this.injector.get(UserService);
         this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 

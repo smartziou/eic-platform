@@ -3,15 +3,12 @@
  */
 
 import {Location} from "@angular/common";
-import {Component, OnInit} from "@angular/core";
-import {FormBuilder} from "@angular/forms";
+import {Component, Injector, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../domain/eic-model";
 import {AuthenticationService} from "../../services/authentication.service";
-import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
-import {UserService} from "../../services/user.service";
 import {ServiceFormComponent} from "./service-form.component";
 
 @Component({
@@ -23,10 +20,8 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     private sub: Subscription;
     private serviceID: string;
 
-    constructor(public resourceService: ResourceService, public fb: FormBuilder, public route: ActivatedRoute,
-                public router: NavigationService, public authenticationService: AuthenticationService,
-                public location: Location, public userService: UserService) {
-        super(resourceService, fb, router, userService);
+    constructor(public route: ActivatedRoute, public authenticationService: AuthenticationService, public location: Location, protected injector: Injector) {
+        super(injector);
         this.editMode = true;
     }
 
