@@ -7,7 +7,7 @@ import {AuthenticationService} from "./authentication.service";
 
 @Injectable()
 export class CanActivateViaPubGuard implements CanActivate {
-    constructor(private authenticationService: AuthenticationService) {
+    constructor(public authenticationService: AuthenticationService) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

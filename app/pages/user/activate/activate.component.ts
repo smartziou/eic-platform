@@ -18,7 +18,7 @@ export class ActivateComponent implements OnInit {
     successMessage: string = null;
     private sub: Subscription;
 
-    constructor(private resourceService: ResourceService, private route: ActivatedRoute, private router: NavigationService) {
+    constructor(public resourceService: ResourceService, public route: ActivatedRoute, public router: NavigationService) {
     }
 
     ngOnInit() {

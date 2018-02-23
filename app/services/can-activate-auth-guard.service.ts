@@ -9,7 +9,7 @@ import {NavigationService} from "./navigation.service";
 
 @Injectable()
 export class CanActivateViaAuthGuard implements CanActivate {
-    constructor(private authenticationService: AuthenticationService, private router: NavigationService) {
+    constructor(public authenticationService: AuthenticationService, public router: NavigationService) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

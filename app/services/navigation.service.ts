@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 
 @Injectable()
 export class NavigationService {
-    constructor(private router: Router) {
+    constructor(public router: Router) {
     }
 
     service(id: string) {

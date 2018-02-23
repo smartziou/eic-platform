@@ -11,7 +11,7 @@ export class FAQService {
     //private _faqUrl = "http://83.212.101.85:5555/api/";
     private _faqUrl = "http://beta.einfracentral.eu/faq/";
 
-    constructor(private http: Http) {
+    constructor(public http: Http) {
     }
 
     getActiveTopicQuestions() {

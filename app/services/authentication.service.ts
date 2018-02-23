@@ -13,7 +13,7 @@ export class AuthenticationService {
     cookieName: string = "jwt";
     user: User = null;
 
-    constructor(private router: NavigationService) {
+    constructor(public router: NavigationService) {
         this.user = JSON.parse(getCookie(this.cookieName));
     }
 

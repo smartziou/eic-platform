@@ -13,7 +13,7 @@ import {AuthenticationService} from "./services/authentication.service";
 export class AppComponent implements OnInit {
     isLoginOrRegister: boolean = false;
 
-    constructor(private router: Router, private oauthService: AuthenticationService) {
+    constructor(public router: Router, public oauthService: AuthenticationService) {
         // // URL of the SPA to redirect the user to after login
         // this.oauthService.redirectUri = window.location.origin + "/home";
         //

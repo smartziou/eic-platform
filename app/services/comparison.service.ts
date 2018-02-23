@@ -12,7 +12,7 @@ export class ComparisonService {
 
     public servicesToCompare: string[] = [];
 
-    constructor(private router: NavigationService) {
+    constructor(public router: NavigationService) {
         this.servicesToCompare = JSON.parse(sessionStorage.getItem("compareServices") || "[]");
     }
 

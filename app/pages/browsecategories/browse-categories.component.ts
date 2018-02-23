@@ -18,7 +18,7 @@ export class BrowseCategoriesComponent implements OnInit {
     public errorMessage: string;
     public browseResultsColumns: BrowseResults[] = [];
 
-    constructor(private router: NavigationService, private resourceService: ResourceService) {
+    constructor(public router: NavigationService, public resourceService: ResourceService) {
     }
 
     ngOnInit() {

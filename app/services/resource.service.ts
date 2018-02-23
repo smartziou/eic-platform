@@ -12,7 +12,7 @@ import {AuthenticationService} from "./authentication.service";
 import {HTTPWrapper} from "./http-wrapper.service";
 @Injectable()
 export class ResourceService {
-    constructor(private http: HTTPWrapper, private authenticationService: AuthenticationService) {
+    constructor(public http: HTTPWrapper, public authenticationService: AuthenticationService) {
     }
 
     getAll(resourceType: string) {

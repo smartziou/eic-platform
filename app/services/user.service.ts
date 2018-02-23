@@ -11,7 +11,7 @@ import {NavigationService} from "./navigation.service";
 
 @Injectable()
 export class UserService {
-    constructor(private http: HTTPWrapper, private router: NavigationService, private authenticationService: AuthenticationService) {
+    constructor(public http: HTTPWrapper, public router: NavigationService, public authenticationService: AuthenticationService) {
     }
 
     addFavourite(serviceID: string) {

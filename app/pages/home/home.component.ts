@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     ];
     private services: Service[];
 
-    constructor(fb: FormBuilder, private router: NavigationService) {
+    constructor(public fb: FormBuilder, public router: NavigationService) {
         this.searchForm = fb.group({"query": [""]});
     }
 

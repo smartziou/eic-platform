@@ -22,8 +22,8 @@ export class DashboardComponent implements OnInit {
     providerCoverage: string[];
     public errorMessage: string;
 
-    constructor(public authenticationService: AuthenticationService, protected userService: UserService,
-                protected resourceService: ResourceService, protected router: NavigationService) {
+    constructor(public authenticationService: AuthenticationService, public userService: UserService,
+                public resourceService: ResourceService, public router: NavigationService) {
         this.dashboardOn = userService.isDev();
     }
 

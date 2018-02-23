@@ -117,7 +117,7 @@ export class ServiceFormComponent {
     //     }
     // };
 
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: NavigationService, protected userService: UserService) {
+    constructor(public resourceService: ResourceService, public fb: FormBuilder, public router: NavigationService, public userService: UserService) {
         this.serviceForm = this.fb.group(this.formGroupMeta);
     }
 

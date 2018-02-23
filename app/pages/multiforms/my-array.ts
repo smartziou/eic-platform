@@ -47,7 +47,7 @@ export class MyArray extends MyGroup {
         this.createView();
     }
 
-    constructor(injector: Injector) {
+    constructor(public injector: Injector) {
         super(injector);
         this._cfr = injector.get(ComponentFactoryResolver);
     }

@@ -17,8 +17,8 @@ import {ServiceFormComponent} from "./service-form.component";
 export class ServiceUploadComponent extends ServiceFormComponent implements OnInit {
     private sub: Subscription;
 
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, protected router: NavigationService) {
         super(resourceService, fb, router);
+    constructor(public resourceService: ResourceService, public fb: FormBuilder, public router: NavigationService, public userService: UserService) {
         this.editMode = false;
     }
 

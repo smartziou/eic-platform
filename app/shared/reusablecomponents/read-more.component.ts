@@ -28,7 +28,7 @@ export class ReadMoreComponent implements AfterContentInit {
     public isCollapsed: boolean = false;
     public isCollapsable: boolean = false;
 
-    constructor(private elementRef: ElementRef) {
+    constructor(public elementRef: ElementRef) {
     }
 
     ngAfterContentInit() {

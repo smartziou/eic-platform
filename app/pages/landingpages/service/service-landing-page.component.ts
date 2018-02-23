@@ -24,8 +24,8 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     private sub: Subscription;
     private providers: any = {};
 
-    constructor(private route: ActivatedRoute, private router: NavigationService, private resourceService: ResourceService,
-                private authenticationService: AuthenticationService, private userService: UserService) {
+    constructor(public route: ActivatedRoute, public router: NavigationService, public resourceService: ResourceService,
+                public authenticationService: AuthenticationService, public userService: UserService) {
         this.Math = Math;
     }
 

@@ -20,8 +20,8 @@ export class ServiceDashboardComponent implements OnInit {
     public errorMessage: string;
     private sub: Subscription;
 
-    constructor(private route: ActivatedRoute, private router: NavigationService, private resourceService: ResourceService,
-                private authenticationService: AuthenticationService, private userService: UserService) {
+    constructor(public route: ActivatedRoute, public router: NavigationService, public resourceService: ResourceService,
+                public authenticationService: AuthenticationService, public userService: UserService) {
     }
 
     ngOnInit() {

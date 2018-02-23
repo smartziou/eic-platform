@@ -23,10 +23,10 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     private sub: Subscription;
     private serviceID: string;
 
-    constructor(protected resourceService: ResourceService, protected fb: FormBuilder, private route: ActivatedRoute,
-                protected router: NavigationService, private authenticationService: AuthenticationService,
-                private location: Location, private userService: UserService) {
         super(resourceService, fb, router);
+    constructor(public resourceService: ResourceService, public fb: FormBuilder, public route: ActivatedRoute,
+                public router: NavigationService, public authenticationService: AuthenticationService,
+                public location: Location, public userService: UserService) {
         this.editMode = true;
     }
 

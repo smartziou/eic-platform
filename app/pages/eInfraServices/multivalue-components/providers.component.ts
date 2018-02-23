@@ -26,8 +26,8 @@ export class ProvidersComponent extends MyGroup {
     readonly providersDesc: sd.Description = sd.providersDesc;
     weights: string[] = [];
 
-    constructor(private resourceService: ResourceService, private authenticationService: AuthenticationService,
-                injector: Injector) {
+    constructor(public resourceService: ResourceService, public authenticationService: AuthenticationService,
+                public injector: Injector) {
         super(injector);
         this.weights[0] = this.authenticationService.user.email.split("@")[0];
     }

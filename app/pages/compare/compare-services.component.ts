@@ -28,9 +28,9 @@ export class CompareServicesComponent implements OnInit, OnDestroy {
     vocabularies: any;
     private sub: Subscription;
 
-    constructor(fb: FormBuilder, private route: ActivatedRoute, private router: NavigationService,
-                private resourceService: ResourceService, private authenticationService: AuthenticationService,
-                private userService: UserService, public comparisonService: ComparisonService) {
+    constructor(public fb: FormBuilder, public route: ActivatedRoute, public router: NavigationService,
+                public resourceService: ResourceService, public authenticationService: AuthenticationService,
+                public userService: UserService, public comparisonService: ComparisonService) {
         this.searchForm = fb.group({"query": [""]});
     }
 

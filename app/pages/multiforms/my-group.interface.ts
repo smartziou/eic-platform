@@ -44,7 +44,7 @@ export class MyGroup implements OnInit, AfterContentInit {
 
     public createdEvent: EventEmitter<any> = new EventEmitter();
 
-    constructor(injector: Injector) {
+    constructor(public injector: Injector) {
         this._fb = injector.get(FormBuilder);
         this.patchData.subscribe(_ => {
             if (typeof _ != 'undefined') {

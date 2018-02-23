@@ -22,8 +22,8 @@ export class SignUpComponent implements OnInit {
     showProvider: boolean = false;
     pass: string = "";
 
-    constructor(private resourceService: ResourceService, fb: FormBuilder, private userService: UserService,
-                private router: NavigationService) {
+    constructor(public resourceService: ResourceService, public fb: FormBuilder, public userService: UserService,
+                public router: NavigationService) {
         this.signUpForm = fb.group({
             "name": ["", Validators.required],
             "surname": ["", Validators.required],

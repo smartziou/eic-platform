@@ -40,9 +40,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     advanced: boolean = false;
     providers: any;
 
-    constructor(fb: FormBuilder, private router: NavigationService, private route: ActivatedRoute,
-                private userService: UserService, private resourceService: ResourceService,
-                private authenticationService: AuthenticationService, public comparisonService: ComparisonService) {
+    constructor(public fb: FormBuilder, public router: NavigationService, public route: ActivatedRoute,
+                public userService: UserService, public resourceService: ResourceService,
+                public authenticationService: AuthenticationService, public comparisonService: ComparisonService) {
         this.searchForm = fb.group({"query": [""]});
     }
 

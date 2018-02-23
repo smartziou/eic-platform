@@ -7,7 +7,7 @@ import {AuthenticationService} from "./authentication.service";
 
 @Injectable()
 export class CanActivateEditGuard implements CanActivate {
-    constructor(private userService: AuthenticationService) {
+    constructor(public userService: AuthenticationService) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

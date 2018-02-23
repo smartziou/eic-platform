@@ -22,8 +22,8 @@ export class HelpContentComponent implements OnInit {
     contents: Content[];
     errorMessage: string = null;
 
-    constructor(private _helpContentService: HelpContentService, private route: ActivatedRoute,
-                private router: Router) {
+    constructor(public _helpContentService: HelpContentService, public route: ActivatedRoute,
+                public router: Router) {
     }
 
     ngOnInit() {
