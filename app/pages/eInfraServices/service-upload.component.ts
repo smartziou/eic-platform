@@ -7,6 +7,7 @@ import {Subscription} from "rxjs/Subscription";
 import {Service} from "../../domain/eic-model";
 import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
+import {UserService} from "../../services/user.service";
 import {ServiceFormComponent} from "./service-form.component";
 
 @Component({
@@ -17,8 +18,8 @@ import {ServiceFormComponent} from "./service-form.component";
 export class ServiceUploadComponent extends ServiceFormComponent implements OnInit {
     private sub: Subscription;
 
-        super(resourceService, fb, router);
     constructor(public resourceService: ResourceService, public fb: FormBuilder, public router: NavigationService, public userService: UserService) {
+        super(resourceService, fb, router, userService);
         this.editMode = false;
     }
 
