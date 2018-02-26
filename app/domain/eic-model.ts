@@ -1,19 +1,15 @@
-// Generated using typescript-generator version 1.27.339 on 2018-02-15 14:03:41.
+// Generated using typescript-generator version 1.27.339 on 2018-02-24 11:00:10.
 
 export class Access implements Identifiable {
     id: string;
     instant: number;
-    serviceID: string;
+    service: string;
     type: string;
-    userID: string;
+    user: string;
+    value: string;
 }
 
 export class Dimension {
-}
-
-export class Grant implements Identifiable {
-    description: string;
-    id: string;
 }
 
 export interface Identifiable {
@@ -27,7 +23,9 @@ export class Indicator implements Identifiable {
 }
 
 export class Manager implements Identifiable {
+    contactInformation: string;
     id: string;
+    name: string;
     service: User[];
     user: User[];
 }
@@ -41,10 +39,10 @@ export class Measurement<T> implements Identifiable {
 }
 
 export class Membership implements Identifiable {
-    grant: Grant;
+    grant: string;
     id: string;
-    provider: Provider;
-    user: User;
+    provider: string;
+    user: string;
 }
 
 export class Provider implements Identifiable {
@@ -94,18 +92,15 @@ export class Service implements Identifiable {
 }
 
 export class ServiceAddenda implements Identifiable {
-    averageRating: number;
-    externalHits: number;
-    favouriteCount: number;
     featured: boolean;
-    from: number;
     id: string;
-    internalHits: number;
+    modifiedAt: number;
+    modifiedBy: string;
     performanceData: Measurement<any>[];
     published: boolean;
-    ratings: number;
-    serviceID: string;
-    to: number;
+    registeredAt: number;
+    registeredBy: string;
+    service: string;
 }
 
 export class Unit {
