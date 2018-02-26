@@ -104,27 +104,66 @@ export class ResourceService {
         return this.search([{key: "provider", values: [id]}]).map(res => Object.values(res.results));
     }
 
-    getServiceAnalytics(serviceID: string): Observable<ServiceAddenda[]> {
+    randID() {
+        let s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+        return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4();
+    }
+
+    randInt(from, to) {
+        return Math.floor(Math.random() * (to - from + 1)) + from;
+    }
+
+    randEl(arr: any[]) {
+        return arr[this.randInt(0, arr.length)];
+    }
+
+    getServiceAddenda(service: string): Observable<ServiceAddenda[]> {
         let ret: ServiceAddenda[] = [];
-        ret[0] = {
-            from: 0, to: 1500000000, id: "0", internalHits: 0, externalHits: 0, favouriteCount: 0, ratings: 0,
-            averageRating: 0, performanceData: null, published: false, featured: false, serviceID
-        };
-        for (let id = 1, from = ret[0].to; from < 1520000000; from += 200000, id++) {
+        let users = ["pgl", "stefania"];
+        let registeredAt = 1500000000;
+        let registeredBy = this.randEl(users);
+        for (let id = 1, modifiedAt = registeredAt; modifiedAt < 1520000000; id++, modifiedAt += 200000) {
             ret[id] = {
-                from: ret[id - 1].to,
-                to: from,
-                id: id + "",
-                serviceID,
-                internalHits: ret[id - 1].internalHits + this.randomInt(10, 50),
-                externalHits: ret[id - 1].externalHits + this.randomInt(5, 10),
-                favouriteCount: ret[id - 1].favouriteCount + this.randomInt(0, 5),
-                ratings: ret[id - 1].favouriteCount + this.randomInt(0, 5),
-                averageRating: this.randomInt(1, 5),
+                service,
+                registeredAt,
+                registeredBy,
+                modifiedAt,
+                modifiedBy: this.randEl(users),
                 performanceData: null,
-                published: true,
+                published: false,
+                id: "" + id,
                 featured: Math.random() > 0.99
             };
+        }
+        ret[ret.length - 1].published = true;
+        return Observable.from([ret]);
+    }
+
+    getFavourites(service: string): Observable<Access[]> {
+        return this.getAccesses(service, "favourite");
+    }
+
+    getInternalHits(service: string): Observable<Access[]> {
+        return this.getAccesses(service, "internal");
+    }
+
+    getExternalHits(service: string): Observable<Access[]> {
+        return this.getAccesses(service, "external");
+    }
+
+    getRatings(service: string): Observable<Access[]> {
+        return this.getAccesses(service, "rating");
+    }
+
+    getAccesses(service: string, type: string): Observable<Access[]> {
+        let valuables = {rating: [0, 5], favourite: [0, 1]};
+        let ret: Access[] = [];
+        for (let i = 0; i < this.randInt(0, 10); i++) {
+            let ac: Access = {id: this.randID(), instant: this.randInt(1500000000, 1520000000), service, user: "pgl", type, value: null};
+            if (Object.keys(valuables).indexOf(type) > 0) {
+                ac.value = "" + this.randInt(valuables[type][0], valuables[type][1]);
+            }
+            ret.push(ac);
         }
         return Observable.from([ret]);
     }
@@ -165,13 +204,14 @@ export class ResourceService {
         return this.http[shouldPut ? "put" : "post"]("/service", service).map(res => <Service> <any> res);
     }
 
-    recordHit(id: any, type: any) {
-        if (sessionStorage.getItem(type + "-" + id) !== "aye") {
-            let hit = new Access();
-            hit.serviceID = id;
-            hit.instant = Date.now();
-            hit.userID = (this.authenticationService.user || {id: ""}).id;
-            hit.type = type;
+    recordHit(id: any, type: any, value: any) {
+        let hit = new Access();
+        hit.service = id;
+        hit.instant = Date.now();
+        hit.user = (this.authenticationService.user || {id: ""}).id;
+        hit.type = type;
+        let isVisit = ["internal", "external"].indexOf(hit.type) > 0;
+        if (( isVisit && sessionStorage.getItem(type + "-" + id) !== "aye") || !isVisit) {
             sessionStorage.setItem(type + "-" + id, "aye");
             return this.http.post("/access", hit);
         } else {
