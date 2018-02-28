@@ -33,9 +33,27 @@
 
     <script src="https://cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
 
+
+
+
 </head>
 
 <body>
+<!-- Matomo -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//localhost:8084/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
 <einfracentral-platform>Loading...</einfracentral-platform>
 
 <script src="dist/polyfills.bundle.js"></script>
