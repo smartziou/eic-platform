@@ -41,4 +41,8 @@ export class NavigationService {
     go(url: string) {
         return this.router.navigate([url]);
     }
+
+    goOffsite(url: string) {
+        window.location.href = url;
+    }
 }
