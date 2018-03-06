@@ -24,7 +24,7 @@ export class ResourceService {
     }
 
     getSome(resourceType: string, ids: string[]) {
-        return this.http.get(`/${resourceType}/some/${ids.toString()}/`);
+        return this.http.get(`/${resourceType}/byID/${ids.toString()}/`);
     }
 
     get(resourceType: string, id: string) {
