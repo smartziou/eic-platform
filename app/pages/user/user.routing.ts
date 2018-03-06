@@ -7,9 +7,9 @@ import {CanActivateViaAuthGuard} from "../../services/can-activate-auth-guard.se
 import {CanActivateViaPubGuard} from "../../services/can-activate-pub-guard.service";
 import {ActivateComponent} from "./activate/activate.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {ServiceDashboardComponent} from "./dashboard/service-dashboard.component";
 import {LoginComponent} from "./login/login.component";
 import {SignUpComponent} from "./register/sign-up.component";
-import { ServiceDashboardComponent } from "./dashboard/service-dashboard.component";
 
 const userRoutes: Routes = [
     {
