@@ -3,6 +3,7 @@
  */
 
 import {Component, OnInit} from "@angular/core";
+import * as util from "util";
 
 @Component({
     selector: "developers",
@@ -16,5 +17,9 @@ export class DevelopersComponent implements OnInit {
 
     ngOnInit() {
 
+    }
+
+    getModifiedURL(p) {
+        return util.format("%s//%s%s", window.location.protocol, window.location.hostname, p != null ? ":" + p : "");
     }
 }
