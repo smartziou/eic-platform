@@ -17,6 +17,11 @@ export class DevelopersComponent implements OnInit {
 
     ngOnInit() {
 
+    scrollTo(selector: string) {
+        let element = document.querySelector(selector);
+        if (element) {
+            element.scrollIntoView(element);
+        }
     }
 
     getModifiedURL(p) {
