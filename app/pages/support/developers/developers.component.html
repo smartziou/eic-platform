@@ -47,13 +47,13 @@
                                         <p>Registers a new service resource in the eInfraCentral Catalogue.</p>
                                         <div class="admonition note">
                                             <p class="first admonition-title"><span style="text-decoration: underline;"><strong>Note</strong></span></p>
-                                            <p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" href="_top"><span class="std std-ref">Log in / obtain token</span></a>.</p>
                                         </div>
                                         <div id="id9" class="section">
                                             <div class="admonition note">
                                                 <p class="first admonition-title"><strong><span style="text-decoration: underline;">Note</span></strong></p>
                                                 <p class="last">It is possible to create multiple versions of the same resource. Learn how to use <a href="_top"><span class="std std-ref">Resource versioning</span></a>.</p>
                                             </div>
+                                            <p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" (click)="scrollTo('#login')"><span class="std std-ref">Log in / obtain token</span></a>.</p>
                                         </div>
                                     </div>
                                     <h2 id="validate-registering-a-resource" class="section">Update a resource</h2>
@@ -61,7 +61,7 @@
                                         <p>Updates a service resource description.</p>
                                         <div class="admonition note">
                                             <p class="first admonition-title"><strong><span style="text-decoration: underline;">Note</span></strong></p>
-                                            <p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" href="_top"><span class="std std-ref">Log in / obtain token</span></a>.</p>
+                                            <p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" (click)="scrollTo('#login')"><span class="std std-ref">Log in / obtain token</span></a>.</p>
                                         </div>
                                     </div>
                                     <div id="validate-updating-a-resource" class="section">
@@ -69,7 +69,7 @@
                                         <p class="first admonition-title"><a href="_top">Validates</a> registering or updating a service resource without it actually being added \ modified in the registry.</p>
                                         <p class="first admonition-title"><strong><span style="text-decoration: underline;">Note</span></strong></p>
                                         <div class="admonition note">
-                                            <p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" href="_top"><span class="std std-ref">Log in / obtain token</span></a>.</p>
+                                            <p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" (click)="scrollTo('#login')"><span class="std std-ref">Log in / obtain token</span></a>.</p>
                                         </div>
                                     </div>
                                     <!--<div id="resource-versioning" class="section">-->
@@ -81,17 +81,17 @@
                                         <!--<p><a href="_top">Removes</a> a service resource from the registry.</p>-->
                                         <!--<div class="admonition note">-->
                                             <!--<p class="first admonition-title"><strong><span style="text-decoration: underline;">Note</span></strong></p>-->
-                                            <!--<p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" href="_top"><span class="std std-ref">Log in / obtain token</span></a>.</p>-->
+                                            <!--<p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" (click)="scrollTo('#login')"><span class="std std-ref">Log in / obtain token</span></a>.</p>-->
                                         <!--</div>-->
                                     <!--</div>-->
                                     <div id="list-used-terms" class="section">
-                                        <h2>Log in / obtain token</h2>
                                         <p><a href="_top">Logs the user</a> in and returns an authentication token. To use edit methods of the REST API, one needs an account with eInfraCentral. A subsequent POST request to beta.einfracentral.eu:8080/login with a JSON body containing fields email and password issues a jwt cookie. Any subsequent request to the API using that cookie, is authenticated.</p>
+                                        <h2 id="login">Log in / obtain token</h2>
                                         <!--<h2>Log out</h2>-->
                                         <!--<div class="admonition note">-->
                                             <!--<p class="first admonition-title"><a href="_top">Logs out the current user</a> and destroys the session</p>-->
                                             <!--<p class="first admonition-title"><strong><span style="text-decoration: underline;">Note</span></strong></p>-->
-                                            <!--<p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" href="_top"><span class="std std-ref">Log in / obtain token</span></a>.</p>-->
+                                            <!--<p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" (click)="scrollTo('#login')"><span class="std std-ref">Log in / obtain token</span></a>.</p>-->
                                         <!--</div>-->
                                         <!--<h2>-&#45;&#45;To Add later</h2>-->
                                         <!--<h2>List service categories</h2>-->
@@ -112,7 +112,7 @@
                                         <!--<p>Returns information about the logged in user account, including a list of registered resource (name, id, version, additionDate, lastUpdate)</p>-->
                                         <!--<div class="admonition note">-->
                                             <!--<p class="first admonition-title"><strong><span style="text-decoration: underline;">Note</span></strong></p>-->
-                                            <!--<p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" href="_top"><span class="std std-ref">Log in / obtain token</span></a>.</p>-->
+                                            <!--<p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" (click)="scrollTo('#login')"><span class="std std-ref">Log in / obtain token</span></a>.</p>-->
                                         <!--</div>-->
                                     <!--</div>-->
                                     <!--<div id="log-out" class="section">-->
