@@ -66,7 +66,7 @@
                                     </div>
                                     <div id="validate-updating-a-resource" class="section">
                                         <h2>Validate registering \ updating a resource</h2>
-                                        <p class="first admonition-title"><a href="_top">Validates</a> registering or updating a service resource without it actually being added \ modified in the registry.</p>
+                                        <p class="first admonition-title">Validates registering or updating a service resource without it actually being added \ modified in the registry.</p>
                                         <p class="first admonition-title"><strong><span style="text-decoration: underline;">Note</span></strong></p>
                                         <div class="admonition note">
                                             <p class="last">This method requires the user to be authenticated. Learn how to <a class="reference internal" (click)="scrollTo('#login')"><span class="std std-ref">Log in / obtain token</span></a>.</p>
@@ -85,8 +85,8 @@
                                         <!--</div>-->
                                     <!--</div>-->
                                     <div id="list-used-terms" class="section">
-                                        <p><a href="_top">Logs the user</a> in and returns an authentication token. To use edit methods of the REST API, one needs an account with eInfraCentral. A subsequent POST request to beta.einfracentral.eu:8080/login with a JSON body containing fields email and password issues a jwt cookie. Any subsequent request to the API using that cookie, is authenticated.</p>
                                         <h2 id="login">Log in / obtain token</h2>
+                                        <p>Logs the user in and returns an authentication token. To use edit methods of the REST API, one needs an account with eInfraCentral. A subsequent POST request to {{this.getModifiedURL(8080)}}/login with a JSON body containing fields email and password issues a jwt cookie. Any subsequent request to the API using that cookie, is authenticated.</p>
                                         <!--<h2>Log out</h2>-->
                                         <!--<div class="admonition note">-->
                                             <!--<p class="first admonition-title"><a href="_top">Logs out the current user</a> and destroys the session</p>-->
