@@ -3,6 +3,7 @@
  */
 
 import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
 import * as util from "util";
 
 @Component({
@@ -12,10 +13,12 @@ import * as util from "util";
 })
 export class DevelopersComponent implements OnInit {
 
-    constructor() {
+    constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+        this.route.fragment.subscribe(fragment => this.scrollTo("#" + fragment));
+    }
 
     scrollTo(selector: string) {
         let element = document.querySelector(selector);
