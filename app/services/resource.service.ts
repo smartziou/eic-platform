@@ -5,7 +5,7 @@ import {Injectable} from "@angular/core";
 import {URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BrowseResults} from "../domain/browse-results";
-import {UserAction, Service, ServiceAddenda} from "../domain/eic-model";
+import {Service, ServiceAddenda, UserAction} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";

@@ -9,12 +9,14 @@ import {BrowserModule} from "@angular/platform-browser";
 import {OAuthModule} from "angular-oauth2-oidc";
 import {StarRatingModule} from "angular-star-rating";
 import {MyDatePickerModule} from "mydatepicker";
+import {CKEditorModule} from "ng2-ckeditor";
 import {TabsModule} from "ngx-bootstrap";
 import {AppComponent} from "./app.component";
 import {appRoutingProviders, routing} from "./app.routing";
 import {AboutModule} from "./pages/about/about.module";
 import {BrowseCategoriesComponent} from "./pages/browsecategories/browse-categories.component";
 import {CompareServicesComponent} from "./pages/compare/compare-services.component";
+import {AccordionComponent} from "./pages/eInfraServices/accordion-section.component";
 import {LanguagesComponent} from "./pages/eInfraServices/multivalue-components/languages.component";
 import {PlacesComponent} from "./pages/eInfraServices/multivalue-components/places.component";
 import {ProvidersComponent} from "./pages/eInfraServices/multivalue-components/providers.component";
@@ -50,8 +52,6 @@ import {FooterComponent} from "./shared/footer/footer.component";
 import {ReusableComponentsModule} from "./shared/reusablecomponents/reusable-components.module";
 import {SharedModule} from "./shared/shared.module";
 import {TopMenuComponent} from "./shared/topmenu/topmenu.component";
-import { AccordionComponent } from "./pages/eInfraServices/accordion-section.component";
-import { CKEditorModule } from "ng2-ckeditor";
 
 const eicForms = [
     ProvidersComponent, PlacesComponent, LanguagesComponent, TagsComponent,

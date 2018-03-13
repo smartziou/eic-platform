@@ -9,8 +9,8 @@ import {ReusableComponentsModule} from "../../shared/reusablecomponents/reusable
 import {SharedModule} from "../../shared/shared.module";
 import {DevelopersComponent} from "./developers/developers.component";
 import {FAQsComponent} from "./faqs/faqs.component";
-import {supportRouting} from "./support.routing";
 import {OpenAPIComponent} from "./openapi/openapi.component";
+import {supportRouting} from "./support.routing";
 
 @NgModule({
     imports: [

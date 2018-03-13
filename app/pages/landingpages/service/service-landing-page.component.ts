@@ -34,7 +34,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
             Observable.zip(
                 this.resourceService.getEU(),
                 this.resourceService.getService(params["id"]),
-                this.resourceService.getProviders(),
+                this.resourceService.getProviders()
                 //this.resourceService.recordHit(id, "internal")
             ).subscribe(suc => {
                 this.EU = suc[0];

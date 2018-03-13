@@ -1,7 +1,7 @@
 /**
  * Created by stefania on 22/02/2018.
  */
-import { Component, Input } from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 @Component({
     selector: '[accordionSection]',
@@ -22,5 +22,5 @@ import { Component, Input } from "@angular/core";
 export class AccordionComponent {
 
     @Input()
-    title : string = "";
+    title: string = "";
 }

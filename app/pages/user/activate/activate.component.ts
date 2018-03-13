@@ -2,7 +2,7 @@
  * Created by pgl on 09/10/17.
  */
 
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {NavigationService} from "../../../services/navigation.service";
