@@ -1,13 +1,4 @@
-// Generated using typescript-generator version 1.27.339 on 2018-02-24 11:00:10.
-
-export class Access implements Identifiable {
-    id: string;
-    instant: number;
-    service: string;
-    type: string;
-    user: string;
-    value: string;
-}
+// Generated using typescript-generator version 1.27.339 on 2018-03-13 13:00:37.
 
 export class Dimension {
 }
@@ -73,7 +64,6 @@ export class Service implements Identifiable {
     relatedServices: string[];
     request: URL;
     requiredServices: string[];
-    serviceAddenda: ServiceAddenda;
     serviceLevelAgreement: URL;
     subcategory: string;
     symbol: URL;
@@ -108,16 +98,23 @@ export class Unit {
 
 export class User implements Identifiable {
     email: string;
-    favourite: Service[];
     id: string;
     iterationCount: number;
     joinDate: string;
-    membership: Membership[];
     name: string;
     password: string;
     resetToken: string;
     salt: any;
     surname: string;
+}
+
+export class UserAction implements Identifiable {
+    id: string;
+    instant: number;
+    service: string;
+    type: string;
+    user: string;
+    value: string;
 }
 
 export class Vocabulary implements Identifiable {
