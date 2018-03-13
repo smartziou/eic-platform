@@ -5,7 +5,7 @@ import {Injectable} from "@angular/core";
 import {URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BrowseResults} from "../domain/browse-results";
-import {Access, Service, ServiceAddenda} from "../domain/eic-model";
+import {UserAction, Service, ServiceAddenda} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";
@@ -139,27 +139,27 @@ export class ResourceService {
         return Observable.from([ret]);
     }
 
-    getFavourites(service: string): Observable<Access[]> {
-        return this.getAccesses(service, "favourite");
+    getFavourites(service: string): Observable<UserAction[]> {
+        return this.getUserActions(service, "favourite");
     }
 
-    getInternalHits(service: string): Observable<Access[]> {
-        return this.getAccesses(service, "internal");
+    getInternalHits(service: string): Observable<UserAction[]> {
+        return this.getUserActions(service, "internal");
     }
 
-    getExternalHits(service: string): Observable<Access[]> {
-        return this.getAccesses(service, "external");
+    getExternalHits(service: string): Observable<UserAction[]> {
+        return this.getUserActions(service, "external");
     }
 
-    getRatings(service: string): Observable<Access[]> {
-        return this.getAccesses(service, "rating");
+    getRatings(service: string): Observable<UserAction[]> {
+        return this.getUserActions(service, "rating");
     }
 
-    getAccesses(service: string, type: string): Observable<Access[]> {
+    getUserActions(service: string, type: string): Observable<UserAction[]> {
         let valuables = {rating: [0, 5], favourite: [0, 1]};
-        let ret: Access[] = [];
+        let ret: UserAction[] = [];
         for (let i = 0; i < this.randInt(0, 10); i++) {
-            let ac: Access = {id: this.randID(), instant: this.randInt(1500000000, 1520000000), service, user: "pgl", type, value: null};
+            let ac: UserAction = {id: this.randID(), instant: this.randInt(1500000000, 1520000000), service, user: "pgl", type, value: null};
             if (Object.keys(valuables).indexOf(type) > 0) {
                 ac.value = "" + this.randInt(valuables[type][0], valuables[type][1]);
             }
@@ -205,7 +205,7 @@ export class ResourceService {
     }
 
     recordHit(id: any, type: any, value: any) {
-        let hit = new Access();
+        let hit = new UserAction();
         hit.service = id;
         hit.instant = Date.now();
         hit.user = (this.authenticationService.user || {id: ""}).id;
@@ -213,7 +213,7 @@ export class ResourceService {
         let isVisit = ["internal", "external"].indexOf(hit.type) > 0;
         if (( isVisit && sessionStorage.getItem(type + "-" + id) !== "aye") || !isVisit) {
             sessionStorage.setItem(type + "-" + id, "aye");
-            return this.http.post("/access", hit);
+            return this.http.post("/useraction", hit);
         } else {
             return Observable.from(["k"]);
         }
