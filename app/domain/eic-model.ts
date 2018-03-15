@@ -1,6 +1,27 @@
-// Generated using typescript-generator version 1.27.339 on 2018-03-13 13:00:37.
+// Generated using typescript-generator version 1.27.339 on 2018-03-15 13:50:10.
+
+export class Addenda implements Identifiable {
+    featured: boolean;
+    id: string;
+    modifiedAt: number;
+    modifiedBy: string;
+    performanceData: Measurement<any>[];
+    published: boolean;
+    registeredAt: number;
+    registeredBy: string;
+    service: string;
+}
 
 export class Dimension {
+}
+
+export class Event implements Identifiable {
+    id: string;
+    instant: number;
+    service: string;
+    type: string;
+    user: string;
+    value: string;
 }
 
 export interface Identifiable {
@@ -81,18 +102,6 @@ export class Service implements Identifiable {
     version: string;
 }
 
-export class ServiceAddenda implements Identifiable {
-    featured: boolean;
-    id: string;
-    modifiedAt: number;
-    modifiedBy: string;
-    performanceData: Measurement<any>[];
-    published: boolean;
-    registeredAt: number;
-    registeredBy: string;
-    service: string;
-}
-
 export class Unit {
 }
 
@@ -106,15 +115,6 @@ export class User implements Identifiable {
     resetToken: string;
     salt: any;
     surname: string;
-}
-
-export class UserAction implements Identifiable {
-    id: string;
-    instant: number;
-    service: string;
-    type: string;
-    user: string;
-    value: string;
 }
 
 export class Vocabulary implements Identifiable {
