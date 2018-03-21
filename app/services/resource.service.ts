@@ -5,7 +5,7 @@ import {Injectable} from "@angular/core";
 import {URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BrowseResults} from "../domain/browse-results";
-import {Service, Addenda, Event} from "../domain/eic-model";
+import {Addenda, Event, Service} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";
@@ -65,6 +65,10 @@ export class ResourceService {
     getVocabularies(type?: string) {
         return this.http.get(`/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`)
         .map(e => (<any>e).results.reduce(type ? this.idToName : this.idToObject, {}));
+    }
+
+    getVocabulariesUsingGroupBy(type?: string) {
+        return this.http.get(`/vocabulary/by/type`).filter(e => type ? e && e.type && e.type === type : true);
     }
 
     idToName(acc, v) {
