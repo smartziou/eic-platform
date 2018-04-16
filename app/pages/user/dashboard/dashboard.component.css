@@ -20,3 +20,7 @@
 .serviceTitle h3, .serviceTitle .uk-h5 {
     text-transform: none;
 }
+
+chart {
+    display: block;
+}

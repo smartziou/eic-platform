@@ -16,12 +16,18 @@ import {UserService} from "../../../services/user.service";
     styleUrls: ["./service-dashboard.component.css"]
 })
 export class ServiceDashboardComponent implements OnInit {
+
     public service: Service;
     public errorMessage: string;
     private sub: Subscription;
 
-    constructor(public route: ActivatedRoute, public router: NavigationService, public resourceService: ResourceService,
-                public authenticationService: AuthenticationService, public userService: UserService) {
+    serviceVisitsOptions : any = null;
+    serviceRatingsOptions: any = null;
+    serviceFavoritesOptions: any = null;
+    serviceMapOptions: any = null;
+
+    constructor(private route: ActivatedRoute, private router: NavigationService, private resourceService: ResourceService,
+                private authenticationService: AuthenticationService, private userService: UserService) {
     }
 
     ngOnInit() {

@@ -172,6 +172,38 @@ export class ResourceService {
         return Observable.from([ret]);
     }
 
+    getVisitsForProvider(provider: string) {
+        return this.get("provider/visits", provider);
+    }
+
+    getFavoritesForProvider(provider: string) {
+        return this.get("provider/favourites", provider);
+    }
+
+    getRatingsForProvider(provider: string) {
+        return this.get("provider/ratings", provider);
+    }
+
+    getVisitationPercentageForProvider(provider: string) {
+        return this.get("provider/visitation", provider);
+    }
+
+    getPlacesForProvider(provider: string) {
+        return this.getServicesOfferedByProvider(provider);
+    }
+
+    getVisitsForService(service: string) {
+        return this.get("service/visits", service);
+    }
+
+    getFavoritesForService(service: string) {
+        return this.get("service/favourites", service);
+    }
+
+    getRatingsForService(service: string) {
+        return this.get("service/ratings", service);
+    }
+
     private randomInt(from: number, to: number) {
         return Math.floor(Math.random() * (to - from) + from);
     }

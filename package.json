@@ -24,6 +24,7 @@
     "angular-in-memory-web-api": "0.3.2",
     "angular-oauth2-oidc": "1.0.20",
     "angular-star-rating": "3.0.3",
+    "angular2-highcharts": "^0.5.5",
     "bootstrap": "3.3.7",
     "core-js": "2.4.1",
     "ie-shim": "0.1.0",
