@@ -26,11 +26,10 @@
 
                             <div *ngIf="errorMessage" class="uk-alert uk-alert-danger">{{errorMessage}}</div>
 
-                            <div class="uk-grid">
+                            <div *ngIf="service" class="uk-grid">
                                 <div class="uk-width-1-1">
                                     <div class="uk-float-right">
-                                        <button class="uk-button uk-button-secondary uk-display-block" style="width: 170px">Update</button>
-                                        <button class="uk-button uk-button-secondary uk-display-block uk-margin-top" style="width: 170px">New version</button>
+                                        <a href="/edit/{{service.id}}" class="uk-button uk-button-secondary uk-display-block" style="width: 170px">Update</a>
                                     </div>
                                 </div>
                             </div>
