@@ -229,7 +229,7 @@ export class ResourceService {
     }
 
     getEU() {
-        return this.http.get("/vocabulary/getEU").map(e => e.toLowerCase);
+        return this.http.get("/vocabulary/getEU");
     }
 
     activateUserAccount(id: any) {

@@ -28,7 +28,6 @@ import { ServiceEditComponent } from "./pages/eInfraServices/service-edit.compon
 import { ServiceFormComponent } from "./pages/eInfraServices/service-form.component";
 import { ServiceUploadComponent } from "./pages/eInfraServices/service-upload.component";
 import { HomeComponent } from "./pages/home/home.component";
-import { LandingPageModule } from "./pages/landingpages/landing-page.module";
 import { MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper } from "./pages/multiforms/my-array";
 import { MyFormDirective } from "./pages/multiforms/my-form.directive";
 import { InlineFormWrapper, MyGroup } from "./pages/multiforms/my-group.interface";
@@ -54,6 +53,7 @@ import { SharedModule } from "./shared/shared.module";
 import { TopMenuComponent } from "./shared/topmenu/topmenu.component";
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import { ChartModule } from "angular2-highcharts";
+import { ServiceLandingPageComponent } from "./pages/landingpages/service/service-landing-page.component";
 
 const eicForms = [
     ProvidersComponent, PlacesComponent, LanguagesComponent, TagsComponent,
@@ -82,7 +82,6 @@ export function highchartsFactory() {
         FormsModule,
         HttpModule,
         JsonpModule,
-        LandingPageModule,
         OAuthModule.forRoot(),
         ReactiveFormsModule,
         //ResourceRegistrationModule,
@@ -103,6 +102,7 @@ export function highchartsFactory() {
         CompareServicesComponent,
         HomeComponent,
         SearchComponent,
+        ServiceLandingPageComponent,
         //PERSISTENT
         ConfirmationDialogComponent,
         FeedbackComponent,

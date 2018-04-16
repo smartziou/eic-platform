@@ -1,14 +1,14 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs/Observable";
-import {Subscription} from "rxjs/Subscription";
-import {Service} from "../../../domain/eic-model";
-import {AuthenticationService} from "../../../services/authentication.service";
-import {NavigationService} from "../../../services/navigation.service";
-import {ResourceService} from "../../../services/resource.service";
-import {UserService} from "../../../services/user.service";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs/Observable";
+import { Subscription } from "rxjs/Subscription";
+import { Service } from "../../../domain/eic-model";
+import { AuthenticationService } from "../../../services/authentication.service";
+import { NavigationService } from "../../../services/navigation.service";
+import { ResourceService } from "../../../services/resource.service";
+import { UserService } from "../../../services/user.service";
 
-declare var Highcharts;
+declare var require: any;
 
 @Component({
     selector: "service-landing-page",
@@ -16,6 +16,7 @@ declare var Highcharts;
     styleUrls: ["../landing-page.component.css"]
 })
 export class ServiceLandingPageComponent implements OnInit, OnDestroy {
+
     services: Service[];
     public service: Service;
     public errorMessage: string;
@@ -23,6 +24,8 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     private Math: Math;
     private sub: Subscription;
     private providers: any = {};
+
+    serviceMapOptions: any = null;
 
     constructor(public route: ActivatedRoute, public router: NavigationService, public resourceService: ResourceService,
                 public authenticationService: AuthenticationService, public userService: UserService) {
@@ -40,6 +43,9 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
                 this.EU = suc[0];
                 this.providers = suc[2];
                 this.service = suc[1];
+
+                this.setCountriesForService(this.service.places);
+
                 let serviceIDs = (this.service.requiredServices || []).concat(this.service.relatedServices || [])
                 .filter((e, i, a) => a.indexOf(e) === i);
                 if (serviceIDs.length > 0) {
@@ -54,39 +60,47 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
-    runHighCharts() {
-        let places = JSON.parse(JSON.stringify(this.service.places || []));
+    setCountriesForService(data : any) {
+
+        let places = JSON.parse(JSON.stringify(data || []));
         let iEU = places.indexOf("EU");
         if (iEU > -1) {
             places.splice(iEU, 1);
             places.push(...this.EU);
         }
-        Highcharts.mapChart("coverageMap", {
-            chart: {borderWidth: 0},
-            title: "",
-            legend: {enabled: false},
-            series: [
-                {
-                    name: "Country",
-                    mapData: Highcharts.maps["custom/europe"],
-                    data: places.map(e => e.toLowerCase()).map(e => [e, 1]),
-                    dataLabels: {
-                        enabled: true,
-                        color: "#FFFFFF",
-                        formatter: function () {
-                            if (this.point.value) {
-                                return this.point.name;
-                            }
+
+        this.serviceMapOptions = {
+            chart: {
+                map: 'custom/europe',
+                // borderWidth: 1
+            },
+            title: {
+                text: 'Countries serviced by ' + this.service.name
+            },
+            // subtitle: {
+            //     text: 'Demo of drawing all areas in the map, only highlighting partial data'
+            // },
+            legend: {
+                enabled: false
+            },
+            series: [{
+                name: 'Country',
+                data: places.map(e => e.toLowerCase()).map(e => [e, 1]),
+                dataLabels: {
+                    enabled: true,
+                    color: '#FFFFFF',
+                    formatter: function () {
+                        if (this.point.value) {
+                            return this.point.name;
                         }
-                    },
-                    tooltip: {
-                        headerFormat: "",
-                        pointFormat: "{point.name}"
                     }
+                },
+                tooltip: {
+                    headerFormat: '',
+                    pointFormat: '{point.name}'
                 }
-            ]
-        });
-        return "";
+            }]
+        };
     }
 
     getShownRating() {

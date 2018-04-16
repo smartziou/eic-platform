@@ -279,7 +279,10 @@
                         <!--<li *ngIf="service.places || service.region || service.language">-->
                             <div class="uk-grid uk-margin-medium-top">
                                 <div class="uk-width-1-2@m">
-                                    <div id="coverageMap">{{this.runHighCharts()}}</div>
+                                    <div style="width:100%" *ngIf="serviceMapOptions">
+                                        <chart type="Map" [options]="serviceMapOptions"></chart>
+                                    </div>
+                                    <!--<div id="coverageMap">{{this.runHighCharts()}}</div>-->
                                 </div>
                                 <div class="uk-width-1-2@m">
                                     <dl class="uk-description-list">

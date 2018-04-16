@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
                                     console.log('Europe data', data);
 
                                     this.EU = data;
-                                    return this.getServicesForProvider(provider);
+                                    return this.getDataForProvider(provider);
                                 }
                             );
                         } else {
@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
         );
     }
 
-    getServicesForProvider(provider) {
+    getDataForProvider(provider) {
 
         this.resourceService.getServicesOfferedByProvider(provider)
         .subscribe(res => {
@@ -260,18 +260,12 @@ export class DashboardComponent implements OnInit {
 
     setCountriesForProvider(data : any) {
 
-        console.log('Places before', data);
-
-        console.log('Places EU', this.EU);
-
         let places = JSON.parse(JSON.stringify(data || []));
         let iEU = places.indexOf("EU");
         if (iEU > -1) {
             places.splice(iEU, 1);
             places.push(...this.EU);
         }
-
-        console.log('Places after', places);
 
         this.providerMapOptions = {
             chart: {
