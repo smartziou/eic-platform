@@ -16,8 +16,6 @@ declare var require: any;
     styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-    dashboardOn = true;
-
     provider: string;
     providerServices: Service[] = [];
     providerServicesGroupedByPlace: any;
@@ -34,8 +32,7 @@ export class DashboardComponent implements OnInit {
 
     constructor(public authenticationService: AuthenticationService, public userService: UserService,
                 public resourceService: ResourceService, public router: NavigationService) {
-        this.dashboardOn = userService.isDev();
-    }
+   }
 
     ngOnInit() {
         this.resourceService.getProviders().subscribe(
@@ -45,8 +42,6 @@ export class DashboardComponent implements OnInit {
                         //eventually manager/provider/aai should provide the relevant info,
                         // but for now, we just check if user's email=provider+eic
                         this.provider = provider;
-                        if (this.dashboardOn) {
-
                             this.resourceService.getEU().subscribe(
                                 data => {
 
@@ -56,9 +51,6 @@ export class DashboardComponent implements OnInit {
                                     return this.getDataForProvider(provider);
                                 }
                             );
-                        } else {
-                            return this.router.search({provider});
-                        }
                     }
                 }
             }
