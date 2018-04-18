@@ -105,7 +105,7 @@ export class ResourceService {
     }
 
     getServicesOfferedByProvider(id: string): Observable<Service[]> {
-        return this.search([{key: "provider", values: [id]}]).map(res => Object.values(res.results));
+        return this.search([{key: "quantity", values: ["100"]}, {key: "provider", values: [id]}]).map(res => Object.values(res.results));
     }
 
     randID() {
