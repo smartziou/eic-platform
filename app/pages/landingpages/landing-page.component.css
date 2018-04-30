@@ -56,26 +56,26 @@
     color: #D1303A;
 }
 
-a, .uk-link {
-    color: #214c9c;
-}
+/*a, .uk-link {*/
+    /*color: #214c9c;*/
+/*}*/
 
-a:hover, .uk-link:hover {
-    color: #d1303a;
-}
+/*a:hover, .uk-link:hover {*/
+    /*color: #d1303a;*/
+/*}*/
 
-.uk-tab > * > a:hover, .uk-tab > * > a:focus {
-    color: #214c9c;
-}
+/*.uk-tab > * > a:hover, .uk-tab > * > a:focus {*/
+    /*color: #214c9c;*/
+/*}*/
 
-.uk-tab > * > a, .nav-tabs > li > a {
-    color: #524f4f;
-}
+/*.uk-tab > * > a, .nav-tabs > li > a {*/
+    /*color: #524f4f;*/
+/*}*/
 
-.uk-tab > .uk-active > a, .nav-tabs > .active > a {
-    border-color: #214c9c;
-    color: #214c9c;
-}
+/*.uk-tab > .uk-active > a, .nav-tabs > .active > a {*/
+    /*border-color: #214c9c;*/
+    /*color: #214c9c;*/
+/*}*/
 
 .comma-element::before {
     content: ', ';

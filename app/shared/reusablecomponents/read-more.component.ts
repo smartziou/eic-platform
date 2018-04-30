@@ -47,8 +47,7 @@ export class ReadMoreComponent implements AfterContentInit {
 @Component({
     selector: "read-more-text",
     template: `
-        <div [class.collapsed]="isCollapsed" [style.height]="isCollapsed ? maxHeight+'px' : 'auto'" #readMoreDiv>
-            {{text}}
+        <div [class.collapsed]="isCollapsed" [style.height]="isCollapsed ? maxHeight+'px' : 'auto'" #readMoreDiv [innerHTML]="text">
         </div>
         <a *ngIf="isCollapsable" (click)="isCollapsed =! isCollapsed">View {{isCollapsed ? 'more' : 'less'}}...</a>
     `,

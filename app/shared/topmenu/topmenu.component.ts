@@ -1,8 +1,9 @@
 /**
  * Created by stefania on 7/5/16.
  */
-import {Component, ViewEncapsulation} from "@angular/core";
-import {AuthenticationService} from "../../services/authentication.service";
+import { Component, ViewEncapsulation } from "@angular/core";
+import { AuthenticationService } from "../../services/authentication.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "top-menu",
@@ -15,7 +16,11 @@ import {AuthenticationService} from "../../services/authentication.service";
     encapsulation: ViewEncapsulation.None
 })
 export class TopMenuComponent {
-    constructor(public authenticationService: AuthenticationService) {
+    constructor(public authenticationService: AuthenticationService, public route: Router) {
+    }
+
+    get isHome() {
+        return this.route.url == '/home';
     }
 
     onClick(id: string) {

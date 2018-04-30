@@ -51,6 +51,14 @@ export class ResourceService {
     }
 
     search(urlParameters: URLParameter[]) {
+
+        //TODO this 4 lines should be implemented in the backend
+        let providerParameter: URLParameter = {
+            key: 'provider',
+            values: ['openaire']
+        };
+        urlParameters.push(providerParameter);
+
         let searchQuery = new URLSearchParams();
         for (let urlParameter of urlParameters) {
             for (let value of urlParameter.values) {

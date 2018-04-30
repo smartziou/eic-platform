@@ -1,231 +1,464 @@
-<div class="tm-header-mobile uk-hidden@m">
-    <nav class="uk-navbar-container uk-navbar" uk-navbar="">
-        <div class="uk-navbar-left">
-            <a class="uk-navbar-toggle" href="#tm-mobile" uk-toggle="">
-                <div uk-navbar-toggle-icon="" class="uk-navbar-toggle-icon uk-icon">
-                    <!--<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1">-->
-                        <!--<rect y="2" width="20" height="1"/>-->
-                        <!--<rect y="9" width="20" height="1"/>-->
-                        <!--<rect y="16" width="20" height="1"/>-->
-                    <!--</svg>-->
-                </div>
-            </a>
-        </div>
-        <div class="uk-navbar-center">
-            <a class="uk-navbar-item uk-logo" [routerLink]="['/search']">
-                <img src="../../../imgs/einfracentral_logo_horizontal.png"
-                     class="uk-responsive-height" alt="eInfraCentral">
-            </a>
-        </div>
-    </nav>
-    <div id="tm-mobile" uk-offcanvas="" mode="slide" overlay="" class="uk-offcanvas">
-        <div class="uk-offcanvas-bar">
-            <button class="uk-offcanvas-close uk-close uk-icon" type="button" uk-close="">
-                <!--<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" ratio="1">-->
-                    <!--<line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"/>-->
-                    <!--<line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"/>-->
-                <!--</svg>-->
-            </button>
-            <div class="uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
-                <div>
-                    <div class="uk-panel" id="module-0">
-                        <ul class="uk-nav uk-nav-default">
-                            <li class="uk-nav-header" [routerLinkActive]="['uk-active']">
-                                <a [routerLink]="['/home']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">
-                                    Home
-                                    <!--<img class="uk-responsive-height" src="./imgs/Icons/Home_24white.svg" alt="home">-->
-                                </a>
-                            </li>
-                            <li class="uk-nav-header" [routerLinkActive]="['uk-active']">
-                                <a [routerLink]="['/search']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Search</a>
-                            </li>
-                            <li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">Support
-                                <ul class="uk-nav-sub">
-                                    <li><a [routerLink]="['/support/faqPolicies']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">FAQs - Policies</a></li>
-                                    <li><a [routerLink]="['/support/faqLegal']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">FAQs - Legal</a></li>
-                                    <li><a href="http://openminted.eu/support/" target="_blank" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Ask a question</a></li>
-                                </ul>
-                            </li>
+<div>
+    <div class="uk-offcanvas-content">
 
-                            <li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">
-
-                                <span *ngIf="authenticationService.isLoggedIn()" >
-                                  <span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>
-                                </span>
-                                <span *ngIf="!authenticationService.isLoggedIn()">
-                                    <!--Sign in | Register <span class="uk-margin-small-right uk-icon" ></span>-->
-                                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
-                                        <a class="loginLink" [routerLink]="['/signIn']"> Sign In   </a>
-                                    </span>
-                                    |
-                                        <!-- Registration button -->
-                                    <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
-                                        <a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">Register</a>
-                                    </span>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg>
-                               </span>
-
-                                <ul *ngIf="authenticationService.isLoggedIn()" class="uk-nav-sub">
-                                    <li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>
-                                    <li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!--<div>-->
-                    <!--<div class="uk-panel" id="module-tm-2">-->
-                        <!--<form id="search-tm-2" action="/index.php?option=com_content&amp;view=article&amp;id=1044&amp;Itemid=2029" method="post" role="search" class="uk-search uk-search-default">-->
-                            <!--<span uk-search-icon="" class="uk-search-icon uk-icon">-->
-                                <!--<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1">-->
-                                    <!--<circle fill="none" stroke="#000" stroke-width="1.1" cx="9" cy="9" r="7"/>-->
-                                    <!--<path fill="none" stroke="#000" stroke-width="1.1" d="M14,14 L18,18 L14,14 Z"/>-->
-                                <!--</svg>-->
-                            <!--</span>-->
-                            <!--<input name="searchword" placeholder="Search" class="uk-search-input" type="search">-->
-                            <!--<input name="task" value="search" type="hidden">-->
-                            <!--<input name="option" value="com_search" type="hidden">-->
-                            <!--<input name="Itemid" value="2029" type="hidden">-->
-                        <!--</form>-->
-                    <!--</div>-->
-                <!--</div>-->
-            </div>
-        </div>
-    </div>
-</div>
-<!--<div class="tm-toolbar uk-visible@m">-->
-    <!--<div class="uk-container uk-flex uk-flex-middle uk-container-expand">-->
-
-
-        <!--<div class="uk-margin-auto-left">-->
-            <!--<div class="uk-grid-medium uk-child-width-auto uk-flex-middle uk-grid uk-grid-stack" uk-grid="margin: uk-margin-small-top">-->
-                <!--<div class="uk-first-column"><div class="uk-panel inner" id="module-119">-->
-                    <!--<ul class="uk-subnav uk-subnav-line">-->
-                        <!--<li class="home-hover"><a href="/index.php?option=com_content&amp;view=article&amp;id=292&amp;Itemid=1860"><img class="uk-responsive-height" src="/images/Icons/Home_24white.svg" alt="home"></a></li><li><a href="/www.cnn.com">Discover</a></li><li><a href="/www.cnn.com">Join</a></li><li><a href="/www.cnn.com">Connect</a></li><li><a href="/www.cnn.com">Monitor</a></li><li><a href="/www.cnn.com">Develop</a></li></ul>-->
-                <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-    <!--</div>-->
-<!--</div>-->
-<div class="tm-header uk-visible@m" uk-header="">
-    <div class="uk-navbar-container uk-sticky" uk-sticky="" media="768" cls-active="uk-active uk-navbar-sticky" style="">
-        <div class="uk-container uk-container-expand">
-            <nav class="uk-navbar" uk-navbar="{&quot;align&quot;:&quot;left&quot;}">
+        <div class="tm-header-mobile uk-hidden@m">
+            <nav class="uk-navbar-container uk-navbar" uk-navbar="">
                 <div class="uk-navbar-left">
-                    <a routerLink="/home" class="uk-navbar-item uk-logo">
-                        <img src="../../../imgs/einfracentral_logo_horizontal.png"
-                             class="uk-responsive-height" alt="eInfraCentral" style="width: 250px">
+                    <a class="uk-navbar-toggle" href="#tm-mobile" uk-toggle="">
+                        <div uk-navbar-toggle-icon="" class="uk-navbar-toggle-icon uk-icon">
+                            <!--              <svg width="20" height="20" viewBox="0 0 20 20" ratio="1">
+                                            <rect y="9" width="20" height="2"/>
+                                            <rect y="3" width="20" height="2"/>
+                                            <rect y="15" width="20" height="2"/>
+                                          </svg>-->
+                        </div>
                     </a>
                 </div>
                 <div class="uk-navbar-center">
-                    <ul class="uk-navbar-nav">
-                        <!--<li *ngIf="this.authenticationService.isLoggedIn() && this.authenticationService.user.id == 'stefania'" class="uk-parent" [routerLinkActive]="['uk-active']">-->
-                            <!--<a routerLink="/dashboard" routerLinkActive="uk-active">Dashboard</a>-->
-                        <!--</li>-->
-                        <li class="uk-parent" [routerLinkActive]="['uk-active']">
-                            <a routerLink="/home" routerLinkActive="uk-active">
-                                Home
-                                <!--<img class="uk-responsive-height" src="./imgs/Icons/Home_24white.svg" alt="home">-->
-                            </a>
-                        </li>
-                        <li class="uk-parent" [routerLinkActive]="['uk-active']">
-                            <a routerLink="/search" routerLinkActive="uk-active">Search</a>
-                        </li>
-                        <li class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">Support</a>
-                            <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="support" (click)="onClick('support')">
-                                <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
-                                    <div class="uk-first-column">
-                                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                                            <li><a [routerLink]="['/developers']" routerLinkActive="uk-active">For developers</a></li>
-                                            <li><a [routerLink]="['/support/faqs']" routerLinkActive="uk-active">FAQs</a></li>
-                                            <li><a href="http://einfracentral.eu/contact" target="_blank" routerLinkActive="uk-active">Ask a question</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                    <a class="uk-navbar-item uk-logo" [routerLink]="['/landing']">
+                        <img src="https://dl119.madgik.di.uoa.gr/images/openaire/Symbol.png" alt="OpenAIRE"
+                             class="uk-responsive-height"> </a>
                 </div>
+            </nav>
+            <div id="tm-mobile" uk-offcanvas="" mode="slide" overlay="" class="uk-offcanvas">
+                <div class="uk-offcanvas-bar">
+                    <button class="uk-offcanvas-close uk-close uk-icon" type="button" uk-close="">
+                        <!--            <svg width="14" height="14" viewBox="0 0 14 14" ratio="1">
+                                      <line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"/>
+                                      <line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"/>
+                                    </svg>-->
+                    </button>
+                    <div class="uk-child-width-1-1 uk-grid" uk-grid="">
+                        <div>
+                            <div class="uk-panel" id="module-0">
+                                <!-- THERE WAS COMMENTED SCRIPT HERE - CHECK REPOSITORYMANAGER.HTML -->
+                            </div>
+                        </div>
+                        <div>
+                            <!--<div class="uk-panel" id="module-tm-2">
+                              <div id="search-tm-2" action="#" method="post" role="search"
+                                    class="uk-search uk-search-default uk-icon">
+                                <span class="uk-search-icon uk-icon"><svg width="20" height="20"
+                                                                          viewBox="0 0 20 20"
+                                                                          ratio="1">
+                                    <circle fill="none" stroke="#000" stroke-width="1.1" cx="9" cy="9" r="7"/>
+                                    <path fill="none" stroke="#000" stroke-width="1.1" d="M14,14 L18,18 L14,14 Z"/>
+                                </svg></span>
+                                <input name="searchword" placeholder="Search" class="uk-search-input" type="search">
+                                <input name="task" value="search" type="hidden">
+                                <input name="option" value="com_search" type="hidden">
+                                <input name="Itemid" value="1860" type="hidden">
 
-                <div class="uk-navbar-right">
+                              </div>
+                            </div>-->
+                            <div>
+                                <ul class="uk-nav uk-nav-default">
+                                    <li class="uk-nav-header" [routerLinkActive]="['uk-active']">
+                                        <a [routerLink]="['/home']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">
+                                            Home
+                                            <!--<img class="uk-responsive-height" src="./imgs/Icons/Home_24white.svg" alt="home">-->
+                                        </a>
+                                    </li>
+                                    <li class="uk-nav-header" [routerLinkActive]="['uk-active']">
+                                        <a [routerLink]="['/search']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Search</a>
+                                    </li>
+                                    <li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">Support
+                                        <ul class="uk-nav-sub">
+                                            <li><a [routerLink]="['/support/faqPolicies']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">FAQs - Policies</a></li>
+                                            <li><a [routerLink]="['/support/faqLegal']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">FAQs - Legal</a></li>
+                                            <li><a href="http://openminted.eu/support/" target="_blank" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Ask a question</a></li>
+                                        </ul>
+                                    </li>
 
-                    <ul class="uk-navbar-nav">
-                        <li class="uk-parent">
+                                    <li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">
 
-                            <a *ngIf="authenticationService.isLoggedIn()" class="loginLink">
-                                <span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>
-                            </a>
-                            <a *ngIf="!authenticationService.isLoggedIn()" class="loginLink" >
-                                <!--Sign in | Register <span class="uk-margin-small-right uk-icon" ></span>-->
-                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">
+                                        <span *ngIf="authenticationService.isLoggedIn()" >
+                                          <span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>
+                                        </span>
+                                                <span *ngIf="!authenticationService.isLoggedIn()">
+                                            <a class="loginLink" >
+                                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
                                     <a class="loginLink" [routerLink]="['/signIn']"> Sign In   </a>
                                 </span>
-                                |
-                                <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
+                                        |
+                                        <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
                                     <a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">Register</a>
                                 </span>
-                                <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg>
-                            </a>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg>
+                                            </a>
+                                       </span>
 
-
-                            <div *ngIf="authenticationService.isLoggedIn()" class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left"   id="userMenu" (click)="onClick('userMenu')"  >
-                                <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
-                                    <div class="uk-first-column">
-                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <ul *ngIf="authenticationService.isLoggedIn()" class="uk-nav-sub">
                                             <!--<li><a href="" >My profile</a></li>-->
                                             <li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>
                                             <li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>
                                         </ul>
-                                    </div>
-                                </div>
+                                    </li>
+                                </ul>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
 
                 </div>
+            </div>
+        </div>
+
+        <div class="tm-toolbar uk-visible@m">
+            <div class="uk-container uk-flex uk-flex-middle uk-container-expand">
+
+
+                <div class="uk-margin-auto-left">
+                    <div class="uk-grid-medium uk-child-width-auto uk-flex-middle uk-grid uk-grid-stack"
+                         uk-grid="margin: uk-margin-small-top">
+                        <div class="uk-first-column">
+                            <div class="uk-panel inner" id="module-119">
+                                <ul class="uk-subnav uk-subnav-line">
+                                    <li><a class="home-icon" href="https://beta.openaire.eu">
+                                            <span class="uk-responsive-height">
+                                              <svg xml:space="preserve"  enable-background="new 0 0 20 20" height="20px" id="Layer_1" version="1.1" viewBox="0 0 48 48" width="20px" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M44.715,23.711c-0.381,0.382-1,0.382-1.381,0l-8.939-8.938 c-0.064-0.051-0.119-0.106-0.17-0.171l-3.83-3.829c-0.064-0.051-0.119-0.106-0.17-0.171L24,4.377L4.667,23.711 c-0.381,0.382-1,0.382-1.381,0c-0.381-0.381-0.381-1,0-1.381L23.191,2.425c0.031-0.047,0.053-0.101,0.094-0.144 C23.482,2.085,23.742,1.994,24,2c0.258-0.006,0.518,0.084,0.715,0.281c0.043,0.042,0.062,0.096,0.096,0.144L30,7.616V4.997 c0,0,0,0,0,0c0-0.552,0.447-1,1-1h4c0.277,0,0.527,0.112,0.707,0.293C35.889,4.471,36,4.721,36,4.997v8.619l8.715,8.714 C45.096,22.711,45.096,23.33,44.715,23.711z M34,5.997h-2v3.619l2,2V5.997z M10,21.997c0.552,0,1,0.448,1,1v19c0,1.105,0.896,2,2,2 h6l0,0v-13c0-0.553,0.447-1,1-1h8c0.553,0,1,0.447,1,1v13l0,0h6c1.105,0,2-0.895,2-2v-19c0-0.552,0.447-1,1-1s1,0.448,1,1v19 c0,2.209-1.791,4-4,4H13c-2.209,0-4-1.791-4-4v-19C9,22.444,9.448,21.997,10,21.997z M27,43.996v-12h-6v12l0,0H27L27,43.996z" fill="#fff" fill-rule="evenodd" id="home"></path></svg>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <!--<li class="uk-active"><a-->
+                                    <!--href="/index.php?option=com_content&amp;view=article&amp;id=292&amp;Itemid=1860"><img-->
+                                    <!--class="uk-responsive-height"-->
+                                    <!--src="http://dl119.madgik.di.uoa.gr/images/site_images/Home-icon.png"-->
+                                    <!--alt="home"></a></li>-->
+                                    <li><a href="/www.cnn.com" title="Search in OA. Link your research">Explore</a></li>
+                                    <li class="active"><a href="/www.cnn.com" title="Content Provider Dashboard">Provide</a></li>
+                                    <li><a href="/www.cnn.com" title="Research Community Dashboard">Connect</a></li>
+                                    <li><a href="/www.cnn.com" title="Monitoring Dashboard">Monitor</a></li>
+                                    <li><a href="/www.cnn.com" title="APIs">Develop</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tm-header uk-visible@m tm-header-transparent" uk-header="">
+            <div  [ngClass]="{'uk-light':isHome, 'uk-dark':!isHome}" class="uk-navbar-container uk-sticky uk-navbar-transparent" uk-sticky="top:0" media="768"
+                 cls-active="uk-active uk-navbar-sticky" style="" animation="uk-animation-slide-top"
+                 top=".tm-header + [class*=&quot;uk-section&quot;]" cls-inactive="uk-navbar-transparent">
+                <div class="uk-container uk-container-expand">
+                    <nav class="uk-navbar" uk-navbar="{&quot;align&quot;:&quot;left&quot;}">
+                        <div class="uk-navbar-left">
+                            <a [routerLink]="['home']" class="uk-logo uk-navbar-item">
+                                <img src="https://dl119.madgik.di.uoa.gr/images/openaire/Logo_Horizontal.png" alt="OpenAIRE" class="uk-responsive-height">
+                            </a>
+                        </div>
+
+                        <!-- THERE WAS COMMENTED SCRIPT HERE - CHECK REPOSITORYMANAGER.HTML -->
+
+                        <div class="uk-navbar-center">
+                            <ul class="uk-navbar-nav">
+                                <!--<li *ngIf="this.authenticationService.isLoggedIn() && this.authenticationService.user.id == 'stefania'" class="uk-parent" [routerLinkActive]="['uk-active']">-->
+                                <!--<a routerLink="/dashboard" routerLinkActive="uk-active">Dashboard</a>-->
+                                <!--</li>-->
+                                <li class="uk-parent" [routerLinkActive]="['uk-active']">
+                                    <a routerLink="/home" routerLinkActive="uk-active">
+                                        Home
+                                        <!--<img class="uk-responsive-height" src="./imgs/Icons/Home_24white.svg" alt="home">-->
+                                    </a>
+                                </li>
+                                <li class="uk-parent" [routerLinkActive]="['uk-active']">
+                                    <a routerLink="/search" routerLinkActive="uk-active">Search</a>
+                                </li>
+                                <li class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">Support</a>
+                                    <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="support" (click)="onClick('support')">
+                                        <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
+                                            <div class="uk-first-column">
+                                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                    <li><a [routerLink]="['/developers']" routerLinkActive="uk-active">For developers</a></li>
+                                                    <li><a [routerLink]="['/support/faqs']" routerLinkActive="uk-active">FAQs</a></li>
+                                                    <li><a href="http://einfracentral.eu/contact" target="_blank" routerLinkActive="uk-active">Ask a question</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="uk-navbar-right">
+
+                            <ul class="uk-navbar-nav">
+                                <li class="uk-parent">
+
+                                    <a *ngIf="authenticationService.isLoggedIn()" class="loginLink">
+                                        <span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>
+                                    </a>
+                                    <a *ngIf="!authenticationService.isLoggedIn()" class="loginLink" >
+                                        <!--Sign in | Register <span class="uk-margin-small-right uk-icon" ></span>-->
+                                        <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">
+                                    <a class="loginLink" [routerLink]="['/signIn']"> Sign In   </a>
+                                </span>
+                                        |
+                                        <span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">
+                                    <a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">Register</a>
+                                </span>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg>
+                                    </a>
+
+
+                                    <div *ngIf="authenticationService.isLoggedIn()" class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left"   id="userMenu" (click)="onClick('userMenu')"  >
+                                        <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
+                                            <div class="uk-first-column">
+                                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                    <!--<li><a href="" >My profile</a></li>-->
+                                                    <li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>
+                                                    <li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="uk-sticky-placeholder" style="height: 84px; margin: 0px;" hidden="hidden"></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!--<div class="tm-header-mobile uk-hidden@m">-->
+    <!--<nav class="uk-navbar-container uk-navbar" uk-navbar="">-->
+        <!--<div class="uk-navbar-left">-->
+            <!--<a class="uk-navbar-toggle" href="#tm-mobile" uk-toggle="">-->
+                <!--<div uk-navbar-toggle-icon="" class="uk-navbar-toggle-icon uk-icon">-->
+                    <!--&lt;!&ndash;<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<rect y="2" width="20" height="1"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<rect y="9" width="20" height="1"/>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<rect y="16" width="20" height="1"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</svg>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="uk-navbar-center">-->
+            <!--<a class="uk-navbar-item uk-logo" [routerLink]="['/search']">-->
+                <!--<img src="https://dl119.madgik.di.uoa.gr/images/openaire/Symbol.png"-->
+                     <!--class="uk-responsive-height" alt="eInfraCentral">-->
+            <!--</a>-->
+        <!--</div>-->
+    <!--</nav>-->
+    <!--<div id="tm-mobile" uk-offcanvas="" mode="slide" overlay="" class="uk-offcanvas">-->
+        <!--<div class="uk-offcanvas-bar">-->
+            <!--<button class="uk-offcanvas-close uk-close uk-icon" type="button" uk-close="">-->
+                <!--&lt;!&ndash;<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" ratio="1">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<line fill="none" stroke="#000" stroke-width="1.1" x1="1" y1="1" x2="13" y2="13"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<line fill="none" stroke="#000" stroke-width="1.1" x1="13" y1="1" x2="1" y2="13"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;</svg>&ndash;&gt;-->
+            <!--</button>-->
+            <!--<div class="uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">-->
+                <!--<div>-->
+                    <!--<div class="uk-panel" id="module-0">-->
+                        <!--<ul class="uk-nav uk-nav-default">-->
+                            <!--<li class="uk-nav-header" [routerLinkActive]="['uk-active']">-->
+                                <!--<a [routerLink]="['/home']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">-->
+                                    <!--Home-->
+                                    <!--&lt;!&ndash;<img class="uk-responsive-height" src="./imgs/Icons/Home_24white.svg" alt="home">&ndash;&gt;-->
+                                <!--</a>-->
+                            <!--</li>-->
+                            <!--<li class="uk-nav-header" [routerLinkActive]="['uk-active']">-->
+                                <!--<a [routerLink]="['/search']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Search</a>-->
+                            <!--</li>-->
+                            <!--<li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">Support-->
+                                <!--<ul class="uk-nav-sub">-->
+                                    <!--<li><a [routerLink]="['/support/faqPolicies']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">FAQs - Policies</a></li>-->
+                                    <!--<li><a [routerLink]="['/support/faqLegal']" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">FAQs - Legal</a></li>-->
+                                    <!--<li><a href="http://openminted.eu/support/" target="_blank" routerLinkActive="uk-active" class="uk-offcanvas-close offcanvas-close">Ask a question</a></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+
+                            <!--<li class="uk-nav-header uk-parent" [routerLinkActive]="['uk-active']">-->
+
+                                <!--<span *ngIf="authenticationService.isLoggedIn()" >-->
+                                  <!--<span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>-->
+                                <!--</span>-->
+                                <!--<span *ngIf="!authenticationService.isLoggedIn()">-->
+                                    <!--&lt;!&ndash;Sign in | Register <span class="uk-margin-small-right uk-icon" ></span>&ndash;&gt;-->
+                                    <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">-->
+                                        <!--<a class="loginLink" [routerLink]="['/signIn']"> Sign In   </a>-->
+                                    <!--</span>-->
+                                    <!--|-->
+                                        <!--&lt;!&ndash; Registration button &ndash;&gt;-->
+                                    <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">-->
+                                        <!--<a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">Register</a>-->
+                                    <!--</span>-->
+                                    <!--<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg>-->
+                               <!--</span>-->
+
+                                <!--<ul *ngIf="authenticationService.isLoggedIn()" class="uk-nav-sub">-->
+                                    <!--<li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>-->
+                                    <!--<li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="uk-panel" id="module-tm-2">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<form id="search-tm-2" action="/index.php?option=com_content&amp;view=article&amp;id=1044&amp;Itemid=2029" method="post" role="search" class="uk-search uk-search-default">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<span uk-search-icon="" class="uk-search-icon uk-icon">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<circle fill="none" stroke="#000" stroke-width="1.1" cx="9" cy="9" r="7"/>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<path fill="none" stroke="#000" stroke-width="1.1" d="M14,14 L18,18 L14,14 Z"/>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</svg>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<input name="searchword" placeholder="Search" class="uk-search-input" type="search">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<input name="task" value="search" type="hidden">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<input name="option" value="com_search" type="hidden">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<input name="Itemid" value="2029" type="hidden">&ndash;&gt;-->
+                        <!--&lt;!&ndash;</form>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div class="tm-toolbar uk-visible@m">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="uk-container uk-flex uk-flex-middle uk-container-expand">&ndash;&gt;-->
+
+
+        <!--&lt;!&ndash;<div class="uk-margin-auto-left">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="uk-grid-medium uk-child-width-auto uk-flex-middle uk-grid uk-grid-stack" uk-grid="margin: uk-margin-small-top">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="uk-first-column"><div class="uk-panel inner" id="module-119">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ul class="uk-subnav uk-subnav-line">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li class="home-hover"><a href="/index.php?option=com_content&amp;view=article&amp;id=292&amp;Itemid=1860"><img class="uk-responsive-height" src="/images/Icons/Home_24white.svg" alt="home"></a></li><li><a href="/www.cnn.com">Discover</a></li><li><a href="/www.cnn.com">Join</a></li><li><a href="/www.cnn.com">Connect</a></li><li><a href="/www.cnn.com">Monitor</a></li><li><a href="/www.cnn.com">Develop</a></li></ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div class="tm-header uk-visible@m" uk-header="">-->
+    <!--<div class="uk-navbar-container uk-sticky" uk-sticky="" media="768" cls-active="uk-active uk-navbar-sticky" style="">-->
+        <!--<div class="uk-container uk-container-expand">-->
+            <!--<nav class="uk-navbar" uk-navbar="{&quot;align&quot;:&quot;left&quot;}">-->
+                <!--<div class="uk-navbar-left">-->
+                    <!--<a routerLink="/home" class="uk-navbar-item uk-logo">-->
+                        <!--<img src="https://dl119.madgik.di.uoa.gr/images/openaire/Logo_Horizontal.png"-->
+                             <!--class="uk-responsive-height" alt="eInfraCentral">-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="uk-navbar-center">-->
+                    <!--<ul class="uk-navbar-nav">-->
+                        <!--&lt;!&ndash;<li *ngIf="this.authenticationService.isLoggedIn() && this.authenticationService.user.id == 'stefania'" class="uk-parent" [routerLinkActive]="['uk-active']">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a routerLink="/dashboard" routerLinkActive="uk-active">Dashboard</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                        <!--<li class="uk-parent" [routerLinkActive]="['uk-active']">-->
+                            <!--<a routerLink="/home" routerLinkActive="uk-active">-->
+                                <!--Home-->
+                                <!--&lt;!&ndash;<img class="uk-responsive-height" src="./imgs/Icons/Home_24white.svg" alt="home">&ndash;&gt;-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="uk-parent" [routerLinkActive]="['uk-active']">-->
+                            <!--<a routerLink="/search" routerLinkActive="uk-active">Search</a>-->
+                        <!--</li>-->
+                        <!--<li class="uk-parent" [routerLinkActive]="['uk-active']"><a href="#" class="" aria-expanded="false">Support</a>-->
+                            <!--<div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="top: 80px; left: 106.55px;" id="support" (click)="onClick('support')">-->
+                                <!--<div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">-->
+                                    <!--<div class="uk-first-column">-->
+                                        <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
+                                            <!--<li><a [routerLink]="['/developers']" routerLinkActive="uk-active">For developers</a></li>-->
+                                            <!--<li><a [routerLink]="['/support/faqs']" routerLinkActive="uk-active">FAQs</a></li>-->
+                                            <!--<li><a href="http://einfracentral.eu/contact" target="_blank" routerLinkActive="uk-active">Ask a question</a></li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
 
                 <!--<div class="uk-navbar-right">-->
-                    <!--<div class="uk-navbar-item btlogin" id="module-367">-->
-                        <!--<div id="btl">-->
 
-                            <!--&lt;!&ndash; Panel top &ndash;&gt;-->
-                            <!--<div *ngIf="!authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">-->
-                                <!--&lt;!&ndash; Login button &ndash;&gt;-->
-			                    <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">-->
-			                        <!--&lt;!&ndash;<a class="loginLink" (click)="loginWithState()"> SIGN IN   </a>&ndash;&gt;-->
-                                    <!--<a class="loginLink" [routerLink]="['/signIn']"> SIGN IN   </a>-->
+                    <!--<ul class="uk-navbar-nav">-->
+                        <!--<li class="uk-parent">-->
+
+                            <!--<a *ngIf="authenticationService.isLoggedIn()" class="loginLink">-->
+                                <!--<span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>-->
+                            <!--</a>-->
+                            <!--<a *ngIf="!authenticationService.isLoggedIn()" class="loginLink" >-->
+                                <!--&lt;!&ndash;Sign in | Register <span class="uk-margin-small-right uk-icon" ></span>&ndash;&gt;-->
+                                <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">-->
+                                    <!--<a class="loginLink" [routerLink]="['/signIn']"> Sign In   </a>-->
                                 <!--</span>-->
                                 <!--|-->
-                                <!--&lt;!&ndash; Registration button &ndash;&gt;-->
                                 <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">-->
-			                        <!--&lt;!&ndash;<a [href]="'https://aai.openminted.eu/signup'" routerLinkActive="uk-active" class="loginLink">REGISTER</a>&ndash;&gt;-->
-                                    <!--<a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">REGISTER</a>-->
+                                    <!--<a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">Register</a>-->
                                 <!--</span>-->
-                            <!--</div>-->
+                                <!--<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg>-->
+                            <!--</a>-->
 
-                            <!--&lt;!&ndash; Panel top &ndash;&gt;-->
-                            <!--<div *ngIf="authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">-->
-                                <!--&lt;!&ndash; Login button &ndash;&gt;-->
-			                    <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">-->
-			                        <!--<a routerLinkActive="uk-active" (click)="this.authenticationService.logout()" class="loginLink">SIGN OUT {{this.authenticationService.user.email}}</a>-->
-                                <!--</span>-->
-                            <!--</div>-->
 
-                            <!--&lt;!&ndash;<div class="btl-panel" style="float: right;">&ndash;&gt;-->
+                            <!--<div *ngIf="authenticationService.isLoggedIn()" class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left"   id="userMenu" (click)="onClick('userMenu')"  >-->
+                                <!--<div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">-->
+                                    <!--<div class="uk-first-column">-->
+                                        <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
+                                            <!--&lt;!&ndash;<li><a href="" >My profile</a></li>&ndash;&gt;-->
+                                            <!--<li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>-->
+                                            <!--<li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                <!--</div>-->
+
+                <!--&lt;!&ndash;<div class="uk-navbar-right">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="uk-navbar-item btlogin" id="module-367">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div id="btl">&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;&lt;!&ndash; Panel top &ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div *ngIf="!authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">&ndash;&gt;-->
                                 <!--&lt;!&ndash;&lt;!&ndash; Login button &ndash;&gt;&ndash;&gt;-->
+			                    <!--&lt;!&ndash;<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">&ndash;&gt;-->
+			                        <!--&lt;!&ndash;&lt;!&ndash;<a class="loginLink" (click)="loginWithState()"> SIGN IN   </a>&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<a class="loginLink" [routerLink]="['/signIn']"> SIGN IN   </a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                                <!--&lt;!&ndash;|&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash; Registration button &ndash;&gt;&ndash;&gt;-->
                                 <!--&lt;!&ndash;<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">&ndash;&gt;-->
-			                        <!--&lt;!&ndash;<a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT Jane Doe</a>&ndash;&gt;-->
+			                        <!--&lt;!&ndash;&lt;!&ndash;<a [href]="'https://aai.openminted.eu/signup'" routerLinkActive="uk-active" class="loginLink">REGISTER</a>&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<a [routerLink]="['/signUp']" routerLinkActive="uk-active" class="loginLink">REGISTER</a>&ndash;&gt;-->
                                 <!--&lt;!&ndash;</span>&ndash;&gt;-->
                             <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-                            <!--&lt;!&ndash; content dropdown/modal box &ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash; Panel top &ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div *ngIf="authenticationService.isLoggedIn()" class="btl-panel" style="float: right;">&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash; Login button &ndash;&gt;&ndash;&gt;-->
+			                    <!--&lt;!&ndash;<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">&ndash;&gt;-->
+			                        <!--&lt;!&ndash;<a routerLinkActive="uk-active" (click)="this.authenticationService.logout()" class="loginLink">SIGN OUT {{this.authenticationService.user.email}}</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            </nav>
-        </div>
-    </div><div class="uk-sticky-placeholder" style="height: 80px; margin: 0px;" hidden="hidden"></div>
-</div>
+                            <!--&lt;!&ndash;&lt;!&ndash;<div class="btl-panel" style="float: right;">&ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash; Login button &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash;<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" class="btl-dropdown">&ndash;&gt;&ndash;&gt;-->
+			                        <!--&lt;!&ndash;&lt;!&ndash;<a routerLink="/home" routerLinkActive="uk-active" (click)="logout()" class="loginLink">SIGN OUT Jane Doe</a>&ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash;</span>&ndash;&gt;&ndash;&gt;-->
+                            <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;&lt;!&ndash; content dropdown/modal box &ndash;&gt;&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</nav>-->
+        <!--</div>-->
+    <!--</div><div class="uk-sticky-placeholder" style="height: 80px; margin: 0px;" hidden="hidden"></div>-->
+<!--</div>-->

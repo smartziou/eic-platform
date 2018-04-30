@@ -1,5 +1,6 @@
+<div class="tm-header-placeholder uk-margin-remove-adjacent" style="height: 84px;"></div>
 <div class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle"
-     style="background-image: url('./imgs/iStock-629814372.jpg'); box-sizing: border-box; height: 150px">
+     style="background-image: url('https://dl119.madgik.di.uoa.gr/templates/yootheme/cache/handsinair_3-f4940f92.png'); box-sizing: border-box; height: 150px;">
     <!--<div class="uk-position-cover"></div>-->
     <div class="uk-width-1-1">
         <div class="uk-position-relative">
@@ -16,7 +17,8 @@
                                 </form>
                                 <ul *ngIf="urlParameters && urlParameters.length>0" class="facets-selected cf uk-width-medium-9-10">
                                     <ng-template ngFor let-urlParameter [ngForOf]="urlParameters">
-                                        <ng-template [ngIf]="urlParameter.key!='from'">
+                                        <!--TODO remove when provider is removed from filters in the backend-->
+                                        <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='provider'">
                                             <li *ngFor="let facet of urlParameter.values" class="search-tag">
                                                 <span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
                                             </li>
@@ -73,7 +75,8 @@
                     <h3 class="uk-h3 uk-heading-bullet">Further refine</h3>
 
                     <ng-template ngFor let-facet [ngForOf]="searchResults.facets">
-                        <ng-template [ngIf]="facet.field!='category'">
+                        <!--TODO remove when provider is removed from filters in the backend-->
+                        <ng-template [ngIf]="facet.field!='category' && facet.field!='provider'">
                             <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
                                 <read-more [maxHeight]="235">
                                     <span>{{facet.label=='TRL'?'Technology Readiness':facet.label}}</span>
