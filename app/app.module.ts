@@ -13,9 +13,6 @@ import { CKEditorModule } from "ng2-ckeditor";
 import { TabsModule } from "ngx-bootstrap";
 import { AppComponent } from "./app.component";
 import { appRoutingProviders, routing } from "./app.routing";
-import { AboutModule } from "./pages/about/about.module";
-import { BrowseCategoriesComponent } from "./pages/browsecategories/browse-categories.component";
-import { CompareServicesComponent } from "./pages/compare/compare-services.component";
 import { AccordionComponent } from "./pages/eInfraServices/accordion-section.component";
 import { LanguagesComponent } from "./pages/eInfraServices/multivalue-components/languages.component";
 import { PlacesComponent } from "./pages/eInfraServices/multivalue-components/places.component";
@@ -32,7 +29,6 @@ import { MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper } from "./
 import { MyFormDirective } from "./pages/multiforms/my-form.directive";
 import { InlineFormWrapper, MyGroup } from "./pages/multiforms/my-group.interface";
 import { SearchComponent } from "./pages/search/search.component";
-import { SupportModule } from "./pages/support/support.module";
 import { ActivateComponent } from "./pages/user/activate/activate.component";
 import { DashboardComponent } from "./pages/user/dashboard/dashboard.component";
 import { ServiceDashboardComponent } from "./pages/user/dashboard/service-dashboard.component";
@@ -76,7 +72,6 @@ export function highchartsFactory() {
 
 @NgModule({
     imports: [
-        AboutModule,
         BrowserModule,
         MyDatePickerModule,
         FormsModule,
@@ -89,7 +84,6 @@ export function highchartsFactory() {
         routing,
         SharedModule,
         StarRatingModule.forRoot(),
-        SupportModule,
         TabsModule,
         UserModule,
         CKEditorModule,
@@ -98,8 +92,6 @@ export function highchartsFactory() {
     declarations: [
         //MAIN
         AppComponent,
-        BrowseCategoriesComponent,
-        CompareServicesComponent,
         HomeComponent,
         SearchComponent,
         ServiceLandingPageComponent,

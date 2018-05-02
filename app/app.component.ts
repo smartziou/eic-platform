@@ -5,15 +5,19 @@
 import {Component, OnInit} from "@angular/core";
 import {NavigationEnd, Router} from "@angular/router";
 import {AuthenticationService} from "./services/authentication.service";
+import { User } from "./domain/eic-model";
+import { UserService } from "./services/user.service";
 
 @Component({
     selector: "einfracentral-platform",
     templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
-    isLoginOrRegister: boolean = false;
 
-    constructor(public router: Router, public oauthService: AuthenticationService) {
+    isLoginOrRegister: boolean = false;
+    public submitted: boolean;
+
+    constructor(public router: Router, public oauthService: AuthenticationService, public userService: UserService) {
         // // URL of the SPA to redirect the user to after login
         // this.oauthService.redirectUri = window.location.origin + "/home";
         //
@@ -31,14 +35,22 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.router.events.subscribe((evt: any) => {
-            this.isLoginOrRegister = ["/signUp", "/signIn"].includes(evt.url);
-        });
-        this.router.events.subscribe((evt) => {
-            if (!(evt instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0);
-        });
+
+        this.userService.loginUser('openaire@eic', 'ioannidis').subscribe(user => this.saveLoginStatus(user));
+
+        // this.router.events.subscribe((evt: any) => {
+        //     this.isLoginOrRegister = ["/signUp", "/signIn"].includes(evt.url);
+        // });
+        // this.router.events.subscribe((evt) => {
+        //     if (!(evt instanceof NavigationEnd)) {
+        //         return;
+        //     }
+        //     window.scrollTo(0, 0);
+        // });
+    }
+
+    saveLoginStatus(user: User) {
+        this.oauthService.login(user);
+        this.submitted = true;
     }
 }

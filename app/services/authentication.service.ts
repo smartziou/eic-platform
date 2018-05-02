@@ -9,6 +9,7 @@ import {NavigationService} from "./navigation.service";
 
 @Injectable()
 export class AuthenticationService {
+
     redirectURL: string = "/dashboard";
     cookieName: string = "jwt";
     user: User = null;
@@ -21,7 +22,7 @@ export class AuthenticationService {
         if (!this.isLoggedIn()) {
             setCookie(this.cookieName, JSON.stringify(user), 1);
             this.user = user;
-            this.router.go(this.redirectURL);
+            // this.router.go(this.redirectURL);
         }
     }
 

@@ -4,8 +4,6 @@
 
 import { ModuleWithProviders } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { BrowseCategoriesComponent } from "./pages/browsecategories/browse-categories.component";
-import { CompareServicesComponent } from "./pages/compare/compare-services.component";
 import { ServiceEditComponent } from "./pages/eInfraServices/service-edit.component";
 import { ServiceUploadComponent } from "./pages/eInfraServices/service-upload.component";
 import { HomeComponent } from "./pages/home/home.component";
@@ -26,14 +24,6 @@ const appRoutes: Routes = [
     {
         path: "search",
         component: SearchComponent
-    },
-    {
-        path: "compare",
-        component: CompareServicesComponent
-    },
-    {
-        path: "browseCategories",
-        component: BrowseCategoriesComponent
     },
     {
         path: "service/:id",
