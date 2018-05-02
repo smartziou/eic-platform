@@ -1536,3 +1536,11 @@ background:#fff!important;
 .omtd_secondary.uk-section-default{
 	background:#35C2CE!important;
 }
+
+.uk-input.ng-invalid.ng-touched,
+.uk-select.ng-invalid.ng-touched,
+.uk-textarea.ng-invalid.ng-touched {
+    color: #f0506e !important;
+    border-color: #f0506e !important;
+}
+

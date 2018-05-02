@@ -159,6 +159,9 @@ export class ServiceFormComponent {
     }
 
     onSubmit(service: Service, isValid: boolean) {
+
+        this.setAsTouched();
+
         //TODO: check if model is valid
         if (isValid) {
             this.resourceService.uploadService(this.toServer(service), this.editMode)
@@ -167,9 +170,10 @@ export class ServiceFormComponent {
             });
         } else {
             window.scrollTo(0, 0);
-            this.serviceForm.markAsDirty();
-            this.serviceForm.updateValueAndValidity();
-            this.errorMessage = "Please fill in all required fields (marked with an asterisk), and fix the data format in fields underlined with a red colour.";
+            // this.serviceForm.markAsDirty();
+            // this.serviceForm.updateValueAndValidity();
+            this.errorMessage = "Please fill in all required fields (marked with an asterisk), and fix the data format " +
+                "in fields underlined with a red colour.";
         }
     }
 
@@ -180,6 +184,34 @@ export class ServiceFormComponent {
         ).subscribe(suc => {
             this.providers = suc[0];
             this.vocabularies = this.transformVocabularies(suc[1]);
+        });
+    }
+
+    public setAsTouched() {
+        let ret = {};
+        console.log(this.serviceForm);
+        this.setAsTouched_(this.serviceForm, ret);
+        console.log(ret);
+    }
+
+    private setAsTouched_(form : FormGroup, ret : any) {
+        Object.keys(form.controls).forEach(control =>{
+            let control_ = form.controls[control];
+            console.log(control,control_);
+            if( !control_.valid) {
+                ret[control] = {};
+                if (control_.hasOwnProperty('controls')) {
+                    this.setAsTouched_(control_ as FormGroup, ret[control]);
+                } else {
+                    if (control_.enabled && !control_.valid) {
+                        console.log(control);
+                        ret[control] = control_.valid;
+                        (control_ as FormGroup).markAsDirty();
+                        (control_ as FormGroup).markAsTouched();
+                        console.log(control, form.controls[control].valid);
+                    }
+                }
+            }
         });
     }
 }
