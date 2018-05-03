@@ -34,12 +34,12 @@
                                 <ul class="uk-nav uk-nav-default">
                                     <li class="uk-active uk-nav-header uk-parent">Services
                                         <ul class="uk-nav-sub">
-                                            <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1065&amp;Itemid=2057">Researchers</a></li>
-                                            <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1076&amp;Itemid=2060">Content Providers</a></li>
-                                            <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1086&amp;Itemid=2061">Research Managers</a></li>
-                                            <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1085&amp;Itemid=2062">Funders</a></li>
-                                            <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1087&amp;Itemid=2063">Research Communities</a></li>
-                                            <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1088&amp;Itemid=2064">Innovators</a></li>
+                                            <li><a href="/search;query=Researchers">Researchers</a></li>
+                                            <li><a href="/search;query=Content Providers">Content Providers</a></li>
+                                            <li><a href="/search;query=Research Managers">Research Managers</a></li>
+                                            <li><a href="/search;query=Funders">Funders</a></li>
+                                            <li><a href="/search;query=Research Communities">Research Communities</a></li>
+                                            <li><a href="/search;query=Innovators">Innovators</a></li>
                                             <li class="emphasized_menu">
                                                 <a href="/search">Browse all</a>
                                             </li>
@@ -136,12 +136,12 @@
                                 <li class="uk-active uk-parent"><a href="#" class="" aria-expanded="false">Services</a>
                                     <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left" style="left: 0px; top: 80px;"><div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid=""><div class="uk-first-column"><ul class="uk-nav uk-navbar-dropdown-nav">
 
-                                        <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1065&amp;Itemid=2057">Researchers</a></li>
-                                        <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1076&amp;Itemid=2060">Content Providers</a></li>
-                                        <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1086&amp;Itemid=2061">Research Managers</a></li>
-                                        <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1085&amp;Itemid=2062">Funders</a></li>
-                                        <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1087&amp;Itemid=2063">Research Communities</a></li>
-                                        <li><a href="https://dl119.madgik.di.uoa.gr/index.php?option=com_content&amp;view=article&amp;id=1088&amp;Itemid=2064">Innovators</a></li>
+                                        <li><a href="/search;query=Researchers">Researchers</a></li>
+                                        <li><a href="/search;query=Content Providers">Content Providers</a></li>
+                                        <li><a href="/search;query=Research Managers">Research Managers</a></li>
+                                        <li><a href="/search;query=Funders">Funders</a></li>
+                                        <li><a href="/search;query=Research Communities">Research Communities</a></li>
+                                        <li><a href="/search;query=Innovators">Innovators</a></li>
                                         <li><a href="/search" class="emphasized_menu">Browse all</a></li>
                                         <li class="uk-nav-divider"></li></ul></div></div></div></li>
                                 <li class="uk-parent"><a href="#">Support</a>
@@ -178,14 +178,14 @@
                         </div>
 
                         <!--TODO make sure we login correclty through AAI-->
-                        <!--<div class="uk-navbar-right">-->
+                        <div class="uk-navbar-right">
 
-                            <!--<ul class="uk-navbar-nav">-->
-                                <!--<li class="uk-parent">-->
+                            <ul class="uk-navbar-nav">
+                                <li class="uk-parent">
 
-                                    <!--<a *ngIf="authenticationService.isLoggedIn()" class="loginLink">-->
-                                        <!--<span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>-->
-                                    <!--</a>-->
+                                    <a *ngIf="authenticationService.isLoggedIn()" class="loginLink">
+                                        <span> {{this.authenticationService.user.name}} {{this.authenticationService.user.surname}} <span class="uk-margin-small-right uk-icon" ><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"><circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle><path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span></span>
+                                    </a>
                                     <!--<a *ngIf="!authenticationService.isLoggedIn()" class="loginLink" >-->
                                         <!--&lt;!&ndash;Sign in | Register <span class="uk-margin-small-right uk-icon" ></span>&ndash;&gt;-->
                                         <!--<span style="color: rgb(255, 255, 255); border: medium none rgb(255, 255, 255);" id="btl-panel-login" class="btl-dropdown">-->
@@ -199,21 +199,21 @@
                                     <!--</a>-->
 
 
-                                    <!--<div *ngIf="authenticationService.isLoggedIn()" class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left"   id="userMenu" (click)="onClick('userMenu')"  >-->
-                                        <!--<div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">-->
-                                            <!--<div class="uk-first-column">-->
-                                                <!--<ul class="uk-nav uk-navbar-dropdown-nav">-->
-                                                    <!--&lt;!&ndash;<li><a href="" >My profile</a></li>&ndash;&gt;-->
-                                                    <!--<li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>-->
-                                                    <!--<li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>-->
-                                                <!--</ul>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</li>-->
-                            <!--</ul>-->
+                                    <div *ngIf="authenticationService.isLoggedIn()" class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left"   id="userMenu" (click)="onClick('userMenu')"  >
+                                        <div class="uk-navbar-dropdown-grid uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
+                                            <div class="uk-first-column">
+                                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                    <!--<li><a href="" >My profile</a></li>-->
+                                                    <li><a [routerLink]="['/dashboard']" routerLinkActive="uk-active">Monitoring Dashboard</a></li>
+                                                    <li><a routerLink="/home" (click)="this.authenticationService.logout()">Log out</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
 
-                        <!--</div>-->
+                        </div>
                     </nav>
                 </div>
             </div>

@@ -36,21 +36,14 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
 
-        this.userService.loginUser('openaire@eic', 'ioannidis').subscribe(user => this.saveLoginStatus(user));
-
-        // this.router.events.subscribe((evt: any) => {
-        //     this.isLoginOrRegister = ["/signUp", "/signIn"].includes(evt.url);
-        // });
-        // this.router.events.subscribe((evt) => {
-        //     if (!(evt instanceof NavigationEnd)) {
-        //         return;
-        //     }
-        //     window.scrollTo(0, 0);
-        // });
-    }
-
-    saveLoginStatus(user: User) {
-        this.oauthService.login(user);
-        this.submitted = true;
+        this.router.events.subscribe((evt: any) => {
+            this.isLoginOrRegister = ["/signUp", "/signIn"].includes(evt.url);
+        });
+        this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            window.scrollTo(0, 0);
+        });
     }
 }

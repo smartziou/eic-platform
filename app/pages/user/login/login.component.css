@@ -16,3 +16,15 @@ body.mini-navbar.fixed-sidebar .profile-element, .block {
 input.ng-dirty.ng-invalid  {
     color: red;
 }
+
+.middle-box {
+    max-width: 400px;
+    z-index: 100;
+    margin: 0 auto;
+    /*padding-top: 40px;*/
+    padding-bottom: 40px;
+}
+
+.loginscreen.middle-box {
+    width: 400px;
+}

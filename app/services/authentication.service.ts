@@ -22,7 +22,7 @@ export class AuthenticationService {
         if (!this.isLoggedIn()) {
             setCookie(this.cookieName, JSON.stringify(user), 1);
             this.user = user;
-            // this.router.go(this.redirectURL);
+            this.router.go("/search");
         }
     }
 
