@@ -81,12 +81,12 @@ export class Service implements Identifiable {
     multimediaURL: URL;
     name: string;
     options: string;
-    places: string[];
     order: URL;
+    places: string[];
     price: URL;
     providers: string[];
-    relatedServices: string[];
     providerName: string;
+    relatedServices: string[];
     reliability: string;
     request: URL;
     requiredServices: string[];
@@ -124,6 +124,7 @@ export class User implements Identifiable {
 }
 
 export class Vocabulary implements Identifiable {
+    extra: string[];
     id: string;
     name: string;
     parent: string;

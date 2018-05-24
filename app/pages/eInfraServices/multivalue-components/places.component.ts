@@ -18,7 +18,7 @@ export class PlacesComponent extends MyGroup {
     places: any = {"QQ": "Error fetching places"};
     readonly groupDefinition = {entry: ["", Validators.required]};
     readonly placesDesc: sd.Description = sd.placesDesc;
-    weights: string[] = ["EU", "WW"];
+    weights: string[] = ["Place-EU", "Place-WW"];
 
     constructor(public resourceService: ResourceService, protected injector: Injector) {
         super(injector);
@@ -26,6 +26,6 @@ export class PlacesComponent extends MyGroup {
 
     ngOnInit() {
         super.ngOnInit();
-        this.resourceService.getVocabularies("Country").subscribe(suc => this.places = suc);
+        this.resourceService.getVocabularies("Place").subscribe(suc => this.places = suc);
     }
 }

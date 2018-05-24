@@ -7,6 +7,7 @@ import { AuthenticationService } from "../../../services/authentication.service"
 import { NavigationService } from "../../../services/navigation.service";
 import { ResourceService } from "../../../services/resource.service";
 import { UserService } from "../../../services/user.service";
+import { Observable } from "rxjs/Observable";
 
 declare var require: any;
 
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
     public errorMessage: string;
 
     public EU: string[];
+    public WW: string[];
 
     providerVisitsOptions : any = null;
     providerRatingsOptions: any = null;
@@ -35,26 +37,22 @@ export class DashboardComponent implements OnInit {
    }
 
     ngOnInit() {
-        this.resourceService.getProviders().subscribe(
-            suc => {
-                for (let provider in suc) {
-                    if (this.authenticationService.user.email === provider + "@eic") {
-                        //eventually manager/provider/aai should provide the relevant info,
-                        // but for now, we just check if user's email=provider+eic
-                        this.provider = provider;
-                            this.resourceService.getEU().subscribe(
-                                data => {
-
-                                    console.log('Europe data', data);
-
-                                    this.EU = data;
-                                    return this.getDataForProvider(provider);
-                                }
-                            );
-                    }
+        Observable.zip(
+            this.resourceService.getEU(),
+            this.resourceService.getWW(),
+            this.resourceService.getProviders()
+        ).subscribe(suc => {
+            this.EU = suc[0];
+            this.WW = suc[1];
+            for (let provider in suc[2]) {
+                if (this.authenticationService.user.email === provider + "@eic") {
+                    //eventually manager/provider/aai should provide the relevant info,
+                    // but for now, we just check if user's email=provider+eic
+                    this.provider = provider;
                 }
             }
-        );
+            this.getDataForProvider(this.provider);
+        });
     }
 
     getDataForProvider(provider) {
@@ -252,12 +250,7 @@ export class DashboardComponent implements OnInit {
 
     setCountriesForProvider(data : any) {
 
-        let places = JSON.parse(JSON.stringify(data || []));
-        let iEU = places.indexOf("EU");
-        if (iEU > -1) {
-            places.splice(iEU, 1);
-            places.push(...this.EU);
-        }
+        let places = this.resourceService.expandRegion(JSON.parse(JSON.stringify(data || [])), this.EU, this.WW);
 
         this.providerMapOptions = {
             chart: {

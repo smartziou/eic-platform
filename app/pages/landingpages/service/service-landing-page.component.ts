@@ -21,9 +21,12 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     public service: Service;
     public errorMessage: string;
     public EU: string[];
+    public WW: string[];
     private Math: Math;
     private sub: Subscription;
     private providers: any = {};
+    private vocabularies: any = [];
+    public stats: any = {visits: 0, favourites: 0, externals: 0};
 
     serviceMapOptions: any = null;
 
@@ -36,13 +39,23 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
         this.sub = this.route.params.subscribe(params => {
             Observable.zip(
                 this.resourceService.getEU(),
+                this.resourceService.getWW(),
                 this.resourceService.getService(params["id"]),
-                this.resourceService.getProviders()
+                this.resourceService.getProviders(),
+                this.resourceService.getVocabularies(),
+                this.resourceService.getVisitsForService(params["id"]),
+                this.resourceService.getFavouritesForService(params["id"]),
+                this.resourceService.getExternalsForService(params["id"]),
                 //this.resourceService.recordHit(id, "internal")
             ).subscribe(suc => {
                 this.EU = suc[0];
-                this.providers = suc[2];
-                this.service = suc[1];
+                this.WW = suc[1];
+                this.service = suc[2];
+                this.providers = suc[3];
+                this.vocabularies = suc[4];
+                this.stats.visits = Object.values(suc[5]).reduce((acc, v) => acc + v, 0);
+                this.stats.favourites = Object.values(suc[6]).reduce((acc, v) => acc + v, 0);
+                this.stats.externals = Object.values(suc[7]).reduce((acc, v) => acc + v, 0);
 
                 this.setCountriesForService(this.service.places);
 
@@ -62,12 +75,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
 
     setCountriesForService(data : any) {
 
-        let places = JSON.parse(JSON.stringify(data || []));
-        let iEU = places.indexOf("EU");
-        if (iEU > -1) {
-            places.splice(iEU, 1);
-            places.push(...this.EU);
-        }
+        let places = this.resourceService.expandRegion(JSON.parse(JSON.stringify(data || [])), this.EU, this.WW);
 
         this.serviceMapOptions = {
             chart: {
@@ -113,7 +121,11 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     }
 
     visit() {
-        // this.resourceService.recordHit(this.service.id, "external").subscribe(console.log);
+        // this.resourceService.recordEvent(this.service.id, "EXTERNAL").subscribe(suc => this.router.goOffsite(this.service.url.toString()));
+    }
+
+    getPrettyList(list) {
+        return list.map(e => this.vocabularies[e].name).join();
     }
 
     handleError(error) {

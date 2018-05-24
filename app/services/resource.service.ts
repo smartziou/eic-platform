@@ -71,8 +71,11 @@ export class ResourceService {
     }
 
     getVocabularies(type?: string) {
-        return this.http.get(`/vocabulary/all?from=0&quantity=10000${type ? "&type=" + type : ""}`)
-        .map(e => (<any>e).results.reduce(type ? this.idToName : this.idToObject, {}));
+        return this.getVocabulariesRaw(type).map(e => e.results.reduce(type ? this.idToName : this.idToObject, {}));
+    }
+
+    getVocabulariesRaw(type?: string) {
+        return this.http.get(`/vocabulary/all?from=0&quantity=1000${type ? "&type=" + type : ""}`);
     }
 
     getVocabulariesUsingGroupBy(type?: string) {
@@ -180,8 +183,8 @@ export class ResourceService {
         return Observable.from([ret]);
     }
 
-    getVisitsForProvider(provider: string) {
-        return this.get("provider/visits", provider);
+    getVisitsForProvider(provider: string, type?: string) {
+        return this.get(`stats/provider/${type || "visits"}`, provider);
     }
 
     getFavoritesForProvider(provider: string) {
@@ -200,12 +203,12 @@ export class ResourceService {
         return this.getServicesOfferedByProvider(provider);
     }
 
-    getVisitsForService(service: string) {
-        return this.get("service/visits", service);
+    getVisitsForService(service: string, type?: string) {
+        return this.get(`stats/service/${type || "visits"}`, service);
     }
 
-    getFavoritesForService(service: string) {
-        return this.get("service/favourites", service);
+    getFavouritesForService(service: string) {
+        return this.get("stats/service/favourites", service);
     }
 
     getRatingsForService(service: string) {
@@ -238,6 +241,41 @@ export class ResourceService {
 
     getEU() {
         return this.http.get("/vocabulary/getEU");
+    }
+
+    getWW() {
+        return this.http.get("/vocabulary/getWW");
+    }
+
+    //this should be somewhere else, I think
+    expandRegion(places, eu, ww) {
+        let iEU = places.indexOf("Place-EU");
+        if (iEU > -1) {
+            places.splice(iEU, 1);
+            places.push(...eu);
+        }
+        let iWW = places.indexOf("Place-WW");
+        if (iWW > -1) {
+            places.splice(iWW, 1);
+            places.push(...ww);
+        }
+        return places;
+    }
+
+    getExternalsForProvider(provider: string) {
+        return this.getVisitsForProvider(provider, "externals");
+    }
+
+    getExternalsForService(service: string, type?: string) {
+        return this.getVisitsForService(service, "externals");
+    }
+
+    getInternalsForService(service: string, type?: string) {
+        return this.getVisitsForService(service, "internals");
+    }
+
+    getInternalsForProvider(provider: string) {
+        return this.getVisitsForProvider(provider, "internals");
     }
 
     activateUserAccount(id: any) {

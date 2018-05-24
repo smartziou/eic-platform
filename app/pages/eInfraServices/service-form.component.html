@@ -116,8 +116,8 @@
                                                              [params]="'inline'"
                                                              [valid]="serviceForm.get('lifeCycleStatus').valid && serviceForm.get('lifeCycleStatus').dirty">
                                                     <select formControlName="lifeCycleStatus" class="uk-select">
-                                                        <option *ngFor="let c of this.vocabularies.Phase | keys" [ngValue]="c">
-                                                            {{this.vocabularies.Phase[c]}}
+                                                        <option *ngFor="let c of this.vocabularies.LifeCycleStatus | keys" [ngValue]="c">
+                                                            {{this.vocabularies.LifeCycleStatus[c]}}
                                                         </option>
                                                     </select>
                                                 </form-inline>
@@ -126,8 +126,8 @@
                                                              [params]="'inline'"
                                                              [valid]="serviceForm.get('trl').valid && serviceForm.get('trl').dirty">
                                                     <select formControlName="trl" class="uk-select">
-                                                        <option *ngFor="let c of this.vocabularies.TechnologyReadinessLevel | keys"
-                                                                [ngValue]="c">{{this.vocabularies.TechnologyReadinessLevel[c]}}
+                                                        <option *ngFor="let c of this.vocabularies.TRL | keys"
+                                                                [ngValue]="c">{{this.vocabularies.TRL[c]}}
                                                         </option>
                                                     </select>
                                                 </form-inline>

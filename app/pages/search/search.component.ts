@@ -14,6 +14,8 @@ import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
 import {UserService} from "../../services/user.service";
 import {URLParameter} from "./../../domain/url-parameter";
+import { Observable } from "rxjs/Observable";
+import { Facet, FacetValue } from "../../domain/facet";
 
 declare var UIkit: any;
 
@@ -39,6 +41,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     foundResults = true;
     advanced: boolean = false;
     providers: any;
+    vocabularies: any;
 
     constructor(public fb: FormBuilder, public router: NavigationService, public route: ActivatedRoute,
                 public userService: UserService, public resourceService: ResourceService,
@@ -47,8 +50,12 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.resourceService.getProviders().subscribe(providers => {
-            this.providers = providers;
+        Observable.zip(
+            this.resourceService.getProviders(),
+            this.resourceService.getVocabularies()
+            ).subscribe(suc => {
+            this.providers = suc[0];
+            this.vocabularies = suc[1];
             this.sub = this.route.params.subscribe(params => {
                 this.urlParameters.splice(0, this.urlParameters.length);
                 this.foundResults = true;
@@ -90,11 +97,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             if (urlParameter.key === "query") {
                 this.searchForm.get("query").setValue(urlParameter.values[0]);
             } else if (urlParameter.key === "advanced") {
-                if (urlParameter.values[0] == "true") {
-                    this.advanced = true;
-                } else {
-                    this.advanced = false;
-                }
+                this.advanced = urlParameter.values[0] == "true";
             } else {
                 for (let facet of this.searchResults.facets) {
                     if (facet.field === urlParameter.key) {
@@ -131,6 +134,10 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.searchResults.facets.sort((a, b): number => {
             return facetValues[a.field] - facetValues[b.field];
         });
+    }
+
+    getFacetLabel(facet: Facet, facetValue: FacetValue) {
+        return facet.label === "Provider" ? this.providers[facetValue.value] || "N/A" : (this.vocabularies[facetValue.value] || {name:"N/A"}).name || "N/A";
     }
 
     onSubmit(searchValue: SearchQuery) {
