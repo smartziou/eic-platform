@@ -15,16 +15,16 @@
                                            placeholder="Search our service catalogue..." type="text">
                                     <button class=" uk-button uk-button-default" type="submit">Search</button>
                                 </form>
-                                <ul *ngIf="urlParameters && urlParameters.length>0" class="facets-selected cf uk-width-medium-9-10">
-                                    <ng-template ngFor let-urlParameter [ngForOf]="urlParameters">
-                                        <!--TODO remove when provider is removed from filters in the backend-->
-                                        <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='provider'">
-                                            <li *ngFor="let facet of urlParameter.values" class="search-tag">
-                                                <span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
-                                            </li>
-                                        </ng-template>
-                                    </ng-template>
-                                </ul>
+                                <!--<ul *ngIf="urlParameters && urlParameters.length>0" class="facets-selected cf uk-width-medium-9-10">-->
+                                    <!--<ng-template ngFor let-urlParameter [ngForOf]="urlParameters">-->
+                                        <!--&lt;!&ndash;TODO remove when provider is removed from filters in the backend&ndash;&gt;-->
+                                        <!--<ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='provider'">-->
+                                            <!--<li *ngFor="let facet of urlParameter.values" class="search-tag">-->
+                                                <!--<span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>-->
+                                            <!--</li>-->
+                                        <!--</ng-template>-->
+                                    <!--</ng-template>-->
+                                <!--</ul>-->
                             </div>
                         </div>
                     </div>
@@ -42,14 +42,15 @@
                       [ngClass]="topHelperContent.isPresent()?'uk-margin-medium-top uk-margin-medium-bottom':'clear-style'">
         </help-content>
 
-        <div class="uk-grid" uk-grid="">
+
+        <div *ngIf="listViewActive" class="uk-grid" uk-grid="">
 
 
-            <aside id="tm-sidebar" class="tm-sidebar uk-width-1-4@m">
+            <aside id="tm-sidebar" class="tm-sidebar uk-width-1-5@m">
 
-                <div *ngIf="searchResults != null" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines">
+                <div *ngIf="searchResults != null" class="sidemenu refines">
 
-                    <h3 class="uk-h3 uk-heading-bullet">Category</h3>
+                    <h3 class="uk-h3">Category</h3>
 
                     <ng-template ngFor let-facet [ngForOf]="searchResults.facets">
                         <ng-template [ngIf]="facet.field=='category'">
@@ -70,29 +71,28 @@
 
                 </div>
 
-                <div *ngIf="searchResults != null" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines uk-margin-top">
+                <!--<div *ngIf="searchResults != null" class="uk-card uk-card-body uk-card-default sidemenu uk-panel-box-secondary refines uk-margin-top">-->
 
-                    <h3 class="uk-h3 uk-heading-bullet">Further refine</h3>
+                <!--<h3 class="uk-h3 uk-heading-bullet">Further refine</h3>-->
 
-                    <ng-template ngFor let-facet [ngForOf]="searchResults.facets">
-                        <!--TODO remove when provider is removed from filters in the backend-->
-                        <ng-template [ngIf]="facet.field!='category' && facet.field!='provider'">
-                            <div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">
-                                <read-more [maxHeight]="235">
-                                    <span>{{facet.label=='TRL'?'Technology Readiness':facet.label}}</span>
-                                    <div class="refineOption" *ngFor="let facetValue of facet.values">
-                                        <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
-                                               (change)="this.onSelection($event, facet.field, facetValue.value)"
-                                               [checked]="facetValue.isChecked">
-                                        {{this.getFacetLabel(facet, facetValue)}}
-                                        <span>({{facetValue.count}})</span>
-                                    </div>
-                                </read-more>
-                            </div>
-                        </ng-template>
-                    </ng-template>
+                <!--<ng-template ngFor let-facet [ngForOf]="searchResults.facets">-->
+                <!--<ng-template [ngIf]="facet.field!='category'">-->
+                <!--<div *ngIf="facet.field!='resourceType'" class="refineCategory uk-grid-margin">-->
+                <!--<read-more [maxHeight]="235">-->
+                <!--<span>{{facet.label=='TRL'?'Technology Readiness':facet.label}}</span>-->
+                <!--<div class="refineOption" *ngFor="let facetValue of facet.values">-->
+                <!--<input type="checkbox" name="vehicle" value="Bike" data-md-icheck-->
+                <!--(change)="this.onSelection($event, facet.field, facetValue.value)"-->
+                <!--[checked]="facetValue.isChecked">-->
+                <!--{{this.getFacetLabel(facet, facetValue)}}-->
+                <!--<span>({{facetValue.count}})</span>-->
+                <!--</div>-->
+                <!--</read-more>-->
+                <!--</div>-->
+                <!--</ng-template>-->
+                <!--</ng-template>-->
 
-                </div>
+                <!--</div>-->
 
             </aside>
 
@@ -114,16 +114,170 @@
 
                     <div *ngIf="searchResults.results != null && searchResults.results.length>0">
 
-                        <div *ngIf="this.comparisonService.servicesToCompare && this.comparisonService.servicesToCompare.length>0" class="uk-width-1-1 uk-row-first uk-clearfix compareButton">
-                            <div class="uk-float-right">
-                                <a (click)="this.comparisonService.go()" class="uk-button uk-button-blue">
-                                    <i class="fa fa-compress fa-flip-horizontal" aria-hidden="true"></i> | {{this.comparisonService.servicesToCompare.length}} for comparison
+                        <!--<div *ngIf="this.comparisonService.servicesToCompare && this.comparisonService.servicesToCompare.length>0" class="uk-width-1-1 uk-row-first uk-clearfix compareButton">-->
+                        <!--<div class="uk-float-right">-->
+                        <!--<a (click)="this.comparisonService.go()" class="uk-button uk-button-blue">-->
+                        <!--<i class="fa fa-compress fa-flip-horizontal" aria-hidden="true"></i> | {{this.comparisonService.servicesToCompare.length}} for comparison-->
+                        <!--</a>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="uk-width-1-1 uk-row-first uk-margin-bottom">
+
+                            <nav *ngIf="searchResults.facets" class="uk-inline" style="margin-left: -20px;" uk-navbar>
+                                <div class="uk-navbar-left">
+
+                                    <ul class="uk-navbar-nav uk-nav-parent-icon filters">
+
+                                        <ng-container *ngFor="let facet of searchResults.facets">
+                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType'">
+                                                <li class="uk-parent uk-margin-medium-right">
+                                                    <a href="#">{{facet.label=='TRL'?'Technology Readiness':facet.label}}</a>
+                                                    <div class="uk-navbar-dropdown">
+                                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                            <li *ngFor="let facetValue of facet.values">
+                                                                <a (click)="this.selectFacet(facet.field, facetValue.value)">
+                                                                    {{this.getFacetLabel(facet, facetValue)}}
+                                                                    <span>({{facetValue.count}})</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ng-container>
+                                        </ng-container>
+
+                                    </ul>
+
+                                </div>
+                            </nav>
+
+                            <div class="uk-inline uk-float-right">
+                                <a *ngIf="listViewActive" (click)="toggleListGrid('grid')">
+                                    <img src="../../../assets/images/icons/switch_view_list_active.svg">
                                 </a>
                             </div>
+
                         </div>
 
-                        <div class="uk-width-1-1 uk-row-first uk-margin-medium-bottom">
+                        <div *ngIf="urlParameters && urlParameters.length>0" class="uk-width-1-1 uk-row-first uk-margin-bottom">
+                            <ul class="facets-selected cf">
+                                <ng-template ngFor let-urlParameter [ngForOf]="urlParameters">
+                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='provider'">
+                                        <li *ngFor="let facet of urlParameter.values" class="search-tag">
+                                            <span class="title">{{urlParameter.key}}:</span> {{facet | uppercase}}
+                                            <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
+                                        </li>
+                                    </ng-template>
+                                </ng-template>
+                            </ul>
+                        </div>
+
+                        <div class="uk-width-1-1 uk-row-first uk-margin-bottom">
                             <span>Showing {{searchResults.from+1}} - {{searchResults.to}} of {{searchResults.total}} results</span>
+                        </div>
+
+                        <!--<div class="uk-width-1-1 uk-row-first">-->
+                        <!--<ul class="uk-pagination">-->
+
+                        <!--<li class="uk-disabled" *ngIf="isPreviousPageDisabled">-->
+                        <!--<a class="uk-disabled" href="#">-->
+                        <!--<span class="uk-margin-small-right" uk-pagination-previous></span> Previous-->
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!--<li *ngIf="!isPreviousPageDisabled">-->
+                        <!--<a (click)="this.goToPreviousPage()">-->
+                        <!--<span class="uk-margin-small-right" uk-pagination-previous></span> Previous-->
+                        <!--</a>-->
+                        <!--</li>-->
+
+                        <!--<li class="uk-margin-auto-left uk-disabled" *ngIf="isNextPageDisabled">-->
+                        <!--<a class="uk-disabled" href="#">Next-->
+                        <!--<span class="uk-margin-small-left" uk-pagination-next></span>-->
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!--<li class="uk-margin-auto-left" *ngIf="!isNextPageDisabled">-->
+                        <!--<a (click)="this.goToNextPage()">Next-->
+                        <!--<span class="uk-margin-small-left" uk-pagination-next></span>-->
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+                        <!--<div class="resultsPageLabel">page {{currentPage}} of {{totalPages}}</div>-->
+                        <!--</div>-->
+
+                        <div *ngIf="listViewActive" class="uk-grid-margin-small">
+
+                            <ng-container *ngFor="let resourceInfo of searchResults.results">
+
+                                <div class="serviceDetails uk-margin-small-bottom">
+
+                                    <div class="uk-grid" uk-grid="">
+
+                                        <div class="uk-width-4-5@m uk-first-column uk-card-body serviceInfo">
+                                            <div>
+                                                <h3 class="uk-margin-remove uk-text-left@m uk-text-center uk-h3 uk-scrollspy-inview uk-animation-fade uk-inline" uk-scrollspy-class="" style="">
+                                                    <a (click)="this.router.service(resourceInfo.id)">
+                                                        {{resourceInfo.name}}
+                                                    </a>
+                                                </h3>
+                                            </div>
+
+                                            <div class="uk-margin-small-top serviceTagLine" style="">
+                                                "{{resourceInfo.tagline}}"
+                                            </div>
+
+                                            <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
+                                                <read-more-text [text]="resourceInfo.description" [maxHeight]="38">
+                                                </read-more-text>
+                                            </div>
+
+                                            <!--TODO add category and persona tag-->
+                                            <div class="categoryTags uk-margin-top" *ngIf="resourceInfo.category || resourceInfo.targetUsers">
+                                                <span class="uk-label uk-label-primary uk-margin-small-right">{{this.vocabularies[resourceInfo.category].name}}</span>
+                                                <!--<span *ngFor="let a of resourceInfo.targetUsers.split(',')" class="uk-label uk-label-primary uk-margin-small-right">{{a}}</span>-->
+                                            </div>
+
+                                            <!--<div class="addenda uk-margin-small-top">-->
+                                                <!--<span class="uk-margin-medium-right">-->
+                                                    <!--<img src="../../../../assets/images/icons/ic_love_icon.svg">-->
+                                                    <!--<span class="statsNumbers">{{0}}</span>-->
+                                                <!--</span>-->
+                                                <!--<span class="uk-margin-medium-right">-->
+                                                    <!--<input type="checkbox" class="uk-margin-small-right"-->
+                                                           <!--[checked]="comparisonService.servicesToCompare.indexOf(resourceInfo) > -1"-->
+                                                           <!--(change)="comparisonService.addOrRemove(resourceInfo)">-->
+                                                    <!--<a *ngIf="(comparisonService.servicesToCompare.indexOf(resourceInfo) == -1)">Add to compare</a>-->
+                                                    <!--<a *ngIf="comparisonService.servicesToCompare.indexOf(resourceInfo) > -1">Added</a>-->
+                                                <!--</span>-->
+                                                <!--<span class="uk-float-right">-->
+                                                    <!--<img src="../../../../assets/images/icons/ic_visit_icon.svg">-->
+                                                    <!--<span class="statsNumbers">{{0}}</span>-->
+                                                <!--</span>-->
+                                            <!--</div>-->
+
+                                        </div>
+
+
+                                        <div class="uk-width-1-5@m symbolAndProvider uk-card-body uk-text-center">
+
+                                            <div class="">
+                                                <a (click)="this.router.service(resourceInfo.id)">
+                                                    <span>
+                                                        <img src="{{resourceInfo.symbol || 'http://fvtelibrary.com/img/user/NoLogo.png'}}"
+                                                             style="max-width: 90px;">
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <!--<div class="uk-margin-small-top">-->
+                                                <!--<span class="provider">{{resourceInfo.providers[0] | uppercase}}</span>-->
+                                            <!--</div>-->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </ng-container>
                         </div>
 
                         <div class="uk-width-1-1 uk-row-first">
@@ -153,55 +307,173 @@
                             </ul>
                             <div class="resultsPageLabel">page {{currentPage}} of {{totalPages}}</div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="uk-grid-margin">
+            <!-- RIGHT HELP CONTENT -->
+            <aside-help-content #rightHelperContent [position]="'right'"
+                                [ngClass]="rightHelperContent.isPresent()?'tm-sidebar uk-width-1-4@m uk-first-column':'clear-style'">
+            </aside-help-content>
 
-                            <ng-template ngFor let-resourceInfo [ngForOf]="searchResults.results">
+        </div>
 
-                                <div class="uk-grid" uk-grid="">
-                                    <div class="uk-width-1-6@m uk-first-column">
-                                        <div class="">
-                                            <div class="uk-inline-block uk-text-center uk-scrollspy-inview uk-animation-fade"
-                                                 uk-scrollspy-class="" style="width: 75%">
-                                                <div class="">
-                                                    <a (click)="this.router.service(resourceInfo.id)">
-                                                        <span>
-                                                            <img src="{{resourceInfo.symbol || 'http://fvtelibrary.com/img/user/NoLogo.png'}}">
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
+        <div *ngIf="!listViewActive" class="uk-grid" uk-grid="">
+
+
+            <div class="uk-width-expand@m uk-first-column">
+
+                <div *ngIf="errorMessage" class="">
+                    <div data-uk-alert="" class="uk-alert uk-alert-danger">
+                        <p>{{errorMessage}}</p>
+                    </div>
+                </div>
+
+                <div *ngIf="!errorMessage && searchResults != null" class="">
+
+                    <div *ngIf="!foundResults">
+                        <div data-uk-alert="" class="uk-alert uk-alert-warning">
+                            <p>No results found</p>
+                        </div>
+                    </div>
+
+                    <div *ngIf="searchResults.results != null && searchResults.results.length>0">
+
+                        <div class="uk-width-1-1 uk-row-first uk-margin-bottom">
+
+                            <nav *ngIf="searchResults.facets" class="uk-inline" style="margin-left: -20px;" uk-navbar>
+                                <div class="uk-navbar-left">
+
+                                    <ul class="uk-navbar-nav uk-nav-parent-icon filters">
+
+                                        <ng-container *ngFor="let facet of searchResults.facets">
+                                            <ng-container *ngIf="facet.field=='category'">
+                                                <li class="uk-parent uk-margin-medium-right">
+                                                    <a href="#">{{facet.label | uppercase}}</a>
+                                                    <div class="uk-navbar-dropdown">
+                                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                            <li *ngFor="let facetValue of facet.values">
+                                                                <a (click)="this.selectFacet(facet.field, facetValue.value)">
+                                                                    {{this.getFacetLabel(facet, facetValue)}}
+                                                                    <span>({{facetValue.count}})</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ng-container>
+                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType'">
+                                                <li class="uk-parent uk-margin-medium-right">
+                                                    <a href="#">{{facet.label=='TRL'?'Technology Readiness':facet.label}}</a>
+                                                    <div class="uk-navbar-dropdown">
+                                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                            <li *ngFor="let facetValue of facet.values">
+                                                                <a (click)="this.selectFacet(facet.field, facetValue.value)">
+                                                                    {{this.getFacetLabel(facet, facetValue)}}
+                                                                    <span>({{facetValue.count}})</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ng-container>
+                                        </ng-container>
+
+                                    </ul>
+
+                                </div>
+                            </nav>
+
+                            <div class="uk-inline uk-float-right">
+                                <a (click)="toggleListGrid('list')">
+                                    <img src="../../../assets/images/icons/switch_view_grid_active.svg">
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="urlParameters && urlParameters.length>0" class="uk-width-1-1 uk-row-first uk-margin-bottom">
+                            <ul class="facets-selected cf">
+                                <ng-template ngFor let-urlParameter [ngForOf]="urlParameters">
+                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='provider'">
+                                        <li *ngFor="let facet of urlParameter.values" class="search-tag">
+                                            <span class="title">{{urlParameter.key}}:</span> {{facet | uppercase}}
+                                            <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
+                                        </li>
+                                    </ng-template>
+                                </ng-template>
+                            </ul>
+                        </div>
+
+                        <div class="uk-width-1-1 uk-row-first uk-margin-bottom">
+                            <span>Showing {{searchResults.from+1}} - {{searchResults.to}} of {{searchResults.total}} results</span>
+                        </div>
+
+                        <div class="uk-grid uk-grid-margin-small uk-child-width-1-3@m gridView">
+
+                            <ng-container *ngFor="let resourceInfo of searchResults.results">
+
+                                <div class="serviceDetails uk-margin-small-bottom">
+
+                                    <div class="uk-first-column uk-card-body serviceInfo">
+                                        <div>
+                                            <h3 class="uk-margin-remove uk-h3 uk-scrollspy-inview uk-animation-fade uk-inline" uk-scrollspy-class="">
+                                                <a (click)="this.router.service(resourceInfo.id)">
+                                                    {{resourceInfo.name}}
+                                                </a>
+                                            </h3>
                                         </div>
 
-                                    </div>
-                                    <div class="uk-width-5-6@m">
-                                        <h3 class="uk-margin-remove uk-text-left@m uk-text-center uk-h3 uk-scrollspy-inview uk-animation-fade" uk-scrollspy-class="" style="">
-                                            <a (click)="this.router.service(resourceInfo.id)">
-                                                {{resourceInfo.name}}
-                                            </a>
-                                        </h3>
-                                        <div class="" style="text-transform: none" >
-                                            <em style="color: #524f4f; display: flex">(by&nbsp;
-                                                <span class="comma-element" *ngFor="let provider of resourceInfo.providers">
-                                                    <a (click)="this.router.search({provider: provider})">{{[provider]|lookup:providers}}</a>
-                                                </span>
-                                                )
-                                            </em>
-                                        </div>
-                                        <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
-                                            <read-more-text [text]="resourceInfo.description" [maxHeight]="75">
-                                            </read-more-text>
-                                        </div>
-                                        <div class="uk-margin-small-top uk-text-left@m uk-text-center uk-text-meta uk-scrollspy-inview
-                                        uk-animation-fade serviceTagLine" uk-scrollspy-class="" style="">
+                                        <div class="uk-margin-small-top serviceTagLine">
                                             "{{resourceInfo.tagline}}"
                                         </div>
+
+                                        <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
+                                            <read-more-text [text]="resourceInfo.description" [maxHeight]="38">
+                                            </read-more-text>
+                                        </div>
+
+                                        <!--TODO add category and persona tag-->
+                                        <div class="categoryTags uk-margin-top" *ngIf="resourceInfo.category || resourceInfo.targetUsers">
+                                            <span class="uk-label uk-label-primary">{{this.vocabularies[resourceInfo.category].name}}</span>
+                                            <!--<span *ngFor="let a of resourceInfo.targetUsers.split(',')" class="uk-label uk-label-primary uk-margin-small-right">{{a}}</span>-->
+                                        </div>
+
+                                        <!--<div class="addenda uk-margin-small-top">-->
+                                            <!--<span class="uk-margin-medium-right">-->
+                                                <!--<img src="../../../../assets/images/icons/ic_love_icon.svg">-->
+                                                <!--<span class="statsNumbers">{{0}}</span>-->
+                                            <!--</span>-->
+                                            <!--<span class="uk-margin-medium-right">-->
+                                                <!--<input type="checkbox" class="uk-margin-small-right"-->
+                                                       <!--[checked]="comparisonService.servicesToCompare.indexOf(resourceInfo) > -1"-->
+                                                       <!--(change)="comparisonService.addOrRemove(resourceInfo)">-->
+                                                <!--<a *ngIf="(comparisonService.servicesToCompare.indexOf(resourceInfo) == -1)">Add to compare</a>-->
+                                                <!--<a *ngIf="comparisonService.servicesToCompare.indexOf(resourceInfo) > -1">Added</a>-->
+                                            <!--</span>-->
+                                            <!--<span class="uk-float-right">-->
+                                                <!--<img src="../../../../assets/images/icons/ic_visit_icon.svg">-->
+                                                <!--<span class="statsNumbers">{{0}}</span>-->
+                                            <!--</span>-->
+                                        <!--</div>-->
+
                                     </div>
+
+
+                                    <div class="symbolAndProvider uk-card-body uk-text-left">
+
+                                        <a (click)="this.router.service(resourceInfo.id)">
+                                            <span>
+                                                <img src="{{resourceInfo.symbol || 'http://fvtelibrary.com/img/user/NoLogo.png'}}"
+                                                     style="height: 51px;">
+                                            </span>
+                                        </a>
+                                        <!--<span class="provider">{{resourceInfo.providers[0] | uppercase}}</span>-->
+                                    </div>
+
                                 </div>
 
-                                <hr uk-scrollspy-class="" style="" class="uk-scrollspy-inview uk-animation-slide-top-medium">
-
-                            </ng-template>
+                            </ng-container>
                         </div>
 
                         <div class="uk-width-1-1 uk-row-first">
@@ -249,4 +521,5 @@
 
     </div>
 </div>
+
 
