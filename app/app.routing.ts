@@ -14,13 +14,14 @@ import { ServiceLandingPageComponent } from "./pages/landingpages/service/servic
 const appRoutes: Routes = [
     {
         path: "",
-        redirectTo: "/home",
+        // redirectTo: "/home",
+        redirectTo: "/search",
         pathMatch: "full"
     },
-    {
-        path: "home",
-        component: HomeComponent
-    },
+    // {
+    //     path: "home",
+    //     component: HomeComponent
+    // },
     {
         path: "search",
         component: SearchComponent
