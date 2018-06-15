@@ -522,4 +522,12 @@
     </div>
 </div>
 
+<div *ngIf="authenticationService.isLoggedIn()" class="uk-float-right" style="z-index: 100; bottom: 45px; position: fixed; right: 45px;">
+    <a [routerLink]="['/upload']" style="padding: 30px;" class="uk-icon-button uk-button-primary">
+        <i class="fa fa-plus"></i>
+        <!--<span class="uk-icon" uk-icon="icon: plus; ratio: 1.5">-->
+        <!--</span>-->
+    </a>
+</div>
+
 
