@@ -130,7 +130,7 @@
                                     <ul class="uk-navbar-nav uk-nav-parent-icon filters">
 
                                         <ng-container *ngFor="let facet of searchResults.facets">
-                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType'">
+                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType' && facet.field!='provider'">
                                                 <li class="uk-parent uk-margin-medium-right">
                                                     <a href="#">{{facet.label=='TRL'?'Technology Readiness':facet.label}}</a>
                                                     <div class="uk-navbar-dropdown">
@@ -362,7 +362,7 @@
                                                     </div>
                                                 </li>
                                             </ng-container>
-                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType'">
+                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType' && facet.field!='provider'">
                                                 <li class="uk-parent uk-margin-medium-right">
                                                     <a href="#">{{facet.label=='TRL'?'Technology Readiness':facet.label}}</a>
                                                     <div class="uk-navbar-dropdown">
