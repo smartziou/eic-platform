@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     providers: any;
     vocabularies: any;
 
-    listViewActive: boolean = true;
+    listViewActive: boolean = false;
 
     constructor(public fb: FormBuilder, public router: NavigationService, public route: ActivatedRoute,
                 public userService: UserService, public resourceService: ResourceService,
@@ -87,7 +87,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         else if(show == 'grid')
             this.listViewActive = false;
         else
-            this.listViewActive = true;
+            this.listViewActive = false;
     }
 
     updateSearchResults(searchResults: SearchResults) {
