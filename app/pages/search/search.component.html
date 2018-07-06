@@ -429,8 +429,10 @@
                                         </div>
 
                                         <div class="uk-margin-small-top uk-scrollspy-inview uk-animation-fade serviceDescription" uk-scrollspy-class="" style="">
-                                            <read-more-text [text]="resourceInfo.description" [maxHeight]="38">
-                                            </read-more-text>
+                                            <div style="max-height: 38px; overflow: hidden" [innerHTML]="resourceInfo.description"></div>
+                                            <a (click)="this.router.service(resourceInfo.id)">View more...</a>
+                                            <!--<read-more-text [text]="resourceInfo.description" [maxHeight]="38">-->
+                                            <!--</read-more-text>-->
                                         </div>
 
                                         <!--TODO add category and persona tag-->
