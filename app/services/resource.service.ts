@@ -100,7 +100,7 @@ export class ResourceService {
     }
 
     getServices() {
-        return this.getBy("service", "service_id");
+        return this.getBy("service", "id");
     }
 
     getService(id: string) {
