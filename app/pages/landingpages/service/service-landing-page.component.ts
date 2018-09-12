@@ -26,7 +26,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     private sub: Subscription;
     private providers: any = {};
     private vocabularies: any = [];
-    public stats: any = {visits: 0, favourites: 0, externals: 0};
+    // public stats: any = {visits: 0, favourites: 0, externals: 0};
 
     serviceMapOptions: any = null;
 
@@ -43,9 +43,9 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
                 this.resourceService.getService(params["id"]),
                 this.resourceService.getProviders(),
                 this.resourceService.getVocabularies(),
-                this.resourceService.getVisitsForService(params["id"]),
-                this.resourceService.getFavouritesForService(params["id"]),
-                this.resourceService.getExternalsForService(params["id"]),
+                // this.resourceService.getVisitsForService(params["id"]),
+                // this.resourceService.getFavouritesForService(params["id"]),
+                // this.resourceService.getExternalsForService(params["id"]),
                 //this.resourceService.recordHit(id, "internal")
             ).subscribe(suc => {
                 this.EU = suc[0];
@@ -53,9 +53,9 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
                 this.service = suc[2];
                 this.providers = suc[3];
                 this.vocabularies = suc[4];
-                this.stats.visits = Object.values(suc[5]).reduce((acc, v) => acc + v, 0);
-                this.stats.favourites = Object.values(suc[6]).reduce((acc, v) => acc + v, 0);
-                this.stats.externals = Object.values(suc[7]).reduce((acc, v) => acc + v, 0);
+                // this.stats.visits = Object.values(suc[5]).reduce((acc, v) => acc + v, 0);
+                // this.stats.favourites = Object.values(suc[6]).reduce((acc, v) => acc + v, 0);
+                // this.stats.externals = Object.values(suc[7]).reduce((acc, v) => acc + v, 0);
 
                 this.setCountriesForService(this.service.places);
 
