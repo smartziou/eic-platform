@@ -1,12 +1,12 @@
-<div class="tm-header-placeholder uk-margin-remove-adjacent" style="height: 84px;"></div>
-<div class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle"
-     style="background-image: url('https://dl119.madgik.di.uoa.gr/templates/yootheme/cache/handsinair_3-f4940f92.png'); box-sizing: border-box; height: 150px;">
-    <!--<div class="uk-position-cover"></div>-->
-    <div class="uk-width-1-1">
-        <div class="uk-position-relative">
-            <div class="uk-container uk-margin-medium">
-                <div class="search_box_bg uk-grid-large uk-flex-middle uk-grid uk-grid-stack" uk-grid="">
-                    <div class="uk-width-1-1@m uk-first-column">
+<!--<div class="tm-header-placeholder uk-margin-remove-adjacent" style="height: 84px;"></div>-->
+<!--<div class="uk-background-norepeat uk-background-cover uk-background-fixed uk-section uk-padding-remove-bottom uk-flex uk-flex-middle"-->
+     <!--style="background-image: url('https://dl119.madgik.di.uoa.gr/templates/yootheme/cache/handsinair_3-f4940f92.png'); box-sizing: border-box; height: 150px;">-->
+    <!--&lt;!&ndash;<div class="uk-position-cover"></div>&ndash;&gt;-->
+    <!--<div class="uk-width-1-1">-->
+        <!--<div class="uk-position-relative">-->
+            <!--<div class="uk-container uk-container-large uk-margin-medium">-->
+                <!--<div class="search_box_bg uk-grid-large uk-flex-middle uk-grid uk-grid-stack" uk-grid="">-->
+                    <!--<div class="uk-width-1-1@m uk-first-column">-->
                         <div>
                             <div class="search_box_bg" style="text-align:center">
                                 <form [formGroup]="searchForm" (ngSubmit)="this.onSubmit(searchForm.value)">
@@ -27,7 +27,65 @@
                                 <!--</ul>-->
                             </div>
                         </div>
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="image-front-topbar  uk-section-default uk-position-relative" tm-header-transparent="light" uk-scrollspy="{&quot;target&quot;:&quot;[uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-fade&quot;,&quot;delay&quot;:false}">
+    <div style=" min-height: 350px;" class=" uk-background-norepeat uk-background-cover uk-background-bottom-center uk-section uk-padding-remove-bottom uk-flex uk-flex-middle uk-background-fixed publicationsSearchForm">
+        <div class="uk-position-cover" style="background: url('../../../assets/images/UxUdxNjw.png') right !important;"></div>
+        <div class="uk-container uk-container-large">
+            <div class="uk-position-relative">
+                <div class="uk-container uk-container-large">
+                    <div class="uk-width-1-1">
+
+                        <div>
+                            <div class="search_box_bg" style="text-align:center">
+                                <form [formGroup]="searchForm" (ngSubmit)="this.onSubmit(searchForm.value)">
+                                    <input aria-describedby="sizing-addon2" class="uk-input uk-width-large ng-pristine ng-valid
+                                    uk-comment uk-comment-meta ng-untouched" formControlName="query" name="keyword"
+                                           placeholder="Search our service catalogue..." type="text">
+                                    <button class=" uk-button uk-button-primary" type="submit">Search</button>
+                                </form>
+                                <!--<ul *ngIf="urlParameters && urlParameters.length>0" class="facets-selected cf uk-width-medium-9-10">-->
+                                <!--<ng-template ngFor let-urlParameter [ngForOf]="urlParameters">-->
+                                <!--&lt;!&ndash;TODO remove when provider is removed from filters in the backend&ndash;&gt;-->
+                                <!--<ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='provider'">-->
+                                <!--<li *ngFor="let facet of urlParameter.values" class="search-tag">-->
+                                <!--<span class="title">{{urlParameter.key}}:</span> {{facet}} <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>-->
+                                <!--</li>-->
+                                <!--</ng-template>-->
+                                <!--</ng-template>-->
+                                <!--</ul>-->
+                            </div>
+                        </div>
+
+                        <!--&lt;!&ndash;bindings={-->
+           <!--"ng-reflect-ng-if": "true"-->
+         <!--}&ndash;&gt;<a routerlinkactive="router-link-active" ng-reflect-router-link="/search/advanced/publications" ng-reflect-router-link-active="router-link-active" class="uk-float-right  uk-light portal-color uk-margin-small-bottom" href="/search/advanced/publications">-->
+                        <!--<span class=" ">Advanced search</span>-->
+                    <!--</a>-->
+                        <!--<search-form ng-reflect-is-disabled="false" ng-reflect-keyword="" ng-reflect-placeholder-text="Search for Publications">-->
+
+                            <!--<form novalidate="" class="uk-margin uk-text-center uk-margin-top">-->
+                                <!--<input aria-describedby="sizing-addon2" class="uk-input uk-width-xlarge ng-untouched ng-pristine ng-valid" name="keyword" ng-reflect-name="keyword" ng-reflect-model="" placeholder="Search for Publications" type="text">-->
+                                <!--&lt;!&ndash;bindings={-->
+              <!--"ng-reflect-ng-if": "true"-->
+            <!--}&ndash;&gt;<button class=" uk-button  portal-button" type="submit">-->
+                                <!--<span class="uk-icon"><svg height="30" icon="search" ratio="1.5" viewBox="0 0 20 20" width="30" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" fill="none" r="7" stroke="#000" stroke-width="1.1"></circle><path d="M14,14 L18,18 L14,14 Z" fill="none" stroke="#000" stroke-width="1.1"></path></svg></span>-->
+                            <!--</button>-->
+                                <!--&lt;!&ndash;bindings={-->
+                <!--"ng-reflect-ng-if": "false"-->
+              <!--}&ndash;&gt;-->
+                            <!--</form>-->
+                        <!--</search-form>-->
+
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -35,7 +93,7 @@
 </div>
 
 <div id="tm-main" class="tm-main uk-section uk-section-default" uk-height-viewport="expand: true" style="box-sizing: border-box;">
-    <div class="uk-container">
+    <div class="uk-container uk-container-large">
 
         <!-- TOP HELP CONTENT -->
         <help-content #topHelperContent [position]="'top'"
@@ -48,7 +106,7 @@
 
             <aside id="tm-sidebar" class="tm-sidebar uk-width-1-5@m">
 
-                <div *ngIf="searchResults != null" class="sidemenu refines">
+                <div *ngIf="searchResults != null" class="sidemenu refines" style="margin-top: 40px;">
 
                     <h3 class="uk-h3">Category</h3>
 
@@ -152,7 +210,7 @@
                                 </div>
                             </nav>
 
-                            <div class="uk-inline uk-float-right">
+                            <div class="uk-inline uk-float-right" style="margin-top: 37px;">
                                 <a *ngIf="listViewActive" (click)="toggleListGrid('grid')">
                                     <img src="../../../assets/images/icons/switch_view_list_active.svg">
                                 </a>
@@ -384,7 +442,7 @@
                                 </div>
                             </nav>
 
-                            <div class="uk-inline uk-float-right">
+                            <div class="uk-inline uk-float-right" style="margin-top: 37px;">
                                 <a (click)="toggleListGrid('list')">
                                     <img src="../../../assets/images/icons/switch_view_grid_active.svg">
                                 </a>

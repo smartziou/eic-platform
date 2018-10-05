@@ -302,7 +302,7 @@
 
 .filters a {
     font-size: 16px;
-    color: #2B4371;
+    /*color: #2B4371;*/
     font-weight: 300;
     text-transform: none;
     /*padding: 0 0;*/
@@ -311,7 +311,7 @@
 
 .filters a:hover {
     font-size: 16px;
-    color: #3773DB;
+    /*color: #3773DB;*/
     /*font-weight: bold;*/
 }
 
