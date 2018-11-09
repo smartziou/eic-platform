@@ -5,7 +5,7 @@ import {Injectable} from "@angular/core";
 import {URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BrowseResults} from "../domain/browse-results";
-import {Addenda, Event, Service} from "../domain/eic-model";
+import {Event, Service} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";
@@ -54,7 +54,7 @@ export class ResourceService {
 
         //TODO this 4 lines should be implemented in the backend
         let providerParameter: URLParameter = {
-            key: 'provider',
+            key: 'providers',
             values: ['openaire']
         };
         urlParameters.push(providerParameter);
@@ -103,8 +103,12 @@ export class ResourceService {
         return this.getBy("service", "id");
     }
 
-    getService(id: string) {
-        return this.get("service", id);
+    // getService(id: string) {
+    //     return this.get("service", id);
+    // }
+
+    getService(id: string, version? : string) {
+        return this.get("service", [id,version].join('/'));
     }
 
     getSelectedServices(ids: string[]) {
@@ -130,28 +134,6 @@ export class ResourceService {
 
     randEl(arr: any[]) {
         return arr[this.randInt(0, arr.length)];
-    }
-
-    getAddenda(service: string): Observable<Addenda[]> {
-        let ret: Addenda[] = [];
-        let users = ["pgl", "stefania"];
-        let registeredAt = 1500000000;
-        let registeredBy = this.randEl(users);
-        for (let id = 1, modifiedAt = registeredAt; modifiedAt < 1520000000; id++, modifiedAt += 200000) {
-            ret[id] = {
-                service,
-                registeredAt,
-                registeredBy,
-                modifiedAt,
-                modifiedBy: this.randEl(users),
-                performanceData: null,
-                published: false,
-                id: "" + id,
-                featured: Math.random() > 0.99
-            };
-        }
-        ret[ret.length - 1].published = true;
-        return Observable.from([ret]);
     }
 
     getFavourites(service: string): Observable<Event[]> {
@@ -235,8 +217,16 @@ export class ResourceService {
         });
     }
 
-    getProviders() {
+    getProvidersNames() {
         return this.getAll("provider").map(e => e.results.reduce(this.idToName, {}));
+    }
+
+    getProviders() {
+        return this.getAll("provider");
+    }
+
+    getMyServiceProviders() {
+        return this.http.get('/provider/getMyServiceProviders');
     }
 
     getEU() {

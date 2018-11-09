@@ -188,7 +188,7 @@
                                     <ul class="uk-navbar-nav uk-nav-parent-icon filters">
 
                                         <ng-container *ngFor="let facet of searchResults.facets">
-                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType' && facet.field!='provider'">
+                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType' && facet.field!='providers'">
                                                 <li class="uk-parent uk-margin-medium-right">
                                                     <a href="#">{{facet.label=='TRL'?'Technology Readiness':facet.label}}</a>
                                                     <div class="uk-navbar-dropdown">
@@ -221,7 +221,7 @@
                         <div *ngIf="urlParameters && urlParameters.length>0" class="uk-width-1-1 uk-row-first uk-margin-bottom">
                             <ul class="facets-selected cf">
                                 <ng-template ngFor let-urlParameter [ngForOf]="urlParameters">
-                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='provider'">
+                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='providers'">
                                         <li *ngFor="let facet of urlParameter.values" class="search-tag">
                                             <span class="title">{{urlParameter.key}}:</span> {{facet | uppercase}}
                                             <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
@@ -420,7 +420,7 @@
                                                     </div>
                                                 </li>
                                             </ng-container>
-                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType' && facet.field!='provider'">
+                                            <ng-container *ngIf="facet.field!='category' && facet.field!='resourceType' && facet.field!='providers'">
                                                 <li class="uk-parent uk-margin-medium-right">
                                                     <a href="#">{{facet.label=='TRL'?'Technology Readiness':facet.label}}</a>
                                                     <div class="uk-navbar-dropdown">
@@ -453,7 +453,7 @@
                         <div *ngIf="urlParameters && urlParameters.length>0" class="uk-width-1-1 uk-row-first uk-margin-bottom">
                             <ul class="facets-selected cf">
                                 <ng-template ngFor let-urlParameter [ngForOf]="urlParameters">
-                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='provider'">
+                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='providers'">
                                         <li *ngFor="let facet of urlParameter.values" class="search-tag">
                                             <span class="title">{{urlParameter.key}}:</span> {{facet | uppercase}}
                                             <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
@@ -582,8 +582,8 @@
     </div>
 </div>
 
-<div *ngIf="authenticationService.isLoggedIn()" class="uk-float-right" style="z-index: 100; bottom: 45px; position: fixed; right: 45px;">
-    <a [routerLink]="['/upload']" style="padding: 30px;" class="uk-icon-button uk-button-primary">
+<div *ngIf="canAddOrEditService" class="uk-float-right" style="z-index: 100; bottom: 45px; position: fixed; right: 45px;">
+    <a [routerLink]="['/upload']" style="padding: 30px;" class="uk-icon-button uk-button-secondary">
         <i class="fa fa-plus"></i>
         <!--<span class="uk-icon" uk-icon="icon: plus; ratio: 1.5">-->
         <!--</span>-->

@@ -35,6 +35,9 @@ export class UserService {
     }
 
     public canEditService(service: Service) {
+
+        // console.log('Providers', service.providers);
+
         return this.authenticationService.isLoggedIn() && service.providers && service.providers.length > 0 &&
             service.providers.indexOf(this.authenticationService.user.email.split("@")[0]) > -1;
     }

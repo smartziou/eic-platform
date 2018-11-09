@@ -35,10 +35,10 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-
-        this.router.events.subscribe((evt: any) => {
-            this.isLoginOrRegister = ["/signUp", "/signIn"].includes(evt.url);
-        });
+        this.oauthService.getUserInfo();
+        // this.router.events.subscribe((evt: any) => {
+        //     this.isLoginOrRegister = ["/signUp", "/signIn"].includes(evt.url);
+        // });
         this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;

@@ -34,6 +34,6 @@ export class ProvidersComponent extends MyGroup {
 
     ngOnInit() {
         super.ngOnInit();
-        this.resourceService.getProviders().subscribe(suc => this.providers = suc);
+        this.resourceService.getProvidersNames().subscribe(suc => this.providers = suc);
     }
 }

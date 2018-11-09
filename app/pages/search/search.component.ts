@@ -16,6 +16,7 @@ import {UserService} from "../../services/user.service";
 import {URLParameter} from "./../../domain/url-parameter";
 import { Observable } from "rxjs/Observable";
 import { Facet, FacetValue } from "../../domain/facet";
+import {Provider} from "../../domain/eic-model";
 
 declare var UIkit: any;
 
@@ -45,6 +46,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     listViewActive: boolean = false;
 
+    myProviders: Provider[] = [];
+    canAddOrEditService: boolean = false;
+
     constructor(public fb: FormBuilder, public router: NavigationService, public route: ActivatedRoute,
                 public userService: UserService, public resourceService: ResourceService,
                 public authenticationService: AuthenticationService, public comparisonService: ComparisonService) {
@@ -52,29 +56,67 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        Observable.zip(
-            this.resourceService.getProviders(),
-            this.resourceService.getVocabularies()
+
+        this.canAddOrEditService = false;
+
+        if(this.authenticationService.isLoggedIn()) {
+            Observable.zip(
+                this.resourceService.getProvidersNames(),
+                this.resourceService.getVocabularies(),
+                this.resourceService.getMyServiceProviders()
             ).subscribe(suc => {
-            this.providers = suc[0];
-            this.vocabularies = suc[1];
-            this.sub = this.route.params.subscribe(params => {
-                this.urlParameters.splice(0, this.urlParameters.length);
-                this.foundResults = true;
-                for (let obj in params) {
-                    if (params.hasOwnProperty(obj)) {
-                        let urlParameter: URLParameter = {
-                            key: obj,
-                            values: params[obj].split(",")
-                        };
-                        this.urlParameters.push(urlParameter);
+                this.providers = suc[0];
+                this.vocabularies = suc[1];
+                this.myProviders = suc[2];
+
+                /* check if the current user can add a service */
+                this.canAddOrEditService = this.myProviders.some( p => p.id === 'openaire' );
+
+                this.sub = this.route.params.subscribe(params => {
+                    this.urlParameters.splice(0, this.urlParameters.length);
+                    this.foundResults = true;
+                    for (let obj in params) {
+                        if (params.hasOwnProperty(obj)) {
+                            let urlParameter: URLParameter = {
+                                key: obj,
+                                values: params[obj].split(",")
+                            };
+                            this.urlParameters.push(urlParameter);
+                        }
                     }
-                }
-                //request results from the registry
-                return this.resourceService.search(this.urlParameters).subscribe(
-                    searchResults => this.updateSearchResults(searchResults));
+                    //request results from the registry
+                    return this.resourceService.search(this.urlParameters).subscribe(
+                        searchResults => this.updateSearchResults(searchResults));
+                });
             });
-        });
+        } else {
+            Observable.zip(
+                this.resourceService.getProvidersNames(),
+                this.resourceService.getVocabularies(),
+            ).subscribe(suc => {
+                this.providers = suc[0];
+                this.vocabularies = suc[1];
+
+                this.sub = this.route.params.subscribe(params => {
+                    this.urlParameters.splice(0, this.urlParameters.length);
+                    this.foundResults = true;
+                    for (let obj in params) {
+                        if (params.hasOwnProperty(obj)) {
+                            let urlParameter: URLParameter = {
+                                key: obj,
+                                values: params[obj].split(",")
+                            };
+                            this.urlParameters.push(urlParameter);
+                        }
+                    }
+                    //request results from the registry
+                    return this.resourceService.search(this.urlParameters).subscribe(
+                        searchResults => this.updateSearchResults(searchResults));
+                });
+            });
+        }
+
+
     }
 
     ngOnDestroy(): void {

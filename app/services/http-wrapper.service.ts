@@ -1,6 +1,3 @@
-/**
- * Created by pgl on 27/10/17.
- */
 import {Injectable} from "@angular/core";
 import {Headers, Http, RequestOptions, RequestOptionsArgs, Response, XHRBackend} from "@angular/http";
 import {Observable} from "rxjs/Rx";
@@ -15,30 +12,46 @@ export class HTTPWrapper extends Http {
     }
 
     public post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
+        console.log(`calling ${url}`);
+        options = options || {withCredentials: true};
         return super.post(this.base + url, this.parse(body), options).map(this.getJSON).catch(this.handleError);
     }
 
     public put(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
+        // console.log(`calling ${url}`);
+        options = options || {withCredentials: true};
         return super.put(this.base + url, this.parse(body), options).map(this.getJSON).catch(this.handleError);
     }
 
+    public patch(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
+        // console.log(`calling ${url}`);
+        options = options || {withCredentials: true};
+        return super.patch(this.base + url, this.parse(body), options).map(this.getJSON).catch(this.handleError);
+    }
+
     public getAny(url: string, options?: RequestOptionsArgs): Observable<any> {
+        console.log(`calling ${url}`);
+        options = options || {withCredentials: true};
         return super.get(url, options).map(this.getJSON).catch(this.handleError);
     }
 
     public get(url: string, options?: RequestOptionsArgs): Observable<any> {
+        options = options || {withCredentials: true};
         return this.getAny(this.base + url, options);
     }
 
     public handleError(error: Response) {
-        let message = "Severe server error";
+        let message = "Server error";
         try {
-            message = JSON.parse(error.text()).error;
+            if (JSON.parse(error.text()).error) {
+                message = JSON.parse(error.text()).error;
+            }
+
         } catch (e) {
             console.error("HTTPWrapper", e);
         }
         UIkit.notification.closeAll();
-        UIkit.notification({message, status: "danger", pos: "top-center", timeout: 5000});
+        UIkit.notification({message: message, status: "danger", pos: "top-center", timeout: 5000});
         return Observable.throw(error);
     }
 

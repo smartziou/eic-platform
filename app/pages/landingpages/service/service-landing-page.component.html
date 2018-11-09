@@ -20,7 +20,7 @@
                             <div class="uk-display-inline-block uk-vertical-align-top">
                                 <h2 class="uk-h2 uk-inline" style="margin-bottom: 5px">
                                     {{service.name || "Not Available"}}
-                                    <span class="uk-margin-left" *ngIf="this.userService.canEditService(service)">
+                                    <span class="uk-margin-left" *ngIf="canAddOrEditService">
                                         <a (click)="this.router.edit(service.id)" routerLinkActive="active"><i class="fa fa-pencil"></i></a>
                                     </span>
                                 </h2>
@@ -301,8 +301,8 @@
     </div>
 </div>
 
-<div *ngIf="authenticationService.isLoggedIn()" class="uk-float-right" style="z-index: 100; bottom: 45px; position: fixed; right: 45px;">
-    <a [routerLink]="['/upload']" style="padding: 30px;" class="uk-icon-button uk-button-primary">
+<div *ngIf="canAddOrEditService" class="uk-float-right" style="z-index: 100; bottom: 45px; position: fixed; right: 45px;">
+    <a [routerLink]="['/upload']" style="padding: 30px;" class="uk-icon-button uk-button-secondary">
         <i class="fa fa-plus"></i>
         <!--<span class="uk-icon" uk-icon="icon: plus; ratio: 1.5">-->
         <!--</span>-->

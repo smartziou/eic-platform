@@ -1,16 +1,4 @@
-// Generated using typescript-generator version 1.27.339 on 2018-04-28 13:14:08.
-
-export class Addenda implements Identifiable {
-    featured: boolean;
-    id: string;
-    modifiedAt: number;
-    modifiedBy: string;
-    performanceData: Measurement<any>[];
-    published: boolean;
-    registeredAt: number;
-    registeredBy: string;
-    service: string;
-}
+// Generated using typescript-generator version 1.27.339 on 2018-09-24 17:11:32.
 
 export class Dimension {
 }
@@ -32,6 +20,49 @@ export class Indicator implements Identifiable {
     dimensions: Dimension[];
     id: string;
     unit: Unit;
+}
+
+export class Service implements Identifiable {
+    category: string;
+    changeLog: string;
+    description: string;
+    feedback: URL;
+    funding: string;
+    helpdesk: URL;
+    id: string;
+    languages: string[];
+    lastUpdate: XMLGregorianCalendar;
+    lifeCycleStatus: string;
+    multimediaURL: URL;
+    name: string;
+    options: string;
+    order: URL;
+    places: string[];
+    price: URL;
+    providers: string[];
+    relatedServices: string[];
+    requiredServices: string[];
+    serviceLevelAgreement: URL;
+    subcategory: string;
+    symbol: URL;
+    tag: string[];
+    tagline: string;
+    targetUsers: string;
+    termOfUse: URL[];
+    trainingInformation: URL;
+    trl: string;
+    url: URL;
+    userBase: string;
+    userManual: URL;
+    userValue: string;
+    validFor: XMLGregorianCalendar;
+    version: string;
+}
+
+export class InfraService extends Service {
+    active: boolean;
+    serviceMetadata: ServiceMetadata;
+    status: string;
 }
 
 export class Manager implements Identifiable {
@@ -58,54 +89,45 @@ export class Membership implements Identifiable {
 }
 
 export class Provider implements Identifiable {
+    active: boolean;
+    additionalInfo: string;
+    catalogueOfResources: URL;
     contactInformation: string;
     id: string;
     name: string;
-    service: Service[];
+    logo: string;
+    publicDescOfResources: URL;
+    status: string;
     user: User[];
+    website: URL;
 }
 
-export class Service implements Identifiable {
-    availability: string;
-    category: string;
-    changeLog: string;
-    description: string;
-    feedback: URL;
-    funding: string;
-    helpdesk: URL;
-    id: string;
-    languages: string[];
-    language: string[];
-    lastUpdate: XMLGregorianCalendar;
-    lifeCycleStatus: string;
-    multimediaURL: URL;
-    name: string;
-    options: string;
-    order: URL;
-    places: string[];
-    price: URL;
-    providers: string[];
-    providerName: string;
-    relatedServices: string[];
-    reliability: string;
-    request: URL;
-    requiredServices: string[];
-    serviceLevelAgreement: URL;
-    serviceability: string;
-    subcategory: string;
-    symbol: URL;
-    tags: string[];
-    tagline: string;
-    targetUsers: string;
-    termsOfUse: URL[];
-    trainingInformation: URL;
-    trl: string;
-    url: URL;
-    userBase: string;
-    userManual: URL;
-    userValue: string;
-    validFor: XMLGregorianCalendar;
+export class RichService extends Service {
+    categoryName: string;
+    favourites: number;
+    hasRate: number;
+    userRate: number;
+    isFavourite: boolean;
+    languageNames: string[];
+    ratings: number;
+    serviceMetadata: ServiceMetadata;
+    subCategoryName: string;
+    views: number;
+}
+
+export class ServiceMetadata {
+    featured: boolean;
+    modifiedAt: string;
+    modifiedBy: string;
+    performanceData: Measurement<any>[];
+    published: boolean;
+    registeredAt: string;
+    registeredBy: string;
+}
+
+export class ServiceHistory extends ServiceMetadata {
     version: string;
+    versionChange: boolean;
 }
 
 export class Unit {
@@ -114,31 +136,41 @@ export class Unit {
 export class User implements Identifiable {
     email: string;
     id: string;
-    iterationCount: number;
-    joinDate: string;
     name: string;
-    password: string;
-    resetToken: string;
-    salt: any;
     surname: string;
 }
 
 export class Vocabulary implements Identifiable {
-    extra: string[];
+    extras: string[];
     id: string;
     name: string;
     parent: string;
     type: string;
 }
 
-export class XMLGregorianCalendar implements Cloneable {
-}
+// // For the new Vocabularies
+// export class Vocabulary implements Identifiable {
+//     entries: { [index: string]: VocabularyEntry };
+//     id: string;
+//     name: string;
+// }
+//
+// export class VocabularyEntry {
+//     child: VocabularyEntry[];
+//     entryId: string;
+//     entryName: string;
+//     extras: { [index: string]: string };
+// }
+
 
 export class URL implements Serializable {
 }
 
-export interface Cloneable {
+export class XMLGregorianCalendar implements Cloneable {
 }
 
 export interface Serializable {
+}
+
+export interface Cloneable {
 }

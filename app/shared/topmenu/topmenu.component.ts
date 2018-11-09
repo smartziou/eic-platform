@@ -4,6 +4,7 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { AuthenticationService } from "../../services/authentication.service";
 import { Router } from "@angular/router";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: "top-menu",
@@ -16,7 +17,50 @@ import { Router } from "@angular/router";
     encapsulation: ViewEncapsulation.None
 })
 export class TopMenuComponent {
+
+    private sub: Subscription;
+
     constructor(public authenticationService: AuthenticationService, public route: Router) {
+    }
+
+    ngOnInit(): void {
+        this.isLoggedIn();
+        this.getUsername();
+        this.getUsersurname();
+    }
+
+    ngOnDestroy(): void {
+        if (this.authenticationService.isLoggedIn()) {
+            this.sub.unsubscribe();
+        }
+    }
+
+    goToLoginAAI(): void {
+        this.authenticationService.login();
+    }
+
+    isLoggedIn() {
+        return this.authenticationService.isLoggedIn();
+    }
+
+    getUsername() {
+        if (this.authenticationService.isLoggedIn()) {
+            return this.authenticationService.getUserProperty('given_name');
+        }
+    }
+
+    getUsersurname() {
+        if (this.authenticationService.isLoggedIn()) {
+            return this.authenticationService.getUserProperty('family_name');
+        }
+    }
+
+    isProvider() {
+        return this.authenticationService.getUserProperty('roles').some(x => x === "ROLE_PROVIDER");
+    }
+
+    isAdmin() {
+        return this.authenticationService.getUserProperty('roles').some(x => x === "ROLE_ADMIN");
     }
 
     get isHome() {

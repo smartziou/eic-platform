@@ -29,7 +29,6 @@ import { MyArray, MyArrayInline, MyArrayWrapper, MyInlineArrayWrapper } from "./
 import { MyFormDirective } from "./pages/multiforms/my-form.directive";
 import { InlineFormWrapper, MyGroup } from "./pages/multiforms/my-group.interface";
 import { SearchComponent } from "./pages/search/search.component";
-import { ActivateComponent } from "./pages/user/activate/activate.component";
 import { DashboardComponent } from "./pages/user/dashboard/dashboard.component";
 import { ServiceDashboardComponent } from "./pages/user/dashboard/service-dashboard.component";
 import { UserModule } from "./pages/user/user.module";
@@ -101,7 +100,6 @@ export function highchartsFactory() {
         FooterComponent,
         TopMenuComponent,
         //USER
-        ActivateComponent,
         DashboardComponent,
         ServiceDashboardComponent,
         //FORMS

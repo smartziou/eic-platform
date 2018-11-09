@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
-import { Service } from "../../../domain/eic-model";
+import {Provider, Service} from "../../../domain/eic-model";
 import { AuthenticationService } from "../../../services/authentication.service";
 import { NavigationService } from "../../../services/navigation.service";
 import { ResourceService } from "../../../services/resource.service";
@@ -24,11 +24,14 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     public WW: string[];
     private Math: Math;
     private sub: Subscription;
-    private providers: any = {};
+    // private providers: any = {};
     private vocabularies: any = [];
     // public stats: any = {visits: 0, favourites: 0, externals: 0};
 
     serviceMapOptions: any = null;
+
+    myProviders: Provider[] = [];
+    canAddOrEditService: boolean = false;
 
     constructor(public route: ActivatedRoute, public router: NavigationService, public resourceService: ResourceService,
                 public authenticationService: AuthenticationService, public userService: UserService) {
@@ -36,37 +39,61 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
-            Observable.zip(
-                this.resourceService.getEU(),
-                this.resourceService.getWW(),
-                this.resourceService.getService(params["id"]),
-                this.resourceService.getProviders(),
-                this.resourceService.getVocabularies(),
-                // this.resourceService.getVisitsForService(params["id"]),
-                // this.resourceService.getFavouritesForService(params["id"]),
-                // this.resourceService.getExternalsForService(params["id"]),
-                //this.resourceService.recordHit(id, "internal")
-            ).subscribe(suc => {
-                this.EU = suc[0];
-                this.WW = suc[1];
-                this.service = suc[2];
-                this.providers = suc[3];
-                this.vocabularies = suc[4];
-                // this.stats.visits = Object.values(suc[5]).reduce((acc, v) => acc + v, 0);
-                // this.stats.favourites = Object.values(suc[6]).reduce((acc, v) => acc + v, 0);
-                // this.stats.externals = Object.values(suc[7]).reduce((acc, v) => acc + v, 0);
 
-                this.setCountriesForService(this.service.places);
+        this.canAddOrEditService = false;
 
-                let serviceIDs = (this.service.requiredServices || []).concat(this.service.relatedServices || [])
-                .filter((e, i, a) => a.indexOf(e) === i);
-                if (serviceIDs.length > 0) {
-                    this.resourceService.getSelectedServices(serviceIDs)
-                    .subscribe(services => this.services = services);
-                }
+        if(this.authenticationService.isLoggedIn()) {
+            this.sub = this.route.params.subscribe(params => {
+                Observable.zip(
+                    this.resourceService.getEU(),
+                    this.resourceService.getWW(),
+                    this.resourceService.getService(params["id"]),
+                    this.resourceService.getMyServiceProviders(),
+                    this.resourceService.getVocabularies(),
+                ).subscribe(suc => {
+                    this.EU = suc[0];
+                    this.WW = suc[1];
+                    this.service = suc[2];
+                    this.myProviders = suc[3];
+                    this.vocabularies = suc[4];
+
+                    /* check if the current user can add a new or edit the service */
+                    this.canAddOrEditService = this.myProviders.some( p => this.service.providers.some(x => x === p.id) );
+
+                    this.setCountriesForService(this.service.places);
+
+                    let serviceIDs = (this.service.requiredServices || []).concat(this.service.relatedServices || [])
+                        .filter((e, i, a) => a.indexOf(e) === i);
+                    if (serviceIDs.length > 0) {
+                        this.resourceService.getSelectedServices(serviceIDs)
+                            .subscribe(services => this.services = services);
+                    }
+                });
             });
-        });
+        } else {
+            this.sub = this.route.params.subscribe(params => {
+                Observable.zip(
+                    this.resourceService.getEU(),
+                    this.resourceService.getWW(),
+                    this.resourceService.getService(params["id"]),
+                    this.resourceService.getVocabularies(),
+                ).subscribe(suc => {
+                    this.EU = suc[0];
+                    this.WW = suc[1];
+                    this.service = suc[2];
+                    this.vocabularies = suc[3];
+
+                    this.setCountriesForService(this.service.places);
+
+                    let serviceIDs = (this.service.requiredServices || []).concat(this.service.relatedServices || [])
+                        .filter((e, i, a) => a.indexOf(e) === i);
+                    if (serviceIDs.length > 0) {
+                        this.resourceService.getSelectedServices(serviceIDs)
+                            .subscribe(services => this.services = services);
+                    }
+                });
+            });
+        }
     }
 
     ngOnDestroy(): void {
