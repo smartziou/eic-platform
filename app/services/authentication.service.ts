@@ -43,6 +43,10 @@ export class AuthenticationService {
             this.user.id = this.user.eduperson_unique_id;
 
             sessionStorage.setItem('userInfo', JSON.stringify(this.user));
+
+            const curPage = sessionStorage.getItem('redirect_url');
+            sessionStorage.removeItem('redirect_url');
+            this.router.router.navigateByUrl(curPage);
         }
     }
 
@@ -67,6 +71,7 @@ export class AuthenticationService {
             console.log('found cookie');
             this.getUserInfo();
         } else {
+            sessionStorage.setItem('redirect_url', window.location.pathname);
             window.location.href = process.env.API_ENDPOINT + "/openid_connect_login";
         }
     }
