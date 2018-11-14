@@ -5,7 +5,7 @@ import {Injectable} from "@angular/core";
 import {URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {BrowseResults} from "../domain/browse-results";
-import {Event, Service} from "../domain/eic-model";
+import {Event, RichService, Service, Vocabulary} from "../domain/eic-model";
 import {SearchResults} from "../domain/search-results";
 import {URLParameter} from "../domain/url-parameter";
 import {AuthenticationService} from "./authentication.service";
@@ -67,15 +67,24 @@ export class ResourceService {
         }
         searchQuery.delete("to");
         let questionMark = urlParameters.length > 0 ? "?" : "";
-        return this.http.get(`/service/all${questionMark}${searchQuery.toString()}`).map(res => <SearchResults> <any> res);
+        // return this.http.get(`/service/all${questionMark}${searchQuery.toString()}`).map(res => <SearchResults> <any> res);
+        return this.http.get(`/service/rich/all${questionMark}${searchQuery.toString()}`).map(res => <SearchResults<RichService>> <any> res);
     }
+
+    // getVocabularies(type?: string) {
+    //     return this.getVocabulariesRaw(type).map(e => e.results.reduce(type ? this.idToName : this.idToObject, {}));
+    // }
+    //
+    // getVocabulariesRaw(type?: string) {
+    //     return this.http.get(`/vocabulary/all?from=0&quantity=1000${type ? "&type=" + type : ""}`);
+    // }
 
     getVocabularies(type?: string) {
-        return this.getVocabulariesRaw(type).map(e => e.results.reduce(type ? this.idToName : this.idToObject, {}));
+        return this.http.get(`/vocabulary/all?from=0&quantity=1000${type ? "&type=" + type : ""}`);
     }
 
-    getVocabulariesRaw(type?: string) {
-        return this.http.get(`/vocabulary/all?from=0&quantity=1000${type ? "&type=" + type : ""}`);
+    getVocabulariesByType(type: string) {
+        return this.http.get(`/vocabulary?type=${type}`);
     }
 
     getVocabulariesUsingGroupBy(type?: string) {
@@ -109,6 +118,10 @@ export class ResourceService {
 
     getService(id: string, version? : string) {
         return this.get("service", [id,version].join('/'));
+    }
+
+    getRichService(id: string, version? : string) {
+        return this.get("service/rich/byID", [id,version].join('/'));
     }
 
     getSelectedServices(ids: string[]) {
@@ -230,21 +243,21 @@ export class ResourceService {
     }
 
     getEU() {
-        return this.http.get("/vocabulary/getEU");
+        return this.http.get("/vocabulary/countries/EU");
     }
 
     getWW() {
-        return this.http.get("/vocabulary/getWW");
+        return this.http.get("/vocabulary/countries/WW");
     }
 
     //this should be somewhere else, I think
     expandRegion(places, eu, ww) {
-        let iEU = places.indexOf("Place-EU");
+        let iEU = places.indexOf("EU");
         if (iEU > -1) {
             places.splice(iEU, 1);
             places.push(...eu);
         }
-        let iWW = places.indexOf("Place-WW");
+        let iWW = places.indexOf("WW");
         if (iWW > -1) {
             places.splice(iWW, 1);
             places.push(...ww);

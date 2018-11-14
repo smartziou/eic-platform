@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
-import {Provider, Service} from "../../../domain/eic-model";
+import { Provider, RichService, Service } from "../../../domain/eic-model";
 import { AuthenticationService } from "../../../services/authentication.service";
 import { NavigationService } from "../../../services/navigation.service";
 import { ResourceService } from "../../../services/resource.service";
@@ -18,14 +18,13 @@ declare var require: any;
 export class ServiceLandingPageComponent implements OnInit, OnDestroy {
 
     services: Service[];
-    public service: Service;
+    public service: RichService;
     public errorMessage: string;
     public EU: string[];
     public WW: string[];
     private Math: Math;
     private sub: Subscription;
     // private providers: any = {};
-    private vocabularies: any = [];
     // public stats: any = {visits: 0, favourites: 0, externals: 0};
 
     serviceMapOptions: any = null;
@@ -47,18 +46,19 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
                 Observable.zip(
                     this.resourceService.getEU(),
                     this.resourceService.getWW(),
-                    this.resourceService.getService(params["id"]),
+                    this.resourceService.getRichService(params["id"]),
                     this.resourceService.getMyServiceProviders(),
-                    this.resourceService.getVocabularies(),
                 ).subscribe(suc => {
                     this.EU = suc[0];
                     this.WW = suc[1];
-                    this.service = suc[2];
+                    this.service = suc[2][0];
                     this.myProviders = suc[3];
-                    this.vocabularies = suc[4];
+
+                    console.log('Service', this.service);
 
                     /* check if the current user can add a new or edit the service */
-                    this.canAddOrEditService = this.myProviders.some( p => this.service.providers.some(x => x === p.id) );
+                    if(this.myProviders && this.myProviders.length>0)
+                        this.canAddOrEditService = this.myProviders.some( p => this.service.providers.some(x => x === p.id) );
 
                     this.setCountriesForService(this.service.places);
 
@@ -75,13 +75,13 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
                 Observable.zip(
                     this.resourceService.getEU(),
                     this.resourceService.getWW(),
-                    this.resourceService.getService(params["id"]),
-                    this.resourceService.getVocabularies(),
+                    this.resourceService.getRichService(params["id"]),
                 ).subscribe(suc => {
                     this.EU = suc[0];
                     this.WW = suc[1];
-                    this.service = suc[2];
-                    this.vocabularies = suc[3];
+                    this.service = suc[2][0];
+
+                    console.log('Service', this.service);
 
                     this.setCountriesForService(this.service.places);
 
@@ -149,10 +149,6 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
 
     visit() {
         // this.resourceService.recordEvent(this.service.id, "EXTERNAL").subscribe(suc => this.router.goOffsite(this.service.url.toString()));
-    }
-
-    getPrettyList(list) {
-        return list.map(e => this.vocabularies[e].name).join();
     }
 
     handleError(error) {

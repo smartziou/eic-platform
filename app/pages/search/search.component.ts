@@ -16,7 +16,7 @@ import {UserService} from "../../services/user.service";
 import {URLParameter} from "./../../domain/url-parameter";
 import { Observable } from "rxjs/Observable";
 import { Facet, FacetValue } from "../../domain/facet";
-import {Provider} from "../../domain/eic-model";
+import {Provider, RichService} from "../../domain/eic-model";
 
 declare var UIkit: any;
 
@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     errorMessage: string;
     sub: Subscription;
     urlParameters: URLParameter[] = [];
-    searchResults: SearchResults;
+    searchResults: SearchResults<RichService>;
     facetOrder = ["category", "trl", "lifeCycleStatus", "provider"];
     pageSize: number = 0;
     currentPage: number = 0;
@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     foundResults = true;
     advanced: boolean = false;
     providers: any;
-    vocabularies: any;
+    // vocabularies: any;
 
     listViewActive: boolean = false;
 
@@ -62,12 +62,10 @@ export class SearchComponent implements OnInit, OnDestroy {
         if(this.authenticationService.isLoggedIn()) {
             Observable.zip(
                 this.resourceService.getProvidersNames(),
-                this.resourceService.getVocabularies(),
                 this.resourceService.getMyServiceProviders()
             ).subscribe(suc => {
                 this.providers = suc[0];
-                this.vocabularies = suc[1];
-                this.myProviders = suc[2];
+                this.myProviders = suc[1];
 
                 /* check if the current user can add a service */
                 this.canAddOrEditService = this.myProviders.some( p => p.id === 'openaire' );
@@ -92,10 +90,8 @@ export class SearchComponent implements OnInit, OnDestroy {
         } else {
             Observable.zip(
                 this.resourceService.getProvidersNames(),
-                this.resourceService.getVocabularies(),
             ).subscribe(suc => {
                 this.providers = suc[0];
-                this.vocabularies = suc[1];
 
                 this.sub = this.route.params.subscribe(params => {
                     this.urlParameters.splice(0, this.urlParameters.length);
@@ -132,7 +128,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             this.listViewActive = false;
     }
 
-    updateSearchResults(searchResults: SearchResults) {
+    updateSearchResults(searchResults: SearchResults<RichService>) {
 
         //INITIALISATIONS
         this.errorMessage = null;
@@ -189,9 +185,13 @@ export class SearchComponent implements OnInit, OnDestroy {
         });
     }
 
-    getFacetLabel(facet: Facet, facetValue: FacetValue) {
-        return facet.label === "Provider" ? this.providers[facetValue.value] || "N/A" : (this.vocabularies[facetValue.value] || {name:"N/A"}).name || "N/A";
-    }
+    // getFacetLabel(facet: Facet, facetValue: FacetValue) {
+    //
+    //
+    //     // console.log(this.vocabularies[facet.field].);
+    //
+    //     return facet.label === "Provider" ? this.providers[facetValue.value] || "N/A" : (this.vocabularies[facetValue.value] || {name:"N/A"}).name || "N/A";
+    // }
 
     onSubmit(searchValue: SearchQuery) {
         var foundQuery = false;

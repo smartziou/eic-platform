@@ -119,7 +119,8 @@
                                         <input type="checkbox" name="vehicle" value="Bike" data-md-icheck
                                                (change)="this.onSelection($event, facet.field, facetValue.value)"
                                                [checked]="facetValue.isChecked">
-                                        {{this.getFacetLabel(facet, facetValue)}}
+                                        {{facetValue.label}}
+                                        <!--{{this.getFacetLabel(facet, facetValue)}}-->
                                         <span>({{facetValue.count}})</span>
                                     </div>
                                 </read-more>
@@ -142,6 +143,7 @@
                 <!--<input type="checkbox" name="vehicle" value="Bike" data-md-icheck-->
                 <!--(change)="this.onSelection($event, facet.field, facetValue.value)"-->
                 <!--[checked]="facetValue.isChecked">-->
+                <!--{{facetValue.label}}-->
                 <!--{{this.getFacetLabel(facet, facetValue)}}-->
                 <!--<span>({{facetValue.count}})</span>-->
                 <!--</div>-->
@@ -195,7 +197,8 @@
                                                         <ul class="uk-nav uk-navbar-dropdown-nav">
                                                             <li *ngFor="let facetValue of facet.values">
                                                                 <a (click)="this.selectFacet(facet.field, facetValue.value)">
-                                                                    {{this.getFacetLabel(facet, facetValue)}}
+                                                                    {{facetValue.label}}
+                                                                    <!--{{this.getFacetLabel(facet, facetValue)}}-->
                                                                     <span>({{facetValue.count}})</span>
                                                                 </a>
                                                             </li>
@@ -407,12 +410,14 @@
                                         <ng-container *ngFor="let facet of searchResults.facets">
                                             <ng-container *ngIf="facet.field=='category'">
                                                 <li class="uk-parent uk-margin-medium-right">
-                                                    <a href="#">{{facet.label | uppercase}}</a>
+                                                    <!--<a href="#">{{facet.label | uppercase}}</a>-->
+                                                    <a href="#">{{facet.label}}</a>
                                                     <div class="uk-navbar-dropdown">
                                                         <ul class="uk-nav uk-navbar-dropdown-nav">
                                                             <li *ngFor="let facetValue of facet.values">
                                                                 <a (click)="this.selectFacet(facet.field, facetValue.value)">
-                                                                    {{this.getFacetLabel(facet, facetValue)}}
+                                                                    {{facetValue.label}}
+                                                                    <!--{{this.getFacetLabel(facet, facetValue)}}-->
                                                                     <span>({{facetValue.count}})</span>
                                                                 </a>
                                                             </li>
@@ -427,7 +432,8 @@
                                                         <ul class="uk-nav uk-navbar-dropdown-nav">
                                                             <li *ngFor="let facetValue of facet.values">
                                                                 <a (click)="this.selectFacet(facet.field, facetValue.value)">
-                                                                    {{this.getFacetLabel(facet, facetValue)}}
+                                                                    {{facetValue.label}}
+                                                                    <!--{{this.getFacetLabel(facet, facetValue)}}-->
                                                                     <span>({{facetValue.count}})</span>
                                                                 </a>
                                                             </li>
@@ -495,7 +501,10 @@
 
                                         <!--TODO add category and persona tag-->
                                         <div class="categoryTags uk-margin-top" *ngIf="resourceInfo.category || resourceInfo.targetUsers">
-                                            <span class="uk-label uk-label-primary">{{this.vocabularies[resourceInfo.category].name}}</span>
+                                            <span class="uk-label uk-label-primary">
+                                                {{resourceInfo.categoryName}}
+                                                <!--{{this.vocabularies[resourceInfo.category].name}}-->
+                                            </span>
                                             <!--<span *ngFor="let a of resourceInfo.targetUsers.split(',')" class="uk-label uk-label-primary uk-margin-small-right">{{a}}</span>-->
                                         </div>
 

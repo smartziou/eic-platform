@@ -106,12 +106,15 @@ export class RichService extends Service {
     categoryName: string;
     favourites: number;
     hasRate: number;
-    userRate: number;
     isFavourite: boolean;
     languageNames: string[];
+    placeNames: string[];
+    lifeCycleStatusName: string;
     ratings: number;
     serviceMetadata: ServiceMetadata;
     subCategoryName: string;
+    trlName: string;
+    userRate: number;
     views: number;
 }
 
@@ -140,27 +143,27 @@ export class User implements Identifiable {
     surname: string;
 }
 
-export class Vocabulary implements Identifiable {
-    extras: string[];
-    id: string;
-    name: string;
-    parent: string;
-    type: string;
-}
-
-// // For the new Vocabularies
 // export class Vocabulary implements Identifiable {
-//     entries: { [index: string]: VocabularyEntry };
+//     extras: string[];
 //     id: string;
 //     name: string;
+//     parent: string;
+//     type: string;
 // }
-//
-// export class VocabularyEntry {
-//     child: VocabularyEntry[];
-//     entryId: string;
-//     entryName: string;
-//     extras: { [index: string]: string };
-// }
+
+// For the new Vocabularies
+export class Vocabulary implements Identifiable {
+    entries: { [index: string]: VocabularyEntry };
+    id: string;
+    name: string;
+}
+
+export class VocabularyEntry {
+    children: VocabularyEntry[];
+    id: string;
+    name: string;
+    extras: { [index: string]: string };
+}
 
 
 export class URL implements Serializable {
