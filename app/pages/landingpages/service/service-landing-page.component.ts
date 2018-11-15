@@ -51,7 +51,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
                 ).subscribe(suc => {
                     this.EU = suc[0];
                     this.WW = suc[1];
-                    this.service = suc[2][0];
+                    this.service = suc[2];
                     this.myProviders = suc[3];
 
                     console.log('Service', this.service);
@@ -79,7 +79,7 @@ export class ServiceLandingPageComponent implements OnInit, OnDestroy {
                 ).subscribe(suc => {
                     this.EU = suc[0];
                     this.WW = suc[1];
-                    this.service = suc[2][0];
+                    this.service = suc[2];
 
                     console.log('Service', this.service);
 

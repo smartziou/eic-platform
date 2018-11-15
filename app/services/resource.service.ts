@@ -121,7 +121,7 @@ export class ResourceService {
     }
 
     getRichService(id: string, version? : string) {
-        return this.get("service/rich/byID", [id,version].join('/'));
+        return this.get("service/rich", [id,version].join('/'));
     }
 
     getSelectedServices(ids: string[]) {
