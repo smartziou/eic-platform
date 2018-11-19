@@ -81,7 +81,8 @@ export class AuthenticationService {
             deleteCookie(this.cookieName);
             this.user = null;
             sessionStorage.clear();
-            window.location.href = process.env.API_ENDPOINT + "/openid_logout";
+            // window.location.href = process.env.API_ENDPOINT + "/openid_logout";
+            window.location.href = "https://aai.openaire.eu/proxy/saml2/idp/SingleLogoutService.php?ReturnTo=" + process.env.API_ENDPOINT + "/openid_logout";
             // this.router.home();
         }
     }
