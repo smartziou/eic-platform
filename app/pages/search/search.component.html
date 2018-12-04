@@ -293,8 +293,8 @@
                                             </div>
 
                                             <!--TODO add category and persona tag-->
-                                            <div class="categoryTags uk-margin-top" *ngIf="resourceInfo.category || resourceInfo.targetUsers">
-                                                <span class="uk-label uk-label-primary uk-margin-small-right">{{this.vocabularies[resourceInfo.category].name}}</span>
+                                            <div class="categoryTags uk-margin-top" *ngIf="resourceInfo.categoryName || resourceInfo.targetUsers">
+                                                <span class="uk-label uk-label-primary uk-margin-small-right">{{resourceInfo.categoryName}}</span>
                                                 <!--<span *ngFor="let a of resourceInfo.targetUsers.split(',')" class="uk-label uk-label-primary uk-margin-small-right">{{a}}</span>-->
                                             </div>
 
