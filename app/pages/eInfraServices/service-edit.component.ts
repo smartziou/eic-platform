@@ -30,12 +30,15 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
         this.sub = this.route.params.subscribe(params => {
             this.serviceID = params["id"];
             this.resourceService.getService(this.serviceID).subscribe(service => {
-                // if (this.userService.canEditService(service)) {
+
+                /*if (this.userService.canEditService(service)) {*/
                     ResourceService.removeNulls(service);
                     this.serviceForm.patchValue(this.toForms(service));
-                // } else {
-                //     this.location.back();
-                // }
+                    let date = new Date(this.serviceForm.get('lastUpdate').value);
+                    this.serviceForm.get('lastUpdate').setValue(date.toLocaleDateString());
+                /*} else {
+                    this.location.back();
+                }*/
             });
         });
     }
