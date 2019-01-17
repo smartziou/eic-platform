@@ -73,7 +73,7 @@ export class ServiceFormComponent {
     relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
     termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
     formGroupMeta = {
-        "url": ["", Validators.compose([Validators.required, URLValidator])],
+        "url": ["", Validators.required],
         "name": ["", Validators.required],
         "tagline": [""],
         "description": ["", Validators.required],
@@ -81,17 +81,15 @@ export class ServiceFormComponent {
         "targetUsers": [""],
         "userValue": [""],
         "userBase": [""],
-        "symbol": ["", URLValidator],
+        "symbol": ["", Validators.required],
         "multimediaURL": ["", URLValidator],
         //providers is defined in component
-        "version": [""],
-        "lastUpdate": [""],
+        "version": ["", Validators.required],
+        "lastUpdate": ["", Validators.required],
         "changeLog": [""],
         "validFor": [""],
-        "lifeCycleStatus": ["", Validators.compose([Validators.required])],
-        // "lifeCycleStatus": ["", Validators.compose([Validators.required, LifeCycleStatusValidator])],
-        "trl": ["", Validators.compose([Validators.required])],
-        // "trl": ["", Validators.compose([Validators.required, TRLValidator])],
+        "lifeCycleStatus": ["", Validators.required],
+        "trl": ["", Validators.required],
         "category": ["", Validators.required],
         "subcategory": ["", Validators.required],
         //place is defined in component
@@ -99,13 +97,13 @@ export class ServiceFormComponent {
         //tags is defined in component
         //requiredServices is defined in component
         //relatedServices is defined in component
-        "order": ["", Validators.compose([Validators.required, URLValidator])],
-        "helpdesk": ["", URLValidator],
-        "userManual": ["", URLValidator],
-        "trainingInformation": ["", URLValidator],
-        "feedback": ["", URLValidator],
-        "price": ["", Validators.compose([Validators.required, URLValidator])],
-        "serviceLevelAgreement": ["", Validators.compose([Validators.required, URLValidator])],
+        "order": ["", Validators.required],
+        "helpdesk": [""],
+        "userManual": [""],
+        "trainingInformation": [""],
+        "feedback": [""],
+        "price": [""],
+        "serviceLevelAgreement": ["",Validators.required],
         //TOS is defined in component
         "funding": [""]
     };
@@ -158,6 +156,20 @@ export class ServiceFormComponent {
 
     onSubmit(service: Service, isValid: boolean) {
 
+        service.url = ServiceFormComponent.checkUrl(this.serviceForm.get('url').value);
+        service.symbol = ServiceFormComponent.checkUrl(this.serviceForm.get('symbol').value);
+        service.multimediaURL = ServiceFormComponent.checkUrl(this.serviceForm.get('multimediaURL').value);
+        service.order = ServiceFormComponent.checkUrl(this.serviceForm.get('order').value);
+        service.helpdesk = ServiceFormComponent.checkUrl(this.serviceForm.get('helpdesk').value);
+        service.userManual = ServiceFormComponent.checkUrl(this.serviceForm.get('userManual').value);
+        service.trainingInformation = ServiceFormComponent.checkUrl(this.serviceForm.get('trainingInformation').value);
+        service.feedback = ServiceFormComponent.checkUrl(this.serviceForm.get('feedback').value);
+        service.serviceLevelAgreement = ServiceFormComponent.checkUrl(this.serviceForm.get('serviceLevelAgreement').value);
+        service.price = ServiceFormComponent.checkUrl(this.serviceForm.get('price').value);
+        for (let i = 0; i < service['termsOfUse'].length; i++) {
+            service['termsOfUse'][i]['entry'] = ServiceFormComponent.checkUrl(service['termsOfUse'][i]['entry']);
+        }
+
         this.setAsTouched();
 
         //TODO: check if model is valid
@@ -168,8 +180,8 @@ export class ServiceFormComponent {
             });
         } else {
             window.scrollTo(0, 0);
-            // this.serviceForm.markAsDirty();
-            // this.serviceForm.updateValueAndValidity();
+            this.serviceForm.markAsDirty();
+            this.serviceForm.updateValueAndValidity();
             this.errorMessage = "Please fill in all required fields (marked with an asterisk), and fix the data format " +
                 "in fields underlined with a red colour.";
         }
@@ -223,5 +235,14 @@ export class ServiceFormComponent {
                 }
             }
         });
+    }
+
+    static checkUrl(url: string) {
+        if (url !== '') {
+            if (!url.match(/^(https?:\/\/.+)?$/)) {
+                url = 'http://' + url;
+            }
+        }
+        return url;
     }
 }

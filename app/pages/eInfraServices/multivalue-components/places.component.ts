@@ -10,7 +10,7 @@ import {SearchResults} from "../../../domain/search-results";
     selector: "placesInfo-form",
     template: `
         <div [formGroup]="group">
-            <select formControlName="entry">
+            <select formControlName="entry" class="uk-select">
                 <ng-container *ngIf="placesVocabulary">
                     <option *ngFor="let placeEntry of placesVocabulary.entries | values | premiumsort:weights" value="{{placeEntry}}">
                         {{placesVocabulary.entries[placeEntry].name}}

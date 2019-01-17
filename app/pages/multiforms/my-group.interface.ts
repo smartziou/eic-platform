@@ -131,7 +131,7 @@ export class MyGroup implements OnInit, AfterContentInit {
                 {{description.label}}
             </label>
             <!--<div class="form-group">-->
-            <div class="uk-width-4-5 uk-form-controls">
+            <div class="uk-width-4-5 uk-form-controls" [ngClass]="{'uk-form-danger': !valid}">
                 <ng-content></ng-content>
                 <div *ngIf="params==='inline'" class="form-group">
                     <div class="">
