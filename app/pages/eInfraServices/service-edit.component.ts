@@ -2,7 +2,7 @@
  * Created by pgl on 21/08/17.
  */
 
-import {Location} from "@angular/common";
+import {DatePipe, Location} from "@angular/common";
 import {Component, Injector, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
@@ -10,6 +10,7 @@ import {Service} from "../../domain/eic-model";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ResourceService} from "../../services/resource.service";
 import {ServiceFormComponent} from "./service-form.component";
+import {getLocale} from "ngx-bootstrap/bs-moment/locale/locales.service";
 
 @Component({
     selector: "service-edit",
@@ -20,7 +21,11 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
     private sub: Subscription;
     private serviceID: string;
 
-    constructor(public route: ActivatedRoute, public authenticationService: AuthenticationService, public location: Location, protected injector: Injector) {
+    constructor(public route: ActivatedRoute,
+                public authenticationService: AuthenticationService,
+                public location: Location,
+                protected injector: Injector,
+                public datePipe: DatePipe) {
         super(injector);
         this.editMode = true;
     }
@@ -34,8 +39,9 @@ export class ServiceEditComponent extends ServiceFormComponent implements OnInit
                 /*if (this.userService.canEditService(service)) {*/
                     ResourceService.removeNulls(service);
                     this.serviceForm.patchValue(this.toForms(service));
-                    let date = new Date(this.serviceForm.get('lastUpdate').value);
-                    this.serviceForm.get('lastUpdate').setValue(date.toLocaleDateString());
+                    let lastUpdate = new Date(this.serviceForm.get('lastUpdate').value);
+                    let date = this.datePipe.transform(lastUpdate, 'MM/dd/yyyy');
+                    this.serviceForm.get('lastUpdate').setValue(date);
                 /*} else {
                     this.location.back();
                 }*/
