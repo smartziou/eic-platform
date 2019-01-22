@@ -14,8 +14,7 @@ import {NavigationService} from "../../services/navigation.service";
 import {ResourceService} from "../../services/resource.service";
 import {UserService} from "../../services/user.service";
 import {URLParameter} from "./../../domain/url-parameter";
-import { Observable } from "rxjs/Observable";
-import { Facet, FacetValue } from "../../domain/facet";
+import {Observable} from "rxjs/Observable";
 import {Provider, RichService} from "../../domain/eic-model";
 
 declare var UIkit: any;
@@ -59,7 +58,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
         this.canAddOrEditService = false;
 
-        if(this.authenticationService.isLoggedIn()) {
+        if (this.authenticationService.isLoggedIn()) {
             Observable.zip(
                 this.resourceService.getProvidersNames(),
                 this.resourceService.getMyServiceProviders()
@@ -68,7 +67,7 @@ export class SearchComponent implements OnInit, OnDestroy {
                 this.myProviders = suc[1];
 
                 /* check if the current user can add a service */
-                this.canAddOrEditService = this.myProviders.some( p => p.id === 'openaire' );
+                this.canAddOrEditService = this.myProviders.some(p => p.id === 'openaire');
 
                 this.sub = this.route.params.subscribe(params => {
                     this.urlParameters.splice(0, this.urlParameters.length);
@@ -120,9 +119,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     toggleListGrid(show: string) {
-        if(show == 'list')
+        if (show == 'list')
             this.listViewActive = true;
-        else if(show == 'grid')
+        else if (show == 'grid')
             this.listViewActive = false;
         else
             this.listViewActive = false;
@@ -240,10 +239,14 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     selectFacet(category: string, value: string) {
         var foundCategory = false;
+        this.goToFirstPage();
         for (let urlParameter of this.urlParameters) {
             if (urlParameter.key === category) {
                 foundCategory = true;
-                urlParameter.values.push(value);
+                let valueIndex = urlParameter.values.indexOf(value, 0);
+                if (valueIndex < 0) {
+                    urlParameter.values.push(value);
+                }
             }
         }
         if (!foundCategory) {
