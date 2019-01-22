@@ -3,8 +3,7 @@
  */
 
 import {Injectable} from "@angular/core";
-import {User} from "../domain/eic-model";
-import {deleteCookie, getCookie, setCookie} from "../domain/utils";
+import {deleteCookie, getCookie} from "../domain/utils";
 import {NavigationService} from "./navigation.service";
 import {isNullOrUndefined} from "util";
 import {API_ENDPOINT} from "../shared/environment";
@@ -17,6 +16,7 @@ export class AuthenticationService {
     redirectURL: string = "/search";
     cookieName: string = "info";
     user = null;
+    endpoint: string = API_ENDPOINT;
 
     constructor(public router: NavigationService) {
         // this.user = JSON.parse(getCookie(this.cookieName));
@@ -31,7 +31,7 @@ export class AuthenticationService {
     }*/
 
     public b64DecodeUnicode(str: string) {
-        return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+        return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
         }).join(''))
     }
@@ -65,7 +65,7 @@ export class AuthenticationService {
 
     getUserProperty(property: string) {
         const user = JSON.parse(sessionStorage.getItem('userInfo'));
-        if ( !isNullOrUndefined(user) && !isNullOrUndefined(user[property]) && (user[property] !== 'null') ) {
+        if (!isNullOrUndefined(user) && !isNullOrUndefined(user[property]) && (user[property] !== 'null')) {
             return user[property];
         }
         return null;
@@ -77,7 +77,7 @@ export class AuthenticationService {
             this.getUserInfo();
         } else {
             sessionStorage.setItem('redirect_url', window.location.pathname);
-            window.location.href = API_ENDPOINT + "/openid_connect_login";
+            window.location.href = this.endpoint + "/openid_connect_login";
         }
     }
 
@@ -87,7 +87,7 @@ export class AuthenticationService {
             this.user = null;
             sessionStorage.clear();
             // window.location.href = API_ENDPOINT + "/openid_logout";
-            window.location.href = "https://aai.openaire.eu/proxy/saml2/idp/SingleLogoutService.php?ReturnTo=" + API_ENDPOINT + "/openid_logout";
+            window.location.href = "https://aai.openaire.eu/proxy/saml2/idp/SingleLogoutService.php?ReturnTo=" + this.endpoint + "/openid_logout";
             // this.router.home();
         }
     }
