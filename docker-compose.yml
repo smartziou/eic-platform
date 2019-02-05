@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  platform:
+    image: eic-platform                         # image name
+
+    environment:
+    - PLATFORM_API_ENDPOINT=http://example.com  # api endpoint (include http)
+    - MATOMO_HOST=example.com                   # matomo host (do not include http)
+    - MATOMO_PORT=3306                          # matomo port
+    - MATOMO_SITE_ID=1                          # matomo site id
+
+    ports:
+    - "80:80"
+
+    networks:
+    - eic-net
+
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 20
+
+networks:
+  eic-net:
+    external: true
