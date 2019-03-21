@@ -9,10 +9,11 @@ import * as sd from "../services.description";
         <div [formGroup]="group">
             <input type="text" formControlName="entry"/>
         </div>
-    `
+    `,
+    styleUrls: ["./multivalued-form-component.css"]
 })
 export class TermsOfUseComponent extends MyGroup {
-    readonly groupDefinition = {entry: [""]};
+    readonly groupDefinition = {entry: ["", URLValidator]};
     readonly termsOfUseDesc: sd.Description = sd.termsOfUseDesc;
 
     ngOnInit() {

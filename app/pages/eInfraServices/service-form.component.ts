@@ -73,7 +73,7 @@ export class ServiceFormComponent {
     relatedServicesComponent: Type<RelatedServicesComponent> = RelatedServicesComponent;
     termsOfUseComponent: Type<TermsOfUseComponent> = TermsOfUseComponent;
     formGroupMeta = {
-        "url": ["", Validators.required],
+        "url": ["", Validators.compose([Validators.required, URLValidator])],
         "name": ["", Validators.required],
         "tagline": [""],
         "description": ["", Validators.required],
@@ -81,7 +81,7 @@ export class ServiceFormComponent {
         "targetUsers": [""],
         "userValue": [""],
         "userBase": [""],
-        "symbol": ["", Validators.required],
+        "symbol": ["", Validators.compose([Validators.required, URLValidator])],
         "multimediaURL": ["", URLValidator],
         //providers is defined in component
         "version": ["", Validators.required],
@@ -97,13 +97,13 @@ export class ServiceFormComponent {
         //tags is defined in component
         //requiredServices is defined in component
         //relatedServices is defined in component
-        "order": ["", Validators.required],
-        "helpdesk": [""],
-        "userManual": [""],
-        "trainingInformation": [""],
-        "feedback": [""],
-        "price": [""],
-        "serviceLevelAgreement": ["",Validators.required],
+        "order": ["", Validators.compose([Validators.required, URLValidator])],
+        "helpdesk": ["", URLValidator],
+        "userManual": ["", URLValidator],
+        "trainingInformation": ["", URLValidator],
+        "feedback": ["", URLValidator],
+        "price": ["", URLValidator],
+        "serviceLevelAgreement": ["", Validators.compose([Validators.required, URLValidator])],
         //TOS is defined in component
         "funding": [""]
     };
@@ -156,19 +156,19 @@ export class ServiceFormComponent {
 
     onSubmit(service: Service, isValid: boolean) {
 
-        service.url = ServiceFormComponent.checkUrl(this.serviceForm.get('url').value);
-        service.symbol = ServiceFormComponent.checkUrl(this.serviceForm.get('symbol').value);
-        service.multimediaURL = ServiceFormComponent.checkUrl(this.serviceForm.get('multimediaURL').value);
-        service.order = ServiceFormComponent.checkUrl(this.serviceForm.get('order').value);
-        service.helpdesk = ServiceFormComponent.checkUrl(this.serviceForm.get('helpdesk').value);
-        service.userManual = ServiceFormComponent.checkUrl(this.serviceForm.get('userManual').value);
-        service.trainingInformation = ServiceFormComponent.checkUrl(this.serviceForm.get('trainingInformation').value);
-        service.feedback = ServiceFormComponent.checkUrl(this.serviceForm.get('feedback').value);
-        service.serviceLevelAgreement = ServiceFormComponent.checkUrl(this.serviceForm.get('serviceLevelAgreement').value);
-        service.price = ServiceFormComponent.checkUrl(this.serviceForm.get('price').value);
-        for (let i = 0; i < service['termsOfUse'].length; i++) {
-            service['termsOfUse'][i]['entry'] = ServiceFormComponent.checkUrl(service['termsOfUse'][i]['entry']);
-        }
+        // service.url = ServiceFormComponent.checkUrl(this.serviceForm.get('url').value);
+        // service.symbol = ServiceFormComponent.checkUrl(this.serviceForm.get('symbol').value);
+        // service.multimediaURL = ServiceFormComponent.checkUrl(this.serviceForm.get('multimediaURL').value);
+        // service.order = ServiceFormComponent.checkUrl(this.serviceForm.get('order').value);
+        // service.helpdesk = ServiceFormComponent.checkUrl(this.serviceForm.get('helpdesk').value);
+        // service.userManual = ServiceFormComponent.checkUrl(this.serviceForm.get('userManual').value);
+        // service.trainingInformation = ServiceFormComponent.checkUrl(this.serviceForm.get('trainingInformation').value);
+        // service.feedback = ServiceFormComponent.checkUrl(this.serviceForm.get('feedback').value);
+        // service.serviceLevelAgreement = ServiceFormComponent.checkUrl(this.serviceForm.get('serviceLevelAgreement').value);
+        // service.price = ServiceFormComponent.checkUrl(this.serviceForm.get('price').value);
+        // for (let i = 0; i < service['termsOfUse'].length; i++) {
+        //     service['termsOfUse'][i]['entry'] = ServiceFormComponent.checkUrl(service['termsOfUse'][i]['entry']);
+        // }
 
         this.setAsTouched();
 
@@ -237,12 +237,12 @@ export class ServiceFormComponent {
         });
     }
 
-    static checkUrl(url: string) {
-        if (url !== '') {
-            if (!url.match(/^(https?:\/\/.+)?$/)) {
-                url = 'http://' + url;
-            }
-        }
-        return url;
-    }
+    // static checkUrl(url: string) {
+    //     if (url !== '') {
+    //         if (!url.match(/^(https?:\/\/.+)?$/)) {
+    //             url = 'http://' + url;
+    //         }
+    //     }
+    //     return url;
+    // }
 }

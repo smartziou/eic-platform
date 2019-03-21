@@ -135,8 +135,6 @@
                                                            type="text"
                                                            onfocus="(this.type='date')"
                                                            formControlName=validFor>
-                                                    <!--<input class="uk-input" type="text" formControlName="validFor"-->
-                                                           <!--[ngClass]="{'uk-form-danger': !serviceForm.get('validFor').valid && serviceForm.get('validFor').dirty}">-->
                                                 </form-inline>
                                                 <!--<form-inline *ngIf="this.vocabularies" [description]="lifeCycleStatusDesc"-->
                                                              <!--[params]="'inline'"-->
@@ -227,7 +225,8 @@
                                                 <form-inline [description]="helpdeskDesc" [params]="'inline'"
                                                              [valid]="serviceForm.get('helpdesk').valid && serviceForm.get('helpdesk').dirty"
                                                              [ngClass]="{'uk-form-danger': !serviceForm.get('helpdesk').valid && serviceForm.get('helpdesk').dirty}">
-                                                    <input class="uk-input" type="text" formControlName="helpdesk">
+                                                    <input class="uk-input" type="text" formControlName="helpdesk"
+                                                           [ngClass]="{'uk-form-danger': !serviceForm.get('helpdesk').valid && serviceForm.get('helpdesk').dirty}">
                                                 </form-inline>
                                                 <form-inline [description]="userManualDesc" [params]="'inline'"
                                                              [valid]="serviceForm.get('userManual').valid && serviceForm.get('userManual').dirty">

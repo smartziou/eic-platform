@@ -18,7 +18,8 @@ import {SearchResults} from "../../../domain/search-results";
                 </ng-container>
             </select>
         </div>
-    `
+    `,
+    styleUrls: ["./multivalued-form-component.css"]
 })
 export class PlacesComponent extends MyGroup {
     places: SearchResults<Vocabulary> = null;

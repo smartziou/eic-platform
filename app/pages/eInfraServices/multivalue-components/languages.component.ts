@@ -10,7 +10,7 @@ import {Vocabulary} from "../../../domain/eic-model";
     selector: "languagesInfo-form",
     template: `
         <div [formGroup]="group">
-            <select formControlName="entry">
+            <select formControlName="entry" class="uk-select">
                 <ng-container *ngIf="languagesVocabulary">
                     <option *ngFor="let languageEntry of languagesVocabulary.entries | values | premiumsort:weights" value="{{languageEntry}}">
                         {{languagesVocabulary.entries[languageEntry].name}}
@@ -18,7 +18,8 @@ import {Vocabulary} from "../../../domain/eic-model";
                 </ng-container>
             </select>
         </div>
-    `
+    `,
+    styleUrls: ["./multivalued-form-component.css"]
 })
 export class LanguagesComponent extends MyGroup {
     languages: SearchResults<Vocabulary> = null;

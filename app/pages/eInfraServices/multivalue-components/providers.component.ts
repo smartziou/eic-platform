@@ -12,13 +12,14 @@ import * as sd from "../services.description";
     selector: "providersInfo-form",
     template: `
         <div [formGroup]="group">
-            <select formControlName="entry">
+            <select formControlName="entry" class="uk-select">
                 <option *ngFor="let c of providers | keys | premiumsort:this.weights" [ngValue]="c">
                     {{providers[c]}}
                 </option>
             </select>
         </div>
-    `
+    `,
+    styleUrls: ["./multivalued-form-component.css"]
 })
 export class ProvidersComponent extends MyGroup {
     providers: any = {"qq": "Error fetching providers"};
