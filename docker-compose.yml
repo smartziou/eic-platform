@@ -5,9 +5,8 @@ services:
     image: eic-platform                         # image name
 
     environment:
-    - PLATFORM_API_ENDPOINT=http://example.com  # api endpoint (include http)
-    - MATOMO_HOST=example.com                   # matomo host (do not include http)
-    - MATOMO_PORT=3306                          # matomo port
+    - PLATFORM_API_ENDPOINT=http://example.com  # api endpoint
+    - MATOMO_HOST=http://example.com/matomo     # matomo host
     - MATOMO_SITE_ID=1                          # matomo site id
 
     ports:
