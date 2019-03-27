@@ -406,7 +406,9 @@
 }
 
 .gridView .serviceTagLine {
-    height: 4em;
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
 }
 
 .serviceDescription {
@@ -418,6 +420,12 @@
 
 .gridView .serviceDescription {
     height: 4em;
+}
+
+.gridView .serviceName {
+    line-height: 1.25em;
+    height: 4em;
+    overflow: hidden;
 }
 
 .addenda a {

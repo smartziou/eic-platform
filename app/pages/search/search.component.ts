@@ -16,6 +16,7 @@ import {UserService} from "../../services/user.service";
 import {URLParameter} from "./../../domain/url-parameter";
 import {Observable} from "rxjs/Observable";
 import {Provider, RichService} from "../../domain/eic-model";
+import {URLSearchParams} from "@angular/http";
 
 declare var UIkit: any;
 
@@ -31,7 +32,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     urlParameters: URLParameter[] = [];
     searchResults: SearchResults<RichService>;
     facetOrder = ["category", "trl", "lifeCycleStatus", "provider"];
-    pageSize: number = 0;
+    pageSize: number = 9;
     currentPage: number = 0;
     totalPages: number = 0;
     isPreviousPageDisabled: boolean = false;
@@ -57,6 +58,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     ngOnInit() {
 
         this.canAddOrEditService = false;
+        // this 2 lines should be done better
+        this.updatePagingURLParametersQuantity(this.pageSize);
+        this.navigateUsingParameters();
 
         if (this.authenticationService.isLoggedIn()) {
             Observable.zip(
@@ -92,6 +96,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             ).subscribe(suc => {
                 this.providers = suc[0];
 
+                this.updatePagingURLParametersQuantity(this.pageSize);
                 this.sub = this.route.params.subscribe(params => {
                     this.urlParameters.splice(0, this.urlParameters.length);
                     this.foundResults = true;
@@ -119,12 +124,26 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     toggleListGrid(show: string) {
-        if (show == 'list')
+        if (show == 'list') {
             this.listViewActive = true;
-        else if (show == 'grid')
+            this.pageSize = 10;
+            this.updatePagingURLParametersQuantity(this.pageSize);
+            this.updatePagingURLParameters(0);
+            return this.navigateUsingParameters();
+        } else if (show == 'grid') {
             this.listViewActive = false;
-        else
+            this.pageSize = 9;
+            this.updatePagingURLParametersQuantity(this.pageSize);
+            this.updatePagingURLParameters(0);
+            return this.navigateUsingParameters();
+        }
+        else {
             this.listViewActive = false;
+            this.pageSize = 9;
+            this.updatePagingURLParametersQuantity(this.pageSize);
+            this.updatePagingURLParameters(0);
+            return this.navigateUsingParameters();
+        }
     }
 
     updateSearchResults(searchResults: SearchResults<RichService>) {
@@ -161,7 +180,8 @@ export class SearchComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        this.pageSize = 10;
+        // this.pageSize = 10;
+        this.updatePagingURLParametersQuantity(this.pageSize);
         this.currentPage = (searchResults.from / this.pageSize) + 1;
         this.totalPages = Math.ceil(searchResults.total / this.pageSize);
         if (this.currentPage == 1) {
@@ -357,6 +377,24 @@ export class SearchComponent implements OnInit, OnDestroy {
                 values: [from + ""]
             };
             this.urlParameters.push(newFromParameter);
+        }
+    }
+
+    updatePagingURLParametersQuantity(quantity: number) {
+        var foundQuantityCategory = false;
+        for (let urlParameter of this.urlParameters) {
+            if (urlParameter.key === "quantity") {
+                foundQuantityCategory = true;
+                urlParameter.values = [];
+                urlParameter.values.push(quantity + "");
+            }
+        }
+        if (!foundQuantityCategory) {
+            var newQuantityParameter: URLParameter = {
+                key: "quantity",
+                values: [quantity + ""]
+            };
+            this.urlParameters.push(newQuantityParameter);
         }
     }
 }
