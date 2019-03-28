@@ -188,7 +188,7 @@
                         <div *ngIf="urlParameters && urlParameters.length>0" class="uk-width-1-1 uk-row-first uk-margin-bottom">
                             <ul class="facets-selected cf">
                                 <ng-template ngFor let-urlParameter [ngForOf]="urlParameters">
-                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='providers'">
+                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='providers' && urlParameter.key!='quantity' && urlParameter.values!=''">
                                         <li *ngFor="let facet of urlParameter.values" class="search-tag">
                                             <span class="title">{{urlParameter.key}}:</span> {{facet | uppercase}}
                                             <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
@@ -423,7 +423,7 @@
                         <div *ngIf="urlParameters && urlParameters.length>0" class="uk-width-1-1 uk-row-first uk-margin-bottom">
                             <ul class="facets-selected cf">
                                 <ng-template ngFor let-urlParameter [ngForOf]="urlParameters">
-                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='providers'">
+                                    <ng-template [ngIf]="urlParameter.key!='from' && urlParameter.key!='providers' && urlParameter.key!='quantity' && urlParameter.values!=''">
                                         <li *ngFor="let facet of urlParameter.values" class="search-tag">
                                             <span class="title">{{urlParameter.key}}:</span> {{facet | uppercase}}
                                             <a (click)="this.deselectFacet(urlParameter.key, facet)" data-role="remove"></a>
@@ -445,7 +445,7 @@
 
                                     <div class="uk-first-column uk-card-body serviceInfo">
                                         <div>
-                                            <h3 class="uk-margin-remove uk-h3 uk-scrollspy-inview uk-animation-fade uk-inline" uk-scrollspy-class="">
+                                            <h3 #serviceName id="serviceName" class="uk-margin-remove uk-h3 uk-scrollspy-inview uk-animation-fade uk-inline serviceName" uk-scrollspy-class="">
                                                 <a (click)="this.router.service(resourceInfo.id)">
                                                     {{resourceInfo.name}}
                                                 </a>
